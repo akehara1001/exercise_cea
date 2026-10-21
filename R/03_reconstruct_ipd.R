@@ -230,6 +230,14 @@ addv(f, "hr", NA, "pCR", val("K22_efs_pcr", "hr"), hr_arm(f, "pembro_pCR", "plac
 addv(f, "hr", NA, "non-pCR", val("K22_efs_nonpcr", "hr"), hr_arm(f, "pembro_nonpCR", "placebo_nonpCR"), 0.03, ref("K22_efs_nonpcr"),
      "reported: unstratified Cox (appendix caption), as reconstructed")
 
+# stratum HRs supplied by the user (2026-10-21), compared with the same reconstructed curves
+us <- read.csv(file.path(root, "input", "user_supplied_values.csv"), stringsAsFactors = FALSE)
+for (st in c("pCR", "nonpCR")) {
+  u <- us[us$stratum == st, ]
+  addv(f, "hr", NA, paste0(st, " (user-supplied reference)"), u$hr, hr_arm(f, paste0("pembro_", st), paste0("placebo_", st)), 0.03,
+       "input/user_supplied_values.csv", paste0("reference ", u$hr, " [", u$lo, ", ", u$hi, "]: ", u$source))
+}
+
 # Schmid 2024 appendix Fig. S4, OS by arm x pCR (only deaths and 5-y differences are reported)
 f <- "K24_S4_OS_pCR"
 for (arm in c("pembro", "placebo")) {

@@ -62,6 +62,8 @@
 "K22_S4_EFS_pCR_placebo_nonpCR","events",NA,"",77,77,0,"2% (1.54)",TRUE,TRUE,"NEJMoa2112651 p6",""
 "K22_S4_EFS_pCR","hr",NA,"pCR",0.73,0.7224,0.0076,"0.03",TRUE,TRUE,"NEJMoa2112651 p6","reported: unstratified Cox (appendix caption), as reconstructed"
 "K22_S4_EFS_pCR","hr",NA,"non-pCR",0.7,0.7117,0.0117,"0.03",TRUE,TRUE,"NEJMoa2112651 p6","reported: unstratified Cox (appendix caption), as reconstructed"
+"K22_S4_EFS_pCR","hr",NA,"pCR (user-supplied reference)",0.65,0.7224,0.0724,"0.03",FALSE,TRUE,"input/user_supplied_values.csv","reference 0.65 [0.39, 1.08]: user instruction 2026-10-21 (stratum HR for the EFS by arm x pCR check); source not given and not found in input/papers"
+"K22_S4_EFS_pCR","hr",NA,"nonpCR (user-supplied reference)",0.72,0.7117,0.0083,"0.03",TRUE,TRUE,"input/user_supplied_values.csv","reference 0.72 [0.54, 0.96]: user instruction 2026-10-21 (stratum HR for the EFS by arm x pCR check); source not given and not found in input/papers"
 "K24_S4_OS_pCR_pembro_pCR","events",NA,"",27,27,0,"2% (0.54)",TRUE,TRUE,"NEJMoa2409932 p6",""
 "K24_S4_OS_pCR_pembro_nonpCR","events",NA,"",88,88,0,"2% (1.76)",TRUE,TRUE,"NEJMoa2409932 p6",""
 "K24_S4_OS_pCR_placebo_pCR","events",NA,"",17,17,0,"2% (0.34)",TRUE,TRUE,"NEJMoa2409932 p6",""

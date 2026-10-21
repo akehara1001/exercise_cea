@@ -1,0 +1,182 @@
+1. Ann Oncol. 2026 Aug 24:S0923-7534(26)01456-0. doi:
+10.1016/j.annonc.2026.08.002.  Online ahead of print.
+
+Sustained benefit of adjuvant olaparib in women with germline BRCA1- and 
+BRCA2-associated high-risk HER2-negative early breast cancer: updated results 
+from the OlympiA phase III trial.
+
+Garber JE(1), Cameron D(2), Campbell C(3), Yothers G(4), Taboada M(5), El-Abed 
+S(6), Rastogi P(7), McConnell R(8), Correa A(9), Delaloge S(10), Liu WT(11), 
+Sharma P(12), Bergh J(13), Janni W(14), Balmaña J(15), Loman N(16), Španić 
+T(17), Friedman S(18), Freeman T(19), Armstrong A(20), Korde L(21), Im S(22), 
+Sagara Y(23), Viale G(24), Bliss J(25), Gianni L(26), Jóhannsson Ó(27), Zoppoli 
+G(28), Martinez De Dueñas E(29), Marmé F(30), Fein L(31), Arnedos M(32), Ford 
+J(33), Schmutzler R(34), Loibl S(35), Linderholm B(36), Lakhani SR(37), Gnant 
+M(38), Gelmon K(39), Domchek SM(40), Senkus E(41), Eisen A(42), Jager A(43), 
+Piccart M(44), Phillips KA(45), Traina T(46), Stickeler E(47), Singer CF(48), 
+Shao Z(49), Liu X(50), Tipping H(9), Aktan G(51), Martinez M(52), Canon JL(53), 
+Takahashi M(54), Yasojima H(55), Middleton K(56), Pristauz-Telsnigg G(57), 
+Pfeiler G(48), Virani S(58), Valdes-Albini F(59), Wolmark N(7), Diaz Mesa I(60), 
+Paterson V(8), Gelber RD(61), Geyer CE Jr(7), Tutt ANJ(62).
+
+Author information:
+(1)Department of Medical Oncology, Dana-Farber Cancer Institute, Harvard Medical 
+School, Boston, USA. Electronic address: judy_garber@dfci.harvard.edu.
+(2)Institute of Genetics and Cancer, University of Edinburgh, Edinburgh, UK.
+(3)Department of Biostatistics, Frontier Science (Scotland), Kincraig, UK.
+(4)NRG Oncology/NSABP Foundation, Pittsburgh, USA; Department of Biostatistics, 
+University of Pittsburgh, Pittsburgh, USA.
+(5)Oncology Biometrics Department, AstraZeneca, Macclesfield, UK.
+(6)R&D Department, Breast International Group (BIG), Brussels, Belgium.
+(7)NRG Oncology/NSABP Foundation, Pittsburgh, USA; Department of Medicine, UPMC 
+Hillman Cancer Center, Pittsburgh, USA.
+(8)Department of Data Management, Frontier Science (Scotland), Kincraig, UK.
+(9)Late Development, Oncology Research and Development, AstraZeneca, Cambridge, 
+UK.
+(10)Department of Cancer Medicine, Institute Gustave Roussy and Unicancer Breast 
+Group, Paris, France.
+(11)Taiwan Cooperative Oncology Group, Division of Cancer Research, National 
+Institute of Cancer Research, National Health Research Institutes, Taipei City, 
+Taiwan.
+(12)Department of Internal Medicine, Division of Medical Oncology, University of 
+Kansas Medical Center, Westwood, USA.
+(13)Department of Oncology-Pathology, Swedish Breast Cancer Group, Cancer 
+Research KI, Karolinska Institute Breast Center, Cancer Theme Karolinska 
+University Hospital, Karolinska Comprehensive Cancer Center, Stockholm, Sweden.
+(14)Department for Obstetrics and Gynecology, Universitaetsklinikum, University 
+of Ulm, Ulm, Germany.
+(15)Medical Oncology Department, Vall d'Hebron Institute of Oncology and Vall 
+d'Hebron University Hospital, Barcelona, Spain.
+(16)Department of Hematology, Oncology, and Radiation Physics, Swedish 
+Association of Breast Oncologists, Skåne University Hospital, Lund, Sweden.
+(17)Department of Patient Advocacy, Europa Donna - The European Breast Cancer 
+Coalition, Milan, Italy; Europa Donna Slovenia, Ljubljana, Slovenia.
+(18)Facing Our Risk of Cancer Empowered, Tampa, USA.
+(19)NRG Oncology/NSABP Foundation, Pittsburgh, USA; Department of Pathology, 
+University of Pittsburgh, Pittsburgh, USA.
+(20)Department of Medical Oncology, The Christie Hospital NHS Foundation Trust, 
+Manchester, UK.
+(21)Clinical Investigations Branch, Division of Cancer Treatment and Diagnosis, 
+The National Cancer Institute, Rockville, USA.
+(22)Department of Internal Medicine, Seoul National University Hospital, Seoul 
+National University College of Medicine Cancer Research Institute, Seoul 
+National University, Seoul, Republic of Korea.
+(23)Department of Breast and Thyroid Surgical Oncology, Hakuaikai Sagara 
+Hospital, Kagoshima, Japan.
+(24)Department of Pathology and Laboratory Medicine, IEO European Institute of 
+Oncology IRCCS, Milan, Italy.
+(25)Departement of Clinical Trials and Statistics Unit (ICR-CTSU), The Institute 
+of Cancer Research, London, UK.
+(26)Department of Oncology, International Breast Cancer Study Group, Bern, 
+Switzerland; Department of Medical Oncology, Ospedale Infermi AUSL della 
+Romagna, Rimini, Italy.
+(27)Department of Medical Oncology, Landspítali University Hospital of Iceland, 
+Icelandic Breast Cancer Group, Reykjavik, Iceland.
+(28)Gruppo Oncologico Italiano di Ricerca Clinica (GOIRC), Parma, Italy; 
+Department of Internal Medicine and Medical Specialties (DiMI), Università degli 
+Studi di Genova and IRCCS Ospedale Policlinico San Martino, Genoa, Italy.
+(29)Consorcio Hospitalario Provincial de Castellón, Servicio de Oncología 
+Médica, Castellón, Spain; GEICAM Spanish Breast Cancer Group, Madrid, Spain.
+(30)Medical Faculty Mannheim, Heidelberg University, Mannheim, Germany; German 
+Breast Group, Neu-Isenburg, Germany.
+(31)Department of Clinical Research, Instituto de Oncologia De Rosario, Santa 
+Fe, Argentina.
+(32)European Organisation for Research and Treatment (EORTC), Brussels, Belgium; 
+Department of Medical Oncology, Institut Bergonie, Bordeaux, France.
+(33)Department of Medicine/Oncology, Stanford University School of Medicine, 
+Stanford, USA.
+(34)Center for Hereditary Breast and Ovarian Cancer, Center for Integrated 
+Oncology (CIO), Medical Faculty, University Hospital Cologne, Cologne, Germany.
+(35)GBG Forschungs GmbH, Neu-Isenburg, Germany; Goethe University, Frankfurt am 
+Main, Germany.
+(36)Department of Oncology, Institute of Clinical Sciences, Sahlgrenska Academy 
+at Gothenburg University, Gothenburg, Sweden; Department of Oncology, 
+Sahlgrenska University Hospital, Gothenburg, Sweden.
+(37)Department of Anatomical Pathology, The University of Queensland Centre for 
+Clinical Research and Pathology Queensland, Brisbane, Australia.
+(38)Medical University of Vienna, Vienna, Austria; Austrian Breast and 
+Colorectal Cancer Study Group, Vienna, Austria.
+(39)Department of Medical Oncology, BC Cancer, Vancouver, Canada.
+(40)Department of Medicine, Basser Center for BRCA, Abramson Cancer Center, 
+University of Pennsylvania, Philadelphia, USA.
+(41)Department of Oncology and Radiotherapy, Medical University of Gdańsk, 
+Gdańsk, Poland; Breast Unit, University Clinical Center, Gdańsk, Poland.
+(42)Department of Oncology, McMaster University, Hamilton, Canada.
+(43)Department of Medical Oncology, Dutch Breast Cancer Research Group, Utrecht, 
+The Netherlands.
+(44)Scientific Direction, Université Libre de Bruxelles (ULB), Hôpital 
+Universitaire de Bruxelles (HUB), Institut Jules Bordet, Brussels, Belgium.
+(45)Department of Medical Oncology, Peter MacCallum Cancer Centre, Melbourne, 
+Australia; Breast Cancer Trials, Australia and New Zealand, Newcastle, 
+Australia; The Sir Peter MacCallum Department of Oncology, The University of 
+Melbourne, Melbourne, Australia.
+(46)Department of Medicine, Memorial Sloan Kettering Cancer Center, New York, 
+USA.
+(47)Department of Obstetrics and Gynecology, Center for Integrated Oncology (CIO 
+Aachen, Bonn, Cologne, Düsseldorf), University Hospital of RWTH Aachen, Aachen, 
+Germany.
+(48)Austrian Breast and Colorectal Cancer Study Group, Vienna, Austria; 
+Department of OB/GYN and Comprehensive Cancer Center, Medical University of 
+Vienna, Vienna, Austria.
+(49)Fudan University Shanghai Cancer Center, Shanghai, China.
+(50)Late Development Oncology, Oncology Research and Development, AstraZeneca, 
+Gaithersburg, USA.
+(51)Global Oncology Clinical Development, Merck & Co., Inc., Rahway, USA.
+(52)Clinique Pasteur, Department of Oncology-Radiotherapy, Toulouse, France.
+(53)Department of Medical Oncology Grand Hôpital de Charleroi, Charleroi, 
+Belgium.
+(54)Department of Breast Surgery, Hokkaido University Hospital, Hokkaido, Japan.
+(55)Department of Surgery, Breast Oncology, NHO Osaka National Hospital, Osaka, 
+Japan.
+(56)Mater Misericordiae University Hospital, Dublin, Ireland.
+(57)Department of Gynecology, Medical University of Graz, Graz, Austria.
+(58)Advocate Aurora Health, Charlotte, USA.
+(59)Department of Medicine, Division of Medical Oncology, Miller School of 
+Medicine, University of Miami Hospital and Clinics, University of Miami 
+Sylvester Comprehensive Cancer Center, Miami, USA.
+(60)Research Operations Department, Breast International Group, Brussels, 
+Belgium.
+(61)Department of Medical Oncology, Dana-Farber Cancer Institute, Harvard 
+Medical School, Boston, USA; Harvard T.H. Chan School of Public Health, Boston, 
+USA; Frontier Science Foundation, Boston, USA.
+(62)The Breast Cancer Now Toby Robins Research Centre, Division of Breast Cancer 
+Research, The Institute of Cancer Research, London, UK; The Breast Cancer Now 
+Research Unit, Guy's Hospital Cancer Centre, King's College London, London, UK. 
+Electronic address: andrew.tutt@icr.ac.uk.
+
+BACKGROUND: The randomised phase III OlympiA trial (NCT02032823) compared 1 year 
+of adjuvant olaparib [oral poly (ADP-ribose) polymerase inhibitor] with placebo 
+in 1836 patients with pathogenic/likely pathogenic BRCA1 or BRCA2 [germline BRCA 
+pathogenic variants (gBRCApvs)] germline variants and high-risk human epidermal 
+growth factor receptor 2 (HER2)-negative early breast cancer (BC). Previous 
+interim analyses (IAs) demonstrated statistically significant improvements in 
+invasive disease-free survival (IDFS), distant disease-free survival (DDFS) and 
+overall survival (OS), irrespective of hormone receptor status, prior platinum 
+administration, timing of prior chemotherapy or type of gBRCApv. Herein are the 
+results of the third prespecified IA with a median follow-up (MFU) of 6.1 years.
+PATIENTS AND METHODS: Descriptive analyses are presented for the primary 
+endpoint IDFS and key secondary endpoints of DDFS and OS. Estimates of the 
+hazard ratio (HR) based on the stratified Cox's proportional hazards model and 
+95% confidence intervals (CIs) are presented with yearly event rates at an MFU 
+of ≤6.1 years. Safety analyses included adverse events of special interest 
+(AESIs).
+RESULTS: Olaparib benefits were maintained in IDFS (HR 0.65, 95% CI 0.53-0.78), 
+DDFS (HR 0.65, 95% CI 0.53-0.81) and OS (HR 0.72, 95% CI 0.56-0.93). The 6-year 
+OS for olaparib versus placebo was 87.5% versus 83.2% (difference 4.4%, 95% CI 
+0.9% to 6.7%). Olaparib benefit was consistent across all key subgroups, 
+including patients with high-risk hormone receptor-positive disease. There were 
+fewer BRCA-associated new BC and ovarian/fallopian tube cancer cases and there 
+was no increase in AESI risks (6.3% versus 9.3%), including myelodysplastic 
+syndrome (MDS)/acute myeloid leukaemia (AML) (0.4% versus 0.7%), with olaparib 
+versus placebo.
+CONCLUSIONS: At an MFU of 6.1 years, 1 year of adjuvant olaparib after 
+(neo)adjuvant chemotherapy demonstrated ongoing clinically meaningful 
+improvements in IDFS, DDFS and OS in patients with gBRCApvs and high-risk, 
+HER2-negative early BC, with acceptable toxicity and without increased risk of 
+MDS/AML. These data continue to provide support for adjuvant olaparib in the 
+treatment of gBRCApv-associated high-risk, HER2-negative early BC.
+
+Copyright © 2026 The Author(s). Published by Elsevier Ltd.. All rights reserved.
+
+DOI: 10.1016/j.annonc.2026.08.002
+PMID: 42636977

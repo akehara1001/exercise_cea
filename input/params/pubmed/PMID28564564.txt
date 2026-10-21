@@ -1,0 +1,66 @@
+1. N Engl J Med. 2017 Jun 1;376(22):2147-2159. doi: 10.1056/NEJMoa1612645.
+
+Adjuvant Capecitabine for Breast Cancer after Preoperative Chemotherapy.
+
+Masuda N(1), Lee SJ(1), Ohtani S(1), Im YH(1), Lee ES(1), Yokota I(1), Kuroi 
+K(1), Im SA(1), Park BW(1), Kim SB(1), Yanagita Y(1), Ohno S(1), Takao S(1), 
+Aogi K(1), Iwata H(1), Jeong J(1), Kim A(1), Park KH(1), Sasano H(1), Ohashi 
+Y(1), Toi M(1).
+
+Author information:
+(1)From the National Hospital Organization Osaka National Hospital, Osaka 
+(N.M.), Hiroshima City Hiroshima Citizens Hospital, Hiroshima (S. Ohtani), Kyoto 
+Prefectural University of Medicine (I.Y.), and Graduate School of Medicine, 
+Kyoto University (M.T.), Kyoto, Tokyo Metropolitan Cancer and Infectious 
+Diseases Center, Komagome Hospital (K.K.), and Chuo University (Y.O.), Tokyo, 
+Gunma Prefectural Cancer Center, Ota (Y.Y.), National Hospital Organization 
+Kyushu Cancer Center, Fukuoka (S. Ohno), Hyogo Cancer Center, Akashi (S.T.), 
+National Hospital Organization Shikoku Cancer Center, Matsuyama (K.A.), Aichi 
+Cancer Center Hospital, Nagoya (H.I.), and Tohoku University, Sendai (H.S.) - 
+all in Japan; and Yeungnam University Hospital, Daegu (S.-J.L.), Samsung Medical 
+Center, Sungkyunkwan University School of Medicine (Y.-H.I.), Cancer Research 
+Institute, Seoul National University Hospital, Seoul National University College 
+of Medicine (S.-A.I.), Severance Hospital (B.-W.P.) and Gangnam Severance 
+Hospital (J.J.), Yonsei University College of Medicine, Asan Medical Center, 
+University of Ulsan College of Medicine (S.-B.K.), Korea University Guro 
+Hospital (A.K.), and Korea University Anam Hospital (K.-H.P.), Seoul, and 
+National Cancer Center, Goyang-si (E.-S.L.) - all in South Korea.
+
+Comment in
+    N Engl J Med. 2017 Aug 24;377(8):791. doi: 10.1056/NEJMc1708487.
+    N Engl J Med. ;377(8):790-1. doi: 10.1056/NEJMc1708487.
+
+BACKGROUND: Patients who have residual invasive carcinoma after the receipt of 
+neoadjuvant chemotherapy for human epidermal growth factor receptor 2 
+(HER2)-negative breast cancer have poor prognoses. The benefit of adjuvant 
+chemotherapy in these patients remains unclear.
+METHODS: We randomly assigned 910 patients with HER2-negative residual invasive 
+breast cancer after neoadjuvant chemotherapy (containing anthracycline, taxane, 
+or both) to receive standard postsurgical treatment either with capecitabine or 
+without (control). The primary end point was disease-free survival. Secondary 
+end points included overall survival.
+RESULTS: The result of the prespecified interim analysis met the primary end 
+point, so this trial was terminated early. The final analysis showed that 
+disease-free survival was longer in the capecitabine group than in the control 
+group (74.1% vs. 67.6% of the patients were alive and free from recurrence or 
+second cancer at 5 years; hazard ratio for recurrence, second cancer, or death, 
+0.70; 95% confidence interval [CI], 0.53 to 0.92; P=0.01). Overall survival was 
+longer in the capecitabine group than in the control group (89.2% vs. 83.6% of 
+the patients were alive at 5 years; hazard ratio for death, 0.59; 95% CI, 0.39 
+to 0.90; P=0.01). Among patients with triple-negative disease, the rate of 
+disease-free survival was 69.8% in the capecitabine group versus 56.1% in the 
+control group (hazard ratio for recurrence, second cancer, or death, 0.58; 95% 
+CI, 0.39 to 0.87), and the overall survival rate was 78.8% versus 70.3% (hazard 
+ratio for death, 0.52; 95% CI, 0.30 to 0.90). The hand-foot syndrome, the most 
+common adverse reaction to capecitabine, occurred in 73.4% of the patients in 
+the capecitabine group.
+CONCLUSIONS: After standard neoadjuvant chemotherapy containing anthracycline, 
+taxane, or both, the addition of adjuvant capecitabine therapy was safe and 
+effective in prolonging disease-free survival and overall survival among 
+patients with HER2-negative breast cancer who had residual invasive disease on 
+pathological testing. (Funded by the Advanced Clinical Research Organization and 
+the Japan Breast Cancer Research Group; CREATE-X UMIN Clinical Trials Registry 
+number, UMIN000000843 .).
+
+DOI: 10.1056/NEJMoa1612645
+PMID: 28564564 [Indexed for MEDLINE]

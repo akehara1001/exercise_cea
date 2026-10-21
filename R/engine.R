@@ -16,10 +16,14 @@
 #       HR(t) = hr0 for t <= wane_start, 1 - (1 - hr0) * exp(-wane_rate * (t - wane_start)) after
 #       (t in years from randomization; wane_rate = 0 keeps hr0 for life);
 #   (b) p_pcr: replaces the arm's pCR proportion.
+# Post-surgery drug scenario S-JP (docs/model_spec.md):
+#   nonpcr_mix: data frame (group, weight, hr); the non-pCR branch is run once per group with
+#   its excess EFS hazard (LRR, DR and excess death; not background death) multiplied by hr from
+#   surgery on, and the state occupancies are mixed by weight (the HRs are not averaged).
 
 # one branch (arm x pCR status); returns state occupancy at t = 0, cycle, 2 cycles, ...
 run_branch <- function(efs_spec, pre_surv, shares, lrr_dr_rate, dr_shape, dr_scale,
-                       start_age, L, cycle, n_cycles, n_tunnel, hr = NULL) {
+                       start_age, L, cycle, n_cycles, n_tunnel, hr = NULL, drug_hr = 1) {
   K <- n_cycles; J <- n_tunnel
   t <- (0:K) * cycle
   hb <- H_pop(start_age + t[-(K + 1)], cycle)                     # background cum hazard per cycle
@@ -30,6 +34,7 @@ run_branch <- function(efs_spec, pre_surv, shares, lrr_dr_rate, dr_shape, dr_sca
   dH <- -log(pmax(S1, 1e-300)) + log(pmax(S0, 1e-300))
   dHex <- if (efs_spec$family == "cure") dH else pmax(dH - hb, 0)
   dHex[!post] <- 0
+  dHex <- dHex * drug_hr
   # pre-surgery events: the branch KM before surgery (pre_surv: time in years, survival)
   pre <- !post
   # + 1e-9: k * cycle can fall a rounding error short of the KM knot at the same month
@@ -119,15 +124,23 @@ engine_params <- function(fits = readRDS(file.path(ROOT, "data", "fits", "fits.r
 
 # exposed interface: arm = chemo | exercise | pembro | both; pcr = all | pCR | nonpCR
 survival_engine <- function(arm, pcr = "all", times = NULL, params,
-                            hr0 = 1, wane_start = 0, wane_rate = 0, p_pcr = NULL) {
+                            hr0 = 1, wane_start = 0, wane_rate = 0, p_pcr = NULL, nonpcr_mix = NULL) {
   base <- switch(arm, chemo = "placebo", exercise = "placebo", pembro = "pembro", both = "pembro",
                  stop("arm must be chemo, exercise, pembro or both"))
   hr <- if (hr0 == 1) NULL else function(t) ifelse(t <= wane_start, hr0, 1 - (1 - hr0) * exp(-wane_rate * (t - wane_start)))
   pp <- if (is.null(p_pcr)) params$p_pcr[[base]] else p_pcr
   drp <- if (is.null(params$dr_by_arm)) c(shape = params$dr_shape, scale = params$dr_scale) else params$dr_by_arm[[base]]
-  rb <- function(b) run_branch(params$efs[[base]][[b]], params$pre_surv[[base]][[b]], params$shares[[base]],
-                               params$lrr_dr[["rate"]], drp[["shape"]], drp[["scale"]], params$start_age, params$L,
-                               params$cycle, params$n_cycles, params$n_tunnel, hr)
+  rb1 <- function(b, dhr) run_branch(params$efs[[base]][[b]], params$pre_surv[[base]][[b]], params$shares[[base]],
+                                      params$lrr_dr[["rate"]], drp[["shape"]], drp[["scale"]], params$start_age, params$L,
+                                      params$cycle, params$n_cycles, params$n_tunnel, hr, dhr)
+  rb <- function(b) {
+    if (b == "pCR" || is.null(nonpcr_mix)) return(rb1(b, 1))
+    stopifnot(abs(sum(nonpcr_mix$weight) - 1) < 1e-9, all(nonpcr_mix$weight >= 0))
+    parts <- lapply(seq_len(nrow(nonpcr_mix)), function(i) rb1(b, nonpcr_mix$hr[i]))
+    r <- parts[[1]]; r[, -1] <- 0
+    for (i in seq_along(parts)) r[, -1] <- r[, -1] + nonpcr_mix$weight[i] * parts[[i]][, -1]
+    r
+  }
   out <- switch(pcr,
     pCR = rb("pCR"),
     nonpCR = rb("nonpCR"),
@@ -138,4 +151,19 @@ survival_engine <- function(arm, pcr = "all", times = NULL, params,
     out <- data.frame(time = times, lapply(out[, -1], function(y) approx(out$time, y, xout = times, rule = 2)$y))
   }
   out
+}
+
+# S-JP subgroups of the non-pCR branch. Default reading (to be confirmed with Dr Ozaki): gBRCA
+# carriers who receive olaparib get olaparib only; capecitabine use F01 applies to the others.
+sjp_mix <- function(F01, F03, F04, hr_cap, hr_ola) {
+  w_o <- F03 * F04
+  w_c <- (1 - w_o) * F01
+  data.frame(group = c("olaparib", "capecitabine", "neither"), weight = c(w_o, w_c, 1 - w_o - w_c),
+             hr = c(hr_ola, hr_cap, 1))
+}
+
+# exercise path A arguments: the effect holds through the programme (surgery, or surgery +
+# continuation), then after a delay decays at wane_rate per year. Path B uses p_pcr only.
+exercise_args <- function(params, hr0, delay_years = 0, wane_rate = 0, continue_months = 0) {
+  list(hr0 = hr0, wane_start = params$L + continue_months / 12 + delay_years, wane_rate = wane_rate)
 }

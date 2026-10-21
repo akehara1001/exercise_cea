@@ -1,0 +1,3 @@
+id,stratum,hr,lo,hi,source
+K522_EFS_HR_pCR,pCR,0.65,0.39,1.08,"user instruction 2026-10-21 (stratum HR for the EFS by arm x pCR check); source not given and not found in input/papers"
+K522_EFS_HR_nonpCR,nonpCR,0.72,0.54,0.96,"user instruction 2026-10-21 (stratum HR for the EFS by arm x pCR check); source not given and not found in input/papers"
