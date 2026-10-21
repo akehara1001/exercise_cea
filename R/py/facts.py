@@ -10,6 +10,7 @@ PCT = r"\([\d.]+%?\)"
 PEM = r"p ?e ?m ?b ?r ?o ?l ?i ?z ?u ?m ?a ?b"
 CHEMO = r"– ?chemotherapy"
 K20, K22, K24 = "NEJMoa1910549.pdf", "NEJMoa2112651.pdf", "NEJMoa2409932.pdf"
+K22A, K24A = "nejmoa2112651_appendix.pdf", "nejmoa2409932_appendix.pdf"
 YAU, YAUA = "eScholarship UC item 0f60710w.pdf", "Yau2022_LancetOncol_appendix_mmc1.pdf"
 
 
@@ -110,6 +111,18 @@ FACTS = [
          rx=r"In the population without a pathological complete response, " + N + " of " + N + r" patients \([\d.]+%\) in the " + PEM + CHEMO
             + " group and " + N + " of " + N + r" patients \([\d.]+%\) in the placebo" + CHEMO
             + r" group had died \(absolute difference in 5-year survival, " + F + r" percentage points; 95% CI, " + SF + " to " + F + r"\) \((Fig\. S4)\)"),
+    # ---- Supplementary appendices ----
+    dict(id="K22A_S3_caption", pdf=K22A, keys=g("figure", "endpoint", "population", "model"),
+         rx=r"(Fig\. S3)\. Kaplan-Meier Estimates of (Distant Progression- or Distant Recurrence- Free Survival) According to Treatment Group in the "
+            r"(Intention-to-Treat Population)\..*?(Cox regression model with treatment as a covariate stratified by the randomization stratification factors)"),
+    dict(id="K22A_S4_caption", pdf=K22A, keys=g("figure", "endpoint", "population", "model"),
+         rx=r"(Fig\. S4)\. Kaplan-Meier Estimates of (Event-Free Survival by Pathological Complete Response \(ypT0/Tis ypN0\)) According to Treatment Group in the "
+            r"(Intention-to-Treat Population)\..*?(Cox regression model with treatment as a covariate)\."),
+    dict(id="K24A_S4_caption", pdf=K24A, keys=g("figure", "endpoint", "population"),
+         rx=r"(Fig\. S4)\. Kaplan-Meier Estimates of (Overall Survival by Pathological Complete Response \(ypT0/Tis ypN0\)) According to Treatment Group in the "
+            r"(Intention-to-Treat Population)\."),
+    dict(id="K24A_os_hr", pdf=K24A, keys=g("hr", "hr_lo", "hr_hi"),
+         rx=r"hazard ratio for overall survival based on the protocol-specified Cox regression model is " + F + r" \(95% CI, " + F + "-" + r"([\d.]+[\d])\)"),
     # ---- Yau 2022 ----
     dict(id="Y22_origin", pdf=YAU, keys=g("origin"),
          rx=r"measured as time from (start of neoadjuvant treatment)"),

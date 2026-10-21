@@ -66,15 +66,17 @@ for f in vs["figures"]:
         risk_times=";".join(f"{t:g}" for t, _ in rt["pembro"]),
         n=f"pembro {rt['pembro'][0][1]}; placebo {rt['placebo'][0][1]}")
 rs = json.load(open(os.path.join(root, "R", "py", "rasterspec.json"), encoding="utf-8"))
+raster_fmt = {}
 for f in rs["figures"]:
     doc = pymupdf.open(os.path.join(papers, f["pdf"]))
     pg_ = doc[f["page"] - 1]
     im = max(pg_.get_images(full=True), key=lambda im: im[2] * im[3])
     info = doc.extract_image(im[0])
     rect = pg_.get_image_rects(im[0])[0]
-    raster_fmt = f"raster ({info['ext'].upper()} {info['width']}x{info['height']}, {info['width'] / (rect.width / 72):.0f} dpi as placed)"
+    raster_fmt[f["fig_id"]] = f"raster ({info['ext'].upper()} {info['width']}x{info['height']}, {info['width'] / (rect.width / 72):.0f} dpi as placed)"
+    xs_ = f["x_tick_labels"]
     axinfo[f["fig_id"]] = dict(
-        x_axis=f"{min(f['x_tick_labels']):g}-{max(f['x_tick_labels']):g} years",
+        x_axis=f"{min(xs_):g}-{max(xs_):g} {f['time_unit']} (labels every {xs_[1] - xs_[0]:g})",
         y_axis=f"{min(f['y_tick_labels']):g}-{max(f['y_tick_labels']):g}%",
         risk_times=";".join(f"{t:g}" for t in f["risk_table_times"]),
         n="; ".join(f"{k} {f['risk_table'][k]['n'][0]}" for k in f["curves"]))
@@ -125,31 +127,35 @@ add(fig_key="K22_F3_OS", source="Schmid 2022 NEJM 386:556", figure="Fig. 3", loc
     milestones=f"36-mo OS pembro {v('K22_os_36m', 'pembro')}% ({v('K22_os_36m', 'pembro_lo')}-{v('K22_os_36m', 'pembro_hi')}), placebo {v('K22_os_36m', 'placebo')}% ({v('K22_os_36m', 'placebo_lo')}-{v('K22_os_36m', 'placebo_hi')})",
     hr=f"{v('K22_os_events_hr', 'hr')} ({v('K22_os_events_hr', 'hr_lo')}-{v('K22_os_events_hr', 'hr_hi')}), stratified Cox",
     efs_event_composition="n/a", source_pages=f"text p{pg('K22_os_events_hr')}; figure p8", notes="superseded by IA7 (final OS)")
-add(fig_key="K22_S3_DRFS", source="Schmid 2022 NEJM 386:556", figure=v("K22_drfs_hr", "figure"), location="supplementary appendix",
-    available="no", format="unknown", endpoint="DRFS (distant progression/recurrence or death)", population="ITT, by arm", analysis="IA4",
+rsd = {f["fig_id"]: f for f in rs["figures"]}
+ri = lambda fid: rsd[fid]["reported_in_image"]
+add(fig_key="K22_S3_DRFS", source="Schmid 2022 NEJM 386:556 appendix", figure=v("K22A_S3_caption", "figure"), location="supplementary appendix",
+    available="yes", format=raster_fmt["K22_S3_DRFS"], endpoint="DRFS (distant progression, distant recurrence or death)",
+    population=f"{v('K22A_S3_caption', 'population')}, by arm", analysis="IA4",
     data_cutoff=v("K22_cutoff", "data_cutoff"), median_fu_months=v("K22_cutoff", "median_fu_months"),
-    time_origin="randomization (per protocol definition)", landmark_at_surgery="n/a (ITT)",
-    x_axis="", y_axis="", risk_times="", n="pembro 784; placebo 390", events="not in main text", milestones="not in main text",
-    hr=f"{v('K22_drfs_hr', 'hr')} ({v('K22_drfs_hr', 'hr_lo')}-{v('K22_drfs_hr', 'hr_hi')})", efs_event_composition="n/a",
-    source_pages=f"text p{pg('K22_drfs_hr')}", notes="supplementary appendix not in input/papers")
-add(fig_key="K22_S4_EFS_by_pCR", source="Schmid 2022 NEJM 386:556", figure=v("K22_efs_nonpcr", "figure"), location="supplementary appendix",
-    available="no", format="unknown", endpoint="EFS", population="arm x pCR (ypT0/Tis ypN0)", analysis="IA4",
+    time_origin="randomization (axis from 0, full ITT at risk at 0)", landmark_at_surgery="n/a (ITT)", **axinfo["K22_S3_DRFS"],
+    events="not reported",
+    milestones=f"36-mo DRFS pembro {ri('K22_S3_DRFS')['milestones']['pembro']}%, placebo {ri('K22_S3_DRFS')['milestones']['placebo']}% (printed in figure)",
+    hr=f"{v('K22_drfs_hr', 'hr')} ({v('K22_drfs_hr', 'hr_lo')}-{v('K22_drfs_hr', 'hr_hi')}), {v('K22A_S3_caption', 'model')}",
+    efs_event_composition="n/a", source_pages=f"main text p{pg('K22_drfs_hr')}; appendix p{pg('K22A_S3_caption')}",
+    notes="")
+add(fig_key="K22_S4_EFS_by_pCR", source="Schmid 2022 NEJM 386:556 appendix", figure=v("K22A_S4_caption", "figure"), location="supplementary appendix",
+    available="yes", format=raster_fmt["K22_S4_EFS_pCR"], endpoint="EFS", population="arm x pCR (ypT0/Tis ypN0), ITT", analysis="IA4",
     data_cutoff=v("K22_cutoff", "data_cutoff"), median_fu_months=v("K22_cutoff", "median_fu_months"),
-    time_origin="randomization per EFS definition; to confirm on the figure", landmark_at_surgery="yes if origin is randomization",
-    x_axis="", y_axis="", risk_times="",
-    n=f"pCR: pembro {v('K22_efs_pcr', 'n_pembro')}, placebo {v('K22_efs_pcr', 'n_placebo')}; non-pCR: pembro {v('K22_efs_nonpcr', 'n_pembro')}, placebo {v('K22_efs_nonpcr', 'n_placebo')}",
-    events=f"pCR: pembro {v('K22_efs_pcr', 'events_pembro')}, placebo {v('K22_efs_pcr', 'events_placebo')}; non-pCR: pembro {v('K22_efs_nonpcr', 'events_pembro')}, placebo {v('K22_efs_nonpcr', 'events_placebo')}",
-    milestones="not in main text",
-    hr=f"pCR {v('K22_efs_pcr', 'hr')} ({v('K22_efs_pcr', 'hr_lo')}-{v('K22_efs_pcr', 'hr_hi')}); non-pCR {v('K22_efs_nonpcr', 'hr')} ({v('K22_efs_nonpcr', 'hr_lo')}-{v('K22_efs_nonpcr', 'hr_hi')})",
-    efs_event_composition="not in main text", source_pages=f"text p{pg('K22_efs_pcr')}",
-    notes="core model input (EFS by arm x pCR); supplementary appendix not in input/papers")
+    time_origin="randomization (axis from 0; pCR groups have no events before surgery)", landmark_at_surgery="yes",
+    **axinfo["K22_S4_EFS_pCR"],
+    events=f"pCR: pembro {v('K22_efs_pcr', 'events_pembro')}/{v('K22_efs_pcr', 'n_pembro')}, placebo {v('K22_efs_pcr', 'events_placebo')}/{v('K22_efs_pcr', 'n_placebo')}; non-pCR: pembro {v('K22_efs_nonpcr', 'events_pembro')}/{v('K22_efs_nonpcr', 'n_pembro')}, placebo {v('K22_efs_nonpcr', 'events_placebo')}/{v('K22_efs_nonpcr', 'n_placebo')}",
+    milestones="36-mo EFS " + ", ".join(f"{k} {x}%" for k, x in ri("K22_S4_EFS_pCR")["milestones"].items() if k != "time") + " (printed in figure)",
+    hr=f"pCR {v('K22_efs_pcr', 'hr')} ({v('K22_efs_pcr', 'hr_lo')}-{v('K22_efs_pcr', 'hr_hi')}); non-pCR {v('K22_efs_nonpcr', 'hr')} ({v('K22_efs_nonpcr', 'hr_lo')}-{v('K22_efs_nonpcr', 'hr_hi')}); {v('K22A_S4_caption', 'model')} (unstratified)",
+    efs_event_composition="not reported by pCR", source_pages=f"main text p{pg('K22_efs_pcr')}; appendix p{pg('K22A_S4_caption')}",
+    notes="model input: EFS by arm x pCR (2024 appendix has no EFS by pCR)")
 add(fig_key="K24_F1A_OS", source="Schmid 2024 NEJM 391:1981", figure="Fig. 1A", location="main text", available="yes",
     format="vector (with 2x inset)", endpoint="OS", population="ITT, by arm", analysis="IA7 (final OS)",
     data_cutoff=v("K24_cutoff", "data_cutoff"), median_fu_months=v("K24_cutoff", "median_fu_months"),
     time_origin=v("K24_os_origin", "origin"), landmark_at_surgery="n/a (ITT)", **axinfo["K24_F1A_OS"],
     events=f"deaths pembro {v('K24_os_events', 'events_pembro')}/784; placebo {v('K24_os_events', 'events_placebo')}/390",
     milestones="; ".join(f"{y}-y OS pembro {v('K24_os_milestones', f'pembro_{y}y')}% ({v('K24_os_milestones', f'pembro_{y}y_lo')}-{v('K24_os_milestones', f'pembro_{y}y_hi')}), placebo {v('K24_os_milestones', f'placebo_{y}y')}% ({v('K24_os_milestones', f'placebo_{y}y_lo')}-{v('K24_os_milestones', f'placebo_{y}y_hi')})" for y in (3, 4, 5)),
-    hr=(f"overall stratified HR not reported in main text; unstratified piecewise HR {v('K24_os_piecewise_hr', 'hr_early')} "
+    hr=(f"{v('K24A_os_hr', 'hr')} ({v('K24A_os_hr', 'hr_lo')}-{v('K24A_os_hr', 'hr_hi')}), protocol-specified (stratified) Cox, appendix p{pg('K24A_os_hr')}; unstratified piecewise HR {v('K24_os_piecewise_hr', 'hr_early')} "
         f"({v('K24_os_piecewise_hr', 'hr_early_lo')}-{v('K24_os_piecewise_hr', 'hr_early_hi')}) before {v('K24_os_piecewise_hr', 'cut_years')} y, "
         f"{v('K24_os_piecewise_hr', 'hr_late')} ({v('K24_os_piecewise_hr', 'hr_late_lo')}-{v('K24_os_piecewise_hr', 'hr_late_hi')}) after; event-weighted average {v('K24_os_piecewise_hr', 'weighted_hr')}"),
     efs_event_composition="n/a", source_pages=f"text p{pg('K24_os_events')},{pg('K24_os_milestones')}; figure p5",
@@ -163,19 +169,17 @@ add(fig_key="K24_F2A_EFS", source="Schmid 2024 NEJM 391:1981", figure="Fig. 2A",
     hr=f"{v('K24_efs_events_hr_5y', 'hr')} ({v('K24_efs_events_hr_5y', 'hr_lo')}-{v('K24_efs_events_hr_5y', 'hr_hi')}), stratified Cox",
     efs_event_composition=comp24, source_pages=f"text p{pg('K24_efs_events_hr_5y')}; Table 1 p{pg('K24_efs_composition')}; figure p7",
     notes="most mature EFS by arm")
-add(fig_key="K24_S4_OS_by_pCR", source="Schmid 2024 NEJM 391:1981", figure=v("K24_os_nonpcr", "figure"), location="supplementary appendix",
-    available="no", format="unknown", endpoint="OS", population="arm x pCR (ypT0/Tis ypN0)", analysis="IA7",
+add(fig_key="K24_S4_OS_by_pCR", source="Schmid 2024 NEJM 391:1981 appendix", figure=v("K24A_S4_caption", "figure"), location="supplementary appendix",
+    available="yes", format=raster_fmt["K24_S4_OS_pCR"], endpoint="OS", population="arm x pCR (ypT0/Tis ypN0), ITT", analysis="IA7",
     data_cutoff=v("K24_cutoff", "data_cutoff"), median_fu_months=v("K24_cutoff", "median_fu_months"),
-    time_origin="randomization per OS definition; to confirm on the figure", landmark_at_surgery="yes if origin is randomization",
-    x_axis="", y_axis="", risk_times="",
-    n=f"pCR: pembro {v('K24_os_pcr', 'n_pembro')}, placebo {v('K24_os_pcr', 'n_placebo')}; non-pCR: pembro {v('K24_os_nonpcr', 'n_pembro')}, placebo {v('K24_os_nonpcr', 'n_placebo')}",
-    events=f"deaths pCR: pembro {v('K24_os_pcr', 'deaths_pembro')}, placebo {v('K24_os_pcr', 'deaths_placebo')}; non-pCR: pembro {v('K24_os_nonpcr', 'deaths_pembro')}, placebo {v('K24_os_nonpcr', 'deaths_placebo')}",
-    milestones=f"5-y OS difference pCR {v('K24_os_pcr', 'diff_5y')} pp ({v('K24_os_pcr', 'diff_5y_lo')} to {v('K24_os_pcr', 'diff_5y_hi')}); non-pCR {v('K24_os_nonpcr', 'diff_5y')} pp ({v('K24_os_nonpcr', 'diff_5y_lo')} to {v('K24_os_nonpcr', 'diff_5y_hi')}); arm-level 5-y values not in main text",
-    hr="not reported", efs_event_composition="n/a", source_pages=f"text p{pg('K24_os_pcr')}",
-    notes="supplementary appendix not in input/papers; EFS by pCR at IA7 not cited in main text")
+    time_origin="randomization (axis from 0)", landmark_at_surgery="yes", **axinfo["K24_S4_OS_pCR"],
+    events=f"deaths pCR: pembro {v('K24_os_pcr', 'deaths_pembro')}/{v('K24_os_pcr', 'n_pembro')}, placebo {v('K24_os_pcr', 'deaths_placebo')}/{v('K24_os_pcr', 'n_placebo')}; non-pCR: pembro {v('K24_os_nonpcr', 'deaths_pembro')}/{v('K24_os_nonpcr', 'n_pembro')}, placebo {v('K24_os_nonpcr', 'deaths_placebo')}/{v('K24_os_nonpcr', 'n_placebo')}",
+    milestones=f"5-y OS difference (pembro - placebo) pCR {v('K24_os_pcr', 'diff_5y')} pp ({v('K24_os_pcr', 'diff_5y_lo')} to {v('K24_os_pcr', 'diff_5y_hi')}); non-pCR {v('K24_os_nonpcr', 'diff_5y')} pp ({v('K24_os_nonpcr', 'diff_5y_lo')} to {v('K24_os_nonpcr', 'diff_5y_hi')}); arm-level values not reported",
+    hr="not reported", efs_event_composition="n/a", source_pages=f"main text p{pg('K24_os_pcr')}; appendix p{pg('K24A_S4_caption')}",
+    notes="OS by pCR at the final OS analysis")
 y = "Y22_tnbc_S2"
 add(fig_key="Y22_F4A_EFS_TNBC", source="Yau 2022 Lancet Oncol 23:149 (author manuscript) + appendix", figure="Fig. 4A",
-    location="main text; KM estimates in appendix Table S2", available="yes", format=raster_fmt,
+    location="main text; KM estimates in appendix Table S2", available="yes", format=raster_fmt["Y22_F4A_EFS_TNBC"],
     endpoint=f"EFS ({v('Y22_efs_definition', 'definition')})", population="HR-negative/HER2-negative (TNBC) by RCB class",
     analysis="pooled 12 cohorts", data_cutoff="Nov 2019 (data collection)", median_fu_months="",
     time_origin=v("Y22_origin", "origin"), landmark_at_surgery="yes (origin = start of NAC)", **axinfo["Y22_F4A_EFS_TNBC"],
@@ -196,6 +200,52 @@ with open(os.path.join(out, "inventory.csv"), "w", newline="", encoding="utf-8-s
     for r in INV:
         w.writerow({c: r.get(c, "") for c in cols})
 print(f"inventory: {len(INV)} rows ({sum(r['available'] == 'yes' for r in INV)} available)")
+
+# all figures in the two appendices (KM or not)
+import re
+figs_out = []
+for fn in ("nejmoa2112651_appendix.pdf", "nejmoa2409932_appendix.pdf"):
+    t = PdfText(os.path.join(papers, fn))
+    for m in re.finditer(r"(?:Fig\.|Figure) (S\d+)\. (.{0,250}?)\.", t.text):
+        if t.page_of(m.start()) <= 3:      # table of contents
+            continue
+        figs_out.append(dict(pdf=fn, figure=m.group(1), page=t.page_of(m.start()), title=m.group(2),
+                             kaplan_meier="Kaplan-Meier" in m.group(2),
+                             by_pcr="Pathological Complete Response" in m.group(2)))
+    if fn.startswith("nejmoa2409932"):
+        efs_pcr_2024 = re.search(r"Event-?Free Survival by Pathological", t.text) is not None
+with open(os.path.join(root, "data", "appendix_figures.csv"), "w", newline="", encoding="utf-8") as fh:
+    w = csv.DictWriter(fh, fieldnames=list(figs_out[0].keys()))
+    w.writeheader()
+    w.writerows(figs_out)
+print(f"appendix figures: {len(figs_out)} ({sum(f['kaplan_meier'] for f in figs_out)} KM); "
+      f"2024 appendix has EFS by pCR: {efs_pcr_2024}")
+
+# values transcribed from raster images vs the same quantities in the PDF text layer
+chk = []
+def tc(what, transcribed, text_value):
+    chk.append(dict(check=what, transcribed=transcribed, text_layer=text_value, match=float(transcribed) == float(text_value)))
+for arm, fid in (("pembro", "K22_efs"), ("placebo", "K22_efs")):
+    tc(f"K22_S4 n at 0, {arm}_pCR", rsd["K22_S4_EFS_pCR"]["risk_table"][f"{arm}_pCR"]["n"][0], v("K22_efs_pcr", f"n_{arm}"))
+    tc(f"K22_S4 n at 0, {arm}_nonpCR", rsd["K22_S4_EFS_pCR"]["risk_table"][f"{arm}_nonpCR"]["n"][0], v("K22_efs_nonpcr", f"n_{arm}"))
+    tc(f"K24_S4 n at 0, {arm}_pCR", rsd["K24_S4_OS_pCR"]["risk_table"][f"{arm}_pCR"]["n"][0], v("K24_os_pcr", f"n_{arm}"))
+    tc(f"K24_S4 n at 0, {arm}_nonpCR", rsd["K24_S4_OS_pCR"]["risk_table"][f"{arm}_nonpCR"]["n"][0], v("K24_os_nonpcr", f"n_{arm}"))
+for h in ri("K22_S4_EFS_pCR")["hr"]:
+    fid = "K22_efs_pcr" if h["label"] == "pCR" else "K22_efs_nonpcr"
+    for k in ("hr", "lo", "hi"):
+        tc(f"K22_S4 HR {h['label']} {k}", h[k], v(fid, {"hr": "hr", "lo": "hr_lo", "hi": "hr_hi"}[k]))
+for k in ("hr", "lo", "hi"):
+    tc(f"K22_S3 HR {k}", ri("K22_S3_DRFS")["hr"][0][k], v("K22_drfs_hr", {"hr": "hr", "lo": "hr_lo", "hi": "hr_hi"}[k]))
+tc("K22_S3 n at 0, pembro", rsd["K22_S3_DRFS"]["risk_table"]["pembro"]["n"][0], v("K20_efs_events", "n_pembro"))
+tc("K22_S3 n at 0, placebo", rsd["K22_S3_DRFS"]["risk_table"]["placebo"]["n"][0], v("K20_efs_events", "n_placebo"))
+with open(os.path.join(root, "data", "transcription_checks.csv"), "w", newline="", encoding="utf-8") as fh:
+    w = csv.DictWriter(fh, fieldnames=list(chk[0].keys()))
+    w.writeheader()
+    w.writerows(chk)
+bad = [c for c in chk if not c["match"]]
+print(f"transcription checks: {len(chk)}, mismatches: {len(bad)}")
+if bad:
+    raise RuntimeError(f"transcribed values disagree with the text layer: {bad}")
 
 # pCR proportions (ITT denominators) for the model, from the pCR-subgroup sentences
 pcr = [("K22 (IA4)", v("K22_efs_pcr", "n_pembro"), v("K22_efs_nonpcr", "n_pembro"), v("K22_efs_pcr", "n_placebo"), v("K22_efs_nonpcr", "n_placebo")),

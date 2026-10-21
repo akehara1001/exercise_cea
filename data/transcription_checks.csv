@@ -1,0 +1,20 @@
+check,transcribed,text_layer,match
+"K22_S4 n at 0, pembro_pCR",494,494,True
+"K22_S4 n at 0, pembro_nonpCR",290,290,True
+"K24_S4 n at 0, pembro_pCR",495,495,True
+"K24_S4 n at 0, pembro_nonpCR",289,289,True
+"K22_S4 n at 0, placebo_pCR",217,217,True
+"K22_S4 n at 0, placebo_nonpCR",173,173,True
+"K24_S4 n at 0, placebo_pCR",217,217,True
+"K24_S4 n at 0, placebo_nonpCR",173,173,True
+K22_S4 HR pCR hr,0.73,0.73,True
+K22_S4 HR pCR lo,0.39,0.39,True
+K22_S4 HR pCR hi,1.36,1.36,True
+K22_S4 HR nonpCR hr,0.7,0.70,True
+K22_S4 HR nonpCR lo,0.52,0.52,True
+K22_S4 HR nonpCR hi,0.95,0.95,True
+K22_S3 HR hr,0.61,0.61,True
+K22_S3 HR lo,0.46,0.46,True
+K22_S3 HR hi,0.82,0.82,True
+"K22_S3 n at 0, pembro",784,784,True
+"K22_S3 n at 0, placebo",390,390,True

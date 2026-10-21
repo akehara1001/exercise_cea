@@ -2,7 +2,8 @@
 # Step 3: Guyot reconstruction of every digitized curve, cross-checked against
 # IPDfromKM::getIPD, and validation against the reported values.
 # Gates (task spec): milestone |diff| <= 1 percentage point; Cox HR |diff| <= 0.03;
-# events |diff| <= 2% of the reported count.
+# events |diff| <= 2% of the reported count. Yau 2022: only the milestones are gates
+# (decision of 2026-10-21); its HR and event checks are reported with gate = FALSE.
 # Outputs: data/ipd/<fig>_<arm>.csv, data/ipd/ipd_all.rds,
 #          output/phase1/validation.csv, output/phase1/validation_diagnostics.csv
 
@@ -11,6 +12,7 @@ source(file.path(root, "R", "guyot.R"))
 suppressPackageStartupMessages({
   library(survival)
   library(IPDfromKM)
+  library(jsonlite)
 })
 
 dig <- file.path(root, "data", "digitized")
@@ -36,8 +38,15 @@ figs <- list(
   K22_F3_OS   = list(arms = c("pembro", "placebo"), unit = "months", endpoint = "OS"),
   K24_F1A_OS  = list(arms = c("pembro", "placebo"), unit = "months", endpoint = "OS"),
   K24_F2A_EFS = list(arms = c("pembro", "placebo"), unit = "months", endpoint = "EFS"),
-  Y22_F4A_EFS_TNBC = list(arms = c("RCB0", "RCB1", "RCB2", "RCB3"), unit = "years", endpoint = "EFS")
+  Y22_F4A_EFS_TNBC = list(arms = c("RCB0", "RCB1", "RCB2", "RCB3"), unit = "years", endpoint = "EFS"),
+  K22_S3_DRFS = list(arms = c("pembro", "placebo"), unit = "months", endpoint = "DRFS"),
+  K22_S4_EFS_pCR = list(arms = c("pembro_pCR", "placebo_pCR", "pembro_nonpCR", "placebo_nonpCR"), unit = "months", endpoint = "EFS"),
+  K24_S4_OS_pCR = list(arms = c("pembro_pCR", "placebo_pCR", "pembro_nonpCR", "placebo_nonpCR"), unit = "months", endpoint = "OS")
 )
+rspec <- fromJSON(file.path(root, "R", "py", "rasterspec.json"), simplifyVector = FALSE)$figures
+names(rspec) <- vapply(rspec, function(f) f$fig_id, "")
+img <- function(fig) rspec[[fig]]$reported_in_image
+img_ref <- function(fig) sprintf("%s p%d (printed in figure, transcribed)", sub("\\.pdf$", "", rspec[[fig]]$pdf), rspec[[fig]]$page)
 
 # ---------------------------------------------------------------- reconstruction
 ipd <- list(); diag <- list()
@@ -104,23 +113,24 @@ write.csv(do.call(rbind, diag), file.path(out_dir, "validation_diagnostics.csv")
 
 # ---------------------------------------------------------------- validation
 V <- list()
-addv <- function(curve, check, time, unit, reported, recon, tol, reference, note = "") {
+addv <- function(curve, check, time, unit, reported, recon, tol, reference, note = "", gate = TRUE) {
   diff <- recon - reported
   ok <- switch(check,
                milestone = abs(diff) <= tol + 1e-9,
+               milestone_diff = abs(diff) <= tol + 1e-9,
                hr = abs(diff) <= tol + 1e-9,
                events = abs(diff) <= tol * reported + 1e-9)
   V[[length(V) + 1]] <<- data.frame(curve = curve, check = check, time = time, unit = unit,
                                     reported = reported, reconstructed = round(recon, 4),
                                     abs_diff = round(abs(diff), 4),
                                     tolerance = ifelse(check == "events", sprintf("2%% (%.2f)", tol * reported), as.character(tol)),
-                                    pass = ok, reference = reference, note = note)
+                                    pass = ok, gate = gate, reference = reference, note = note)
 }
 km_at <- function(d, t) 100 * summary(survfit(Surv(time, status) ~ 1, data = d), times = t, extend = TRUE)$surv
 I <- function(fig, arm) ipd[[paste(fig, arm, sep = "_")]]
-hr_arm <- function(fig) {
-  d <- rbind(I(fig, "pembro"), I(fig, "placebo"))
-  d$trt <- as.integer(d$arm == "pembro")
+hr_arm <- function(fig, pembro = "pembro", placebo = "placebo") {
+  d <- rbind(I(fig, pembro), I(fig, placebo))
+  d$trt <- as.integer(d$arm == pembro)
   unname(exp(coef(coxph(Surv(time, status) ~ trt, data = d, ties = "efron"))))
 }
 
@@ -165,6 +175,8 @@ addv(f, "hr", cut_m, "months (before)", val("K24_os_piecewise_hr", "hr_early"), 
      "reported: unstratified piecewise Cox, as reconstructed")
 addv(f, "hr", cut_m, "months (after)", val("K24_os_piecewise_hr", "hr_late"), pw[["trt_late"]], 0.03, ref("K24_os_piecewise_hr"),
      "reported: unstratified piecewise Cox, as reconstructed")
+addv(f, "hr", NA, "overall", val("K24A_os_hr", "hr"), hr_arm(f), 0.03, ref("K24A_os_hr"),
+     "reported: protocol-specified stratified Cox (appendix); reconstructed: unstratified Cox")
 f <- "K24_F2A_EFS"
 for (a in c("pembro", "placebo")) {
   addv(paste(f, a, sep = "_"), "milestone", 60, "months", val("K24_efs_events_hr_5y", paste0(a, "_5y")), km_at(I(f, a), 60), 1, ref("K24_efs_events_hr_5y"))
@@ -183,16 +195,58 @@ for (c in 0:3) {
                               "reported value rounded to whole %")
   ev12 <- yrt$cum_events[yrt$arm == a & yrt$time == 12]
   addv(paste(f, a, sep = "_"), "events", 12, "years (cumulative)", ev12, sum(I(f, a)$status), 0.02,
-       "figure risk table: N - at risk - censored at 12 y", "reference derived from the published risk table")
+       "figure risk table: N - at risk - censored at 12 y",
+       "not a gate: reference derived from the published risk table, not reported in the paper", gate = FALSE)
 }
 d <- do.call(rbind, lapply(paste0("RCB", 0:3), function(a) I(f, a)))
 d$rcb <- factor(d$arm, levels = paste0("RCB", 0:3))
 hy <- exp(coef(coxph(Surv(time, status) ~ rcb, data = d, ties = "efron")))
 for (c in 1:3) addv(f, "hr", NA, sprintf("RCB-%d vs RCB-0", c), val("Y22_tnbc_S2", sprintf("hr_rcb%d", c)),
                     hy[[sprintf("rcbRCB%d", c)]], 0.03, ref("Y22_tnbc_S2"),
-                    "reported: pooled 12-cohort model on all follow-up; reconstructed: single Cox on curves truncated at 12 y")
+                    "not a gate: reported = pooled 12-cohort model with cohort effects on all follow-up; reconstructed = single Cox on curves truncated at 12 y",
+                    gate = FALSE)
+
+# Schmid 2022 appendix Fig. S3, DRFS by arm (events not reported)
+f <- "K22_S3_DRFS"
+for (a in c("pembro", "placebo"))
+  addv(paste(f, a, sep = "_"), "milestone", img(f)$milestones$time, "months", img(f)$milestones[[a]],
+       km_at(I(f, a), img(f)$milestones$time), 1, img_ref(f))
+addv(f, "hr", NA, "", val("K22_drfs_hr", "hr"), hr_arm(f), 0.03, ref("K22_drfs_hr"),
+     "reported: stratified Cox; reconstructed: unstratified Cox")
+
+# Schmid 2022 appendix Fig. S4, EFS by arm x pCR
+f <- "K22_S4_EFS_pCR"
+for (a in figs[[f]]$arms)
+  addv(paste(f, a, sep = "_"), "milestone", img(f)$milestones$time, "months", img(f)$milestones[[a]],
+       km_at(I(f, a), img(f)$milestones$time), 1, img_ref(f))
+for (arm in c("pembro", "placebo")) {
+  addv(paste(f, arm, "pCR", sep = "_"), "events", NA, "", val("K22_efs_pcr", paste0("events_", arm)),
+       sum(I(f, paste0(arm, "_pCR"))$status), 0.02, ref("K22_efs_pcr"))
+  addv(paste(f, arm, "nonpCR", sep = "_"), "events", NA, "", val("K22_efs_nonpcr", paste0("events_", arm)),
+       sum(I(f, paste0(arm, "_nonpCR"))$status), 0.02, ref("K22_efs_nonpcr"))
+}
+addv(f, "hr", NA, "pCR", val("K22_efs_pcr", "hr"), hr_arm(f, "pembro_pCR", "placebo_pCR"), 0.03, ref("K22_efs_pcr"),
+     "reported: unstratified Cox (appendix caption), as reconstructed")
+addv(f, "hr", NA, "non-pCR", val("K22_efs_nonpcr", "hr"), hr_arm(f, "pembro_nonpCR", "placebo_nonpCR"), 0.03, ref("K22_efs_nonpcr"),
+     "reported: unstratified Cox (appendix caption), as reconstructed")
+
+# Schmid 2024 appendix Fig. S4, OS by arm x pCR (only deaths and 5-y differences are reported)
+f <- "K24_S4_OS_pCR"
+for (arm in c("pembro", "placebo")) {
+  addv(paste(f, arm, "pCR", sep = "_"), "events", NA, "", val("K24_os_pcr", paste0("deaths_", arm)),
+       sum(I(f, paste0(arm, "_pCR"))$status), 0.02, ref("K24_os_pcr"))
+  addv(paste(f, arm, "nonpCR", sep = "_"), "events", NA, "", val("K24_os_nonpcr", paste0("deaths_", arm)),
+       sum(I(f, paste0(arm, "_nonpCR"))$status), 0.02, ref("K24_os_nonpcr"))
+}
+addv(paste(f, "pCR", sep = "_"), "milestone_diff", 60, "months (pembro - placebo)", val("K24_os_pcr", "diff_5y"),
+     km_at(I(f, "pembro_pCR"), 60) - km_at(I(f, "placebo_pCR"), 60), 1, ref("K24_os_pcr"),
+     "difference in 5-y OS between arms; the arm-level 5-y values are not reported")
+addv(paste(f, "nonpCR", sep = "_"), "milestone_diff", 60, "months (pembro - placebo)", val("K24_os_nonpcr", "diff_5y"),
+     km_at(I(f, "pembro_nonpCR"), 60) - km_at(I(f, "placebo_nonpCR"), 60), 1, ref("K24_os_nonpcr"),
+     "difference in 5-y OS between arms; the arm-level 5-y values are not reported")
 
 V <- do.call(rbind, V)
 write.csv(V, file.path(out_dir, "validation.csv"), row.names = FALSE)
-cat("\nvalidation rows:", nrow(V), " failing:", sum(!V$pass), "\n")
-print(V[, c("curve", "check", "time", "reported", "reconstructed", "abs_diff", "pass")], row.names = FALSE)
+cat("\nvalidation rows:", nrow(V), " gated:", sum(V$gate), " failing gates:", sum(V$gate & !V$pass),
+    " failing non-gate checks:", sum(!V$gate & !V$pass), "\n")
+print(V[, c("curve", "check", "time", "reported", "reconstructed", "abs_diff", "pass", "gate")], row.names = FALSE)

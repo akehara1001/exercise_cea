@@ -1,5 +1,5 @@
 {
-  "_note": "Raster KM figures. Tick label values and the risk table are transcribed from the image (the figure is an embedded JPEG with no text layer); 02b_digitize_raster.py checks the risk table for internal consistency (events = N - at risk - cumulative censored must be non-decreasing).",
+  "_note": "Raster KM figures. Tick label values, risk tables and the numbers printed inside the images (reported_in_image) are transcribed from the images (no text layer). 02b_digitize_raster.py checks each risk table for length and monotonicity (and, where cumulative censoring is printed, for non-decreasing events); 01_inventory.py checks the transcribed group sizes and hazard ratios against the values extracted from the main texts.",
   "figures": [
     {
       "fig_id": "Y22_F4A_EFS_TNBC",
@@ -7,7 +7,8 @@
       "label": "Yau 2022 Lancet Oncol Fig. 4A (HR-negative, HER2-negative)",
       "endpoint": "EFS", "time_origin": "start of neoadjuvant chemotherapy", "time_unit": "years",
       "panel_px": [150, 60, 1060, 720],
-      "legend_px": [245, 545, 400, 665],
+      "exclude_px": [[245, 545, 400, 665]],
+      "censor_marks": "plus", "truncated_at_axis_max": true, "line_max_px": 6,
       "x_tick_labels": [0, 2, 4, 6, 8, 10, 12],
       "y_tick_labels": [0, 20, 40, 60, 80, 100],
       "curves": {
@@ -23,6 +24,90 @@
         "RCB2": {"n": [590, 397, 239, 142, 94, 59, 27], "cum_censored": [0, 65, 179, 267, 311, 344, 374]},
         "RCB3": {"n": [202, 72, 42, 23, 18, 11, 3], "cum_censored": [0, 10, 24, 37, 42, 49, 55]}
       }
+    },
+    {
+      "fig_id": "K22_S3_DRFS",
+      "pdf": "nejmoa2112651_appendix.pdf", "page": 15,
+      "label": "Schmid 2022 NEJM Supplementary Fig. S3 (DRFS by arm)",
+      "endpoint": "DRFS", "time_origin": "randomization", "time_unit": "months",
+      "panel_px": [420, 0, 1425, 865],
+      "exclude_px": [[505, 565, 1000, 665]],
+      "censor_marks": "up", "truncated_at_axis_max": false, "line_max_px": 6,
+      "x_tick_labels": [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51],
+      "y_tick_labels": [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+      "curves": {
+        "pembro": [9, 132, 122],
+        "placebo": [102, 34, 59]
+      },
+      "risk_table_times": [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51],
+      "risk_table": {
+        "pembro": {"n": [784, 782, 773, 758, 741, 728, 711, 702, 692, 685, 663, 561, 439, 308, 167, 29, 0, 0]},
+        "placebo": {"n": [390, 389, 387, 379, 367, 352, 337, 330, 321, 317, 312, 259, 202, 143, 84, 17, 0, 0]}
+      },
+      "reported_in_image": {
+        "milestones": {"time": 36, "pembro": 87.0, "placebo": 80.7},
+        "hr": [{"label": "arm", "hr": 0.61, "lo": 0.46, "hi": 0.82, "model": "stratified Cox"}]
+      }
+    },
+    {
+      "fig_id": "K22_S4_EFS_pCR",
+      "pdf": "nejmoa2112651_appendix.pdf", "page": 16,
+      "label": "Schmid 2022 NEJM Supplementary Fig. S4 (EFS by arm x pCR)",
+      "endpoint": "EFS", "time_origin": "randomization", "time_unit": "months",
+      "panel_px": [305, 0, 1110, 690],
+      "exclude_px": [[355, 435, 915, 600]],
+      "censor_marks": "up", "truncated_at_axis_max": false, "line_max_px": 6,
+      "x_tick_labels": [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51],
+      "y_tick_labels": [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+      "curves": {
+        "pembro_pCR": [5, 134, 123],
+        "placebo_pCR": [102, 32, 58],
+        "pembro_nonpCR": [113, 205, 179],
+        "placebo_nonpCR": [221, 146, 173]
+      },
+      "colour_dist_max": {"pembro_nonpCR": 60, "placebo_nonpCR": 70},
+      "fringe": {"pembro_nonpCR": ["pembro_pCR"], "placebo_nonpCR": ["placebo_pCR"]},
+      "fringe_px": 2,
+      "risk_table_times": [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51],
+      "risk_table": {
+        "pembro_pCR": {"n": [494, 494, 494, 489, 483, 482, 478, 477, 472, 470, 460, 387, 307, 220, 122, 18, 0, 0]},
+        "placebo_pCR": {"n": [217, 217, 217, 216, 214, 207, 206, 203, 200, 200, 197, 165, 130, 87, 56, 9, 0, 0]},
+        "pembro_nonpCR": {"n": [290, 287, 275, 262, 245, 236, 224, 215, 209, 201, 192, 164, 126, 83, 43, 10, 0, 0]},
+        "placebo_nonpCR": {"n": [173, 169, 165, 152, 144, 135, 122, 116, 110, 104, 100, 85, 65, 53, 27, 8, 0, 0]}
+      },
+      "reported_in_image": {
+        "milestones": {"time": 36, "pembro_pCR": 94.4, "placebo_pCR": 92.5, "pembro_nonpCR": 67.4, "placebo_nonpCR": 56.8},
+        "hr": [{"label": "pCR", "hr": 0.73, "lo": 0.39, "hi": 1.36, "model": "unstratified Cox"},
+               {"label": "nonpCR", "hr": 0.70, "lo": 0.52, "hi": 0.95, "model": "unstratified Cox"}]
+      }
+    },
+    {
+      "fig_id": "K24_S4_OS_pCR",
+      "pdf": "nejmoa2409932_appendix.pdf", "page": 15,
+      "label": "Schmid 2024 NEJM Supplementary Fig. S4 (OS by arm x pCR)",
+      "endpoint": "OS", "time_origin": "randomization", "time_unit": "months",
+      "panel_px": [90, 0, 1095, 865],
+      "exclude_px": [[190, 595, 1050, 780]],
+      "censor_marks": "up", "truncated_at_axis_max": false, "line_max_px": 7,
+      "x_tick_labels": [0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84],
+      "y_tick_labels": [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+      "curves": {
+        "pembro_pCR": [9, 144, 129],
+        "placebo_pCR": [93, 16, 17],
+        "pembro_nonpCR": [122, 201, 180],
+        "placebo_nonpCR": [237, 159, 161]
+      },
+      "colour_dist_max": {"pembro_nonpCR": 60, "placebo_nonpCR": 70},
+      "fringe": {"pembro_nonpCR": ["pembro_pCR"], "placebo_nonpCR": ["placebo_pCR"]},
+      "fringe_px": 2,
+      "risk_table_times": [0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84],
+      "risk_table": {
+        "pembro_pCR": {"n": [495, 495, 490, 484, 482, 481, 476, 474, 469, 468, 465, 460, 318, 130, 0]},
+        "placebo_pCR": {"n": [217, 217, 216, 212, 209, 209, 206, 205, 204, 202, 201, 193, 133, 54, 0]},
+        "pembro_nonpCR": {"n": [289, 282, 270, 258, 238, 231, 222, 219, 214, 209, 205, 196, 130, 46, 0]},
+        "placebo_nonpCR": {"n": [173, 172, 169, 154, 145, 136, 130, 123, 117, 116, 112, 107, 66, 28, 0]}
+      },
+      "reported_in_image": {}
     }
   ]
 }
