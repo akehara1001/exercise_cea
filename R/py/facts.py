@@ -121,6 +121,14 @@ FACTS = [
     dict(id="K24A_S4_caption", pdf=K24A, keys=g("figure", "endpoint", "population"),
          rx=r"(Fig\. S4)\. Kaplan-Meier Estimates of (Overall Survival by Pathological Complete Response \(ypT0/Tis ypN0\)) According to Treatment Group in the "
             r"(Intention-to-Treat Population)\."),
+    dict(id="K22A_ae_deaths", pdf=K22A,
+         keys=g("n_astreated_pembro", "n_astreated_placebo", "died_pembro", "died_placebo", "died_drug_related_pembro", "died_drug_related_placebo"),
+         rx=r"Table S5\. Summary of Tier 2 Adverse Events during the Combined Phases\. Participants in Population Pembrolizumab– ?Chemotherapy"
+            r" \(N=(\d+)\) Placebo– ?Chemotherapy ?\( ?N=(\d+)\).*?who died (\d+) \([\d.]+\) (\d+) \([\d.]+\).*?who died due to a drug-related adverse event (\d+) \([\d.]+\) (\d+) \([\d.]+\)"),
+    dict(id="K22_treatment_end", pdf=K22, keys=g("all_completed_by"),
+         rx=r"All the patients completed trial treatment by (February 2020)"),
+    dict(id="K24_tr_deaths", pdf=K24, keys=g("pembro", "placebo"),
+         rx=r"Treatment-? ?related adverse events led to death in (\d+) patients \([\d.]+%\) and in (\d+) patient \([\d.]+%\), respectively"),
     dict(id="K24A_os_hr", pdf=K24A, keys=g("hr", "hr_lo", "hr_hi"),
          rx=r"hazard ratio for overall survival based on the protocol-specified Cox regression model is " + F + r" \(95% CI, " + F + "-" + r"([\d.]+[\d])\)"),
     # ---- Yau 2022 ----

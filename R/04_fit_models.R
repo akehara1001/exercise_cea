@@ -219,8 +219,46 @@ cat("non-pCR family review: families passing =", sum(FN$review_pass), "\n")
 SEL <- do.call(rbind, sel)[names(curves), ]
 write.csv(M, file.path(out_dir, "model_comparison.csv"), row.names = FALSE)
 write.csv(SEL, file.path(out_dir, "model_selection.csv"), row.names = FALSE)
+
+# 5-year EFS constraint (decision 2026-10-22): each selected EFS model must give a 5-year EFS from
+# randomization inside the 95% CI of the later-cutoff stratified value. No CI is reported, so a
+# binomial (Wald) interval with the stratum size of the same pCR analysis (IA4) is used; it
+# ignores censoring and so is narrower than a KM interval would be.
+pcn <- read.csv(file.path(ROOT, "data", "pcr_counts.csv"), stringsAsFactors = FALSE)
+pcn <- pcn[pcn$source == CFG$pcr_source, ]
+efs5_ci <- function(arm, st) {
+  n <- pcn[[paste0(if (st == "pCR") "pcr_" else "nonpcr_", arm)]]
+  p <- efs5_ref(arm, st) / 100
+  se <- sqrt(p * (1 - p) / n)
+  c(n = n, ref = 100 * p, lo = 100 * (p - CFG$efs5_ci_z * se), hi = 100 * (p + CFG$efs5_ci_z * se))
+}
+constrained <- list(); con_rows <- list()
+for (cv in names(curves)[sapply(curves, `[[`, "kind") == "EFS"]) {
+  cc <- curves[[cv]]; ci <- efs5_ci(cc$arm, cc$stratum)
+  sp0 <- fits[[cv]][[SEL$model[SEL$curve == cv]]]
+  r <- constrain_efs5(sp0, cc$d, cc$a0, cc$pre, L, ci[["lo"]], ci[["hi"]])
+  constrained[[cv]] <- r$spec
+  fr <- function(sp) round(100 * cc$pre * allcause_surv(sp, c(5, 10, 20) - L, cc$a0), 3)
+  pp <- function(sp) paste(names(sp$pars), signif(sp$pars, 5), sep = " = ", collapse = "; ")
+  e0 <- fr(sp0); e1 <- fr(r$spec)
+  con_rows[[cv]] <- data.frame(curve = cv, model = SEL$model[SEL$curve == cv], n_stratum = ci[["n"]],
+    efs5_later_cutoff = ci[["ref"]], ci95_lo = round(ci[["lo"]], 2), ci95_hi = round(ci[["hi"]], 2),
+    efs5_before = e0[1], inside_before = e0[1] >= ci[["lo"]] & e0[1] <= ci[["hi"]], binding = r$binding,
+    bound = round(r$bound, 2), converged = r$converged, efs5_after = e1[1],
+    efs10_before = e0[2], efs10_after = e1[2], efs20_before = e0[3], efs20_after = e1[3],
+    loglik_before = round(allcause_loglik(sp0, cc$d$time, cc$d$status, cc$a0), 3),
+    loglik_after = round(allcause_loglik(r$spec, cc$d$time, cc$d$status, cc$a0), 3),
+    pars_before = pp(sp0), pars_after = pp(r$spec))
+}
+CON <- do.call(rbind, con_rows)
+write.csv(CON, file.path(out_dir, "efs5_constraint.csv"), row.names = FALSE)
+print(CON[, c("curve", "model", "ci95_lo", "ci95_hi", "efs5_before", "binding", "efs5_after")], row.names = FALSE)
+selected <- setNames(lapply(names(curves), function(cv)
+  if (!is.null(constrained[[cv]])) constrained[[cv]] else fits[[cv]][[SEL$model[SEL$curve == cv]]]), names(curves))
 saveRDS(list(curves = lapply(curves, function(x) x[c("a0", "kind")]), specs = fits,
-             selected = setNames(lapply(names(curves), function(cv) fits[[cv]][[SEL$model[SEL$curve == cv]]]), names(curves)),
+             selected = selected,
+             selected_unconstrained = setNames(lapply(names(curves), function(cv) fits[[cv]][[SEL$model[SEL$curve == cv]]]), names(curves)),
+             efs5_ci = lapply(curves[sapply(curves, `[[`, "kind") == "EFS"], function(cc) efs5_ci(cc$arm, cc$stratum)),
              scenario = scen,
              yau_cond = yau_cond, landmark_years = L),
         file.path(ROOT, "data", "fits", "fits.rds"))

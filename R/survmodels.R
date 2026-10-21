@@ -57,6 +57,47 @@ allcause_loglik <- function(spec, time, status, a0) {
   sum(status * log(pmax(allcause_haz(spec, time, a0), 1e-300)) + log(pmax(allcause_surv(spec, time, a0), 1e-300)))
 }
 
+# 5-year EFS constraint (decision 2026-10-22). For an EFS model landmarked at L (years) with KM
+# pre at the landmark, the 5-year EFS from randomization is 100 * pre * S(5 - L). If it lies in
+# [lo, hi] the spec is returned unchanged; otherwise the all-cause likelihood is maximised on the
+# nearer bound, where one parameter follows from the others (cure Weibull: theta; Weibull: scale).
+constrain_efs5 <- function(spec, d, a0, pre, L, lo, hi) {
+  tau <- 5 - L
+  v <- 100 * pre * allcause_surv(spec, tau, a0)
+  if (v >= lo && v <= hi) return(list(spec = spec, binding = FALSE, bound = NA_real_, efs5 = v, converged = TRUE))
+  b <- if (v < lo) lo else hi
+  s_star <- b / (100 * pre)                                   # all-cause survival at tau on the bound
+  make <- switch(paste(spec$family, spec$dist),
+    "cure weibull" = function(x) {
+      sw <- 1 - pweibull(tau, exp(x[1]), exp(x[2]))
+      th <- (s_star / S_pop(a0, tau) - sw) / (1 - sw)
+      if (!is.finite(th) || th <= 0 || th >= 1) return(NULL)
+      s <- spec; s$pars <- c(theta = th, shape = exp(x[1]), scale = exp(x[2])); s
+    },
+    "std weibull" = function(x) {
+      s <- spec; s$pars <- c(shape = exp(x[1]), scale = tau / (-log(s_star))^(1 / exp(x[1]))); s
+    },
+    stop("5-year constraint not implemented for ", spec$family, " ", spec$dist))
+  nll <- function(x) { s <- make(x); if (is.null(s)) return(1e10); -allcause_loglik(s, d$time, d$status, a0) }
+  if (spec$family == "std") {
+    o <- optimize(nll, log(spec$pars[["shape"]]) + c(-3, 3))
+    x <- o$minimum; ok <- TRUE
+  } else {
+    x0 <- unname(log(spec$pars[c("shape", "scale")]))
+    starts <- c(list(x0), lapply(c(-1, -0.5, 0.5, 1), function(dx) x0 + c(0, dx)))
+    best <- NULL
+    for (s0 in starts) {
+      if (nll(s0) >= 1e10) next
+      o <- optim(s0, nll, method = "Nelder-Mead", control = list(maxit = 5000, reltol = 1e-12))
+      if (is.null(best) || o$value < best$value) best <- o
+    }
+    if (is.null(best)) return(list(spec = spec, binding = TRUE, bound = b, efs5 = v, converged = FALSE))
+    x <- best$par; ok <- best$convergence == 0
+  }
+  s <- make(x)
+  list(spec = s, binding = TRUE, bound = b, efs5 = 100 * pre * allcause_surv(s, tau, a0), converged = ok)
+}
+
 spec_from_fit <- function(fit, family, dist = NULL, k = NULL, scale = NULL) {
   est <- setNames(fit$res[, "est"], rownames(fit$res))   # keeps the name when there is one parameter
   list(family = family, dist = dist, k = k, scale = scale, pars = est,

@@ -30,6 +30,21 @@ CFG <- list(
   yau_landmark_years = 0.5,     # Yau time origin is the start of NAC; surgery ~ 0.5 y later
   # step 5 calibration grid (months from randomization)
   calib_grid_months = 1:78,     # 78 = last risk-table time with >= 50 at risk in both arms
+  # deaths due to adverse events (decision 2026-10-22): per arm, evenly over the treatment period
+  # (neoadjuvant + adjuvant, about 12 months), removed from the deaths without recurrence of the
+  # EFS composition. "any": participants who died due to an adverse event (2022 appendix Table S5,
+  # IA4; all patients had completed treatment by February 2020); "drug_related": deaths due to
+  # treatment-related adverse events (same table; also 2024 main text, IA7)
+  ae_death_source = "any",
+  ae_death_period_years = 1,
+  # step 5 gate (decision 2026-10-22): (a) engine OS inside the pointwise 95% CI of the KM at
+  # 1-5 years in each arm; (b) 5-year RMST difference between arms within 20% of the KM value
+  gate_years = 1:5,
+  gate_rmst_rel_tol = 0.20,
+  # 5-year stratified EFS constraint (decision 2026-10-22): the 5-year prediction must lie in the
+  # 95% CI of the later-cutoff value; CIs are not reported, so binomial (Wald) with the IA4
+  # stratum sizes
+  efs5_ci_z = qnorm(0.975),
   seed = 20261021,
   boot_B = 1000
 )

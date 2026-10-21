@@ -1,0 +1,2 @@
+"quantity","km","km_boot_ci95_lo","km_boot_ci95_hi","boot_B","engine","rel_error","allowed_lo","allowed_hi","pass"
+"5-year OS RMST difference, pembro - placebo (years)",0.0984983828339958,-0.0380528344287493,0.242089365569215,1000,0.176001116622978,0.786842702987333,0.0787987062671966,0.118198059400795,FALSE

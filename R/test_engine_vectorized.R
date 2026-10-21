@@ -7,7 +7,7 @@ source(file.path(ROOT, "R", "engine.R"))
 suppressPackageStartupMessages(library(survival))
 
 run_branch_loop <- function(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate, dr, preprog_rate,
-                            start_age, L, cycle, n_cycles, n_tunnel, hr = NULL, drug_hr = 1) {
+                            start_age, L, cycle, n_cycles, n_tunnel, hr = NULL, drug_hr = 1, ae_rate = 0, ae_end = 0) {
   K <- n_cycles; J <- n_tunnel
   t <- (0:K) * cycle
   hb <- H_pop(start_age + t[-(K + 1)], cycle)
@@ -17,6 +17,11 @@ run_branch_loop <- function(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate, dr, 
   dH <- -log(pmax(S1, 1e-300)) + log(pmax(S0, 1e-300))
   dHex <- if (efs_spec$family == "cure") dH else pmax(dH - hb, 0)
   dHex[!post] <- 0
+  dHA <- numeric(K)
+  for (k in 1:K) {
+    if (t[k] < ae_end) dHA[k] <- ae_rate * (min(t[k + 1], ae_end) - t[k])
+    if (post[k]) { dHA[k] <- min(dHA[k], dHex[k]); dHex[k] <- dHex[k] - dHA[k] }
+  }
   dHex <- dHex * drug_hr
   km <- function(x) approx(pre_surv$time, pre_surv$surv, xout = pmin(x, L) + 1e-9, method = "constant", f = 0, rule = 2)$y
   drop_L <- 1 - km(L)
@@ -29,8 +34,9 @@ run_branch_loop <- function(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate, dr, 
   ef <- 1; pp <- 0; lr <- 0; drv <- numeric(J + 1); de <- 0
   out[1, ] <- c(1, 0, 0, 0, 0)
   for (k in 1:K) {
-    Ht <- hb[k] + dHL[k] + dHD[k] + dHX[k] + dHpre[k]; pe <- 1 - exp(-Ht)
-    to_L <- ef * pe * dHL[k] / Ht; to_D <- ef * pe * dHD[k] / Ht; to_P <- ef * pe * dHpre[k] / Ht; to_X <- ef * pe * (hb[k] + dHX[k]) / Ht
+    Ht <- hb[k] + dHL[k] + dHD[k] + dHX[k] + dHpre[k] + dHA[k]; pe <- 1 - exp(-Ht)
+    to_L <- ef * pe * dHL[k] / Ht; to_D <- ef * pe * dHD[k] / Ht; to_P <- ef * pe * dHpre[k] / Ht
+    to_X <- ef * pe * (hb[k] + dHX[k] + dHA[k]) / Ht
     Hl <- hb[k] + lrr_dr_rate * cycle; pl <- 1 - exp(-Hl)
     l_to_D <- lr * pl * lrr_dr_rate * cycle / Hl; l_to_X <- lr * pl * hb[k] / Hl
     Hp <- hb[k] + preprog_rate * cycle; p_to_X <- pp * (1 - exp(-Hp))
@@ -47,17 +53,19 @@ P <- engine_params()
 hrf <- function(t) ifelse(t <= 1, 0.7, 1 - 0.3 * exp(-0.5 * (t - 1)))
 cases <- expand.grid(arm = c("pembro", "placebo"), branch = c("pCR", "nonpCR"), dist = c("llogis", "weibull"),
                      shape = c(0.35, 1, 2.5), scale = c(0.3, 0.9, 3), pp = c(0.2, 2), use_hr = c(FALSE, TRUE), drug_hr = c(1, 0.6),
-                     stringsAsFactors = FALSE)
+                     ae = c(0, 1, 30), stringsAsFactors = FALSE)
 worst <- 0; worst_src <- 0
 for (i in seq_len(nrow(cases))) {
   cs <- cases[i, ]
   args <- list(P$efs[[cs$arm]][[cs$branch]], P$pre_surv[[cs$arm]][[cs$branch]], P$q_pre[[cs$arm]][[cs$branch]], P$shares[[cs$arm]],
                P$lrr_dr[["rate"]], list(dist = cs$dist, shape = cs$shape, scale = cs$scale), cs$pp, P$start_age, P$L, P$cycle,
-               P$n_cycles, P$n_tunnel, if (cs$use_hr) hrf else NULL, cs$drug_hr)
+               P$n_cycles, P$n_tunnel, if (cs$use_hr) hrf else NULL, cs$drug_hr,
+               cs$ae * P$ae[[cs$arm]][["rate"]], P$ae_end)
   a <- do.call(run_branch, args); b <- do.call(run_branch_loop, args)
   cols <- c("EF", "PreProg", "LRR", "DR", "Dead")
   worst <- max(worst, max(abs(as.matrix(a[, cols]) - as.matrix(b[, cols]))))
-  worst_src <- max(worst_src, max(abs(a$Dead - (a$Dead_from_EF + a$Dead_from_LRR + a$Dead_from_PreProg + a$Dead_from_DR))), min(a$Dead_from_DR) < -1e-12)
+  worst_src <- max(worst_src, max(abs(a$Dead - (a$Dead_from_EF + a$Dead_from_AE + a$Dead_from_LRR + a$Dead_from_PreProg + a$Dead_from_DR))),
+                   min(a$Dead_from_DR) < -1e-12)
 }
 cat(sprintf("cases %d, max abs difference closed form vs loop: %.3e; death sources add up within %.3e\n", nrow(cases), worst, worst_src))
 stopifnot(worst < 1e-10, worst_src < 1e-10)

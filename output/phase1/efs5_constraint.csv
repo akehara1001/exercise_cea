@@ -1,0 +1,5 @@
+"curve","model","n_stratum","efs5_later_cutoff","ci95_lo","ci95_hi","efs5_before","inside_before","binding","bound","converged","efs5_after","efs10_before","efs10_after","efs20_before","efs20_after","loglik_before","loglik_after","pars_before","pars_after"
+"EFS_pembro_pCR","weibull",494,92.2,89.84,94.56,92.212,TRUE,FALSE,NA,TRUE,92.212,87.324,87.324,80.132,80.132,-127.857,-127.857,"shape = 0.67867; scale = 178.96","shape = 0.67867; scale = 178.96"
+"EFS_placebo_pCR","weibull",217,88.2,83.91,92.49,88.953,TRUE,FALSE,NA,TRUE,88.953,81.103,81.103,69.403,69.403,-71.398,-71.398,"shape = 0.76839; scale = 72.02","shape = 0.76839; scale = 72.02"
+"EFS_pembro_nonpCR","cure_weibull",290,62.6,57.03,68.17,62.39,TRUE,FALSE,NA,TRUE,62.39,59.951,59.951,57.507,57.507,-227.165,-227.165,"theta = 0.64257; shape = 0.89539; scale = 1.3566","theta = 0.64257; shape = 0.89539; scale = 1.3566"
+"EFS_placebo_nonpCR","cure_weibull",173,52.3,44.86,59.74,49.533,TRUE,FALSE,NA,TRUE,49.533,47.968,47.968,46.097,46.097,-162.653,-162.653,"theta = 0.52828; shape = 1.197; scale = 1.4708","theta = 0.52828; shape = 1.197; scale = 1.4708"
