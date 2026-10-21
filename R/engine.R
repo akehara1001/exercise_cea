@@ -1,17 +1,20 @@
 # engine.R
 # Phase-1 survival engine: cohort semi-Markov model from randomization.
 #
-# States: EF (event-free), LRR (locoregional recurrence), DR (distant recurrence, tracked by
-# months since entry: semi-Markov tunnels), Dead.
-# - Neoadjuvant phase [0, L): pre-surgery EFS events of the non-pCR branch (mostly progression
-#   precluding surgery) move EF -> DR following the branch KM at monthly points up to L; the pCR
-#   branch has none by definition.
+# States: EF (event-free), PreProg (progression precluding surgery), LRR (locoregional
+# recurrence, incl. second primary cancer), DR (distant recurrence, tracked by months since entry:
+# semi-Markov tunnels), Dead.
+# - Neoadjuvant phase [0, L): in the non-pCR branch a share q_pre (reported progression
+#   precluding surgery / non-pCR patients of the arm) moves EF -> PreProg, timed by the branch KM
+#   before surgery; the pCR branch has none by definition. PreProg -> death: background + a
+#   constant excess rate (common to both arms, calibrated).
 # - From surgery (t >= L): EF leaves with the branch EFS model (arm x pCR, landmarked at L).
 #   Background death (life table) is explicit; the excess part of the EFS hazard is split into
 #   EF -> LRR (local recurrence and second primary cancer), EF -> DR and EF -> death by the arm's
 #   first-event composition.
 # - LRR -> DR at a constant rate; LRR -> death at the background rate.
-# - DR -> death: background + excess Weibull hazard in time since DR (calibrated, step 5).
+# - DR -> death: background + an excess hazard in time since DR (log-logistic or Weibull;
+#   common to both arms; calibrated, step 5).
 # Exercise hooks for phase 2 (no effect by default):
 #   (a) hr0 / wane_start / wane_rate: time-varying HR on EF -> LRR and EF -> DR,
 #       HR(t) = hr0 for t <= wane_start, 1 - (1 - hr0) * exp(-wane_rate * (t - wane_start)) after
@@ -22,8 +25,15 @@
 #   its excess EFS hazard (LRR, DR and excess death; not background death) multiplied by hr from
 #   surgery on, and the state occupancies are mixed by weight (the HRs are not averaged).
 
-# one branch (arm x pCR status); returns state occupancy at t = 0, cycle, 2 cycles, ...
-run_branch <- function(efs_spec, pre_surv, shares, lrr_dr_rate, dr_shape, dr_scale,
+# excess cumulative hazard after DR as a function of time since DR (years)
+dr_cumhaz <- function(dr, t) switch(dr$dist,
+  llogis = log1p((t / dr$scale)^dr$shape),
+  weibull = (t / dr$scale)^dr$shape,
+  exp = t * dr$rate)
+
+# one branch (arm x pCR status); returns state occupancy and cumulative deaths by source at
+# t = 0, cycle, 2 cycles, ...
+run_branch <- function(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate, dr, preprog_rate,
                        start_age, L, cycle, n_cycles, n_tunnel, hr = NULL, drug_hr = 1) {
   K <- n_cycles; J <- n_tunnel
   t <- (0:K) * cycle
@@ -36,47 +46,55 @@ run_branch <- function(efs_spec, pre_surv, shares, lrr_dr_rate, dr_shape, dr_sca
   dHex <- if (efs_spec$family == "cure") dH else pmax(dH - hb, 0)
   dHex[!post] <- 0
   dHex <- dHex * drug_hr
-  # pre-surgery events: the branch KM before surgery (pre_surv: time in years, survival)
+  # pre-surgery progression: share q_pre, timed by the branch KM before surgery (pre_surv)
   pre <- !post
   # + 1e-9: k * cycle can fall a rounding error short of the KM knot at the same month
-  sp <- function(x) approx(pre_surv$time, pre_surv$surv, xout = pmin(x, L) + 1e-9, method = "constant", f = 0, rule = 2)$y
-  dHpre <- ifelse(pre, -log(pmax(sp(t[-1]), 1e-300) / pmax(sp(t[-(K + 1)]), 1e-300)), 0)
+  km <- function(x) approx(pre_surv$time, pre_surv$surv, xout = pmin(x, L) + 1e-9, method = "constant", f = 0, rule = 2)$y
+  drop_L <- 1 - km(L)
+  Fpre <- function(x) if (drop_L > 0) (1 - km(x)) / drop_L else as.numeric(x >= L)
+  Spre <- function(x) 1 - q_pre * Fpre(x)
+  dHpre <- ifelse(pre, -log(pmax(Spre(t[-1]), 1e-300) / pmax(Spre(t[-(K + 1)]), 1e-300)), 0)
   hrv <- if (is.null(hr)) rep(1, K) else hr((t[-(K + 1)] + t[-1]) / 2)
   dHL <- shares[["LRR"]] * dHex * hrv
-  dHD <- shares[["DR"]] * dHex * hrv + dHpre
+  dHD <- shares[["DR"]] * dHex * hrv
   dHX <- shares[["death"]] * dHex
-  # DR excess cumulative hazard per tunnel month
-  jj <- 0:J
-  dHdr <- ((jj + 1) * cycle / dr_scale)^dr_shape - (jj * cycle / dr_scale)^dr_shape
-  dHdr[J + 1] <- dHdr[J]                                           # last tunnel keeps its hazard
-  # Closed form of the cycle-by-cycle recursion (identical results; R/test_engine_vectorized.R
-  # checks it against the loop). Competing hazards within a cycle; DR entrants of a cycle enter
-  # tunnel 0 at its end.
-  pLD_H <- lrr_dr_rate * cycle
-  Ht <- hb + dHL + dHD + dHX
+  # Closed form of the cycle-by-cycle recursion (R/test_engine_vectorized.R checks it against a
+  # loop). Competing hazards within a cycle; entrants of a cycle enter their state at its end.
+  Ht <- hb + dHL + dHD + dHX + dHpre
   EF <- c(1, exp(-cumsum(Ht)))
   efk <- EF[1:K]
   pe <- 1 - exp(-Ht)
   to_L <- efk * pe * dHL / Ht
   to_D <- efk * pe * dHD / Ht
-  # LRR: lr[k+1] = lr[k] exp(-Hl[k]) + to_L[k]
-  Hl <- hb + pLD_H
-  C <- cumsum(Hl)
-  LR <- c(0, exp(-C) * cumsum(to_L * exp(C)))
-  l_to_D <- LR[1:K] * (1 - exp(-Hl)) * pLD_H / Hl
+  to_P <- efk * pe * dHpre / Ht
+  to_X <- efk * pe * (hb + dHX) / Ht
+  # first-order states: x[k+1] = x[k] exp(-H[k]) + inflow[k]
+  lin <- function(inflow, H) { C <- cumsum(H); c(0, exp(-C) * cumsum(inflow * exp(C))) }
+  Hl <- hb + lrr_dr_rate * cycle
+  LR <- lin(to_L, Hl)
+  l_to_D <- LR[1:K] * (1 - exp(-Hl)) * (lrr_dr_rate * cycle) / Hl
+  l_to_X <- LR[1:K] * (1 - exp(-Hl)) * hb / Hl
+  Hp <- hb + preprog_rate * cycle
+  PP <- lin(to_P, Hp)
+  p_to_X <- PP[1:K] * (1 - exp(-Hp))
   # DR at boundary m: sum over entry boundaries e <= m of inflow x background survival from e to
-  # m x excess survival after m - e cycles in DR
+  # m x excess survival after m - e cycles in DR (tunnel J and later keep the hazard of tunnel J)
+  dHdr <- diff(dr_cumhaz(dr, (0:(J + 1)) * cycle))
+  dHdr[J + 1] <- dHdr[J]
   Bc <- c(0, cumsum(hb))
   Hx <- c(0, cumsum(dHdr[pmin(0:(K - 1), J) + 1]))
   w <- c(0, to_D + l_to_D) * exp(Bc)
   conv <- stats::filter(c(rep(0, K), w), exp(-Hx), method = "convolution", sides = 1)   # causal convolution
   DRs <- exp(-Bc) * as.vector(conv)[(K + 1):(2 * K + 1)]
-  data.frame(time = t, EF = EF, LRR = LR, DR = DRs, Dead = 1 - EF - LR - DRs)
+  Dead <- 1 - EF - LR - PP - DRs
+  dEF <- c(0, cumsum(to_X)); dLR <- c(0, cumsum(l_to_X)); dPP <- c(0, cumsum(p_to_X))
+  data.frame(time = t, EF = EF, PreProg = PP, LRR = LR, DR = DRs, Dead = Dead,
+             Dead_from_EF = dEF, Dead_from_LRR = dLR, Dead_from_PreProg = dPP, Dead_from_DR = Dead - dEF - dLR - dPP)
 }
 
 # parameter set for the engine, built from the selected fits and the data
 engine_params <- function(fits = readRDS(file.path(ROOT, "data", "fits", "fits.rds")),
-                          dr_shape = NA, dr_scale = NA) {
+                          dr = list(dist = "llogis", shape = NA, scale = NA), preprog_rate = NA) {
   rv <- read.csv(file.path(ROOT, "data", "reported_values.csv"), stringsAsFactors = FALSE)
   val <- function(id, key) as.numeric(rv$value[rv$fact_id == id & rv$key == key])
   ipd <- readRDS(file.path(ROOT, "data", "ipd", "ipd_all.rds"))
@@ -85,19 +103,22 @@ engine_params <- function(fits = readRDS(file.path(ROOT, "data", "fits", "fits.r
   pc <- pc[pc$source == CFG$pcr_source, ]
   km_at <- function(d, tm) summary(survfit(Surv(time, status) ~ 1, data = d), times = tm, extend = TRUE)$surv
   arms <- c("pembro", "placebo")
+  n_non <- c(pembro = pc$nonpcr_pembro, placebo = pc$nonpcr_placebo)
   p <- list(start_age = CFG$start_age, L = L, cycle = CFG$cycle_years,
             n_cycles = round((CFG$max_age - CFG$start_age) / CFG$cycle_years), n_tunnel = CFG$dr_tunnel_months,
             p_pcr = c(pembro = pc$pcr_pembro / (pc$pcr_pembro + pc$nonpcr_pembro),
                       placebo = pc$pcr_placebo / (pc$pcr_placebo + pc$nonpcr_placebo)),
-            efs = list(), pre_surv = list(), shares = list())
+            efs = list(), pre_surv = list(), q_pre = list(), shares = list(), composition = list())
   for (a in arms) {
     p$efs[[a]] <- list(pCR = fits$selected[[paste0("EFS_", a, "_pCR")]], nonpCR = fits$selected[[paste0("EFS_", a, "_nonpCR")]])
     mm <- 0:Lm
     p$pre_surv[[a]] <- lapply(c(pCR = "pCR", nonpCR = "nonpCR"), function(b)
       data.frame(time = mm / 12, surv = km_at(ipd[[paste0("K22_S4_EFS_pCR_", a, "_", b)]], mm)))
-    # first-event composition (2024 Table 1, IA7), decision 2026-10-21: local recurrence and
-    # second primary cancer (a non-distant event) -> LRR; distant recurrence -> DR; death without
-    # recurrence -> death; progression precluding surgery is the pre-surgery phase (-> DR).
+    # progression precluding surgery (2024 Table 1, IA7) as a share of the arm's non-pCR patients
+    prog <- val("K24_efs_composition", paste0("prog_", a))
+    p$q_pre[[a]] <- c(pCR = 0, nonpCR = prog / n_non[[a]])
+    # first-event composition (2024 Table 1, IA7): local recurrence and second primary cancer
+    # (non-distant) -> LRR; distant recurrence -> DR; death without recurrence -> death.
     # Background deaths expected in the EF person-time after surgery are removed from the death
     # count, because background mortality is modelled separately.
     d <- ipd[[paste0("K24_F2A_EFS_", a)]]
@@ -109,10 +130,9 @@ engine_params <- function(fits = readRDS(file.path(ROOT, "data", "fits", "fits.r
     dth <- max(val("K24_efs_composition", paste0("death_", a)) - e_bg, 0)
     tot <- loc + sp + dis + dth
     p$shares[[a]] <- c(LRR = (loc + sp) / tot, DR = dis / tot, death = dth / tot, expected_background_deaths = e_bg)
-    p$composition[[a]] <- c(any = val("K24_efs_composition", paste0("any_", a)),
-                            progression_precluding_surgery = val("K24_efs_composition", paste0("prog_", a)),
+    p$composition[[a]] <- c(any = val("K24_efs_composition", paste0("any_", a)), progression_precluding_surgery = prog,
                             local = loc, distant = dis, second_primary = sp,
-                            death = val("K24_efs_composition", paste0("death_", a)))
+                            death = val("K24_efs_composition", paste0("death_", a)), n_nonpCR = n_non[[a]])
   }
   # LRR -> DR: 2022 Table 1 footnote, local recurrences followed by distant recurrence; exposure
   # = IA4 median follow-up minus the median time of the EFS events at IA4
@@ -121,7 +141,8 @@ engine_params <- function(fits = readRDS(file.path(ROOT, "data", "fits", "fits.r
   n_ld <- val("K22_local_then_distant", "pembro") + val("K22_local_then_distant", "placebo")
   n_l <- val("K22_efs_composition", "local_pembro") + val("K22_efs_composition", "local_placebo")
   p$lrr_dr <- c(rate = -log(1 - n_ld / n_l) / expo, n_local_then_distant = n_ld, n_local = n_l, exposure_years = expo)
-  p$dr_shape <- dr_shape; p$dr_scale <- dr_scale
+  p$dr <- dr
+  p$preprog_rate <- preprog_rate
   p
 }
 
@@ -132,10 +153,9 @@ survival_engine <- function(arm, pcr = "all", times = NULL, params,
                  stop("arm must be chemo, exercise, pembro or both"))
   hr <- if (hr0 == 1) NULL else function(t) ifelse(t <= wane_start, hr0, 1 - (1 - hr0) * exp(-wane_rate * (t - wane_start)))
   pp <- if (is.null(p_pcr)) params$p_pcr[[base]] else p_pcr
-  drp <- if (is.null(params$dr_by_arm)) c(shape = params$dr_shape, scale = params$dr_scale) else params$dr_by_arm[[base]]
-  rb1 <- function(b, dhr) run_branch(params$efs[[base]][[b]], params$pre_surv[[base]][[b]], params$shares[[base]],
-                                      params$lrr_dr[["rate"]], drp[["shape"]], drp[["scale"]], params$start_age, params$L,
-                                      params$cycle, params$n_cycles, params$n_tunnel, hr, dhr)
+  rb1 <- function(b, dhr) run_branch(params$efs[[base]][[b]], params$pre_surv[[base]][[b]], params$q_pre[[base]][[b]],
+                                      params$shares[[base]], params$lrr_dr[["rate"]], params$dr, params$preprog_rate,
+                                      params$start_age, params$L, params$cycle, params$n_cycles, params$n_tunnel, hr, dhr)
   rb <- function(b) {
     if (b == "pCR" || is.null(nonpcr_mix)) return(rb1(b, 1))
     stopifnot(abs(sum(nonpcr_mix$weight) - 1) < 1e-9, all(nonpcr_mix$weight >= 0))

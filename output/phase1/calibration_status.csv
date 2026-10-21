@@ -1,2 +1,2 @@
-"chosen_structure","stop_before_step6","structures_tried"
-"none",TRUE,"a,b,c"
+"structure","gate_pass","stop_before_step6"
+"PreProg constant + DR log-logistic (common)",FALSE,TRUE

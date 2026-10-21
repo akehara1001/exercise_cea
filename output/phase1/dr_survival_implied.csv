@@ -1,3 +1,3 @@
-"structure","parameter_set","median_excess_only_years","median_all_cause_years","surv_1y","surv_2y","surv_5y"
-"c","pembro",0.008333,0.008333,0.245315793132825,0.227792772915756,0.204636685511501
-"c","placebo",0.666667,0.666667,0.435760187797717,0.323389625360462,0.183527065187757
+"state","median_excess_only_months","median_all_cause_months","surv_1y","surv_2y"
+"PreProg",5.43,5.43,0.215601425339079,0.0464774585111611
+"DR",11.73999996,11.70999996,0.493748529909062,0.327425017717441

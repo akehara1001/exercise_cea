@@ -187,6 +187,35 @@ for (st in c("pCR", "nonpCR")) {
   }
 }
 write.csv(do.call(rbind, fam_rows), file.path(out_dir, "family_selection.csv"), row.names = FALSE)
+
+# non-pCR family review (decision 2026-10-22): if a family eligible in both arms has |5-year
+# difference| <= 1 point in both arms and a two-arm AIC sum within 4 of the best eligible family,
+# it becomes the base and the current choice a scenario; otherwise the choice stays.
+FN <- fam_rows[["nonpCR"]]
+FN$both_arms_within_1pt <- abs(FN$efs5_diff_pembro) <= 1 & abs(FN$efs5_diff_placebo) <= 1
+FN$review_pass <- FN$eligible_both_arms & FN$dAIC_sum <= CFG$aic_window & FN$both_arms_within_1pt
+FN <- FN[order(FN$AIC_sum), ]
+write.csv(FN[, c("model", "eligible_both_arms", "AIC_sum", "dAIC_sum", "efs5_diff_pembro", "efs5_diff_placebo",
+                 "both_arms_within_1pt", "review_pass", "selected", "scenario")],
+          file.path(out_dir, "nonpcr_family_review.csv"), row.names = FALSE)
+if (any(FN$review_pass)) {
+  new_base <- FN$model[FN$review_pass][order(abs(FN$efs5_diff_pembro[FN$review_pass]) + abs(FN$efs5_diff_placebo[FN$review_pass]))][1]
+  old_base <- FN$model[FN$selected][1]
+  if (new_base != old_base) {
+    for (cv in paste0("EFS_", c("pembro", "placebo"), "_nonpCR")) {
+      M$selected[M$curve == cv] <- M$model[M$curve == cv] == new_base
+      M$scenario[M$curve == cv] <- M$model[M$curve == cv] == old_base
+      pick <- which(M$curve == cv & M$model == new_base)
+      sel[[cv]] <- data.frame(curve = cv, model = new_base, family = M$family[pick], AIC = M$AIC[pick],
+                              dAIC_overall = round(M$dAIC[pick], 2), S5 = M$S5[pick], S10 = M$S10[pick], S20 = M$S20[pick],
+                              cure_fraction = M$cure_fraction[pick], efs5_diff = round(M$efs5_diff[pick], 3),
+                              scenario_model = old_base, reason = paste0("non-pCR family review: both arms within 1 point at 5 years and AIC sum within ",
+                                                                           CFG$aic_window, "; previous choice ", old_base, " kept as scenario"))
+      scen[[cv]] <- fits[[cv]][[old_base]]
+    }
+  }
+}
+cat("non-pCR family review: families passing =", sum(FN$review_pass), "\n")
 SEL <- do.call(rbind, sel)[names(curves), ]
 write.csv(M, file.path(out_dir, "model_comparison.csv"), row.names = FALSE)
 write.csv(SEL, file.path(out_dir, "model_selection.csv"), row.names = FALSE)
