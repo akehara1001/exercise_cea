@@ -9,24 +9,32 @@
 - 状态：无事件、术前进展（2026-10-22 新增）、局部区域复发、远处复发（按复发后月数设隧道态，半马尔可夫）、死亡。
 - 手术时点（landmark）为随机化后 7 个月：新辅助治疗 24 周加术后 6 周的方案上限；重建数据中 pCR 层在 7 个月前没有事件和删失。
 - pCR 比例取自与分层 EFS 曲线同一次分析：2022 年补充材料 Fig. S4（IA4）的 494/784 与 217/390（2024 年补充材料没有按 pCR 分层的 EFS）。
-- 术前（0 至 7 个月）：无法手术的进展进入「术前进展」状态（不再计入远处复发）。进入比例按各臂报告值（2024 年 Table 1 的例数除以该臂非 pCR 人数，只在非 pCR 层），时间分布按非 pCR 层术前 KM 的逐月形状。术前进展后的超额死亡率为常数、两臂共用，由校准估计；此状态只有死亡一个出口。
+- 术前（0 至 7 个月）：无法手术的进展进入「术前进展」状态（不再计入远处复发）。进入比例按各臂报告值（2024 年 Table 1 的例数除以该臂非 pCR 人数，只在非 pCR 层），时间分布按非 pCR 层术前 KM 的逐月形状。术前进展后的超额死亡为进入后时间的 Weibull 分布（2026-10-22 第四轮；此前为常数），形状自由估计、两臂共用，由校准估计；按进入后月数设隧道态；此状态只有死亡一个出口。改为 Weibull 的理由：安慰剂组 OS 的 KM 在约 13 个月前几乎是平的，之后才陡降，常数风险做不出这种形状。
 - 术后：各 pCR 层的 EFS 模型两臂使用同一分布族（2026-10-21 的决定）：两臂都满足准则 1、2 的族中，保留两臂合计 AIC 差 ≤ 4 者，再取 5 年外推检验（与 2023-03-23 截点的 5 年分层 EFS 比较）两臂差值绝对值之和最小的族；次优族保留为情景分析（`output/phase1/family_selection.csv`、`model_selection.csv`，`data/fits/fits.rds` 的 `scenario`）。
 - 背景死亡用令和7年简易生命表（女）单列；EFS 的超额风险按各臂首发事件构成（2024 年 Table 1）分配：局部区域复发与第二原发癌（非远处事件）→ 局部区域复发；远处复发 → 远处复发；无复发死亡（扣除术后无事件人时中预期的背景死亡与单列的因不良事件死亡）→ 死亡；无法手术的进展 → 术前进展。
 - 因不良事件死亡（2026-10-22）：各臂的人数取 2022 年补充材料 Table S5（IA4，截点 2021-03-23；全部患者 2020 年 2 月前完成治疗），在治疗期（术前加术后，约 12 个月）内以常数风险从无事件状态直接死亡，两臂分别设定，pCR 层与非 pCR 层同一风险（不随 pCR 比例改变），不校准。术后部分从 EFS 模型的超额风险中扣除（EFS 曲线不变）。情景：只计药物相关的死亡（`config.R` 的 `ae_death_source`）。
 - 5 年 EFS 约束（2026-10-22）：所选 EFS 模型在随机化后 60 个月的预测须落在较晚截点 5 年分层 EFS 的 95% CI 内（未报告 CI，用 IA4 分层人数的二项近似）；超出时在边界上重新最大化似然（`constrain_efs5()`，`R/survmodels.R`）。基准拟合四条都在区间内；bootstrap 的重拟合带此约束。尾崎若提供该截点的分层 KM，改用整条曲线。
 - 非 pCR 层分布族复核（2026-10-22）：若有某族两臂 5 年差都在 1 个百分点以内且两臂合计 AIC 与最优族相差 ≤ 4，则改用该族；没有符合者，维持治愈模型（Weibull）。安慰剂非 pCR 层 5 年 EFS 低估，帕博利珠单抗的效果偏向高估（`nonpcr_family_review.csv`）。
 - 局部区域复发到远处复发为常数率（2022 年 Table 1 脚注的局部复发后远处复发例数）；局部区域复发后的死亡只计背景死亡。
-- 远处复发后的超额死亡（2026-10-22，第三轮）：复发后时间的对数 logistic，形状在 (0, ∞) 内自由估计（不再限定先升后降），两臂共用，中位约束在 10 至 12 个月（ESME，PMID 37385070；IMpassion132，PMID 38755096）；不用两臂分别估计的复发后死亡率。校准量为术前进展的死亡率与对数 logistic 的形状和中位；目标为两臂 OS 与 2024 年 Fig. 1A 的 KM 逐月平方误差和。门槛（第三轮）：(a) 各臂 OS 在第 1 至 5 年整年时点落在 KM 逐点 95% CI 内；(b) 5 年 RMST 两臂差与 KM 的相对误差 ≤ 20%（`R/05_calibrate.R`）。引擎默认参数（`data/fits/engine_params.rds`）只在达标时写出；校准值保存在 `data/fits/calibration_candidates.rds`。第三轮结果：不达标；可行性扫描（`R/05b_gate_feasibility.R`）显示本结构下没有参数能满足 (a)（`phase1_report.md` 第 8 节）。
-- 此前的尝试均不达标，已被取代：2026-10-21 按 (a) 常数、(b) Weibull、(c) 两臂分别估计依次尝试；2026-10-22 第二轮为形状 > 1 的对数 logistic，门槛为与 KM 差 ≤ 1 个百分点。
+- 远处复发后的超额死亡：复发后时间的对数 logistic，形状在 (0, ∞) 内自由估计，两臂共用，中位约束在 10 至 12 个月（ESME，PMID 37385070；IMpassion132，PMID 38755096）；基准中不用两臂分别估计的复发后死亡率。
+- 校准（2026-10-22 第四轮，`R/05_calibrate.R`、`R/calibration.R`）：校准量为术前进展 Weibull 的形状与尺度、对数 logistic 的形状与中位；目标为两臂 OS 与 2024 年 Fig. 1A 的 KM 逐月平方误差和。门槛：(a) 各臂 OS 在第 1 至 5 年整年时点落在 KM 逐点 95% CI 内；(b) 模型的 5 年 RMST 两臂差落在 KM 差的 bootstrap 95% 区间内。门槛的修改经过见 `phase1_report.md` 的「门槛修改记录」。引擎默认参数（`data/fits/engine_params.rds`）只在达标时写出；第四轮达标。
+- 此前的尝试均不达标，已被取代：2026-10-21 按 (a) 常数、(b) Weibull、(c) 两臂分别估计依次尝试；2026-10-22 第二轮为形状 > 1 的对数 logistic；第三轮为术前进展后常数死亡率（可行性扫描 `R/05b_gate_feasibility.R` 保留为诊断）。
+- Bootstrap（步骤 6，`R/06_bootstrap.R`）：各臂内连同 pCR 标签重抽样分层 EFS 的个体数据并重拟合（带 5 年约束），重抽样 OS 并按上述方法重新校准，OS 锚定的 k 也重新求解；参数矩阵存 `data/bootstrap/`。
+
+### 情景「OS 锚定」（2026-10-22，不参与基准校准）
+
+- 帕博利珠单抗组（单用与加运动）的远处复发后超额死亡风险乘以系数 k；其余参数固定在基准校准值，求 k 使模型的 5 年 RMST 两臂差等于 KM 的值。k 保存在 `engine_params.rds` 的 `os_anchor_k`，bootstrap 每个样本重新求解。
+- 理由：用过帕博利珠单抗后复发，可选的有效治疗更少，复发后的生存可能更短；基准模型中帕博利珠单抗组第 2 年的死亡偏少（第三轮：模型 3.37 个百分点对 KM 4.99 个百分点）也指向这一点。
+- 引擎中为开关 `survival_engine(..., os_anchor = TRUE)`，只作用于帕博利珠单抗组；第 2 阶段只用于涉及帕博利珠单抗的比较。
 
 ### 接口
 
-`survival_engine(arm, pcr, times, params, hr0, wane_start, wane_rate, p_pcr, nonpcr_mix)`
+`survival_engine(arm, pcr, times, params, hr0, wane_start, wane_rate, p_pcr, nonpcr_mix, os_anchor)`
 
-- `arm`：chemo、exercise、pembro、both；`pcr`：all、pCR、nonpCR；`times`：随机化后年数。
-- 返回各时点的状态占比 EF、LRR、DR、Dead，以及 OS、EFS、DRFS。
-- 接口测试：`R/test_engine_interface.R`，结果 `output/phase1/engine_interface_test.csv`（测试用权重和 HR 只用于检验接口，不是模型输入；校准未达标期间使用候选 (b) 的参数）。
-- 计算：逐周期递推改写为闭式（累积和与因果卷积），与原递推的差 < 1e-10（`R/test_engine_vectorized.R`）。
+- `arm`：chemo、exercise、pembro、both；`pcr`：all、pCR、nonpCR；`times`：随机化后年数；`os_anchor`：OS 锚定情景（默认 FALSE）。
+- 返回各时点的状态占比 EF、PreProg、LRR、DR、Dead，按来源的累计死亡，以及 OS、EFS、DRFS。
+- 接口测试：`R/test_engine_interface.R`，结果 `output/phase1/engine_interface_test.csv`（测试用权重和 HR 只用于检验接口，不是模型输入）。
+- 计算：逐周期递推改写为闭式（累积和与因果卷积；术前进展与远处复发都用隧道态），与原递推的差 < 1e-10（`R/test_engine_vectorized.R`）。校准与 bootstrap 复用不依赖校准量的部分（`arm_flows()`、`os_fast()`），与 `survival_engine()` 的差 < 1e-12。
 
 ## 2. 情景 S-JP（日本的术后治疗）
 

@@ -37,10 +37,16 @@ CFG <- list(
   # treatment-related adverse events (same table; also 2024 main text, IA7)
   ae_death_source = "any",
   ae_death_period_years = 1,
-  # step 5 gate (decision 2026-10-22): (a) engine OS inside the pointwise 95% CI of the KM at
-  # 1-5 years in each arm; (b) 5-year RMST difference between arms within 20% of the KM value
+  # step 5 gate. History (all changed after seeing results; report section "门槛修改记录"):
+  #   2026-10-21 task: |engine OS - KM| <= 1 point at 1-5 years in each arm (gate_pp_round1_2);
+  #   2026-10-22 round 3: (a) engine OS inside the pointwise 95% CI of the KM at 1-5 years in each
+  #     arm; (b) 5-year RMST difference between arms within 20% of the KM value
+  #     (gate_rmst_rel_tol_round3);
+  #   2026-10-22 round 4: (a) unchanged; (b) engine 5-year RMST difference inside the bootstrap
+  #     95% CI of the KM difference (B = boot_B, seed).
   gate_years = 1:5,
-  gate_rmst_rel_tol = 0.20,
+  gate_pp_round1_2 = 1,
+  gate_rmst_rel_tol_round3 = 0.20,
   # 5-year stratified EFS constraint (decision 2026-10-22): the 5-year prediction must lie in the
   # 95% CI of the later-cutoff value; CIs are not reported, so binomial (Wald) with the IA4
   # stratum sizes

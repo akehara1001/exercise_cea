@@ -51,6 +51,14 @@ AE <- rd("output", "phase1", "ae_deaths.csv")
 CON <- rd("output", "phase1", "efs5_constraint.csv")
 FSU <- rd("output", "phase1", "calibration_gate_feasibility_summary.csv")
 FPT <- rd("output", "phase1", "calibration_gate_feasibility_points.csv")
+OA <- rd("output", "phase1", "os_anchor.csv")
+OG <- rd("output", "phase1", "os_anchor_gate.csv")
+EIT <- rd("output", "phase1", "engine_interface_test.csv")
+opt <- function(...) if (file.exists(file.path(ROOT, ...))) rd(...) else NULL
+BSUM <- opt("output", "phase1", "bootstrap_summary.csv")
+EO <- opt("output", "phase1", "engine_outputs.csv")
+RB <- opt("output", "phase1", "bootstrap_rebuild_check.csv")
+BRS <- if (file.exists(file.path(ROOT, "data", "bootstrap", "boot_replicates.rds"))) readRDS(file.path(ROOT, "data", "bootstrap", "boot_replicates.rds")) else NULL
 CANDS <- readRDS(file.path(ROOT, "data", "fits", "calibration_candidates.rds"))
 P <- CANDS$params
 stop6 <- istrue(CS$stop_before_step6)
@@ -71,22 +79,60 @@ add("# 第1阶段（生存引擎）报告", "",
 
 # ---------------------------------------------------------------- status
 gfail <- V[istrue(V$gate) & !istrue(V$pass), ]
+boot_done <- !is.null(BRS) && !is.null(EO)
 add("## 状态", "",
     "- 已完成：步骤 1 至 4（含 2026-10-21 与 2026-10-22 的修正）与一致性检查；非 pCR 层分布族已复核。",
     sprintf("- 重建与一致性的门槛项 %d 项，不达标 %d 项。", sum(istrue(V$gate)), nrow(gfail)),
-    if (stop6) sprintf("- **步骤 5（校准第三轮，2026-10-22）未达到门槛：(a) 各臂 OS 在第 1 至 5 年整年时点落在重建 KM 的逐点 95%% 置信区间内——%s（区间外 %d 处）；(b) 5 年 OS 限制平均生存时间（RMST）的两臂之差，模型与 KM 的相对误差 ≤ %d%%——%s（模型 %s 年，KM %s 年，相对误差 %s%%）。按规则停止，步骤 6、7 未进行，未自行增加结构。** 各时点的差、两臂 RMST 差与死亡来源的拆解见第 8 节。",
-                       if (istrue(CS$gate_a_pass)) "达标" else "不达标", sum(!istrue(CG$inside)), round(100 * CFG$gate_rmst_rel_tol),
-                       if (istrue(CS$gate_b_pass)) "达标" else "不达标", f2(CGR$engine, 3), f2(CGR$km, 3), f2(100 * CGR$rel_error, 1))
-    else "- 步骤 5 达标。",
-    sprintf("- 在允许的参数范围内做了可行性扫描（只作诊断）：网格 %d 点加离网格的细化，没有一组参数能单独满足 (a)，也没有能同时满足 (a) 和 (b) 的参数；不达标来自结构与数据设定，不是目标函数的选择（第 8.5 节）。",
-            FSU$grid_points), "")
+    if (stop6) sprintf("- **步骤 5（校准第四轮，2026-10-22）未达到门槛：(a) 区间外 %d 处；(b) %s。按规则停止，步骤 6、7 未进行，未自行增加结构。**",
+                       sum(!istrue(CG$inside)), if (istrue(CS$gate_b_pass)) "达标" else "不达标")
+    else sprintf("- 步骤 5（校准第四轮，2026-10-22）达标：(a) 两臂第 1 至 5 年的 %d 个时点全部落在重建 KM 的逐点 95%% 置信区间内；(b) 模型的 5 年 RMST 两臂差 %s 年，落在 KM 差（%s 年）的 bootstrap 95%% 区间 %s 至 %s 年内；点估计的差距（模型减 KM）为 %s 年。",
+                 nrow(CG), f2(CGR$engine, 4), f2(CGR$km, 4), f2(CGR$km_boot_ci95_lo, 4), f2(CGR$km_boot_ci95_hi, 4), f2(CGR$engine_minus_km, 4)),
+    if (!stop6 && boot_done) sprintf("- 步骤 6（bootstrap，B = %d）与步骤 7（引擎输出）已完成（第 9、10 节）。", BRS$B) else if (!stop6) "- 步骤 6、7 尚未完成。" else NULL,
+    "- 门槛在看到结果后修改过，见下一节「门槛修改记录」。", "")
 add("门槛 (a)（`calibration_gate.csv`）：", "",
     md_table(transform(CG, km = f2(km, 2), ci95_lo = f2(ci95_lo, 2), ci95_hi = f2(ci95_hi, 2), engine = f2(engine, 2), diff = f2(diff, 3),
                        inside = ifelse(istrue(inside), "是", "**否**"))), "",
-    "门槛 (b)（`calibration_gate_rmst.csv`；KM 差的 bootstrap 区间只报告，不作门槛）：", "",
-    md_table(transform(CGR, km = f2(km, 4), km_boot_ci95_lo = f2(km_boot_ci95_lo, 4), km_boot_ci95_hi = f2(km_boot_ci95_hi, 4),
-                       engine = f2(engine, 4), rel_error = f2(rel_error, 3), allowed_lo = f2(allowed_lo, 4), allowed_hi = f2(allowed_hi, 4),
-                       pass = ifelse(istrue(pass), "达标", "**不达标**"))), "")
+    "门槛 (b)（`calibration_gate_rmst.csv`）：", "",
+    md_table(data.frame(quantity = CGR$quantity, km = f2(CGR$km, 4), km_boot_ci95_lo = f2(CGR$km_boot_ci95_lo, 4),
+                        km_boot_ci95_hi = f2(CGR$km_boot_ci95_hi, 4), boot_B = CGR$boot_B, engine = f2(CGR$engine, 4),
+                        engine_minus_km = f2(CGR$engine_minus_km, 4), pass = ifelse(istrue(CGR$pass), "达标", "**不达标**"))), "")
+
+# ---------------------------------------------------------------- gate change log
+yau_fail <- V[grepl("^Y22", V$curve) & !istrue(V$pass), ]
+c1_none <- sum(tapply(istrue(M$c1_pass_all_points[istrue(M$converged)]), M$curve[istrue(M$converged)], function(x) !any(x)))
+shr_p <- V[V$check == "hr" & grepl("^pCR [(]later", V$unit), ][1, ]
+band_r3 <- 2 * CFG$gate_rmst_rel_tol_round3 * CGR$km
+LOG <- data.frame(
+  no = 1:5,
+  date = c("2026-10-21", "2026-10-21", "2026-10-21", "2026-10-22", "2026-10-22"),
+  item = c("Yau 2022 的重建验证", "拟合准则 1（选模）", "按 pCR 分层的 EFS 层内 HR（较晚截点的参照值）", "校准门槛", "校准门槛 (b)"),
+  before = c("里程碑差 ≤ 1 个百分点、HR 差 ≤ 0.03、事件数差 ≤ 2% 三项都作门槛",
+             "模型落在 KM 逐点 95% CI 内的月份比例 = 100%",
+             "与参照值的差 ≤ 0.03（门槛）",
+             sprintf("各臂第 1 至 5 年整年时点 OS 与 KM 的差 ≤ %g 个百分点", CFG$gate_pp_round1_2),
+             sprintf("5 年 RMST 两臂差：模型与 KM 的相对误差 ≤ %d%%（允许 %s 至 %s 年）", round(100 * CFG$gate_rmst_rel_tol_round3),
+                     f2(CGR$km * (1 - CFG$gate_rmst_rel_tol_round3), 3), f2(CGR$km * (1 + CFG$gate_rmst_rel_tol_round3), 3))),
+  after = c("只保留里程碑为门槛；HR 与事件数只报告",
+            sprintf("≥ %g%%", 100 * CFG$fit_ci_min_inside),
+            "不作门槛的跨分析对照",
+            sprintf("(a) 各臂第 1 至 5 年整年时点落在 KM 逐点 95%% CI 内；(b) 5 年 RMST 两臂差相对误差 ≤ %d%%", round(100 * CFG$gate_rmst_rel_tol_round3)),
+            "(b) 模型的 5 年 RMST 两臂差落在 KM 差的 bootstrap 95% 区间内；点估计差距照常报告"),
+  timing = "看到结果后修改",
+  result_seen = c(sprintf("Yau 有 %d 项不达标（事件数 %d 项、HR %d 项）", nrow(yau_fail), sum(yau_fail$check == "events"), sum(yau_fail$check == "hr")),
+                  sprintf("6 条曲线中 %d 条没有任何候选模型通过", c1_none),
+                  sprintf("pCR 层重建 %s 对参照 %s，差 %s", f2(shr_p$reconstructed, 3), f2(shr_p$reported, 2), f2(shr_p$abs_diff, 3)),
+                  "第一轮（2026-10-21）与第二轮（2026-10-22）校准都不达标",
+                  "第三轮校准不达标（(a) 与 (b) 都不达标）"),
+  reason = c("HR 的估计量与原文不同（原文为 12 个队列、含队列效应的汇总模型，使用全部随访；重建只能在 12 年内做单一 Cox）；事件数的参照值从风险表推算，原文没有报告",
+             "设定错误：逐点 95% 置信区间本来就预期约 5% 的点落在区间外",
+             "参照值来自比 IA4 更晚的数据截点，IA4 的曲线不可能与之吻合；IA4 原文印的 0.73 与 0.70 已在 0.012 以内复现",
+             sprintf("门槛比抽样误差更严：%g 个百分点小于安慰剂组（n = %d）5 年 OS 的 Greenwood 标准误 %s 个百分点", CFG$gate_pp_round1_2,
+                     n_os[["placebo"]], f2(se5[["placebo"]], 2)),
+             sprintf("门槛比抽样误差更严：允许带宽 %s 年，远窄于 KM 差的 bootstrap 95%% 区间宽度 %s 年", f2(band_r3, 3),
+                     f2(CGR$km_boot_ci95_hi - CGR$km_boot_ci95_lo, 3))))
+add("## 门槛修改记录", "",
+    "按时间列出验证与校准门槛的每次修改。全部都是看到结果后修改的；第 4、5 项的理由都是门槛比抽样误差更严。", "",
+    md_table(setNames(LOG, c("序号", "日期", "对象", "修改前", "修改后", "时点", "看到的结果", "理由"))), "")
 
 add("## 1. 输入文件", "", md_table(man), "",
     "生命表：令和7(2025)年簡易生命表（女），`input/lifetable/SOURCE.md`、`data/lifetable_female_2025.csv`。较晚截点的数值：`input/user_supplied_values.csv`。复发后生存的文献摘要：`input/params/pubmed/`。", "")
@@ -191,99 +237,133 @@ add("状态：无事件、术前进展（2026-10-22 新增）、局部区域复�
             rvv("K22A_ae_deaths", "died_drug_related_pembro"), rvv("K22A_ae_deaths", "died_drug_related_placebo"),
             f2(AE$engine_pct_by_1y[AE$arm == "pembro"], 3), f2(AE$engine_pct_by_1y[AE$arm == "placebo"], 3),
             f2(AE$input_pct[AE$arm == "pembro"], 3), f2(AE$input_pct[AE$arm == "placebo"], 3), sum(AE$post_surgery_cycles_capped)), "",
-    sprintf("pCR 比例：帕博利珠单抗 %s，安慰剂 %s。局部区域复发 → 远处复发 %s/年（%d/%d 例，暴露 %s 年）。术前进展后的超额死亡率为常数，远处复发后的超额死亡为复发后时间的对数 logistic（形状在 (0, ∞) 内自由，中位限定 10 至 12 个月），两者两臂共用，由校准估计（第 8 节）。",
+    sprintf("pCR 比例：帕博利珠单抗 %s，安慰剂 %s。局部区域复发 → 远处复发 %s/年（%d/%d 例，暴露 %s 年）。术前进展后的超额死亡为进入后时间的 Weibull（形状自由；2026-10-22 第四轮，此前为常数），远处复发后的超额死亡为复发后时间的对数 logistic（形状自由，中位限定 10 至 12 个月），两者两臂共用，由校准估计（第 8 节）。",
             f2(P$p_pcr[["pembro"]], 4), f2(P$p_pcr[["placebo"]], 4), f2(P$lrr_dr[["rate"]], 3),
             P$lrr_dr[["n_local_then_distant"]], P$lrr_dr[["n_local"]], f2(P$lrr_dr[["exposure_years"]], 2)), "")
 
-add("## 8. 校准（步骤 5，第三轮，2026-10-22）", "")
-add("### 8.1 门槛的更换与理由", "",
-    sprintf("原门槛（各臂 OS 在第 1 至 5 年整年时点与 KM 差 ≤ 1 个百分点）改为 (a) 与 (b)（2026-10-22 的决定）。理由：1 个百分点小于 5 年 OS 本身的抽样误差——重建 KM 在 60 个月的 Greenwood 标准误，安慰剂组（n = %d）为 %s 个百分点，帕博利珠单抗组（n = %d）为 %s 个百分点——要求差 ≤ 1 个百分点会迫使拟合去追随噪声。(a) 用 KM 的逐点 95%% 置信区间（survfit 默认的对数尺度），与 EFS 拟合的准则 1 一致。(b) 以 5 年 RMST 的两臂之差为对象，直接针对后续成本效用分析所需的增量生命年；允许的相对误差为 ±%d%%。KM 差的 bootstrap 95%% 区间（在各臂内对重建个体数据重抽样，B = %d）只报告，不作门槛。",
-            n_os[["placebo"]], f2(se5[["placebo"]], 2), n_os[["pembro"]], f2(se5[["pembro"]], 2), round(100 * CFG$gate_rmst_rel_tol), CGR$boot_B), "")
+add("## 8. 校准（步骤 5，第四轮，2026-10-22）", "")
+km_pl <- summary(survfit(Surv(time, status) ~ 1, data = ipd$K24_F1A_OS_placebo), times = c(6, 12, 13, 18, 24), extend = TRUE)$surv
 ab <- CANDS$at_bound
-add("### 8.2 设定与校准结果", "",
-    sprintf("结构（用户指定，一次运行，不逐步试）：%s。校准量：术前进展后的超额死亡率（常数，两臂共用）、远处复发后对数 logistic 的形状（在 (0, ∞) 内自由估计；数值上 log 形状限在 [log 0.01, log 50]）与中位（限定 10 至 12 个月），两臂共用。数据设定（不校准）：因不良事件死亡（第 7 节）、带 5 年约束的 EFS 模型（第 6 节）。目标函数不变：两臂 OS 与 2024 年 Fig. 1A 的 KM 在第 %d 至 %d 个月逐月的平方误差和最小（L-BFGS-B，%d 个起点，目标值差 %s）。",
-            CANDS$structure, min(CFG$calib_grid_months), max(CFG$calib_grid_months), length(CANDS$starts_values), signif(diff(range(CANDS$starts_values)), 2)), "",
+add("### 8.1 设定", "",
+    sprintf("结构（用户指定，一次运行，不逐步试）：%s。唯一的结构修改：术前进展后的超额死亡由常数风险改为术前进展后时间的 Weibull 分布（形状自由估计，两臂共用，由校准估计；按进入后的月数用隧道态记录）。理由：安慰剂组 KM 在约 13 个月前几乎是平的，之后才陡降（死亡累计：6 个月 %s%%，12 个月 %s%%，13 个月 %s%%，18 个月 %s%%，24 个月 %s%%），常数风险做不出这种形状；第三轮（常数风险）安慰剂组 12 个月落在区间外。",
+            CANDS$structure, f2(100 * (1 - km_pl[1]), 2), f2(100 * (1 - km_pl[2]), 2), f2(100 * (1 - km_pl[3]), 2), f2(100 * (1 - km_pl[4]), 2), f2(100 * (1 - km_pl[5]), 2)),
+    "其余设定不变：远处复发后对数 logistic（形状自由、中位 10 至 12 个月、两臂共用）；因不良事件死亡（第 7 节）；带 5 年约束的 EFS 模型（第 6 节）。",
+    sprintf("校准量 4 个：术前进展 Weibull 的形状（限 0.01 至 50）与尺度（0.01 至 100 年），对数 logistic 的形状（0.01 至 50）与中位（10 至 12 个月）。目标函数不变：两臂 OS 与 2024 年 Fig. 1A 的 KM 在第 %d 至 %d 个月逐月的平方误差和最小（L-BFGS-B，%d 个起点，目标值差 %s；`R/calibration.R`，与 `R/06_bootstrap.R` 共用）。",
+            min(CFG$calib_grid_months), max(CFG$calib_grid_months), length(CANDS$starts_values), signif(diff(range(CANDS$starts_values)), 2)), "")
+add("### 8.2 校准结果", "",
     md_table(transform(CAL, SSE_both_arms = f2(SSE_both_arms, 2), rmse_pp = f2(rmse_pp, 3), max_abs_diff_pp = f2(max_abs_diff_pp, 3),
-                       gate_max_abs_diff_pp = f2(gate_max_abs_diff_pp, 3), preprog_rate = f2(preprog_rate, 4), dr_shape = f2(dr_shape, 4),
-                       dr_median_years = f2(dr_median_years, 4))), "",
-    sprintf("校准值：术前进展后的超额死亡率 %s/年%s；对数 logistic 形状 %s%s（%s）；中位 %s 个月%s。",
-            f2(P$preprog_rate, 4), if (ab[["preprog_rate"]]) "（落在边界）" else "",
-            f2(P$dr$shape, 4), if (ab[["dr_shape"]]) "（落在边界）" else "（在范围内部）",
-            if (P$dr$shape < 1) "形状 < 1：复发后超额死亡风险从复发起单调递减" else "形状 > 1：风险先升后降",
-            f2(12 * P$dr$scale, 2), if (ab[["dr_median"]]) "（落在下界 10 个月）" else ""), "")
+                       gate_max_abs_diff_pp = f2(gate_max_abs_diff_pp, 3), preprog_shape = f2(preprog_shape, 4),
+                       preprog_scale_years = f2(preprog_scale_years, 4), dr_shape = f2(dr_shape, 4), dr_median_years = f2(dr_median_years, 4))), "",
+    sprintf("校准值：术前进展 Weibull 形状 %s、尺度 %s 年%s；对数 logistic 形状 %s%s，中位 %s 个月%s。",
+            f2(P$preprog$shape, 3), f2(P$preprog$scale, 3), if (ab[["preprog_shape"]] || ab[["preprog_scale"]]) "（落在边界）" else "（在范围内部）",
+            f2(P$dr$shape, 3), if (P$dr$shape < 1) "（< 1：复发后超额死亡风险从复发起单调递减）" else "（> 1：先升后降）",
+            f2(12 * P$dr$scale, 2), if (ab[["dr_median"]]) "（落在下界 10 个月）" else ""),
+    sprintf("术前进展 Weibull 形状 %s 意味着死亡集中在进入后约 %s 个月附近：进入后 1 年生存 %s，2 年生存 %s（`dr_survival_implied.csv`），即术前进展者 2 年内几乎全部死亡。",
+            f2(P$preprog$shape, 2), f2(IMP$median_excess_only_months[IMP$state == "PreProg"], 1),
+            f2(IMP$surv_1y[IMP$state == "PreProg"], 3), formatC(IMP$surv_2y[IMP$state == "PreProg"], format = "g", digits = 2)), "")
 add("### 8.3 各时点的差与死亡来源的拆解", "",
     "门槛 (a) 的逐时点表见文首「状态」。死亡来源（占全臂 %，`calibration_deaths_by_source.csv`）：", "",
     md_table(transform(DS, km_deaths = f2(km_deaths, 2), engine_deaths = f2(engine_deaths, 2), from_event_free = f2(from_event_free, 2),
-                       from_ae = f2(from_ae, 2), from_preprog = f2(from_preprog, 2), from_LRR = f2(from_LRR, 3), from_DR = f2(from_DR, 2))), "")
-x12 <- DS[DS$month == 12, ]
-pre_share <- sapply(c("pembro", "placebo"), function(a) 100 * P$q_pre[[a]][["nonpCR"]] * (1 - P$p_pcr[[a]]))
-gf <- CG[!istrue(CG$inside), ]
-add(sprintf("区间外的时点：%s。",
-            paste(sprintf("%s %d 个月（模型 %s，KM %s，95%% CI %s 至 %s）", ifelse(gf$arm == "pembro", "帕博利珠单抗", "安慰剂"), gf$month,
-                          f2(gf$engine, 2), f2(gf$km, 2), f2(gf$ci95_lo, 2), f2(gf$ci95_hi, 2)), collapse = "；")),
-    sprintf("12 个月：安慰剂组 KM 的死亡为 %s%%，模型为 %s%%，其中术前进展之后的死亡 %s%%（该组进入术前进展者占全臂 %s%%），单这一项已超过 KM 的全部死亡；帕博利珠单抗组 KM 为 %s%%，模型为 %s%%（因不良事件 %s%%，术前进展之后 %s%%，进入者占全臂 %s%%）。第 2 至 4 年帕博利珠单抗组的模型死亡少于 KM（OS 偏高，仍在区间内）。",
-            f2(x12$km_deaths[x12$arm == "placebo"], 2), f2(x12$engine_deaths[x12$arm == "placebo"], 2), f2(x12$from_preprog[x12$arm == "placebo"], 2), f2(pre_share[["placebo"]], 2),
-            f2(x12$km_deaths[x12$arm == "pembro"], 2), f2(x12$engine_deaths[x12$arm == "pembro"], 2), f2(x12$from_ae[x12$arm == "pembro"], 2),
-            f2(x12$from_preprog[x12$arm == "pembro"], 2), f2(pre_share[["pembro"]], 2)), "")
-add("### 8.4 两臂 RMST 差", "",
+                       from_ae = f2(from_ae, 2), from_preprog = f2(from_preprog, 2), from_LRR = f2(from_LRR, 3), from_DR = f2(from_DR, 2))), "",
     "5 年 RMST（年，`calibration_rmst.csv`）：", "",
-    md_table(transform(RM, rmst5_km = f2(rmst5_km, 4), rmst5_engine = f2(rmst5_engine, 4), diff = f2(diff, 4))), "")
+    md_table(transform(RM, rmst5_km = f2(rmst5_km, 4), rmst5_engine = f2(rmst5_engine, 4), diff = f2(diff, 4))), "",
+    "模型 5 年内按死亡来源损失的 RMST（年，`calibration_rmst_by_source.csv`；RMST5 = 5 − 各来源之和；最后一行为各来源对模型两臂 RMST 差的贡献，KM 不能按来源拆分）：", "",
+    md_table(data.frame(arm = RS$arm, lapply(RS[, -1], function(x) f2(x, 4)), check.names = FALSE)), "")
 rsd <- RS[RS$arm == "placebo - pembro", ]
-add("模型 5 年内按死亡来源损失的 RMST（年，`calibration_rmst_by_source.csv`；RMST5 = 5 − 各来源之和，最后一行为各来源对模型两臂 RMST 差的贡献；KM 不能按来源拆分）：", "",
-    md_table(data.frame(arm = RS$arm, lapply(RS[, -1], function(x) f2(x, 4)), check.names = FALSE)), "",
-    sprintf("模型的两臂差 %s 年比 KM 的 %s 年大 %s 年（KM 差的 bootstrap 95%% 区间 %s 至 %s）。模型差中术前进展之后的死亡贡献 %s 年，远处复发后的死亡 %s 年，无事件状态中的死亡 %s 年，因不良事件死亡 %s 年（帕博利珠单抗组多，方向相反）。术前进展一项就与模型超出 KM 的部分相当：两臂进入术前进展的比例按报告值分别设定（全臂的 %s%% 对 %s%%），而其后的死亡率两臂共用。",
-            f2(CGR$engine, 4), f2(CGR$km, 4), f2(CGR$engine - CGR$km, 4), f2(CGR$km_boot_ci95_lo, 4), f2(CGR$km_boot_ci95_hi, 4),
-            f2(rsd$preprog, 4), f2(rsd$DR, 4), f2(rsd$event_free, 4), f2(rsd$ae, 4), f2(pre_share[["placebo"]], 2), f2(pre_share[["pembro"]], 2)), "")
-fpf <- function(s) { x <- FPT[FPT$search == s & !istrue(FPT$inside), ]
-  paste(sprintf("%s %d 个月（模型 %s，区间 %s 至 %s）", ifelse(x$arm == "pembro", "帕博利珠单抗", "安慰剂"), x$month,
-                f2(x$engine, 2), f2(x$ci95_lo, 2), f2(x$ci95_hi, 2)), collapse = "；") }
-fp1 <- FPT[FPT$search == "gate (a) only", ][1, ]; fp2 <- FPT[FPT$search == "gate (a) with gate (b) imposed", ][1, ]
-exc <- function(x) max(pmax(x$ci95_lo - x$engine, x$engine - x$ci95_hi, 0))
-add("### 8.5 门槛的可行性（只作诊断，`R/05b_gate_feasibility.R`）", "",
-    sprintf("问题：在本结构与数据设定下，三个校准量取什么值能满足门槛？网格：术前进展超额死亡率 0.01 至 50/年与对数 logistic 形状 0.05 至 20 各 25 点（对数等距），中位 10、11、12 个月，共 %d 点；再从最好的网格点出发离网格细化（Nelder-Mead）。结果：满足 (a) 的 %d 点，满足 (b) 的 %d 点，两者都满足的 %d 点；细化后也没有满足 (a) 的参数（%s），没有两者都满足的参数（%s）。",
-            FSU$grid_points, FSU$pass_a, FSU$pass_b, FSU$pass_both, if (istrue(FSU$refined_pass_a)) "有" else "无", if (istrue(FSU$refined_pass_both)) "有" else "无"),
-    sprintf("- 只求 (a)：区间外最小的超出为 %s 个百分点（术前进展 %s/年，形状 %s，中位 %s 个月；RMST 差 %s 年）。仍在区间外的时点：%s。两臂朝相反方向偏离（帕博利珠单抗高于上限、安慰剂低于下限）。",
-            f2(exc(FPT[FPT$search == "gate (a) only", ]), 3),
-            f2(fp1$preprog_rate, 3), f2(fp1$dr_shape, 3), f2(fp1$dr_median_months, 2), f2(fp1$rmst_diff, 4), fpf("gate (a) only")),
-    sprintf("- 同时要求 (b)：术前进展死亡率须降到 %s/年左右（RMST 差 %s 年）；此时区间外的时点：%s，都是帕博利珠单抗组高于上限，最大超出 %s 个百分点。",
-            f2(fp2$preprog_rate, 3), f2(fp2$rmst_diff, 4), fpf("gate (a) with gate (b) imposed"), f2(exc(FPT[FPT$search == "gate (a) with gate (b) imposed", ]), 2)),
-    "", "因此不达标来自结构与数据设定（两臂各自的术前进展比例、共用的死亡率、构成分配），而非目标函数的选择。按指示未改结构。", "",
-    md_table(transform(FPT[, c("search", "arm", "month", "km", "ci95_lo", "ci95_hi", "engine", "diff", "inside")],
-                       km = f2(km, 2), ci95_lo = f2(ci95_lo, 2), ci95_hi = f2(ci95_hi, 2), engine = f2(engine, 2), diff = f2(diff, 3),
-                       inside = ifelse(istrue(inside), "是", "**否**"))), "")
+add(sprintf("模型的两臂差 %s 年，比 KM 的 %s 年大 %s 年（仍在 KM 差的 bootstrap 区间内）。模型差中术前进展之后的死亡贡献 %s 年，远处复发后的死亡 %s 年，无事件状态中的死亡 %s 年，因不良事件死亡 %s 年。第 2 至 4 年帕博利珠单抗组模型 OS 高于 KM（第 8.4 节的情景针对这一点）。",
+            f2(CGR$engine, 4), f2(CGR$km, 4), f2(CGR$engine_minus_km, 4), f2(rsd$preprog, 4), f2(rsd$DR, 4), f2(rsd$event_free, 4), f2(rsd$ae, 4)), "")
+add("### 8.4 情景「OS 锚定」（不参与基准校准）", "",
+    sprintf("帕博利珠单抗组（单用与加运动）的远处复发后超额死亡风险乘以系数 k，其余参数固定在基准校准值，求 k 使模型的 5 年 RMST 两臂差等于 KM 的 %s 年。理由见 `docs/model_spec.md`。结果：k = %s；帕博利珠单抗组 5 年 RMST 由 %s 年降为 %s 年，两臂差 %s 年。引擎中为开关 `survival_engine(..., os_anchor = TRUE)`，只作用于帕博利珠单抗组；第 2 阶段只用于涉及帕博利珠单抗的比较。",
+            f2(OA$km_rmst_diff, 4), f2(OA$k, 3), f2(OA$rmst5_pembro_base, 4), f2(OA$rmst5_pembro_anchor, 4), f2(OA$engine_rmst_diff_anchor, 4)), "",
+    "该情景下各时点的 OS 与 KM 的差（`os_anchor_gate.csv`；安慰剂组不变）：", "",
+    md_table(transform(OG, km = f2(km, 2), ci95_lo = f2(ci95_lo, 2), ci95_hi = f2(ci95_hi, 2), engine_base = f2(engine_base, 2),
+                       engine_anchor = f2(engine_anchor, 2), diff_anchor = f2(diff_anchor, 3), inside_anchor = ifelse(istrue(inside_anchor), "是", "**否**"))), "")
 es <- abstract("37385070"); ip <- abstract("38755096")
 m1 <- regmatches(es, regexec("Median OS was ([\\d.]+) months \\(95% CI ([\\d.]+)-([\\d.]+)\\) in patients with early relapse versus ([\\d.]+) months \\(95% CI ([\\d.]+)-([\\d.]+)\\) in those with late relapse", es, perl = TRUE))[[1]]
 m2 <- regmatches(ip, regexec("median ([\\d.]+) months with placebo versus ([\\d.]+) months with atezolizumab", ip, perl = TRUE))[[1]]
-add("### 8.6 隐含的中位生存与外部对照", "",
+add("### 8.5 隐含的中位生存与外部对照", "",
     "模型隐含的中位生存（月，`dr_survival_implied.csv`；术前进展从 49.5 岁、远处复发从 50.5 岁计背景死亡）：", "",
     md_table(transform(IMP, median_excess_only_months = f2(median_excess_only_months, 1), median_all_cause_months = f2(median_all_cause_months, 1),
-                       surv_1y = f2(surv_1y, 3), surv_2y = f2(surv_2y, 3))), "",
-    sprintf("文献：ESME 全国队列，新辅助或辅助化疗结束后 12 个月内转移复发的 TNBC 中位 OS %s 个月（95%% CI %s 至 %s），12 个月以后复发为 %s 个月（Eur J Cancer 2023;189:112935，PMID 37385070）；IMpassion132，12 个月内复发的 PD-L1 阳性晚期 TNBC 中位 OS 安慰剂组 %s 个月、阿替利珠单抗组 %s 个月（Ann Oncol 2024;35:630-642，PMID 38755096）。远处复发后的中位由约束保持在此范围内。",
+                       surv_1y = f2(surv_1y, 3), surv_2y = formatC(surv_2y, format = "g", digits = 3))), "",
+    sprintf("文献：ESME 全国队列，新辅助或辅助化疗结束后 12 个月内转移复发的 TNBC 中位 OS %s 个月（95%% CI %s 至 %s），12 个月以后复发为 %s 个月（Eur J Cancer 2023;189:112935，PMID 37385070）；IMpassion132，12 个月内复发的 PD-L1 阳性晚期 TNBC 中位 OS 安慰剂组 %s 个月、阿替利珠单抗组 %s 个月（Ann Oncol 2024;35:630-642，PMID 38755096）。远处复发后的中位由约束保持在此范围内（落在下界）。",
             m1[2], m1[3], m1[4], m1[5], m2[2], m2[3]), "")
 emx <- aggregate(cbind(max_abs_diff = abs(diff)) ~ check + arm, data = EC, FUN = max)
-add("### 8.7 未用于校准的曲线", "",
+add("### 8.6 未用于校准的曲线", "",
     "与引擎的对照（`engine_checks.csv`，各曲线全部时点中差的绝对值最大者，百分点）：", "", md_table(transform(emx, max_abs_diff = f2(max_abs_diff, 3))), "",
     "图：`fig_calibration_OS.png`（灰带为 KM 逐点 95% CI，竖线为门槛时点）、`fig_engine_checks.png`。", "")
+add("### 8.7 第三轮的可行性扫描（保留，只作诊断）", "",
+    sprintf("`R/05b_gate_feasibility.R` 保留为诊断，结构为第三轮（术前进展后常数死亡率）、门槛 (b) 为第三轮的相对误差 ≤ %d%%：网格 %d 点加离网格细化，满足 (a) 的参数 %d 组、两者都满足的 %d 组（`calibration_gate_feasibility_*.csv`）。第四轮改用 Weibull 后不再需要。",
+            round(100 * CFG$gate_rmst_rel_tol_round3), FSU$grid_points, FSU$pass_a, FSU$pass_both), "")
 
-add("## 9. 已决事项与待决事项", "",
+# ---------------------------------------------------------------- step 6
+if (boot_done) {
+  BC <- BRS$calibration; BB <- BRS$efs_binding
+  cnt <- function(x) sum(x, na.rm = TRUE)
+  add("## 9. Bootstrap（步骤 6，`R/06_bootstrap.R`）", "",
+      sprintf("B = %d，随机种子 %d（第 b 次用种子 + b），并行，耗时 %s 分钟。每次：", BRS$B, BRS$seed, f2(BRS$minutes, 1)),
+      "1. 分层 EFS（2022 年补充材料 Fig. S4，IA4）：在各臂内连同 pCR 标签重抽样，pCR 比例与各层人数随之变动；各层在手术时点 landmark，用与基准相同的分布族重拟合并加 5 年约束（边界固定）；术前 KM 重算。",
+      "2. 术前进展的进入比例 = 报告例数 / 重抽样后的非 pCR 人数（全臂比例保持报告值）。",
+      "3. OS（2024 年 Fig. 1A，IA7）：在各臂内重抽样；所选的 OS 模型重拟合（只保存，引擎不用；RP 结点固定在基准位置）。",
+      "4. 按第 8 节的方法对重抽样后的 OS KM 重新校准 4 个参数（基准估计值加基准的 6 个起点，取最优）。",
+      "5. OS 锚定情景的 k 按重抽样后的 KM 两臂 RMST 差重新求解（k 限 0.01 至 100）。",
+      "6. 引擎在 5、10、20 年的 EFS 与 OS（臂 × pCR）。",
+      "每次都固定的数据设定：生命表、EFS 事件构成与分配比例、因不良事件死亡、局部区域复发 → 远处复发的率、术前进展例数、5 年约束的边界。拟合失败的样本换种子重抽（计入 attempts）。", "",
+      sprintf("结果：完成 %d 次，10 次重抽仍失败 %d 次，换种子重抽的样本 %d 个。校准的 optim 返回码非 0 的 %d 次（%s）。有参数落在边界的 %d 次，其中对数 logistic 中位落在下界 10 个月的 %d 次。OS 锚定的 k 在 0.01 至 100 内无解的 %d 次（模型差无法降到该样本的 KM 差；该情景的分位数只用有解的样本）。5 年约束起作用的次数：%s。",
+              nrow(BC), length(BRS$failed), cnt(BC[, "attempts"] > 1), cnt(BC[, "convergence"] != 0),
+              paste(names(table(BC[, "convergence"])), table(BC[, "convergence"]), sep = ": ", collapse = "，"),
+              cnt(BC[, "at_bound_any"] == 1), cnt(BC[, "dr_median_at_bound"] == 1), sum(!is.finite(BC[, "os_anchor_k"])),
+              paste(colnames(BB)[-1], colSums(BB[, -1, drop = FALSE]), sep = " ", collapse = "，")), "",
+      sprintf("识别性：OS 只约束校准参数的组合，单个参数识别不良。术前进展 Weibull 的形状落在边界（0.01 或 50）的 %d 次、尺度落在边界（0.01 或 100 年）的 %d 次，对数 logistic 的形状落在边界的 %d 次；对数 logistic 的中位在 %d/%d 个样本中落在下界 10 个月，即 OS 数据倾向于比文献更短的复发后生存，被约束挡住。引擎的 EFS 与 OS 输出（第 10 节）的区间远比这些参数的区间窄。OS 锚定情景的区间只用 k 有解的 %d 个样本；无解的样本是模型差偏大、需要更强锚定的样本，故该区间偏向锚定较弱的一侧。",
+              cnt(BC[, "preprog_shape"] <= 0.01 * (1 + 1e-6) | BC[, "preprog_shape"] >= 50 * (1 - 1e-6)),
+              cnt(BC[, "preprog_scale"] <= 0.01 * (1 + 1e-6) | BC[, "preprog_scale"] >= 100 * (1 - 1e-6)),
+              cnt(BC[, "dr_shape"] <= 0.01 * (1 + 1e-6) | BC[, "dr_shape"] >= 50 * (1 - 1e-6)),
+              cnt(BC[, "dr_median_at_bound"] == 1), nrow(BC), sum(is.finite(BC[, "os_anchor_k"]))), "",
+      "参数的基准值与 bootstrap 分布（`output/phase1/bootstrap_summary.csv`；参数矩阵在 `data/bootstrap/`，一行一个样本）：", "",
+      md_table(transform(BSUM[BSUM$group %in% c("calibration", "pCR and PreProg"), ], base = f2(base, 4), boot_mean = f2(boot_mean, 4),
+                         boot_median = f2(boot_median, 4), boot_lo = f2(boot_lo, 4), boot_hi = f2(boot_hi, 4))), "",
+      "EFS 模型参数（自然尺度）：", "",
+      md_table(transform(BSUM[BSUM$group == "EFS model parameters", ], base = f2(base, 4), boot_mean = f2(boot_mean, 4),
+                         boot_median = f2(boot_median, 4), boot_lo = f2(boot_lo, 4), boot_hi = f2(boot_hi, 4))), "",
+      "文件：`boot_efs_params.csv`、`boot_efs5_binding.csv`、`boot_os_model_params.csv`、`boot_pcr_preprog.csv`、`boot_pre_surgery_km.csv`、`boot_calibration.csv`、`boot_outputs.csv`、`boot_replicates.rds`。", "")
+
+  # ---------------------------------------------------------------- step 7
+  fmt <- function(b, lo, hi) sprintf("%s (%s–%s)", f2(b, 1), f2(lo, 1), f2(hi, 1))
+  EO$cell <- fmt(EO$base, EO$boot_lo, EO$boot_hi)
+  W <- reshape(EO[, c("endpoint", "scenario", "arm", "pcr", "year", "cell")], idvar = c("endpoint", "scenario", "arm", "pcr"),
+               timevar = "year", direction = "wide")
+  names(W) <- sub("^cell\\.", "", names(W)); names(W)[names(W) %in% c("5", "10", "20")] <- paste0(names(W)[names(W) %in% c("5", "10", "20")], " 年")
+  W$arm <- ifelse(W$arm == "chemo", "单用化疗（= 化疗加运动）", "化疗加帕博利珠单抗（= 两者都加）")
+  W$pcr <- c(all = "全体", pCR = "pCR", nonpCR = "非 pCR")[W$pcr]
+  W$scenario <- ifelse(W$scenario == "base", "基准", "OS 锚定")
+  add("## 10. 生存引擎的输出（步骤 7，`R/07_engine_outputs.R`）", "",
+      "随机化后 5、10、20 年的 EFS 与 OS（%，基准值与 bootstrap 95% 分位区间；`engine_outputs.csv`、`engine_curves.csv`）。第 1 阶段没有运动参数，故加运动的两臂与对应的不加运动的臂相同；OS 锚定情景只改变帕博利珠单抗组的 OS（EFS 不变）。", "",
+      md_table(setNames(W[order(W$endpoint, W$scenario != "基准", grepl("帕博利珠单抗", W$arm), match(W$pcr, c("全体", "pCR", "非 pCR"))), ],
+                        c("终点", "情景", "臂", "pCR", names(W)[-(1:4)]))), "",
+      sprintf("各 bootstrap 样本的引擎由保存的参数矩阵重建，其 5、10、20 年的值与 `06_bootstrap.R` 当时算出的一致（%d 个样本，最大差 %s，`bootstrap_rebuild_check.csv`）。",
+              RB$replicates, formatC(RB$max_abs_diff, format = "e", digits = 1)), "",
+      "图：`fig_engine_outputs.png`（实线为引擎，带为 bootstrap 95% 区间，虚线为重建的 KM）。", "",
+      "引擎接口：`survival_engine(arm, pcr, times, params, hr0, wane_start, wane_rate, p_pcr, nonpcr_mix, os_anchor)`，`arm` 为 chemo、exercise、pembro、both；默认参数在 `data/fits/engine_params.rds`。运动钩子 (a) 时变 HR 与 (b) pCR 比例、S-JP 混合的接口测试见 `engine_interface_test.csv`；闭式计算与逐周期递推一致（`R/test_engine_vectorized.R`）。", "",
+      md_table(EIT), "")
+}
+
+add("## 11. 已决事项与待决事项", "",
     "已决：",
     "- 层内 HR 的较晚截点参照值：撤出门槛，改为跨分析对照（2026-10-21）。",
     "- 准则 1：保留 95%，最初 100% 为设定错误（2026-10-21）。",
     "- 分布族：同一层两臂同一族，依两臂合计 AIC 与 5 年外推检验选定，次优族为情景（2026-10-21）；非 pCR 层复核后维持（2026-10-22）。",
     "- 第二原发癌：归入局部区域复发（2026-10-21）。",
-    "- 校准结构：术前进展单列（常数死亡率，两臂共用），远处复发后对数 logistic（两臂共用，中位 10 至 12 个月），不用两臂分别估计的复发后死亡率（2026-10-22）。",
-    "- 校准第三轮（2026-10-22）：门槛改为 (a) KM 逐点 95% CI 与 (b) 5 年 RMST 两臂差相对误差 ≤ 20%；因不良事件死亡单列（数据设定，不校准）；对数 logistic 形状不再限定 > 1；非 pCR 层（及 pCR 层）EFS 加 5 年约束；术前进展的设定不变。",
+    "- 校准结构：术前进展单列、远处复发后对数 logistic（两臂共用，中位 10 至 12 个月），不用两臂分别估计的复发后死亡率（2026-10-22）。",
+    "- 校准第三轮（2026-10-22）：门槛 (a) 与 (b)；因不良事件死亡单列；对数 logistic 形状自由；EFS 加 5 年约束。",
+    "- 校准第四轮（2026-10-22）：门槛 (b) 改为 KM 差的 bootstrap 区间；术前进展后死亡改为 Weibull；新增 OS 锚定情景（不参与基准校准）。",
     "",
     "待决：",
-    if (stop6) sprintf("- **校准第三轮仍未达门槛**（第 8 节）：(a) 区间外 %d 处，(b) 模型 RMST 差 %s 年对 KM %s 年。可行性扫描显示本结构下没有参数能满足 (a)，更没有能同时满足 (a)、(b) 的参数；模型多出的 RMST 差主要来自术前进展（两臂进入比例按报告值分别设定、其后死亡率共用）。按指示未自行增加结构，处理方向待定。",
-                       sum(!istrue(CG$inside)), f2(CGR$engine, 3), f2(CGR$km, 3)) else NULL,
+    if (stop6) "- **校准第四轮未达门槛**（第 8 节）。" else NULL,
     "- 若尾崎日后提供 2023-03-23 截点的分层 KM，5 年约束改为用整条曲线（2026-10-22 的决定）。",
     "",
     "等尾崎回答：",
     "- S-JP 的权重定义（`docs/model_spec.md` 第 2 节）。",
     "- BRCA 检测的对象范围。",
     "- 帕博利珠单抗组是否也加 S-JP。", "")
-add("## 10. 未进行的步骤", "", "步骤 6（bootstrap，B = 1000：各臂 × pCR 层与 OS 的个体数据重抽样，重拟合选定的分布族并带 5 年约束，因不良事件死亡按设定，每次重新校准术前进展死亡率与对数 logistic）与步骤 7（生存引擎的最终输出：5、10、20 年 EFS 与 OS 等）。5 年约束函数已就绪并经测试（`R/test_efs5_constraint.R`）。引擎为闭式计算（与逐周期递推一致，`R/test_engine_vectorized.R`）。", "")
 
 writeLines(L, file.path(out_dir, "phase1_report.md"), useBytes = TRUE)
 cat("wrote phase1_report.md:", length(L), "lines\n")

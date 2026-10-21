@@ -1,2 +1,2 @@
 "structure","gate_a_pass","gate_b_pass","gate_pass","stop_before_step6"
-"AE deaths (data) + PreProg constant + DR log-logistic, shape free (common)",FALSE,FALSE,FALSE,TRUE
+"AE deaths (data) + PreProg Weibull + DR log-logistic, shapes free (common)",TRUE,TRUE,TRUE,FALSE

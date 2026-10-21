@@ -6,8 +6,9 @@
 # semi-Markov tunnels), Dead.
 # - Neoadjuvant phase [0, L): in the non-pCR branch a share q_pre (reported progression
 #   precluding surgery / non-pCR patients of the arm) moves EF -> PreProg, timed by the branch KM
-#   before surgery; the pCR branch has none by definition. PreProg -> death: background + a
-#   constant excess rate (common to both arms, calibrated).
+#   before surgery; the pCR branch has none by definition. PreProg -> death: background + an
+#   excess hazard in time since PreProg entry (Weibull from 2026-10-22, round 4; common to both
+#   arms, calibrated), tracked with tunnels like DR.
 # - From surgery (t >= L): EF leaves with the branch EFS model (arm x pCR, landmarked at L).
 #   Background death (life table) is explicit; the excess part of the EFS hazard is split into
 #   EF -> LRR (local recurrence and second primary cancer), EF -> DR and EF -> death by the arm's
@@ -19,6 +20,9 @@
 # - LRR -> DR at a constant rate; LRR -> death at the background rate.
 # - DR -> death: background + an excess hazard in time since DR (log-logistic or Weibull;
 #   common to both arms; calibrated, step 5).
+# Scenario "OS anchor" (os_anchor = TRUE, 2026-10-22): the DR excess hazard of the pembrolizumab
+#   arms is multiplied by params$os_anchor_k, calibrated so that the engine's 5-year RMST
+#   difference equals the KM value; off in the base case.
 # Exercise hooks for phase 2 (no effect by default):
 #   (a) hr0 / wane_start / wane_rate: time-varying HR on EF -> LRR and EF -> DR,
 #       HR(t) = hr0 for t <= wane_start, 1 - (1 - hr0) * exp(-wane_rate * (t - wane_start)) after
@@ -29,16 +33,19 @@
 #   its excess EFS hazard (LRR, DR and excess death; not background death) multiplied by hr from
 #   surgery on, and the state occupancies are mixed by weight (the HRs are not averaged).
 
-# excess cumulative hazard after DR as a function of time since DR (years)
-dr_cumhaz <- function(dr, t) switch(dr$dist,
+# excess cumulative hazard after DR or PreProg as a function of time since entry (years); an
+# optional multiplier k scales the hazard
+dr_cumhaz <- function(dr, t) (if (is.null(dr$k)) 1 else dr$k) * switch(dr$dist,
   llogis = log1p((t / dr$scale)^dr$shape),
   weibull = (t / dr$scale)^dr$shape,
   exp = t * dr$rate)
 
-# one branch (arm x pCR status); returns state occupancy and cumulative deaths by source at
-# t = 0, cycle, 2 cycles, ...
-run_branch <- function(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate, dr, preprog_rate,
-                       start_age, L, cycle, n_cycles, n_tunnel, hr = NULL, drug_hr = 1, ae_rate = 0, ae_end = 0) {
+# one branch (arm x pCR status), in two parts: branch_flows() computes everything that does not
+# depend on the excess death hazards after PreProg and DR (event-free and LRR states, flows into
+# PreProg and DR, deaths from EF and LRR); branch_states() adds the PreProg and DR tunnel states.
+# Calibration and the bootstrap reuse the flows while varying those hazards (os_fast()).
+branch_flows <- function(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate,
+                         start_age, L, cycle, n_cycles, n_tunnel, hr = NULL, drug_hr = 1, ae_rate = 0, ae_end = 0) {
   K <- n_cycles; J <- n_tunnel
   t <- (0:K) * cycle
   hb <- H_pop(start_age + t[-(K + 1)], cycle)                     # background cum hazard per cycle
@@ -84,28 +91,43 @@ run_branch <- function(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate, dr, prepr
   LR <- lin(to_L, Hl)
   l_to_D <- LR[1:K] * (1 - exp(-Hl)) * (lrr_dr_rate * cycle) / Hl
   l_to_X <- LR[1:K] * (1 - exp(-Hl)) * hb / Hl
-  Hp <- hb + preprog_rate * cycle
-  PP <- lin(to_P, Hp)
-  p_to_X <- PP[1:K] * (1 - exp(-Hp))
-  # DR at boundary m: sum over entry boundaries e <= m of inflow x background survival from e to
-  # m x excess survival after m - e cycles in DR (tunnel J and later keep the hazard of tunnel J)
-  dHdr <- diff(dr_cumhaz(dr, (0:(J + 1)) * cycle))
-  dHdr[J + 1] <- dHdr[J]
-  Bc <- c(0, cumsum(hb))
-  Hx <- c(0, cumsum(dHdr[pmin(0:(K - 1), J) + 1]))
-  w <- c(0, to_D + l_to_D) * exp(Bc)
+  list(t = t, K = K, J = J, cycle = cycle, Bc = c(0, cumsum(hb)), EF = EF, LR = LR, to_P = to_P, to_DR = to_D + l_to_D,
+       dEF = c(0, cumsum(to_X)), dAE = c(0, cumsum(to_A)), dLR = c(0, cumsum(l_to_X)))
+}
+
+# PreProg or DR at boundary m: sum over entry boundaries e <= m of inflow x background survival
+# from e to m x excess survival after m - e cycles in the state (tunnel J and later keep the
+# hazard of tunnel J)
+tunnel_state <- function(f, inflow, spec) {
+  K <- f$K; J <- f$J
+  dHs <- diff(dr_cumhaz(spec, (0:(J + 1)) * f$cycle))
+  dHs[J + 1] <- dHs[J]
+  Hx <- c(0, cumsum(dHs[pmin(0:(K - 1), J) + 1]))
+  w <- c(0, inflow) * exp(f$Bc)
   conv <- stats::filter(c(rep(0, K), w), exp(-Hx), method = "convolution", sides = 1)   # causal convolution
-  DRs <- exp(-Bc) * as.vector(conv)[(K + 1):(2 * K + 1)]
-  Dead <- 1 - EF - LR - PP - DRs
-  dEF <- c(0, cumsum(to_X)); dAE <- c(0, cumsum(to_A)); dLR <- c(0, cumsum(l_to_X)); dPP <- c(0, cumsum(p_to_X))
-  data.frame(time = t, EF = EF, PreProg = PP, LRR = LR, DR = DRs, Dead = Dead,
-             Dead_from_EF = dEF, Dead_from_AE = dAE, Dead_from_LRR = dLR, Dead_from_PreProg = dPP,
-             Dead_from_DR = Dead - dEF - dAE - dLR - dPP)
+  exp(-f$Bc) * as.vector(conv)[(K + 1):(2 * K + 1)]
+}
+
+branch_states <- function(f, preprog, dr) {
+  PP <- tunnel_state(f, f$to_P, preprog)
+  DRs <- tunnel_state(f, f$to_DR, dr)
+  Dead <- 1 - f$EF - f$LR - PP - DRs
+  dPP <- c(0, cumsum(f$to_P)) - PP
+  data.frame(time = f$t, EF = f$EF, PreProg = PP, LRR = f$LR, DR = DRs, Dead = Dead,
+             Dead_from_EF = f$dEF, Dead_from_AE = f$dAE, Dead_from_LRR = f$dLR, Dead_from_PreProg = dPP,
+             Dead_from_DR = Dead - f$dEF - f$dAE - f$dLR - dPP)
+}
+
+run_branch <- function(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate, dr, preprog,
+                       start_age, L, cycle, n_cycles, n_tunnel, hr = NULL, drug_hr = 1, ae_rate = 0, ae_end = 0) {
+  branch_states(branch_flows(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate, start_age, L, cycle, n_cycles, n_tunnel,
+                             hr, drug_hr, ae_rate, ae_end), preprog, dr)
 }
 
 # parameter set for the engine, built from the selected fits and the data
 engine_params <- function(fits = readRDS(file.path(ROOT, "data", "fits", "fits.rds")),
-                          dr = list(dist = "llogis", shape = NA, scale = NA), preprog_rate = NA) {
+                          dr = list(dist = "llogis", shape = NA, scale = NA),
+                          preprog = list(dist = "weibull", shape = NA, scale = NA)) {
   rv <- read.csv(file.path(ROOT, "data", "reported_values.csv"), stringsAsFactors = FALSE)
   val <- function(id, key) as.numeric(rv$value[rv$fact_id == id & rv$key == key])
   ipd <- readRDS(file.path(ROOT, "data", "ipd", "ipd_all.rds"))
@@ -160,19 +182,26 @@ engine_params <- function(fits = readRDS(file.path(ROOT, "data", "fits", "fits.r
   n_l <- val("K22_efs_composition", "local_pembro") + val("K22_efs_composition", "local_placebo")
   p$lrr_dr <- c(rate = -log(1 - n_ld / n_l) / expo, n_local_then_distant = n_ld, n_local = n_l, exposure_years = expo)
   p$dr <- dr
-  p$preprog_rate <- preprog_rate
+  p$preprog <- preprog
+  p$os_anchor_k <- NA_real_
   p
 }
 
 # exposed interface: arm = chemo | exercise | pembro | both; pcr = all | pCR | nonpCR
 survival_engine <- function(arm, pcr = "all", times = NULL, params,
-                            hr0 = 1, wane_start = 0, wane_rate = 0, p_pcr = NULL, nonpcr_mix = NULL) {
+                            hr0 = 1, wane_start = 0, wane_rate = 0, p_pcr = NULL, nonpcr_mix = NULL,
+                            os_anchor = FALSE) {
   base <- switch(arm, chemo = "placebo", exercise = "placebo", pembro = "pembro", both = "pembro",
                  stop("arm must be chemo, exercise, pembro or both"))
+  dr <- params$dr
+  if (os_anchor && base == "pembro") {
+    if (!is.finite(params$os_anchor_k)) stop("os_anchor_k not set")
+    dr$k <- params$os_anchor_k
+  }
   hr <- if (hr0 == 1) NULL else function(t) ifelse(t <= wane_start, hr0, 1 - (1 - hr0) * exp(-wane_rate * (t - wane_start)))
   pp <- if (is.null(p_pcr)) params$p_pcr[[base]] else p_pcr
   rb1 <- function(b, dhr) run_branch(params$efs[[base]][[b]], params$pre_surv[[base]][[b]], params$q_pre[[base]][[b]],
-                                      params$shares[[base]], params$lrr_dr[["rate"]], params$dr, params$preprog_rate,
+                                      params$shares[[base]], params$lrr_dr[["rate"]], dr, params$preprog,
                                       params$start_age, params$L, params$cycle, params$n_cycles, params$n_tunnel, hr, dhr,
                                       params$ae[[base]][["rate"]], params$ae_end)
   rb <- function(b) {
@@ -193,6 +222,21 @@ survival_engine <- function(arm, pcr = "all", times = NULL, params,
     out <- data.frame(time = times, lapply(out[, -1], function(y) approx(out$time, y, xout = times, rule = 2)$y))
   }
   out
+}
+
+# base case only (no exercise, S-JP or pCR change): flows of both branches of an arm, and the
+# arm's OS at cycle boundaries for given PreProg and DR excess hazards
+arm_flows <- function(params, arm) {
+  base <- switch(arm, chemo = "placebo", exercise = "placebo", pembro = "pembro", both = "pembro")
+  fl <- lapply(c(pCR = "pCR", nonpCR = "nonpCR"), function(b)
+    branch_flows(params$efs[[base]][[b]], params$pre_surv[[base]][[b]], params$q_pre[[base]][[b]], params$shares[[base]],
+                 params$lrr_dr[["rate"]], params$start_age, params$L, params$cycle, params$n_cycles, params$n_tunnel,
+                 NULL, 1, params$ae[[base]][["rate"]], params$ae_end))
+  list(base = base, p_pcr = params$p_pcr[[base]], flows = fl)
+}
+os_fast <- function(af, preprog, dr) {
+  os_b <- function(f) f$EF + f$LR + tunnel_state(f, f$to_P, preprog) + tunnel_state(f, f$to_DR, dr)
+  af$p_pcr * os_b(af$flows$pCR) + (1 - af$p_pcr) * os_b(af$flows$nonpCR)
 }
 
 # S-JP subgroups of the non-pCR branch. Default reading (to be confirmed with Dr Ozaki): gBRCA

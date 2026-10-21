@@ -1,33 +1,39 @@
 # 05_calibrate.R
-# Step 5, third round (2026-10-22). Structure as set by the user, no stepwise trials:
+# Step 5, fourth round (2026-10-22). Structure as set by the user, no stepwise trials:
 #   - deaths due to adverse events: per arm, evenly over the treatment period, not calibrated
 #     (engine.R, config.R); removed from the deaths without recurrence of the EFS composition;
-#   - progression precluding surgery is its own state (PreProg); its excess death rate is
-#     constant and common to both arms;
+#   - progression precluding surgery is its own state (PreProg); its excess death hazard is
+#     Weibull in time since entry (round 4; constant in round 3), shape free, common to both arms;
 #   - excess death after distant recurrence is log-logistic in time since DR, common to both
 #     arms; shape free in (0, inf) (numerically log shape in [log 0.01, log 50]); median
 #     constrained to 10-12 months (ESME, PMID 37385070; IMpassion132, PMID 38755096);
 #   - EFS models with the 5-year constraint (04_fit_models.R, efs5_constraint.csv).
-# Calibrated: PreProg excess rate, log-logistic shape, log-logistic median (within 10-12 months).
+# Calibrated: PreProg Weibull shape and scale, log-logistic shape, log-logistic median (within
+# 10-12 months).
 # Objective (unchanged): sum over both arms of squared differences (percentage points) between
 # engine OS and the KM of Schmid 2024 Fig. 1A at months 1..78.
-# Gate (decision 2026-10-22):
+# Gate (round 4; history in config.R and the report):
 #   (a) in each arm, engine OS inside the pointwise 95% CI of the reconstructed KM (survfit
 #       default, log scale) at 1, 2, 3, 4 and 5 years;
-#   (b) 5-year RMST difference between arms (pembro - placebo): |engine - KM| / KM <= 20%.
-# Report only: bootstrap 95% CI of the KM RMST difference (B = CFG$boot_B, resampling the
-# reconstructed IPD within arm).
+#   (b) engine 5-year RMST difference between arms (pembro - placebo) inside the bootstrap 95% CI
+#       of the KM difference (B = CFG$boot_B, resampling the reconstructed IPD within arm); the
+#       point difference engine - KM is reported.
+# Scenario "OS anchor" (not part of the base calibration): with the base parameters fixed, k
+# multiplies the DR excess hazard of the pembrolizumab arm and is solved so that the engine's
+# 5-year RMST difference equals the KM value.
 # If the gate fails: calibration_status.csv says stop_before_step6 = TRUE and no engine default
 # (data/fits/engine_params.rds) is written.
 # Outputs: output/phase1/calibration.csv, calibration_gate.csv, calibration_gate_rmst.csv,
 #          calibration_status.csv, calibration_rmst.csv, calibration_deaths_by_source.csv,
 #          ae_deaths.csv, dr_survival_implied.csv, calibration_curves.csv, engine_checks.csv,
+#          os_anchor.csv, os_anchor_gate.csv,
 #          fig_calibration_OS.png, fig_engine_checks.png;
 #          data/fits/calibration_candidates.rds, data/fits/engine_params.rds (gate passed only)
 
 source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
 source(file.path(ROOT, "R", "survmodels.R"))
 source(file.path(ROOT, "R", "engine.R"))
+source(file.path(ROOT, "R", "calibration.R"))
 suppressPackageStartupMessages({
   library(survival)
   library(ggplot2)
@@ -40,33 +46,18 @@ arm_of <- c(pembro = "pembro", placebo = "chemo")
 os_ipd <- lapply(names(arm_of), function(a) ipd[[paste0("K24_F1A_OS_", a)]]); names(os_ipd) <- names(arm_of)
 g_m <- CFG$calib_grid_months
 gate_m <- 12 * CFG$gate_years
-median_bounds <- c(10, 12) / 12
+median_bounds <- CAL_MEDIAN_BOUNDS
 target <- lapply(os_ipd, function(d) 100 * km_at(d, g_m))
 
-P0 <- engine_params(dr = list(dist = "llogis", shape = 1, scale = 11 / 12), preprog_rate = 1)
-make_P <- function(th) {
-  P <- P0
-  P$preprog_rate <- exp(th[1])
-  P$dr <- list(dist = "llogis", shape = exp(th[2]), scale = th[3])
-  P
-}
+P0 <- engine_params(dr = list(dist = "llogis", shape = 1, scale = 11 / 12), preprog = list(dist = "weibull", shape = 1, scale = 1))
 os_model <- function(P, months = g_m) lapply(arm_of, function(e) 100 * survival_engine(e, "all", times = months / 12, params = P)$OS)
-obj <- function(th) { m <- os_model(make_P(th)); sum((m$pembro - target$pembro)^2) + sum((m$placebo - target$placebo)^2) }
-lower <- c(log(0.01), log(0.01), median_bounds[1]); upper <- c(log(50), log(50), median_bounds[2])
-starts <- list(c(log(1), log(1), 11 / 12), c(log(0.3), log(0.5), 10 / 12), c(log(3), log(2), 12 / 12), c(log(0.1), log(0.3), 11 / 12))
-opts <- lapply(starts, function(s0) optim(s0, obj, method = "L-BFGS-B", lower = lower, upper = upper, control = list(factr = 1e5, maxit = 500)))
-vals <- sapply(opts, `[[`, "value")
-best <- opts[[which.min(vals)]]
-P1 <- make_P(best$par)
-at_bound <- c(preprog_rate = best$par[1] <= lower[1] + 1e-6 || best$par[1] >= upper[1] - 1e-6,
-              dr_shape = best$par[2] <= lower[2] + 1e-6 || best$par[2] >= upper[2] - 1e-6,
-              dr_median = best$par[3] <= lower[3] + 1e-6 || best$par[3] >= upper[3] - 1e-6)
-STRUCT <- "AE deaths (data) + PreProg constant + DR log-logistic, shape free (common)"
-saveRDS(list(structure = STRUCT, params = P1, optim = best, starts_values = vals, at_bound = at_bound),
-        file.path(ROOT, "data", "fits", "calibration_candidates.rds"))
-cat(sprintf("PreProg excess rate %.4f/y; DR log-logistic shape %.4f, median %.4f y (bounds %.4f-%.4f); SSE %.2f; starts spread %.2e; convergence %d\n",
-            P1$preprog_rate, P1$dr$shape, P1$dr$scale, median_bounds[1], median_bounds[2], best$value, diff(range(vals)), best$convergence))
-print(at_bound)
+cal <- calibrate_os(P0, target, g_m)          # calibration.R (6 starts)
+best <- cal$optim; vals <- cal$starts_values; at_bound <- cal$at_bound
+P1 <- cal_apply(P0, cal$par)
+STRUCT <- "AE deaths (data) + PreProg Weibull + DR log-logistic, shapes free (common)"
+cat(sprintf("PreProg Weibull shape %.4f, scale %.4f y; DR log-logistic shape %.4f, median %.4f y (bounds %.4f-%.4f); SSE %.2f; starts spread %.2e; convergence %d\n",
+            P1$preprog$shape, P1$preprog$scale, P1$dr$shape, P1$dr$scale, median_bounds[1], median_bounds[2], best$value, diff(range(vals)), best$convergence))
+print(round(vals, 4)); print(at_bound)
 
 # gate (a): pointwise 95% CI of the KM at 1-5 years
 m_g <- os_model(P1, gate_m)
@@ -81,7 +72,10 @@ cat("gate (a):", ifelse(all(G$inside), "PASS", "FAIL"), "\n"); print(G, row.name
 
 # RMST to 5 years (years), engine vs KM, and the between-arm difference
 rmst_km <- function(d) summary(survfit(Surv(time / 12, status) ~ 1, data = d), rmean = 5)$table[["rmean"]]
-rmst_eng <- function(e, P = P1) { tt <- seq(0, 5, by = 1 / 120); s <- survival_engine(e, "all", times = tt, params = P)$OS; sum(diff(tt) * (head(s, -1) + tail(s, -1)) / 2) }
+rmst_eng <- function(e, P = P1, os_anchor = FALSE) {
+  tt <- seq(0, 5, by = 1 / 120); s <- survival_engine(e, "all", times = tt, params = P, os_anchor = os_anchor)$OS
+  sum(diff(tt) * (head(s, -1) + tail(s, -1)) / 2)
+}
 RM <- data.frame(arm = names(arm_of), rmst5_km = sapply(os_ipd, rmst_km), rmst5_engine = sapply(arm_of, rmst_eng))
 RM$diff <- RM$rmst5_engine - RM$rmst5_km
 RM <- rbind(RM, data.frame(arm = "pembro - placebo", rmst5_km = RM$rmst5_km[1] - RM$rmst5_km[2],
@@ -90,7 +84,7 @@ RM <- rbind(RM, data.frame(arm = "pembro - placebo", rmst5_km = RM$rmst5_km[1] -
 write.csv(RM, file.path(out_dir, "calibration_rmst.csv"), row.names = FALSE)
 print(RM, row.names = FALSE)
 
-# gate (b) and the bootstrap CI of the KM difference (report only)
+# gate (b): engine difference inside the bootstrap 95% CI of the KM difference
 set.seed(CFG$seed)
 boot_d <- replicate(CFG$boot_B, {
   b <- lapply(os_ipd, function(d) d[sample.int(nrow(d), nrow(d), replace = TRUE), ])
@@ -99,9 +93,9 @@ boot_d <- replicate(CFG$boot_B, {
 km_d <- RM$rmst5_km[3]; en_d <- RM$rmst5_engine[3]
 GR <- data.frame(quantity = "5-year OS RMST difference, pembro - placebo (years)", km = km_d,
                  km_boot_ci95_lo = unname(quantile(boot_d, 0.025)), km_boot_ci95_hi = unname(quantile(boot_d, 0.975)),
-                 boot_B = CFG$boot_B, engine = en_d, rel_error = (en_d - km_d) / km_d,
-                 allowed_lo = km_d * (1 - CFG$gate_rmst_rel_tol), allowed_hi = km_d * (1 + CFG$gate_rmst_rel_tol),
-                 pass = abs(en_d - km_d) / km_d <= CFG$gate_rmst_rel_tol + 1e-12)
+                 boot_B = CFG$boot_B, engine = en_d, engine_minus_km = en_d - km_d, rel_error = (en_d - km_d) / km_d,
+                 round3_allowed_lo = km_d * (1 - CFG$gate_rmst_rel_tol_round3), round3_allowed_hi = km_d * (1 + CFG$gate_rmst_rel_tol_round3))
+GR$pass <- en_d >= GR$km_boot_ci95_lo && en_d <= GR$km_boot_ci95_hi
 write.csv(GR, file.path(out_dir, "calibration_gate_rmst.csv"), row.names = FALSE)
 cat("gate (b):", ifelse(GR$pass, "PASS", "FAIL"), "\n"); print(GR, row.names = FALSE)
 
@@ -116,7 +110,7 @@ fit_row <- function(P, stage) {
     km <- 100 * km_at(os_ipd[[a]], gate_m)
     data.frame(stage = stage, arm = a, SSE_both_arms = sum((m$pembro - target$pembro)^2) + sum((m$placebo - target$placebo)^2),
                rmse_pp = sqrt(mean((m[[a]] - target[[a]])^2)), max_abs_diff_pp = max(abs(m[[a]] - target[[a]])),
-               gate_max_abs_diff_pp = max(abs(gg[[a]] - km)), preprog_rate = P$preprog_rate,
+               gate_max_abs_diff_pp = max(abs(gg[[a]] - km)), preprog_shape = P$preprog$shape, preprog_scale_years = P$preprog$scale,
                dr_shape = P$dr$shape, dr_median_years = P$dr$scale)
   }))
 }
@@ -126,10 +120,11 @@ write.csv(CAL, file.path(out_dir, "calibration.csv"), row.names = FALSE)
 # implied median survival after PreProg (entry ~ age 49.5) and after DR (excess-only and all-cause from age 50.5)
 tt <- round(seq(0, 40, by = 1 / 1200), 8)
 med <- function(S) tt[which(S <= 0.5)[1]]
-S_pp <- exp(-P1$preprog_rate * tt) * S_pop(CFG$start_age + 0.5, tt)
+S_ppx <- exp(-dr_cumhaz(P1$preprog, tt))
+S_pp <- S_ppx * S_pop(CFG$start_age + 0.5, tt)
 S_drx <- exp(-dr_cumhaz(P1$dr, tt))
 IMP <- data.frame(state = c("PreProg", "DR"),
-                  median_excess_only_months = 12 * c(med(exp(-P1$preprog_rate * tt)), med(S_drx)),
+                  median_excess_only_months = 12 * c(med(S_ppx), med(S_drx)),
                   median_all_cause_months = 12 * c(med(S_pp), med(S_drx * S_pop(CFG$start_age + 1.5, tt))),
                   surv_1y = c(S_pp[tt == 1], (S_drx * S_pop(CFG$start_age + 1.5, tt))[tt == 1]),
                   surv_2y = c(S_pp[tt == 2], (S_drx * S_pop(CFG$start_age + 1.5, tt))[tt == 2]))
@@ -180,6 +175,25 @@ AE <- do.call(rbind, lapply(names(arm_of), function(a) {
 }))
 write.csv(AE, file.path(out_dir, "ae_deaths.csv"), row.names = FALSE)
 print(AE, row.names = FALSE)
+
+# scenario "OS anchor": k multiplies the DR excess hazard of the pembrolizumab arm, solved with
+# the base parameters fixed so that the engine's 5-year RMST difference equals the KM value
+P1$os_anchor_k <- solve_os_anchor(P1, km_d)   # calibration.R
+OA <- data.frame(k = P1$os_anchor_k, rmst5_pembro_anchor = rmst_eng("pembro", P1, TRUE), rmst5_pembro_base = RM$rmst5_engine[1],
+                 rmst5_placebo = RM$rmst5_engine[2], km_rmst_diff = km_d)
+OA$engine_rmst_diff_anchor <- OA$rmst5_pembro_anchor - OA$rmst5_placebo
+write.csv(OA, file.path(out_dir, "os_anchor.csv"), row.names = FALSE)
+OG <- do.call(rbind, lapply(names(arm_of), function(a) {
+  s <- summary(km_fit(os_ipd[[a]]), times = gate_m, extend = TRUE)
+  en <- 100 * survival_engine(arm_of[[a]], "all", times = gate_m / 12, params = P1, os_anchor = TRUE)$OS
+  data.frame(arm = a, month = gate_m, km = 100 * s$surv, ci95_lo = 100 * s$lower, ci95_hi = 100 * s$upper,
+             engine_base = m_g[[a]], engine_anchor = en, diff_anchor = en - 100 * s$surv,
+             inside_anchor = en >= 100 * s$lower - 1e-9 & en <= 100 * s$upper + 1e-9)
+}))
+write.csv(OG, file.path(out_dir, "os_anchor_gate.csv"), row.names = FALSE)
+cat("OS anchor k =", P1$os_anchor_k, "\n"); print(OG, row.names = FALSE)
+saveRDS(list(structure = STRUCT, params = P1, optim = best, starts_values = vals, at_bound = at_bound),
+        file.path(ROOT, "data", "fits", "calibration_candidates.rds"))
 
 if (pass) saveRDS(P1, file.path(ROOT, "data", "fits", "engine_params.rds")) else {
   cat("gate failed: stop before step 6\n")

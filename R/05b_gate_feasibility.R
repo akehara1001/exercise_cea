@@ -1,4 +1,7 @@
 # 05b_gate_feasibility.R
+# Round-3 diagnostic (2026-10-22), kept as a diagnostic only: it uses the round-3 structure
+# (constant PreProg excess rate) and the round-3 gate (b) (relative error <= 20%,
+# CFG$gate_rmst_rel_tol_round3_round3); the round-4 calibration is in 05_calibrate.R.
 # Diagnostic only (no calibration, no change of structure): over a grid of the three calibrated
 # parameters (PreProg excess rate, log-logistic shape, log-logistic median within 10-12 months),
 # does any point meet gate (a) and gate (b) of 05_calibrate.R? Answers whether the failure comes
@@ -25,9 +28,9 @@ km_d <- rmst_km(os_ipd$pembro) - rmst_km(os_ipd$placebo)
 grid <- expand.grid(preprog_rate = exp(seq(log(0.01), log(50), length.out = 25)),
                     dr_shape = exp(seq(log(0.05), log(20), length.out = 25)),
                     dr_median_months = c(10, 11, 12))
-P0 <- engine_params(dr = list(dist = "llogis", shape = 1, scale = 11 / 12), preprog_rate = 1)
+P0 <- engine_params(dr = list(dist = "llogis", shape = 1, scale = 11 / 12), preprog = list(dist = "exp", rate = 1))
 eval_point <- function(i) {
-  P <- P0; P$preprog_rate <- grid$preprog_rate[i]
+  P <- P0; P$preprog <- list(dist = "exp", rate = grid$preprog_rate[i])
   P$dr <- list(dist = "llogis", shape = grid$dr_shape[i], scale = grid$dr_median_months[i] / 12)
   tt <- seq(0, 5, by = 1 / 120)
   r <- lapply(arm_of, function(e) survival_engine(e, "all", times = tt, params = P)$OS)
@@ -52,7 +55,7 @@ stopCluster(cl)
 FE <- cbind(grid, res)
 FE$gate_a_pass <- FE$gate_a_max_outside_pp_pembro <= 1e-9 & FE$gate_a_max_outside_pp_placebo <= 1e-9
 FE$rmst_rel_error <- (FE$rmst_diff - km_d) / km_d
-FE$gate_b_pass <- abs(FE$rmst_rel_error) <= CFG$gate_rmst_rel_tol + 1e-12
+FE$gate_b_pass <- abs(FE$rmst_rel_error) <= CFG$gate_rmst_rel_tol_round3 + 1e-12
 write.csv(FE, file.path(out_dir, "calibration_gate_feasibility.csv"), row.names = FALSE)
 SU <- data.frame(grid_points = nrow(FE), pass_a = sum(FE$gate_a_pass), pass_b = sum(FE$gate_b_pass),
                  pass_both = sum(FE$gate_a_pass & FE$gate_b_pass), km_rmst_diff = km_d,
@@ -70,7 +73,7 @@ eval_th <- function(th) {
   eval_point(1)
 }
 f_a <- function(th) { r <- eval_th(th); max(r[1:2]) }
-f_ab <- function(th) { r <- eval_th(th); max(r[1:2]) + 100 * max(abs((r[3] - km_d) / km_d) - CFG$gate_rmst_rel_tol, 0) }
+f_ab <- function(th) { r <- eval_th(th); max(r[1:2]) + 100 * max(abs((r[3] - km_d) / km_d) - CFG$gate_rmst_rel_tol_round3, 0) }
 grid0 <- grid
 FE$amax <- pmax(FE$gate_a_max_outside_pp_pembro, FE$gate_a_max_outside_pp_placebo)
 refine <- function(f, cand, label) {
@@ -86,7 +89,7 @@ RF <- rbind(refine(f_a, head(FE[order(FE$amax), ], 5), "gate (a) only"),
             refine(f_ab, head(FE[FE$gate_b_pass, ][order(FE$amax[FE$gate_b_pass]), ], 5), "gate (a) with gate (b) imposed"))
 grid <- grid0
 RF$gate_a_pass <- pmax(RF$gate_a_max_outside_pp_pembro, RF$gate_a_max_outside_pp_placebo) <= 1e-9
-RF$gate_b_pass <- abs(RF$rmst_rel_error) <= CFG$gate_rmst_rel_tol + 1e-12
+RF$gate_b_pass <- abs(RF$rmst_rel_error) <= CFG$gate_rmst_rel_tol_round3 + 1e-12
 write.csv(RF, file.path(out_dir, "calibration_gate_feasibility_refined.csv"), row.names = FALSE)
 print(RF, row.names = FALSE)
 SU$refined_pass_a <- any(RF$gate_a_pass); SU$refined_pass_both <- any(RF$gate_a_pass & RF$gate_b_pass)
@@ -97,7 +100,7 @@ print(SU, row.names = FALSE)
 # gate (a) by time point at the best refined point of each search
 PT <- do.call(rbind, lapply(unique(RF$search), function(s) {
   r <- RF[RF$search == s, ]; r <- r[which.min(pmax(r$gate_a_max_outside_pp_pembro, r$gate_a_max_outside_pp_placebo)), ]
-  P <- P0; P$preprog_rate <- r$preprog_rate; P$dr <- list(dist = "llogis", shape = r$dr_shape, scale = r$dr_median_months / 12)
+  P <- P0; P$preprog <- list(dist = "exp", rate = r$preprog_rate); P$dr <- list(dist = "llogis", shape = r$dr_shape, scale = r$dr_median_months / 12)
   do.call(rbind, lapply(names(arm_of), function(a) {
     en <- 100 * survival_engine(arm_of[[a]], "all", times = gate_m / 12, params = P)$OS
     data.frame(search = s, preprog_rate = r$preprog_rate, dr_shape = r$dr_shape, dr_median_months = r$dr_median_months,
