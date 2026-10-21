@@ -1,0 +1,28 @@
+{
+  "_note": "Raster KM figures. Tick label values and the risk table are transcribed from the image (the figure is an embedded JPEG with no text layer); 02b_digitize_raster.py checks the risk table for internal consistency (events = N - at risk - cumulative censored must be non-decreasing).",
+  "figures": [
+    {
+      "fig_id": "Y22_F4A_EFS_TNBC",
+      "pdf": "eScholarship UC item 0f60710w.pdf", "page": 21,
+      "label": "Yau 2022 Lancet Oncol Fig. 4A (HR-negative, HER2-negative)",
+      "endpoint": "EFS", "time_origin": "start of neoadjuvant chemotherapy", "time_unit": "years",
+      "panel_px": [150, 60, 1060, 720],
+      "legend_px": [245, 545, 400, 665],
+      "x_tick_labels": [0, 2, 4, 6, 8, 10, 12],
+      "y_tick_labels": [0, 20, 40, 60, 80, 100],
+      "curves": {
+        "RCB0": [15, 94, 163],
+        "RCB1": [229, 48, 37],
+        "RCB2": [95, 171, 47],
+        "RCB3": [6, 165, 197]
+      },
+      "risk_table_times": [0, 2, 4, 6, 8, 10, 12],
+      "risk_table": {
+        "RCB0": {"n": [770, 632, 381, 197, 125, 74, 42], "cum_censored": [0, 101, 336, 515, 582, 630, 661]},
+        "RCB1": {"n": [212, 173, 114, 56, 38, 24, 16], "cum_censored": [0, 15, 63, 117, 133, 147, 155]},
+        "RCB2": {"n": [590, 397, 239, 142, 94, 59, 27], "cum_censored": [0, 65, 179, 267, 311, 344, 374]},
+        "RCB3": {"n": [202, 72, 42, 23, 18, 11, 3], "cum_censored": [0, 10, 24, 37, 42, 49, 55]}
+      }
+    }
+  ]
+}

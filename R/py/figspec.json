@@ -1,0 +1,42 @@
+{
+  "_note": "Vector KM figures in the main texts. clip = [x0, y0, x1, y1] in PDF points around the main axes, tick labels and risk table. Colours are the stroke RGB of each arm's KM line.",
+  "figures": [
+    {
+      "fig_id": "K20_F2_EFS", "pdf": "NEJMoa1910549.pdf", "page": 8,
+      "label": "Schmid 2020 NEJM Fig. 2", "endpoint": "EFS", "population": "ITT", "analysis": "IA2",
+      "clip": [60, 60, 470, 270],
+      "arms": {"pembro": [0.782, 0.328, 0.233], "placebo": [0.362, 0.530, 0.766]},
+      "row_labels": {"pembro": "^Pembrolizumab", "placebo": "^Placebo"}
+    },
+    {
+      "fig_id": "K22_F1_EFS", "pdf": "NEJMoa2112651.pdf", "page": 5,
+      "label": "Schmid 2022 NEJM Fig. 1", "endpoint": "EFS", "population": "ITT", "analysis": "IA4",
+      "clip": [100, 60, 505, 300],
+      "arms": {"pembro": [0.887, 0.618, 0.246], "placebo": [0.362, 0.530, 0.766]},
+      "row_labels": {"pembro": "^Pembrolizumab", "placebo": "^Placebo"}
+    },
+    {
+      "fig_id": "K22_F3_OS", "pdf": "NEJMoa2112651.pdf", "page": 8,
+      "label": "Schmid 2022 NEJM Fig. 3", "endpoint": "OS", "population": "ITT", "analysis": "IA4",
+      "clip": [62, 60, 467, 300],
+      "arms": {"pembro": [0.887, 0.618, 0.246], "placebo": [0.362, 0.530, 0.766]},
+      "row_labels": {"pembro": "^Pembrolizumab", "placebo": "^Placebo"}
+    },
+    {
+      "fig_id": "K24_F1A_OS", "pdf": "NEJMoa2409932.pdf", "page": 5,
+      "label": "Schmid 2024 NEJM Fig. 1A", "endpoint": "OS", "population": "ITT", "analysis": "IA7",
+      "clip": [130, 60, 540, 282],
+      "arms": {"pembro": [0.887, 0.618, 0.246], "placebo": [0.362, 0.530, 0.766]},
+      "row_labels": {"pembro": "^Pembrolizumab", "placebo": "^Placebo"},
+      "inset": {"clip": [270, 100, 465, 210], "ylabel_min": 80}
+    },
+    {
+      "fig_id": "K24_F2A_EFS", "pdf": "NEJMoa2409932.pdf", "page": 7,
+      "label": "Schmid 2024 NEJM Fig. 2A", "endpoint": "EFS", "population": "ITT", "analysis": "IA7",
+      "clip": [62, 60, 467, 280],
+      "arms": {"pembro": [0.887, 0.618, 0.246], "placebo": [0.362, 0.530, 0.766]},
+      "row_labels": {"pembro": "^Pembrolizumab", "placebo": "^Placebo"},
+      "inset": {"clip": [200, 95, 395, 215], "ylabel_min": 60}
+    }
+  ]
+}
