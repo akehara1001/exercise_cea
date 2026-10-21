@@ -10,9 +10,10 @@
 - 手术时点（landmark）为随机化后 7 个月：新辅助治疗 24 周加术后 6 周的方案上限；重建数据中 pCR 层在 7 个月前没有事件和删失。
 - pCR 比例取自与分层 EFS 曲线同一次分析：2022 年补充材料 Fig. S4（IA4）的 494/784 与 217/390（2024 年补充材料没有按 pCR 分层的 EFS）。
 - 术前（0 至 7 个月）：非 pCR 层的 EFS 事件（主要是无法手术的进展）按该层 KM 的逐月形状进入远处复发。
-- 术后：各臂各 pCR 层用各自的 EFS 模型（步骤 4 选定，`output/phase1/model_selection.csv`）。背景死亡用令和7年简易生命表（女）单列；EFS 的超额风险按各臂首发事件构成（2024 年 Table 1，扣除预期背景死亡）分配到局部区域复发、远处复发和超额死亡。第二原发癌按比例摊入这三类（假设）。
+- 术后：各 pCR 层的 EFS 模型两臂使用同一分布族（2026-10-21 的决定）：两臂都满足准则 1、2 的族中，保留两臂合计 AIC 差 ≤ 4 者，再取 5 年外推检验（与 2023-03-23 截点的 5 年分层 EFS 比较）两臂差值绝对值之和最小的族；次优族保留为情景分析（`output/phase1/family_selection.csv`、`model_selection.csv`，`data/fits/fits.rds` 的 `scenario`）。
+- 背景死亡用令和7年简易生命表（女）单列；EFS 的超额风险按各臂首发事件构成（2024 年 Table 1）分配：局部区域复发与第二原发癌（非远处事件）→ 局部区域复发；远处复发 → 远处复发；无复发死亡（扣除术后无事件人时中预期的背景死亡）→ 死亡；无法手术的进展 → 远处复发（术前阶段）。
 - 局部区域复发到远处复发为常数率（2022 年 Table 1 脚注的局部复发后远处复发例数）；局部区域复发后的死亡只计背景死亡。
-- 远处复发后的超额死亡为复发后时间的 Weibull 风险，两臂共用，通过校准使各臂 OS 与 2024 年 Fig. 1A 吻合（`output/phase1/calibration.csv`）。该参数是吸收了结构假设的有效值，不宜直接解读为临床上的复发后生存。
+- 远处复发后的超额死亡：按 (a) 常数、两臂共用，(b) 随复发后时间变化的 Weibull（隧道态）、两臂共用，(c) 同 (b)、两臂分别估计的顺序校准，门槛为各臂 OS 在第 1 至 5 年的整年时点与 2024 年 Fig. 1A 的 KM 差 ≤ 1 个百分点，前一步达标就停（`R/05_calibrate.R`）。2026-10-21 的结果：三步都不达标，没有引擎默认参数（`data/fits/engine_params.rds` 只在达标时写出）；三种结构的校准值保存在 `data/fits/calibration_candidates.rds`。处理方式待决（`phase1_report.md` 第 8、9 节）。
 
 ### 接口
 
@@ -20,7 +21,8 @@
 
 - `arm`：chemo、exercise、pembro、both；`pcr`：all、pCR、nonpCR；`times`：随机化后年数。
 - 返回各时点的状态占比 EF、LRR、DR、Dead，以及 OS、EFS、DRFS。
-- 接口测试：`R/test_engine_interface.R`，结果 `output/phase1/engine_interface_test.csv`（测试用权重和 HR 只用于检验接口，不是模型输入）。
+- 接口测试：`R/test_engine_interface.R`，结果 `output/phase1/engine_interface_test.csv`（测试用权重和 HR 只用于检验接口，不是模型输入；校准未达标期间使用候选 (b) 的参数）。
+- 计算：逐周期递推改写为闭式（累积和与因果卷积），与原递推的差 < 1e-10（`R/test_engine_vectorized.R`）。
 
 ## 2. 情景 S-JP（日本的术后治疗）
 
@@ -44,5 +46,7 @@
 
 ## 4. 追加验证：按臂 × pCR 分层 EFS 的层内 HR
 
-- 用重建的个体数据计算 pCR 层和 non-pCR 层的 HR（帕博利珠单抗对安慰剂，Cox），与参照值比较，门槛 ≤ 0.03，结果写入 `output/phase1/validation.csv`。
-- 参照值有两组：2022 年正文与补充材料 Fig. S4 印的值（IA4），以及用户提供的值（`input/user_supplied_values.csv`；来源未注明，输入文献中未找到）。结果与解释见 `phase1_report.md`。
+- 用重建的个体数据计算 pCR 层和 non-pCR 层的 HR（帕博利珠单抗对安慰剂，Cox），结果写入 `output/phase1/validation.csv`。
+- 对 2022 年正文与补充材料 Fig. S4 印的值（IA4，与曲线同一截点）：门槛 ≤ 0.03。
+- 对较晚截点（2023-03-23）的值（pCR 0.65、non-pCR 0.72，`input/user_supplied_values.csv`）：不作门槛的跨分析对照（2026-10-21 的决定）；出处暂记为 ESMO 2023 的会议报道，待尾崎确认原始出处后替换。
+- 5 年外推检验（不作门槛，用于选分布族）：分层 EFS 模型外推到随机化后 5 年，与同一较晚截点报告的 5 年分层 EFS 比较。

@@ -1,0 +1,124 @@
+1. Eur J Cancer. 2023 Aug;189:112935. doi: 10.1016/j.ejca.2023.05.023. Epub 2023 
+Jun 7.
+
+Real-world clinical and survival outcomes of patients with early relapsed 
+triple-negative breast cancer from the ESME national cohort.
+
+Grinda T(1), Antoine A(2), Jacot W(3), Cottu PH(4), de la Motte Rouge T(5), 
+Frenel JS(6), Mailliez A(7), Dalenc F(8), Goncalves A(9), Clatot F(10), Mouret 
+Reynier MA(11), Levy C(12), Ferrero JM(13), Desmoulins I(14), Uwer L(15), Petit 
+T(16), Jouannaud C(17), Arnedos M(18), Chevrot M(19), Courtinard C(20), Tredan 
+O(21), Brain E(4), Pérol D(2), Pistilli B(22), Delaloge S(22).
+
+Author information:
+(1)Department of Cancer Medicine, Gustave Roussy, 114 Rue Edouard Vaillant, 
+94800 Villejuif, France; Sorbonne University, Medicine, 21 rue de l'École de 
+médecine, 75006 Paris, France. Electronic address: 
+thomas.grinda@gustaveroussy.fr.
+(2)Department of Biostatistics, DRCI, Centre Léon Bérard, 28 Promenade Léa et 
+Napoléon Bullukian, 69008 Lyon, France.
+(3)Department of Medical Oncology, Institut du Cancer de Montpellier, 
+Montpellier University, INSERM U1194, 208 Rue des Apothicaires, 34298 
+Montpellier, France.
+(4)Department of Medical Oncology, Institut Curie, 26 Rue d'Ulm, 75005 Paris & 
+Saint-Cloud, France.
+(5)Department of Medical Oncology, Centre Eugène Marquis, Avenue de la Bataille 
+Flandres-Dunkerque, 35000 Rennes, France.
+(6)Department of Medical Oncology, Institut de Cancérologie de l'Ouest Pays de 
+Loire, 15 rue André Boquel, 49055 Angers, France.
+(7)Medical Oncology Department, Centre Oscar Lambret, 3 Rue Frédéric Combemale, 
+59000 Lille, France.
+(8)Department of Medical Oncology, Institut Claudius Regaud - IUCT Oncopole, 1 
+Avenue Irène-Joliot-Curie, 31059 Toulouse, France.
+(9)Department of Medical Oncology, Institut Paoli-Calmettes, 232 Boulevard de 
+Sainte-Marguerite, 13009 Marseille, France.
+(10)Department of Medical Oncology, Centre Henri Becquerel, Rue d'Amiens, 76000 
+Rouen, France.
+(11)Department of Medical Oncology, Centre Jean Perrin, 58 Rue Montalembert, 
+63011 Clermont Ferrand, France.
+(12)Department of Medical Oncology, Centre François Baclesse, 3 Avenue du 
+Général Harris, 14000 Caen, France.
+(13)Department of Medical Oncology, Centre Antoine Lacassagne, 06000 Nice, 
+France.
+(14)Department of Medical Oncology, Institut de Cancérologie de Bourgogne, 21079 
+Dijon, France.
+(15)Medical Oncology Department, Institut de Cancérologie de Lorraine, 
+Vandoeuvre-lès-Nancy, 6 Avenue de Bourgogne, 54519 Vandœuvre-lès-Nancy, France.
+(16)Department of Medical Oncology, Centre Paul Strauss, 3 Rue de la Porte de 
+l'Hôpital, 67000 Strasbourg, France.
+(17)Department of Medical Oncology, Institut de Cancérologie Jean-Godinot, 1 Rue 
+du Général Koenig, 51100 Reims, France.
+(18)Department of Medical Oncology, Institut Bergonié, 229 Cours de l'Argonne, 
+33000 Bordeaux, France.
+(19)Department of Research and Development, R&D Unicancer, 101 Rue de Tolbiac, 
+75654 Paris, France.
+(20)Department of Research and Development, R&D Unicancer, 101 Rue de Tolbiac, 
+75654 Paris, France; University of Bordeaux, Inserm, Bordeaux Population Health 
+Research Center, Epicene Team, UMR 1219, 33000 Bordeaux, France.
+(21)Department of Medical Oncology, Centre Léon Bérard, 28 Prom. Léa et Napoléon 
+Bullukian, 69008 Lyon, France.
+(22)Department of Cancer Medicine, Gustave Roussy, 114 Rue Edouard Vaillant, 
+94800 Villejuif, France.
+
+BACKGROUND: Early metastatic relapse of triple-negative breast cancer (mTNBC) 
+after anthracyclins and/or taxanes based (A/T) primary treatment represents a 
+highly aggressive cancer situation requiring urgent characterisation and 
+handling. Epidemio-Strategy-Medico-Economical-Metastatic Breast Cancer 
+(ESME-MBC) database, a multicenter, national, observational cohort (NCT03275311) 
+provides recent data on this entity.
+METHODS: All ESME patients diagnosed between 2008 and 2020 with mTNBC occurring 
+as a relapse after a systemic neoadjuvant/adjuvant taxane and/or 
+anthracycline-based chemotherapy were included. Early relapses were defined by a 
+metastatic diagnosis up to 12 months of the end of neo/adjuvant A/T 
+chemotherapy. We assessed overall survival (OS) and progression-free-survival 
+under first-line treatment (PFS1) by early versus late relapse (≥12 months).
+RESULTS: Patients with early relapse (N = 881, 46%) were younger and had a 
+larger tumour burden at primary diagnosis than those with late relapses 
+(N = 1045). Early relapse rates appeared stable over time. Median OS was 10.1 
+months (95% CI 9.3-10.9) in patients with early relapse versus 17.1 months 
+(95% CI 15.7-18.2) in those with late relapse (adjusted hazard-ratio (aHR): 1.92 
+(95% CI 1.73-2.13); p < 0.001). The median PFS1 was respectively 3.1 months (95% 
+CI 2.9-3.4) and 5.3 months (95% CI 5.1-5.8); (aHR: 1.66; [95% CI 1.50-1.83]; 
+p < 0.001). Among early relapsed patients, a higher number of metastatic sites, 
+visceral disease but not treatment types, were independently associated with a 
+poorer OS.
+CONCLUSION: These real-world data provide strong evidence on the dismal 
+prognosis, higher treatment resistance and major unmet medical need associated 
+with early relapsed mTNBC. Database registration: clinicaltrials.gov Identifier 
+NCT032753.
+
+Copyright © 2023 Elsevier Ltd. All rights reserved.
+
+DOI: 10.1016/j.ejca.2023.05.023
+PMID: 37385070 [Indexed for MEDLINE]
+
+Conflict of interest statement: Declaration of Competing Interest The authors 
+declare the following financial interests/personal relationships which may be 
+considered as potential competing interests: Dr. Delaloge discloses: Financial 
+interests, all to my institution (advisory boards, speaker activities): 
+AstraZeneca, MSD, Rappta, Besins, Gilead, Elsan. Research and clinical research 
+funding, all to my institution: Sanofi, Pfizer, Novartis, AstraZeneca, Roche 
+Genentech, Lilly, Puma, Orion, Amgen, Servier, MSD, BMS, Pierre Fabre, Seagen, 
+Exact Sciences, Rappta, Taiho, European Commission, French government, Fondation 
+ARC. Recipient, Horizon 2020 grant MyPeBS. Non-financial interests, personal: 
+Pfizer, Novartis, AstraZeneca, Seagen. Dr. Frenel reports consulting fees from 
+Pfizer, Lilly, Novartis, Astra Zeneca, Clovis Oncology, GSK, Gilead, Daiichi 
+Sankyo, Seagen; honoraria from Lilly, Novartis, Astra Zeneca, Gilead, Daiichi 
+Sankyo, Seagen; support for attending meetings and/or travel from Pfizer, Lilly, 
+Novartis, Astra Zeneca, Clovis Oncology, GSK, Gilead, Daiichi Sankyo, Seagen. 
+Dr. Jacot reports Grants or contracts from Astra Zeneca and Daiichi Sankyo; 
+Payment or honoraria for lectures from Astra Zeneca, Eisai, BMS, Lilly France, 
+Daiichi Sankyo, MSD, Novartis, Pfizer, Roche, Seagen; Participation on a Data 
+Safety Monitoring Board or Advisory Board from Astra ZenecaEisai, BMS, Lilly 
+France, Daiichi Sankyo, MSD, Novartis, Pfizer, Roche, Seagen. Dr. Pérol reports 
+grants or contracts from Roche and ESME, payment or honoraria for lectures from 
+Astrazeneca, Bayer, Boehringher-Ingelheim, Bristol Myers Squibb, Daiichi-Sankyo, 
+Eli-Lilly, Ipsen, Roche, Novartis, Merck Sharp And Dohme, Takeda, Janssen, 
+Pfizer. Dr. Arnedos reports grants or contracts from Roche and Astrazeneca; 
+Consulting fees from Astra Zeneca, Eli-Lilly, Pfizer; Payment or honoraria for 
+lectures from Gilead and Novartis; Support for attending meetings and/or travel 
+from Astra Zeneca, Daiichi-Sankyo, Eli-Lilly; Participation on a Data Safety 
+Monitoring Board or Advisory Board from Novartis, Astra Zeneca. A Antoine 
+reports a grant from the National French Research and Technology Association 
+(ANRT) and Roche (France) via CIFRE doctoral fellowship no. 2020/1054, outside 
+the submitted work. All remaining authors have nothing to disclose.

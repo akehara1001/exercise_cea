@@ -15,9 +15,14 @@
 #  3. long-term data (EFS only): conditional EFS from 5 to 10 years after surgery, S(10)/S(5),
 #     compared with Yau 2022 TNBC landmarked at 0.5 years (pCR curves vs RCB-0, non-pCR curves
 #     vs RCB-1 to 3 pooled). Yau reports no OS, so OS curves have no criterion 3.
-#  Among models passing 1 and 2, those within 4 AIC units of the best one are kept; for EFS the
-#  one closest to Yau on criterion 3 is chosen, for OS the lowest AIC. AIC/BIC use the all-cause
-#  log-likelihood so that cure (relative-survival) and all-cause models are comparable.
+#  OS (per arm): among models passing 1 and 2, the lowest AIC.
+#  EFS (decision 2026-10-21): both arms of a pCR stratum use the same model (distribution family).
+#  Families must pass 1 and 2 in both arms; among those within 4 units of the best two-arm AIC sum,
+#  the one with the smallest two-arm sum of |5-year EFS - later-cutoff 5-year EFS| is chosen
+#  (5-year extrapolation check; ESMO 2023, data cutoff 2023-03-23; input/user_supplied_values.csv).
+#  The runner-up is kept as a scenario. Criterion 3 (Yau) is reported, not used for the choice.
+#  AIC/BIC use the all-cause log-likelihood so that cure (relative-survival) and all-cause
+#  models are comparable.
 # Outputs: output/phase1/model_comparison.csv, model_selection.csv, fig_fit_*.png,
 #          fig_hazard_*.png; data/fits/fits.rds (specs of all candidates and the selection)
 
@@ -33,15 +38,16 @@ dir.create(file.path(ROOT, "data", "fits"), showWarnings = FALSE)
 ipd <- readRDS(file.path(ROOT, "data", "ipd", "ipd_all.rds"))
 L <- CFG$landmark_months / 12
 
+km_pre <- function(d, Lm) summary(survfit(Surv(time, status) ~ 1, data = d), times = Lm, extend = TRUE)$surv
 landmark <- function(d, Lm) {
   d <- d[d$time > Lm, ]
   data.frame(time = (d$time - Lm) / 12, status = d$status)
 }
 curves <- list(
-  EFS_pembro_pCR    = list(d = landmark(ipd$K22_S4_EFS_pCR_pembro_pCR, CFG$landmark_months), a0 = CFG$start_age + L, kind = "EFS", yau = "RCB0"),
-  EFS_placebo_pCR   = list(d = landmark(ipd$K22_S4_EFS_pCR_placebo_pCR, CFG$landmark_months), a0 = CFG$start_age + L, kind = "EFS", yau = "RCB0"),
-  EFS_pembro_nonpCR = list(d = landmark(ipd$K22_S4_EFS_pCR_pembro_nonpCR, CFG$landmark_months), a0 = CFG$start_age + L, kind = "EFS", yau = "RCB1_3"),
-  EFS_placebo_nonpCR = list(d = landmark(ipd$K22_S4_EFS_pCR_placebo_nonpCR, CFG$landmark_months), a0 = CFG$start_age + L, kind = "EFS", yau = "RCB1_3"),
+  EFS_pembro_pCR    = list(d = landmark(ipd$K22_S4_EFS_pCR_pembro_pCR, CFG$landmark_months), a0 = CFG$start_age + L, kind = "EFS", arm = "pembro", stratum = "pCR", pre = km_pre(ipd$K22_S4_EFS_pCR_pembro_pCR, CFG$landmark_months), yau = "RCB0"),
+  EFS_placebo_pCR   = list(d = landmark(ipd$K22_S4_EFS_pCR_placebo_pCR, CFG$landmark_months), a0 = CFG$start_age + L, kind = "EFS", arm = "placebo", stratum = "pCR", pre = km_pre(ipd$K22_S4_EFS_pCR_placebo_pCR, CFG$landmark_months), yau = "RCB0"),
+  EFS_pembro_nonpCR = list(d = landmark(ipd$K22_S4_EFS_pCR_pembro_nonpCR, CFG$landmark_months), a0 = CFG$start_age + L, kind = "EFS", arm = "pembro", stratum = "nonpCR", pre = km_pre(ipd$K22_S4_EFS_pCR_pembro_nonpCR, CFG$landmark_months), yau = "RCB1_3"),
+  EFS_placebo_nonpCR = list(d = landmark(ipd$K22_S4_EFS_pCR_placebo_nonpCR, CFG$landmark_months), a0 = CFG$start_age + L, kind = "EFS", arm = "placebo", stratum = "nonpCR", pre = km_pre(ipd$K22_S4_EFS_pCR_placebo_nonpCR, CFG$landmark_months), yau = "RCB1_3"),
   OS_pembro  = list(d = data.frame(time = ipd$K24_F1A_OS_pembro$time / 12, status = ipd$K24_F1A_OS_pembro$status), a0 = CFG$start_age, kind = "OS"),
   OS_placebo = list(d = data.frame(time = ipd$K24_F1A_OS_placebo$time / 12, status = ipd$K24_F1A_OS_placebo$status), a0 = CFG$start_age, kind = "OS")
 )
@@ -59,6 +65,8 @@ yau_cond <- sapply(yau, function(d) {
   c(S5 = s[1], S10 = s[2], C5_10 = s[2] / s[1])
 })
 
+us <- read.csv(file.path(ROOT, "input", "user_supplied_values.csv"), stringsAsFactors = FALSE)
+efs5_ref <- function(arm, st) us$value[us$quantity == "efs_5y_pct" & us$arm == arm & us$stratum == st]
 grid_h <- seq(0.02, 30, by = 0.02)
 rows <- list(); fits <- list(); emp_h <- list()
 for (cv in names(curves)) {
@@ -107,46 +115,88 @@ for (cv in names(curves)) {
       cond_5_10 = round(c3, 4),
       yau_cond_5_10 = if (curves[[cv]]$kind == "EFS") round(yau_cond["C5_10", curves[[cv]]$yau], 4) else NA,
       c3_abs_diff = if (curves[[cv]]$kind == "EFS") round(abs(c3 - yau_cond["C5_10", curves[[cv]]$yau]), 4) else NA,
-      cure_fraction = if (sp$family == "cure") round(sp$pars[["theta"]], 4) else NA)
+      cure_fraction = if (sp$family == "cure") round(sp$pars[["theta"]], 4) else NA,
+      efs5_from_randomization = if (curves[[cv]]$kind == "EFS") round(100 * curves[[cv]]$pre * allcause_surv(sp, 5 - L, a0), 3) else NA,
+      efs5_later_cutoff = if (curves[[cv]]$kind == "EFS") efs5_ref(curves[[cv]]$arm, curves[[cv]]$stratum) else NA)
   }
 }
 M <- do.call(rbind, lapply(rows, function(r) { for (nm in setdiff(names(rows[[which.max(sapply(rows, ncol))]]), names(r))) r[[nm]] <- NA; r }))
+M$efs5_diff <- M$efs5_from_randomization - M$efs5_later_cutoff
 
 write.csv(M, file.path(out_dir, "model_comparison.csv"), row.names = FALSE)
 
 # selection
-sel <- list()
-M$eligible <- FALSE; M$within_aic_window <- FALSE; M$selected <- FALSE
+sel <- list(); fam_rows <- list(); scen <- list()
+M$eligible <- FALSE; M$within_aic_window <- FALSE; M$selected <- FALSE; M$scenario <- FALSE
 for (cv in names(curves)) {
   i <- which(M$curve == cv & M$converged)
   M$dAIC[i] <- M$AIC[i] - min(M$AIC[i])
-  el <- i[M$c1_pass[i] & M$c2_pass[i]]
-  M$eligible[el] <- TRUE
+  M$eligible[i] <- M$c1_pass[i] & M$c2_pass[i]
+}
+# OS: per arm
+for (cv in names(curves)[sapply(curves, `[[`, "kind") == "OS"]) {
+  i <- which(M$curve == cv & M$converged)
+  el <- i[M$eligible[i]]
   if (length(el) == 0) stop("no eligible model for ", cv, " - stop and report")
   win <- el[M$AIC[el] <= min(M$AIC[el]) + CFG$aic_window]
   M$within_aic_window[win] <- TRUE
-  pick <- if (curves[[cv]]$kind == "EFS") win[order(M$c3_abs_diff[win], M$AIC[win])][1] else win[which.min(M$AIC[win])]
+  pick <- win[which.min(M$AIC[win])]
   M$selected[pick] <- TRUE
-  n_fail1 <- sum(!M$c1_pass[i]); n_fail2 <- sum(M$c1_pass[i] & !M$c2_pass[i])
-  reason <- sprintf("%d/%d converged; %d fail criterion 1 (KM 95%% CI), %d more fail criterion 2 (hazard shape / below background); %d eligible, %d within %g AIC of the best eligible (%s, AIC %.1f); ",
-                    length(i), length(CANDIDATES), n_fail1, n_fail2, length(el), length(win), CFG$aic_window,
-                    M$model[el][which.min(M$AIC[el])], min(M$AIC[el]))
-  reason <- paste0(reason, if (curves[[cv]]$kind == "EFS")
-    sprintf("chosen as closest to Yau on S(10)/S(5): model %.3f vs Yau %s %.3f", M$cond_5_10[pick], curves[[cv]]$yau, M$yau_cond_5_10[pick])
-    else "chosen as lowest AIC (no external OS data for criterion 3)")
+  reason <- sprintf("%d/%d converged; %d fail criterion 1 (KM 95%% CI), %d more fail criterion 2; %d eligible; lowest AIC (no external OS data for criterion 3)",
+                    length(i), length(CANDIDATES), sum(!M$c1_pass[i]), sum(M$c1_pass[i] & !M$c2_pass[i]), length(el))
   sel[[cv]] <- data.frame(curve = cv, model = M$model[pick], family = M$family[pick], AIC = M$AIC[pick],
                           dAIC_overall = round(M$dAIC[pick], 2), S5 = M$S5[pick], S10 = M$S10[pick], S20 = M$S20[pick],
-                          cure_fraction = M$cure_fraction[pick], reason = reason)
+                          cure_fraction = M$cure_fraction[pick], efs5_diff = NA, scenario_model = NA, reason = reason)
 }
-SEL <- do.call(rbind, sel)
+# EFS: one family per pCR stratum for both arms
+for (st in c("pCR", "nonpCR")) {
+  cvs <- paste0("EFS_", c("pembro", "placebo"), "_", st)
+  mods <- Reduce(intersect, lapply(cvs, function(cv) M$model[M$curve == cv & M$converged]))
+  F <- do.call(rbind, lapply(mods, function(m) {
+    r <- M[M$curve %in% cvs & M$model == m, ]
+    r <- r[match(cvs, r$curve), ]
+    data.frame(stratum = st, model = m, family = r$family[1], eligible_both_arms = all(r$eligible),
+               AIC_pembro = r$AIC[1], AIC_placebo = r$AIC[2], AIC_sum = sum(r$AIC),
+               efs5_diff_pembro = round(r$efs5_diff[1], 3), efs5_diff_placebo = round(r$efs5_diff[2], 3),
+               efs5_abs_diff_sum = round(sum(abs(r$efs5_diff)), 3),
+               yau_c3_abs_diff_pembro = r$c3_abs_diff[1], yau_c3_abs_diff_placebo = r$c3_abs_diff[2])
+  }))
+  F$dAIC_sum <- round(F$AIC_sum - min(F$AIC_sum[F$eligible_both_arms]), 2)
+  el <- which(F$eligible_both_arms)
+  if (length(el) == 0) stop("no family eligible in both arms for ", st, " - stop and report")
+  F$within_aic_window <- F$eligible_both_arms & F$dAIC_sum <= CFG$aic_window
+  ord <- which(F$within_aic_window)[order(F$efs5_abs_diff_sum[F$within_aic_window], F$AIC_sum[F$within_aic_window])]
+  if (length(ord) < 2) ord <- c(ord, setdiff(el[order(F$AIC_sum[el])], ord))
+  F$selected <- seq_len(nrow(F)) == ord[1]
+  F$scenario <- seq_len(nrow(F)) == ord[2]
+  fam_rows[[st]] <- F
+  for (cv in cvs) {
+    pick <- which(M$curve == cv & M$model == F$model[ord[1]])
+    M$selected[pick] <- TRUE
+    M$scenario[M$curve == cv & M$model == F$model[ord[2]]] <- TRUE
+    M$within_aic_window[M$curve == cv & M$model %in% F$model[F$within_aic_window]] <- TRUE
+    reason <- sprintf("same model for both arms of the %s stratum; %d of %d models eligible (criteria 1 and 2) in both arms, %d within %g of the best two-arm AIC sum (%s); chosen with the smallest two-arm sum of |5-year EFS - later-cutoff value| = %.2f points (AIC sum %.1f, dAIC %.1f); runner-up kept as scenario: %s (sum %.2f, dAIC %.1f)",
+                      st, length(el), nrow(F), sum(F$within_aic_window), CFG$aic_window, F$model[el][which.min(F$AIC_sum[el])],
+                      F$efs5_abs_diff_sum[ord[1]], F$AIC_sum[ord[1]], F$dAIC_sum[ord[1]],
+                      F$model[ord[2]], F$efs5_abs_diff_sum[ord[2]], F$dAIC_sum[ord[2]])
+    sel[[cv]] <- data.frame(curve = cv, model = M$model[pick], family = M$family[pick], AIC = M$AIC[pick],
+                            dAIC_overall = round(M$dAIC[pick], 2), S5 = M$S5[pick], S10 = M$S10[pick], S20 = M$S20[pick],
+                            cure_fraction = M$cure_fraction[pick], efs5_diff = round(M$efs5_diff[pick], 3),
+                            scenario_model = F$model[ord[2]], reason = reason)
+    scen[[cv]] <- fits[[cv]][[F$model[ord[2]]]]
+  }
+}
+write.csv(do.call(rbind, fam_rows), file.path(out_dir, "family_selection.csv"), row.names = FALSE)
+SEL <- do.call(rbind, sel)[names(curves), ]
 write.csv(M, file.path(out_dir, "model_comparison.csv"), row.names = FALSE)
 write.csv(SEL, file.path(out_dir, "model_selection.csv"), row.names = FALSE)
 saveRDS(list(curves = lapply(curves, function(x) x[c("a0", "kind")]), specs = fits,
              selected = setNames(lapply(names(curves), function(cv) fits[[cv]][[SEL$model[SEL$curve == cv]]]), names(curves)),
+             scenario = scen,
              yau_cond = yau_cond, landmark_years = L),
         file.path(ROOT, "data", "fits", "fits.rds"))
 write.csv(data.frame(group = colnames(yau_cond), t(round(yau_cond, 4))), file.path(out_dir, "yau_landmark_reference.csv"), row.names = FALSE)
-print(SEL[, c("curve", "model", "AIC", "S5", "S10", "S20", "cure_fraction")], row.names = FALSE)
+print(SEL[, c("curve", "model", "AIC", "S5", "S10", "S20", "cure_fraction", "efs5_diff", "scenario_model")], row.names = FALSE)
 
 # figures: KM with all candidates (selected highlighted) and hazards
 for (cv in names(curves)) {

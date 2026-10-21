@@ -230,12 +230,15 @@ addv(f, "hr", NA, "pCR", val("K22_efs_pcr", "hr"), hr_arm(f, "pembro_pCR", "plac
 addv(f, "hr", NA, "non-pCR", val("K22_efs_nonpcr", "hr"), hr_arm(f, "pembro_nonpCR", "placebo_nonpCR"), 0.03, ref("K22_efs_nonpcr"),
      "reported: unstratified Cox (appendix caption), as reconstructed")
 
-# stratum HRs supplied by the user (2026-10-21), compared with the same reconstructed curves
+# cross-analysis comparison (not a gate, decision 2026-10-21): stratum HRs reported at a later
+# data cutoff (2023-03-23) than the IA4 curves, which cannot be expected to reproduce them
 us <- read.csv(file.path(root, "input", "user_supplied_values.csv"), stringsAsFactors = FALSE)
 for (st in c("pCR", "nonpCR")) {
-  u <- us[us$stratum == st, ]
-  addv(f, "hr", NA, paste0(st, " (user-supplied reference)"), u$hr, hr_arm(f, paste0("pembro_", st), paste0("placebo_", st)), 0.03,
-       "input/user_supplied_values.csv", paste0("reference ", u$hr, " [", u$lo, ", ", u$hi, "]: ", u$source))
+  u <- us[us$stratum == st & us$quantity == "hr", ]
+  addv(f, "hr", NA, paste0(st, " (later cutoff, cross-analysis)"), u$value, hr_arm(f, paste0("pembro_", st), paste0("placebo_", st)), 0.03,
+       "input/user_supplied_values.csv",
+       paste0("not a gate: cross-analysis comparison; reference ", u$value, " [", u$lo, ", ", u$hi, "] from the 2023-03-23 cutoff, the curves are IA4 (2021-03-23)"),
+       gate = FALSE)
 }
 
 # Schmid 2024 appendix Fig. S4, OS by arm x pCR (only deaths and 5-y differences are reported)

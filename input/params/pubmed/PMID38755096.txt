@@ -1,0 +1,101 @@
+1. Ann Oncol. 2024 Jul;35(7):630-642. doi: 10.1016/j.annonc.2024.04.001. Epub
+2024  May 15.
+
+IMpassion132 double-blind randomised phase III trial of chemotherapy with or 
+without atezolizumab for early relapsing unresectable locally advanced or 
+metastatic triple-negative breast cancer.
+
+Dent R(1), André F(2), Gonçalves A(3), Martin M(4), Schmid P(5), Schütz F(6), 
+Kümmel S(7), Swain SM(8), Bilici A(9), Loirat D(10), Villalobos Valencia R(11), 
+Im SA(12), Park YH(13), De Laurentis M(14), Colleoni M(15), Guarneri V(16), 
+Bianchini G(17), Li H(18), Kirchmayer Machackova Z(19), Mouta J(20), Deurloo 
+R(21), Gan X(22), Fan M(23), Mani A(24), Swat A(25), Cortés J(26).
+
+Author information:
+(1)Division of Medical Oncology, National Cancer Center, Singapore; Duke-NUS 
+Medical School, Singapore, Singapore. Electronic address: 
+rebecca.dent@duke-nus.edu.sg.
+(2)Gustave Roussy, Université Paris Saclay, Villejuif.
+(3)Aix Marseille University, CNRS, INSERM, Department of Medical Oncology, 
+Institut Paoli-Calmettes, CRCM, Marseille, France.
+(4)Hospital General Universitario Gregorio Marañón, Universidad Complutense, 
+Madrid, Spain.
+(5)Barts Cancer Institute, Centre for Experimental Cancer Medicine, London, UK.
+(6)University Breast Unit, National Center for Tumor Diseases, Heidelberg.
+(7)Breast Unit, Kliniken Essen-Mitte, Essen; Department of Gynecology with 
+Breast Center, Charité-Universitätsmedizin Berlin, Berlin, Germany.
+(8)Georgetown University Medical Center and MedStar Health, Washington, USA.
+(9)Department of Medical Oncology, Istanbul Medipol University Medical Faculty, 
+Istanbul, Turkey.
+(10)Medical Oncology Department, Institut Curie, Paris, France.
+(11)Centro Medico Dalinde, Mexico City, Mexico.
+(12)Cancer Research Institute, Seoul National University Hospital, Seoul 
+National University College of Medicine, Seoul National University, Seoul.
+(13)Samsung Medical Centre, Sungkyunkwan University School of Medicine, Seoul, 
+Republic of Korea.
+(14)Department of Breast Oncology, IRCCS Istituto Nazionale Tumori Fondazione 
+Giovanni Pascale, Napoli.
+(15)Division of Medical Senology, IEO, European Institute of Oncology, IRCCS, 
+Milan.
+(16)Department of Surgery, Oncology and Gastroenterology (DISCOG), University of 
+Padova, Padova; Medical Oncology 2, Veneto Institute of Oncology IOV-IRCCS, 
+Padova.
+(17)Department of Medical Oncology, IRCCS Ospedale San Raffaele, Milan; 
+Università Vita-Salute San Raffaele, Milan, Italy. Electronic address: 
+https://twitter.com/BianchiniGP.
+(18)Key Laboratory of Carcinogenesis and Translational Research (Ministry of 
+Education), Department of Breast Oncology, Peking University Cancer Hospital and 
+Institute, Beijing, China.
+(19)Global Product Development/Medical Affairs Oncology, F. Hoffmann-La Roche 
+Ltd, Basel, Switzerland.
+(20)Global Product Development/Medical Affairs Oncology, Roche Farmacêutica 
+Química Lda, Amadora, Portugal.
+(21)Translational Medicine Oncology gRED, F. Hoffmann-La Roche Ltd, Basel, 
+Switzerland.
+(22)Product Development Safety, Roche (China) Holding Ltd, Shanghai, China.
+(23)Data Science, Hoffmann-La Roche Limited, Mississauga, Canada.
+(24)Global Product Development, Genentech/Roche, South San Francisco, USA.
+(25)Product Development Oncology, F. Hoffmann-La Roche Ltd, Basel, Switzerland.
+(26)International Breast Cancer Center (IBCC), Pangaea Oncology, Quironsalud 
+Group, Barcelona; Faculty of Biomedical and Health Sciences, Department of 
+Medicine, Universidad Europea de Madrid, Madrid; IOB Madrid, Hospital Beata 
+Maria Ana, Madrid, Spain.
+
+BACKGROUND: Immune checkpoint inhibitors improve the efficacy of first-line 
+chemotherapy for patients with programmed death-ligand 1 (PD-L1)-positive 
+unresectable locally advanced/metastatic triple-negative breast cancer (aTNBC), 
+but randomised data in rapidly relapsing aTNBC are scarce.
+PATIENTS AND METHODS: IMpassion132 (NCT03371017) enrolled patients with aTNBC 
+relapsing <12 months after last chemotherapy dose (anthracycline and taxane 
+required) or surgery for early TNBC. PD-L1 status was centrally assessed using 
+SP142 before randomisation. Initially patients were enrolled irrespective of 
+PD-L1 status. From August 2019, enrolment was restricted to PD-L1-positive 
+(tumour immune cell ≥1%) aTNBC. Patients were randomised 1:1 to placebo or 
+atezolizumab 1200 mg every 21 days with investigator-selected chemotherapy until 
+disease progression or unacceptable toxicity. Stratification factors were 
+chemotherapy regimen (carboplatin plus gemcitabine or capecitabine monotherapy), 
+visceral (lung and/or liver) metastases and (initially) PD-L1 status. The 
+primary endpoint was overall survival (OS), tested hierarchically in patients 
+with PD-L1-positive tumours and then, if positive, in the modified 
+intent-to-treat (mITT) population (all-comer patients randomised pre-August 
+2019). Secondary endpoints included progression-free survival (PFS), objective 
+response rate (ORR) and safety.
+RESULTS: Among 354 patients with rapidly relapsing PD-L1-positive aTNBC, 68% had 
+a disease-free interval of <6 months and 73% received carboplatin/gemcitabine. 
+The OS hazard ratio was 0.93 (95% confidence interval 0.73-1.20, P = 0.59; 
+median 11.2 months with placebo versus 12.1 months with atezolizumab). mITT and 
+subgroup results were consistent. Median PFS was 4 months across treatment arms 
+and populations. ORRs were 28% with placebo versus 40% with atezolizumab. 
+Adverse events (predominantly haematological) were similar between arms and as 
+expected with atezolizumab plus carboplatin/gemcitabine or capecitabine 
+following recent chemotherapy exposure.
+CONCLUSIONS: OS, which is dismal in patients with TNBC relapsing within <12 
+months, was not improved by adding atezolizumab to chemotherapy. A biology-based 
+definition of intrinsic resistance to immunotherapy in aTNBC is urgently needed 
+to develop novel therapies for these patients in next-generation clinical 
+trials.
+
+Copyright © 2024 The Authors. Published by Elsevier Ltd.. All rights reserved.
+
+DOI: 10.1016/j.annonc.2024.04.001
+PMID: 38755096 [Indexed for MEDLINE]

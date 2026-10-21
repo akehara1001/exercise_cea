@@ -5,7 +5,11 @@ source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
 source(file.path(ROOT, "R", "survmodels.R"))
 source(file.path(ROOT, "R", "engine.R"))
 suppressPackageStartupMessages(library(survival))
-P <- readRDS(file.path(ROOT, "data", "fits", "engine_params.rds"))
+# engine default if a calibration passed its gate; otherwise candidate (b) of step 5, for the test only
+ep <- file.path(ROOT, "data", "fits", "engine_params.rds")
+P <- if (file.exists(ep)) readRDS(ep) else readRDS(file.path(ROOT, "data", "fits", "calibration_candidates.rds"))[["b"]]
+cat("parameters:", if (file.exists(ep)) "engine default" else "calibration candidate (b), not adopted", "
+")
 tt <- c(1, 3, 5, 10, 20)
 row <- function(name, r) data.frame(test = name, t(setNames(round(100 * r$EFS, 3), paste0("EFS_", tt, "y"))),
                                     t(setNames(round(100 * r$OS, 3), paste0("OS_", tt, "y"))), check.names = FALSE)

@@ -8,7 +8,8 @@
 #   branch has none by definition.
 # - From surgery (t >= L): EF leaves with the branch EFS model (arm x pCR, landmarked at L).
 #   Background death (life table) is explicit; the excess part of the EFS hazard is split into
-#   EF -> LRR, EF -> DR and EF -> death by the arm's first-event composition.
+#   EF -> LRR (local recurrence and second primary cancer), EF -> DR and EF -> death by the arm's
+#   first-event composition.
 # - LRR -> DR at a constant rate; LRR -> death at the background rate.
 # - DR -> death: background + excess Weibull hazard in time since DR (calibrated, step 5).
 # Exercise hooks for phase 2 (no effect by default):
@@ -48,33 +49,29 @@ run_branch <- function(efs_spec, pre_surv, shares, lrr_dr_rate, dr_shape, dr_sca
   jj <- 0:J
   dHdr <- ((jj + 1) * cycle / dr_scale)^dr_shape - (jj * cycle / dr_scale)^dr_shape
   dHdr[J + 1] <- dHdr[J]                                           # last tunnel keeps its hazard
-  EF <- numeric(K + 1); LR <- numeric(K + 1); DRs <- numeric(K + 1); DE <- numeric(K + 1)
-  ef <- 1; lr <- 0; dr <- numeric(J + 1); de <- 0
-  EF[1] <- 1
+  # Closed form of the cycle-by-cycle recursion (identical results; R/test_engine_vectorized.R
+  # checks it against the loop). Competing hazards within a cycle; DR entrants of a cycle enter
+  # tunnel 0 at its end.
   pLD_H <- lrr_dr_rate * cycle
-  for (k in 1:K) {
-    # EF
-    Ht <- hb[k] + dHL[k] + dHD[k] + dHX[k]
-    pe <- 1 - exp(-Ht)
-    to_L <- ef * pe * dHL[k] / Ht; to_D <- ef * pe * dHD[k] / Ht; to_X <- ef * pe * (hb[k] + dHX[k]) / Ht
-    # LRR
-    Hl <- hb[k] + pLD_H; pl <- 1 - exp(-Hl)
-    l_to_D <- lr * pl * pLD_H / Hl; l_to_X <- lr * pl * hb[k] / Hl
-    # DR tunnels
-    Hd <- hb[k] + dHdr
-    surv_d <- dr * exp(-Hd)
-    d_to_X <- sum(dr) - sum(surv_d)
-    new_dr <- numeric(J + 1)
-    new_dr[2:(J + 1)] <- surv_d[1:J]
-    new_dr[J + 1] <- new_dr[J + 1] + surv_d[J + 1]
-    new_dr[1] <- to_D + l_to_D
-    ef <- ef - to_L - to_D - to_X
-    lr <- lr + to_L - l_to_D - l_to_X
-    dr <- new_dr
-    de <- de + to_X + l_to_X + d_to_X
-    EF[k + 1] <- ef; LR[k + 1] <- lr; DRs[k + 1] <- sum(dr); DE[k + 1] <- de
-  }
-  data.frame(time = t, EF = EF, LRR = LR, DR = DRs, Dead = DE)
+  Ht <- hb + dHL + dHD + dHX
+  EF <- c(1, exp(-cumsum(Ht)))
+  efk <- EF[1:K]
+  pe <- 1 - exp(-Ht)
+  to_L <- efk * pe * dHL / Ht
+  to_D <- efk * pe * dHD / Ht
+  # LRR: lr[k+1] = lr[k] exp(-Hl[k]) + to_L[k]
+  Hl <- hb + pLD_H
+  C <- cumsum(Hl)
+  LR <- c(0, exp(-C) * cumsum(to_L * exp(C)))
+  l_to_D <- LR[1:K] * (1 - exp(-Hl)) * pLD_H / Hl
+  # DR at boundary m: sum over entry boundaries e <= m of inflow x background survival from e to
+  # m x excess survival after m - e cycles in DR
+  Bc <- c(0, cumsum(hb))
+  Hx <- c(0, cumsum(dHdr[pmin(0:(K - 1), J) + 1]))
+  w <- c(0, to_D + l_to_D) * exp(Bc)
+  conv <- stats::filter(c(rep(0, K), w), exp(-Hx), method = "convolution", sides = 1)   # causal convolution
+  DRs <- exp(-Bc) * as.vector(conv)[(K + 1):(2 * K + 1)]
+  data.frame(time = t, EF = EF, LRR = LR, DR = DRs, Dead = 1 - EF - LR - DRs)
 }
 
 # parameter set for the engine, built from the selected fits and the data
@@ -98,18 +95,24 @@ engine_params <- function(fits = readRDS(file.path(ROOT, "data", "fits", "fits.r
     mm <- 0:Lm
     p$pre_surv[[a]] <- lapply(c(pCR = "pCR", nonpCR = "nonpCR"), function(b)
       data.frame(time = mm / 12, surv = km_at(ipd[[paste0("K22_S4_EFS_pCR_", a, "_", b)]], mm)))
-    # first-event composition after surgery (2024 Table 1, IA7): local, distant, death; second
-    # primary cancers are spread over the three in proportion; progression precluding surgery is
-    # the pre-surgery phase. Background deaths expected in the EF person-time after surgery are
-    # removed from the death count so that only excess deaths are shared out.
+    # first-event composition (2024 Table 1, IA7), decision 2026-10-21: local recurrence and
+    # second primary cancer (a non-distant event) -> LRR; distant recurrence -> DR; death without
+    # recurrence -> death; progression precluding surgery is the pre-surgery phase (-> DR).
+    # Background deaths expected in the EF person-time after surgery are removed from the death
+    # count, because background mortality is modelled separately.
     d <- ipd[[paste0("K24_F2A_EFS_", a)]]
     d <- d[d$time > Lm, ]
     e_bg <- sum(H_pop(CFG$start_age + L, (d$time - Lm) / 12))
     loc <- val("K24_efs_composition", paste0("local_", a))
+    sp <- val("K24_efs_composition", paste0("second_primary_", a))
     dis <- val("K24_efs_composition", paste0("distant_", a))
     dth <- max(val("K24_efs_composition", paste0("death_", a)) - e_bg, 0)
-    tot <- loc + dis + dth
-    p$shares[[a]] <- c(LRR = loc / tot, DR = dis / tot, death = dth / tot, expected_background_deaths = e_bg)
+    tot <- loc + sp + dis + dth
+    p$shares[[a]] <- c(LRR = (loc + sp) / tot, DR = dis / tot, death = dth / tot, expected_background_deaths = e_bg)
+    p$composition[[a]] <- c(any = val("K24_efs_composition", paste0("any_", a)),
+                            progression_precluding_surgery = val("K24_efs_composition", paste0("prog_", a)),
+                            local = loc, distant = dis, second_primary = sp,
+                            death = val("K24_efs_composition", paste0("death_", a)))
   }
   # LRR -> DR: 2022 Table 1 footnote, local recurrences followed by distant recurrence; exposure
   # = IA4 median follow-up minus the median time of the EFS events at IA4

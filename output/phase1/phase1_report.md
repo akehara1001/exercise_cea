@@ -1,20 +1,21 @@
 # 第1阶段（生存引擎）报告
 
-生成时间：2026-10-21 22:19。由 `R/99_phase1_report.R` 从代码输出生成，表中数字均读自 `output/` 与 `data/` 下的文件。模型规格见 `docs/model_spec.md`。
+生成时间：2026-10-21 22:58。由 `R/99_phase1_report.R` 从代码输出生成，表中数字均读自 `output/`、`data/` 与 `input/` 下的文件。模型规格见 `docs/model_spec.md`。
 
 ## 状态
 
-- 已完成：步骤 1（清点，含两份补充材料）、2（数字化）、3（重建与验证）、一致性检查、步骤 4（拟合与选择）、步骤 5（校准）；引擎接口已按 `docs/model_spec.md` 扩展。
-- 验证共 71 项，其中门槛项 64 项，**1 项不达标**；非门槛项（Yau 的 HR 与事件数）4 项不符，按 2026-10-21 的决定只报告。
-- 按规则在此停止：步骤 6（bootstrap）与 7（生存引擎的最终输出）未进行。
+- 已完成：步骤 1 至 4（含 2026-10-21 的修正：层内 HR 改为跨分析对照、5 年外推检验、同一层两臂同一分布族、第二原发癌归入局部区域复发）与一致性检查。
+- 重建与一致性的门槛项 62 项，不达标 0 项。
+- **步骤 5（校准）按 (a)、(b)、(c) 依次尝试，三步都未达到门槛（各臂 OS 在第 1 至 5 年的整年时点与 KM 差 ≤ 1 个百分点）。按规则停止，步骤 6、7 未进行。** 详见第 8 节。
 
-### 不达标的门槛项
-
-| curve | check | unit | reported | reconstructed | abs_diff | tolerance | reference | note |
-|---|---|---|---|---|---|---|---|---|
-| K22_S4_EFS_pCR | hr | pCR (user-supplied reference) | 0.65 | 0.7224 | 0.0724 | 0.03 | input/user_supplied_values.csv | reference 0.65 [0.39, 1.08]: user instruction 2026-10-21 (stratum HR for the EFS by arm x pCR check); source not given and not found in input/papers |
-
-同一组重建曲线对 2022 年补充材料 Fig. S4（IA4）印的层内 HR：pCR 原文 0.73、重建 0.7224（差 0.0076）；non-pCR 原文 0.7、重建 0.7117（差 0.0117）。用户提供的参照值不在输入文献中；其 pCR 层 95% CI 上限比 IA4 窄，可能来自更晚的数据截点。如果参照值来自另一次分析，用 IA4 的曲线无法复现它：需要该分析的按臂 × pCR 分层 KM 图，或改为不作门槛的跨分析对照。
+| structure | arm | max_abs_diff | failing_points |
+|---|---|---|---|
+| a | pembro | 2.998 | 12 个月 1.38；24 个月 3.00；36 个月 2.36；48 个月 1.12 |
+| b | pembro | 1.663 | 24 个月 1.65；36 个月 1.66；48 个月 1.18 |
+| c | pembro | 0.782 | 无 |
+| a | placebo | 2.335 | 24 个月 2.04；60 个月 -2.34 |
+| b | placebo | 2.168 | 12 个月 -2.17；60 个月 -1.23 |
+| c | placebo | 1.668 | 12 个月 -1.67 |
 
 ## 1. 输入文件
 
@@ -29,7 +30,7 @@
 | nejmoa2112651_appendix.pdf | 1697609 | 32 | 9c763e0ce6eff9127bde821ab33abec9a27a74c4195e2dda8d1b358562e39c99 |
 | nejmoa2409932_appendix.pdf | 1148372 | 21 | 05e6a362b2ebb49d7c1d8101120c2e6d8254fb8bc216a1534a02733c6e0c317c |
 
-生命表：令和7(2025)年簡易生命表（女），`input/lifetable/SOURCE.md`、`data/lifetable_female_2025.csv`。
+生命表：令和7(2025)年簡易生命表（女），`input/lifetable/SOURCE.md`、`data/lifetable_female_2025.csv`。用户提供与较晚截点的数值：`input/user_supplied_values.csv`。复发后生存的文献摘要：`input/params/pubmed/`。
 
 ## 2. 清点表（`output/phase1/inventory.csv`）
 
@@ -64,7 +65,7 @@ EFS 首次事件构成：
 | K22_F1_EFS | first events (pembro/placebo): progression precluding surgery 14/15, local 28/17, distant 60/51, second primary 6/4, death 15/6; local followed by distant 13/9 |
 | K24_F2A_EFS | first events (pembro/placebo): progression precluding surgery 14/15, local 33/20, distant 77/56, second primary 16/10, death 19/13 |
 
-两份补充材料的全部图（8 张，其中 KM 图 3 张；2024 年补充材料没有按 pCR 分层的 EFS）：
+两份补充材料的全部图（8 张，其中 KM 图 3 张；2024 年补充材料没有按 pCR 分层的 EFS，故分层 EFS 与 pCR 比例都取 2022 年 IA4）：
 
 | pdf | figure | page | title | kaplan_meier | by_pcr |
 |---|---|---|---|---|---|
@@ -77,11 +78,11 @@ EFS 首次事件构成：
 | nejmoa2409932_appendix.pdf | S3 | 14 | Additional Subgroup Analyses of Event-Free Survival | False | False |
 | nejmoa2409932_appendix.pdf | S4 | 15 | Kaplan-Meier Estimates of Overall Survival by Pathological Complete Response (ypT0/Tis ypN0) According to Treatment Group in the Intention-to-Treat Population | True | True |
 
-栅格图里印的数字（风险表、里程碑、HR）从图像转录；与正文文字层的同一数值交叉核对 19 项，不一致 0 项（`data/transcription_checks.csv`）。报告值共 203 个，均由正则从 PDF 文字层抽取（`data/reported_values.csv`）。
+栅格图中印的数字从图像转录，与正文文字层交叉核对 19 项，不一致 0 项（`data/transcription_checks.csv`）。报告值 203 个由正则从 PDF 文字层抽取（`data/reported_values.csv`）。
 
 ## 3. 数字化（`data/digitized/`）
 
-矢量图：PyMuPDF `get_drawings()` 读取阶梯路径。x 轴用全部带标签刻度最小二乘；y 轴用 0% 与 100% 两端刻度锚定（2024 年两图的 100% 刻度偏离等距，插图读数支持两端锚定）。
+矢量图：PyMuPDF `get_drawings()` 读取阶梯路径；x 轴用全部带标签刻度最小二乘，y 轴用 0% 与 100% 两端锚定（2024 年两图的 100% 刻度偏离等距，插图读数支持两端锚定）。
 
 | fig_id | arm | legend_colour_matches_spec | n_vertices | n_censor_marks | s_first | t_last | calib_resid_x | calib_resid_y | inset_median_abs_diff |
 |---|---|---|---|---|---|---|---|---|---|
@@ -96,7 +97,7 @@ EFS 首次事件构成：
 | K24_F2A_EFS | pembro | no legend sample | 293 | 625 | 100.0364 | 83.607 | 0.0014 | 0.1172 | 0.0172 |
 | K24_F2A_EFS | placebo | no legend sample | 238 | 276 | 100.0364 | 83.109 | 0.0014 | 0.1172 | 0.0172 |
 
-栅格图：在嵌入图像的原生像素上做颜色分离（以更高 dpi 栅格化只会插值）。线条用单调阶梯的动态规划追踪；Yau 的「+」删失标记上下对称，NEJM 补充材料的删失标记只向上延伸、密集处连成色块，所以 NEJM 图追踪色块下沿。深色曲线的抗锯齿边缘会被误判为同色系浅色曲线，浅色类在深色曲线 2 像素内的像素剔除。
+栅格图：嵌入图像原生像素上的颜色分离（更高 dpi 栅格化只会插值）。线条用单调阶梯的动态规划追踪；Yau 的「+」删失标记上下对称，NEJM 补充材料的删失标记只向上延伸并在密集处连成色块，故追踪色块下沿；深色曲线的抗锯齿边缘会被分到同色系浅色曲线，浅色类在深色曲线 2 像素内的像素剔除。
 
 | fig_id | arm | native_px | dpi_as_placed | column_coverage | n_steps | t_last | s_last | calib_resid_x | calib_resid_y |
 |---|---|---|---|---|---|---|---|---|---|
@@ -121,7 +122,9 @@ EFS 首次事件构成：
 
 Guyot 2012 算法（`R/guyot.R`；`IPDfromKM::getIPD` 交叉核对）。重建时不输入报告的总事件数。门槛：里程碑差 ≤ 1 个百分点；Cox HR 差 ≤ 0.03；事件数差 ≤ 2%。
 
-Yau 2022 只以里程碑为门槛（2026-10-21 的决定）。HR 不作门槛的理由：原文 HR 出自 12 个队列汇总、含队列效应的模型并使用全部随访，重建数据只到 12 年、只能做单一 Cox，估计量不同。事件数不作门槛的理由：参照值是从风险表推算的 12 年累计事件数（人数 − 在险 − 累计删失），原文没有报告。
+不作门槛、只报告的项目：
+- Yau 2022 的 HR 与事件数（2026-10-21 的决定）。HR：原文出自 12 个队列汇总、含队列效应的模型并使用全部随访，重建数据只到 12 年、只能做单一 Cox，估计量不同。事件数：参照值是从风险表推算的 12 年累计事件数，原文没有报告。
+- 按 pCR 分层的 EFS 层内 HR 与较晚截点值（pCR 0.65 [0.39, 1.08]、non-pCR 0.72 [0.54, 0.96]）的跨分析对照。该参照值来自 2023-03-23 截点（中位随访 63.1 个月），比曲线所属的 IA4（2021-03-23）晚，IA4 的曲线不可能与之吻合；IA4 原文印的 0.73 与 0.70 已在 0.012 以内复现（见下表 K22_S4_EFS_pCR 的 hr 行）。出处暂记为 ESMO 2023 的会议报道（用户给出的网址现已重定向到网站首页；同一数值见 OncLive 2023-10-20 报道，引 Ann Oncol 2023;34(S2):S1256-S1257），待尾崎确认原始出处后替换。
 
 | curve | check | time | unit | reported | reconstructed | abs_diff | tolerance | pass | gate | reference |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -188,8 +191,8 @@ Yau 2022 只以里程碑为门槛（2026-10-21 的决定）。HR 不作门槛的
 | K22_S4_EFS_pCR_placebo_nonpCR | events |  |  |  77.00 |  77.0000 | 0.0000 | 2% (1.54) | 达标 | 是 | NEJMoa2112651 p6 |
 | K22_S4_EFS_pCR | hr |  | pCR |   0.73 |   0.7224 | 0.0076 | 0.03 | 达标 | 是 | NEJMoa2112651 p6 |
 | K22_S4_EFS_pCR | hr |  | non-pCR |   0.70 |   0.7117 | 0.0117 | 0.03 | 达标 | 是 | NEJMoa2112651 p6 |
-| K22_S4_EFS_pCR | hr |  | pCR (user-supplied reference) |   0.65 |   0.7224 | 0.0724 | 0.03 | **不达标** | 是 | input/user_supplied_values.csv |
-| K22_S4_EFS_pCR | hr |  | nonpCR (user-supplied reference) |   0.72 |   0.7117 | 0.0083 | 0.03 | 达标 | 是 | input/user_supplied_values.csv |
+| K22_S4_EFS_pCR | hr |  | pCR (later cutoff, cross-analysis) |   0.65 |   0.7224 | 0.0724 | 0.03 | **不达标** | 否（只报告） | input/user_supplied_values.csv |
+| K22_S4_EFS_pCR | hr |  | nonpCR (later cutoff, cross-analysis) |   0.72 |   0.7117 | 0.0083 | 0.03 | 达标 | 否（只报告） | input/user_supplied_values.csv |
 | K24_S4_OS_pCR_pembro_pCR | events |  |  |  27.00 |  27.0000 | 0.0000 | 2% (0.54) | 达标 | 是 | NEJMoa2409932 p6 |
 | K24_S4_OS_pCR_pembro_nonpCR | events |  |  |  88.00 |  88.0000 | 0.0000 | 2% (1.76) | 达标 | 是 | NEJMoa2409932 p6 |
 | K24_S4_OS_pCR_placebo_pCR | events |  |  |  17.00 |  17.0000 | 0.0000 | 2% (0.34) | 达标 | 是 | NEJMoa2409932 p6 |
@@ -226,11 +229,11 @@ Yau 2022 只以里程碑为门槛（2026-10-21 的决定）。HR 不作门槛的
 | K24_S4_OS_pCR_pembro_nonpCR | 289 |  88 |  88 | 0.607 | 0.269 | 1 |  | 201 |
 | K24_S4_OS_pCR_placebo_nonpCR | 173 |  68 |  67 | 0.273 | 0.526 | 2 |  | 105 |
 
-2022 和 2024 年正文矢量图上每个删失病例都画了标记；每个风险区间内的「图上标记数/Guyot 删失数」见 `validation_diagnostics.csv`。图：`fig_validation_*.png`。
+图：`fig_validation_*.png`。
 
 ## 5. 一致性检查（`output/phase1/consistency_check.csv`）
 
-2022 年 Fig. S4 的分层 KM 按 pCR 比例（帕博利珠单抗 0.6301，安慰剂 0.5564）加权混合，与整体 EFS 比较，时点为 3 个月至 42 个月（四层在险均 ≥ 20），门槛 1 个百分点。不达标 0 处。
+2022 年 Fig. S4 的分层 KM 按 pCR 比例（帕博利珠单抗 0.6301，安慰剂 0.5564）加权混合，与整体 EFS 比较（3 至 42 个月，四层在险均 ≥ 20），门槛 1 个百分点，不达标 0 处。
 
 | arm | comparator | max_abs_diff |
 |---|---|---|
@@ -245,11 +248,44 @@ Yau 2022 只以里程碑为门槛（2026-10-21 的决定）。HR 不作门槛的
 
 数据：4 条 EFS（2022 年 Fig. S4，臂 × pCR）在手术时点（随机化后 7 个月）做 landmark；2 条 OS（2024 年 Fig. 1A，按臂）从随机化起。候选 15 个：6 个标准分布、6 个 RP 样条（1 至 3 个内结点，累积风险与累积比值尺度）、3 个相对生存混合治愈模型（Weibull、对数正态、对数 logistic；背景为日本女性生命表，治愈比例作用于超额死亡）。AIC/BIC 用全因对数似然，使治愈模型与全因模型可比。
 
-选择规则（拟合前固定）：
-1. 与 KM 的重合：模型曲线落在 KM 逐点 95% CI 内的月份比例 ≥ 0.95（在险 ≥ 20 的时点）。最初定为全部时点（100%），结果 6 条中有 3 条没有任何候选达到；逐点 95% CI 下真实曲线也约有 5% 的时点在区间外，故第一次运行后改为 95%。
+准则：
+1. 与 KM 的重合：模型曲线落在 KM 逐点 95% CI 内的月份比例 ≥ 0.95（在险 ≥ 20 的时点）。最初设为 100% 是设定错误：逐点 95% 置信区间本来就预期约 5% 的点落在区间外；首轮运行后已修正为 95%。
 2. 风险形状：超额风险不晚于术后 3 年达峰，3→5→10 年递减（EFS）；OS 为 5→10→20 年递减；10 年和 20 年的全因风险不低于背景。
-3. 外部长期数据（只用于 EFS）：术后 5 至 10 年的条件 EFS S(10)/S(5)，与 Yau 2022 TNBC 在 0.5 年 landmark 后的同一量比较（pCR 对 RCB-0，非 pCR 对 RCB-1 至 3 合并）。Yau 没有 OS，OS 无第 3 条。
-满足 1 和 2 的模型中保留 AIC 差 ≤ 4 者；EFS 取第 3 条最接近 Yau 的，OS 取 AIC 最小的。
+3. 10 年、20 年外推与外部长期数据：Yau 2022 TNBC 在手术时点 landmark 后的条件 EFS S(10)/S(5)（pCR 对 RCB-0，非 pCR 对 RCB-1 至 3 合并）。下表列出，供参照。
+选择（2026-10-21 的决定）：EFS 同一 pCR 层两臂用同一分布族。两臂都满足 1 和 2 的族中，保留两臂合计 AIC 与最优者相差 ≤ 4 的族，再取 5 年外推检验中两臂差值绝对值之和最小的族；次优者保留为情景分析。OS 按臂取满足 1 和 2 的 AIC 最小者。
+
+5 年外推检验（不作门槛）：所选分层 EFS 模型外推到随机化后 5 年（术前 KM × 术后模型），与较晚截点（2023-03-23）报告的 5 年分层 EFS 比较。
+
+| curve | model | efs5_from_randomization | efs5_later_cutoff | efs5_diff |
+|---|---|---|---|---|
+| EFS_pembro_pCR | weibull | 92.21 | 92.2 | 0.01 |
+| EFS_placebo_pCR | weibull | 88.95 | 88.2 | 0.75 |
+| EFS_pembro_nonpCR | cure_weibull | 62.39 | 62.6 | -0.21 |
+| EFS_placebo_nonpCR | cure_weibull | 49.53 | 52.3 | -2.77 |
+
+各层的分布族比较（`family_selection.csv`，两臂都合格的族）：
+
+| stratum | model | AIC_sum | dAIC_sum | within_aic_window | efs5_diff_pembro | efs5_diff_placebo | efs5_abs_diff_sum | selected | scenario |
+|---|---|---|---|---|---|---|---|---|---|
+| nonpCR | lnorm | 790.72 | 0.00 | TRUE | -3.390 |  -8.179 | 11.569 | FALSE | FALSE |
+| nonpCR | cure_weibull | 791.64 | 0.92 | TRUE | -0.210 |  -2.767 |  2.977 | TRUE | FALSE |
+| nonpCR | cure_llogis | 792.42 | 1.70 | TRUE | -1.670 |  -5.085 |  6.755 | FALSE | TRUE |
+| nonpCR | llogis | 792.54 | 1.82 | TRUE | -4.956 | -10.464 | 15.420 | FALSE | FALSE |
+| nonpCR | gengamma | 794.59 | 3.87 | TRUE | -3.246 |  -8.981 | 12.227 | FALSE | FALSE |
+| nonpCR | rp_hazard_k2 | 794.65 | 3.93 | TRUE | -2.350 |  -5.098 |  7.448 | FALSE | FALSE |
+| nonpCR | rp_odds_k1 | 794.65 | 3.93 | TRUE | -3.600 |  -8.560 | 12.160 | FALSE | FALSE |
+| nonpCR | cure_lnorm | 794.68 | 3.96 | TRUE | -2.984 |  -7.958 | 10.942 | FALSE | FALSE |
+| nonpCR | rp_odds_k2 | 794.77 | 4.05 | FALSE | -2.265 |  -4.944 |  7.209 | FALSE | FALSE |
+| nonpCR | rp_hazard_k1 | 795.31 | 4.59 | FALSE | -3.872 |  -9.038 | 12.910 | FALSE | FALSE |
+| nonpCR | weibull | 796.10 | 5.38 | FALSE | -5.870 | -12.547 | 18.417 | FALSE | FALSE |
+| nonpCR | rp_hazard_k3 | 796.80 | 6.08 | FALSE | -1.099 |  -5.041 |  6.140 | FALSE | FALSE |
+| nonpCR | rp_odds_k3 | 796.88 | 6.16 | FALSE | -1.030 |  -4.806 |  5.836 | FALSE | FALSE |
+| pCR | cure_weibull | 404.90 | 0.00 | TRUE |  0.250 |   3.887 |  4.137 | FALSE | FALSE |
+| pCR | cure_lnorm | 405.53 | 0.63 | TRUE |  0.356 |   3.235 |  3.591 | FALSE | FALSE |
+| pCR | cure_llogis | 405.53 | 0.63 | TRUE |  0.261 |   3.386 |  3.647 | FALSE | FALSE |
+| pCR | llogis | 406.32 | 1.42 | TRUE |  0.061 |   0.790 |  0.851 | FALSE | TRUE |
+| pCR | weibull | 406.51 | 1.61 | TRUE |  0.012 |   0.753 |  0.765 | TRUE | FALSE |
+| pCR | exp | 408.56 | 3.66 | TRUE | -1.396 |  -0.661 |  2.057 | FALSE | FALSE |
 
 Yau 的参照值（`yau_landmark_reference.csv`）：
 
@@ -258,159 +294,242 @@ Yau 的参照值（`yau_landmark_reference.csv`）：
 | RCB0 | 0.9023 | 0.8574 | 0.9503 |
 | RCB1_3 | 0.6045 | 0.5598 | 0.9260 |
 
-选定的模型与理由（`model_selection.csv`）：
+选定的模型与理由（`model_selection.csv`；S5/S10/S20 为全因生存 %，EFS 为术后年数，OS 为随机化后年数）：
 
-| curve | model | AIC | S5 | S10 | S20 | cure_fraction | reason |
-|---|---|---|---|---|---|---|---|
-| EFS_pembro_pCR | llogis |  259.70 | 91.63 | 87.17 | 80.83 |  | 15/15 converged; 0 fail criterion 1 (KM 95% CI), 3 more fail criterion 2 (hazard shape / below background); 12 eligible, 10 within 4 AIC of the best eligible (llogis, AIC 259.7); chosen as closest to Yau on S(10)/S(5): model 0.951 vs Yau RCB0 0.950 |
-| EFS_placebo_pCR | lnorm |  145.28 | 88.48 | 82.89 | 75.83 |  | 15/15 converged; 1 fail criterion 1 (KM 95% CI), 7 more fail criterion 2 (hazard shape / below background); 7 eligible, 7 within 4 AIC of the best eligible (cure_weibull, AIC 143.2); chosen as closest to Yau on S(10)/S(5): model 0.937 vs Yau RCB0 0.950 |
-| EFS_pembro_nonpCR | cure_llogis |  460.89 | 63.06 | 57.10 | 51.47 | 0.5007 | 15/15 converged; 1 fail criterion 1 (KM 95% CI), 1 more fail criterion 2 (hazard shape / below background); 13 eligible, 13 within 4 AIC of the best eligible (lnorm, AIC 459.5); chosen as closest to Yau on S(10)/S(5): model 0.905 vs Yau RCB1_3 0.926 |
-| EFS_placebo_nonpCR | cure_weibull |  331.31 | 53.03 | 51.82 | 49.70 | 0.5283 | 15/15 converged; 0 fail criterion 1 (KM 95% CI), 1 more fail criterion 2 (hazard shape / below background); 14 eligible, 14 within 4 AIC of the best eligible (lnorm, AIC 331.2); chosen as closest to Yau on S(10)/S(5): model 0.977 vs Yau RCB1_3 0.926 |
-| OS_pembro | cure_lnorm | 1041.23 | 86.42 | 83.27 | 79.42 | 0.8406 | 15/15 converged; 6 fail criterion 1 (KM 95% CI), 5 more fail criterion 2 (hazard shape / below background); 4 eligible, 4 within 4 AIC of the best eligible (cure_lnorm, AIC 1041.2); chosen as lowest AIC (no external OS data for criterion 3) |
-| OS_placebo | rp_hazard_k2 |  702.91 | 81.10 | 70.20 | 55.04 |  | 15/15 converged; 7 fail criterion 1 (KM 95% CI), 0 more fail criterion 2 (hazard shape / below background); 8 eligible, 7 within 4 AIC of the best eligible (rp_hazard_k2, AIC 702.9); chosen as lowest AIC (no external OS data for criterion 3) |
+| curve | model | AIC | S5 | S10 | S20 | cure_fraction | efs5_diff | scenario_model | reason |
+|---|---|---|---|---|---|---|---|---|---|
+| EFS_pembro_pCR | weibull |  259.71 | 91.56 | 86.83 | 79.77 |  |  0.012 | llogis | same model for both arms of the pCR stratum; 6 of 15 models eligible (criteria 1 and 2) in both arms, 6 within 4 of the best two-arm AIC sum (cure_weibull); chosen with the smallest two-arm sum of \|5-year EFS - later-cutoff value\| = 0.76 points (AIC sum 406.5, dAIC 1.6); runner-up kept as scenario: llogis (sum 0.85, dAIC 1.4) |
+| EFS_placebo_pCR | weibull |  146.80 | 87.92 | 80.30 | 68.82 |  |  0.753 | llogis | same model for both arms of the pCR stratum; 6 of 15 models eligible (criteria 1 and 2) in both arms, 6 within 4 of the best two-arm AIC sum (cure_weibull); chosen with the smallest two-arm sum of \|5-year EFS - later-cutoff value\| = 0.76 points (AIC sum 406.5, dAIC 1.6); runner-up kept as scenario: llogis (sum 0.85, dAIC 1.4) |
+| EFS_pembro_nonpCR | cure_weibull |  460.33 | 65.18 | 63.12 | 60.45 | 0.6426 | -0.210 | cure_llogis | same model for both arms of the nonpCR stratum; 13 of 15 models eligible (criteria 1 and 2) in both arms, 8 within 4 of the best two-arm AIC sum (lnorm); chosen with the smallest two-arm sum of \|5-year EFS - later-cutoff value\| = 2.98 points (AIC sum 791.6, dAIC 0.9); runner-up kept as scenario: cure_llogis (sum 6.75, dAIC 1.7) |
+| EFS_placebo_nonpCR | cure_weibull |  331.31 | 53.03 | 51.82 | 49.70 | 0.5283 | -2.767 | cure_llogis | same model for both arms of the nonpCR stratum; 13 of 15 models eligible (criteria 1 and 2) in both arms, 8 within 4 of the best two-arm AIC sum (lnorm); chosen with the smallest two-arm sum of \|5-year EFS - later-cutoff value\| = 2.98 points (AIC sum 791.6, dAIC 0.9); runner-up kept as scenario: cure_llogis (sum 6.75, dAIC 1.7) |
+| OS_pembro | cure_lnorm | 1041.23 | 86.42 | 83.27 | 79.42 | 0.8406 |  |  | 15/15 converged; 6 fail criterion 1 (KM 95% CI), 5 more fail criterion 2; 4 eligible; lowest AIC (no external OS data for criterion 3) |
+| OS_placebo | rp_hazard_k2 |  702.91 | 81.10 | 70.20 | 55.04 |  |  |  | 15/15 converged; 7 fail criterion 1 (KM 95% CI), 0 more fail criterion 2; 8 eligible; lowest AIC (no external OS data for criterion 3) |
 
-S5/S10/S20 为所选模型的全因生存（%）：EFS 为术后年数，OS 为随机化后年数。
+全部候选（`model_comparison.csv`）：
 
-全部候选的比较（`model_comparison.csv`）：
-
-| curve | model | AIC | BIC | c1_frac_inside_ci | c1_max_abs_diff_pp | c1_pass | peak_excess_haz_year | c2_pass | S5 | S10 | S20 | cond_5_10 | yau_cond_5_10 | within_aic_window | selected |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| EFS_pembro_pCR | exp |  262.49 |  266.70 | 1.0000 | 1.240 | TRUE |  0.02 | TRUE | 89.65 | 80.38 | 64.61 | 0.8965 | 0.9503 | TRUE | FALSE |
-| EFS_pembro_pCR | weibull |  259.71 |  268.12 | 1.0000 | 0.668 | TRUE |  0.02 | TRUE | 91.56 | 86.83 | 79.77 | 0.9484 | 0.9503 | TRUE | FALSE |
-| EFS_pembro_pCR | lnorm |  259.35 |  267.76 | 1.0000 | 0.694 | TRUE |  0.02 | FALSE | 92.11 | 88.79 | 84.58 | 0.9640 | 0.9503 | FALSE | FALSE |
-| EFS_pembro_pCR | llogis |  259.70 |  268.10 | 1.0000 | 0.663 | TRUE |  0.02 | TRUE | 91.63 | 87.17 | 80.83 | 0.9513 | 0.9503 | TRUE | TRUE |
-| EFS_pembro_pCR | gompertz |  261.11 |  269.52 | 1.0000 | 0.750 | TRUE |  0.02 | FALSE | 92.93 | 92.26 | 92.18 | 0.9927 | 0.9503 | FALSE | FALSE |
-| EFS_pembro_pCR | gengamma |  261.74 |  274.35 | 1.0000 | 0.675 | TRUE |  0.02 | TRUE | 91.48 | 86.46 | 78.47 | 0.9451 | 0.9503 | TRUE | FALSE |
-| EFS_pembro_pCR | rp_hazard_k1 |  261.55 |  274.16 | 1.0000 | 0.672 | TRUE |  0.02 | TRUE | 91.81 | 87.62 | 81.50 | 0.9543 | 0.9503 | TRUE | FALSE |
-| EFS_pembro_pCR | rp_hazard_k2 |  263.03 |  279.84 | 1.0000 | 0.690 | TRUE |  0.02 | TRUE | 91.30 | 86.02 | 77.94 | 0.9422 | 0.9503 | TRUE | FALSE |
-| EFS_pembro_pCR | rp_hazard_k3 |  265.04 |  286.05 | 1.0000 | 0.704 | TRUE |  0.02 | TRUE | 91.12 | 85.41 | 76.55 | 0.9374 | 0.9503 | FALSE | FALSE |
-| EFS_pembro_pCR | rp_odds_k1 |  261.56 |  274.17 | 1.0000 | 0.674 | TRUE |  0.02 | FALSE | 91.86 | 87.84 | 82.22 | 0.9562 | 0.9503 | FALSE | FALSE |
-| EFS_pembro_pCR | rp_odds_k2 |  263.02 |  279.83 | 1.0000 | 0.688 | TRUE |  0.02 | TRUE | 91.35 | 86.31 | 79.00 | 0.9448 | 0.9503 | TRUE | FALSE |
-| EFS_pembro_pCR | rp_odds_k3 |  265.03 |  286.04 | 1.0000 | 0.702 | TRUE |  0.02 | TRUE | 91.16 | 85.71 | 77.72 | 0.9402 | 0.9503 | FALSE | FALSE |
-| EFS_pembro_pCR | cure_weibull |  261.70 |  274.31 | 1.0000 | 0.674 | TRUE |  0.02 | TRUE | 91.89 | 88.16 | 82.13 | 0.9594 | 0.9503 | TRUE | FALSE |
-| EFS_pembro_pCR | cure_lnorm |  261.34 |  273.94 | 1.0000 | 0.686 | TRUE |  0.02 | TRUE | 92.02 | 88.19 | 81.32 | 0.9585 | 0.9503 | TRUE | FALSE |
-| EFS_pembro_pCR | cure_llogis |  261.68 |  274.29 | 1.0000 | 0.678 | TRUE |  0.02 | TRUE | 91.90 | 88.09 | 81.60 | 0.9585 | 0.9503 | TRUE | FALSE |
-| EFS_placebo_pCR | exp |  146.07 |  149.45 | 0.9722 | 2.330 | TRUE |  0.02 | TRUE | 86.01 | 73.98 | 54.74 | 0.8601 | 0.9503 | TRUE | FALSE |
-| EFS_placebo_pCR | weibull |  146.80 |  153.56 | 0.9722 | 1.740 | TRUE |  0.02 | TRUE | 87.92 | 80.30 | 68.82 | 0.9134 | 0.9503 | TRUE | FALSE |
-| EFS_placebo_pCR | lnorm |  145.28 |  152.04 | 0.9722 | 1.587 | TRUE |  0.06 | TRUE | 88.48 | 82.89 | 75.83 | 0.9369 | 0.9503 | TRUE | TRUE |
-| EFS_placebo_pCR | llogis |  146.62 |  153.38 | 0.9722 | 1.698 | TRUE |  0.02 | TRUE | 88.00 | 80.94 | 71.10 | 0.9198 | 0.9503 | TRUE | FALSE |
-| EFS_placebo_pCR | gompertz |  143.48 |  150.24 | 0.9444 | 1.437 | FALSE |  0.02 | FALSE | 91.47 | 91.25 | 91.25 | 0.9976 | 0.9503 | FALSE | FALSE |
-| EFS_placebo_pCR | gengamma |  144.90 |  155.04 | 0.9722 | 1.138 | TRUE |  0.22 | FALSE | 90.29 | 87.91 | 85.55 | 0.9736 | 0.9503 | FALSE | FALSE |
-| EFS_placebo_pCR | rp_hazard_k1 |  145.04 |  155.18 | 0.9722 | 1.020 | TRUE |  0.40 | FALSE | 90.22 | 87.01 | 82.86 | 0.9645 | 0.9503 | FALSE | FALSE |
-| EFS_placebo_pCR | rp_hazard_k2 |  146.38 |  159.90 | 0.9722 | 1.152 | TRUE |  0.64 | FALSE | 90.82 | 88.60 | 85.88 | 0.9755 | 0.9503 | FALSE | FALSE |
-| EFS_placebo_pCR | rp_hazard_k3 |  148.06 |  164.96 | 0.9722 | 1.177 | TRUE |  0.76 | FALSE | 91.03 | 89.12 | 86.83 | 0.9790 | 0.9503 | FALSE | FALSE |
-| EFS_placebo_pCR | rp_odds_k1 |  145.04 |  155.18 | 0.9722 | 1.020 | TRUE |  0.40 | FALSE | 90.22 | 87.07 | 83.11 | 0.9651 | 0.9503 | FALSE | FALSE |
-| EFS_placebo_pCR | rp_odds_k2 |  146.38 |  159.90 | 0.9722 | 1.149 | TRUE |  0.64 | FALSE | 90.82 | 88.63 | 85.99 | 0.9758 | 0.9503 | FALSE | FALSE |
-| EFS_placebo_pCR | rp_odds_k3 |  148.07 |  164.97 | 0.9722 | 1.171 | TRUE |  0.72 | FALSE | 91.03 | 89.13 | 86.89 | 0.9792 | 0.9503 | FALSE | FALSE |
-| EFS_placebo_pCR | cure_weibull |  143.20 |  153.34 | 0.9722 | 1.131 | TRUE |  0.54 | TRUE | 91.98 | 90.94 | 87.22 | 0.9886 | 0.9503 | TRUE | FALSE |
-| EFS_placebo_pCR | cure_lnorm |  144.19 |  154.33 | 0.9722 | 1.049 | TRUE |  0.32 | TRUE | 91.22 | 89.87 | 86.13 | 0.9852 | 0.9503 | TRUE | FALSE |
-| EFS_placebo_pCR | cure_llogis |  143.85 |  153.99 | 0.9722 | 1.010 | TRUE |  0.46 | TRUE | 91.40 | 90.12 | 86.36 | 0.9859 | 0.9503 | TRUE | FALSE |
-| EFS_pembro_nonpCR | exp |  477.58 |  481.19 | 0.6389 | 6.287 | FALSE |  0.02 | TRUE | 48.60 | 23.62 |  5.58 | 0.4860 | 0.9260 | FALSE | FALSE |
-| EFS_pembro_nonpCR | weibull |  462.59 |  469.80 | 1.0000 | 2.959 | TRUE |  0.02 | TRUE | 57.26 | 41.25 | 24.50 | 0.7204 | 0.9260 | TRUE | FALSE |
-| EFS_pembro_nonpCR | lnorm |  459.49 |  466.70 | 1.0000 | 1.959 | TRUE |  0.02 | TRUE | 60.63 | 50.04 | 39.45 | 0.8253 | 0.9260 | TRUE | FALSE |
-| EFS_pembro_nonpCR | llogis |  461.05 |  468.26 | 1.0000 | 2.437 | TRUE |  0.02 | TRUE | 58.63 | 46.03 | 33.92 | 0.7851 | 0.9260 | TRUE | FALSE |
-| EFS_pembro_nonpCR | gompertz |  458.95 |  466.16 | 1.0000 | 1.486 | TRUE |  0.02 | FALSE | 66.07 | 65.22 | 65.19 | 0.9871 | 0.9260 | FALSE | FALSE |
-| EFS_pembro_nonpCR | gengamma |  461.48 |  472.30 | 1.0000 | 2.032 | TRUE |  0.02 | TRUE | 60.82 | 50.45 | 40.11 | 0.8296 | 0.9260 | TRUE | FALSE |
-| EFS_pembro_nonpCR | rp_hazard_k1 |  462.26 |  473.08 | 1.0000 | 1.990 | TRUE |  0.02 | TRUE | 59.89 | 47.11 | 33.12 | 0.7866 | 0.9260 | TRUE | FALSE |
-| EFS_pembro_nonpCR | rp_hazard_k2 |  462.80 |  477.22 | 1.0000 | 1.587 | TRUE |  0.02 | TRUE | 61.91 | 51.82 | 40.60 | 0.8369 | 0.9260 | TRUE | FALSE |
-| EFS_pembro_nonpCR | rp_hazard_k3 |  462.94 |  480.97 | 1.0000 | 1.007 | TRUE |  0.02 | TRUE | 63.59 | 55.76 | 47.07 | 0.8769 | 0.9260 | TRUE | FALSE |
-| EFS_pembro_nonpCR | rp_odds_k1 |  461.96 |  472.78 | 1.0000 | 1.900 | TRUE |  0.02 | TRUE | 60.34 | 49.27 | 38.27 | 0.8166 | 0.9260 | TRUE | FALSE |
-| EFS_pembro_nonpCR | rp_odds_k2 |  462.84 |  477.27 | 1.0000 | 1.612 | TRUE |  0.02 | TRUE | 62.08 | 52.87 | 43.46 | 0.8516 | 0.9260 | TRUE | FALSE |
-| EFS_pembro_nonpCR | rp_odds_k3 |  462.92 |  480.95 | 1.0000 | 0.999 | TRUE |  0.02 | TRUE | 63.71 | 56.46 | 48.92 | 0.8862 | 0.9260 | TRUE | FALSE |
-| EFS_pembro_nonpCR | cure_weibull |  460.33 |  471.15 | 1.0000 | 1.762 | TRUE |  0.02 | TRUE | 65.18 | 63.12 | 60.45 | 0.9684 | 0.9260 | TRUE | FALSE |
-| EFS_pembro_nonpCR | cure_lnorm |  461.45 |  472.27 | 1.0000 | 2.115 | TRUE |  0.02 | TRUE | 61.17 | 51.30 | 40.88 | 0.8386 | 0.9260 | TRUE | FALSE |
-| EFS_pembro_nonpCR | cure_llogis |  460.89 |  471.71 | 1.0000 | 1.862 | TRUE |  0.02 | TRUE | 63.06 | 57.10 | 51.47 | 0.9054 | 0.9260 | TRUE | TRUE |
-| EFS_placebo_nonpCR | exp |  332.56 |  335.62 | 1.0000 | 4.941 | TRUE |  0.02 | TRUE | 35.80 | 12.81 |  1.64 | 0.3580 | 0.9260 | TRUE | FALSE |
-| EFS_placebo_nonpCR | weibull |  333.51 |  339.63 | 1.0000 | 4.219 | TRUE |  0.02 | TRUE | 38.98 | 17.44 |  3.93 | 0.4474 | 0.9260 | TRUE | FALSE |
-| EFS_placebo_nonpCR | lnorm |  331.23 |  337.35 | 1.0000 | 2.918 | TRUE |  0.20 | TRUE | 44.99 | 30.37 | 18.36 | 0.6750 | 0.9260 | TRUE | FALSE |
-| EFS_placebo_nonpCR | llogis |  331.49 |  337.62 | 1.0000 | 3.213 | TRUE |  0.10 | TRUE | 42.15 | 26.40 | 15.00 | 0.6262 | 0.9260 | TRUE | FALSE |
-| EFS_placebo_nonpCR | gompertz |  330.87 |  337.00 | 1.0000 | 3.093 | TRUE |  0.02 | FALSE | 47.60 | 40.55 | 38.88 | 0.8520 | 0.9260 | FALSE | FALSE |
-| EFS_placebo_nonpCR | gengamma |  333.11 |  342.30 | 1.0000 | 3.086 | TRUE |  0.18 | TRUE | 43.93 | 28.29 | 15.71 | 0.6440 | 0.9260 | TRUE | FALSE |
-| EFS_placebo_nonpCR | rp_hazard_k1 |  333.05 |  342.24 | 1.0000 | 2.852 | TRUE |  0.28 | TRUE | 43.64 | 25.71 | 10.80 | 0.5890 | 0.9260 | TRUE | FALSE |
-| EFS_placebo_nonpCR | rp_hazard_k2 |  331.85 |  344.10 | 1.0000 | 1.827 | TRUE |  0.86 | TRUE | 49.04 | 37.20 | 25.34 | 0.7585 | 0.9260 | TRUE | FALSE |
-| EFS_placebo_nonpCR | rp_hazard_k3 |  333.86 |  349.18 | 1.0000 | 1.770 | TRUE |  0.78 | TRUE | 49.12 | 37.36 | 25.57 | 0.7606 | 0.9260 | TRUE | FALSE |
-| EFS_placebo_nonpCR | rp_odds_k1 |  332.69 |  341.88 | 1.0000 | 2.759 | TRUE |  0.28 | TRUE | 44.54 | 30.00 | 18.61 | 0.6735 | 0.9260 | TRUE | FALSE |
-| EFS_placebo_nonpCR | rp_odds_k2 |  331.93 |  344.18 | 1.0000 | 1.880 | TRUE |  0.82 | TRUE | 49.33 | 38.83 | 29.27 | 0.7871 | 0.9260 | TRUE | FALSE |
-| EFS_placebo_nonpCR | rp_odds_k3 |  333.96 |  349.27 | 1.0000 | 1.753 | TRUE |  0.82 | TRUE | 49.51 | 39.19 | 29.76 | 0.7916 | 0.9260 | TRUE | FALSE |
-| EFS_placebo_nonpCR | cure_weibull |  331.31 |  340.49 | 1.0000 | 1.926 | TRUE |  0.50 | TRUE | 53.03 | 51.82 | 49.70 | 0.9771 | 0.9260 | TRUE | TRUE |
-| EFS_placebo_nonpCR | cure_lnorm |  333.23 |  342.41 | 1.0000 | 2.864 | TRUE |  0.20 | TRUE | 45.29 | 31.14 | 19.42 | 0.6876 | 0.9260 | TRUE | FALSE |
-| EFS_placebo_nonpCR | cure_llogis |  331.53 |  340.71 | 1.0000 | 2.152 | TRUE |  0.44 | TRUE | 49.55 | 43.24 | 38.86 | 0.8728 | 0.9260 | TRUE | FALSE |
-| OS_pembro | exp | 1071.99 | 1076.65 | 0.5904 | 3.232 | FALSE |  0.02 | TRUE | 87.84 | 77.15 | 59.53 |  |  | FALSE | FALSE |
-| OS_pembro | weibull | 1071.88 | 1081.21 | 0.7590 | 2.545 | FALSE |  0.02 | TRUE | 87.60 | 78.38 | 63.89 |  |  | FALSE | FALSE |
-| OS_pembro | lnorm | 1059.27 | 1068.60 | 0.8795 | 2.379 | FALSE |  0.64 | TRUE | 87.25 | 79.24 | 68.84 |  |  | FALSE | FALSE |
-| OS_pembro | llogis | 1069.57 | 1078.90 | 0.8072 | 2.454 | FALSE |  0.02 | TRUE | 87.42 | 78.59 | 65.96 |  |  | FALSE | FALSE |
-| OS_pembro | gompertz | 1059.78 | 1069.11 | 0.8675 | 1.690 | FALSE |  0.02 | FALSE | 86.84 | 82.38 | 80.18 |  |  | FALSE | FALSE |
-| OS_pembro | gengamma | 1042.81 | 1056.80 | 0.9759 | 1.186 | TRUE |  0.80 | FALSE | 86.79 | 81.93 | 77.20 |  |  | FALSE | FALSE |
-| OS_pembro | rp_hazard_k1 | 1039.61 | 1053.60 | 0.9759 | 0.743 | TRUE |  1.24 | FALSE | 86.52 | 82.35 | 77.13 |  |  | FALSE | FALSE |
-| OS_pembro | rp_hazard_k2 | 1041.70 | 1060.36 | 0.9759 | 0.686 | TRUE |  1.14 | FALSE | 86.58 | 82.17 | 76.58 |  |  | FALSE | FALSE |
-| OS_pembro | rp_hazard_k3 | 1042.50 | 1065.82 | 0.9759 | 0.529 | TRUE |  1.40 | TRUE | 86.69 | 81.82 | 75.47 |  |  | TRUE | FALSE |
-| OS_pembro | rp_odds_k1 | 1039.58 | 1053.58 | 0.9759 | 0.729 | TRUE |  1.22 | FALSE | 86.52 | 82.37 | 77.32 |  |  | FALSE | FALSE |
-| OS_pembro | rp_odds_k2 | 1041.74 | 1060.40 | 0.9759 | 0.695 | TRUE |  1.14 | FALSE | 86.58 | 82.23 | 76.89 |  |  | FALSE | FALSE |
-| OS_pembro | rp_odds_k3 | 1042.51 | 1065.83 | 0.9759 | 0.532 | TRUE |  1.40 | TRUE | 86.68 | 81.87 | 75.83 |  |  | TRUE | FALSE |
-| OS_pembro | cure_weibull | 1049.00 | 1062.99 | 0.9398 | 1.334 | FALSE |  1.44 | TRUE | 86.31 | 84.09 | 80.80 |  |  | FALSE | FALSE |
-| OS_pembro | cure_lnorm | 1041.23 | 1055.22 | 0.9759 | 0.883 | TRUE |  1.10 | TRUE | 86.42 | 83.27 | 79.42 |  |  | TRUE | TRUE |
-| OS_pembro | cure_llogis | 1042.74 | 1056.74 | 0.9759 | 0.854 | TRUE |  1.32 | TRUE | 86.33 | 83.57 | 79.79 |  |  | TRUE | FALSE |
-| OS_placebo | exp |  719.38 |  723.34 | 0.8193 | 3.017 | FALSE |  0.06 | TRUE | 81.89 | 67.06 | 44.97 |  |  | FALSE | FALSE |
-| OS_placebo | weibull |  720.35 |  728.28 | 0.8313 | 2.930 | FALSE | 15.98 | FALSE | 82.17 | 65.38 | 39.87 |  |  | FALSE | FALSE |
-| OS_placebo | lnorm |  711.25 |  719.19 | 0.8795 | 2.473 | FALSE |  1.98 | TRUE | 81.56 | 67.61 | 50.59 |  |  | FALSE | FALSE |
-| OS_placebo | llogis |  718.10 |  726.03 | 0.8313 | 2.693 | FALSE |  3.98 | TRUE | 81.80 | 66.27 | 46.20 |  |  | FALSE | FALSE |
-| OS_placebo | gompertz |  720.88 |  728.82 | 0.8193 | 3.470 | FALSE |  0.02 | TRUE | 81.58 | 69.14 | 54.22 |  |  | FALSE | FALSE |
-| OS_placebo | gengamma |  705.46 |  717.36 | 0.9398 | 1.787 | FALSE |  1.42 | TRUE | 80.97 | 71.54 | 62.45 |  |  | FALSE | FALSE |
-| OS_placebo | rp_hazard_k1 |  703.10 |  715.00 | 0.9518 | 1.526 | TRUE |  1.78 | TRUE | 80.69 | 71.44 | 59.07 |  |  | TRUE | FALSE |
-| OS_placebo | rp_hazard_k2 |  702.91 |  718.77 | 0.9518 | 1.472 | TRUE |  1.48 | TRUE | 81.10 | 70.20 | 55.04 |  |  | TRUE | TRUE |
-| OS_placebo | rp_hazard_k3 |  705.06 |  724.89 | 0.9518 | 1.481 | TRUE |  1.46 | TRUE | 81.15 | 69.99 | 54.35 |  |  | TRUE | FALSE |
-| OS_placebo | rp_odds_k1 |  702.97 |  714.87 | 0.9518 | 1.498 | TRUE |  1.76 | TRUE | 80.66 | 71.68 | 60.60 |  |  | TRUE | FALSE |
-| OS_placebo | rp_odds_k2 |  702.92 |  718.79 | 0.9518 | 1.473 | TRUE |  1.46 | TRUE | 81.08 | 70.54 | 57.23 |  |  | TRUE | FALSE |
-| OS_placebo | rp_odds_k3 |  705.06 |  724.89 | 0.9518 | 1.466 | TRUE |  1.48 | TRUE | 81.14 | 70.29 | 56.53 |  |  | TRUE | FALSE |
-| OS_placebo | cure_weibull |  710.79 |  722.69 | 0.8916 | 1.777 | FALSE |  2.36 | TRUE | 80.40 | 75.50 | 72.47 |  |  | FALSE | FALSE |
-| OS_placebo | cure_lnorm |  704.87 |  716.77 | 0.9518 | 1.566 | TRUE |  1.76 | TRUE | 80.46 | 74.09 | 69.50 |  |  | TRUE | FALSE |
-| OS_placebo | cure_llogis |  707.20 |  719.10 | 0.9518 | 1.785 | TRUE |  2.00 | TRUE | 80.25 | 74.71 | 70.43 |  |  | FALSE | FALSE |
+| curve | model | AIC | BIC | c1_frac_inside_ci | c1_max_abs_diff_pp | c1_pass | peak_excess_haz_year | c2_pass | S5 | S10 | S20 | cond_5_10 | yau_cond_5_10 | efs5_diff | selected | scenario |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| EFS_pembro_pCR | exp |  262.49 |  266.70 | 1.0000 | 1.240 | TRUE |  0.02 | TRUE | 89.65 | 80.38 | 64.61 | 0.8965 | 0.9503 |  -1.396 | FALSE | FALSE |
+| EFS_pembro_pCR | weibull |  259.71 |  268.12 | 1.0000 | 0.668 | TRUE |  0.02 | TRUE | 91.56 | 86.83 | 79.77 | 0.9484 | 0.9503 |   0.012 | TRUE | FALSE |
+| EFS_pembro_pCR | lnorm |  259.35 |  267.76 | 1.0000 | 0.694 | TRUE |  0.02 | FALSE | 92.11 | 88.79 | 84.58 | 0.9640 | 0.9503 |   0.412 | FALSE | FALSE |
+| EFS_pembro_pCR | llogis |  259.70 |  268.10 | 1.0000 | 0.663 | TRUE |  0.02 | TRUE | 91.63 | 87.17 | 80.83 | 0.9513 | 0.9503 |   0.061 | FALSE | TRUE |
+| EFS_pembro_pCR | gompertz |  261.11 |  269.52 | 1.0000 | 0.750 | TRUE |  0.02 | FALSE | 92.93 | 92.26 | 92.18 | 0.9927 | 0.9503 |   0.966 | FALSE | FALSE |
+| EFS_pembro_pCR | gengamma |  261.74 |  274.35 | 1.0000 | 0.675 | TRUE |  0.02 | TRUE | 91.48 | 86.46 | 78.47 | 0.9451 | 0.9503 |  -0.039 | FALSE | FALSE |
+| EFS_pembro_pCR | rp_hazard_k1 |  261.55 |  274.16 | 1.0000 | 0.672 | TRUE |  0.02 | TRUE | 91.81 | 87.62 | 81.50 | 0.9543 | 0.9503 |   0.206 | FALSE | FALSE |
+| EFS_pembro_pCR | rp_hazard_k2 |  263.03 |  279.84 | 1.0000 | 0.690 | TRUE |  0.02 | TRUE | 91.30 | 86.02 | 77.94 | 0.9422 | 0.9503 |  -0.176 | FALSE | FALSE |
+| EFS_pembro_pCR | rp_hazard_k3 |  265.04 |  286.05 | 1.0000 | 0.704 | TRUE |  0.02 | TRUE | 91.12 | 85.41 | 76.55 | 0.9374 | 0.9503 |  -0.314 | FALSE | FALSE |
+| EFS_pembro_pCR | rp_odds_k1 |  261.56 |  274.17 | 1.0000 | 0.674 | TRUE |  0.02 | FALSE | 91.86 | 87.84 | 82.22 | 0.9562 | 0.9503 |   0.236 | FALSE | FALSE |
+| EFS_pembro_pCR | rp_odds_k2 |  263.02 |  279.83 | 1.0000 | 0.688 | TRUE |  0.02 | TRUE | 91.35 | 86.31 | 79.00 | 0.9448 | 0.9503 |  -0.148 | FALSE | FALSE |
+| EFS_pembro_pCR | rp_odds_k3 |  265.03 |  286.04 | 1.0000 | 0.702 | TRUE |  0.02 | TRUE | 91.16 | 85.71 | 77.72 | 0.9402 | 0.9503 |  -0.291 | FALSE | FALSE |
+| EFS_pembro_pCR | cure_weibull |  261.70 |  274.31 | 1.0000 | 0.674 | TRUE |  0.02 | TRUE | 91.89 | 88.16 | 82.13 | 0.9594 | 0.9503 |   0.250 | FALSE | FALSE |
+| EFS_pembro_pCR | cure_lnorm |  261.34 |  273.94 | 1.0000 | 0.686 | TRUE |  0.02 | TRUE | 92.02 | 88.19 | 81.32 | 0.9585 | 0.9503 |   0.356 | FALSE | FALSE |
+| EFS_pembro_pCR | cure_llogis |  261.68 |  274.29 | 1.0000 | 0.678 | TRUE |  0.02 | TRUE | 91.90 | 88.09 | 81.60 | 0.9585 | 0.9503 |   0.261 | FALSE | FALSE |
+| EFS_placebo_pCR | exp |  146.07 |  149.45 | 0.9722 | 2.330 | TRUE |  0.02 | TRUE | 86.01 | 73.98 | 54.74 | 0.8601 | 0.9503 |  -0.661 | FALSE | FALSE |
+| EFS_placebo_pCR | weibull |  146.80 |  153.56 | 0.9722 | 1.740 | TRUE |  0.02 | TRUE | 87.92 | 80.30 | 68.82 | 0.9134 | 0.9503 |   0.753 | TRUE | FALSE |
+| EFS_placebo_pCR | lnorm |  145.28 |  152.04 | 0.9722 | 1.587 | TRUE |  0.06 | TRUE | 88.48 | 82.89 | 75.83 | 0.9369 | 0.9503 |   1.121 | FALSE | FALSE |
+| EFS_placebo_pCR | llogis |  146.62 |  153.38 | 0.9722 | 1.698 | TRUE |  0.02 | TRUE | 88.00 | 80.94 | 71.10 | 0.9198 | 0.9503 |   0.790 | FALSE | TRUE |
+| EFS_placebo_pCR | gompertz |  143.48 |  150.24 | 0.9444 | 1.437 | FALSE |  0.02 | FALSE | 91.47 | 91.25 | 91.25 | 0.9976 | 0.9503 |   3.389 | FALSE | FALSE |
+| EFS_placebo_pCR | gengamma |  144.90 |  155.04 | 0.9722 | 1.138 | TRUE |  0.22 | FALSE | 90.29 | 87.91 | 85.55 | 0.9736 | 0.9503 |   2.518 | FALSE | FALSE |
+| EFS_placebo_pCR | rp_hazard_k1 |  145.04 |  155.18 | 0.9722 | 1.020 | TRUE |  0.40 | FALSE | 90.22 | 87.01 | 82.86 | 0.9645 | 0.9503 |   2.504 | FALSE | FALSE |
+| EFS_placebo_pCR | rp_hazard_k2 |  146.38 |  159.90 | 0.9722 | 1.152 | TRUE |  0.64 | FALSE | 90.82 | 88.60 | 85.88 | 0.9755 | 0.9503 |   2.975 | FALSE | FALSE |
+| EFS_placebo_pCR | rp_hazard_k3 |  148.06 |  164.96 | 0.9722 | 1.177 | TRUE |  0.76 | FALSE | 91.03 | 89.12 | 86.83 | 0.9790 | 0.9503 |   3.141 | FALSE | FALSE |
+| EFS_placebo_pCR | rp_odds_k1 |  145.04 |  155.18 | 0.9722 | 1.020 | TRUE |  0.40 | FALSE | 90.22 | 87.07 | 83.11 | 0.9651 | 0.9503 |   2.503 | FALSE | FALSE |
+| EFS_placebo_pCR | rp_odds_k2 |  146.38 |  159.90 | 0.9722 | 1.149 | TRUE |  0.64 | FALSE | 90.82 | 88.63 | 85.99 | 0.9758 | 0.9503 |   2.975 | FALSE | FALSE |
+| EFS_placebo_pCR | rp_odds_k3 |  148.07 |  164.97 | 0.9722 | 1.171 | TRUE |  0.72 | FALSE | 91.03 | 89.13 | 86.89 | 0.9792 | 0.9503 |   3.132 | FALSE | FALSE |
+| EFS_placebo_pCR | cure_weibull |  143.20 |  153.34 | 0.9722 | 1.131 | TRUE |  0.54 | TRUE | 91.98 | 90.94 | 87.22 | 0.9886 | 0.9503 |   3.887 | FALSE | FALSE |
+| EFS_placebo_pCR | cure_lnorm |  144.19 |  154.33 | 0.9722 | 1.049 | TRUE |  0.32 | TRUE | 91.22 | 89.87 | 86.13 | 0.9852 | 0.9503 |   3.235 | FALSE | FALSE |
+| EFS_placebo_pCR | cure_llogis |  143.85 |  153.99 | 0.9722 | 1.010 | TRUE |  0.46 | TRUE | 91.40 | 90.12 | 86.36 | 0.9859 | 0.9503 |   3.386 | FALSE | FALSE |
+| EFS_pembro_nonpCR | exp |  477.58 |  481.19 | 0.6389 | 6.287 | FALSE |  0.02 | TRUE | 48.60 | 23.62 |  5.58 | 0.4860 | 0.9260 | -12.493 | FALSE | FALSE |
+| EFS_pembro_nonpCR | weibull |  462.59 |  469.80 | 1.0000 | 2.959 | TRUE |  0.02 | TRUE | 57.26 | 41.25 | 24.50 | 0.7204 | 0.9260 |  -5.870 | FALSE | FALSE |
+| EFS_pembro_nonpCR | lnorm |  459.49 |  466.70 | 1.0000 | 1.959 | TRUE |  0.02 | TRUE | 60.63 | 50.04 | 39.45 | 0.8253 | 0.9260 |  -3.390 | FALSE | FALSE |
+| EFS_pembro_nonpCR | llogis |  461.05 |  468.26 | 1.0000 | 2.437 | TRUE |  0.02 | TRUE | 58.63 | 46.03 | 33.92 | 0.7851 | 0.9260 |  -4.956 | FALSE | FALSE |
+| EFS_pembro_nonpCR | gompertz |  458.95 |  466.16 | 1.0000 | 1.486 | TRUE |  0.02 | FALSE | 66.07 | 65.22 | 65.19 | 0.9871 | 0.9260 |   0.440 | FALSE | FALSE |
+| EFS_pembro_nonpCR | gengamma |  461.48 |  472.30 | 1.0000 | 2.032 | TRUE |  0.02 | TRUE | 60.82 | 50.45 | 40.11 | 0.8296 | 0.9260 |  -3.246 | FALSE | FALSE |
+| EFS_pembro_nonpCR | rp_hazard_k1 |  462.26 |  473.08 | 1.0000 | 1.990 | TRUE |  0.02 | TRUE | 59.89 | 47.11 | 33.12 | 0.7866 | 0.9260 |  -3.872 | FALSE | FALSE |
+| EFS_pembro_nonpCR | rp_hazard_k2 |  462.80 |  477.22 | 1.0000 | 1.587 | TRUE |  0.02 | TRUE | 61.91 | 51.82 | 40.60 | 0.8369 | 0.9260 |  -2.350 | FALSE | FALSE |
+| EFS_pembro_nonpCR | rp_hazard_k3 |  462.94 |  480.97 | 1.0000 | 1.007 | TRUE |  0.02 | TRUE | 63.59 | 55.76 | 47.07 | 0.8769 | 0.9260 |  -1.099 | FALSE | FALSE |
+| EFS_pembro_nonpCR | rp_odds_k1 |  461.96 |  472.78 | 1.0000 | 1.900 | TRUE |  0.02 | TRUE | 60.34 | 49.27 | 38.27 | 0.8166 | 0.9260 |  -3.600 | FALSE | FALSE |
+| EFS_pembro_nonpCR | rp_odds_k2 |  462.84 |  477.27 | 1.0000 | 1.612 | TRUE |  0.02 | TRUE | 62.08 | 52.87 | 43.46 | 0.8516 | 0.9260 |  -2.265 | FALSE | FALSE |
+| EFS_pembro_nonpCR | rp_odds_k3 |  462.92 |  480.95 | 1.0000 | 0.999 | TRUE |  0.02 | TRUE | 63.71 | 56.46 | 48.92 | 0.8862 | 0.9260 |  -1.030 | FALSE | FALSE |
+| EFS_pembro_nonpCR | cure_weibull |  460.33 |  471.15 | 1.0000 | 1.762 | TRUE |  0.02 | TRUE | 65.18 | 63.12 | 60.45 | 0.9684 | 0.9260 |  -0.210 | TRUE | FALSE |
+| EFS_pembro_nonpCR | cure_lnorm |  461.45 |  472.27 | 1.0000 | 2.115 | TRUE |  0.02 | TRUE | 61.17 | 51.30 | 40.88 | 0.8386 | 0.9260 |  -2.984 | FALSE | FALSE |
+| EFS_pembro_nonpCR | cure_llogis |  460.89 |  471.71 | 1.0000 | 1.862 | TRUE |  0.02 | TRUE | 63.06 | 57.10 | 51.47 | 0.9054 | 0.9260 |  -1.670 | FALSE | TRUE |
+| EFS_placebo_nonpCR | exp |  332.56 |  335.62 | 1.0000 | 4.941 | TRUE |  0.02 | TRUE | 35.80 | 12.81 |  1.64 | 0.3580 | 0.9260 | -15.007 | FALSE | FALSE |
+| EFS_placebo_nonpCR | weibull |  333.51 |  339.63 | 1.0000 | 4.219 | TRUE |  0.02 | TRUE | 38.98 | 17.44 |  3.93 | 0.4474 | 0.9260 | -12.547 | FALSE | FALSE |
+| EFS_placebo_nonpCR | lnorm |  331.23 |  337.35 | 1.0000 | 2.918 | TRUE |  0.20 | TRUE | 44.99 | 30.37 | 18.36 | 0.6750 | 0.9260 |  -8.179 | FALSE | FALSE |
+| EFS_placebo_nonpCR | llogis |  331.49 |  337.62 | 1.0000 | 3.213 | TRUE |  0.10 | TRUE | 42.15 | 26.40 | 15.00 | 0.6262 | 0.9260 | -10.464 | FALSE | FALSE |
+| EFS_placebo_nonpCR | gompertz |  330.87 |  337.00 | 1.0000 | 3.093 | TRUE |  0.02 | FALSE | 47.60 | 40.55 | 38.88 | 0.8520 | 0.9260 |  -6.519 | FALSE | FALSE |
+| EFS_placebo_nonpCR | gengamma |  333.11 |  342.30 | 1.0000 | 3.086 | TRUE |  0.18 | TRUE | 43.93 | 28.29 | 15.71 | 0.6440 | 0.9260 |  -8.981 | FALSE | FALSE |
+| EFS_placebo_nonpCR | rp_hazard_k1 |  333.05 |  342.24 | 1.0000 | 2.852 | TRUE |  0.28 | TRUE | 43.64 | 25.71 | 10.80 | 0.5890 | 0.9260 |  -9.038 | FALSE | FALSE |
+| EFS_placebo_nonpCR | rp_hazard_k2 |  331.85 |  344.10 | 1.0000 | 1.827 | TRUE |  0.86 | TRUE | 49.04 | 37.20 | 25.34 | 0.7585 | 0.9260 |  -5.098 | FALSE | FALSE |
+| EFS_placebo_nonpCR | rp_hazard_k3 |  333.86 |  349.18 | 1.0000 | 1.770 | TRUE |  0.78 | TRUE | 49.12 | 37.36 | 25.57 | 0.7606 | 0.9260 |  -5.041 | FALSE | FALSE |
+| EFS_placebo_nonpCR | rp_odds_k1 |  332.69 |  341.88 | 1.0000 | 2.759 | TRUE |  0.28 | TRUE | 44.54 | 30.00 | 18.61 | 0.6735 | 0.9260 |  -8.560 | FALSE | FALSE |
+| EFS_placebo_nonpCR | rp_odds_k2 |  331.93 |  344.18 | 1.0000 | 1.880 | TRUE |  0.82 | TRUE | 49.33 | 38.83 | 29.27 | 0.7871 | 0.9260 |  -4.944 | FALSE | FALSE |
+| EFS_placebo_nonpCR | rp_odds_k3 |  333.96 |  349.27 | 1.0000 | 1.753 | TRUE |  0.82 | TRUE | 49.51 | 39.19 | 29.76 | 0.7916 | 0.9260 |  -4.806 | FALSE | FALSE |
+| EFS_placebo_nonpCR | cure_weibull |  331.31 |  340.49 | 1.0000 | 1.926 | TRUE |  0.50 | TRUE | 53.03 | 51.82 | 49.70 | 0.9771 | 0.9260 |  -2.767 | TRUE | FALSE |
+| EFS_placebo_nonpCR | cure_lnorm |  333.23 |  342.41 | 1.0000 | 2.864 | TRUE |  0.20 | TRUE | 45.29 | 31.14 | 19.42 | 0.6876 | 0.9260 |  -7.958 | FALSE | FALSE |
+| EFS_placebo_nonpCR | cure_llogis |  331.53 |  340.71 | 1.0000 | 2.152 | TRUE |  0.44 | TRUE | 49.55 | 43.24 | 38.86 | 0.8728 | 0.9260 |  -5.085 | FALSE | TRUE |
+| OS_pembro | exp | 1071.99 | 1076.65 | 0.5904 | 3.232 | FALSE |  0.02 | TRUE | 87.84 | 77.15 | 59.53 |  |  |  | FALSE | FALSE |
+| OS_pembro | weibull | 1071.88 | 1081.21 | 0.7590 | 2.545 | FALSE |  0.02 | TRUE | 87.60 | 78.38 | 63.89 |  |  |  | FALSE | FALSE |
+| OS_pembro | lnorm | 1059.27 | 1068.60 | 0.8795 | 2.379 | FALSE |  0.64 | TRUE | 87.25 | 79.24 | 68.84 |  |  |  | FALSE | FALSE |
+| OS_pembro | llogis | 1069.57 | 1078.90 | 0.8072 | 2.454 | FALSE |  0.02 | TRUE | 87.42 | 78.59 | 65.96 |  |  |  | FALSE | FALSE |
+| OS_pembro | gompertz | 1059.78 | 1069.11 | 0.8675 | 1.690 | FALSE |  0.02 | FALSE | 86.84 | 82.38 | 80.18 |  |  |  | FALSE | FALSE |
+| OS_pembro | gengamma | 1042.81 | 1056.80 | 0.9759 | 1.186 | TRUE |  0.80 | FALSE | 86.79 | 81.93 | 77.20 |  |  |  | FALSE | FALSE |
+| OS_pembro | rp_hazard_k1 | 1039.61 | 1053.60 | 0.9759 | 0.743 | TRUE |  1.24 | FALSE | 86.52 | 82.35 | 77.13 |  |  |  | FALSE | FALSE |
+| OS_pembro | rp_hazard_k2 | 1041.70 | 1060.36 | 0.9759 | 0.686 | TRUE |  1.14 | FALSE | 86.58 | 82.17 | 76.58 |  |  |  | FALSE | FALSE |
+| OS_pembro | rp_hazard_k3 | 1042.50 | 1065.82 | 0.9759 | 0.529 | TRUE |  1.40 | TRUE | 86.69 | 81.82 | 75.47 |  |  |  | FALSE | FALSE |
+| OS_pembro | rp_odds_k1 | 1039.58 | 1053.58 | 0.9759 | 0.729 | TRUE |  1.22 | FALSE | 86.52 | 82.37 | 77.32 |  |  |  | FALSE | FALSE |
+| OS_pembro | rp_odds_k2 | 1041.74 | 1060.40 | 0.9759 | 0.695 | TRUE |  1.14 | FALSE | 86.58 | 82.23 | 76.89 |  |  |  | FALSE | FALSE |
+| OS_pembro | rp_odds_k3 | 1042.51 | 1065.83 | 0.9759 | 0.532 | TRUE |  1.40 | TRUE | 86.68 | 81.87 | 75.83 |  |  |  | FALSE | FALSE |
+| OS_pembro | cure_weibull | 1049.00 | 1062.99 | 0.9398 | 1.334 | FALSE |  1.44 | TRUE | 86.31 | 84.09 | 80.80 |  |  |  | FALSE | FALSE |
+| OS_pembro | cure_lnorm | 1041.23 | 1055.22 | 0.9759 | 0.883 | TRUE |  1.10 | TRUE | 86.42 | 83.27 | 79.42 |  |  |  | TRUE | FALSE |
+| OS_pembro | cure_llogis | 1042.74 | 1056.74 | 0.9759 | 0.854 | TRUE |  1.32 | TRUE | 86.33 | 83.57 | 79.79 |  |  |  | FALSE | FALSE |
+| OS_placebo | exp |  719.38 |  723.34 | 0.8193 | 3.017 | FALSE |  0.06 | TRUE | 81.89 | 67.06 | 44.97 |  |  |  | FALSE | FALSE |
+| OS_placebo | weibull |  720.35 |  728.28 | 0.8313 | 2.930 | FALSE | 15.98 | FALSE | 82.17 | 65.38 | 39.87 |  |  |  | FALSE | FALSE |
+| OS_placebo | lnorm |  711.25 |  719.19 | 0.8795 | 2.473 | FALSE |  1.98 | TRUE | 81.56 | 67.61 | 50.59 |  |  |  | FALSE | FALSE |
+| OS_placebo | llogis |  718.10 |  726.03 | 0.8313 | 2.693 | FALSE |  3.98 | TRUE | 81.80 | 66.27 | 46.20 |  |  |  | FALSE | FALSE |
+| OS_placebo | gompertz |  720.88 |  728.82 | 0.8193 | 3.470 | FALSE |  0.02 | TRUE | 81.58 | 69.14 | 54.22 |  |  |  | FALSE | FALSE |
+| OS_placebo | gengamma |  705.46 |  717.36 | 0.9398 | 1.787 | FALSE |  1.42 | TRUE | 80.97 | 71.54 | 62.45 |  |  |  | FALSE | FALSE |
+| OS_placebo | rp_hazard_k1 |  703.10 |  715.00 | 0.9518 | 1.526 | TRUE |  1.78 | TRUE | 80.69 | 71.44 | 59.07 |  |  |  | FALSE | FALSE |
+| OS_placebo | rp_hazard_k2 |  702.91 |  718.77 | 0.9518 | 1.472 | TRUE |  1.48 | TRUE | 81.10 | 70.20 | 55.04 |  |  |  | TRUE | FALSE |
+| OS_placebo | rp_hazard_k3 |  705.06 |  724.89 | 0.9518 | 1.481 | TRUE |  1.46 | TRUE | 81.15 | 69.99 | 54.35 |  |  |  | FALSE | FALSE |
+| OS_placebo | rp_odds_k1 |  702.97 |  714.87 | 0.9518 | 1.498 | TRUE |  1.76 | TRUE | 80.66 | 71.68 | 60.60 |  |  |  | FALSE | FALSE |
+| OS_placebo | rp_odds_k2 |  702.92 |  718.79 | 0.9518 | 1.473 | TRUE |  1.46 | TRUE | 81.08 | 70.54 | 57.23 |  |  |  | FALSE | FALSE |
+| OS_placebo | rp_odds_k3 |  705.06 |  724.89 | 0.9518 | 1.466 | TRUE |  1.48 | TRUE | 81.14 | 70.29 | 56.53 |  |  |  | FALSE | FALSE |
+| OS_placebo | cure_weibull |  710.79 |  722.69 | 0.8916 | 1.777 | FALSE |  2.36 | TRUE | 80.40 | 75.50 | 72.47 |  |  |  | FALSE | FALSE |
+| OS_placebo | cure_lnorm |  704.87 |  716.77 | 0.9518 | 1.566 | TRUE |  1.76 | TRUE | 80.46 | 74.09 | 69.50 |  |  |  | FALSE | FALSE |
+| OS_placebo | cure_llogis |  707.20 |  719.10 | 0.9518 | 1.785 | TRUE |  2.00 | TRUE | 80.25 | 74.71 | 70.43 |  |  |  | FALSE | FALSE |
 
 图：KM 与拟合曲线 `fig_fit_*.png`；超额风险与平滑后的 KM 风险 `fig_hazard_*.png`。
 
-值得注意：两条非 pCR 曲线选中的模型不同（帕博利珠单抗 cure_llogis，安慰剂 cure_weibull）。安慰剂一侧第 3 条的差距，所选模型为 0.0511，次优的 cure_llogis 为 0.0533，选择对第 3 条敏感；20 年时两组非 pCR 层的 EFS 分别为 51.47% 与 49.7%。引擎给出的按臂 EFS 与随访更长的 2024 年 EFS（IA7）的对照见第 7 节。
+## 7. 引擎结构参数
 
-## 7. 校准（步骤 5）
+首发事件构成（2024 年 Table 1，IA7）与状态分配：无法手术的进展 → 远处复发（术前阶段，按非 pCR 层 KM 的形状）；局部区域复发与第二原发癌 → 局部区域复发；远处复发 → 远处复发；无复发死亡 → 死亡（扣除术后无事件人时中预期的背景死亡，因背景死亡单列）。
 
-引擎结构参数：pCR 比例 帕博利珠单抗 0.6301、安慰剂 0.5564；首发事件中超额部分的分配（局部区域复发/远处复发/超额死亡）帕博利珠单抗 0.268/0.626/0.106、安慰剂 0.232/0.649/0.119（预期背景死亡 6.0、2.7 例已扣除；第二原发癌按比例摊入）；局部区域复发 → 远处复发 0.340/年（22/45 例，暴露 1.98 年）。
+| arm | any_event | progression_precluding_surgery | local | distant | second_primary | death | second_primary_share_of_EFS_events_pct | expected_background_deaths | share_LRR | share_DR | share_death |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| pembro | 159 | 14 | 33 | 77 | 16 | 19 | 10.1 | 6.0 | 0.352 | 0.554 | 0.094 |
+| placebo | 114 | 15 | 20 | 56 | 10 | 13 | 8.8 | 2.7 | 0.312 | 0.581 | 0.107 |
 
-远处复发后的超额死亡（复发后时间的 Weibull，两臂共用）使两臂 OS 与 2024 年 Fig. 1A 的 KM 在第 1 至 78 个月逐月吻合（平方误差和最小）。校准前为起点值（指数分布、中位 1.5 年，不是估计值）。结果：形状 0.3543、尺度 1.5356 年（中位 0.546 年）。这是吸收了结构假设的有效参数，不宜直接解读为临床上的复发后生存。
+pCR 比例：帕博利珠单抗 0.6301，安慰剂 0.5564。局部区域复发 → 远处复发 0.340/年（22/45 例，暴露 1.98 年）。
 
-| arm | stage | rmse_pp | max_abs_diff_pp | diff_36m | diff_60m | diff_78m | dr_shape | dr_scale | dr_median_years | SSE_both_arms |
-|---|---|---|---|---|---|---|---|---|---|---|
-| pembro | before (start value) | 1.904 | 3.752 | 2.940 | 0.442 | -1.053 | 1.0000 | 2.1640 | 1.5000 | 432.28 |
-| placebo | before (start value) | 1.385 | 2.650 | 1.693 | -1.293 | -1.347 | 1.0000 | 2.1640 | 1.5000 | 432.28 |
-| pembro | after calibration | 0.931 | 2.040 | 1.639 | 0.491 | -0.170 | 0.3543 | 1.5356 | 0.5457 | 125.34 |
-| placebo | after calibration | 0.861 | 2.763 | -0.512 | -1.092 | 0.284 | 0.3543 | 1.5356 | 0.5457 | 125.34 |
-| pembro | arm-specific calibration | 0.445 | 1.064 | 0.613 | 0.081 | -0.110 | 0.0649 | 0.0497 | 0.0002 | 50.83 |
-| placebo | arm-specific calibration | 0.674 | 2.161 | 0.237 | -0.820 | 0.216 | 0.4829 | 1.9149 | 0.8965 | 50.83 |
+## 8. 校准（步骤 5）
 
-两臂各自校准的变体：规则（运行前固定）为只有当它在两臂所有未用于校准的 OS 检查上都改善时才采用。结果未采用（OS non-pCR vs 2024 Fig. S4 (IA7) pembro：3.75 → 2.51；OS non-pCR vs 2024 Fig. S4 (IA7) placebo：4.25 → 3.21；OS pCR vs 2024 Fig. S4 (IA7) pembro：0.76 → 0.97；OS pCR vs 2024 Fig. S4 (IA7) placebo：1.47 → 1.47）；且帕博利珠单抗臂的参数退化（中位接近 0）。
+目标：两臂 OS 与 2024 年 Fig. 1A 的 KM 在第 1 至 78 个月逐月的平方误差和最小。门槛：各臂 OS 在第 1 至 5 年的整年时点与 KM 差 ≤ 1 个百分点。顺序：(a) 事件按报告的构成分配（第 7 节），远处复发后的超额死亡率为常数、两臂共用（现有的 Weibull 隧道结构属于 (b)，所以 (a) 取不随复发后时间变化的形式）；(b) 远处复发后的超额死亡率随复发后时间变化（Weibull，隧道状态），两臂共用；(c) 同 (b)，两臂分别估计。前一步达标就停。
 
-未用于校准的曲线与引擎的对照（`engine_checks.csv`，不作门槛）：
+| structure | arm | n_par | SSE_both_arms | starts_spread | rmse_pp | max_abs_diff_pp | gate_max_abs_diff_pp | gate_pass_arm | dr_shape | dr_scale | dr_median_excess_years |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| start value | pembro |  | 572.07 |  | 2.173 | 4.075 | 3.684 | FALSE | 1.0000 | 2.1640 | 1.500 |
+| start value | placebo |  | 572.07 |  | 1.616 | 3.092 | 3.033 | FALSE | 1.0000 | 2.1640 | 1.500 |
+| a | pembro |  1 | 375.66 |  | 1.612 | 3.319 | 2.998 | FALSE | 1.0000 | 1.6104 | 1.116 |
+| a | placebo |  1 | 375.66 |  | 1.489 | 2.615 | 2.335 | FALSE | 1.0000 | 1.6104 | 1.116 |
+| b | pembro |  2 | 134.76 | 1.2e-07 | 0.963 | 2.052 | 1.663 | FALSE | 0.3299 | 1.0863 | 0.358 |
+| b | placebo |  2 | 134.76 | 1.2e-07 | 0.895 | 2.879 | 2.168 | FALSE | 0.3299 | 1.0863 | 0.358 |
+| c | pembro |  4 | 50.95 | 8.4e-07 | 0.412 | 1.055 | 0.782 | TRUE | 0.0727 | 0.0094 | 0.000 |
+| c | placebo |  4 | 50.95 | 8.4e-07 | 0.695 | 2.307 | 1.668 | FALSE | 0.4412 | 1.5286 | 0.666 |
+
+门槛时点（`calibration_gate.csv`）：
+
+| arm | month | km | engine | diff | pass | structure |
+|---|---|---|---|---|---|---|
+| pembro | 12 | 97.19 | 98.57 | 1.377 | FALSE | a |
+| pembro | 24 | 92.20 | 95.20 | 2.998 | FALSE | a |
+| pembro | 36 | 89.51 | 91.87 | 2.362 | FALSE | a |
+| pembro | 48 | 87.84 | 88.96 | 1.122 | FALSE | a |
+| pembro | 60 | 86.55 | 86.53 | -0.025 | TRUE | a |
+| placebo | 12 | 98.72 | 98.14 | -0.578 | TRUE | a |
+| placebo | 24 | 91.02 | 93.06 | 2.043 | FALSE | a |
+| placebo | 36 | 86.90 | 87.73 | 0.828 | TRUE | a |
+| placebo | 48 | 83.53 | 83.10 | -0.429 | TRUE | a |
+| placebo | 60 | 81.71 | 79.37 | -2.335 | FALSE | a |
+| pembro | 12 | 97.19 | 97.38 | 0.194 | TRUE | b |
+| pembro | 24 | 92.20 | 93.85 | 1.650 | FALSE | b |
+| pembro | 36 | 89.51 | 91.17 | 1.663 | FALSE | b |
+| pembro | 48 | 87.84 | 89.03 | 1.185 | FALSE | b |
+| pembro | 60 | 86.55 | 87.25 | 0.694 | TRUE | b |
+| placebo | 12 | 98.72 | 96.55 | -2.168 | FALSE | b |
+| placebo | 24 | 91.02 | 90.96 | -0.065 | TRUE | b |
+| placebo | 36 | 86.90 | 86.47 | -0.435 | TRUE | b |
+| placebo | 48 | 83.53 | 83.09 | -0.444 | TRUE | b |
+| placebo | 60 | 81.71 | 80.48 | -1.229 | FALSE | b |
+| pembro | 12 | 97.19 | 96.41 | -0.782 | TRUE | c |
+| pembro | 24 | 92.20 | 92.63 | 0.427 | TRUE | c |
+| pembro | 36 | 89.51 | 90.07 | 0.557 | TRUE | c |
+| pembro | 48 | 87.84 | 88.14 | 0.300 | TRUE | c |
+| pembro | 60 | 86.55 | 86.61 | 0.062 | TRUE | c |
+| placebo | 12 | 98.72 | 97.05 | -1.668 | FALSE | c |
+| placebo | 24 | 91.02 | 91.74 | 0.716 | TRUE | c |
+| placebo | 36 | 86.90 | 87.23 | 0.327 | TRUE | c |
+| placebo | 48 | 83.53 | 83.70 | 0.166 | TRUE | c |
+| placebo | 60 | 81.71 | 80.90 | -0.805 | TRUE | c |
+
+结果：三步都不达标。
+
+诊断（`calibration_diagnostic.csv`）：引擎在各时点的死亡（占全臂 %）按来源分解：背景死亡、术前事件（作为远处复发进入）后的死亡、术后事件后的死亡。
+
+| structure | arm | month | km_deaths_pct | engine_deaths_pct | background_pct | after_presurgery_events_pct | after_postsurgery_events_pct |
+|---|---|---|---|---|---|---|---|
+| b | pembro |  6 | 0.766 | 0.565 | 0.061 | 0.504 | 0.000 |
+| b | pembro | 12 | 2.811 | 2.617 | 0.121 | 1.071 | 1.424 |
+| b | pembro | 18 | 5.113 | 4.526 | 0.188 | 1.216 | 3.121 |
+| b | pembro | 24 | 7.800 | 6.149 | 0.255 | 1.304 | 4.590 |
+| b | placebo |  6 | 0.256 | 0.546 | 0.061 | 0.485 | 0.000 |
+| b | placebo | 12 | 1.282 | 3.450 | 0.121 | 1.828 | 1.500 |
+| b | placebo | 18 | 6.154 | 6.340 | 0.188 | 2.102 | 4.050 |
+| b | placebo | 24 | 8.979 | 9.044 | 0.255 | 2.262 | 6.527 |
+| c | pembro |  6 | 0.766 | 0.961 | 0.061 | 0.901 | 0.000 |
+| c | pembro | 12 | 2.811 | 3.593 | 0.121 | 1.427 | 2.045 |
+| c | pembro | 18 | 5.113 | 5.709 | 0.188 | 1.456 | 4.064 |
+| c | pembro | 24 | 7.800 | 7.373 | 0.255 | 1.474 | 5.645 |
+| c | placebo |  6 | 0.256 | 0.448 | 0.061 | 0.388 | 0.000 |
+| c | placebo | 12 | 1.282 | 2.951 | 0.121 | 1.559 | 1.270 |
+| c | placebo | 18 | 6.154 | 5.652 | 0.188 | 1.910 | 3.554 |
+| c | placebo | 24 | 8.979 | 8.263 | 0.255 | 2.124 | 5.884 |
+
+安慰剂组 12 个月：KM 的死亡为 1.28%，结构 (c) 的引擎为 2.95%；其中术前事件（占安慰剂全臂 3.37%，按规定作为远处复发进入）之后的死亡就有 1.56%，已超过 KM 的全部死亡。只要术前进展与术后远处复发共用同一个复发后死亡率，安慰剂组第一年的 OS 就无法与 KM 吻合；帕博利珠单抗组则需要较高的早期死亡（12 个月 KM 死亡 2.81%）。
+
+模型隐含的远处复发后生存（`dr_survival_implied.csv`，最后尝试的结构；中位为年）：
+
+| structure | parameter_set | median_excess_only_years | median_all_cause_years | surv_1y | surv_2y | surv_5y |
+|---|---|---|---|---|---|---|
+| c | pembro | 0.008333 | 0.008333 | 0.245 | 0.228 | 0.205 |
+| c | placebo | 0.666667 | 0.666667 | 0.436 | 0.323 | 0.184 |
+
+文献对照：法国 ESME 全国队列，新辅助或辅助化疗结束后 12 个月内转移复发的 TNBC，中位 OS 10.1 个月（95% CI 9.3 至 10.9），12 个月以后复发为 17.1 个月（Eur J Cancer 2023;189:112935，PMID 37385070）。IMpassion132，12 个月内复发的 PD-L1 阳性晚期 TNBC，中位 OS 安慰剂组 11.2 个月、阿替利珠单抗组 12.1 个月（Ann Oncol 2024;35:630-642，PMID 38755096）。模型隐含的中位明显短于这些值（结构 (b) 共用参数约 0.36 年；结构 (c) 帕博利珠单抗臂的参数退化），说明校准得到的是吸收了结构偏差的有效参数。
+
+未用于校准的曲线与引擎的对照（最后尝试的结构，`engine_checks.csv`）：
 
 | check | arm | max_abs_diff |
 |---|---|---|
-| DRFS vs 2022 Fig. S3 (IA4) | pembro | 1.350 |
-| EFS vs 2024 Fig. 2A (IA7) | pembro | 0.788 |
-| OS non-pCR vs 2024 Fig. S4 (IA7) | pembro | 3.750 |
-| OS pCR vs 2024 Fig. S4 (IA7) | pembro | 0.764 |
-| DRFS vs 2022 Fig. S3 (IA4) | placebo | 2.838 |
-| EFS vs 2024 Fig. 2A (IA7) | placebo | 1.527 |
-| OS non-pCR vs 2024 Fig. S4 (IA7) | placebo | 4.252 |
-| OS pCR vs 2024 Fig. S4 (IA7) | placebo | 1.473 |
+| DRFS vs 2022 Fig. S3 (IA4) | pembro | 1.021 |
+| EFS vs 2024 Fig. 2A (IA7) | pembro | 0.521 |
+| OS non-pCR vs 2024 Fig. S4 (IA7) | pembro | 2.414 |
+| OS pCR vs 2024 Fig. S4 (IA7) | pembro | 1.083 |
+| DRFS vs 2022 Fig. S3 (IA4) | placebo | 2.503 |
+| EFS vs 2024 Fig. 2A (IA7) | placebo | 1.575 |
+| OS non-pCR vs 2024 Fig. S4 (IA7) | placebo | 3.546 |
+| OS pCR vs 2024 Fig. S4 (IA7) | placebo | 1.547 |
 
-图：`fig_calibration_OS.png`、`fig_engine_checks.png`。帕博利珠单抗组 OS 在 20 至 40 个月模型偏高，安慰剂非 pCR 层 OS 第一年模型偏低；推测原因是无复发死亡（治疗相关死亡等）在时间上的分布与模型假设（与 EFS 超额风险成比例）不同，且两臂复发后的生存可能不同。
+图：`fig_calibration_OS.png`（灰竖线为门槛时点）、`fig_engine_checks.png`。
 
-## 8. 需要决定的事项
+## 9. 已决事项与待决事项
 
-1. **层内 HR 的参照值**（上文「不达标的门槛项」）：请给出 pCR 层 0.65 [0.39, 1.08]、non-pCR 层 0.72 [0.54, 0.96] 的出处。若来自 IA4 以后的分析，需要该分析的按臂 × pCR 分层 KM 图才能重建；否则可改为不作门槛的跨分析对照。
-2. 非 pCR 两层的分布族不同（第 6 节），是否要求两臂用同一分布族。
-3. 第二原发癌的处理（现为按比例摊入三类）。
-4. 远处复发后死亡率为两臂共用的有效参数（第 7 节）。
-5. S-JP 的权重定义与 BRCA 检查的对象范围（`docs/model_spec.md` 第 2 节，待尾崎确认）。
+已决（2026-10-21）：
+- 层内 HR 的较晚截点参照值：撤出门槛，改为跨分析对照（第 4 节）。
+- 准则 1：保留 95%，最初 100% 为设定错误（第 6 节）。
+- 分布族：同一层两臂同一族，依两臂合计 AIC 与 5 年外推检验选定，次优族为情景（第 6 节）。
+- 第二原发癌：归入局部区域复发（第 7 节）。
+- 校准：按 (a)(b)(c) 依次尝试，加门槛（第 8 节）。
 
-## 9. 未进行的步骤
+待决：
+- **校准未达标后的处理**（第 8 节）。可选方向：（1）术前无法手术的进展与术后远处复发分开，给前者单独的死亡率或状态；（2）远处复发后的超额死亡率改用先升后降的形状（如对数 logistic），与文献的中位约 10 至 12 个月相符；（3）接受 (c)，在报告中写明安慰剂组 12 个月的偏差；（4）调整第 1 年的门槛。
 
-步骤 6（bootstrap，B = 1000）与步骤 7（生存引擎的最终输出：5、10、20 年 EFS 与 OS 等）。引擎函数与扩展接口已在 `R/engine.R`，接口测试见 `engine_interface_test.csv`。
+等尾崎回答：
+- S-JP 的权重定义（`docs/model_spec.md` 第 2 节）。
+- BRCA 检测的对象范围。
+- 帕博利珠单抗组是否也加 S-JP。
+
+## 10. 未进行的步骤
+
+步骤 6（bootstrap，B = 1000，含选定的校准结构）与步骤 7（生存引擎的最终输出：5、10、20 年 EFS 与 OS 等）。引擎已改为闭式计算（与逐周期递推一致，`R/test_engine_vectorized.R`），每次调用约 20 毫秒，可在校准结构确定后进行 bootstrap。
 
