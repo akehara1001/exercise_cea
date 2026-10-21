@@ -5,7 +5,7 @@
       "fig_id": "K20_F2_EFS", "pdf": "NEJMoa1910549.pdf", "page": 8,
       "label": "Schmid 2020 NEJM Fig. 2", "endpoint": "EFS", "population": "ITT", "analysis": "IA2",
       "clip": [60, 60, 470, 270],
-      "arms": {"pembro": [0.782, 0.328, 0.233], "placebo": [0.362, 0.530, 0.766]},
+      "arms": {"pembro": [0.362, 0.530, 0.766], "placebo": [0.782, 0.328, 0.233]},
       "row_labels": {"pembro": "^Pembrolizumab", "placebo": "^Placebo"}
     },
     {

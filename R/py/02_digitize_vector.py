@@ -67,7 +67,12 @@ for f in spec["figures"]:
             for x in cx:
                 w.writerow([f"{kmvec.to_data(cal, x, 0)[0]:.5f}", f"{x:.3f}"])
         drops = sum(1 for a, b in zip(verts, verts[1:]) if abs(a[0] - b[0]) < 0.5 and b[1] > a[1] + 1e-6)
+        lc = kmvec.legend_colour(page, f["clip"], ax, f["row_labels"][arm])
+        legend_match = "no legend sample" if lc is None else str(kmvec.same_color(lc, col))
+        if lc is not None and not kmvec.same_color(lc, col):
+            raise RuntimeError(f"{f['fig_id']} {arm}: legend sample colour {lc} differs from spec {col}")
         log.append(dict(fig_id=f["fig_id"], arm=arm, pdf=f["pdf"], page=f["page"], path_index=idx,
+                        legend_colour_matches_spec=legend_match,
                         line_width=round(width, 2), n_vertices=len(verts), n_drops=drops,
                         n_censor_marks=len(cx), s_first=round(data[0][1], 4),
                         t_last=round(data[-1][0], 3), s_last=round(data[-1][1], 3),

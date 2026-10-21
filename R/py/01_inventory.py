@@ -15,6 +15,13 @@ from pdftext import PdfText
 from facts import FACTS
 
 papers = os.path.join(root, "input", "papers")
+import hashlib
+with open(os.path.join(root, "data", "input_manifest.csv"), "w", newline="", encoding="utf-8") as fh:
+    w = csv.writer(fh)
+    w.writerow(["file", "bytes", "pages", "sha256"])
+    for fn in sorted(os.listdir(papers)):
+        p = os.path.join(papers, fn)
+        w.writerow([fn, os.path.getsize(p), len(pymupdf.open(p)), hashlib.sha256(open(p, "rb").read()).hexdigest()])
 texts = {}
 vals, rows = {}, []
 for f in FACTS:
@@ -60,6 +67,12 @@ for f in vs["figures"]:
         n=f"pembro {rt['pembro'][0][1]}; placebo {rt['placebo'][0][1]}")
 rs = json.load(open(os.path.join(root, "R", "py", "rasterspec.json"), encoding="utf-8"))
 for f in rs["figures"]:
+    doc = pymupdf.open(os.path.join(papers, f["pdf"]))
+    pg_ = doc[f["page"] - 1]
+    im = max(pg_.get_images(full=True), key=lambda im: im[2] * im[3])
+    info = doc.extract_image(im[0])
+    rect = pg_.get_image_rects(im[0])[0]
+    raster_fmt = f"raster ({info['ext'].upper()} {info['width']}x{info['height']}, {info['width'] / (rect.width / 72):.0f} dpi as placed)"
     axinfo[f["fig_id"]] = dict(
         x_axis=f"{min(f['x_tick_labels']):g}-{max(f['x_tick_labels']):g} years",
         y_axis=f"{min(f['y_tick_labels']):g}-{max(f['y_tick_labels']):g}%",
@@ -162,7 +175,7 @@ add(fig_key="K24_S4_OS_by_pCR", source="Schmid 2024 NEJM 391:1981", figure=v("K2
     notes="supplementary appendix not in input/papers; EFS by pCR at IA7 not cited in main text")
 y = "Y22_tnbc_S2"
 add(fig_key="Y22_F4A_EFS_TNBC", source="Yau 2022 Lancet Oncol 23:149 (author manuscript) + appendix", figure="Fig. 4A",
-    location="main text; KM estimates in appendix Table S2", available="yes", format="raster (JPEG 1920x1881, 300 dpi)",
+    location="main text; KM estimates in appendix Table S2", available="yes", format=raster_fmt,
     endpoint=f"EFS ({v('Y22_efs_definition', 'definition')})", population="HR-negative/HER2-negative (TNBC) by RCB class",
     analysis="pooled 12 cohorts", data_cutoff="Nov 2019 (data collection)", median_fu_months="",
     time_origin=v("Y22_origin", "origin"), landmark_at_surgery="yes (origin = start of NAC)", **axinfo["Y22_F4A_EFS_TNBC"],

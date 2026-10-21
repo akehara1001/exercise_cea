@@ -100,63 +100,91 @@ for f in spec["figures"]:
             for t, n, c, e in zip(times, rt[k]["n"], rt[k]["cum_censored"], ev):
                 w.writerow([k, t, n, c, e])
 
+    pfit_x = np.polyfit(f["x_tick_labels"], xt, 1)
+    pfit_y = np.polyfit(f["y_tick_labels"], sorted(yt, reverse=True), 1)
+    x_t0 = int(round(np.polyval(pfit_x, 0)))
+    # the plot is truncated at the last x tick; '+' arms of marks there poke past it
+    x_tmax = int(np.floor(np.polyval(pfit_x, max(f["x_tick_labels"]))))
+    y_100 = float(np.polyval(pfit_y, 100))
+    y_0 = float(np.polyval(pfit_y, 0))
+    PEN = 1.5   # score cost of one drop; one column of line contributes about 2-3
+
     for ci, k in enumerate(names):
         m = ok & (lab == ci)
-        # keep horizontal line pixels (drop vertical drop segments and the vertical arm of '+')
-        hm = m.copy()
-        hm[:, 1:-1] = m[:, 1:-1] & m[:, :-2] & m[:, 2:]
-        H, W = hm.shape
-        level = np.full(W, np.nan)
-        for x in range(W):
-            ys = np.where(hm[:, x])[0]
-            if len(ys) == 0:
-                continue
-            # split into clusters; the curve is the lowest cluster (right-continuous at drops)
-            cl = tick_centres(np.isin(np.arange(H), ys))
-            a, b = cl[-1]
-            level[x] = (a + b) / 2.0
-        # the plot is truncated at the last x tick; '+' arms of marks there poke past it
-        x_tmax = int(np.floor(np.polyval(np.poly1d(np.polyfit(f["x_tick_labels"], xt, 1)), max(f["x_tick_labels"]))))
-        level[x_tmax + 1:] = np.nan
-        xs = np.where(~np.isnan(level))[0]
-        first, last = xs.min(), xs.max()
-        # start of curve: 100% at time 0 (curves overlap at the top before the first drops)
-        x_t0 = int(round(np.polyval(np.poly1d(np.polyfit(f["x_tick_labels"], xt, 1)), 0)))
-        y_100 = float(np.polyval(np.poly1d(np.polyfit(f["y_tick_labels"], sorted(yt, reverse=True), 1)), 100))
-        lev = level.copy()
-        lev[x_t0] = y_100 if np.isnan(lev[x_t0]) else min(lev[x_t0], y_100)
-        # forward fill gaps, then enforce monotone non-increasing survival (y px non-decreasing)
-        cur = y_100
-        for x in range(x_t0, last + 1):
-            if not np.isnan(lev[x]):
-                cur = max(cur, lev[x])
-            lev[x] = cur
-        # vertices of the step function
-        verts = [(x_t0, lev[x_t0])]
-        for x in range(x_t0 + 1, last + 1):
-            if lev[x] > lev[x - 1] + 1e-9:
-                verts.append((x, lev[x - 1]))
-                verts.append((x, lev[x]))
-        verts.append((last, lev[last]))
+        H, W = m.shape
+        mi = m.astype(float)
+        band = mi.copy()
+        band[1:] += mi[:-1]
+        band[:-1] += mi[1:]
+        r0, r1 = int(round(y_100)), int(np.ceil(y_0))
+        S = band[r0:r1 + 1, :]
+        R = S.shape[0]
+        # Viterbi over rows: the curve is a staircase that only moves down (survival only falls).
+        # A '+' censor mark adds pixels symmetrically above and below the line and a dense run of
+        # marks ends where the line goes on, so the best-scoring staircase follows the line itself.
+        V = np.full(R, -np.inf)
+        V[0] = S[0, x_t0]
+        bp = np.zeros((x_tmax + 1, R), dtype=np.int32)
+        for x in range(x_t0 + 1, x_tmax + 1):
+            pm = np.maximum.accumulate(np.concatenate(([-np.inf], V[:-1])))
+            am = np.zeros(R, dtype=np.int32)
+            best, bi = -np.inf, 0
+            for yy in range(1, R):
+                if V[yy - 1] > best:
+                    best, bi = V[yy - 1], yy - 1
+                am[yy] = bi
+            drop = pm - PEN
+            stay = V
+            take_drop = drop > stay
+            V = np.where(take_drop, drop, stay) + S[:, x]
+            bp[x] = np.where(take_drop, am, np.arange(R))
+        path = np.zeros(x_tmax + 1, dtype=np.int32)
+        path[x_tmax] = int(np.argmax(V))
+        for x in range(x_tmax, x_t0, -1):
+            path[x - 1] = bp[x, path[x]]
+        # steps = runs of constant row; sub-pixel level = centroid of pixels within +-1 row
+        steps, xs0 = [], x_t0
+        for x in range(x_t0 + 1, x_tmax + 2):
+            if x == x_tmax + 1 or path[x] != path[x - 1]:
+                rr = path[xs0] + r0
+                sub = m[rr - 1: rr + 2, xs0: x]
+                w_ = sub.sum(1)
+                lvl = float(rr - 1 + np.average(np.arange(3), weights=w_)) if w_.sum() > 0 else float(rr)
+                steps.append([xs0, x - 1, lvl])
+                xs0 = x
+        steps[0][2] = y_100
+        for j in range(1, len(steps)):
+            steps[j][2] = max(steps[j][2], steps[j - 1][2])
+        verts = [(steps[0][0], steps[0][2])]
+        for j in range(1, len(steps)):
+            verts.append((steps[j][0], steps[j - 1][2]))
+            verts.append((steps[j][0], steps[j][2]))
+        on_line = [m[max(path[x] + r0 - 1, 0): path[x] + r0 + 2, x].any() for x in range(x_t0, x_tmax + 1)]
+        last = max(x for x, o in zip(range(x_t0, x_tmax + 1), on_line) if o)
+        verts.append((last, steps[-1][2]))
         rows = []
         for x, yv in verts:
             # pixel centre coordinates in the full image
             t = float(np.polyval(fx, x + 0.0))
             s = float(np.polyval(fy, yv + 0.0))
             rows.append((max(t, 0.0), min(s, 100.0), x + x0, yv + y0))
+        # a curve drawn up to the last tick runs to the truncation time; the last pixel column
+        # maps to slightly less only because of pixel quantisation
+        if x_tmax - last <= 2:
+            rows[-1] = (float(max(f["x_tick_labels"])),) + rows[-1][1:]
+        cover = float(np.mean(on_line))
         with open(os.path.join(outdir, f"{f['fig_id']}_{k}_curve.csv"), "w", newline="", encoding="utf-8") as fh:
             w = csv.writer(fh)
             w.writerow(["time", "surv_pct", "x_px", "y_px"])
             for r in rows:
                 w.writerow([f"{r[0]:.5f}", f"{r[1]:.5f}", r[2], f"{r[3]:.2f}"])
-        cover = np.mean(~np.isnan(level[x_t0:last + 1]))
-        log.append(dict(fig_id=f["fig_id"], arm=k, n_pixels=int(m.sum()), n_line_pixels=int(hm.sum()),
-                        column_coverage=round(float(cover), 4), n_steps=(len(verts) - 2) // 2,
+        log.append(dict(fig_id=f["fig_id"], arm=k, n_pixels=int(m.sum()),
+                        column_coverage=round(cover, 4), n_steps=len(steps) - 1,
                         t_last=round(rows[-1][0], 4), s_last=round(rows[-1][1], 3),
                         calib_resid_x=round(rx, 4), calib_resid_y=round(ry, 4),
                         px_per_unit_x=round(1 / fx[0], 3), px_per_pct_y=round(-1 / fy[0], 3),
                         native_px=f"{info['width']}x{info['height']}", image_ext=info["ext"]))
-        print(f"{f['fig_id']} {k}: steps={(len(verts) - 2) // 2} coverage={cover:.3f} "
+        print(f"{f['fig_id']} {k}: steps={len(steps) - 1} coverage={cover:.3f} "
               f"last=({rows[-1][0]:.3f},{rows[-1][1]:.2f}) resid=({rx:.4f},{ry:.4f})")
 
 with open(os.path.join(outdir, "raster_extraction_log.csv"), "w", newline="", encoding="utf-8") as fh:

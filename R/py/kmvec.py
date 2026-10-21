@@ -162,6 +162,22 @@ def censor_marks(page, ax, color, verts, km_path_idx, max_gap=2.5):
     return sorted(xs)
 
 
+def legend_colour(page, clip, ax, label_rx):
+    """Colour of the legend sample line drawn just left of a legend label inside the plot,
+    or None when the figure labels its curves without sample lines."""
+    words = [w for w in page.get_text("words", clip=pymupdf.Rect(*clip))
+             if re.search(label_rx, w[4]) and w[3] < ax["y_axis_line"]]
+    for w in words:
+        yc = (w[1] + w[3]) / 2
+        for d in page.get_drawings():
+            c, r = d.get("color"), d["rect"]
+            if c is None or max(c) - min(c) < 0.2 or len(d["items"]) > 3 or r.width < 5:
+                continue
+            if abs((r.y0 + r.y1) / 2 - yc) < 3 and 0 <= w[0] - r.x1 < 30:
+                return tuple(c)
+    return None
+
+
 def risk_table(page, clip, ax, cal, row_labels, label_dx=4.0):
     """row_labels: dict arm -> regex matching the row label words (joined)."""
     words = [w for w in page.get_text("words", clip=pymupdf.Rect(*clip)) if w[1] > ax["y_axis_line"] + 2]
