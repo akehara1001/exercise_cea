@@ -12,10 +12,10 @@ source(file.path(ROOT, "R", "econ.R"))
 suppressPackageStartupMessages(library(survival))
 out_dir <- file.path(ROOT, "output", "phase2"); dir.create(out_dir, showWarnings = FALSE)
 P <- readRDS(file.path(ROOT, "data", "fits", "calibration_candidates.rds"))$params
-P$os_anchor_k <- CFG$os_anchor_k_fixed
+P$pembro_dr_k <- 1.5      # test value
 
 # synthetic values (not model inputs)
-ids <- c(sprintf("A%02d", 1:8), sprintf("B%02d", 1:11), paste0("B", rep(21:31, each = 2), c("P", "C")),
+ids <- c(sprintf("A%02d", 1:8), sprintf("B%02d", 1:11), paste0("B", rep(21:33, each = 2), c("P", "C")),
          "C01", "C02", "C03", sprintf("D%02d", 1:6), sprintf("E%02d", 1:5), sprintf("U%02d", 1:5))
 set.seed(1)
 pv <- setNames(round(runif(length(ids), 1e4, 1e6)), ids)
@@ -71,9 +71,15 @@ st <- setNames(ft$status, ft$arm)
 ok <- identical(unname(st[c("A", "B", "C", "D", "E")]), c("frontier", "frontier", "extendedly dominated", "dominated", "frontier"))
 add("效率前沿：在答案已知的合成例中正确判定劣势与扩展劣势", ok, NA)
 # 10. OS anchor switch changes only the pembrolizumab arms
-aa <- econ_arm("chemo", P, pv, os_anchor = TRUE); ab <- econ_arm("pembro", P, pv, os_anchor = TRUE)
-add("OS 锚定开关不改变单用化疗组，减少帕博利珠单抗组的生命年",
-    cmp(aa, base$chemo) == 0 && ab$ly < base$pembro$ly, cmp(aa, base$chemo))
+aa <- econ_arm("chemo", P, pv, common_dr = TRUE); ab <- econ_arm("pembro", P, pv, common_dr = TRUE)
+add("情景 k = 1 的开关不改变单用化疗组；k > 1（测试值 1.5）时设为 k = 1 增加帕博利珠单抗组的生命年",
+    cmp(aa, base$chemo) == 0 && ab$ly > base$pembro$ly, cmp(aa, base$chemo))
+
+# 11. AE disutility basis: base (sum of six, B33) and scenario (any grade >= 3, B32) give QALY losses
+# in the ratio of the two rates
+q6 <- econ_arm("pembro", P, pv)$qaly_ae_decrement; qa <- econ_arm("pembro", P, pv, settings = list(ae_disutility_basis = "any"))$qaly_ae_decrement
+dev <- abs(q6 / qa - pv[["B33P"]] / pv[["B32P"]])
+add("不良事件效用下降的口径：基准（6 种之和，B33）与情景（任何 3 级以上，B32）的 QALY 损失之比等于两者发生率之比", dev < 1e-12, dev)
 
 R <- do.call(rbind, T)
 write.csv(R, file.path(out_dir, "econ_unit_tests.csv"), row.names = FALSE)

@@ -44,11 +44,26 @@ CFG <- list(
   #     (gate_rmst_rel_tol_round3);
   #   2026-10-22 round 4: (a) unchanged; (b) engine 5-year RMST difference inside the bootstrap
   #     95% CI of the KM difference (B = boot_B, seed).
+  #   2026-10-22 round 6, ACCEPTANCE RULE FIXED BEFORE THE RUN (user decision of 2026-10-22,
+  #     committed before calibration round 6 was run):
+  #     (a) engine OS inside the pointwise 95% CI of the KM at 1-5 years in each arm (10 points);
+  #         if (a) fails, the calibration is still accepted only if both hold:
+  #         (i) every point outside its 95% CI lies outside by <= 0.3 percentage points;
+  #         (ii) all 10 points lie inside the Bonferroni simultaneous intervals (pointwise 99.5% CI,
+  #              1 - 0.05 / 10; same log-scale KM interval as for (a));
+  #     (b) unchanged: engine 5-year RMST difference inside the bootstrap 95% CI of the KM
+  #         difference. Not accepted -> stop and report, no structure added.
+  #     Reason: with 10 points each tested at 95%, at least one point falls outside with
+  #     substantial probability even when the model is right.
+  #     The PreProg boundaries (median 10-26 months, 5-year survival >= 5%) are reported, not part
+  #     of this rule (the user's rule names only (a), (i), (ii) and (b)).
   gate_years = 1:5,
-  # OS anchor scenario (decision 2026-10-22): k on the DR excess hazard of the pembrolizumab arms,
-  # fixed at the value solved in calibration round 4 (engine RMST difference = KM value); not
-  # recalibrated afterwards or in the bootstrap
-  os_anchor_k_fixed = 2.007,
+  gate_accept_max_outside_pp = 0.3,
+  gate_accept_simultaneous_level = 1 - 0.05 / 10,
+  # DR excess hazard of the pembrolizumab arms = common log-logistic hazard x k (round 6): k is
+  # estimated in the base calibration within [0.25, 4]; scenario "k = 1" (common post-DR
+  # mortality) for every comparison involving pembrolizumab
+  pembro_dr_k_bounds = c(0.25, 4),
   gate_pp_round1_2 = 1,
   gate_rmst_rel_tol_round3 = 0.20,
   # 5-year stratified EFS constraint (decision 2026-10-22): the 5-year prediction must lie in the

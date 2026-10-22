@@ -22,17 +22,17 @@ sjp_ex <- do.call(survival_engine, c(list("exercise", "all", tt, P, nonpcr_mix =
 pathB <- survival_engine("exercise", "all", tt, P, p_pcr = P$p_pcr[["placebo"]] + 0.05)
 pem_sjp <- survival_engine("pembro", "all", tt, P, nonpcr_mix = mix)
 pem <- survival_engine("pembro", "all", tt, P)
-# OS anchor switch (k from the calibration): acts on the pembrolizumab arms only, OS only
-chemo_anchor <- survival_engine("chemo", "all", tt, P, os_anchor = TRUE)
-pem_anchor <- survival_engine("pembro", "all", tt, P, os_anchor = TRUE)
+# scenario k = 1 (common post-DR mortality): acts on the pembrolizumab arms only, OS only
+chemo_k1 <- survival_engine("chemo", "all", tt, P, common_dr = TRUE)
+pem_k1 <- survival_engine("pembro", "all", tt, P, common_dr = TRUE)
 out <- rbind(row("chemo base", base), row("nonpcr_mix with all HR = 1", same1), row("exercise path A with hr0 = 1", ex1),
              row("S-JP (test weights)", sjp), row("S-JP + exercise path A, 6 months continued (test values)", sjp_ex),
              row("exercise path B: pCR + 5 points (test value)", pathB), row("pembro base", pem), row("pembro + S-JP (test weights)", pem_sjp),
-             row("chemo with os_anchor = TRUE (no effect)", chemo_anchor), row("pembro, OS anchor scenario", pem_anchor))
+             row("chemo with common_dr = TRUE (no effect)", chemo_k1), row("pembro, scenario k = 1", pem_k1))
 stopifnot(max(abs(same1[, -1] - base[, -1])) < 1e-12, max(abs(ex1[, -1] - base[, -1])) < 1e-12,
           all(sjp$EFS >= base$EFS - 1e-12), all(pathB$EFS >= base$EFS - 1e-12),
-          max(abs(chemo_anchor[, -1] - base[, -1])) < 1e-12, max(abs(pem_anchor$EFS - pem$EFS)) < 1e-12,
-          P$os_anchor_k <= 1 || all(pem_anchor$OS[-1] < pem$OS[-1]))
+          max(abs(chemo_k1[, -1] - base[, -1])) < 1e-12, max(abs(pem_k1$EFS - pem$EFS)) < 1e-12,
+          P$pembro_dr_k <= 1 || all(pem_k1$OS[-1] > pem$OS[-1]))
 write.csv(out, file.path(ROOT, "output", "phase1", "engine_interface_test.csv"), row.names = FALSE)
 print(out, row.names = FALSE)
 cat("S-JP test weights:\n"); print(mix)

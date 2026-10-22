@@ -3,7 +3,8 @@
 # and bootstrap 95% percentile intervals (step 6, data/bootstrap/boot_replicates.rds).
 #   - 5-, 10- and 20-year EFS and OS from randomization by arm x pCR (all, pCR, non-pCR); in
 #     phase 1 the exercise arms equal their non-exercise arms (no exercise parameters yet);
-#   - the OS anchor scenario for the pembrolizumab arms (OS only; EFS is unchanged by it);
+#   - the scenario k = 1 (common post-DR mortality) for the pembrolizumab arms (OS only; EFS is
+#     unchanged by it);
 #   - curves to 20 years with bootstrap bands, against the reconstructed KM curves.
 # Each replicate's engine is rebuilt from the saved parameter matrices; its 5/10/20-year values must
 # equal those stored by 06_bootstrap.R (check of the saved matrices).
@@ -40,9 +41,9 @@ rebuild <- function(i) {
     Pb$p_pcr[[a]] <- unname(pc[paste0("p_pcr_", a)])
     Pb$q_pre[[a]] <- c(pCR = 0, nonpCR = unname(pc[paste0("q_pre_", a)]))
   }
-  Pb$preprog <- list(dist = "weibull", shape = unname(cb["preprog_shape"]), scale = unname(cb["preprog_scale"]))
+  Pb$preprog <- list(dist = "llogis", shape = unname(cb["preprog_shape"]), scale = unname(cb["preprog_median"]))
   Pb$dr <- list(dist = "llogis", shape = unname(cb["dr_shape"]), scale = unname(cb["dr_median"]))
-  Pb$os_anchor_k <- unname(cb["os_anchor_k"])
+  Pb$pembro_dr_k <- unname(cb["pembro_dr_k"])
   Pb
 }
 
@@ -52,9 +53,9 @@ curves_of <- function(Pb) {
   for (arm in c("chemo", "pembro")) for (pc in c("all", "pCR", "nonpCR")) {
     r <- survival_engine(arm, pc, times = grid_y, params = Pb)
     out[[length(out) + 1]] <- data.frame(arm = arm, pcr = pc, scenario = "base", time = grid_y, EFS = 100 * r$EFS, OS = 100 * r$OS)
-    if (arm == "pembro" && is.finite(Pb$os_anchor_k)) {
-      r <- survival_engine(arm, pc, times = grid_y, params = Pb, os_anchor = TRUE)
-      out[[length(out) + 1]] <- data.frame(arm = arm, pcr = pc, scenario = "OS anchor", time = grid_y, EFS = 100 * r$EFS, OS = 100 * r$OS)
+    if (arm == "pembro") {
+      r <- survival_engine(arm, pc, times = grid_y, params = Pb, common_dr = TRUE)
+      out[[length(out) + 1]] <- data.frame(arm = arm, pcr = pc, scenario = "k = 1", time = grid_y, EFS = 100 * r$EFS, OS = 100 * r$OS)
     }
   }
   do.call(rbind, out)
@@ -79,7 +80,7 @@ chk <- do.call(rbind, lapply(seq_len(nrow(BR$outputs)), function(i) {
   for (j in seq_len(nrow(x))) {
     if (x$scenario[j] == "base") {
       d <- c(d, x$EFS[j] - o[[sprintf("EFS_%gy_%s_%s", x$time[j], x$arm[j], x$pcr[j])]], x$OS[j] - o[[sprintf("OS_%gy_%s_%s", x$time[j], x$arm[j], x$pcr[j])]])
-    } else d <- c(d, x$OS[j] - o[[sprintf("OS_%gy_pembro_anchor_%s", x$time[j], x$pcr[j])]])
+    } else d <- c(d, x$OS[j] - o[[sprintf("OS_%gy_pembro_k1_%s", x$time[j], x$pcr[j])]])
   }
   data.frame(rep = BR$outputs[i, "b"], max_abs_diff = max(abs(d)))
 }))

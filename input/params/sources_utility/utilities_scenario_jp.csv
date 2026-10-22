@@ -1,0 +1,6 @@
+param_id,value,lower,upper,citation,location,quote,file,note
+U01,0.89,,,"Iwatani T, Noto S, Tsugawa K. Curr Oncol 2021;28(5):4203-4212. DOI 10.3390/curroncol28050356, PMID 34677274",Results,"In patients with PBC, HSUVs were 0.90 at 6 months and 0.89 at 3 months before the end of the observation period",sources_utility/Iwatani2021_CurrOncol_PMC8535054.xml,"EQ-5D-5L（日本の価値セット）、単施設の原発乳癌 137 例（TNBC 7.3%）。治療中と治療後を分けた値はないため U01 と U02 に同じ値（観察終了前 3 か月の 0.89）を用いる。標準誤差の記載なし。"
+U02,0.89,,,"Iwatani T, et al. Curr Oncol 2021;28(5):4203-4212. PMID 34677274",Results,"In patients with PBC, HSUVs were 0.90 at 6 months and 0.89 at 3 months before the end of the observation period",sources_utility/Iwatani2021_CurrOncol_PMC8535054.xml,"U01 と同じ。"
+U03,,,,,,,,"日本人の局所領域再発の値は見つからない。日本のシナリオでも基本値（Favre-Bulle 2024）を用いる。"
+U04,0.742,0.720,0.764,"Shiroiwa T, et al. BMC Cancer 2017;17:773. DOI 10.1186/s12885-017-3774-7, PMID 29149882",Results（Abstract と同文）,"0.764 (95% CI, 0.741–0.782) and 0.742 (95% CI, 0.720–0.764) in the S-1 and taxane arms",sources_utility/Shiroiwa2017_BMCCancer_PMC5693567.xml,"SELECT BC 試験（転移乳癌の一次治療、日本の価値セット）のタキサン群。48 か月までの最小二乗平均。"
+U05,,,,,,,,"日本人の Grade 3 以上の有害事象による低下の値はない（Hagiwara 2018 は Grade 1-2 のみ）。日本のシナリオでも基本値を用いる。"

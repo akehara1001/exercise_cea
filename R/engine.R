@@ -20,9 +20,9 @@
 # - LRR -> DR at a constant rate; LRR -> death at the background rate.
 # - DR -> death: background + an excess hazard in time since DR (log-logistic or Weibull;
 #   common to both arms; calibrated, step 5).
-# Scenario "OS anchor" (os_anchor = TRUE, 2026-10-22): the DR excess hazard of the pembrolizumab
-#   arms is multiplied by params$os_anchor_k, calibrated so that the engine's 5-year RMST
-#   difference equals the KM value; off in the base case.
+# DR excess hazard of the pembrolizumab arms = common hazard x params$pembro_dr_k (round 6:
+#   k estimated in the base calibration); scenario common_dr = TRUE sets k = 1 (common post-DR
+#   mortality in all arms).
 # Exercise hooks for phase 2 (no effect by default):
 #   (a) hr0 / wane_start / wane_rate: time-varying HR on EF -> LRR and EF -> DR,
 #       HR(t) = hr0 for t <= wane_start, 1 - (1 - hr0) * exp(-wane_rate * (t - wane_start)) after
@@ -192,21 +192,18 @@ engine_params <- function(fits = readRDS(file.path(ROOT, "data", "fits", "fits.r
   p$lrr_dr <- c(rate = -log(1 - n_ld / n_l) / expo, n_local_then_distant = n_ld, n_local = n_l, exposure_years = expo)
   p$dr <- dr
   p$preprog <- preprog
-  p$os_anchor_k <- NA_real_
+  p$pembro_dr_k <- 1
   p
 }
 
 # exposed interface: arm = chemo | exercise | pembro | both; pcr = all | pCR | nonpCR
 survival_engine <- function(arm, pcr = "all", times = NULL, params,
                             hr0 = 1, wane_start = 0, wane_rate = 0, p_pcr = NULL, nonpcr_mix = NULL,
-                            os_anchor = FALSE, dr_first_months = NULL) {
+                            common_dr = FALSE, dr_first_months = NULL) {
   base <- switch(arm, chemo = "placebo", exercise = "placebo", pembro = "pembro", both = "pembro",
                  stop("arm must be chemo, exercise, pembro or both"))
   dr <- params$dr
-  if (os_anchor && base == "pembro") {
-    if (!is.finite(params$os_anchor_k)) stop("os_anchor_k not set")
-    dr$k <- params$os_anchor_k
-  }
+  if (base == "pembro" && !common_dr) dr$k <- params$pembro_dr_k
   hr <- if (hr0 == 1) NULL else function(t) ifelse(t <= wane_start, hr0, 1 - (1 - hr0) * exp(-wane_rate * (t - wane_start)))
   pp <- if (is.null(p_pcr)) params$p_pcr[[base]] else p_pcr
   rb1 <- function(b, dhr) run_branch(params$efs[[base]][[b]], params$pre_surv[[base]][[b]], params$q_pre[[base]][[b]],

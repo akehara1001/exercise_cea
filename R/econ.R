@@ -26,11 +26,13 @@
 #     months 0-6 while event-free; continuation after surgery E04 a month for E05 months.
 # Utilities: event-free U01 on treatment (to surgery in the arms without pembrolizumab, to the end
 # of adjuvant pembrolizumab in the others) and U02 after; LRR U03; DR and PreProg U04; severe
-# adverse events: decrement U05 for pv[["U05_duration_years"]] years, applied to the summed rate
-# of the grade >= 3 events (B25-B28, B30, B31), once at the start.
+# adverse events: decrement U05 for pv[["U05_duration_years"]] years, once at the start, applied to
+# (settings$ae_disutility_basis) "sum6" (base, v4): the summed incidence of six grade >= 3 adverse
+# events, events per person (B33P / B33C; as in the source, Favre-Bulle 2024 Table S1), or "any"
+# (scenario): the rate of any grade >= 3 adverse event, patients (B32P / B32C).
 
 ECON_DEFAULTS <- list(discount = 0.02, exercise_cost = "E01", exercise_continue = FALSE, terminal_deaths = "cancer",
-                      neo_doses = 8, adj_doses = 9)
+                      neo_doses = 8, adj_doses = 9, ae_disutility_basis = "sum6")
 ARMS <- c("chemo", "exercise", "pembro", "both")
 has_pembro <- function(arm) arm %in% c("pembro", "both")
 has_exercise <- function(arm) arm %in% c("exercise", "both")
@@ -40,7 +42,7 @@ wk <- function(w) w * 7 / 365.25
 # (engine path A) and delta_pcr on the pCR proportion (path B)
 EXERCISE_NEUTRAL <- list(hr0 = 1, delay_years = 0, wane_rate = 0, delta_pcr = 0)
 
-econ_arm <- function(arm, P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_NEUTRAL, os_anchor = FALSE, nonpcr_mix = NULL) {
+econ_arm <- function(arm, P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_NEUTRAL, common_dr = FALSE, nonpcr_mix = NULL) {
   s <- modifyList(ECON_DEFAULTS, settings)
   base <- if (has_pembro(arm)) "pembro" else "placebo"
   cont_m <- if (has_exercise(arm) && isTRUE(s$exercise_continue)) pv[["E05"]] else 0
@@ -48,7 +50,7 @@ econ_arm <- function(arm, P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_N
     list(hr0 = 1, wane_start = 0, wane_rate = 0)
   pp <- if (has_exercise(arm) && exercise$delta_pcr != 0) P$p_pcr[[base]] + exercise$delta_pcr else NULL
   e <- survival_engine(arm, "all", times = NULL, params = P, hr0 = ex$hr0, wane_start = ex$wane_start, wane_rate = ex$wane_rate,
-                       p_pcr = pp, nonpcr_mix = nonpcr_mix, os_anchor = os_anchor, dr_first_months = pv[["D04"]])
+                       p_pcr = pp, nonpcr_mix = nonpcr_mix, common_dr = common_dr, dr_first_months = pv[["D04"]])
   t <- e$time; cyc <- P$cycle; L <- P$L
   d <- (1 + s$discount)^(-t)
   trap <- function(y) sum(cyc * (head(y, -1) + tail(y, -1)) / 2)          # integral over the grid
@@ -93,15 +95,15 @@ econ_arm <- function(arm, P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_N
   t_on <- if (has_pembro(arm)) L + wk(3 * s$adj_doses) else L
   u_ef <- ifelse(t < t_on, pv[["U01"]], pv[["U02"]])
   qaly_states <- trap((e$EF * u_ef + e$LRR * pv[["U03"]] + (e$DR + e$PreProg) * pv[["U04"]]) * d)
-  sev <- sum(sapply(c(25:28, 30, 31), function(i) pv[[paste0("B", i, sfx)]]))
-  qaly_ae <- sev * pv[["U05"]] * pv[["U05_duration_years"]]
+  ae_row <- switch(s$ae_disutility_basis, sum6 = "B33", any = "B32", stop("ae_disutility_basis must be sum6 or any"))
+  qaly_ae <- pv[[paste0(ae_row, sfx)]] * pv[["U05"]] * pv[["U05_duration_years"]]
   os <- 1 - e$Dead
   list(arm = arm, cost = sum(cost), cost_components = cost, qaly = qaly_states - qaly_ae, qaly_ae_decrement = qaly_ae,
        ly = trap(os), ly_disc = trap(os * d), engine = e)
 }
 
-econ_all <- function(P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_NEUTRAL, os_anchor = FALSE, arms = ARMS) {
-  R <- lapply(arms, function(a) econ_arm(a, P, pv, settings, exercise, os_anchor))
+econ_all <- function(P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_NEUTRAL, common_dr = FALSE, arms = ARMS) {
+  R <- lapply(arms, function(a) econ_arm(a, P, pv, settings, exercise, common_dr))
   names(R) <- arms
   data.frame(arm = arms, cost = sapply(R, `[[`, "cost"), qaly = sapply(R, `[[`, "qaly"), ly = sapply(R, `[[`, "ly"),
              ly_disc = sapply(R, `[[`, "ly_disc"), row.names = NULL)

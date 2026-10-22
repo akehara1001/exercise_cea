@@ -1,6 +1,6 @@
-# 原负责参数的来源（入力表 v2：A01 至 A03、B21P 至 B31C、U01 至 U05）
+# 原负责参数的来源（入力表 v4：A01 至 A03、B21P 至 B33C、U01 至 U05）
 
-由 `R/py/11_fill_hara_params.py` 从下列文件读取后写入 `input/params/parameters_v2.xlsx`，本文件同时生成；数值不手抄。中间结果在 `data/params_hara/`。
+由 `R/py/11_fill_hara_params.py` 从下列文件读取后写入 `input/params/parameters_v4.xlsx`，本文件同时生成；数值不手抄。中间结果在 `data/params_hara/`。v3 新增 B32P、B32C，v4 新增 B33P、B33C（担当均为原）。
 
 ## A. 药价（A01 至 A03）
 
@@ -49,12 +49,14 @@
 
 注：标有经过措置（例如「R9.3.31まで」）的品目将从薬価基準删除，令和8年度内仍为收载品目，故计入最低薬価的比较。每次给药的小瓶组合见 `data/params_hara/drug_costs.csv`，全部候选品目见 `drug_vials.csv`。
 
-## B. 不良事件发生率（B21P 至 B31C）
+## B. 不良事件发生率（B21P 至 B33C）
 
 - 规则：内分泌类免疫相关不良事件（甲状腺功能减退、甲状腺功能亢进、肾上腺功能不全、垂体炎、1 型糖尿病）用全部等级，其余用 3 级以上。分母为 as-treated 人群（帕博利珠单抗组 783 例，安慰剂组 389 例）。截点统一为 IA4（2021-03-23）；2024 年正文 Table 2（IA7）中同名项目的例数与 IA4 相同。
 - 主要来源：Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23) Table 2（正文 p.564）；发热性中性粒细胞减少：Schmid P, et al. N Engl J Med 2022;386:556-67, Supplementary Appendix (IA4, data cutoff 2021-03-23) Table S7（p.27）。
 - 表中没有的项目（大肠炎、肝炎、1 型糖尿病）：EMA. Keytruda assessment report EMEA/H/C/003820/II/0110 (EMA/257879/2022; KEYNOTE-522, database cutoff 2021-03-23)（`sources_ae/EMA_keytruda_II0110_assessment.pdf`）。p.97 至 p.100 的 Table 5.3.5.3.3-tnbc3: 30 为图像，全部等级的例数从图像转记（`sources_ae/ema_aeosi_transcribed.csv`）；3 级以上的例数取 p.101 正文（只给出帕博利珠单抗组）。安慰剂组的大肠炎、肝炎 3 级以上未报告，基本值取 0，上限取全部等级的比例。
 - 「その他の重篤なもの」（B30）：Table 2 免疫介导不良事件 3 级以上的总人数，减去表中各项目与大肠炎、肝炎的 3 级以上人数。总数按患者计、各项相加会有重复，故为近似；定义需与尾崎的 B10（每件费用）一致，待确认。
+- B33P、B33C（v4 新增，U05 的基准）：与来源 Favre-Bulle 2024 一致的口径，即其 Supplementary Table S1 中 6 种 3 级以上不良事件（Neutropenia、Neutrophil count decreased、Anemia、Febrile neutropenia、White blood cell count decreased、Alanine aminotransferase increased）发生率的加总，按事件计数（一人可计多次）。数值取 KEYNOTE-522 Schmid P, et al. N Engl J Med 2022;386:556-67, Supplementary Appendix (IA4, data cutoff 2021-03-23) Table S7 的例数之和（帕博利珠单抗组 833/783，安慰剂组 382/389），6 种的百分比都与 Favre-Bulle Table S1 一致（加总 106.3% 对 98.2%，`data/params_hara/ae_grade3_six.csv`）。
+- B32P、B32C（v3 新增，v4 起为情景）：任何 3 级以上不良事件的发生率（按患者计），Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23) Table 2「Any adverse event」行的 Grade ≥3 栏。上一版（v3）把 U05 的口径改成「任何 3 级以上」是指令错误，v4 已改回来源的口径（B33），B32 只作情景。
 - 下限与上限：Clopper-Pearson 95% 置信区间。
 
 | param_id | 项目 | 等级 | 例数 / 分母 | 发生率 | 来源 | 位置 | 备注 |
@@ -70,6 +72,7 @@
 | B29P | 1型糖尿病 | 全Grade | 4/783 | 0.0051 | EMA. Keytruda assessment report EMEA/H/C/003820/II/0110 | p.100 Table 5.3.5.3.3-tnbc3: 30（画像から転記） |  |
 | B30P | その他の重篤なもの | Grade 3以上 | 16/783 | 0.0204 | Schmid P, et al. N Engl J Med 2022;386:556-67 | Table 2 の免疫介在性有害事象 Grade 3以上の総数から、表の各項目と大腸炎、肝炎の Grade 3以上を差し引いた近似 | 患者単位の重複があるため近似値。B10 の定義と合わせて尾崎先生に確認 |
 | B31P | 発熱性好中球減少症 | Grade 3以上 | 144/783 | 0.1839 | Schmid P, et al. N Engl J Med 2022;386:556-67, Supplementary Appendix | Table S7（Grade 3-5） |  |
+| B32P | Grade 3以上の有害事象（いずれか） | Grade 3以上 | 645/783 | 0.8238 | Schmid P, et al. N Engl J Med 2022;386:556-67 | Table 2（Any adverse event、Grade ≥3） | U05 の効用低下のシナリオ（患者単位）。費用には使わない（B12 に対応する費用はない） |
 | B21C | 甲状腺機能低下症 | 全Grade | 22/389 | 0.0566 | Schmid P, et al. N Engl J Med 2022;386:556-67 | Table 2（Hypothyroidism） | 甲状腺炎（全Grade 5例）は含めない |
 | B22C | 甲状腺機能亢進症 | 全Grade | 7/389 | 0.0180 | Schmid P, et al. N Engl J Med 2022;386:556-67 | Table 2（Hyperthyroidism） |  |
 | B23C | 副腎不全 | 全Grade | 0/389 | 0.0000 | Schmid P, et al. N Engl J Med 2022;386:556-67 | Table 2（Adrenal insufficiency） |  |
@@ -81,6 +84,9 @@
 | B29C | 1型糖尿病 | 全Grade | 0/389 | 0.0000 | EMA. Keytruda assessment report EMEA/H/C/003820/II/0110 | p.100 Table 5.3.5.3.3-tnbc3: 30（画像から転記） |  |
 | B30C | その他の重篤なもの | Grade 3以上 | 1/389 | 0.0026 | Schmid P, et al. N Engl J Med 2022;386:556-67 | Table 2 の免疫介在性有害事象 Grade 3以上の総数から、表の各項目と大腸炎、肝炎の Grade 3以上を差し引いた近似 | 患者単位の重複があるため近似値。B10 の定義と合わせて尾崎先生に確認 |
 | B31C | 発熱性好中球減少症 | Grade 3以上 | 63/389 | 0.1620 | Schmid P, et al. N Engl J Med 2022;386:556-67, Supplementary Appendix | Table S7（Grade 3-5） |  |
+| B32C | Grade 3以上の有害事象（いずれか） | Grade 3以上 | 306/389 | 0.7866 | Schmid P, et al. N Engl J Med 2022;386:556-67 | Table 2（Any adverse event、Grade ≥3） | U05 の効用低下のシナリオ（患者単位）。費用には使わない（B12 に対応する費用はない） |
+| B33P | Grade 3以上の有害事象 6 種の発現率の合計（件数） | Grade 3以上（6 種の合計、件数） | 833/783 | 1.0639 | Schmid P, et al. N Engl J Med 2022;386:556-67, Supplementary Appendix | Table S7（Grade 3-5）の Neutropenia、Neutrophil count decreased、Anemia、Febrile neutropenia、White blood cell count decreased、Alanine aminotransferase increased | U05 の効用低下の基本（出典 Favre-Bulle 2024 Supplementary Table S1 と同じ 6 種、同じ発現率）。件数単位で一人が複数回数えられうる |
+| B33C | Grade 3以上の有害事象 6 種の発現率の合計（件数） | Grade 3以上（6 種の合計、件数） | 382/389 | 0.9820 | Schmid P, et al. N Engl J Med 2022;386:556-67, Supplementary Appendix | Table S7（Grade 3-5）の Neutropenia、Neutrophil count decreased、Anemia、Febrile neutropenia、White blood cell count decreased、Alanine aminotransferase increased | U05 の効用低下の基本（出典 Favre-Bulle 2024 Supplementary Table S1 と同じ 6 種、同じ発現率）。件数単位で一人が複数回数えられうる |
 
 ## U. 效用值（U01 至 U05）
 
@@ -95,20 +101,32 @@
 | U05 | 0.022 | 0.0189 | 0 | 0.059 | 1 KEYNOTE-522 EQ-5D-5L（ドイツの価値セット） | Favre-Bulle A, et al. Pharmacoecon Open 2024;8(1):91-101. DOI 10.1007/s41669-023-00445-8, PMID 37999854 | Supplementary Table S2（低下幅）; Methods（期間） | Grade 3+ AE utility decrement / -0.022 (0.0189); A mean duration of 12.5 weeks was applied to all grade 3+ AEs based on pooled data from the KEYNOTE-522 trial | sources_utility/FavreBulle2024_PharmacoeconOpen_suppl_MOESM1.docx; sources_utility/FavreBulle2024_PharmacoeconOpen_PMC10781656.xml |
 
 下限与上限由本脚本按 基本值 ± 1.96 × 标准误 计算（来源只给出标准误）；U05 的下限截于 0。U05 的持续期间：12.5 周（同一来源）。
-检索范围与未采用的来源：KEYNOTE-522 的 HRQoL 论文（Dent 2024 JNCI，PMID 38913881）只报告 EQ-5D VAS；NICE TA851 的效用值全部涂黑；CADTH PC0279 的药物经济学评估页面无法取得（reCAPTCHA、403），未绕过；日本没有帕博利珠单抗的 C2H 费用效果评价。日本人群（日本的价值组）的数值只作对照：Iwatani 2021 Curr Oncol（PMID 34677274）原发乳腺癌 0.89 至 0.90；Shiroiwa 2017 BMC Cancer（PMID 29149882）转移乳腺癌一线 0.742 至 0.764；局部区域复发没有日本人的数值。保存的文件在 `input/params/sources_utility/` 与 `input/params/pubmed/`。
+检索范围与未采用的来源：KEYNOTE-522 的 HRQoL 论文（Dent 2024 JNCI，PMID 38913881）只报告 EQ-5D VAS；NICE TA851 的效用值全部涂黑；CADTH PC0279 的药物经济学评估页面无法取得（reCAPTCHA、403），未绕过；日本没有帕博利珠单抗的 C2H 费用效果评价。保存的文件在 `input/params/sources_utility/` 与 `input/params/pubmed/`。
 
 选择理由与说明：
 
-- U01：KEYNOTE-522 の EQ-5D（データカットオフ 2021-03-23、両群併合）。日本の価値セットを KEYNOTE-522 に適用した報告はなく、標準誤差を示した唯一の公表値（スイスの費用効用分析、ドイツの価値セット）を基本とした。シナリオ：米国の価値セット 0.836（Huang 2023 Adv Ther、Table 1）、英国 0.859（Kwong 2024 Oncol Ther、Table 2）、豪州 PBAC 0.775（PSD 2023年3月、Table 10）。日本人の参考値：原発乳癌 0.89〜0.90（Iwatani 2021 Curr Oncol、日本の価値セット）。NICE の ERG によれば治療中の値は Grade 3 以上の有害事象のない患者のもの（U05 との二重計上を避けるため）。下限と上限は基本値 ± 1.96 × 標準誤差。
-- U02：出典は U01 と同じ。シナリオ：米国 0.842、英国 0.862、豪州 0.785。日本人の参考値：原発乳癌 0.89〜0.90（Iwatani 2021）。下限と上限は基本値 ± 1.96 × 標準誤差。
-- U03：出典は U01 と同じ。シナリオ：米国 0.768、英国 0.800、豪州 0.693。局所領域再発の日本人の値は見つからなかった。下限と上限は基本値 ± 1.96 × 標準誤差。
-- U04：出典は U01 と同じ。モデルでは術前進展の状態にも用いる。シナリオ：米国 0.639、英国 0.697、豪州 0.552。日本人の参考値：転移乳癌一次治療 0.742〜0.764（Shiroiwa 2017 BMC Cancer、SELECT BC、日本の価値セット）。NICE の ERG は KEYNOTE-522 で転移後の回答が少ないことを指摘。下限と上限は基本値 ± 1.96 × 標準誤差。
-- U05：Grade 3 以上の有害事象 1 件あたりの低下幅（表では -0.022）。期間 12.5 週（同論文、KEYNOTE-522 の併合データ。香港の分析も 12.53 週）。シナリオ：米国 0.034、英国 0.025、豪州 0.039。下限は 0 で切り、上限は基本値 + 1.96 × 標準誤差。各国の分析は Grade 3 以上の有害事象全体の発現（件数）に掛けており、本モデルの B25 から B28、B30、B31 の合計に掛ける仕様とは対象が異なる（要確認）。
+- U01：KEYNOTE-522 の EQ-5D（データカットオフ 2021-03-23、両群併合）。日本の価値セットを KEYNOTE-522 に適用した報告はなく、標準誤差を示した唯一の公表値（スイスの費用効用分析、ドイツの価値セット）を基本とした。シナリオ：米国の価値セット 0.836（Huang 2023 Adv Ther、Table 1）、英国 0.859（Kwong 2024 Oncol Ther、Table 2）、豪州 PBAC 0.775（PSD 2023年3月、Table 10）。NICE の ERG によれば治療中の値は Grade 3 以上の有害事象のない患者のもの（U05 との二重計上を避けるため）。下限と上限は基本値 ± 1.96 × 標準誤差。
+- U02：出典は U01 と同じ。シナリオ：米国 0.842、英国 0.862、豪州 0.785。下限と上限は基本値 ± 1.96 × 標準誤差。
+- U03：出典は U01 と同じ。シナリオ：米国 0.768、英国 0.800、豪州 0.693。下限と上限は基本値 ± 1.96 × 標準誤差。
+- U04：出典は U01 と同じ。モデルでは術前進展の状態にも用いる。シナリオ：米国 0.639、英国 0.697、豪州 0.552。NICE の ERG は KEYNOTE-522 で転移後の回答が少ないことを指摘。下限と上限は基本値 ± 1.96 × 標準誤差。
+- U05：Grade 3 以上の有害事象 1 件あたりの低下幅（表では -0.022）。期間 12.5 週（同論文、KEYNOTE-522 の併合データ。香港の分析も 12.53 週）。シナリオ：米国 0.034、英国 0.025、豪州 0.039。下限は 0 で切り、上限は基本値 + 1.96 × 標準誤差。本モデルでは出典と同じ口径で B33P、B33C（Grade 3 以上の有害事象 6 種の発現率の合計、件数単位）に掛ける。B32P、B32C（いずれか、患者単位）はシナリオ（v3 で B32 を基本としたのは指示の誤り）。
+
+### 日本人群的情景（v3 起为正式情景，`data/params_hara/utility_scenarios.csv`）
+
+理由：日本的费用效果评价分析指南优先使用日本人群的数值，但没有与 KEYNOTE-522 对应、并报告了标准误的日本数据，故基准仍为 Favre-Bulle 2024（KEYNOTE-522 的 EQ-5D），日本人群（日本的价值组）的数值作为正式情景，不再只作对照。没有日本人数值的状态在此情景中沿用基准值。
+
+| param_id | 基准 | 日本人群情景 | 来源 | 位置 | 原文 | 说明 |
+|---|---|---|---|---|---|---|
+| U01 | 0.889 | 0.89 | Iwatani T, Noto S, Tsugawa K. Curr Oncol 2021;28(5):4203-4212. DOI 10.3390/curroncol28050356, PMID 34677274 | Results | In patients with PBC, HSUVs were 0.90 at 6 months and 0.89 at 3 months before the end of the observation period | EQ-5D-5L（日本の価値セット）、単施設の原発乳癌 137 例（TNBC 7.3%）。治療中と治療後を分けた値はないため U01 と U02 に同じ値（観察終了前 3 か月の 0.89）を用いる。標準誤差の記載なし。 |
+| U02 | 0.887 | 0.89 | Iwatani T, et al. Curr Oncol 2021;28(5):4203-4212. PMID 34677274 | Results | In patients with PBC, HSUVs were 0.90 at 6 months and 0.89 at 3 months before the end of the observation period | U01 と同じ。 |
+| U03 | 0.830 | （同基准） | — | — | — | 日本人の局所領域再発の値は見つからない。日本のシナリオでも基本値（Favre-Bulle 2024）を用いる。 |
+| U04 | 0.735 | 0.742 | Shiroiwa T, et al. BMC Cancer 2017;17:773. DOI 10.1186/s12885-017-3774-7, PMID 29149882 | Results（Abstract と同文） | 0.764 (95% CI, 0.741–0.782) and 0.742 (95% CI, 0.720–0.764) in the S-1 and taxane arms | SELECT BC 試験（転移乳癌の一次治療、日本の価値セット）のタキサン群。48 か月までの最小二乗平均。 |
+| U05 | 0.022 | （同基准） | — | — | — | 日本人の Grade 3 以上の有害事象による低下の値はない（Hagiwara 2018 は Grade 1-2 のみ）。日本のシナリオでも基本値を用いる。 |
 
 ## 待确认事项
 
 - B30「その他の重篤なもの」的定义需与尾崎的 B10（每件费用）一致；现值为近似（见 B 节）。
 - 安慰剂组大肠炎、肝炎的 3 级以上例数未报告，基本值取 0（上限为全部等级的比例）。
-- U05：来源的分析把效用下降乘以全部 3 级以上不良事件的发生（件数），本模型按规格乘以 B25 至 B28、B30、B31 的发生率之和，两者对象不同。
+- B33P、B33C 没有设下限与上限（事件计数之和，二项区间不适用）；概率敏感性分析时的分布待定。
 - 卡铂的情景「酶法肌酐加 0.2 mg/dL」的出处本次未核对。
 - 效用值用的是外国的价值组（基准为德国）；没有把日本的价值组用于 KEYNOTE-522 的数值。

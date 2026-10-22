@@ -78,13 +78,13 @@ tm <- system.time(for (i in 1:20) survival_engine("chemo", "all", times = (1:78)
 cat(sprintf("survival_engine: %.1f ms per call\n", 1000 * tm[["elapsed"]] / 20))
 
 # os_fast (cached flows, used by calibration.R and the bootstrap) must equal survival_engine OS in
-# the base case, with and without the OS anchor multiplier
-P$os_anchor_k <- 1.8
+# the base case, with the pembrolizumab DR multiplier k and with the scenario k = 1
+P$pembro_dr_k <- 1.8
 worst_fast <- 0
-for (arm in c("chemo", "pembro")) for (anchor in c(FALSE, TRUE)) {
-  dr <- P$dr; if (anchor && arm == "pembro") dr$k <- P$os_anchor_k
+for (arm in c("chemo", "pembro")) for (common in c(FALSE, TRUE)) {
+  dr <- P$dr; if (!common && arm == "pembro") dr$k <- P$pembro_dr_k
   a <- os_fast(arm_flows(P, arm), P$preprog, dr)
-  b <- survival_engine(arm, "all", params = P, os_anchor = anchor)$OS
+  b <- survival_engine(arm, "all", params = P, common_dr = common)$OS
   worst_fast <- max(worst_fast, max(abs(a - b)))
 }
 cat(sprintf("os_fast vs survival_engine: max abs difference %.3e\n", worst_fast))

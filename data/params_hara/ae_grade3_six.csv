@@ -1,0 +1,7 @@
+name,P_n,P_pct,C_n,C_pct,fb_P,fb_C,match
+Neutropenia,276,35.2,134,34.4,35.2,34.4,True
+Neutrophil count decreased,149,19.0,92,23.7,19.0,23.7,True
+Anemia,153,19.5,61,15.7,19.5,15.7,True
+Febrile neutropenia,144,18.4,63,16.2,18.4,16.2,True
+White blood cell count decreased,61,7.8,21,5.4,7.8,5.4,True
+Alanine aminotransferase increased,50,6.4,11,2.8,6.4,2.8,True

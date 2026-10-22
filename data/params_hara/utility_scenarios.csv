@@ -1,0 +1,6 @@
+param_id,base,japan,japan_source
+U01,0.889,0.89,"Iwatani T, Noto S, Tsugawa K. Curr Oncol 2021;28(5):4203-4212. DOI 10.3390/curroncol28050356, PMID 34677274"
+U02,0.887,0.89,"Iwatani T, et al. Curr Oncol 2021;28(5):4203-4212. PMID 34677274"
+U03,0.830,0.830,基本値と同じ（日本人の値なし）
+U04,0.735,0.742,"Shiroiwa T, et al. BMC Cancer 2017;17:773. DOI 10.1186/s12885-017-3774-7, PMID 29149882"
+U05,0.022,0.022,基本値と同じ（日本人の値なし）

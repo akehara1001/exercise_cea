@@ -12,6 +12,7 @@ CHEMO = r"– ?chemotherapy"
 K20, K22, K24 = "NEJMoa1910549.pdf", "NEJMoa2112651.pdf", "NEJMoa2409932.pdf"
 K22A, K24A = "nejmoa2112651_appendix.pdf", "nejmoa2409932_appendix.pdf"
 YAU, YAUA = "eScholarship UC item 0f60710w.pdf", "Yau2022_LancetOncol_appendix_mmc1.pdf"
+IMP132 = "PIIS0923753424001078.pdf"   # Dent R, et al. Ann Oncol 2024;35:630-642 (IMpassion132)
 
 
 def g(*names):
@@ -125,6 +126,11 @@ FACTS = [
          keys=g("n_astreated_pembro", "n_astreated_placebo", "died_pembro", "died_placebo", "died_drug_related_pembro", "died_drug_related_placebo"),
          rx=r"Table S5\. Summary of Tier 2 Adverse Events during the Combined Phases\. Participants in Population Pembrolizumab– ?Chemotherapy"
             r" \(N=(\d+)\) Placebo– ?Chemotherapy ?\( ?N=(\d+)\).*?who died (\d+) \([\d.]+\) (\d+) \([\d.]+\).*?who died due to a drug-related adverse event (\d+) \([\d.]+\) (\d+) \([\d.]+\)"),
+    dict(id="IMP132_os", pdf=IMP132, keys=g("median_placebo", "lo_placebo", "hi_placebo", "median_atezo", "lo_atezo", "hi_atezo"),
+         rx=r"Median OS was " + F + r" \(95% CI " + F + "-" + F + r"\) months in the placebo arm versus " + F + r" \(95% CI " + F + "-" + F
+            + r"\) months in the atezolizumab arm"),
+    dict(id="IMP132_os_mitt", pdf=IMP132, keys=g("median_placebo", "lo_placebo", "hi_placebo"),
+         rx=r"median OS of " + F + r" \(95% CI " + F + "- ?" + F + r"\) months in the placebo arm and"),
     dict(id="K22_treatment_end", pdf=K22, keys=g("all_completed_by"),
          rx=r"All the patients completed trial treatment by (February 2020)"),
     dict(id="K24_tr_deaths", pdf=K24, keys=g("pembro", "placebo"),

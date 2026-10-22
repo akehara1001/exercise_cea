@@ -16,7 +16,8 @@ pdir = os.path.join(root, "input", "params")
 out_xlsx = os.path.join(pdir, "parameters_template_v1.xlsx")
 # an existing sheet may hold entries: never overwrite; v1 is archived once v2 exists
 write_xlsx = not any(os.path.exists(x) for x in [out_xlsx, os.path.join(pdir, "archive", "parameters_template_v1.xlsx"),
-                                                 os.path.join(pdir, "parameters_v2.xlsx")])
+                                                 os.path.join(pdir, "parameters_v2.xlsx"), os.path.join(pdir, "parameters_v3.xlsx"),
+                                                 os.path.join(pdir, "parameters_v4.xlsx")])
 
 # ---------------------------------------------------------------- efficacy (F07, F08)
 def abstract(pmid):

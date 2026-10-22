@@ -1,5 +1,7 @@
-"""Fill the rows owned by 原 in the parameter sheet (v1 -> v2): A01-A03 drug costs, B21P-B31C
-adverse event rates, U01-U05 utilities. Rows owned by 尾崎 are not touched.
+"""Fill the rows owned by 原 in the parameter sheet (v1 -> v4): A01-A03 drug costs, B21P-B31C
+adverse event rates, B33P/B33C (sum of six grade >= 3 adverse event incidences, events per person:
+base for the U05 decrement, as in the source; added in v4), B32P/B32C (any grade >= 3 adverse
+event, patients: scenario; added in v3), U01-U05 utilities. Rows owned by 尾崎 are not touched.
 
 Usage: .venv/Scripts/python.exe -I R/py/11_fill_hara_params.py <project_root>
 Reads:
@@ -10,7 +12,7 @@ Reads:
   input/params/sources_ae/ema_aeosi_transcribed.csv (values read from table images, with pages)
   input/params/sources_utility/utilities_selected.csv (utility values chosen, with sources)
 Writes:
-  input/params/parameters_v2.xlsx; data/params_hara/drug_costs.csv, drug_vials.csv,
+  input/params/parameters_v4.xlsx; data/params_hara/drug_costs.csv, drug_vials.csv,
   ae_rates.csv, hara_values.csv (everything that went into the sheet, with sources)
 All numbers come from the source files read here; nothing is typed in except the regimen
 (KEYNOTE-522 protocol doses, PMDA review report 表14) and the choices documented below.
@@ -170,7 +172,7 @@ cell = r"(\d+)(?: \([\d.]+\))?"
 def t2row(label):
     m = re.search(re.escape(label) + r"‡? " + " ".join([cell] * 4), t2)
     return dict(zip(["P_any", "P_g3", "C_any", "C_g3"], map(int, m.groups()))), m.group(0)
-T2 = {k: t2row(k) for k in ["Immune-mediated adverse event", "Hypothyroidism", "Severe skin reaction", "Hyperthyroidism",
+T2 = {k: t2row(k) for k in ["Any adverse event", "Immune-mediated adverse event", "Hypothyroidism", "Severe skin reaction", "Hyperthyroidism",
                             "Adrenal insufficiency", "Pneumonitis", "Thyroiditis", "Hypophysitis"]}
 s7 = pdf_text(P("input", "papers", "nejmoa2112651_appendix.pdf"), 28)
 assert s7.startswith("27 Table S7. Grade 3-5 Adverse Events")
@@ -222,7 +224,41 @@ for arm in ("P", "C"):
            "Table 2 の免疫介在性有害事象 Grade 3以上の総数から、表の各項目と大腸炎、肝炎の Grade 3以上を差し引いた近似",
            "患者単位の重複があるため近似値。B10 の定義と合わせて尾崎先生に確認")
     add_ae(31, "発熱性好中球減少症", arm, FN[0][f"{a}_g3"], "Grade 3以上", SRC_S7, "Table S7（Grade 3-5）")
+    add_ae(32, "Grade 3以上の有害事象（いずれか）", arm, T2["Any adverse event"][0][f"{a}_g3"], "Grade 3以上", SRC_T2,
+           "Table 2（Any adverse event、Grade ≥3）",
+           "U05 の効用低下のシナリオ（患者単位）。費用には使わない（B12 に対応する費用はない）")
+
+# Favre-Bulle 2024 Supplementary Table S1: grade 3+ AE incidences the source multiplied the
+# decrement by (summed over the AEs listed), for comparison with B32
+import zipfile
+fbx = zipfile.ZipFile(P("input", "params", "sources_utility", "FavreBulle2024_PharmacoeconOpen_suppl_MOESM1.docx")).read("word/document.xml").decode("utf-8")
+FB_S1, on = [], False
+for row in re.findall(r"<w:tr[ >].*?</w:tr>", fbx, flags=re.S):
+    cells = [re.sub(r"<[^>]+>", "", c).strip() for c in re.findall(r"<w:tc>.*?</w:tc>", row, flags=re.S)]
+    if cells and cells[0] == "Grade 3+ AE":
+        on = True; continue
+    if on and len(cells) >= 4 and cells[1].endswith("%"):
+        FB_S1.append((cells[0], float(cells[1].rstrip("%")), float(cells[2].rstrip("%"))))
+    elif on:
+        break
+FB_SUM = (sum(x[1] for x in FB_S1), sum(x[2] for x in FB_S1))
+# the same six grade 3-5 AEs in KEYNOTE-522 (2022 appendix Table S7, IA4): counts for B33 and a
+# check that they are the source's percentages
+s7all = " ".join(pdf_text(P("input", "papers", "nejmoa2112651_appendix.pdf"), pg) for pg in (28, 29, 30))
+S7SIX = []
+for name, fp, fc in FB_S1:
+    m = re.search(re.escape(name) + r" (\d+) \(([\d.]+)\) (\d+) \(([\d.]+)\)", s7all)
+    S7SIX.append(dict(name=name, P_n=int(m.group(1)), P_pct=float(m.group(2)), C_n=int(m.group(3)), C_pct=float(m.group(4)),
+                      fb_P=fp, fb_C=fc, match=float(m.group(2)) == fp and float(m.group(4)) == fc))
+assert all(x["match"] for x in S7SIX), S7SIX
+B33N = {"P": sum(x["P_n"] for x in S7SIX), "C": sum(x["C_n"] for x in S7SIX)}
+for arm in ("P", "C"):
+    AE.append(dict(param_id=f"B33{arm}", item="Grade 3以上の有害事象 6 種の発現率の合計（件数）", arm=arm, n=B33N[arm], N=N[arm],
+                   rate=B33N[arm] / N[arm], grade="Grade 3以上（6 種の合計、件数）", source=SRC_S7,
+                   where="Table S7（Grade 3-5）の " + "、".join(x["name"] for x in S7SIX),
+                   note="U05 の効用低下の基本（出典 Favre-Bulle 2024 Supplementary Table S1 と同じ 6 種、同じ発現率）。件数単位で一人が複数回数えられうる"))
 wcsv("ae_rates.csv", AE)
+wcsv("ae_grade3_six.csv", S7SIX)
 
 # ---------------------------------------------------------------- utilities
 UT = {}
@@ -236,6 +272,13 @@ if os.path.exists(ut_file):
             UT[r["param_id"]] = r
 else:
     print("utilities_selected.csv not found: U rows left empty")
+JP = {}
+with open(P("input", "params", "sources_utility", "utilities_scenario_jp.csv"), encoding="utf-8") as f:
+    for r in csv.DictReader(f):
+        JP[r["param_id"]] = r
+wcsv("utility_scenarios.csv", [dict(param_id=pid, base=UT[pid]["value"] if pid in UT else "",
+                                    japan=(JP[pid]["value"] or (UT[pid]["value"] if pid in UT else "")),
+                                    japan_source=JP[pid]["citation"] or "基本値と同じ（日本人の値なし）") for pid in JP])
 
 # ---------------------------------------------------------------- fill the sheet
 src_v1 = P("input", "params", "parameters_template_v1.xlsx")
@@ -245,6 +288,29 @@ wb = load_workbook(src_v1)
 sh = wb["パラメータ"]
 cols = [c.value for c in sh[1]]
 ci = {c: i + 1 for i, c in enumerate(cols)}
+row_of = {sh.cell(r, 1).value: r for r in range(2, sh.max_row + 1)}
+# rows owned by 原 added after B31C, formatted like it: B32P/B32C (v3) and B33P/B33C (v4); the
+# 担当 dropdown (data validation) is extended to the new last row
+from copy import copy
+r31 = row_of["B31C"]
+NEW_ROWS = [("B32P", "ペムブロリズマブを含む群", "Grade 3以上の有害事象（いずれか）の発現率", "割合（0から1）"),
+            ("B32C", "ペムブロリズマブを含まない群", "Grade 3以上の有害事象（いずれか）の発現率", "割合（0から1）"),
+            ("B33P", "ペムブロリズマブを含む群", "Grade 3以上の有害事象 6 種の発現率の合計（件数）", "件/人"),
+            ("B33C", "ペムブロリズマブを含まない群", "Grade 3以上の有害事象 6 種の発現率の合計（件数）", "件/人")]
+sh.insert_rows(r31 + 1, len(NEW_ROWS))
+for j, (pid, grp, item, unit) in enumerate(NEW_ROWS):
+    r = r31 + 1 + j
+    for c in range(1, len(cols) + 1):
+        src_cell = sh.cell(r31, c); dst = sh.cell(r, c)
+        dst._style = copy(src_cell._style)
+    vals = dict(param_id=pid, 区分=sh.cell(r31, ci["区分"]).value, 項目=item,
+                適用する群=grp, 適用する状態="術前治療期と術後治療期", 単位=unit, 担当="原")
+    for k, v in vals.items():
+        sh.cell(r, ci[k]).value = v
+    sh.row_dimensions[r].height = sh.row_dimensions[r31].height
+for dv in sh.data_validations.dataValidation:
+    col = re.match(r"([A-Z]+)", str(dv.sqref).split()[0].split(":")[0]).group(1)
+    dv.sqref = __import__("openpyxl").worksheet.cell_range.MultiCellRange(f"{col}2:{col}{sh.max_row}")
 row_of = {sh.cell(r, 1).value: r for r in range(2, sh.max_row + 1)}
 filled = []
 
@@ -295,16 +361,31 @@ def cp_ci(x, n):
     upper = 1.0 if x == n else root(lambda p: cdf(x, p) - 0.025)             # P(X <= x) = 0.025
     return lower, upper
 for a in AE:
+    if a["param_id"].startswith("B33"):
+        put(a["param_id"], 基本値=round(a["rate"], 5), 出典=a["source"], 出典の該当箇所=a["where"],
+            備考=(f"{a['grade']}：{a['n']} 件 / {a['N']} 例（as-treated）。U05 の効用低下（0.022、12.5 週）に掛ける基本。"
+                  f"出典 Favre-Bulle 2024 の Supplementary Table S1 と同じ 6 種で、同表の発現率の合計（ペムブロリズマブ群 {FB_SUM[0]:.1f}%、化学療法群 {FB_SUM[1]:.1f}%）と一致。"
+                  "件数単位（一人が複数回数えられうる）。v3 では「いずれかの Grade 3以上」（B32）を基本としたが指示の誤りで、来源の口径に戻した。"
+                  "下限と上限は未設定（件数の合計のため二項区間は当てはまらない）。"))
+        continue
     lo, hi = cp_ci(a["n"], a["N"])
     if a["param_id"] in ("B26C", "B27C"):
         hi = max(hi, int(TR["colitis" if a["param_id"] == "B26C" else "hepatitis"]["C_any"]) / a["N"])
+    extra = ""
+    if a["param_id"].startswith("B32"):
+        extra = ("U05 のシナリオ（患者単位、いずれかを1回以上）。基本は B33（出典と同じ 6 種の合計、件数単位）。"
+                 "v3 ではこちらを基本としたが指示の誤りで、v4 で来源の口径に戻した。")
     put(a["param_id"], 基本値=round(a["rate"], 5), 下限=round(lo, 5), 上限=round(hi, 5),
         出典=a["source"], 出典の該当箇所=a["where"],
-        備考=f"{a['grade']}、{a['n']}/{a['N']} 例（as-treated）。下限と上限は Clopper-Pearson 95%信頼区間。" + (a["note"] + "。" if a["note"] else ""))
+        備考=f"{a['grade']}、{a['n']}/{a['N']} 例（as-treated）。下限と上限は Clopper-Pearson 95%信頼区間。" + (a["note"] + "。" if a["note"] else "") + extra)
 for pid in [p for p in ["U01", "U02", "U03", "U04", "U05"] if p in UT]:
     u = UT[pid]
-    put(pid, 基本値=float(u["value"]), 下限=u["lower"], 上限=u["upper"], 出典=u["citation"], 出典の該当箇所=u["location"], 備考=u["note"])
-out_xlsx = P("input", "params", "parameters_v2.xlsx")
+    jp = JP[pid]
+    jp_txt = (f"日本人のシナリオ：{jp['value']}（{jp['citation'].split('. ')[0]}、{jp['location']}）。" if jp["value"] else
+              f"日本人のシナリオ：{jp['note']}")
+    put(pid, 基本値=float(u["value"]), 下限=u["lower"], 上限=u["upper"], 出典=u["citation"], 出典の該当箇所=u["location"],
+        備考=u["note"] + " " + jp_txt)
+out_xlsx = P("input", "params", "parameters_v4.xlsx")
 wb.save(out_xlsx)
 wcsv("hara_values.csv", [{k: ("" if v is None else v) for k, v in dict(param_id=f["param_id"], 基本値=f.get("基本値"), 下限=f.get("下限"),
                                                                      上限=f.get("上限"), 出典=f.get("出典"), 出典の該当箇所=f.get("出典の該当箇所"),
@@ -313,8 +394,8 @@ wcsv("hara_values.csv", [{k: ("" if v is None else v) for k, v in dict(param_id=
 import hashlib
 sha = lambda p: hashlib.sha256(open(p, "rb").read()).hexdigest()
 used = {(d["drug"], v.strip()) for d in details for v in re.findall(r"\d+x[\d.]+mg\(([^)]*)\)", d["vials"])}
-M = ["# 原负责参数的来源（入力表 v2：A01 至 A03、B21P 至 B31C、U01 至 U05）", "",
-     "由 `R/py/11_fill_hara_params.py` 从下列文件读取后写入 `input/params/parameters_v2.xlsx`，本文件同时生成；数值不手抄。中间结果在 `data/params_hara/`。", "",
+M = ["# 原负责参数的来源（入力表 v4：A01 至 A03、B21P 至 B33C、U01 至 U05）", "",
+     "由 `R/py/11_fill_hara_params.py` 从下列文件读取后写入 `input/params/parameters_v4.xlsx`，本文件同时生成；数值不手抄。中间结果在 `data/params_hara/`。v3 新增 B32P、B32C，v4 新增 B33P、B33C（担当均为原）。", "",
      "## A. 药价（A01 至 A03）", "",
      f"- 薬価：厚生劳动省「薬価基準収載品目リスト及び後発医薬品に関する情報について」注射药 `{os.path.basename(price_file)}`"
      f"（https://www.mhlw.go.jp/topics/2026/04/xls/tp20261014-01_02.xlsx，令和8年4月1日适用页面上 10月14日收载品目反映版，2026-10-22 下载，sha256 {sha(price_file)[:16]}…）。令和8年度的薬価，年度内收载的新品目已反映，既有品目的薬价在年度内不变。",
@@ -332,11 +413,16 @@ for v in vial_rows:
     if (v["drug"], f"{v['name']} {v['price']:g}円") in used:
         M.append(f"| {v['drug']} | {v['spec']} | {v['name']} | {v['kind']}{('（' + v['flag_generic'] + '）') if v['flag_generic'] else ''} | {v['price']:g} | {v['transitional']} |")
 M += ["", "注：标有经过措置（例如「R9.3.31まで」）的品目将从薬価基準删除，令和8年度内仍为收载品目，故计入最低薬価的比较。每次给药的小瓶组合见 `data/params_hara/drug_costs.csv`，全部候选品目见 `drug_vials.csv`。", "",
-      "## B. 不良事件发生率（B21P 至 B31C）", "",
+      "## B. 不良事件发生率（B21P 至 B33C）", "",
       "- 规则：内分泌类免疫相关不良事件（甲状腺功能减退、甲状腺功能亢进、肾上腺功能不全、垂体炎、1 型糖尿病）用全部等级，其余用 3 级以上。分母为 as-treated 人群（帕博利珠单抗组 783 例，安慰剂组 389 例）。截点统一为 IA4（2021-03-23）；2024 年正文 Table 2（IA7）中同名项目的例数与 IA4 相同。",
       f"- 主要来源：{SRC_T2} Table 2（正文 p.564）；发热性中性粒细胞减少：{SRC_S7} Table S7（p.27）。",
       f"- 表中没有的项目（大肠炎、肝炎、1 型糖尿病）：{SRC_EMA}（`sources_ae/EMA_keytruda_II0110_assessment.pdf`）。p.97 至 p.100 的 Table 5.3.5.3.3-tnbc3: 30 为图像，全部等级的例数从图像转记（`sources_ae/ema_aeosi_transcribed.csv`）；3 级以上的例数取 p.101 正文（只给出帕博利珠单抗组）。安慰剂组的大肠炎、肝炎 3 级以上未报告，基本值取 0，上限取全部等级的比例。",
       "- 「その他の重篤なもの」（B30）：Table 2 免疫介导不良事件 3 级以上的总人数，减去表中各项目与大肠炎、肝炎的 3 级以上人数。总数按患者计、各项相加会有重复，故为近似；定义需与尾崎的 B10（每件费用）一致，待确认。",
+      f"- B33P、B33C（v4 新增，U05 的基准）：与来源 Favre-Bulle 2024 一致的口径，即其 Supplementary Table S1 中 {len(FB_S1)} 种 3 级以上不良事件（"
+      + "、".join(x["name"] for x in S7SIX) + f"）发生率的加总，按事件计数（一人可计多次）。数值取 KEYNOTE-522 {SRC_S7} Table S7 的例数之和"
+      f"（帕博利珠单抗组 {B33N['P']}/{N['P']}，安慰剂组 {B33N['C']}/{N['C']}），{len(S7SIX)} 种的百分比都与 Favre-Bulle Table S1 一致（加总 {FB_SUM[0]:.1f}% 对 {FB_SUM[1]:.1f}%，`data/params_hara/ae_grade3_six.csv`）。",
+      f"- B32P、B32C（v3 新增，v4 起为情景）：任何 3 级以上不良事件的发生率（按患者计），{SRC_T2} Table 2「Any adverse event」行的 Grade ≥3 栏。"
+      "上一版（v3）把 U05 的口径改成「任何 3 级以上」是指令错误，v4 已改回来源的口径（B33），B32 只作情景。",
       "- 下限与上限：Clopper-Pearson 95% 置信区间。", "",
       "| param_id | 项目 | 等级 | 例数 / 分母 | 发生率 | 来源 | 位置 | 备注 |", "|---|---|---|---|---|---|---|---|"]
 M += [f"| {a['param_id']} | {a['item']} | {a['grade']} | {a['n']}/{a['N']} | {a['rate']:.4f} | {a['source'].split(' (')[0]} | {a['where']} | {a['note']} |" for a in AE]
@@ -346,14 +432,18 @@ if UT:
     M += [f"| {u['param_id']} | {u['value']} | {u['se']} | {u['lower']} | {u['upper']} | {u['tier']} | {u['citation']} | {u['location']} | {u['quote'].replace('|', '/')} | {u['file']} |" for u in UT.values()]
     M += ["", "下限与上限由本脚本按 基本值 ± 1.96 × 标准误 计算（来源只给出标准误）；U05 的下限截于 0。U05 的持续期间："
           + UT["U05"]["duration_weeks"] + " 周（同一来源）。",
-          "检索范围与未采用的来源：KEYNOTE-522 的 HRQoL 论文（Dent 2024 JNCI，PMID 38913881）只报告 EQ-5D VAS；NICE TA851 的效用值全部涂黑；CADTH PC0279 的药物经济学评估页面无法取得（reCAPTCHA、403），未绕过；日本没有帕博利珠单抗的 C2H 费用效果评价。日本人群（日本的价值组）的数值只作对照：Iwatani 2021 Curr Oncol（PMID 34677274）原发乳腺癌 0.89 至 0.90；Shiroiwa 2017 BMC Cancer（PMID 29149882）转移乳腺癌一线 0.742 至 0.764；局部区域复发没有日本人的数值。保存的文件在 `input/params/sources_utility/` 与 `input/params/pubmed/`。"]
+          "检索范围与未采用的来源：KEYNOTE-522 的 HRQoL 论文（Dent 2024 JNCI，PMID 38913881）只报告 EQ-5D VAS；NICE TA851 的效用值全部涂黑；CADTH PC0279 的药物经济学评估页面无法取得（reCAPTCHA、403），未绕过；日本没有帕博利珠单抗的 C2H 费用效果评价。保存的文件在 `input/params/sources_utility/` 与 `input/params/pubmed/`。"]
     M += ["", "选择理由与说明：", ""] + [f"- {u['param_id']}：{u['note']}" for u in UT.values()]
+    M += ["", "### 日本人群的情景（v3 起为正式情景，`data/params_hara/utility_scenarios.csv`）", "",
+          "理由：日本的费用效果评价分析指南优先使用日本人群的数值，但没有与 KEYNOTE-522 对应、并报告了标准误的日本数据，故基准仍为 Favre-Bulle 2024（KEYNOTE-522 的 EQ-5D），日本人群（日本的价值组）的数值作为正式情景，不再只作对照。没有日本人数值的状态在此情景中沿用基准值。", "",
+          "| param_id | 基准 | 日本人群情景 | 来源 | 位置 | 原文 | 说明 |", "|---|---|---|---|---|---|---|"]
+    M += [f"| {pid} | {UT[pid]['value']} | {JP[pid]['value'] or '（同基准）'} | {JP[pid]['citation'] or '—'} | {JP[pid]['location'] or '—'} | {JP[pid]['quote'] or '—'} | {JP[pid]['note']} |" for pid in JP]
 else:
     M += ["（未填写）"]
 M += ["", "## 待确认事项", "",
       "- B30「その他の重篤なもの」的定义需与尾崎的 B10（每件费用）一致；现值为近似（见 B 节）。",
       "- 安慰剂组大肠炎、肝炎的 3 级以上例数未报告，基本值取 0（上限为全部等级的比例）。",
-      "- U05：来源的分析把效用下降乘以全部 3 级以上不良事件的发生（件数），本模型按规格乘以 B25 至 B28、B30、B31 的发生率之和，两者对象不同。",
+      "- B33P、B33C 没有设下限与上限（事件计数之和，二项区间不适用）；概率敏感性分析时的分布待定。",
       "- 卡铂的情景「酶法肌酐加 0.2 mg/dL」的出处本次未核对。",
       "- 效用值用的是外国的价值组（基准为德国）；没有把日本的价值组用于 KEYNOTE-522 的数值。"]
 with open(P("input", "params", "sources_hara.md"), "w", encoding="utf-8", newline="\n") as f:
