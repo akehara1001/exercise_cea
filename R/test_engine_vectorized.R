@@ -89,3 +89,11 @@ for (arm in c("chemo", "pembro")) for (anchor in c(FALSE, TRUE)) {
 }
 cat(sprintf("os_fast vs survival_engine: max abs difference %.3e\n", worst_fast))
 stopifnot(worst_fast < 1e-12)
+
+# DR within a number of months of entry (cost layer): between 0 and DR, equal to DR for a long limit
+r0 <- survival_engine("chemo", "all", params = P, dr_first_months = 0)
+r8 <- survival_engine("chemo", "all", params = P, dr_first_months = 8.5)
+rL <- survival_engine("chemo", "all", params = P, dr_first_months = 12 * 60)
+dev_split <- max(abs(r0$DR_first), abs(rL$DR_first - rL$DR), pmax(r8$DR_first - r8$DR, 0), pmax(-r8$DR_first, 0))
+cat(sprintf("DR_first checks: max deviation %.3e\n", dev_split))
+stopifnot(dev_split < 1e-12)

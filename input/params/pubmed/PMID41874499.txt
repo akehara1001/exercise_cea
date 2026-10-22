@@ -1,0 +1,52 @@
+1. Value Health Reg Issues. 2026 Mar 24;56:101619. doi:
+10.1016/j.vhri.2026.101619.  Online ahead of print.
+
+Vignette-Based Estimation of Utilities in Patients With Metastatic 
+Triple-Negative Breast Cancer in Japan.
+
+Yamaguchi M(1), Moriwaki K(1), Iwatani T(2), Shimozuma K(3).
+
+Author information:
+(1)Division of Health Policy and Management, Department of Biomedical Science, 
+College of Life Sciences, Ritsumeikan University, Kusatsu, Shiga, Japan; 
+Comprehensive Unit for Health Economic Evidence Review and Decision Support 
+(CHEERS), Research Organization of Science and Technology, Ritsumeikan 
+University, Simogyo-ku, Kyoto, Japan.
+(2)Department of Breast and Endocrine Surgery, St Marianna University School of 
+Medicine, Kawasaki, Kanagawa, Japan.
+(3)Comprehensive Unit for Health Economic Evidence Review and Decision Support 
+(CHEERS), Research Organization of Science and Technology, Ritsumeikan 
+University, Simogyo-ku, Kyoto, Japan. Electronic address: 
+moriwaki@fc.ritsumei.ac.jp.
+
+OBJECTIVES: To estimate utility values for patients with metastatic 
+triple-negative breast cancer (mTNBC) and disutility due to treatment-related 
+adverse events (AEs) using vignettes with the Japanese general population.
+METHODS: Health states were developed to characterize the impact of mTNBC 
+symptoms and AEs on health-related quality of life (HRQL), based on a literature 
+review and interviews with clinical experts. Preferences for 10 different health 
+states were assessed, including a progression-free (PF) for patients with TNBC, 
+6 health states with AEs during treatment with PF, and progression of disease. 
+Utility values were estimated using the lead-time trade-off (LT-TTO) method and 
+analyzed with a generalized estimating equation model. A total of 320 Japanese 
+individuals from the general population participated, with 160 each from Tokyo 
+and Osaka.
+RESULTS: The mean utilities for the PF and progression of disease states were 
+0.702 (95% CI: 0.675-0.730) and 0.583 (95% CI: 0.547-0.618), respectively. Among 
+AEs, nausea/vomiting had the greatest negative impact on HRQL (disutility = 
+-0.936), while neutropenia had the least (disutility = -0.037).
+CONCLUSIONS: This study quantified utility weights and clarified the magnitude 
+of the impact of AEs in Japanese patients with mTNBC. These findings highlight 
+the importance of considering HRQL decline when evaluating the 
+cost-effectiveness of mTNBC treatments. These data can inform future 
+cost-effectiveness analyses for various mTNBC drugs while considering the 
+preferences of the Japanese population. They can also be used to propose the 
+optimal treatment for mTNBC.
+
+Copyright © 2026 The Authors. Published by Elsevier Inc. All rights reserved.
+
+DOI: 10.1016/j.vhri.2026.101619
+PMID: 41874499
+
+Conflict of interest statement: Author Disclosures Author disclosure forms can 
+be accessed below in the Supplemental Material section.

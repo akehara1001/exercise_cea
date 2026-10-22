@@ -1,0 +1,51 @@
+1. Pharmacoecon Open. 2024 Jan;8(1):91-101. doi: 10.1007/s41669-023-00445-8. Epub
+ 2023 Nov 24.
+
+Cost-Effectiveness of Neoadjuvant Pembrolizumab plus Chemotherapy Followed by 
+Adjuvant Pembrolizumab in Patients with High-Risk, Early-Stage, Triple-Negative 
+Breast Cancer in Switzerland.
+
+Favre-Bulle A(1), Huang M(2), Haiderali A(2), Bhadhuri A(3).
+
+Author information:
+(1)MSD, Werftestrasse 4, 6005, Lucerne, Switzerland. 
+andrea.favre-bulle.pantoja@msd.com.
+(2)Merck & Co., Inc., Rahway, NJ, USA.
+(3)Department of Public Health, Health Economics Facility, Institute of 
+Pharmaceutical Medicine (ECPM), University of Basel, Basel, Switzerland.
+
+AIM: This study assessed the cost-effectiveness of neoadjuvant pembrolizumab 
+plus chemotherapy followed by adjuvant pembrolizumab versus neoadjuvant 
+chemotherapy plus placebo followed by adjuvant placebo for patients with 
+high-risk, early-stage, triple-negative breast cancer (TNBC) from a Swiss 
+third-party payer perspective over a lifetime horizon (51 years).
+MATERIALS AND METHODS: A transition model with four health states (event-free, 
+locoregional recurrence, distant metastasis, and death) was developed to assess 
+the cost-effectiveness of pembrolizumab plus chemotherapy versus chemotherapy 
+alone for the treatment of high-risk, early-stage TNBC. Data were utilized from 
+the KEYNOTE-522 randomized controlled trial (ClinicalTrials.gov, NCT03036488). 
+The incremental cost-effectiveness ratio (ICER) was calculated, which was 
+reported as cost per life year or quality-adjusted life year (QALY) gained. A 
+one-way deterministic sensitivity analysis, a probabilistic sensitivity analysis 
+(PSA) and scenario analyses were conducted to assess the robustness of the model 
+results.
+RESULTS: Base-case results estimated an ICER of 14,114 Swiss francs (CHF)/QALY 
+for pembrolizumab plus chemotherapy versus chemotherapy alone. Results were most 
+sensitive to changes in the extrapolation of event-free survival (EFS). All 
+sensitivity and scenario analyses generated ICERs below the willingness-to-pay 
+threshold of CHF100,000/QALY, and the PSA showed a 98.8% probability that the 
+ICER would be below this threshold.
+LIMITATIONS: Due to the limited follow-up period in the KEYNOTE-522 trial, EFS 
+data were extrapolated over the lifetime horizon to inform transition 
+probabilities. Extensive validation and scenario analyses ensured the results 
+were robust.
+CONCLUSION: The model demonstrated that neoadjuvant pembrolizumab plus 
+chemotherapy followed by adjuvant pembrolizumab was cost-effective versus 
+chemotherapy alone in patients with high-risk, early-stage TNBC in Switzerland.
+
+© 2023. Merck & Co., Inc., Rahway, NJ, USA and its affiliates and Arjun Bhadhuri 
+2023.
+
+DOI: 10.1007/s41669-023-00445-8
+PMCID: PMC10781656
+PMID: 37999854

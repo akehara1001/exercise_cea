@@ -1,0 +1,85 @@
+1. Oncol Ther. 2024 Sep;12(3):525-547. doi: 10.1007/s40487-024-00285-4. Epub 2024
+ Jul 22.
+
+Cost-effectiveness of Pembrolizumab in Combination with Chemotherapy as 
+Neoadjuvant Treatment and Continued as a Single Agent Adjuvant Treatment for 
+High-Risk Early-Stage Triple-Negative Breast Cancer in Hong Kong.
+
+Kwong A(1), Leung R(2), Chan TC(3), Khandelwal A(4), Mishra K(4), Huang M(5).
+
+Author information:
+(1)Department of Surgery, The University of Hong Kong, Pok Fu Lam, Hong Kong 
+SAR, China. avakwong@hku.hk.
+(2)Division of Hematology and Medical Oncology, Department of Medicine, Queen 
+Mary Hospital, Pok Fu Lam, Hong Kong SAR, China.
+(3)Department of Surgery, The University of Hong Kong, Pok Fu Lam, Hong Kong 
+SAR, China.
+(4)Complete Health Economics and Outcomes Research Solutions (CHEORS), North 
+Wales, PA, USA.
+(5)Merck Sharp & Dohme LLC, a subsidiary of Merck & Co., Inc., Rahway, NJ, USA.
+
+INTRODUCTION: The phase III randomized KEYNOTE-522 trial demonstrated that 
+pembrolizumab in combination with chemotherapy as neoadjuvant treatment followed 
+by adjuvant pembrolizumab (pembrolizumab + chemotherapy) provided significant 
+improvements in event-free survival (EFS) and overall survival (OS) for patients 
+with high-risk early-stage triple-negative breast cancer (eTNBC). The objective 
+was to assess the cost-effectiveness of pembrolizumab + chemotherapy compared to 
+neoadjuvant chemotherapy alone (chemotherapy) in patients with high-risk eTNBC 
+from a Hong Kong third-party payer perspective.
+METHODS: A multistate transition model with four health states (event-free), 
+locoregional recurrence, distant metastases, and death) was developed to assess 
+the lifetime medical costs and health outcomes (3% annual discount), along with 
+incremental cost-effectiveness ratios (ICERs) using efficacy and safety data 
+from the KEYNOTE-522 trial. The health state utilities were derived from 
+KEYNOTE-522 Euro-QoL-five-dimension five-level questionnaire (EQ-5D-5L) data. 
+Costs were expressed in 2022 Hong Kong dollars (HKD). Scenario and sensitivity 
+analyses were performed to assess the robustness of results.
+RESULTS: Over a 32-year time horizon, base case results showed that 
+pembrolizumab + chemotherapy was associated with a 3.42 year longer EFS and 
+expected gains of 3.05 life years (LYs) and 2.45 quality-adjusted life years 
+(QALYs) compared to chemotherapy. The resultant ICERs were HKD 135,200 per QALY 
+gained and HKD 108,463 per LY gained, which were lower than the World Health 
+Organization (WHO) cost-effectiveness threshold of three times gross domestic 
+product (GDP) per capita for Hong Kong of HKD 1,171,308 per QALY. The one-way 
+sensitivity analyses (OWSA) and probabilistic sensitivity analysis (PSA) showed 
+the results were robust across various inputs and alternative scenarios.
+CONCLUSION: On the basis of the analysis conducted for a 56-year-old cohort with 
+high-risk eTNBC and assumptions in the model, pembrolizumab + chemotherapy 
+represents a cost-effective proposition (as the ICER is approximately 35% of the 
+GDP per capita in Hong Kong) for patients with high-risk eTNBC in Hong Kong.
+
+Plain Language Summary: The manuscript outlines the methods and results of a 
+health economic model to estimate the cost-effectiveness of 
+pembrolizumab + chemotherapy compared to neoadjuvant chemotherapy alone 
+(chemotherapy) in patients with high-risk early-stage triple-negative breast 
+cancer in the Hong Kong setting. The results of the manuscript show that the 
+combination of pembrolizumab and chemotherapy provides an additional 3.05 life 
+years and 2.45 quality-adjusted life years. Despite the potential drawbacks of 
+employing gross domestic product (GDP) as a proxy for cost-effectiveness 
+thresholds, the incremental cost-effectiveness ratio was less than three times 
+GDP per capita in Hong Kong. Therefore, the new intervention was cost-effective. 
+However, like any similar study, the results rely substantially on extrapolation 
+of trial outcomes and thus sensitivity analysis has also been performed to 
+handle the uncertainty associated with results. The one-way sensitivity analyses 
+and probabilistic sensitivity analysis showed the results were robust. The 
+manuscript provides economic evidence of the new intervention and provides new 
+clinical insights.
+
+© 2024. Merck & Co., Inc., Rahway, NJ, USA and its affiliates, and Ava Kwong, 
+Roland Leung, Tsz Ching Chan, Anvi Khandelwal and Kshama Mishra.
+
+DOI: 10.1007/s40487-024-00285-4
+PMCID: PMC11333381
+PMID: 39037537
+
+Conflict of interest statement: Prof. Ava Kwong works with Department of 
+Surgery, The University of Hong Kong, HKSAR, China and has received consultancy 
+honorarium from MSD for this project. Roland Leung works with Division of 
+Hematology and Medical Oncology, Department of Medicine, Queen Mary Hospital, 
+HKSAR, China. Tsz Ching Chan works with Department of Surgery, The University of 
+Hong Kong, HKSAR, China and has no conflicts of interest that are directly 
+relevant to the content of this article. CHEORS received funds from Merck Sharp 
+& Dohme LLC, a subsidiary of Merck & Co., Inc., Rahway, NJ, USA, during the 
+conduct of the study; Anvi Khandelwal and Kshama Mishra are employees of CHEORS. 
+Min Huang is employee of Merck Sharp & Dohme LLC, a subsidiary of Merck & Co., 
+Inc., Rahway, NJ, USA.

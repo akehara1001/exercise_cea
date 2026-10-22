@@ -92,36 +92,45 @@ branch_flows <- function(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate,
   l_to_D <- LR[1:K] * (1 - exp(-Hl)) * (lrr_dr_rate * cycle) / Hl
   l_to_X <- LR[1:K] * (1 - exp(-Hl)) * hb / Hl
   list(t = t, K = K, J = J, cycle = cycle, Bc = c(0, cumsum(hb)), EF = EF, LR = LR, to_P = to_P, to_DR = to_D + l_to_D,
-       dEF = c(0, cumsum(to_X)), dAE = c(0, cumsum(to_A)), dLR = c(0, cumsum(l_to_X)))
+       to_L = to_L, dEF = c(0, cumsum(to_X)), dAE = c(0, cumsum(to_A)), dLR = c(0, cumsum(l_to_X)))
 }
 
 # PreProg or DR at boundary m: sum over entry boundaries e <= m of inflow x background survival
 # from e to m x excess survival after m - e cycles in the state (tunnel J and later keep the
-# hazard of tunnel J)
-tunnel_state <- function(f, inflow, spec) {
+# hazard of tunnel J). With max_cycles, only time in state below max_cycles cycles is counted
+# (weight min(max(max_cycles - lag, 0), 1) per lag, so a fractional limit is interpolated).
+tunnel_state <- function(f, inflow, spec, max_cycles = NULL) {
   K <- f$K; J <- f$J
   dHs <- diff(dr_cumhaz(spec, (0:(J + 1)) * f$cycle))
   dHs[J + 1] <- dHs[J]
   Hx <- c(0, cumsum(dHs[pmin(0:(K - 1), J) + 1]))
+  kern <- exp(-Hx)
+  if (!is.null(max_cycles)) kern <- kern * pmin(pmax(max_cycles - (0:K), 0), 1)
   w <- c(0, inflow) * exp(f$Bc)
-  conv <- stats::filter(c(rep(0, K), w), exp(-Hx), method = "convolution", sides = 1)   # causal convolution
+  conv <- stats::filter(c(rep(0, K), w), kern, method = "convolution", sides = 1)   # causal convolution
   exp(-f$Bc) * as.vector(conv)[(K + 1):(2 * K + 1)]
 }
 
-branch_states <- function(f, preprog, dr) {
+# state occupancy, inflows (at the boundary where entrants arrive) and cumulative deaths by
+# source; with dr_first_cycles, also the part of DR within that many cycles of entry (DR_first)
+branch_states <- function(f, preprog, dr, dr_first_cycles = NULL) {
   PP <- tunnel_state(f, f$to_P, preprog)
   DRs <- tunnel_state(f, f$to_DR, dr)
   Dead <- 1 - f$EF - f$LR - PP - DRs
   dPP <- c(0, cumsum(f$to_P)) - PP
-  data.frame(time = f$t, EF = f$EF, PreProg = PP, LRR = f$LR, DR = DRs, Dead = Dead,
-             Dead_from_EF = f$dEF, Dead_from_AE = f$dAE, Dead_from_LRR = f$dLR, Dead_from_PreProg = dPP,
-             Dead_from_DR = Dead - f$dEF - f$dAE - f$dLR - dPP)
+  out <- data.frame(time = f$t, EF = f$EF, PreProg = PP, LRR = f$LR, DR = DRs, Dead = Dead,
+                    Dead_from_EF = f$dEF, Dead_from_AE = f$dAE, Dead_from_LRR = f$dLR, Dead_from_PreProg = dPP,
+                    Dead_from_DR = Dead - f$dEF - f$dAE - f$dLR - dPP,
+                    In_PreProg = c(0, f$to_P), In_LRR = c(0, f$to_L), In_DR = c(0, f$to_DR))
+  if (!is.null(dr_first_cycles)) out$DR_first <- tunnel_state(f, f$to_DR, dr, dr_first_cycles)
+  out
 }
 
 run_branch <- function(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate, dr, preprog,
-                       start_age, L, cycle, n_cycles, n_tunnel, hr = NULL, drug_hr = 1, ae_rate = 0, ae_end = 0) {
+                       start_age, L, cycle, n_cycles, n_tunnel, hr = NULL, drug_hr = 1, ae_rate = 0, ae_end = 0,
+                       dr_first_cycles = NULL) {
   branch_states(branch_flows(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate, start_age, L, cycle, n_cycles, n_tunnel,
-                             hr, drug_hr, ae_rate, ae_end), preprog, dr)
+                             hr, drug_hr, ae_rate, ae_end), preprog, dr, dr_first_cycles)
 }
 
 # parameter set for the engine, built from the selected fits and the data
@@ -190,7 +199,7 @@ engine_params <- function(fits = readRDS(file.path(ROOT, "data", "fits", "fits.r
 # exposed interface: arm = chemo | exercise | pembro | both; pcr = all | pCR | nonpCR
 survival_engine <- function(arm, pcr = "all", times = NULL, params,
                             hr0 = 1, wane_start = 0, wane_rate = 0, p_pcr = NULL, nonpcr_mix = NULL,
-                            os_anchor = FALSE) {
+                            os_anchor = FALSE, dr_first_months = NULL) {
   base <- switch(arm, chemo = "placebo", exercise = "placebo", pembro = "pembro", both = "pembro",
                  stop("arm must be chemo, exercise, pembro or both"))
   dr <- params$dr
@@ -203,7 +212,8 @@ survival_engine <- function(arm, pcr = "all", times = NULL, params,
   rb1 <- function(b, dhr) run_branch(params$efs[[base]][[b]], params$pre_surv[[base]][[b]], params$q_pre[[base]][[b]],
                                       params$shares[[base]], params$lrr_dr[["rate"]], dr, params$preprog,
                                       params$start_age, params$L, params$cycle, params$n_cycles, params$n_tunnel, hr, dhr,
-                                      params$ae[[base]][["rate"]], params$ae_end)
+                                      params$ae[[base]][["rate"]], params$ae_end,
+                                      if (is.null(dr_first_months)) NULL else dr_first_months / (12 * params$cycle))
   rb <- function(b) {
     if (b == "pCR" || is.null(nonpcr_mix)) return(rb1(b, 1))
     stopifnot(abs(sum(nonpcr_mix$weight) - 1) < 1e-9, all(nonpcr_mix$weight >= 0))

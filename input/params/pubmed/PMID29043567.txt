@@ -1,0 +1,74 @@
+1. Pharmacoeconomics. 2018 Feb;36(2):215-223. doi: 10.1007/s40273-017-0580-7.
+
+Impact of Adverse Events on Health Utility and Health-Related Quality of Life in 
+Patients Receiving First-Line Chemotherapy for Metastatic Breast Cancer: Results 
+from the SELECT BC Study.
+
+Hagiwara Y(1), Shiroiwa T(2), Shimozuma K(3), Kawahara T(4), Uemura Y(4), 
+Watanabe T(5), Taira N(6), Fukuda T(2), Ohashi Y(7), Mukai H(8).
+
+Author information:
+(1)Department of Biostatistics, Graduate School of Medicine, The University of 
+Tokyo, 7-3-1 Hongo, Bunkyo-ku, Tokyo, 113-0033, Japan. 
+hagiwara@epistat.m.u-tokyo.ac.jp.
+(2)Department of Health and Welfare Services, National Institute of Public 
+Health, Wako, Japan.
+(3)Department of Biomedical Sciences, College of Life Sciences, Ritsumeikan 
+University, Kusatsu, Japan.
+(4)Biostatistics Division, Clinical Research Support Center, The University of 
+Tokyo Hospital, Tokyo, Japan.
+(5)Department of Breast Surgery, National Hospital Organization Sendai Medical 
+Center, Sendai, Japan.
+(6)Department of Breast and Endocrine Surgery, Okayama University Hospital, 
+Okayama, Japan.
+(7)Department of Integrated Science and Engineering for Sustainable Society, 
+Faculty of Science and Engineering, Chuo University, Tokyo, Japan.
+(8)Department of Breast and Medical Oncology, National Cancer Center Hospital 
+East, Kashiwa, Japan.
+
+OBJECTIVE: The aim of this study was to investigate the impact of adverse events 
+(AEs) on health utility and health-related quality of life (HRQOL) in patients 
+with metastatic breast cancer undergoing first-line chemotherapy.
+METHODS: We analyzed the data from the SELECT BC study, a multicenter, 
+open-label, randomized, phase III study conducted in Japan, which compared 
+first-line S-1 with taxane therapies. Heath utility and HRQOL were assessed 
+using the EQ-5D-3L and European Organization for Research and Treatment of 
+Cancer Quality of Life Questionnaire Core 30 (EORTC QLQ-C30) at baseline and 3, 
+6, and 12 months after treatment initiation. Health utility was calculated based 
+on societal preferences, and AEs were reported at each cycle of the study 
+treatment. Linear marginal mean models were used to quantify the impact of the 
+last AEs (with 10 or more incidences) observed before HRQOL assessment on health 
+utility and HRQOL.
+RESULTS: Analysis included 380 patients and 12 (of 15) AEs. Grade 1 nausea and 
+oral mucositis, grade 1 and 2 edema, and grade 2 fatigue, motor and sensory 
+neuropathy, and myalgia were significantly associated with disutility, measured 
+using the EQ-5D-3L. Grade 1 oral mucositis, grade 1 and 2 fatigue, and grade 2 
+sensory neuropathy were significantly associated with impaired global health 
+status in the EORTC QLQ-C30. AEs associated with decrements in the five 
+functioning scales included fatigue, oral mucositis, nausea, edema, motor and 
+sensory neuropathy, and myalgia.
+CONCLUSIONS: We reported disutilities caused by AEs in patients with metastatic 
+breast cancer under chemotherapy. These findings can be applied to future 
+model-based cost-effectiveness analyses.
+TRIAL REGISTRATION NUMBER: C000000416.
+
+DOI: 10.1007/s40273-017-0580-7
+PMCID: PMC5805818
+PMID: 29043567 [Indexed for MEDLINE]
+
+Conflict of interest statement: FUNDING: The SELECT BC study was sponsored by 
+the Comprehensive Support Project for Oncology Research (CSPOR) of the Public 
+Health Research Foundation. The research fund was provided to CSPOR by Taiho 
+Pharmaceutical Co., Ltd. under the study contract. CONFLICT OF INTEREST: 
+Yasuhiro Hagiwara was contractually employed by EP CRSU, and Yasuo Ohashi 
+received consulting fees or honoraria from the Public Health Research Foundation 
+and Taiho Pharmaceutical Co., Ltd. Takeru Shiroiwa, Kojiro Shimozuma, Takuya 
+Kawahara, Yukari Uemura, Takanori Watanabe, Naruto Taira, Takashi Fukuda, and 
+Hirofumi Mukai have declared no conflicts of interest. ETHICAL APPROVAL: The 
+SELECT BC study was conducted in accordance with the Declaration of Helsinki and 
+the Ethical Guidelines for Clinical Research of the Japanese Ministry of Health, 
+Labor and Welfare. The study protocol was approved by an independent Ethics 
+Committee for each participating site. All participants provided written 
+informed consent. DATA AVAILABILITY STATEMENT: The datasets generated and/or 
+analyzed during the current study are available from the corresponding author on 
+reasonable request.

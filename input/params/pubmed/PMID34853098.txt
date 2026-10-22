@@ -1,0 +1,53 @@
+1. BMJ Open. 2021 Dec 1;11(12):e046273. doi: 10.1136/bmjopen-2020-046273.
+
+Validation of the predictive accuracy of health-state utility values based on 
+the Lloyd model for metastatic or recurrent breast cancer in Japan.
+
+Iwatani T(1), Inoue E(2), Tsugawa K(3).
+
+Author information:
+(1)Breast Surgery, National Cancer Center-Hospital East, Kashiwa, Japan 
+t.iwatani@marianna-u.ac.jp.
+(2)Research Administration Center, Showa University, Shinagawa-ku, Tokyo, Japan.
+(3)Department of Breast and Endocrine Surgery, St Marianna University School of 
+Medicine, Kawasaki, Kanagawa, Japan.
+
+INTRODUCTION: Although there is a lack of data on health-state utility values 
+(HSUVs) for calculating quality-adjusted life-years in Japan, cost-utility 
+analysis has been introduced by the Japanese government to inform decision 
+making in the medical field since 2016.
+OBJECTIVES: This study aimed to determine whether the Lloyd model which was a 
+predictive model of HSUVs for metastatic breast cancer (MBC) patients in the UK 
+can accurately predict actual HSUVs for Japanese patients with MBC.
+DESIGN: The prospective observational study followed by the validation study of 
+the clinical predictive model.
+SETTING AND PARTICIPANTS: Forty-four Japanese patients with MBC were studied at 
+336 survey points.
+METHODS: This study consisted of two phases. In the first phase, we constructed 
+a database of clinical data prospectively and HSUVs for Japanese patients with 
+MBC to evaluate the predictive accuracy of HSUVs calculated using the Lloyd 
+model. In the second phase, Bland-Altman analysis was used to determine how 
+accurately predicted HSUVs (based on the Lloyd model) correlated with actual 
+HSUVs obtained using the EuroQol 5-Dimension 5-Level questionnaire, a 
+preference-based measure of HSUVs in patients with MBC.
+RESULTS: In the Bland-Altman analysis, the mean difference between HSUVs 
+estimated by the Lloyd model and actual HSUVs, or systematic error, was -0.106. 
+The precision was 0.165. The 95% limits of agreement ranged from -0.436 to 
+0.225. The t value was 4.6972, which was greater than the t value with 2 degrees 
+of freedom at the 5% significance level (p=0.425).
+CONCLUSIONS: There were acceptable degrees of fixed and proportional errors 
+associated with the prediction of HSUVs based on the Lloyd model for Japanese 
+patients with MBC. We recommend that sensitivity analysis be performed when 
+conducting cost-effectiveness analyses with HSUVs calculated using the Lloyd 
+model.
+
+© Author(s) (or their employer(s)) 2021. Re-use permitted under CC BY-NC. No 
+commercial re-use. See rights and permissions. Published by BMJ.
+
+DOI: 10.1136/bmjopen-2020-046273
+PMCID: PMC8638153
+PMID: 34853098 [Indexed for MEDLINE]
+
+Conflict of interest statement: Competing interests: KT received honoraria from 
+AstraZeneca, Chugai Pharmaceutical, Daiichi Sankyo, Eizai, Eli Lilly Japan KK, 
+Nippon Kayaku, Pfizer, Taiho Pharmaceutical and Takeda Pharmaceutical.

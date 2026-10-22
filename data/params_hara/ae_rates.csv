@@ -1,0 +1,23 @@
+param_id,item,arm,n,N,rate,grade,source,where,note
+B21P,甲状腺機能低下症,P,118,783,0.15070242656449553,全Grade,"Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23)",Table 2（Hypothyroidism）,甲状腺炎（全Grade 16例）は含めない
+B22P,甲状腺機能亢進症,P,41,783,0.05236270753512133,全Grade,"Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23)",Table 2（Hyperthyroidism）,
+B23P,副腎不全,P,20,783,0.02554278416347382,全Grade,"Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23)",Table 2（Adrenal insufficiency）,
+B24P,下垂体炎,P,15,783,0.019157088122605363,全Grade,"Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23)",Table 2（Hypophysitis）,
+B25P,肺臓炎,P,7,783,0.008939974457215836,Grade 3以上,"Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23)",Table 2（Pneumonitis）,
+B26P,大腸炎,P,6,783,0.007662835249042145,Grade 3以上,"EMA. Keytruda assessment report EMEA/H/C/003820/II/0110 (EMA/257879/2022; KEYNOTE-522, database cutoff 2021-03-23)",p.101 本文（Grade 3-4 の AEOSI）,全Grade は 13例（p.97 表、画像から転記）
+B27P,肝炎,P,9,783,0.011494252873563218,Grade 3以上,"EMA. Keytruda assessment report EMEA/H/C/003820/II/0110 (EMA/257879/2022; KEYNOTE-522, database cutoff 2021-03-23)",p.101 本文（Grade 3-4 の AEOSI）,全Grade は 11例（p.97 表、画像から転記）
+B28P,重度の皮膚障害,P,37,783,0.04725415070242656,Grade 3以上,"Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23)",Table 2（Severe skin reaction）,
+B29P,1型糖尿病,P,4,783,0.005108556832694764,全Grade,"EMA. Keytruda assessment report EMEA/H/C/003820/II/0110 (EMA/257879/2022; KEYNOTE-522, database cutoff 2021-03-23)",p.100 Table 5.3.5.3.3-tnbc3: 30（画像から転記）,
+B30P,その他の重篤なもの,P,16,783,0.020434227330779056,Grade 3以上,"Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23); EMA. Keytruda assessment report EMEA/H/C/003820/II/0110 (EMA/257879/2022; KEYNOTE-522, database cutoff 2021-03-23)",Table 2 の免疫介在性有害事象 Grade 3以上の総数から、表の各項目と大腸炎、肝炎の Grade 3以上を差し引いた近似,患者単位の重複があるため近似値。B10 の定義と合わせて尾崎先生に確認
+B31P,発熱性好中球減少症,P,144,783,0.1839080459770115,Grade 3以上,"Schmid P, et al. N Engl J Med 2022;386:556-67, Supplementary Appendix (IA4, data cutoff 2021-03-23)",Table S7（Grade 3-5）,
+B21C,甲状腺機能低下症,C,22,389,0.056555269922879174,全Grade,"Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23)",Table 2（Hypothyroidism）,甲状腺炎（全Grade 5例）は含めない
+B22C,甲状腺機能亢進症,C,7,389,0.017994858611825194,全Grade,"Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23)",Table 2（Hyperthyroidism）,
+B23C,副腎不全,C,0,389,0.0,全Grade,"Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23)",Table 2（Adrenal insufficiency）,
+B24C,下垂体炎,C,1,389,0.002570694087403599,全Grade,"Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23)",Table 2（Hypophysitis）,
+B25C,肺臓炎,C,2,389,0.005141388174807198,Grade 3以上,"Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23)",Table 2（Pneumonitis）,
+B26C,大腸炎,C,0,389,0.0,Grade 3以上,"EMA. Keytruda assessment report EMEA/H/C/003820/II/0110 (EMA/257879/2022; KEYNOTE-522, database cutoff 2021-03-23)",p.97 表（全Grade、画像から転記）,プラセボ群の Grade 3以上は未報告。全Grade 3例を上限とし、基本値は0
+B27C,肝炎,C,0,389,0.0,Grade 3以上,"EMA. Keytruda assessment report EMEA/H/C/003820/II/0110 (EMA/257879/2022; KEYNOTE-522, database cutoff 2021-03-23)",p.97 表（全Grade、画像から転記）,プラセボ群の Grade 3以上は未報告。全Grade 3例を上限とし、基本値は0
+B28C,重度の皮膚障害,C,1,389,0.002570694087403599,Grade 3以上,"Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23)",Table 2（Severe skin reaction）,
+B29C,1型糖尿病,C,0,389,0.0,全Grade,"EMA. Keytruda assessment report EMEA/H/C/003820/II/0110 (EMA/257879/2022; KEYNOTE-522, database cutoff 2021-03-23)",p.100 Table 5.3.5.3.3-tnbc3: 30（画像から転記）,
+B30C,その他の重篤なもの,C,1,389,0.002570694087403599,Grade 3以上,"Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23); EMA. Keytruda assessment report EMEA/H/C/003820/II/0110 (EMA/257879/2022; KEYNOTE-522, database cutoff 2021-03-23)",Table 2 の免疫介在性有害事象 Grade 3以上の総数から、表の各項目と大腸炎、肝炎の Grade 3以上を差し引いた近似,患者単位の重複があるため近似値。B10 の定義と合わせて尾崎先生に確認
+B31C,発熱性好中球減少症,C,63,389,0.16195372750642673,Grade 3以上,"Schmid P, et al. N Engl J Med 2022;386:556-67, Supplementary Appendix (IA4, data cutoff 2021-03-23)",Table S7（Grade 3-5）,

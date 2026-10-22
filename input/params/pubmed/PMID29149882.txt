@@ -1,0 +1,74 @@
+1. BMC Cancer. 2017 Nov 17;17(1):773. doi: 10.1186/s12885-017-3774-7.
+
+Cost-effectiveness analysis of the introduction of S-1 therapy for first-line 
+metastatic breast cancer treatment in Japan: results from the randomized phase 
+III SELECT BC trial.
+
+Shiroiwa T(1), Fukuda T(2), Shimozuma K(3), Mouri M(4), Hagiwara Y(5), Kawahara 
+T(5)(6), Ohsumi S(7), Hozumi Y(8)(9), Sagara Y(10), Ohashi Y(11), Mukai H(12).
+
+Author information:
+(1)Department of Health and Welfare Services, National Institute of Public 
+Health, 2-3-6 Minami, Wako, Saitama, 351-0197, Japan. t.shiroiwa@gmail.com.
+(2)Department of Health and Welfare Services, National Institute of Public 
+Health, 2-3-6 Minami, Wako, Saitama, 351-0197, Japan.
+(3)Department of Biomedical Sciences, College of Life Sciences, Ritsumeikan 
+University, 1-1-1 Noji-higashi, Kusatsu, Shiga, 525-8577, Japan.
+(4)Kanagawa Academy of Science and Technology (KAST), 3-2-1 Sakado, Takatsu-ku, 
+Kawasaki, Kanagawa, 213-0012, Japan.
+(5)Department of Biostatistics, School of Public Health, The University of 
+Tokyo, 7-3-1 Hongo, Bunkyo-ku, Tokyo, 113-0033, Japan.
+(6)Biostatistics Division, Clinical Research Support Center, The University of 
+Tokyo Hospital, 7-3-1 Hongo, Bunkyo-ku, Tokyo, 113-0033, Japan.
+(7)Department of Breast Oncology, National Hospital Organization Shikoku Cancer 
+Center, 160 Kou, Minamiumemoto-machi, Matsuyama, Ehime, 791-0280, Japan.
+(8)Department of Breast and Endocrine Surgery, University of Tsukuba Hospital, 
+2-1-1 Amakubo, Tsukuba, Ibaraki, 305-8576, Japan.
+(9)Department of Breast Surgery, Ibaraki Prefectural Central Hospital, 6528 
+Koibuchi, Kasama, Ibaraki, 309-1793, Japan.
+(10)Breast Surgery Department, Social Medical Corporation Hakuaikai Sagara 
+Hospital, Matsubara-cho 3-31, Kagoshima, 892-0833, Japan.
+(11)Department of Integrated Science and Engineering, Chuo University, 1-13-27 
+Kasuga, Bunkyo-ku, Tokyo, 112-8551, Japan.
+(12)Division of Breast and Medical Oncology, National Cancer Center Hospital 
+East, 6-5-1 Kashiwanoha, Kashiwa, Chiba, 277-8577, Japan.
+
+BACKGROUND: This study evaluated the cost-effectiveness of replacing standard 
+intravenous therapy (taxane) with oral S-1 therapy for first-line metastatic 
+breast cancer treatment.
+METHODS: This cost-effectiveness analysis was based on data from a randomized 
+phase III trial (SELECT BC). As cost-effectiveness was a secondary endpoint of 
+the SELECT BC trial, some of the randomized patients participated in an EQ-5D 
+survey (N = 391) and health economic survey (N = 146). The EQ-5D responses, 
+claims, and prescription data were collected for as long as possible until 
+death. The expected quality-adjusted life years (QALY) obtained from each 
+treatment were calculated using patient-level EQ-5D data, and the expected cost 
+was calculated using patient-level claim data. The analysis was performed from 
+the perspective of public healthcare payers.
+RESULTS: The estimated EQ-5D least-square means and 95% CI up to 48 months were 
+0.764 (95% CI, 0.741-0.782) and 0.742 (95% CI, 0.720-0.764) in the S-1 and 
+taxane arms, respectively. The expected QALY was 2.11 for the S-1 arm and 2.04 
+for the taxane arm, with expected costs of JPY 5.13 million (USD 46,600) and JPY 
+5.56 million (USD 50,500), respectively. These results show that S-1 is 
+cost-saving. According to probabilistic sensitivity analysis, S-1 was dominant 
+with a probability of 63%. When the willingness to pay (WTP) value was JPY 5 
+million (USD 45,500) per QALY, the probability of being cost-effective was 92%.
+CONCLUSIONS: Our results show that the introduction of oral S-1 therapy for 
+metastatic breast cancer is highly likely to be cost-effective.
+TRIAL REGISTRATION: UMIN CTR C000000416 . Registered on May 10, 2006.
+
+DOI: 10.1186/s12885-017-3774-7
+PMCID: PMC5693567
+PMID: 29149882 [Indexed for MEDLINE]
+
+Conflict of interest statement: ETHICS APPROVAL AND CONSENT TO PARTICIPATE: This 
+study was approved by the ethics committee of National Cancer Center Hospital 
+East. We obtained written informed consent from all the participants. CONSENT 
+FOR PUBLICATION: Not applicable. COMPETING INTERESTS: Dr. Ohashi has stock 
+ownership of Statcom, received honoraria from Sanofi, had a consultant/advisory 
+role of Taiho, Chugai, Shionogi and Eisai. Dr. Mukai received honoraria from 
+AstraZeneca, Novartis and Taiho, and research funding from Chugai, Daiichi 
+Sankyo, Eisai, Nippon Kayaku, Novartis, Pfizer and Sanofi. All remaining authors 
+have declared no conflicts of interest. PUBLISHER’S NOTE: Springer Nature 
+remains neutral with regard to jurisdictional claims in published maps and 
+institutional affiliations.

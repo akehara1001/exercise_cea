@@ -1,0 +1,39 @@
+1. Curr Oncol. 2021 Oct 18;28(5):4203-4212. doi: 10.3390/curroncol28050356.
+
+Changes in Health State Utility Values in Japanese Patients with End-Stage 
+Breast Cancer.
+
+Iwatani T(1)(2), Noto S(3), Tsugawa K(2).
+
+Author information:
+(1)Department of Breast Surgery, National Cancer Centre Hospital East, 6-5-1 
+Kashiwanoha, Chiba 277-8577, Japan.
+(2)Department of Breast and Endocrine Surgery, St. Marianna University School of 
+Medicine, 2-16-1 Sugao Miyamae, Kawasaki 216-8511, Japan.
+(3)Department of Health Sciences, Niigata University of Health and Welfare, 1398 
+Shimami-cho, Kita-ku, Niigata 950-3198, Japan.
+
+We aimed to determine the dynamic trends in health state utility values (HSUVs) 
+in patients with end-stage breast cancer. We selected 181 patients comprising 
+137 with primary breast cancer (PBC) and 44 with metastatic breast cancer (MBC) 
+(28 survivors and 16 patients with MBC death). HSUVs were 0.90 and 0.89 in 
+patients with PBC and 0.83 and 0.80 in those with MBC (survivors) at 6 and 3 
+months, respectively, before the end of the observation period; these values 
+were 0.73 and 0.66, respectively, in those with MBC (deceased) during the 
+aforementioned period. The root-mean-squared error (RMSE) for the decrease in 
+HSUVs over 3 months was 0.10, 0.096, and 0.175 for patients with PBC, MBC 
+(survivors), and MBC (deceased), respectively. One-way analysis of variance for 
+differences in absolute error among the groups was significant (p = 0.0102). 
+Multiple comparisons indicated a difference of 0.068 in absolute error between 
+patients with PBC and those with MBC (deceased) (p = 0.0082). Patients with 
+end-stage breast cancer had well-controlled HSUVs 3 months before death, with a 
+sharp decline in HSUVs in the 3 months leading up to death.
+
+DOI: 10.3390/curroncol28050356
+PMCID: PMC8535054
+PMID: 34677274 [Indexed for MEDLINE]
+
+Conflict of interest statement: Koichiro Tsugawa received honoraria from 
+AstraZeneca, Chugai Pharmaceutical Co Ltd., Daiichi Sankyo Co Ltd., Eizai, Eli 
+Lilly Japan KK, Nippon Kayaku Co Ltd., Pfizer, Taiho Pharmaceutical Co. Ltd., 
+and Takeda Pharmaceutical Co. Ltd. The authors declare no conflict of interest.

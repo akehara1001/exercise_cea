@@ -1,5 +1,5 @@
 # 10_read_params.R
-# Reads input/params/parameters_template_v1.xlsx (sheet パラメータ) into a long table
+# Reads input/params/parameters_v2.xlsx (sheet パラメータ; v1 is in input/params/archive/) into a long table
 # (data/params_long.csv: one row per parameter x 基本値/下限/上限) and writes
 # output/params_check.md (unfilled rows by owner; non-numeric 基本値; value without source;
 # 下限 > 基本値 or 基本値 > 上限).
@@ -10,7 +10,7 @@
 
 root <- "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"
 suppressPackageStartupMessages(library(readxl))
-src <- file.path(root, "input", "params", "parameters_template_v1.xlsx")
+src <- file.path(root, "input", "params", "parameters_v2.xlsx")
 x <- read_excel(src, sheet = "パラメータ", col_types = "text")
 x <- as.data.frame(x, stringsAsFactors = FALSE)
 need <- c("param_id", "区分", "項目", "適用する群", "適用する状態", "単位", "基本値", "下限", "上限",
@@ -62,7 +62,7 @@ lst <- function(idx) if (!any(idx)) "- なし" else
   sprintf("- %s %s（%s）", x$param_id[idx], x$項目[idx], x$担当[idx])
 L <- c("# パラメータ入力表の確認",
        "",
-       sprintf("対象：`input/params/parameters_template_v1.xlsx`（%d 行）。`R/10_read_params.R` が生成。", nrow(x)),
+       sprintf("対象：`input/params/parameters_v2.xlsx`（%d 行）。`R/10_read_params.R` が生成。", nrow(x)),
        "",
        "## 1. 基本値が未記入の行（担当別）", "")
 for (ow in c("尾崎", "原")) {

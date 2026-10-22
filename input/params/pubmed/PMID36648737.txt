@@ -1,0 +1,62 @@
+1. Adv Ther. 2023 Mar;40(3):1153-1170. doi: 10.1007/s12325-022-02365-1. Epub 2023
+ Jan 17.
+
+Cost-Effectiveness of Neoadjuvant Pembrolizumab Plus Chemotherapy Followed by 
+Adjuvant Single-Agent Pembrolizumab for High-Risk Early-Stage Triple-Negative 
+Breast Cancer in the United States.
+
+Huang M(1), A Fasching P(2), Haiderali A(3), Xue W(4), Yang C(4), Pan W(3), Zhou 
+ZY(4), Hu P(3), Chaudhuri M(5), Le Bailly De Tilleghem C(6), Cappoen N(6), 
+O'Shaughnessy J(7).
+
+Author information:
+(1)Merck & Co., Inc., 90 E Scott Ave, Rahway, NJ, 07065, USA. 
+min_huang@merck.com.
+(2)Comprehensive Cancer Center Erlangen-EMN, Department of Gynecology and 
+Obstetrics, Friedrich-Alexander University Erlangen-Nuremberg, University 
+Hospital Erlangen, Erlangen, Germany.
+(3)Merck & Co., Inc., 90 E Scott Ave, Rahway, NJ, 07065, USA.
+(4)Analysis Group Ltd., London, UK.
+(5)Complete HEOR Solutions (CHEORS), North Wales, PA, USA.
+(6)MSD, HTA Statistics Europe, Brussels, Belgium.
+(7)Baylor University Medical Center, Texas Oncology and US Oncology, Dallas, TX, 
+USA.
+
+Comment in
+    Adv Ther. 2023 Sep;40(9):4111-4113. doi: 10.1007/s12325-023-02596-w.
+
+INTRODUCTION: The randomized phase III KEYNOTE-522 trial demonstrated that 
+addition of pembrolizumab to neoadjuvant chemotherapy provided a significant 
+improvement in event-free survival and a favorable trend in overall survival for 
+high-risk early-stage triple-negative breast cancer (eTNBC). This analysis 
+evaluated the cost-effectiveness of pembrolizumab in combination with 
+chemotherapy as neoadjuvant treatment and continued as a single-agent adjuvant 
+treatment after surgery vs. neoadjuvant chemotherapy for patients with high-risk 
+eTNBC in the USA.
+METHODS: The analysis was conducted from a US third-party public healthcare 
+payer perspective. A multistate transition model was developed using efficacy 
+and safety data from the KEYNOTE-522 trial. The model included four mutually 
+exclusive health states: event-free, locoregional recurrence, distant 
+metastasis, and death to simulate patients' lifetime disease course. 
+Quality-adjusted life years (QALYs) were calculated on the basis of EuroQoL-5 
+Dimensions utility data collected in KEYNOTE-522. Costs for drug 
+acquisition/administration, adverse events, disease management, and subsequent 
+therapies were reported (2021 US dollars). Costs and outcomes were discounted at 
+3% annually. A series of sensitivity analyses were performed to test the 
+robustness of the main results.
+RESULTS: In the base case scenario, pembrolizumab plus chemotherapy followed by 
+pembrolizumab resulted in expected gains of 3.37 life years (LYs) and 
+2.90 QALYs, and an incremental cost of $79,046 versus chemotherapy. The 
+incremental cost per QALY gained was $27,285, which is lower than all commonly 
+cited US willingness-to-pay thresholds. Sensitivity analyses showed the results 
+were robust over plausible values of key model inputs and assumptions.
+CONCLUSIONS: Compared with neoadjuvant chemotherapy, pembrolizumab in 
+combination with chemotherapy as neoadjuvant treatment and continued as a 
+single-agent adjuvant treatment after surgery is considered a cost-effective 
+option for high-risk eTNBC in the USA.
+
+© 2023. Merck & Co., Inc., Rahway, NJ, USA and its affiliates.
+
+DOI: 10.1007/s12325-022-02365-1
+PMCID: PMC9988745
+PMID: 36648737 [Indexed for MEDLINE]
