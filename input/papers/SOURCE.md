@@ -15,3 +15,13 @@ Claude が取得したもの
 
 NEJM の Supplementary Appendix 3 本は nejm.org がスクリプトからの取得を 403 で拒否したため未取得。
 sha256 は data/input_manifest.csv。
+
+KEYNOTE-522 最終解析（ASCO 2026、2026-10-22 追記）
+- 出典：Schmid P, Cortes J, Dent RA, et al. KEYNOTE-522 final analysis. J Clin Oncol 2026;44(16_suppl):507. doi:10.1200/JCO.2026.44.16_suppl.507。データカットオフ 2025-10-14、追跡期間中央値 93.8 か月。
+- 学会抄録のページ（ascopubs.org）はスクリプトからの取得が 403 で拒否されたため未取得（回避はしていない）。数値は会議報道から読み取った：
+  - OncLive 2026-06-01（7 年 EFS・OS とその 95% CI、pCR 別の OS）
+  - CancerNetwork 2026-06-01（7 年 DRFS、7 年 OS の照合、データカットオフ、追跡期間）
+  - DelveInsight（pCR 別の OS の照合）
+  - CareNet 2026-06-02 はサイトのメンテナンス中で本文を取得できなかった。
+- 保存：kn522_final_analysis/（各ページの HTML、2026-10-22 取得）。値は R/py/12_final_analysis.py が正規表現で抽出し data/kn522_final_7y.csv に出典と原文つきで保存。
+- 注意：pCR 別の OS（94.5% 対 91.1%、69% 対 59.8%）は報道に時点の明記がない（OncLive は "at median follow-up" と記載）。用户の指示どおり 7 年の値として扱う。
