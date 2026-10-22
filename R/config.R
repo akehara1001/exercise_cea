@@ -45,6 +45,10 @@ CFG <- list(
   #   2026-10-22 round 4: (a) unchanged; (b) engine 5-year RMST difference inside the bootstrap
   #     95% CI of the KM difference (B = boot_B, seed).
   gate_years = 1:5,
+  # OS anchor scenario (decision 2026-10-22): k on the DR excess hazard of the pembrolizumab arms,
+  # fixed at the value solved in calibration round 4 (engine RMST difference = KM value); not
+  # recalibrated afterwards or in the bootstrap
+  os_anchor_k_fixed = 2.007,
   gate_pp_round1_2 = 1,
   gate_rmst_rel_tol_round3 = 0.20,
   # 5-year stratified EFS constraint (decision 2026-10-22): the 5-year prediction must lie in the

@@ -1,0 +1,51 @@
+1. Ann Surg Oncol. 2021 Oct;28(10):5477-5485. doi: 10.1245/s10434-021-10444-w.
+Epub  2021 Jul 10.
+
+Clinical Course of Breast Cancer Patients with Local-Regional Progression During 
+Neoadjuvant Systemic Therapy.
+
+Elmore LC(1), Kuerer HM(1), Barcenas CH(2), Smith BD(3), Miggins MV(1), Lucci 
+A(1), Caudle AS(1), Meric-Bernstam F(1)(4), Hunt KK(1), Teshome M(5).
+
+Author information:
+(1)Department of Breast Surgical Oncology, The University of Texas MD Anderson 
+Cancer Center, Houston, TX, USA.
+(2)Department of Breast Medical Oncology, The University of Texas MD Anderson 
+Cancer Center, Houston, TX, USA.
+(3)Department of Radiation Oncology, The University of Texas MD Anderson Cancer 
+Center, Houston, TX, USA.
+(4)Department of Investigational Cancer Therapeutics, The University of Texas MD 
+Anderson Cancer Center, Houston, TX, USA.
+(5)Department of Breast Surgical Oncology, The University of Texas MD Anderson 
+Cancer Center, Houston, TX, USA. MTeshome@mdanderson.org.
+
+BACKGROUND: Neoadjuvant systemic therapy (NST) is standard for locally advanced 
+breast cancer and is now frequently considered for those with early-stage and 
+node-positive disease. We aimed to evaluate the treatment course and outcomes in 
+patients with disease progression during NST.
+METHODS: Patients diagnosed with unilateral stage I-III breast cancer between 
+2005 and 2015 with documented local-regional progression while receiving NST, by 
+clinical examination and/or imaging after two or more cycles of chemotherapy, 
+were identified from a prospective database, stratified by receipt of surgery 
+and outcomes analyzed.
+RESULTS: Of 6362 patients treated with NST during the study period, 124 (1.9%) 
+developed disease progression. At a median live follow-up of 71 months, 23.4% 
+were alive without disease and 70.2% had died from breast cancer. Median overall 
+survival (OS) time for patients with progression was 26 months and median 
+distant disease-free survival (DFS) was 14 months. Triple-negative breast cancer 
+was associated with a higher likelihood of death (p < 0.001) and development of 
+distant metastasis (p = 0.002). Among patients who had surgery (104, 89.3%), 40 
+(38.5%) developed local-regional recurrence, 67 (64.4%) developed distant 
+metastasis, and 69 (66.3%) died from breast cancer. Median OS and median distant 
+DFS in this subgroup was 31 and 16 months, respectively.
+CONCLUSIONS: High rates of local-regional and distant failure were seen 
+following disease progression while receiving NST. This suggests aggressive 
+tumor biology and the need to study novel systemic therapies. Poor survival 
+outcomes despite surgical management highlight the importance of careful patient 
+selection when considering operative intervention after progression while 
+receiving NST.
+
+© 2021. Society of Surgical Oncology.
+
+DOI: 10.1245/s10434-021-10444-w
+PMID: 34247335 [Indexed for MEDLINE]

@@ -1,6 +1,8 @@
 # 06_bootstrap.R
-# Step 6: bootstrap (B = CFG$boot_B) of the survival engine, with the structure and settings that
-# passed step 5 (round 4, 2026-10-22). Each replicate:
+# Step 6: bootstrap (B = CFG$boot_B) of the survival engine, with the structure and settings of
+# step 5 (round 5, 2026-10-22; run only after step 5 has passed: it reads engine_params.rds).
+# The round-4 bootstrap (Weibull PreProg, k re-solved per replicate) is what data/bootstrap holds
+# until this is rerun. Each replicate:
 #   1. EFS by arm x pCR (2022 appendix Fig. S4, IA4): patients resampled within arm with their pCR
 #      label, so the pCR proportion and the stratum sizes vary; each stratum is landmarked at
 #      surgery and the selected model (same family as the base) is refitted with the 5-year
@@ -8,10 +10,12 @@
 #   2. PreProg entry share = reported count / resampled non-pCR size (arm-level share as reported).
 #   3. OS by arm (2024 Fig. 1A, IA7): resampled within arm; the selected OS models are refitted
 #      (saved only, the engine does not use them; RP knots kept at the base positions).
-#   4. Calibration as in 05_calibrate.R (calibration.R) against the resampled OS KM, from the base
-#      estimates and the six starts of the base calibration (best of the seven).
-#   5. OS anchor scenario: k recalibrated so that the engine's 5-year RMST difference equals the
-#      resampled KM difference.
+#   4. DR median drawn from dr_median_draw() (calibration.R: equal-weight mixture of lognormals
+#      from the ESME and IMpassion132 CIs); calibration as in 05_calibrate.R against the resampled
+#      OS KM given that median, from the base estimates and the six starts of the base calibration
+#      (best of the seven); if the best ends with optim code 52, five random starts are added and
+#      the best of all is kept (before/after recorded).
+#   5. OS anchor scenario: the same fixed k (CFG$os_anchor_k_fixed) in every replicate.
 #   6. Engine outputs at 5, 10 and 20 years (EFS and OS by arm x pCR; pembrolizumab arm also under
 #      the OS anchor).
 # Fixed in every replicate (data settings): life table, EFS event composition and shares, deaths
@@ -104,16 +108,16 @@ boot_one <- function(b) {
     }
     targets <- lapply(os_b, function(d) 100 * km_at(d, CFG$calib_grid_months))
     fl <- cal_flows(P)
-    cal <- calibrate_os(P, targets, CFG$calib_grid_months, starts = c(list(th_base), CAL_STARTS), fl = fl)
-    P <- cal_apply(P, cal$par)
+    dr_med <- dr_median_draw(1)
+    cal <- calibrate_os(P, targets, CFG$calib_grid_months, dr_med, starts = c(list(th_base), CAL_STARTS), fl = fl)
+    P <- cal_apply(P, cal$par, dr_med)
     km_d <- rmst_km(os_b$pembro) - rmst_km(os_b$placebo)
     eng_d <- rmst5_monthly(os_fast(fl$pembro, P$preprog, P$dr)) - rmst5_monthly(os_fast(fl$placebo, P$preprog, P$dr))
-    P$os_anchor_k <- solve_os_anchor(P, km_d, fl)
+    P$os_anchor_k <- CFG$os_anchor_k_fixed
     outv <- engine_outputs(P)
     list(efs = efs_out, efs_binding = bind, pcr = pcr_out, os_models = os_par,
-         calib = c(preprog_shape = P$preprog$shape, preprog_scale = P$preprog$scale, dr_shape = P$dr$shape, dr_median = P$dr$scale,
-                   sse = cal$value, convergence = cal$convergence, at_bound_any = any(cal$at_bound),
-                   dr_median_at_bound = cal$at_bound[["dr_median"]],
+         calib = c(preprog_shape = P$preprog$shape, preprog_median = P$preprog$scale, dr_shape = P$dr$shape, dr_median = P$dr$scale,
+                   sse = cal$value, convergence = cal$convergence, cal$at_bound, cal$code52,
                    os_anchor_k = P$os_anchor_k, km_rmst5_diff = km_d, engine_rmst5_diff = eng_d),
          outputs = outv, pre_surv = P$pre_surv)
   }
@@ -163,7 +167,7 @@ write.csv(CALm, file.path(boot_dir, "boot_calibration.csv"), row.names = FALSE)
 write.csv(OUTm, file.path(boot_dir, "boot_outputs.csv"), row.names = FALSE)
 
 # summary: base value and bootstrap percentile interval of each parameter and output
-base_calib <- c(preprog_shape = P_base$preprog$shape, preprog_scale = P_base$preprog$scale, dr_shape = P_base$dr$shape,
+base_calib <- c(preprog_shape = P_base$preprog$shape, preprog_median = P_base$preprog$scale, dr_shape = P_base$dr$shape,
                 dr_median = P_base$dr$scale, os_anchor_k = P_base$os_anchor_k)
 efs_cvs <- paste0("EFS_", rep(c("pembro", "placebo"), each = 2), "_", c("pCR", "nonpCR"))
 base_efs <- flat(setNames(lapply(efs_cvs, function(cv) fits$selected[[cv]]$pars), efs_cvs))
@@ -184,7 +188,8 @@ SUM <- rbind(summ(EFSm, "EFS model parameters", base_efs),
              summ(CALm[, c("b", names(base_calib), "sse", "km_rmst5_diff", "engine_rmst5_diff"), drop = FALSE], "calibration", base_calib),
              summ(PCRm, "pCR and PreProg", base_pcr), summ(OUTm, "engine outputs (%)", base_out))
 write.csv(SUM, file.path(ROOT, "output", "phase1", "bootstrap_summary.csv"), row.names = FALSE)
-cat(sprintf("replicates: %d; convergence != 0: %d; any parameter at bound: %d; DR median at bound: %d; k not found: %d; redrawn: %d; 5-year constraint binding: %s\n",
-            nrow(CALm), sum(CALm[, "convergence"] != 0), sum(CALm[, "at_bound_any"] == 1),
-            sum(CALm[, "dr_median_at_bound"] == 1), sum(!is.finite(CALm[, "os_anchor_k"])), sum(CALm[, "attempts"] > 1),
+cat(sprintf("replicates: %d; convergence != 0: %d; PreProg median at 10 / 26 months: %d / %d; 5-year survival at 5%%: %d; code 52 rerun: %d (objective improved: %d); redrawn: %d; 5-year constraint binding: %s\n",
+            nrow(CALm), sum(CALm[, "convergence"] != 0), sum(CALm[, "pp_median_low"] == 1), sum(CALm[, "pp_median_high"] == 1),
+            sum(CALm[, "pp_s5_at_min"] == 1), sum(CALm[, "code52"] == 1), sum(CALm[, "value_after"] < CALm[, "value_before"] - 1e-8),
+            sum(CALm[, "attempts"] > 1),
             paste(colnames(BINDm)[-1], colSums(BINDm[, -1, drop = FALSE]), sep = " ", collapse = ", ")))

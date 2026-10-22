@@ -1,2 +1,2 @@
-"structure","gate_a_pass","gate_b_pass","gate_pass","stop_before_step6"
-"AE deaths (data) + PreProg Weibull + DR log-logistic, shapes free (common)",TRUE,TRUE,TRUE,FALSE
+"structure","gate_a_pass","gate_b_pass","constraint_at_bound","gate_pass","stop_before_step6"
+"AE deaths (data) + PreProg log-logistic (constrained) + DR log-logistic, median external (common)",FALSE,TRUE,TRUE,FALSE,TRUE
