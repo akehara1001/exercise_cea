@@ -1,5 +1,6 @@
 # 05_calibrate.R
-# Step 5, sixth round (2026-10-22). Structure as set by the user, no stepwise trials:
+# Step 5, seventh round (2026-10-22). Structure unchanged from round 6 (as set by the user, no
+# stepwise trials):
 #   - deaths due to adverse events: per arm, evenly over the treatment period, not calibrated
 #     (engine.R, config.R); removed from the deaths without recurrence of the EFS composition;
 #   - progression precluding surgery is its own state (PreProg); excess death log-logistic in time
@@ -9,23 +10,32 @@
 #     input (10.1 months, ESME), shape calibrated; in the pembrolizumab arms multiplied by k,
 #     calibrated with the other parameters (0.25 to 4);
 #   - EFS models with the 5-year constraint (04_fit_models.R, efs5_constraint.csv).
-# Objective (unchanged): sum over both arms of squared differences (percentage points) between
-# engine OS and the KM of Schmid 2024 Fig. 1A at months 1..78.
-# Acceptance rule, fixed before this round was run (docs/acceptance_rule_round6.md, commit
-# a53afe2; config.R):
+# Objective: sum over both arms of squared differences (percentage points) between engine OS and
+# the KM of Schmid 2024 Fig. 1A at months 1..78 (unchanged), plus (round 7) eight points of the
+# KEYNOTE-522 final analysis at 7 years (data/kn522_final_7y.csv; calibration.R final7y_targets):
+# OS and EFS by arm, ((engine - reported) / SE)^2 with the SE from the reported 95% CI, and OS by
+# pCR status, with the binomial SE of the stratum size (IA7 pCR counts). The KM part is the same as
+# an SE of 1 point per monthly point.
+# Acceptance rule, fixed before this round was run (docs/acceptance_rule_round7.md, commit
+# f811ec4; config.R):
 #   (a) in each arm, engine OS inside the pointwise 95% CI of the reconstructed KM (survfit
 #       default, log scale) at 1, 2, 3, 4 and 5 years; if not, accepted only if every point
 #       outside is outside by <= 0.3 points and all 10 points are inside the Bonferroni (99.5%)
 #       pointwise intervals;
 #   (b) engine 5-year RMST difference between arms (pembro - placebo) inside the bootstrap 95% CI
-#       of the KM difference (B = CFG$boot_B, resampling the reconstructed IPD within arm).
+#       of the KM difference (B = CFG$boot_B, resampling the reconstructed IPD within arm);
+#   (c) in each arm, engine OS and EFS at 7 years inside the 95% CI of the final analysis. OS by
+#       pCR status at 7 years is reported only (no CI; not part of the rule).
 # Not accepted: no engine default is written (stop). The PreProg constraint boundaries and k at
 # its bounds are reported (not part of the rule).
 # Scenario "k = 1" (common post-DR mortality): for all comparisons involving pembrolizumab.
 # Outputs: output/phase1/calibration.csv, calibration_gate.csv, calibration_gate_rmst.csv,
 #          calibration_status.csv, calibration_rmst.csv, calibration_deaths_by_source.csv,
 #          ae_deaths.csv, dr_survival_implied.csv, calibration_curves.csv, engine_checks.csv,
-#          scenario_k1.csv, scenario_k1_gate.csv, fig_calibration_OS.png, fig_engine_checks.png;
+#          scenario_k1.csv, scenario_k1_gate.csv, scenario_k1_arm_diff.csv (between-arm OS
+#          difference at 5 and 7 years), calibration_final7y.csv (gate (c) and the other
+#          7-year points), calibration_objective.csv, calibration_vs_r6.csv,
+#          fig_calibration_OS.png, fig_engine_checks.png;
 #          data/fits/calibration_candidates.rds, data/fits/engine_params.rds (accepted only)
 
 source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
@@ -45,11 +55,12 @@ os_ipd <- lapply(names(arm_of), function(a) ipd[[paste0("K24_F1A_OS_", a)]]); na
 g_m <- CFG$calib_grid_months
 gate_m <- 12 * CFG$gate_years
 target <- lapply(os_ipd, function(d) 100 * km_at(d, g_m))
+X7 <- final7y_targets()                         # calibration.R: 8 points at 7 years with their SE
 
 P0 <- engine_params(dr = list(dist = "llogis", shape = 1, scale = DR_MEDIAN_BASE), preprog = list(dist = "llogis", shape = 1, scale = 1))
 os_model <- function(P, months = g_m) lapply(arm_of, function(e) 100 * survival_engine(e, "all", times = months / 12, params = P)$OS)
 set.seed(CFG$seed)                              # random restarts if optim returns code 52
-cal <- calibrate_os(P0, target, g_m, DR_MEDIAN_BASE)          # calibration.R (6 starts)
+cal <- calibrate_os(P0, target, g_m, DR_MEDIAN_BASE, extra = X7)   # calibration.R (6 starts)
 best <- cal$optim; vals <- cal$starts_values; at_bound <- cal$at_bound
 P1 <- cal_apply(P0, cal$par, DR_MEDIAN_BASE)
 STRUCT <- "AE deaths (data) + PreProg log-logistic (constrained) + DR log-logistic, median external, x k in pembrolizumab arms"
@@ -107,8 +118,45 @@ GR$pass <- en_d >= GR$km_boot_ci95_lo && en_d <= GR$km_boot_ci95_hi
 write.csv(GR, file.path(out_dir, "calibration_gate_rmst.csv"), row.names = FALSE)
 cat("gate (b):", ifelse(GR$pass, "PASS", "FAIL"), "\n"); print(GR, row.names = FALSE)
 
-pass_a <- accept_a; pass_b <- GR$pass; pass <- accept_a && pass_b
-write.csv(data.frame(structure = STRUCT, gate_a_strict_pass = pass_a_strict, gate_a_accepted = accept_a, gate_b_pass = pass_b,
+# gate (c): engine OS and EFS at 7 years inside the 95% CI of the final analysis; OS by pCR status
+# (no CI) and DRFS (not in the objective) reported. Values from survival_engine(), checked against
+# point_value() used in the objective; objective_term = ((engine - reported) / SE)^2
+FA <- read.csv(file.path(ROOT, "data", "kn522_final_7y.csv"), stringsAsFactors = FALSE)
+fv <- function(id, col) suppressWarnings(as.numeric(FA[[col]][match(id, FA$id)]))
+G7 <- rbind(X7, data.frame(id = c("drfs7_pembro", "drfs7_placebo"), arm = c("pembro", "placebo"), pcr = "all", endpoint = "DRFS", month = 84,
+                           value = fv(c("drfs7_pembro", "drfs7_placebo"), "value"), se = NA, n = NA, weight_basis = "not in the objective"))
+G7$ci95_lo <- fv(G7$id, "lo"); G7$ci95_hi <- fv(G7$id, "hi"); G7$source <- FA$outlet[match(G7$id, FA$id)]
+eng7 <- function(arm, pcr, endpoint, common_dr) 100 * survival_engine(arm_of[[arm]], pcr, times = 7, params = P1, common_dr = common_dr)[[endpoint]]
+G7$engine <- mapply(eng7, G7$arm, G7$pcr, G7$endpoint, MoreArgs = list(common_dr = FALSE))
+G7$engine_k1 <- mapply(eng7, G7$arm, G7$pcr, G7$endpoint, MoreArgs = list(common_dr = TRUE))
+fl1 <- cal_flows(P1); s1 <- cal_specs(cal$par, DR_MEDIAN_BASE)
+pv <- sapply(seq_len(nrow(X7)), function(i) point_value(fl1, s1, X7$arm[i], X7$pcr[i], X7$endpoint[i], X7$month[i]))
+stopifnot(max(abs(pv - G7$engine[seq_len(nrow(X7))])) < 1e-8)
+G7$diff <- G7$engine - G7$value; G7$diff_k1 <- G7$engine_k1 - G7$value
+G7$objective_term <- (G7$diff / G7$se)^2
+G7$inside_ci <- ifelse(is.na(G7$ci95_lo), NA, G7$engine >= G7$ci95_lo - 1e-9 & G7$engine <= G7$ci95_hi + 1e-9)
+G7$inside_ci_k1 <- ifelse(is.na(G7$ci95_lo), NA, G7$engine_k1 >= G7$ci95_lo - 1e-9 & G7$engine_k1 <= G7$ci95_hi + 1e-9)
+G7$gate_c <- G7$pcr == "all" & G7$endpoint %in% c("OS", "EFS")
+write.csv(G7, file.path(out_dir, "calibration_final7y.csv"), row.names = FALSE)
+pass_c <- all(G7$inside_ci[G7$gate_c])
+cat("gate (c):", ifelse(pass_c, "PASS", "FAIL"), "\n")
+print(transform(G7[, c("id", "value", "se", "ci95_lo", "ci95_hi", "engine", "engine_k1", "diff", "objective_term", "inside_ci", "gate_c")],
+                engine = round(engine, 2), engine_k1 = round(engine_k1, 2), diff = round(diff, 2), objective_term = round(objective_term, 3)), row.names = FALSE)
+
+# objective at the solution: KM part (months 1..78, both arms) and the 7-year points
+m_cal <- os_model(P1)
+OB <- data.frame(part = c("KM OS, months 1-78, both arms (pp^2)", "7-year points, OS and EFS by arm (weighted)",
+                          "7-year points, OS by pCR status (weighted)", "total"),
+                 n_points = c(2 * length(g_m), 4, 4, 2 * length(g_m) + 8),
+                 value = c(sum((m_cal$pembro - target$pembro)^2) + sum((m_cal$placebo - target$placebo)^2),
+                           sum(G7$objective_term[G7$gate_c]), sum(G7$objective_term[G7$pcr != "all"]), NA))
+OB$value[4] <- sum(OB$value[1:3])
+stopifnot(abs(OB$value[4] - best$value) < 1e-6 * max(1, best$value))
+write.csv(OB, file.path(out_dir, "calibration_objective.csv"), row.names = FALSE)
+print(OB, row.names = FALSE)
+
+pass_a <- accept_a; pass_b <- GR$pass; pass <- accept_a && pass_b && pass_c
+write.csv(data.frame(structure = STRUCT, gate_a_strict_pass = pass_a_strict, gate_a_accepted = accept_a, gate_b_pass = pass_b, gate_c_pass = pass_c,
                      constraint_at_bound = constraint_bound, k_at_bound = at_bound[["k_low"]] || at_bound[["k_high"]],
                      gate_pass = pass, stop_before_step6 = !pass),
           file.path(out_dir, "calibration_status.csv"), row.names = FALSE)
@@ -127,6 +175,19 @@ fit_row <- function(P, stage) {
 }
 CAL <- rbind(fit_row(P0, "start value"), fit_row(P1, "calibrated"))
 write.csv(CAL, file.path(out_dir, "calibration.csv"), row.names = FALSE)
+
+# round 7 vs round 6 (output/phase1/r6_*.csv, the round-6 outputs saved from commit e530a56)
+C6 <- read.csv(file.path(out_dir, "r6_calibration.csv")); C6 <- C6[C6$stage == "calibrated", ][1, ]
+R6 <- read.csv(file.path(out_dir, "r6_calibration_rmst.csv"))
+VS <- data.frame(quantity = c("pembro_dr_k", "preprog_median_months", "preprog_shape", "preprog_shape_cap", "dr_shape",
+                              "rmst5_diff_engine_years", "km_SSE_both_arms_pp2"),
+                 round6 = c(C6$pembro_dr_k, C6$preprog_median_months, C6$preprog_shape, C6$preprog_shape_cap, C6$dr_shape,
+                            R6$rmst5_engine[R6$arm == "pembro - placebo"], C6$SSE_both_arms),
+                 round7 = c(P1$pembro_dr_k, 12 * P1$preprog$scale, P1$preprog$shape, pp_shape_cap(P1$preprog$scale), P1$dr$shape,
+                            RM$rmst5_engine[3], OB$value[1]))
+VS$change <- VS$round7 - VS$round6
+write.csv(VS, file.path(out_dir, "calibration_vs_r6.csv"), row.names = FALSE)
+print(VS, row.names = FALSE)
 
 # implied median survival after PreProg (entry ~ age 49.5) and after DR (excess-only and all-cause from age 50.5)
 tt <- round(seq(0, 40, by = 1 / 1200), 8)
@@ -204,6 +265,19 @@ OG <- do.call(rbind, lapply(names(arm_of), function(a) {
 write.csv(OG, file.path(out_dir, "scenario_k1_gate.csv"), row.names = FALSE)
 for (f in c("os_anchor.csv", "os_anchor_gate.csv")) if (file.exists(file.path(out_dir, f))) file.remove(file.path(out_dir, f))
 cat("scenario k = 1:\n"); print(OG, row.names = FALSE)
+# between-arm OS difference (pembro - placebo) at 5 and 7 years: base, scenario k = 1 and the
+# reference (5 years: reconstructed KM, OS and RMST; 7 years: the final analysis)
+og5 <- function(col, a) OG[[col]][OG$arm == a & OG$month == 60]
+g7d <- function(col) G7[[col]][G7$id == "os7_pembro"] - G7[[col]][G7$id == "os7_placebo"]
+AD <- data.frame(quantity = c("OS at 5 years (points)", "RMST to 5 years (years)", "OS at 7 years (points)"),
+                 reference = c("reconstructed KM (2024 Fig. 1A)", "reconstructed KM (2024 Fig. 1A)", "final analysis (reported)"),
+                 base = c(og5("engine_base", "pembro") - og5("engine_base", "placebo"), RM$rmst5_engine[3], g7d("engine")),
+                 k1 = c(og5("engine_k1", "pembro") - og5("engine_k1", "placebo"), OA$engine_rmst_diff_k1, g7d("engine_k1")),
+                 reported = c(og5("km", "pembro") - og5("km", "placebo"), km_d, g7d("value")))
+AD$base_minus_reported <- AD$base - AD$reported; AD$k1_minus_reported <- AD$k1 - AD$reported
+AD$k_base <- P1$pembro_dr_k
+write.csv(AD, file.path(out_dir, "scenario_k1_arm_diff.csv"), row.names = FALSE)
+print(AD, row.names = FALSE)
 saveRDS(list(structure = STRUCT, params = P1, optim = best, starts_values = vals, at_bound = at_bound, code52 = cal$code52,
              constraint_at_bound = constraint_bound),
         file.path(ROOT, "data", "fits", "calibration_candidates.rds"))
@@ -236,13 +310,13 @@ if (!pass_a) {
                dr_shape = exp(th[3]), k = exp(th[4]), max_outside_ci_pp = o$value, rmst_diff = rmst_d(th),
                rmst_inside_boot_ci = rmst_d(th) >= GR$km_boot_ci95_lo && rmst_d(th) <= GR$km_boot_ci95_hi)
   }))
-  write.csv(FS, file.path(out_dir, "calibration_gate_feasibility_r6.csv"), row.names = FALSE)
+  write.csv(FS, file.path(out_dir, "calibration_gate_feasibility_r7.csv"), row.names = FALSE)
   cat("gate (a) feasibility within the constraints: smallest excursion", min(FS$max_outside_ci_pp), "pp\n")
   print(FS[order(FS$max_outside_ci_pp), ][1:3, ], row.names = FALSE)
 }
 
 if (pass) saveRDS(P1, file.path(ROOT, "data", "fits", "engine_params.rds")) else {
-  cat("not accepted under the round-6 rule: stop before step 6\n")
+  cat("not accepted under the round-7 rule: stop before step 6\n")
   if (file.exists(file.path(ROOT, "data", "fits", "engine_params.rds"))) file.remove(file.path(ROOT, "data", "fits", "engine_params.rds"))
 }
 

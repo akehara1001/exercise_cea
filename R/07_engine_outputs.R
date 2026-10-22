@@ -1,12 +1,13 @@
 # 07_engine_outputs.R
 # Step 7: survival engine outputs with the parameters adopted in step 5 (data/fits/engine_params.rds)
 # and bootstrap 95% percentile intervals (step 6, data/bootstrap/boot_replicates.rds).
-#   - 5-, 10- and 20-year EFS and OS from randomization by arm x pCR (all, pCR, non-pCR); in
+#   - 5-, 7-, 10- and 20-year EFS and OS from randomization by arm x pCR (all, pCR, non-pCR); in
 #     phase 1 the exercise arms equal their non-exercise arms (no exercise parameters yet);
 #   - the scenario k = 1 (common post-DR mortality) for the pembrolizumab arms (OS only; EFS is
 #     unchanged by it);
-#   - curves to 20 years with bootstrap bands, against the reconstructed KM curves.
-# Each replicate's engine is rebuilt from the saved parameter matrices; its 5/10/20-year values must
+#   - curves to 20 years with bootstrap bands, against the reconstructed KM curves and the 7-year
+#     values of the final analysis (data/kn522_final_7y.csv; 95% CI where reported).
+# Each replicate's engine is rebuilt from the saved parameter matrices; its 5/7/10/20-year values must
 # equal those stored by 06_bootstrap.R (check of the saved matrices).
 # Outputs: output/phase1/engine_outputs.csv, engine_curves.csv, bootstrap_rebuild_check.csv,
 #          fig_engine_outputs.png
@@ -73,9 +74,9 @@ BC <- parLapply(cl, seq_len(nrow(BR$calibration)), function(i) { x <- curves_of(
 stopCluster(cl)
 BC <- do.call(rbind, BC)
 
-# check: rebuilt replicates reproduce the stored 5/10/20-year outputs
+# check: rebuilt replicates reproduce the stored 5/7/10/20-year outputs
 chk <- do.call(rbind, lapply(seq_len(nrow(BR$outputs)), function(i) {
-  o <- BR$outputs[i, ]; x <- BC[BC$rep == i & round(BC$time, 9) %in% c(5, 10, 20), ]
+  o <- BR$outputs[i, ]; x <- BC[BC$rep == i & round(BC$time, 9) %in% c(5, 7, 10, 20), ]
   d <- c()
   for (j in seq_len(nrow(x))) {
     if (x$scenario[j] == "base") {
@@ -88,7 +89,7 @@ write.csv(data.frame(replicates = nrow(chk), max_abs_diff = max(chk$max_abs_diff
 cat(sprintf("rebuild check: %d replicates, max abs difference %.2e\n", nrow(chk), max(chk$max_abs_diff)))
 stopifnot(max(chk$max_abs_diff) < 1e-8)
 
-# bands and the 5/10/20-year table
+# bands and the 5/7/10/20-year table
 band <- aggregate(cbind(EFS, OS) ~ arm + pcr + scenario + time, data = BC, FUN = function(v) quantile(v, c(0.025, 0.5, 0.975)))
 band <- data.frame(band[, 1:4], EFS_lo = band$EFS[, 1], EFS_med = band$EFS[, 2], EFS_hi = band$EFS[, 3],
                    OS_lo = band$OS[, 1], OS_med = band$OS[, 2], OS_hi = band$OS[, 3])
@@ -98,7 +99,7 @@ CU <- CU[order(CU$scenario, CU$arm, CU$pcr, CU$time), ]
 write.csv(CU, file.path(out_dir, "engine_curves.csv"), row.names = FALSE)
 arm_lab <- c(chemo = "chemo (= chemo + exercise in phase 1)", pembro = "pembro (= pembro + exercise in phase 1)")
 TB <- do.call(rbind, lapply(c("EFS", "OS"), function(ep) {
-  x <- CU[round(CU$time, 9) %in% c(5, 10, 20), ]
+  x <- CU[round(CU$time, 9) %in% c(5, 7, 10, 20), ]
   if (ep == "EFS") x <- x[x$scenario == "base", ]
   data.frame(endpoint = ep, scenario = x$scenario, arm = x$arm, pcr = x$pcr, year = x$time, base = x[[ep]],
              boot_lo = x[[paste0(ep, "_lo")]], boot_median = x[[paste0(ep, "_med")]], boot_hi = x[[paste0(ep, "_hi")]])
@@ -117,6 +118,15 @@ KM <- do.call(rbind, lapply(c(pembro = "pembro", chemo = "placebo"), function(a)
         km_df(ipd[[paste0("K22_S4_EFS_pCR_", a, "_pCR")]], arm, "pCR", "EFS"), km_df(ipd[[paste0("K22_S4_EFS_pCR_", a, "_nonpCR")]], arm, "nonpCR", "EFS"),
         km_df(ipd[[paste0("K24_S4_OS_pCR_", a, "_pCR")]], arm, "pCR", "OS"), km_df(ipd[[paste0("K24_S4_OS_pCR_", a, "_nonpCR")]], arm, "nonpCR", "OS"))
 }))
+FA <- read.csv(file.path(ROOT, "data", "kn522_final_7y.csv"), stringsAsFactors = FALSE)
+fa_row <- function(id, arm, pcr, ep) data.frame(arm = arm, pcr = pcr, endpoint = ep, time = 7, v = as.numeric(FA$value[FA$id == id]),
+                                                lo = suppressWarnings(as.numeric(FA$lo[FA$id == id])), hi = suppressWarnings(as.numeric(FA$hi[FA$id == id])))
+F7 <- do.call(rbind, lapply(c(pembro = "pembro", chemo = "placebo"), function(a) {
+  arm <- if (a == "pembro") "pembro" else "chemo"
+  rbind(fa_row(paste0("os7_", a), arm, "all", "OS"), fa_row(paste0("efs7_", a), arm, "all", "EFS"),
+        fa_row(paste0("os_pcr_", a), arm, "pCR", "OS"), fa_row(paste0("os_nonpcr_", a), arm, "nonpCR", "OS"))
+}))
+F7$pcr <- factor(F7$pcr, c("all", "pCR", "nonpCR"))
 bb <- CU[CU$scenario == "base", ]
 pl <- rbind(data.frame(bb[, c("arm", "pcr", "time")], endpoint = "EFS", v = bb$EFS, lo = bb$EFS_lo, hi = bb$EFS_hi),
             data.frame(bb[, c("arm", "pcr", "time")], endpoint = "OS", v = bb$OS, lo = bb$OS_lo, hi = bb$OS_hi))
@@ -126,9 +136,11 @@ g <- ggplot() +
   geom_ribbon(data = pl, aes(time, ymin = lo, ymax = hi, fill = arm), alpha = 0.2) +
   geom_line(data = pl, aes(time, v, colour = arm), linewidth = 0.7) +
   geom_step(data = KM, aes(time, surv, colour = arm), linewidth = 0.35, linetype = "22") +
+  geom_errorbar(data = F7[!is.na(F7$lo), ], aes(x = time, ymin = lo, ymax = hi, colour = arm), width = 0.4, linewidth = 0.4) +
+  geom_point(data = F7, aes(time, v, colour = arm), shape = 4, size = 1.6) +
   facet_grid(endpoint ~ pcr) + scale_colour_manual(values = cols) + scale_fill_manual(values = cols) +
   labs(x = "Years from randomization", y = "%", colour = NULL, fill = NULL,
-       title = "Survival engine (solid; band: bootstrap 95% interval) and reconstructed KM (dashed)") +
+       title = "Survival engine (solid; band: bootstrap 95% interval), reconstructed KM (dashed), final analysis at 7 years (x; bar: 95% CI)") +
   coord_cartesian(ylim = c(30, 100)) + theme_bw(base_size = 9) + theme(legend.position = "bottom")
 ggsave(file.path(out_dir, "fig_engine_outputs.png"), g, width = 9, height = 6, dpi = 200)
 cat("done\n")

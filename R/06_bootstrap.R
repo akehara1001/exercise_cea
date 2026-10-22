@@ -1,6 +1,6 @@
 # 06_bootstrap.R
 # Step 6: bootstrap (B = CFG$boot_B) of the survival engine, with the structure and settings of
-# step 5 (round 6, 2026-10-22; run only after step 5 has been accepted: it reads
+# step 5 (round 7, 2026-10-22; run only after step 5 has been accepted: it reads
 # engine_params.rds). Each replicate:
 #   1. EFS by arm x pCR (2022 appendix Fig. S4, IA4): patients resampled within arm with their pCR
 #      label, so the pCR proportion and the stratum sizes vary; each stratum is landmarked at
@@ -10,18 +10,21 @@
 #   3. OS by arm (2024 Fig. 1A, IA7): resampled within arm; the selected OS models are refitted
 #      (saved only, the engine does not use them; RP knots kept at the base positions).
 #   4. DR median drawn from dr_median_draw() (calibration.R: equal-weight mixture of lognormals
-#      from the ESME and IMpassion132 CIs); calibration as in 05_calibrate.R against the resampled
-#      OS KM given that median (PreProg median and shape, DR shape and k estimated together),
+#      from the ESME and IMpassion132 CIs); the eight 7-year points of the final analysis drawn
+#      from their sampling distributions (final7y_draw: normal with the CI-based SE for OS and EFS
+#      by arm, binomial with the IA7 stratum size for OS by pCR status; weights as in the base);
+#      calibration as in 05_calibrate.R against the resampled OS KM and the drawn 7-year points
+#      given that median (PreProg median and shape, DR shape and k estimated together),
 #      from the base estimates and the six starts of the base calibration (best of the seven); if
 #      the best ends with optim code 52, five random starts are added and the best of all is kept
 #      (before/after recorded).
-#   5. Engine outputs at 5, 10 and 20 years (EFS and OS by arm x pCR; pembrolizumab arm also under
-#      the scenario k = 1).
+#   5. Engine outputs at 5, 7, 10 and 20 years (EFS and OS by arm x pCR; pembrolizumab arm also
+#      under the scenario k = 1).
 # Fixed in every replicate (data settings): life table, EFS event composition and shares, deaths
 # due to adverse events, LRR -> DR rate, PreProg counts, 5-year constraint bounds.
 # A replicate whose fit fails is redrawn with another seed (counted in `attempts`).
-# Outputs: data/bootstrap/boot_replicates.rds and boot_*.csv (parameter matrices, one row per
-#          replicate); output/phase1/bootstrap_summary.csv
+# Outputs: data/bootstrap/boot_replicates.rds and boot_*.csv (parameter matrices and the drawn
+#          7-year targets, one row per replicate); output/phase1/bootstrap_summary.csv
 
 source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
 source(file.path(ROOT, "R", "survmodels.R"))
@@ -43,11 +46,12 @@ SEL <- read.csv(file.path(ROOT, "output", "phase1", "model_selection.csv"), stri
 P_base <- readRDS(file.path(ROOT, "data", "fits", "engine_params.rds"))     # written only when step 5 passed
 cal_base <- readRDS(file.path(ROOT, "data", "fits", "calibration_candidates.rds"))
 th_base <- cal_base$optim$par
+X7 <- final7y_targets()
 Lm <- CFG$landmark_months; L <- Lm / 12
 
-# engine outputs at 5, 10, 20 years (EFS and OS, %), by arm x pCR; pembrolizumab also under k = 1
+# engine outputs at 5, 7, 10, 20 years (EFS and OS, %), by arm x pCR; pembrolizumab also under k = 1
 engine_outputs <- function(P) {
-  tt <- c(5, 10, 20); outv <- c()
+  tt <- c(5, 7, 10, 20); outv <- c()
   for (arm in c("chemo", "pembro")) for (pc in c("all", "pCR", "nonpCR")) {
     e <- survival_engine(arm, pc, times = tt, params = P)
     outv[paste0(c("EFS", "OS"), "_", rep(tt, each = 2), "y_", arm, "_", pc)] <- c(rbind(100 * e$EFS, 100 * e$OS))
@@ -107,7 +111,8 @@ boot_one <- function(b) {
     targets <- lapply(os_b, function(d) 100 * km_at(d, CFG$calib_grid_months))
     fl <- cal_flows(P)
     dr_med <- dr_median_draw(1)
-    cal <- calibrate_os(P, targets, CFG$calib_grid_months, dr_med, starts = c(list(th_base), CAL_STARTS), fl = fl)
+    X7b <- final7y_draw(X7)
+    cal <- calibrate_os(P, targets, CFG$calib_grid_months, dr_med, starts = c(list(th_base), CAL_STARTS), fl = fl, extra = X7b)
     P <- cal_apply(P, cal$par, dr_med)
     km_d <- rmst_km(os_b$pembro) - rmst_km(os_b$placebo)
     o <- cal_os(fl, cal_specs(cal$par, dr_med))
@@ -117,7 +122,7 @@ boot_one <- function(b) {
          calib = c(preprog_shape = P$preprog$shape, preprog_median = P$preprog$scale, dr_shape = P$dr$shape, dr_median = P$dr$scale,
                    sse = cal$value, convergence = cal$convergence, cal$at_bound, cal$code52,
                    pembro_dr_k = P$pembro_dr_k, km_rmst5_diff = km_d, engine_rmst5_diff = eng_d),
-         outputs = outv, pre_surv = P$pre_surv)
+         outputs = outv, pre_surv = P$pre_surv, targets7 = setNames(X7b$value, X7b$id))
   }
   for (attempt in 1:10) {
     set.seed(CFG$seed + b + 1e6 * (attempt - 1))
@@ -138,7 +143,7 @@ if (n_workers <= 1) {
     source(file.path(ROOT, "R", "engine.R")); source(file.path(ROOT, "R", "calibration.R"))
     suppressPackageStartupMessages(library(survival)); NULL
   }))
-  clusterExport(cl, c("ipd", "fits", "SEL", "P_base", "th_base", "Lm", "L", "boot_one", "engine_outputs", "flat"))
+  clusterExport(cl, c("ipd", "fits", "SEL", "P_base", "th_base", "X7", "Lm", "L", "boot_one", "engine_outputs", "flat"))
   RES <- parLapplyLB(cl, seq_len(B), boot_one)
   stopCluster(cl)
 }
@@ -151,10 +156,11 @@ mat <- function(f) do.call(rbind, lapply(R, function(r) c(b = r$b, f(r))))
 EFSm <- mat(function(r) flat(r$efs)); BINDm <- mat(function(r) unlist(r$efs_binding))
 OSm <- mat(function(r) flat(r$os_models)); PCRm <- mat(function(r) r$pcr)
 CALm <- mat(function(r) c(attempts = r$attempts, r$calib)); OUTm <- mat(function(r) r$outputs)
+T7m <- mat(function(r) r$targets7)
 PREm <- mat(function(r) unlist(lapply(c("pembro", "placebo"), function(a) lapply(c("pCR", "nonpCR"), function(s)
   setNames(r$pre_surv[[a]][[s]]$surv, paste0("pre_surv_", a, "_", s, "_m", 0:Lm))))))
 saveRDS(list(B = B, seed = CFG$seed, minutes = el, failed = RES[failed], efs = EFSm, efs_binding = BINDm, os_models = OSm,
-             pcr_preprog = PCRm, pre_surv = PREm, calibration = CALm, outputs = OUTm),
+             pcr_preprog = PCRm, pre_surv = PREm, calibration = CALm, outputs = OUTm, targets7 = T7m),
         file.path(boot_dir, "boot_replicates.rds"))
 write.csv(EFSm, file.path(boot_dir, "boot_efs_params.csv"), row.names = FALSE)
 write.csv(BINDm, file.path(boot_dir, "boot_efs5_binding.csv"), row.names = FALSE)
@@ -163,6 +169,7 @@ write.csv(PCRm, file.path(boot_dir, "boot_pcr_preprog.csv"), row.names = FALSE)
 write.csv(PREm, file.path(boot_dir, "boot_pre_surgery_km.csv"), row.names = FALSE)
 write.csv(CALm, file.path(boot_dir, "boot_calibration.csv"), row.names = FALSE)
 write.csv(OUTm, file.path(boot_dir, "boot_outputs.csv"), row.names = FALSE)
+write.csv(T7m, file.path(boot_dir, "boot_final7y_targets.csv"), row.names = FALSE)
 
 # summary: base value and bootstrap percentile interval of each parameter and output
 base_calib <- c(preprog_shape = P_base$preprog$shape, preprog_median = P_base$preprog$scale, dr_shape = P_base$dr$shape,
@@ -184,7 +191,8 @@ summ <- function(m, group, base = NULL) {
 }
 SUM <- rbind(summ(EFSm, "EFS model parameters", base_efs),
              summ(CALm[, c("b", names(base_calib), "sse", "km_rmst5_diff", "engine_rmst5_diff"), drop = FALSE], "calibration", base_calib),
-             summ(PCRm, "pCR and PreProg", base_pcr), summ(OUTm, "engine outputs (%)", base_out))
+             summ(PCRm, "pCR and PreProg", base_pcr), summ(OUTm, "engine outputs (%)", base_out),
+             summ(T7m, "7-year targets drawn (%)", setNames(X7$value, X7$id)))
 write.csv(SUM, file.path(ROOT, "output", "phase1", "bootstrap_summary.csv"), row.names = FALSE)
 cat(sprintf("replicates: %d; convergence != 0: %d; k at 0.25 / 4: %d / %d; PreProg median at 10 / 26 months: %d / %d; 5-year survival at 5%%: %d; code 52 rerun: %d (objective improved: %d); redrawn: %d; 5-year constraint binding: %s\n",
             nrow(CALm), sum(CALm[, "convergence"] != 0), sum(CALm[, "k_low"] == 1), sum(CALm[, "k_high"] == 1),

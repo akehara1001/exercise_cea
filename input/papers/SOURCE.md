@@ -24,4 +24,4 @@ KEYNOTE-522 最終解析（ASCO 2026、2026-10-22 追記）
   - DelveInsight（pCR 別の OS の照合）
   - CareNet 2026-06-02 はサイトのメンテナンス中で本文を取得できなかった。
 - 保存：kn522_final_analysis/（各ページの HTML、2026-10-22 取得）。値は R/py/12_final_analysis.py が正規表現で抽出し data/kn522_final_7y.csv に出典と原文つきで保存。
-- 注意：pCR 別の OS（94.5% 対 91.1%、69% 対 59.8%）は報道に時点の明記がない（OncLive は "at median follow-up" と記載）。用户の指示どおり 7 年の値として扱う。
+- 注意：pCR 別の OS（94.5% 対 91.1%、69% 対 59.8%）は報道に時点の明記がない（OncLive は "at median follow-up" と記載）。利用者の指示どおり 7 年の値として扱う。

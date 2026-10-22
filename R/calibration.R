@@ -12,8 +12,12 @@
 #     constraint caps the shape at a value that depends on the median, so the shape is
 #     parametrised as u x cap(median) with u in (0, 1]; u = 1 means the 5-year constraint binds.
 # Objective: sum over both arms of squared differences (percentage points) between engine OS and
-# the KM targets at the given months. Uses the cached flows of the engine (arm_flows/os_fast in
-# engine.R), which give the same OS as survival_engine() in the base case.
+# the KM targets at the given months, plus (round 7) weighted squared differences at the extra
+# point targets (KEYNOTE-522 final analysis, 7 years): ((engine - target) / SE)^2, SE in
+# percentage points (from the reported 95% CI, or binomial with the stratum size). The KM part is
+# unchanged; it is the same as weighting each monthly point with an SE of 1 point. Uses the cached
+# flows of the engine (arm_flows/os_fast in engine.R), which give the same OS as survival_engine()
+# in the base case.
 
 # DR median sources, read from the source texts: ESME from the saved PubMed abstract, IMpassion132
 # from the full text (data/reported_values.csv, fact IMP132_os, p.6)
@@ -57,6 +61,45 @@ cal_os <- function(fl, s, common_dr = FALSE) {
   drp <- s$dr; if (!common_dr) drp$k <- s$k
   list(pembro = os_fast(fl$pembro, s$preprog, drp), placebo = os_fast(fl$placebo, s$preprog, s$dr))
 }
+# OS by pCR branch of an arm at cycle boundaries (os_fast is their mixture)
+branch_os <- function(af, preprog, dr, b) { f <- af$flows[[b]]; f$EF + f$LR + tunnel_state(f, f$to_P, preprog) + tunnel_state(f, f$to_DR, dr) }
+# OS and EFS (= event-free occupancy) of both arms by pCR status (all / pCR / nonpCR), each branch
+# computed once; OS_all is the same expression as os_fast()
+cal_curves <- function(fl, s, common_dr = FALSE) lapply(c(pembro = "pembro", placebo = "placebo"), function(a) {
+  af <- fl[[a]]; dr <- s$dr; if (a == "pembro" && !common_dr) dr$k <- s$k
+  ob <- lapply(c(pCR = "pCR", nonpCR = "nonpCR"), function(b) branch_os(af, s$preprog, dr, b))
+  list(OS_all = af$p_pcr * ob$pCR + (1 - af$p_pcr) * ob$nonpCR, OS_pCR = ob$pCR, OS_nonpCR = ob$nonpCR,
+       EFS_all = af$p_pcr * af$flows$pCR$EF + (1 - af$p_pcr) * af$flows$nonpCR$EF, EFS_pCR = af$flows$pCR$EF, EFS_nonpCR = af$flows$nonpCR$EF)
+})
+# engine value (percent) at one extra target point: arm (pembro / placebo), pcr (all / pCR /
+# nonpCR), endpoint (OS / EFS), month
+curve_point <- function(cc, arm, pcr, endpoint, month) 100 * cc[[arm]][[paste0(endpoint, "_", pcr)]][month + 1]
+point_value <- function(fl, s, arm, pcr, endpoint, month, common_dr = FALSE) curve_point(cal_curves(fl, s, common_dr), arm, pcr, endpoint, month)
+
+# extra point targets from the KEYNOTE-522 final analysis (data/kn522_final_7y.csv): 7-year OS and
+# EFS by arm (SE from the 95% CI: (hi - lo) / (2 x 1.96)) and 7-year OS by pCR status (no CI:
+# binomial SE sqrt(p (1 - p) / n) with the stratum size of the latest pCR counts, IA7)
+final7y_targets <- function() {
+  FA <- read.csv(file.path(ROOT, "data", "kn522_final_7y.csv"), stringsAsFactors = FALSE)
+  pc <- read.csv(file.path(ROOT, "data", "pcr_counts.csv"), stringsAsFactors = FALSE)
+  pc <- pc[pc$source == "K24 (IA7)", ]
+  g <- function(id, col = "value") as.numeric(FA[[col]][FA$id == id])
+  ci_row <- function(id, arm, endpoint) data.frame(id = id, arm = arm, pcr = "all", endpoint = endpoint, month = 84, value = g(id),
+                                                   se = (g(id, "hi") - g(id, "lo")) / (2 * qnorm(0.975)), n = NA, weight_basis = "95% CI")
+  bin_row <- function(id, arm, pcr, n) { p <- g(id) / 100
+    data.frame(id = id, arm = arm, pcr = pcr, endpoint = "OS", month = 84, value = g(id), se = 100 * sqrt(p * (1 - p) / n), n = n,
+               weight_basis = "binomial, IA7 stratum size") }
+  rbind(ci_row("os7_pembro", "pembro", "OS"), ci_row("os7_placebo", "placebo", "OS"),
+        ci_row("efs7_pembro", "pembro", "EFS"), ci_row("efs7_placebo", "placebo", "EFS"),
+        bin_row("os_pcr_pembro", "pembro", "pCR", pc$pcr_pembro), bin_row("os_pcr_placebo", "placebo", "pCR", pc$pcr_placebo),
+        bin_row("os_nonpcr_pembro", "pembro", "nonpCR", pc$nonpcr_pembro), bin_row("os_nonpcr_placebo", "placebo", "nonpCR", pc$nonpcr_placebo))
+}
+# one draw of the extra targets for a bootstrap replicate: normal with the CI-based SE, or
+# binomial with the stratum size (value in percent)
+final7y_draw <- function(X) {
+  X$value <- ifelse(is.na(X$n), rnorm(nrow(X), X$value, X$se), 100 * rbinom(nrow(X), ifelse(is.na(X$n), 1, X$n), X$value / 100) / ifelse(is.na(X$n), 1, X$n))
+  X
+}
 
 # boundary flags of a solution: constraint 1 (median at 10 or 26 months), constraint 2 (5-year
 # survival at 5%), and the numerical bounds of u, the DR shape and k
@@ -68,12 +111,20 @@ cal_at_bound <- function(th) c(pp_median_low = th[1] <= CAL_LOWER[1] + 1e-6, pp_
 # targets: list(pembro =, placebo =) in percent at `months` (whole months; cycle must be 1 month).
 # If the best start ends with optim code 52 (L-BFGS-B line-search failure), five random starts are
 # run and the best of all is kept; the before/after values are returned.
-calibrate_os <- function(P, targets, months, dr_median, starts = CAL_STARTS, fl = cal_flows(P), n_random = 5) {
+calibrate_os <- function(P, targets, months, dr_median, starts = CAL_STARTS, fl = cal_flows(P), n_random = 5, extra = NULL) {
   stopifnot(abs(P$cycle - 1 / 12) < 1e-12)
   idx <- months + 1
   obj <- function(th) {
-    o <- cal_os(fl, cal_specs(th, dr_median))
-    sum((100 * o$pembro[idx] - targets$pembro)^2) + sum((100 * o$placebo[idx] - targets$placebo)^2)
+    s <- cal_specs(th, dr_median)
+    if (is.null(extra)) {
+      o <- cal_os(fl, s)
+      return(sum((100 * o$pembro[idx] - targets$pembro)^2) + sum((100 * o$placebo[idx] - targets$placebo)^2))
+    }
+    cc <- cal_curves(fl, s)
+    v <- sum((100 * cc$pembro$OS_all[idx] - targets$pembro)^2) + sum((100 * cc$placebo$OS_all[idx] - targets$placebo)^2)
+    for (i in seq_len(nrow(extra)))
+      v <- v + ((curve_point(cc, extra$arm[i], extra$pcr[i], extra$endpoint[i], extra$month[i]) - extra$value[i]) / extra$se[i])^2
+    v
   }
   run <- function(st) lapply(st, function(s0) optim(s0, obj, method = "L-BFGS-B", lower = CAL_LOWER, upper = CAL_UPPER,
                                                     control = list(factr = 1e5, maxit = 500)))
