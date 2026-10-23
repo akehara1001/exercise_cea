@@ -1,0 +1,10 @@
+"part","same_shape","identical","max_abs_diff","max_rel_diff"
+"efs",TRUE,FALSE,9.64792889135424e-07,8.75412060565858e-09
+"efs_binding",TRUE,TRUE,0,0
+"os_models",TRUE,FALSE,2.17513678180126e-08,3.22845351603978e-08
+"pcr_preprog",TRUE,TRUE,0,0
+"pre_surv",TRUE,TRUE,0,0
+"calibration",TRUE,FALSE,52,1e+12
+"targets7",TRUE,TRUE,0,0
+"outputs_all",TRUE,FALSE,2.64930966409338e-06,5.09150006605674e-08
+"rmst5_diff",TRUE,FALSE,1.81173618329922e-08,NA
