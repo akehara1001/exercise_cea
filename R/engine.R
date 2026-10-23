@@ -116,12 +116,14 @@ tunnel_state <- function(f, inflow, spec, max_cycles = NULL) {
 
 # DR occupancy for an inflow vector (inflow[k] arrives at boundary k). Without dr$late_scale one
 # tunnel_state(); with it, inflow arriving up to boundary dr$early_cycles is early (median
-# dr$scale) and the rest late (median dr$late_scale), each with its own tunnels
+# dr$scale) and the rest late (median dr$late_scale, shape dr$late_shape if given, round 9),
+# each with its own tunnels
 dr_early_mask <- function(inflow, dr) seq_along(inflow) <= dr$early_cycles
+dr_late_spec <- function(dr) modifyList(dr, list(scale = dr$late_scale, shape = if (is.null(dr$late_shape)) dr$shape else dr$late_shape))
 dr_state <- function(f, inflow, dr, max_cycles = NULL) {
   if (is.null(dr$late_scale)) return(tunnel_state(f, inflow, dr, max_cycles))
   e <- dr_early_mask(inflow, dr)
-  tunnel_state(f, inflow * e, dr, max_cycles) + tunnel_state(f, inflow * !e, modifyList(dr, list(scale = dr$late_scale)), max_cycles)
+  tunnel_state(f, inflow * e, dr, max_cycles) + tunnel_state(f, inflow * !e, dr_late_spec(dr), max_cycles)
 }
 
 # state occupancy, inflows (at the boundary where entrants arrive) and cumulative deaths by

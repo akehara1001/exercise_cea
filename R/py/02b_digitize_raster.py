@@ -1,14 +1,21 @@
 """Step 2 (raster figures): colour separation on the embedded image at its native resolution.
 
-Usage: python -I R/py/02b_digitize_raster.py <project_root>
+Usage: python -I R/py/02b_digitize_raster.py <project_root> [spec.json] [output_dir]
+  defaults: R/py/rasterspec.json and data/digitized (KEYNOTE-522 and Yau); the ESME figure uses
+  R/py/rasterspec_esme.json and data/digitized/esme (2026-10-23)
 Each figure is the publisher's embedded image (JPEG or PNG). Rendering the page at a higher
 dpi would only interpolate those pixels, so the native image is used without resampling.
 Per figure (rasterspec.json):
   censor_marks: "plus" (symmetric '+', Yau) or "up" (vertical ticks above the line, NEJM)
   truncated_at_axis_max: curves drawn to the last x tick end there (Yau: 12 y)
   colour_dist_max: max RGB distance to a curve colour centre (per curve)
+  min_chroma: pixels with max-min RGB at or below this are not curve pixels (default 50)
   fringe: {light curve: [dark curves]} - pixels of a light curve within fringe_px of a dark
           curve are its anti-aliased edge, not the light curve
+  axes (optional): for panels without dark axis lines (ggplot2 light theme): the grey panel
+          border (left_border_px, bottom_border_px) and the bands just outside it that hold the
+          short dark tick marks (x_tick_rows, y_tick_cols); tick centres are darkness-weighted
+          centroids, so anti-aliased ticks are located to sub-pixel precision
 Writes data/digitized/<fig_id>_<curve>_curve.csv, <fig_id>_risktable.csv, <fig_id>_native.<ext>
 and data/digitized/raster_extraction_log.csv.
 """
@@ -19,8 +26,9 @@ import cv2
 import pymupdf
 
 root = sys.argv[1]
-spec = json.load(open(os.path.join(root, "R", "py", "rasterspec.json"), encoding="utf-8"))
-outdir = os.path.join(root, "data", "digitized")
+spec_path = sys.argv[2] if len(sys.argv) > 2 else os.path.join(root, "R", "py", "rasterspec.json")
+spec = json.load(open(spec_path, encoding="utf-8"))
+outdir = os.path.join(root, sys.argv[3]) if len(sys.argv) > 3 else os.path.join(root, "data", "digitized")
 os.makedirs(outdir, exist_ok=True)
 
 
@@ -47,6 +55,12 @@ def main_group(idx_bool, counts):
     raise RuntimeError("axis not found")
 
 
+def weighted_peaks(profile, frac=0.25):
+    """Darkness-weighted centroids of the runs of a profile above frac x its maximum."""
+    thr = frac * profile.max()
+    return [float(np.average(np.arange(a, b + 1), weights=profile[a:b + 1])) for a, b in runs(profile > thr)]
+
+
 log = []
 for f in spec["figures"]:
     doc = pymupdf.open(os.path.join(root, "input", "papers", f["pdf"]))
@@ -65,19 +79,29 @@ for f in spec["figures"]:
     chroma = P.max(2) - P.min(2)
     dark = (grey < 110) & (chroma < 40)
 
-    # axes: the contiguous group of long dark columns/rows (a dashed reference line is shorter)
-    col_counts, row_counts = dark.sum(0), dark.sum(1)
-    ya_l, ya_r = main_group(col_counts > 0.8 * col_counts.max(), col_counts)
-    xa_t, xa_b = main_group(row_counts > 0.8 * row_counts.max(), row_counts)
+    ax = f.get("axes")
+    if ax is None:
+        # axes: the contiguous group of long dark columns/rows (a dashed reference line is shorter)
+        col_counts, row_counts = dark.sum(0), dark.sum(1)
+        ya_l, ya_r = main_group(col_counts > 0.8 * col_counts.max(), col_counts)
+        xa_t, xa_b = main_group(row_counts > 0.8 * row_counts.max(), row_counts)
 
-    # ticks: dark pixels just outside the axes
-    band = dark[xa_b + 2: xa_b + 7, :].copy()
-    band[:, : ya_l - 1] = False          # a y label "0" can sit left of the y axis at this height
-    xt = [np.average(np.arange(a, b + 1), weights=band.sum(0)[a:b + 1]) for a, b in runs(band.sum(0) >= 3)]
-    band = dark[:xa_t, ya_l - 7: ya_l - 2]
-    yt = [np.average(np.arange(a, b + 1), weights=band.sum(1)[a:b + 1]) for a, b in runs(band.sum(1) >= 3)]
-    yt.append(float((xa_t + xa_b) / 2))  # the 0% tick coincides with the x axis
-    yt = sorted(set(round(v, 3) for v in yt), reverse=True)
+        # ticks: dark pixels just outside the axes
+        band = dark[xa_b + 2: xa_b + 7, :].copy()
+        band[:, : ya_l - 1] = False          # a y label "0" can sit left of the y axis at this height
+        xt = [np.average(np.arange(a, b + 1), weights=band.sum(0)[a:b + 1]) for a, b in runs(band.sum(0) >= 3)]
+        band = dark[:xa_t, ya_l - 7: ya_l - 2]
+        yt = [np.average(np.arange(a, b + 1), weights=band.sum(1)[a:b + 1]) for a, b in runs(band.sum(1) >= 3)]
+        yt.append(float((xa_t + xa_b) / 2))  # the 0% tick coincides with the x axis
+        yt = sorted(set(round(v, 3) for v in yt), reverse=True)
+    else:
+        # no axis lines: grey panel border, short dark ticks outside it
+        ya_r = ax["left_border_px"] - x0
+        xa_t = ax["bottom_border_px"] - y0
+        dk = 255.0 - grey
+        r_a, r_b = ax["x_tick_rows"]; c_a, c_b = ax["y_tick_cols"]
+        xt = weighted_peaks(dk[r_a - y0: r_b - y0, :].sum(0))
+        yt = sorted(weighted_peaks(dk[:xa_t, c_a - x0: c_b - x0].sum(1)), reverse=True)
     if len(xt) != len(f["x_tick_labels"]) or len(yt) != len(f["y_tick_labels"]):
         raise RuntimeError(f"{f['fig_id']}: tick count mismatch x={len(xt)} y={len(yt)}")
     fx = np.polyfit(xt, f["x_tick_labels"], 1)
@@ -91,7 +115,7 @@ for f in spec["figures"]:
     dmax = np.array([f.get("colour_dist_max", {}).get(k, 75) for k in names], dtype=float)
     d = np.sqrt(((P[:, :, None, :] - centres[None, None, :, :]) ** 2).sum(3))
     lab = d.argmin(2)
-    ok = (d.min(2) < dmax[lab]) & (chroma > 50)
+    ok = (d.min(2) < dmax[lab]) & (chroma > f.get("min_chroma", 50))   # thin JPEG lines blend with white: lower per figure
     for lx0, ly0, lx1, ly1 in f["exclude_px"]:
         ok[max(ly0 - y0, 0): ly1 - y0, max(lx0 - x0, 0): lx1 - x0] = False
     ok[:, : ya_r + 2] = False

@@ -1,5 +1,5 @@
 # bootstrap_core.R
-# One bootstrap replicate of the survival engine (structure of round 8), shared by 06_bootstrap.R
+# One bootstrap replicate of the survival engine (structure of round 9), shared by 06_bootstrap.R
 # (phase-1 bootstrap, data/bootstrap/) and 06c_bootstrap_check.R (reference results for checking
 # other machines, output/check/). Steps of a replicate: see 06_bootstrap.R.
 # Random numbers are set per replicate, not per worker: replicate b calls set.seed(seed + b) at its
@@ -81,17 +81,17 @@ boot_one <- function(b, seed = CFG$seed, tt = c(5, 7, 10, 20)) {
     }
     targets <- lapply(os_b, function(d) 100 * km_at(d, CFG$calib_grid_months))
     fl <- cal_flows(P)
-    dr_med <- c(early = dr_median_draw(1), late = dr_late_median_draw(1))
+    dr_ext <- esme_draw()                      # round 9: ESME IPD resampled and refitted (shape and medians)
     X7b <- final7y_draw(X7)
-    cal <- calibrate_os(P, targets, CFG$calib_grid_months, dr_med, starts = c(list(th_base), CAL_STARTS), fl = fl, extra = X7b)
-    P <- cal_apply(P, cal$par, dr_med)
+    cal <- calibrate_os(P, targets, CFG$calib_grid_months, dr_ext, starts = c(list(th_base), CAL_STARTS), fl = fl, extra = X7b)
+    P <- cal_apply(P, cal$par, dr_ext)
     km_d <- rmst_km(os_b$pembro) - rmst_km(os_b$placebo)
-    o <- cal_os(fl, cal_specs(cal$par, dr_med))
+    o <- cal_os(fl, cal_specs(cal$par, dr_ext))
     eng_d <- rmst5_monthly(o$pembro) - rmst5_monthly(o$placebo)
     outv <- engine_outputs(P, tt)
     list(efs = efs_out, efs_binding = bind, pcr = pcr_out, os_models = os_par,
          calib = c(preprog_shape = P$preprog$shape, preprog_median = P$preprog$scale, dr_shape = P$dr$shape, dr_median = P$dr$scale,
-                   dr_late_median = P$dr$late_scale,
+                   dr_late_shape = P$dr$late_shape, dr_late_median = P$dr$late_scale,
                    sse = cal$value, convergence = cal$convergence, cal$at_bound, cal$code52,
                    pembro_dr_k = P$pembro_dr_k, km_rmst5_diff = km_d, engine_rmst5_diff = eng_d),
          outputs = outv, pre_surv = P$pre_surv, targets7 = setNames(X7b$value, X7b$id))

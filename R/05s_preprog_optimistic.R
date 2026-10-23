@@ -2,8 +2,9 @@
 # Scenario (docs/model_spec.md section 6, 2026-10-23): optimistic death after progression
 # precluding surgery. The PreProg log-logistic is fixed at median 26 months and all-cause survival
 # 20% 5 years after entry (the shape follows from the two; Elmore et al., Ann Surg Oncol 2021,
-# PMID 34247335, MD Anderson cohort); the DR shape and k are recalibrated with the objective of
-# 05_calibrate.R (KM OS months 1-78 plus the 7-year points), DR medians as in the base. The three
+# PMID 34247335, MD Anderson cohort); k is recalibrated with the objective of 05_calibrate.R (KM
+# OS months 1-78 plus the 7-year points); the DR parameters are external as in the base (round 9:
+# ESME fit; in round 8 the DR shape was recalibrated here, git 694b0f3). The three
 # gates are computed for reference only (no decision is taken on them). The between-arm OS
 # difference at 5 and 7 years is set next to the base, the scenario k = 1 and the reference values.
 # Run after 05_calibrate.R (reads engine_params.rds and its gate outputs).
@@ -32,18 +33,17 @@ shape_opt <- log(1 / (PP_OPT_S5 / S_pop(PP_ENTRY_AGE, 5)) - 1) / log(5 / PP_OPT_
 u_opt <- shape_opt / pp_shape_cap(PP_OPT_MEDIAN)
 stopifnot(u_opt > 0, u_opt <= 1)
 set.seed(CFG$seed)
-cal <- calibrate_os(P1, target, g_m, DR_MEDIAN_BASE, extra = X7, fixed = c(PP_OPT_MEDIAN, u_opt, NA, NA),
+cal <- calibrate_os(P1, target, g_m, DR_EXT_BASE, extra = X7, fixed = c(PP_OPT_MEDIAN, u_opt, NA),
                     starts = c(list(th1), CAL_STARTS))
-PS <- cal_apply(P1, cal$par, DR_MEDIAN_BASE)
+PS <- cal_apply(P1, cal$par, DR_EXT_BASE)
 s5 <- exp(-dr_cumhaz(PS$preprog, 5)) * S_pop(PP_ENTRY_AGE, 5)
 stopifnot(abs(s5 - PP_OPT_S5) < 1e-10, abs(PS$preprog$scale - PP_OPT_MEDIAN) < 1e-12)
 PAR <- data.frame(quantity = c("preprog_median_months", "preprog_shape", "preprog_allcause_surv_5y", "dr_shape", "dr_median_early_months",
-                               "dr_median_late_months", "pembro_dr_k", "objective", "convergence", "dr_shape_at_bound", "k_at_bound"),
+                               "dr_median_late_months", "pembro_dr_k", "objective", "convergence", "k_at_bound"),
                   scenario = c(12 * PS$preprog$scale, PS$preprog$shape, s5, PS$dr$shape, 12 * PS$dr$scale, 12 * PS$dr$late_scale,
-                               PS$pembro_dr_k, cal$value, cal$convergence, cal$at_bound[["dr_shape_bound"]],
-                               cal$at_bound[["k_low"]] || cal$at_bound[["k_high"]]),
+                               PS$pembro_dr_k, cal$value, cal$convergence, cal$at_bound[["k_low"]] || cal$at_bound[["k_high"]]),
                   base = c(12 * P1$preprog$scale, P1$preprog$shape, exp(-dr_cumhaz(P1$preprog, 5)) * S_pop(PP_ENTRY_AGE, 5), P1$dr$shape,
-                           12 * P1$dr$scale, 12 * P1$dr$late_scale, P1$pembro_dr_k, NA, NA, NA, NA))
+                           12 * P1$dr$scale, 12 * P1$dr$late_scale, P1$pembro_dr_k, NA, NA, NA))
 write.csv(PAR, file.path(out_dir, "scenario_preprog_optimistic.csv"), row.names = FALSE)
 print(PAR, row.names = FALSE)
 

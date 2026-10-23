@@ -1,6 +1,7 @@
 # 05_calibrate.R
-# Step 5, eighth round (2026-10-22). Structure of round 7 with one change set by the user (distant
-# recurrence split into early and late), no stepwise trials:
+# Step 5, ninth round (2026-10-23, phase-2 preparation). Structure of round 8 with one change set by
+# the user (survival after distant recurrence fully external, from the ESME curves), no stepwise
+# trials, point estimate only (the bootstrap runs on Longleaf):
 #   - deaths due to adverse events: per arm, evenly over the treatment period, not calibrated
 #     (engine.R, config.R); removed from the deaths without recurrence of the EFS composition;
 #   - progression precluding surgery is its own state (PreProg); excess death log-logistic in time
@@ -8,9 +9,9 @@
 #     (calibration.R): median 10-26 months, all-cause survival 5 years after entry >= 5%;
 #   - excess death after distant recurrence: log-logistic in time since DR; two sub-states by the
 #     time of entry (round 8): early (DR up to CFG$dr_early_months = 18 months from randomization)
-#     with median 10.1 months and late with median 17.1 months (ESME, external inputs); shape
-#     shared and calibrated; in the pembrolizumab arms multiplied by k, calibrated with the other
-#     parameters (0.25 to 4);
+#     and late; shape and medians fully external (round 9): fits to the reconstructed ESME curves
+#     (13_esme_fit.R, data/fits/esme_fits.rds); in the pembrolizumab arms multiplied by k,
+#     calibrated with the two PreProg parameters (0.25 to 4);
 #   - EFS models with the 5-year constraint (04_fit_models.R, efs5_constraint.csv).
 # Objective: sum over both arms of squared differences (percentage points) between engine OS and
 # the KM of Schmid 2024 Fig. 1A at months 1..78 (unchanged), plus (round 7) eight points of the
@@ -18,8 +19,8 @@
 # OS and EFS by arm, ((engine - reported) / SE)^2 with the SE from the reported 95% CI, and OS by
 # pCR status, with the binomial SE of the stratum size (IA7 pCR counts). The KM part is the same as
 # an SE of 1 point per monthly point.
-# Acceptance rule, fixed before this round was run (docs/acceptance_rule_round8.md, commit
-# e0a722c; same as round 7, docs/acceptance_rule_round7.md; config.R):
+# Acceptance rule, fixed before this round was run (docs/acceptance_rule_round9.md, commit
+# 73748f4; same as rounds 7 and 8; config.R):
 #   (a) in each arm, engine OS inside the pointwise 95% CI of the reconstructed KM (survfit
 #       default, log scale) at 1, 2, 3, 4 and 5 years; if not, accepted only if every point
 #       outside is outside by <= 0.3 points and all 10 points are inside the Bonferroni (99.5%)
@@ -37,8 +38,8 @@
 #          scenario_k1.csv, scenario_k1_gate.csv, scenario_k1_arm_diff.csv (between-arm OS
 #          difference at 5 and 7 years), scenario_k1_arm_diff_ci.csv (95% CI of the reported
 #          difference), calibration_final7y.csv (gate (c) and the other
-#          7-year points), calibration_objective.csv, calibration_vs_previous.csv (rounds 6, 7,
-#          8), dr_early_share.csv, fig_calibration_OS.png, fig_engine_checks.png;
+#          7-year points), calibration_objective.csv, calibration_vs_previous.csv (rounds 6 to
+#          9), dr_early_share.csv, fig_calibration_OS.png, fig_engine_checks.png;
 #          data/fits/calibration_candidates.rds, data/fits/engine_params.rds (accepted only)
 
 source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
@@ -60,18 +61,21 @@ gate_m <- 12 * CFG$gate_years
 target <- lapply(os_ipd, function(d) 100 * km_at(d, g_m))
 X7 <- final7y_targets()                         # calibration.R: 8 points at 7 years with their SE
 
-P0 <- engine_params(dr = list(dist = "llogis", shape = 1, scale = DR_MEDIAN_BASE[["early"]], late_scale = DR_MEDIAN_BASE[["late"]],
-                              early_cycles = DR_EARLY_CYCLES), preprog = list(dist = "llogis", shape = 1, scale = 1))
+stopifnot(!is.null(DR_EXT_BASE))                # data/fits/esme_fits.rds from 13_esme_fit.R
+# the refit used in the bootstrap reproduces the saved ESME parameters on the original IPD
+stopifnot(max(abs(esme_refit(ESME_IPD, ESME_FIT$engine$decision) - DR_EXT_BASE)) < 1e-10)
+P0 <- engine_params(dr = dr_ext_spec(DR_EXT_BASE), preprog = list(dist = "llogis", shape = 1, scale = 1))
 os_model <- function(P, months = g_m) lapply(arm_of, function(e) 100 * survival_engine(e, "all", times = months / 12, params = P)$OS)
 set.seed(CFG$seed)                              # random restarts if optim returns code 52
-cal <- calibrate_os(P0, target, g_m, DR_MEDIAN_BASE, extra = X7)   # calibration.R (6 starts)
+cal <- calibrate_os(P0, target, g_m, DR_EXT_BASE, extra = X7)      # calibration.R (6 starts)
 best <- cal$optim; vals <- cal$starts_values; at_bound <- cal$at_bound
-P1 <- cal_apply(P0, cal$par, DR_MEDIAN_BASE)
-STRUCT <- "AE deaths (data) + PreProg log-logistic (constrained) + DR early/late log-logistic, medians external, shared shape, x k in pembrolizumab arms"
+P1 <- cal_apply(P0, cal$par, DR_EXT_BASE)
+STRUCT <- sprintf("AE deaths (data) + PreProg log-logistic (constrained) + DR early/late log-logistic, shape and medians external (ESME fit, %s shape), x k in pembrolizumab arms",
+                  ESME_FIT$engine$decision)
 constraint_bound <- at_bound[["pp_median_low"]] || at_bound[["pp_median_high"]] || at_bound[["pp_s5_at_min"]]
-cat(sprintf("PreProg log-logistic shape %.4f (cap %.4f), median %.4f months; DR log-logistic shape %.4f, median early %.4f / late %.4f months (external); k %.4f; objective %.2f; starts spread %.2e; convergence %d\n",
-            P1$preprog$shape, pp_shape_cap(P1$preprog$scale), 12 * P1$preprog$scale, P1$dr$shape, 12 * P1$dr$scale, 12 * P1$dr$late_scale,
-            P1$pembro_dr_k, best$value, diff(range(vals)), best$convergence))
+cat(sprintf("PreProg log-logistic shape %.4f (cap %.4f), median %.4f months; DR log-logistic shape early %.4f / late %.4f, median early %.4f / late %.4f months (external); k %.4f; objective %.2f; starts spread %.2e; convergence %d\n",
+            P1$preprog$shape, pp_shape_cap(P1$preprog$scale), 12 * P1$preprog$scale, P1$dr$shape, P1$dr$late_shape, 12 * P1$dr$scale,
+            12 * P1$dr$late_scale, P1$pembro_dr_k, best$value, diff(range(vals)), best$convergence))
 print(round(vals, 4)); print(at_bound); print(cal$code52)
 
 # gate (a): pointwise 95% CI of the KM at 1-5 years, with the Bonferroni (99.5%) intervals and the
@@ -133,7 +137,7 @@ G7$ci95_lo <- fv(G7$id, "lo"); G7$ci95_hi <- fv(G7$id, "hi"); G7$source <- FA$ou
 eng7 <- function(arm, pcr, endpoint, common_dr) 100 * survival_engine(arm_of[[arm]], pcr, times = 7, params = P1, common_dr = common_dr)[[endpoint]]
 G7$engine <- mapply(eng7, G7$arm, G7$pcr, G7$endpoint, MoreArgs = list(common_dr = FALSE))
 G7$engine_k1 <- mapply(eng7, G7$arm, G7$pcr, G7$endpoint, MoreArgs = list(common_dr = TRUE))
-fl1 <- cal_flows(P1); s1 <- cal_specs(cal$par, DR_MEDIAN_BASE)
+fl1 <- cal_flows(P1); s1 <- cal_specs(cal$par, DR_EXT_BASE)
 pv <- sapply(seq_len(nrow(X7)), function(i) point_value(fl1, s1, X7$arm[i], X7$pcr[i], X7$endpoint[i], X7$month[i]))
 stopifnot(max(abs(pv - G7$engine[seq_len(nrow(X7))])) < 1e-8)
 G7$diff <- G7$engine - G7$value; G7$diff_k1 <- G7$engine_k1 - G7$value
@@ -174,6 +178,7 @@ fit_row <- function(P, stage) {
                rmse_pp = sqrt(mean((m[[a]] - target[[a]])^2)), max_abs_diff_pp = max(abs(m[[a]] - target[[a]])),
                gate_max_abs_diff_pp = max(abs(gg[[a]] - km)), preprog_shape = P$preprog$shape, preprog_median_months = 12 * P$preprog$scale,
                preprog_shape_cap = pp_shape_cap(P$preprog$scale), dr_shape = P$dr$shape, dr_median_months = 12 * P$dr$scale,
+               dr_late_shape = if (is.null(P$dr$late_shape)) P$dr$shape else P$dr$late_shape,
                dr_late_median_months = 12 * P$dr$late_scale,
                pembro_dr_k = P$pembro_dr_k)
   }))
@@ -181,19 +186,23 @@ fit_row <- function(P, stage) {
 CAL <- rbind(fit_row(P0, "start value"), fit_row(P1, "calibrated"))
 write.csv(CAL, file.path(out_dir, "calibration.csv"), row.names = FALSE)
 
-# round 8 vs rounds 6 and 7 (output/phase1/r6_*.csv and r7_*.csv: the outputs of commits e530a56
-# and d1b5517); the late DR median did not exist before round 8
-prev <- function(r) {
-  C <- read.csv(file.path(out_dir, paste0(r, "_calibration.csv"))); C <- C[C$stage == "calibrated", ][1, ]
-  R <- read.csv(file.path(out_dir, paste0(r, "_calibration_rmst.csv")))
-  c(C$pembro_dr_k, C$preprog_median_months, C$preprog_shape, C$preprog_shape_cap, C$dr_shape, C$dr_median_months, NA,
+# round 9 vs rounds 6 to 8 (output/phase1/r6_*.csv, r7_*.csv: commits e530a56, d1b5517;
+# output/phase1/round8/: commit 694b0f3); a late DR median exists from round 8, a separate late
+# shape only if the ESME shapes differ (round 9)
+prev <- function(cal_file, rmst_file) {
+  C <- read.csv(file.path(out_dir, cal_file)); C <- C[C$stage == "calibrated", ][1, ]
+  R <- read.csv(file.path(out_dir, rmst_file))
+  c(C$pembro_dr_k, C$preprog_median_months, C$preprog_shape, C$preprog_shape_cap, C$dr_shape, C$dr_median_months,
+    if (is.null(C$dr_late_median_months)) NA else C$dr_late_median_months, if (is.null(C$dr_late_shape)) NA else C$dr_late_shape,
     R$rmst5_engine[R$arm == "pembro - placebo"], C$SSE_both_arms)
 }
-VS <- data.frame(quantity = c("pembro_dr_k", "preprog_median_months", "preprog_shape", "preprog_shape_cap", "dr_shape",
-                              "dr_median_months_early_or_common", "dr_median_months_late", "rmst5_diff_engine_years", "km_SSE_both_arms_pp2"),
-                 round6 = prev("r6"), round7 = prev("r7"),
-                 round8 = c(P1$pembro_dr_k, 12 * P1$preprog$scale, P1$preprog$shape, pp_shape_cap(P1$preprog$scale), P1$dr$shape,
-                            12 * P1$dr$scale, 12 * P1$dr$late_scale, RM$rmst5_engine[3], OB$value[1]))
+VS <- data.frame(quantity = c("pembro_dr_k", "preprog_median_months", "preprog_shape", "preprog_shape_cap", "dr_shape_early_or_common",
+                              "dr_median_months_early_or_common", "dr_median_months_late", "dr_shape_late", "rmst5_diff_engine_years",
+                              "km_SSE_both_arms_pp2"),
+                 round6 = prev("r6_calibration.csv", "r6_calibration_rmst.csv"), round7 = prev("r7_calibration.csv", "r7_calibration_rmst.csv"),
+                 round8 = prev(file.path("round8", "calibration.csv"), file.path("round8", "calibration_rmst.csv")),
+                 round9 = c(P1$pembro_dr_k, 12 * P1$preprog$scale, P1$preprog$shape, pp_shape_cap(P1$preprog$scale), P1$dr$shape,
+                            12 * P1$dr$scale, 12 * P1$dr$late_scale, P1$dr$late_shape, RM$rmst5_engine[3], OB$value[1]))
 write.csv(VS, file.path(out_dir, "calibration_vs_previous.csv"), row.names = FALSE)
 if (file.exists(file.path(out_dir, "calibration_vs_r6.csv"))) file.remove(file.path(out_dir, "calibration_vs_r6.csv"))
 print(VS, row.names = FALSE)
@@ -220,7 +229,7 @@ med <- function(S) tt[which(S <= 0.5)[1]]
 S_ppx <- exp(-dr_cumhaz(P1$preprog, tt))
 S_pp <- S_ppx * S_pop(PP_ENTRY_AGE, tt)
 S_dex <- exp(-dr_cumhaz(P1$dr, tt))
-S_dlx <- exp(-dr_cumhaz(modifyList(P1$dr, list(scale = P1$dr$late_scale)), tt))
+S_dlx <- exp(-dr_cumhaz(dr_late_spec(P1$dr), tt))
 S_dr_bg <- S_pop(CFG$start_age + 1.5, tt)
 IMP <- data.frame(state = c("PreProg", "DR early", "DR late"),
                   median_excess_only_months = 12 * c(med(S_ppx), med(S_dex), med(S_dlx)),
@@ -328,40 +337,40 @@ saveRDS(list(structure = STRUCT, params = P1, optim = best, starts_values = vals
         file.path(ROOT, "data", "fits", "calibration_candidates.rds"))
 
 # diagnostic when the calibration is not accepted (no calibration, no change of structure):
-# within the allowed region of the four calibrated parameters (PreProg median 10-26 months and
-# 5-year survival >= 5%, DR shape, k in [0.25, 4]), the smallest possible excursion of the
-# engine OS outside the KM 95% CIs at 1-5 years (Nelder-Mead on transformed parameters)
+# within the allowed region of the three calibrated parameters (PreProg median 10-26 months and
+# 5-year survival >= 5%, k in [0.25, 4]), the smallest possible excursion of the engine OS
+# outside the KM 95% CIs at 1-5 years (Nelder-Mead on transformed parameters)
 if (!pass_a) {
   ci <- lapply(os_ipd, function(d) summary(km_fit(d), times = gate_m, extend = TRUE))
   fl <- cal_flows(P1)
   kb <- log(CFG$pembro_dr_k_bounds)
-  to_th <- function(z) c(CAL_LOWER[1] + diff(PP_MEDIAN_BOUNDS) * plogis(z[1]), plogis(z[2]), z[3], kb[1] + diff(kb) * plogis(z[4]))
+  to_th <- function(z) c(CAL_LOWER[1] + diff(PP_MEDIAN_BOUNDS) * plogis(z[1]), plogis(z[2]), kb[1] + diff(kb) * plogis(z[3]))
   excursion <- function(th) {
-    o <- cal_os(fl, cal_specs(th, DR_MEDIAN_BASE))
+    o <- cal_os(fl, cal_specs(th, DR_EXT_BASE))
     max(sapply(names(arm_of), function(a) {
       v <- 100 * o[[a]][gate_m + 1]
       max(pmax(100 * ci[[a]]$lower - v, v - 100 * ci[[a]]$upper, 0))
     }))
   }
-  rmst_d <- function(th) { o <- cal_os(fl, cal_specs(th, DR_MEDIAN_BASE)); rmst5_monthly(o$pembro) - rmst5_monthly(o$placebo) }
+  rmst_d <- function(th) { o <- cal_os(fl, cal_specs(th, DR_EXT_BASE)); rmst5_monthly(o$pembro) - rmst5_monthly(o$placebo) }
   q <- function(x) qlogis(pmin(pmax(x, 1e-4), 1 - 1e-4))
-  from_th <- function(th) c(q((th[1] - CAL_LOWER[1]) / diff(PP_MEDIAN_BOUNDS)), q(th[2]), th[3], q((th[4] - kb[1]) / diff(kb)))
-  st <- c(CAL_STARTS, list(cal$par), lapply(seq(-3, 3, by = 1.5), function(z) to_th(c(z, 2, log(1), 0))),
-          lapply(c(-2, 0, 2), function(z) to_th(c(-2, 2, log(0.5), z))))
+  from_th <- function(th) c(q((th[1] - CAL_LOWER[1]) / diff(PP_MEDIAN_BOUNDS)), q(th[2]), q((th[3] - kb[1]) / diff(kb)))
+  st <- c(CAL_STARTS, list(cal$par), lapply(seq(-3, 3, by = 1.5), function(z) to_th(c(z, 2, 0))),
+          lapply(c(-2, 0, 2), function(z) to_th(c(-2, 2, z))))
   FS <- do.call(rbind, lapply(seq_along(st), function(i) {
     o <- optim(from_th(st[[i]]), function(z) excursion(to_th(z)), method = "Nelder-Mead", control = list(maxit = 4000, reltol = 1e-12))
     th <- to_th(o$par)
     data.frame(start = i, preprog_median_months = 12 * th[1], preprog_shape = th[2] * pp_shape_cap(th[1]), u = th[2],
-               dr_shape = exp(th[3]), k = exp(th[4]), max_outside_ci_pp = o$value, rmst_diff = rmst_d(th),
+               k = exp(th[3]), max_outside_ci_pp = o$value, rmst_diff = rmst_d(th),
                rmst_inside_boot_ci = rmst_d(th) >= GR$km_boot_ci95_lo && rmst_d(th) <= GR$km_boot_ci95_hi)
   }))
-  write.csv(FS, file.path(out_dir, "calibration_gate_feasibility_r7.csv"), row.names = FALSE)
+  write.csv(FS, file.path(out_dir, "calibration_gate_feasibility_r9.csv"), row.names = FALSE)
   cat("gate (a) feasibility within the constraints: smallest excursion", min(FS$max_outside_ci_pp), "pp\n")
   print(FS[order(FS$max_outside_ci_pp), ][1:3, ], row.names = FALSE)
 }
 
 if (pass) saveRDS(P1, file.path(ROOT, "data", "fits", "engine_params.rds")) else {
-  cat("not accepted under the round-8 rule: stop before step 6\n")
+  cat("not accepted under the round-9 rule: stop before step 6\n")
   if (file.exists(file.path(ROOT, "data", "fits", "engine_params.rds"))) file.remove(file.path(ROOT, "data", "fits", "engine_params.rds"))
 }
 

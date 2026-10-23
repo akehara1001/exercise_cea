@@ -1,12 +1,15 @@
 # calibration.R
-# Calibration shared by 05_calibrate.R and 06_bootstrap.R (structure of round 8, 2026-10-22):
+# Calibration shared by 05_calibrate.R and 06_bootstrap.R (structure of round 9, 2026-10-23):
 #   - DR excess death: log-logistic in time since DR, two sub-states by the time of entry
 #     (engine.R dr_state()): early (entered up to CFG$dr_early_months from randomization) and
-#     late. Medians are external inputs (ESME, PMID 37385070: early 10.1 months, late 17.1
-#     months; drawn per bootstrap replicate from dr_median_draw() and dr_late_median_draw()); the
-#     shape is shared and calibrated. In the pembrolizumab arms the DR excess hazard (both
-#     sub-states) is multiplied by k, calibrated with the other parameters within
-#     CFG$pembro_dr_k_bounds (0.25 to 4).
+#     late. Shape(s) and medians are fully external (round 9): log-logistic fits to the
+#     reconstructed ESME curves (13_esme_fit.R, data/fits/esme_fits.rds; one common shape when the
+#     two shapes do not differ, p >= 0.05); in each bootstrap replicate the ESME IPD is resampled
+#     and refitted (esme_draw()). IMpassion132 is a scenario for the early median (dr_ext_imp132).
+#     In the pembrolizumab arms the DR excess hazard (both sub-states) is multiplied by k,
+#     calibrated with the PreProg parameters within CFG$pembro_dr_k_bounds (0.25 to 4).
+#     Rounds 5-8 used external medians (ESME abstract) with a calibrated shape (git d1b5517,
+#     694b0f3).
 #   - PreProg excess death: log-logistic in time since entry, common to the arms; shape (> 1
 #     allowed) and median calibrated under external constraints: median 10-26 months (ESME
 #     10.1 rounded; Elmore et al., Ann Surg Oncol 2021, PMID 34247335, median OS 26 months) and
@@ -39,9 +42,40 @@ DR_MEDIAN_SOURCES <- data.frame(
                                                        .esme_txt, perl = TRUE))[[1]][2:4])
 DR_LATE_MEDIAN_SOURCE <- data.frame(source = "ESME late relapse (Grinda 2023, PMID 37385070, abstract)",
                                     median = .esme_late[1], lo = .esme_late[2], hi = .esme_late[3])
-# base medians in years: early (ESME early relapse) and late (ESME late relapse)
+# medians of the abstract in years (rounds 5-8; the round-9 base uses the ESME fit below)
 DR_MEDIAN_BASE <- c(early = DR_MEDIAN_SOURCES$median[1] / 12, late = DR_LATE_MEDIAN_SOURCE$median / 12)
 DR_EARLY_CYCLES <- round(CFG$dr_early_months / (12 * CFG$cycle_years))
+
+# round 9: DR log-logistic from the ESME reconstruction (shape_early, shape_late, median_early,
+# median_late; years)
+.esme_fit_file <- file.path(ROOT, "data", "fits", "esme_fits.rds")
+ESME_FIT <- if (file.exists(.esme_fit_file)) readRDS(.esme_fit_file) else NULL
+ESME_IPD <- if (!is.null(ESME_FIT)) readRDS(file.path(ROOT, "data", "ipd", "esme", "esme_ipd.rds")) else NULL
+DR_EXT_BASE <- if (!is.null(ESME_FIT)) with(ESME_FIT$engine, c(shape_early = shape_early, shape_late = shape_late,
+                                                                  median_early = median_early, median_late = median_late)) else NULL
+dr_ext_spec <- function(x) list(dist = "llogis", shape = unname(x[["shape_early"]]), late_shape = unname(x[["shape_late"]]),
+                                scale = unname(x[["median_early"]]), late_scale = unname(x[["median_late"]]), early_cycles = DR_EARLY_CYCLES)
+# log-logistic refit of the ESME IPD (time in years): separate fits, or one shape with the group on
+# the scale (as decided in 13_esme_fit.R)
+esme_refit <- function(ipd, decision) {
+  if (decision == "separate") {
+    f <- lapply(ipd, function(d) flexsurv::flexsurvreg(Surv(time_years, status) ~ 1, data = d, dist = "llogis")$res)
+    return(c(shape_early = f$early["shape", "est"], shape_late = f$late["shape", "est"],
+             median_early = f$early["scale", "est"], median_late = f$late["scale", "est"]))
+  }
+  b <- rbind(ipd$early, ipd$late); b$group <- factor(b$group, levels = c("early", "late"))
+  r <- flexsurv::flexsurvreg(Surv(time_years, status) ~ group, data = b, dist = "llogis")$res
+  c(shape_early = r["shape", "est"], shape_late = r["shape", "est"],
+    median_early = r["scale", "est"], median_late = r["scale", "est"] * exp(r["grouplate", "est"]))
+}
+# one joint draw of the DR parameters for a bootstrap replicate: the ESME IPD resampled within
+# each group and refitted
+esme_draw <- function(ipd = ESME_IPD, decision = ESME_FIT$engine$decision) {
+  esme_refit(lapply(ipd, function(d) d[sample.int(nrow(d), nrow(d), replace = TRUE), ]), decision)
+}
+# scenario: early-relapse median from IMpassion132 (placebo, PD-L1-positive, 11.2 months), shape
+# and late median as in the base
+dr_ext_imp132 <- function(x = DR_EXT_BASE) { x[["median_early"]] <- DR_MEDIAN_SOURCES$median[2] / 12; x }
 
 PP_MEDIAN_BOUNDS <- c(10, 26) / 12
 PP_S5_MIN <- 0.05
@@ -50,19 +84,20 @@ pp_shape_cap <- function(median) {
   sx <- PP_S5_MIN / S_pop(PP_ENTRY_AGE, 5)               # excess survival needed at 5 years
   log(1 / sx - 1) / log(5 / median)
 }
-# parameters: th = (PreProg median in years, u, log DR shape, log k)
-CAL_LOWER <- c(PP_MEDIAN_BOUNDS[1], 1e-3, log(0.01), log(CFG$pembro_dr_k_bounds[1]))
-CAL_UPPER <- c(PP_MEDIAN_BOUNDS[2], 1, log(50), log(CFG$pembro_dr_k_bounds[2]))
-CAL_STARTS <- list(c(11 / 12, 0.5, log(1), log(1)), c(18 / 12, 0.9, log(0.7), log(1.5)), c(12 / 12, 0.99, log(0.5), log(2)),
-                   c(24 / 12, 0.3, log(1.5), log(0.8)), c(14 / 12, 0.7, log(2), log(3)), c(10.5 / 12, 0.95, log(0.8), log(1.2)))
+# parameters (round 9): th = (PreProg median in years, u, log k); the starts are those of rounds
+# 6-8 without the DR shape
+CAL_LOWER <- c(PP_MEDIAN_BOUNDS[1], 1e-3, log(CFG$pembro_dr_k_bounds[1]))
+CAL_UPPER <- c(PP_MEDIAN_BOUNDS[2], 1, log(CFG$pembro_dr_k_bounds[2]))
+CAL_STARTS <- list(c(11 / 12, 0.5, log(1)), c(18 / 12, 0.9, log(1.5)), c(12 / 12, 0.99, log(2)),
+                   c(24 / 12, 0.3, log(0.8)), c(14 / 12, 0.7, log(3)), c(10.5 / 12, 0.95, log(1.2)))
 
-# dr_median = c(early, late) in years
-cal_specs <- function(th, dr_median) list(
+# dr_ext = c(shape_early, shape_late, median_early, median_late), external (years)
+cal_specs <- function(th, dr_ext) list(
   preprog = list(dist = "llogis", shape = th[2] * pp_shape_cap(th[1]), scale = th[1]),
-  dr = list(dist = "llogis", shape = exp(th[3]), scale = unname(dr_median[1]), late_scale = unname(dr_median[2]), early_cycles = DR_EARLY_CYCLES),
-  k = exp(th[4]))
-cal_apply <- function(P, th, dr_median) {
-  s <- cal_specs(th, dr_median); P$preprog <- s$preprog; P$dr <- s$dr; P$pembro_dr_k <- s$k; P
+  dr = dr_ext_spec(dr_ext),
+  k = exp(th[3]))
+cal_apply <- function(P, th, dr_ext) {
+  s <- cal_specs(th, dr_ext); P$preprog <- s$preprog; P$dr <- s$dr; P$pembro_dr_k <- s$k; P
 }
 
 # flows of both arms (pembro, chemo = placebo) for parameter set P
@@ -113,18 +148,17 @@ final7y_draw <- function(X) {
 }
 
 # boundary flags of a solution: constraint 1 (median at 10 or 26 months), constraint 2 (5-year
-# survival at 5%), and the numerical bounds of u, the DR shape and k
+# survival at 5%), and the numerical bounds of u and k
 cal_at_bound <- function(th) c(pp_median_low = th[1] <= CAL_LOWER[1] + 1e-6, pp_median_high = th[1] >= CAL_UPPER[1] - 1e-6,
                                pp_s5_at_min = th[2] >= 1 - 1e-6, pp_u_low = th[2] <= CAL_LOWER[2] + 1e-9,
-                               dr_shape_bound = th[3] <= CAL_LOWER[3] + 1e-6 || th[3] >= CAL_UPPER[3] - 1e-6,
-                               k_low = th[4] <= CAL_LOWER[4] + 1e-6, k_high = th[4] >= CAL_UPPER[4] - 1e-6)
+                               k_low = th[3] <= CAL_LOWER[3] + 1e-6, k_high = th[3] >= CAL_UPPER[3] - 1e-6)
 
 # targets: list(pembro =, placebo =) in percent at `months` (whole months; cycle must be 1 month).
 # If the best start ends with optim code 52 (L-BFGS-B line-search failure), five random starts are
 # run and the best of all is kept; the before/after values are returned.
 # fixed (scenarios): a vector like CAL_LOWER holding the values of the parameters kept fixed and NA
 # for those estimated; NULL estimates all four.
-calibrate_os <- function(P, targets, months, dr_median, starts = CAL_STARTS, fl = cal_flows(P), n_random = 5, extra = NULL,
+calibrate_os <- function(P, targets, months, dr_ext, starts = CAL_STARTS, fl = cal_flows(P), n_random = 5, extra = NULL,
                          fixed = NULL) {
   stopifnot(abs(P$cycle - 1 / 12) < 1e-12)
   idx <- months + 1
@@ -132,7 +166,7 @@ calibrate_os <- function(P, targets, months, dr_median, starts = CAL_STARTS, fl 
   full <- function(z) { if (is.null(fixed)) return(z); th <- fixed; th[fr] <- z; th }
   obj <- function(z) {
     th <- full(z)
-    s <- cal_specs(th, dr_median)
+    s <- cal_specs(th, dr_ext)
     if (is.null(extra)) {
       o <- cal_os(fl, s)
       return(sum((100 * o$pembro[idx] - targets$pembro)^2) + sum((100 * o$placebo[idx] - targets$placebo)^2))
@@ -166,20 +200,6 @@ calibrate_os <- function(P, targets, months, dr_median, starts = CAL_STARTS, fl 
 # 5-year RMST (years) from OS at monthly boundaries 0..60 (trapezoid)
 rmst5_monthly <- function(os) { s <- os[1:61]; sum((head(s, -1) + tail(s, -1)) / 2) / 12 }
 
-# DR median for the probabilistic analysis (decision 2026-10-22): equal-weight mixture of two
-# lognormal distributions for the median OS after early relapse, one per study (DR_MEDIAN_SOURCES),
-# each centred on the reported median with the log-scale SE from its 95% CI,
-# SE = (log hi - log lo) / (2 x 1.96). The IMpassion132 CI was checked against the full text on
-# 2026-10-22 (p.6).
-dr_median_draw <- function(n = 1) {
-  s <- DR_MEDIAN_SOURCES
-  i <- sample.int(nrow(s), n, replace = TRUE, prob = s$weight)
-  se <- (log(s$hi) - log(s$lo)) / (2 * qnorm(0.975))
-  exp(rnorm(n, log(s$median[i]), se[i])) / 12          # years
-}
-# late-relapse median (round 8): lognormal centred on the ESME late-relapse median with the
-# log-scale SE from its 95% CI; drawn independently of the early median
-dr_late_median_draw <- function(n = 1) {
-  s <- DR_LATE_MEDIAN_SOURCE
-  exp(rnorm(n, log(s$median), (log(s$hi) - log(s$lo)) / (2 * qnorm(0.975)))) / 12   # years
-}
+# Rounds 5-8 drew the DR medians from lognormal distributions of the reported medians
+# (dr_median_draw, dr_late_median_draw; git 694b0f3); round 9 draws shape and medians jointly
+# with esme_draw() above.

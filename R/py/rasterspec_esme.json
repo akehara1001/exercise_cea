@@ -1,0 +1,147 @@
+{
+  "_note": "ESME (Grinda et al., Eur J Cancer 2023;189:112935, HAL hal-04205902 author manuscript, CC BY-NC 4.0) Figure 3a: OS from the diagnosis of metastasis by early (metastasis within 12 months of the end of neo/adjuvant chemotherapy) and late relapse. Raster image without axis lines (ggplot2 light theme); the 'Journal Pre-proof' watermark and the inset table are separate PDF layers, not part of the image. Tick labels and risk table transcribed from the image (no text layer); group sizes 881 and 1045 agree with the abstract. Curve colour centres are the observed mean colours of the anti-aliased JPEG lines (pure ggplot2 colours F8766D and 00BFC4 blend with white), with a lower chroma floor.",
+  "figures": [
+    {
+      "fig_id": "ESME_F3A_OS",
+      "pdf": "Grinda2023_ESME.pdf",
+      "page": 12,
+      "label": "Grinda 2023 Eur J Cancer Fig. 3a (OS by early/late relapse)",
+      "endpoint": "OS",
+      "time_origin": "diagnosis of metastasis",
+      "time_unit": "months",
+      "panel_px": [
+        100,
+        60,
+        1258,
+        430
+      ],
+      "axes": {
+        "left_border_px": 110,
+        "bottom_border_px": 422,
+        "x_tick_rows": [
+          423,
+          425
+        ],
+        "y_tick_cols": [
+          105,
+          109
+        ]
+      },
+      "exclude_px": [],
+      "censor_marks": "plus",
+      "truncated_at_axis_max": false,
+      "line_max_px": 6,
+      "x_tick_labels": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48
+      ],
+      "y_tick_labels": [
+        0,
+        50,
+        100
+      ],
+      "curves": {
+        "early": [
+          219,
+          167,
+          167
+        ],
+        "late": [
+          139,
+          214,
+          214
+        ]
+      },
+      "risk_table_times": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48
+      ],
+      "risk_table": {
+        "early": {
+          "n": [
+            881,
+            722,
+            514,
+            349,
+            242,
+            165,
+            118,
+            92,
+            73,
+            61,
+            49,
+            41,
+            38
+          ]
+        },
+        "late": {
+          "n": [
+            1045,
+            967,
+            816,
+            659,
+            515,
+            401,
+            316,
+            249,
+            200,
+            161,
+            132,
+            110,
+            90
+          ]
+        }
+      },
+      "reported_in_image": {
+        "median_os_months": {
+          "early": [
+            10.1,
+            9.3,
+            10.9
+          ],
+          "late": [
+            17.1,
+            15.7,
+            18.2
+          ]
+        },
+        "hr": [
+          {
+            "label": "early vs late",
+            "hr": 1.7,
+            "lo": 1.54,
+            "hi": 1.88,
+            "model": "inset table of the figure"
+          }
+        ]
+      },
+      "min_chroma": 20,
+      "colour_dist_max": {
+        "early": 80,
+        "late": 110
+      }
+    }
+  ]
+}

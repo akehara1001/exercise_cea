@@ -1,0 +1,2 @@
+"shape_early","shape_late","shape_ratio_early_late","common_shape","common_shape_lo","common_shape_hi","common_median_early_months","common_median_late_months","loglik_separate","loglik_common","lrt_chisq","lrt_df","p_lrt","wald_z_log_shape","p_wald","rule","decision"
+1.60531816834917,1.71422938169222,0.936466371125,1.65983596262318,1.59275248232675,1.72974486204695,9.73391157650877,16.9299027330314,-2280.63368607221,-2281.84921703681,2.43106192918822,1,0.11895229160447,-1.55879130320914,0.119045783265765,"separate shapes if p_lrt < 0.05","common"

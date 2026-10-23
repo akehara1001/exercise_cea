@@ -1,7 +1,8 @@
 # test_engine_vectorized.R
 # The closed-form run_branch in engine.R must reproduce a plain cycle-by-cycle recursion of the
 # same model (states EF, PreProg, LRR, DR tunnels, Dead; round 8: DR split into early and late
-# sub-states by the time of entry, each with its own tunnels).
+# sub-states by the time of entry, each with its own tunnels; round 9: the late sub-state may have
+# its own shape).
 source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 source(file.path(ROOT, "R", "survmodels.R"))
 source(file.path(ROOT, "R", "engine.R"))
@@ -32,7 +33,7 @@ run_branch_loop <- function(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate, dr, 
   dHL <- shares[["LRR"]] * dHex * hrv; dHD <- shares[["DR"]] * dHex * hrv; dHX <- shares[["death"]] * dHex
   dHdr <- diff(dr_cumhaz(dr, (0:(J + 1)) * cycle)); dHdr[J + 1] <- dHdr[J]
   split <- !is.null(dr$late_scale)
-  drl_spec <- if (split) modifyList(dr, list(scale = dr$late_scale)) else dr
+  drl_spec <- if (split) modifyList(dr, list(scale = dr$late_scale, shape = if (is.null(dr$late_shape)) dr$shape else dr$late_shape)) else dr
   dHdl <- diff(dr_cumhaz(drl_spec, (0:(J + 1)) * cycle)); dHdl[J + 1] <- dHdl[J]
   dHpp <- diff(dr_cumhaz(preprog, (0:(J + 1)) * cycle)); dHpp[J + 1] <- dHpp[J]
   out <- matrix(0, K + 1, 5, dimnames = list(NULL, c("EF", "PreProg", "LRR", "DR", "Dead")))
@@ -69,7 +70,7 @@ for (i in seq_len(nrow(cases))) {
   cs <- cases[i, ]
   args <- list(P$efs[[cs$arm]][[cs$branch]], P$pre_surv[[cs$arm]][[cs$branch]], P$q_pre[[cs$arm]][[cs$branch]], P$shares[[cs$arm]],
                P$lrr_dr[["rate"]], c(list(dist = cs$dist, shape = cs$shape, scale = cs$scale, k = if (cs$drug_hr == 1) 1 else 1.7),
-                                     if (cs$split) list(late_scale = 1.9 * cs$scale, early_cycles = 18) else NULL),
+                                     if (cs$split) list(late_scale = 1.9 * cs$scale, late_shape = 1.3 * cs$shape, early_cycles = 18) else NULL),
                pp_specs[[cs$pp]], P$start_age, P$L, P$cycle,
                P$n_cycles, P$n_tunnel, if (cs$use_hr) hrf else NULL, cs$drug_hr,
                cs$ae * P$ae[[cs$arm]][["rate"]], P$ae_end)

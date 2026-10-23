@@ -44,7 +44,7 @@ rebuild <- function(i) {
   }
   Pb$preprog <- list(dist = "llogis", shape = unname(cb["preprog_shape"]), scale = unname(cb["preprog_median"]))
   Pb$dr <- list(dist = "llogis", shape = unname(cb["dr_shape"]), scale = unname(cb["dr_median"]),
-                late_scale = unname(cb["dr_late_median"]), early_cycles = P$dr$early_cycles)
+                late_shape = unname(cb["dr_late_shape"]), late_scale = unname(cb["dr_late_median"]), early_cycles = P$dr$early_cycles)
   Pb$pembro_dr_k <- unname(cb["pembro_dr_k"])
   Pb
 }

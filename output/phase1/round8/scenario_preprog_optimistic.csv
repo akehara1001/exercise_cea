@@ -1,0 +1,12 @@
+"quantity","scenario","base"
+"preprog_median_months",26,10
+"preprog_shape",1.646097601477,1.63874454318976
+"preprog_allcause_surv_5y",0.2,0.05
+"dr_shape",1.02487246406362,0.876497679596682
+"dr_median_early_months",10.1,10.1
+"dr_median_late_months",17.1,17.1
+"pembro_dr_k",1.68179409732821,1.49182838700153
+"objective",206.033501416604,NA
+"convergence",0,NA
+"dr_shape_at_bound",0,NA
+"k_at_bound",0,NA

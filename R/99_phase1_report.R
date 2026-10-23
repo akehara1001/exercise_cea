@@ -1,5 +1,8 @@
 # 99_phase1_report.R
 # Builds output/phase1/phase1_report.md from the code outputs (no hand-entered numbers).
+# The phase-1 sections (final state, status, sections 1-12) read the round-8 snapshot
+# (output/phase1/round8/, data/fits/round8/, data/bootstrap/round8/); section 13 (round 9, phase-2
+# preparation) reads the current outputs (output/phase1/*.csv, output/phase1/round9/).
 
 source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 source(file.path(ROOT, "R", "survmodels.R"))
@@ -39,41 +42,41 @@ SEL <- rd("output", "phase1", "model_selection.csv")
 FAM <- rd("output", "phase1", "family_selection.csv")
 NFR <- rd("output", "phase1", "nonpcr_family_review.csv")
 YR <- rd("output", "phase1", "yau_landmark_reference.csv")
-CAL <- rd("output", "phase1", "calibration.csv")
-CG <- rd("output", "phase1", "calibration_gate.csv")
-CS <- rd("output", "phase1", "calibration_status.csv")
-RM <- rd("output", "phase1", "calibration_rmst.csv")
-DS <- rd("output", "phase1", "calibration_deaths_by_source.csv")
-IMP <- rd("output", "phase1", "dr_survival_implied.csv")
-EC <- rd("output", "phase1", "engine_checks.csv")
-CGR <- rd("output", "phase1", "calibration_gate_rmst.csv")
-RS <- rd("output", "phase1", "calibration_rmst_by_source.csv")
-AE <- rd("output", "phase1", "ae_deaths.csv")
+CAL <- rd("output", "phase1", "round8", "calibration.csv")
+CG <- rd("output", "phase1", "round8", "calibration_gate.csv")
+CS <- rd("output", "phase1", "round8", "calibration_status.csv")
+RM <- rd("output", "phase1", "round8", "calibration_rmst.csv")
+DS <- rd("output", "phase1", "round8", "calibration_deaths_by_source.csv")
+IMP <- rd("output", "phase1", "round8", "dr_survival_implied.csv")
+EC <- rd("output", "phase1", "round8", "engine_checks.csv")
+CGR <- rd("output", "phase1", "round8", "calibration_gate_rmst.csv")
+RS <- rd("output", "phase1", "round8", "calibration_rmst_by_source.csv")
+AE <- rd("output", "phase1", "round8", "ae_deaths.csv")
 CON <- rd("output", "phase1", "efs5_constraint.csv")
 FSU <- rd("output", "phase1", "calibration_gate_feasibility_summary.csv")
 FPT <- rd("output", "phase1", "calibration_gate_feasibility_points.csv")
-OA <- rd("output", "phase1", "scenario_k1.csv")
-OG <- rd("output", "phase1", "scenario_k1_gate.csv")
-EIT <- rd("output", "phase1", "engine_interface_test.csv")
-G7 <- rd("output", "phase1", "calibration_final7y.csv")
-OB <- rd("output", "phase1", "calibration_objective.csv")
-AD <- rd("output", "phase1", "scenario_k1_arm_diff.csv")
+OA <- rd("output", "phase1", "round8", "scenario_k1.csv")
+OG <- rd("output", "phase1", "round8", "scenario_k1_gate.csv")
+EIT <- rd("output", "phase1", "round8", "engine_interface_test.csv")
+G7 <- rd("output", "phase1", "round8", "calibration_final7y.csv")
+OB <- rd("output", "phase1", "round8", "calibration_objective.csv")
+AD <- rd("output", "phase1", "round8", "scenario_k1_arm_diff.csv")
 PCC <- rd("data", "pcr_counts.csv")
-VS <- rd("output", "phase1", "calibration_vs_previous.csv")
+VS <- rd("output", "phase1", "round8", "calibration_vs_previous.csv")
 R6F <- rd("output", "phase1", "r6_vs_final7y.csv")
 R7F <- rd("output", "phase1", "r7_calibration_final7y.csv")
-DRE <- rd("output", "phase1", "dr_early_share.csv")
-ADU <- rd("output", "phase1", "scenario_k1_arm_diff_ci.csv")
+DRE <- rd("output", "phase1", "round8", "dr_early_share.csv")
+ADU <- rd("output", "phase1", "round8", "scenario_k1_arm_diff_ci.csv")
 FA7 <- rd("data", "kn522_final_7y.csv")
 fa7 <- function(id) FA7$value[FA7$id == id]
 iso_date <- function(x) { m <- regmatches(x, regexec("^(\\w+) (\\d+), (\\d{4})$", x))[[1]]
   sprintf("%s-%02d-%02d", m[4], match(m[2], month.name), as.integer(m[3])) }
 opt <- function(...) if (file.exists(file.path(ROOT, ...))) rd(...) else NULL
-BSUM <- opt("output", "phase1", "bootstrap_summary.csv")
-EO <- opt("output", "phase1", "engine_outputs.csv")
-RB <- opt("output", "phase1", "bootstrap_rebuild_check.csv")
-BRS <- if (file.exists(file.path(ROOT, "data", "bootstrap", "boot_replicates.rds"))) readRDS(file.path(ROOT, "data", "bootstrap", "boot_replicates.rds")) else NULL
-CANDS <- readRDS(file.path(ROOT, "data", "fits", "calibration_candidates.rds"))
+BSUM <- opt("output", "phase1", "round8", "bootstrap_summary.csv")
+EO <- opt("output", "phase1", "round8", "engine_outputs.csv")
+RB <- opt("output", "phase1", "round8", "bootstrap_rebuild_check.csv")
+BRS <- if (file.exists(file.path(ROOT, "data", "bootstrap", "round8", "boot_replicates.rds"))) readRDS(file.path(ROOT, "data", "bootstrap", "round8", "boot_replicates.rds")) else NULL
+CANDS <- readRDS(file.path(ROOT, "data", "fits", "round8", "calibration_candidates.rds"))
 P <- CANDS$params
 stop6 <- istrue(CS$stop_before_step6)
 rvv <- function(id, key) rv$value[rv$fact_id == id & rv$key == key]
@@ -166,7 +169,10 @@ add("## 状态", "",
     if (!stop6 && boot_done) sprintf("- 步骤 6（bootstrap，B = %d，k 在每个样本中一起估计，7 年目标值在每个样本中按抽样分布抽取）与步骤 7（引擎输出，含 7 年）已完成（第 9、10 节）。", BRS$B)
     else if (!stop6) "- 步骤 6、7 尚未完成（`data/bootstrap/` 与步骤 7 的输出不属于本轮校准，第 9、10 节不列出）。" else NULL,
     if (!stop6 && boot_done) "- 第 1 阶段到此结束（2026-10-23）。第 2 阶段中涉及帕博利珠单抗的结果以基准与 k = 1 两栏并列报告（`docs/model_spec.md` 第 6 节；两臂差的对照见第 8.4 节）。" else NULL,
-    "- 门槛的修改经过见下一节「门槛修改记录」（全部七项）。", "")
+    "- 门槛的修改经过见下一节「门槛修改记录」（全部七项）。",
+    if (file.exists(file.path(ROOT, "output", "phase1", "round9", "esme_fits.csv")))
+      sprintf("- 第九轮（第 2 阶段准备，2026-10-23，远处复发后生存外部锚定于 ESME 曲线）：%s，见第 13 节。以上各项与第 1 至 12 节为第八轮（第 1 阶段最终状态）的快照。",
+              if (istrue(rd("output", "phase1", "calibration_status.csv")$gate_pass)) "按规则接受" else "**未被接受**（停在步骤 6 之前）") else NULL, "")
 dir_pem <- all(CG$diff[CG$arm == "pembro"] > 0); dir_pl <- all(CG$diff[CG$arm == "placebo"] < 0)
 add(sprintf("各时点的方向：帕博利珠单抗组模型减 KM 的差在 %d 个时点中 %d 个为正，安慰剂组 %d 个中 %d 个为负%s。",
             sum(CG$arm == "pembro"), sum(CG$diff[CG$arm == "pembro"] > 0), sum(CG$arm == "placebo"), sum(CG$diff[CG$arm == "placebo"] < 0),
@@ -464,13 +470,13 @@ add("### 8.5 隐含的生存与外部对照", "",
 emx <- aggregate(cbind(max_abs_diff = abs(diff)) ~ check + arm, data = EC, FUN = max)
 add("### 8.6 未用于校准的曲线", "",
     "与引擎的对照（`engine_checks.csv`，各曲线全部时点中差的绝对值最大者，百分点）：", "", md_table(transform(emx, max_abs_diff = f2(max_abs_diff, 3))), "",
-    "图：`fig_calibration_OS.png`（灰带为 KM 逐点 95% CI，竖线为门槛时点）、`fig_engine_checks.png`。", "")
+    "图：`round8/fig_calibration_OS.png`（灰带为 KM 逐点 95% CI，竖线为门槛时点）、`round8/fig_engine_checks.png`。", "")
 add("### 8.7 此前各轮", "",
     "第一轮至第三轮不达标；第四轮（术前进展后 Weibull）达标后由用户改设定；第五轮（术前进展后对数 logistic 加外部约束、远处复发后中位外部输入、k 固定为情景）不达标；第六轮（k 纳入基准校准）按规则接受；第七轮（目标函数加入 7 年时点，接受规则加入 (c)）按规则接受，其 bootstrap 按用户指示中止，**已被第八轮取代**。第八轮的结构与第七轮相同，只把远处复发分为早期与晚期。此前各轮的输出可在 git 历史中取回（第五轮为提交 0abaddd，第六轮为 e530a56，第七轮为 d1b5517）。第三轮的可行性扫描 `R/05b_gate_feasibility.R` 保留为诊断。", "")
 
-SO <- rd("output", "phase1", "scenario_preprog_optimistic.csv")
-SG <- rd("output", "phase1", "scenario_preprog_optimistic_gate.csv")
-SA <- rd("output", "phase1", "scenario_preprog_optimistic_arm_diff.csv")
+SO <- rd("output", "phase1", "round8", "scenario_preprog_optimistic.csv")
+SG <- rd("output", "phase1", "round8", "scenario_preprog_optimistic_gate.csv")
+SA <- rd("output", "phase1", "round8", "scenario_preprog_optimistic_arm_diff.csv")
 so <- function(q, col = "scenario") SO[[col]][SO$quantity == q]
 sg <- function(g) SG[SG$gate == g, ]
 add("### 8.8 乐观情景：术前进展后中位 26 个月、5 年存活 20%（`R/05s_preprog_optimistic.R`）", "",
@@ -549,7 +555,7 @@ if (boot_done) {
                         c("终点", "情景", "臂", "pCR", names(W)[-(1:4)]))), "",
       sprintf("各 bootstrap 样本的引擎由保存的参数矩阵重建，其 5、7、10、20 年的值与 `06_bootstrap.R` 当时算出的一致（%d 个样本，最大差 %s，`bootstrap_rebuild_check.csv`）。",
               RB$replicates, formatC(RB$max_abs_diff, format = "e", digits = 1)), "",
-      "图：`fig_engine_outputs.png`（实线为引擎，带为 bootstrap 95% 区间，虚线为重建的 KM，× 为最终分析的 7 年值，竖线为其 95% 置信区间）。", "",
+      "图：`round8/fig_engine_outputs.png`（实线为引擎，带为 bootstrap 95% 区间，虚线为重建的 KM，× 为最终分析的 7 年值，竖线为其 95% 置信区间）。", "",
       "引擎接口：`survival_engine(arm, pcr, times, params, hr0, wane_start, wane_rate, p_pcr, nonpcr_mix, common_dr, dr_first_months)`，`arm` 为 chemo、exercise、pembro、both；默认参数在 `data/fits/engine_params.rds`。运动钩子 (a) 时变 HR 与 (b) pCR 比例、S-JP 混合与情景 k = 1 的接口测试见 `engine_interface_test.csv`；闭式计算与逐周期递推一致（`R/test_engine_vectorized.R`）。", "",
       md_table(EIT), "")
 }
@@ -585,6 +591,93 @@ add("## 11. 已决事项与待决事项", "",
 add("## 12. 局限性", "",
     "- 模型在 5 年和 7 年未能同时重现两臂 OS 差随时间扩大的形状；仅凭公开的汇总数据无法判别这一形状是否超出抽样误差（第 8.4 节）。",
     sprintf("- 术前进展的人数少（两臂合计 %d 例），其死亡分布主要由外部约束决定，校准值%s（第 8.2 节；乐观情景见第 8.8 节）。", n_pp, pp_bound_txt(CANDS$at_bound)), "")
+
+# ---------------------------------------------------------------- round 9 (phase-2 preparation)
+r9 <- function(...) file.path("output", "phase1", "round9", ...)
+if (file.exists(file.path(ROOT, r9("esme_fits.csv")))) {
+  EV <- rd(r9("esme_validation.csv")); ED <- rd(r9("esme_diagnostics.csv")); EF <- rd(r9("esme_fits.csv"))
+  ES <- rd(r9("esme_shape_test.csv")); EH <- rd(r9("esme_hr.csv")); ERL <- rd("data", "digitized", "esme", "raster_extraction_log.csv")
+  ERT <- rd("data", "digitized", "esme", "ESME_F3A_OS_risktable.csv")
+  CS9 <- rd("output", "phase1", "calibration_status.csv"); CG9 <- rd("output", "phase1", "calibration_gate.csv")
+  CGR9 <- rd("output", "phase1", "calibration_gate_rmst.csv"); G79 <- rd("output", "phase1", "calibration_final7y.csv")
+  VS9 <- rd("output", "phase1", "calibration_vs_previous.csv"); OB9 <- rd("output", "phase1", "calibration_objective.csv")
+  AD9 <- rd("output", "phase1", "scenario_k1_arm_diff.csv"); AD8 <- rd("output", "phase1", "round8", "scenario_k1_arm_diff.csv")
+  G78 <- rd("output", "phase1", "round8", "calibration_final7y.csv")
+  C9 <- readRDS(file.path(ROOT, "data", "fits", "calibration_candidates.rds")); ab9 <- C9$at_bound; P9 <- C9$params
+  FS9f <- file.path(ROOT, "output", "phase1", "calibration_gate_feasibility_r9.csv")
+  esme_spec <- jsonlite::fromJSON(file.path(ROOT, "R", "py", "rasterspec_esme.json"), simplifyVector = FALSE)$figures[[1]]
+  gate9 <- c(a = if (istrue(CS9$gate_a_strict_pass)) "达标" else if (istrue(CS9$gate_a_accepted)) "按例外规则接受" else "**不达标**",
+             b = if (istrue(CS9$gate_b_pass)) "达标" else "**不达标**", c = if (istrue(CS9$gate_c_pass)) "达标" else "**不达标**")
+  G9_out <- CG9[!istrue(CG9$inside), ]
+  add("## 13. 第九轮（第 2 阶段准备，2026-10-23）：远处复发后生存外部锚定于 ESME 曲线", "",
+      sprintf("结论：按运行前确定的接受规则（`docs/acceptance_rule_round9.md`，git 73748f4；与第七、八轮相同）%s。门槛 (a) %s，(b) %s，(c) %s。%s",
+              if (istrue(CS9$gate_pass)) "**接受**" else "**不接受，停在步骤 6 之前**", gate9[["a"]], gate9[["b"]], gate9[["c"]],
+              if (istrue(CS9$gate_pass)) "" else "按规则没有写出引擎默认参数（`data/fits/engine_params.rds`；第八轮的参数在 `data/fits/round8/`），bootstrap 未运行，没有自行增加结构。"), "")
+  add("### 13.1 ESME 论文与数字化", "",
+      sprintf("来源：Grinda 等 Eur J Cancer 2023;189:112935（DOI 10.1016/j.ejca.2023.05.023），HAL hal-04205902 的作者稿（CC BY-NC 4.0），经 HAL 的检索 API 取得正文与补充材料（`input/papers/Grinda2023_ESME*.pdf`，不进 git；`input/papers/SOURCE.md`）。Fig. 3a（从转移诊断起的 OS，早期复发 = 新辅助或辅助化疗结束后 12 个月以内）为嵌入的栅格图（%s 像素），用与 KEYNOTE-522 相同的流程数字化（`R/py/02b_digitize_raster.py`，`R/py/rasterspec_esme.json`，输出 `data/digitized/esme/`）。此图没有坐标轴线（ggplot2 浅色主题），刻度取边框外的短刻度线（加权重心，亚像素）；线条为细的 JPEG 抗锯齿线，颜色中心取观测到的线条平均色。",
+              ERL$native_px[1]),
+      sprintf("刻度校准残差：x %s 个月，y %s 个百分点。数字化的列覆盖率：早期 %s，晚期 %s。风险表（每 4 个月，0 至 48 个月）从图像转录，0 时点人数 %s 与 %s 与摘要的各组人数一致。叠图质控：`data/digitized/esme/qa/ESME_F3A_OS_overlay.png`。",
+              f2(ERL$calib_resid_x[1], 4), f2(ERL$calib_resid_y[1], 4), f2(ERL$column_coverage[ERL$arm == "early"], 3), f2(ERL$column_coverage[ERL$arm == "late"], 3),
+              ERT$n_risk[ERT$arm == "early" & ERT$time == 0], ERT$n_risk[ERT$arm == "late" & ERT$time == 0]), "")
+  add("### 13.2 个体数据重建与验证（`R/13_esme_fit.R`）", "",
+      sprintf("Guyot 算法（`R/guyot.R`），以 IPDfromKM 交叉核对；门槛（用户指定）：重建 KM 的中位与原文相差 ≤ 0.5 个月；各风险表时点重建 KM 与数字化曲线相差 ≤ 1 个百分点。结果：%d 项中 %d 项达标（`output/phase1/round9/esme_validation.csv`）。",
+              nrow(EV), sum(istrue(EV$pass))), "",
+      md_table(with(EV[EV$check == "median (months)", ], data.frame(组 = curve, 原文中位 = f2(reference, 1), 重建中位 = f2(reconstructed, 2),
+                                                                     差 = f2(abs_diff, 3), 达标 = ifelse(istrue(pass), "是", "**否**")))), "",
+      sprintf("各风险表时点的最大差：早期 %s、晚期 %s 个百分点。诊断（`esme_diagnostics.csv`）：", f2(max(EV$abs_diff[EV$curve == "early" & EV$check != "median (months)"]), 3),
+              f2(max(EV$abs_diff[EV$curve == "late" & EV$check != "median (months)"]), 3)), "",
+      md_table(transform(ED, max_abs_km_vs_digitized_pp = f2(max_abs_km_vs_digitized_pp, 3), max_abs_guyot_vs_ipdfromkm_pp = f2(max_abs_guyot_vs_ipdfromkm_pp, 3))), "",
+      sprintf("早期对晚期的 HR（只报告）：重建 %s [%s, %s]，图中印的 %s [%s, %s]。", f2(EH$reconstructed, 2), f2(EH$rec_lo, 2), f2(EH$rec_hi, 2),
+              f2(EH$reported, 2), f2(EH$lo, 2), f2(EH$hi, 2)), "")
+  add("### 13.3 对数 logistic 拟合与形状的检验", "",
+      "两条曲线分别拟合（flexsurv，时间为年；中位 = 尺度参数；95% CI 为模型的 Wald 区间）：", "",
+      md_table(with(EF, data.frame(组 = group, n = n, 事件 = events, 形状 = sprintf("%s [%s, %s]", f2(shape, 3), f2(shape_lo, 3), f2(shape_hi, 3)),
+                                   中位_月 = sprintf("%s [%s, %s]", f2(median_months, 2), f2(median_lo, 2), f2(median_hi, 2)),
+                                   原文中位_月 = sprintf("%s [%s, %s]", f2(reported_median, 1), f2(reported_lo, 1), f2(reported_hi, 1)),
+                                   重建KM中位_月 = f2(km_median_reconstructed, 2)))), "",
+      sprintf("形状的差异：早期 %s、晚期 %s（比 %s）；分开与共用形状的似然比检验 χ² = %s（自由度 1），p = %s；对数形状差的 Wald 检验 p = %s。规则：「差异明显」按似然比检验 p < 0.05 判断（阈值为本次的操作化，在拟合运行前写入 `R/13_esme_fit.R`），明显时分开用，否则共用一个。判定：**%s**。共用形状 %s [%s, %s]；共用形状模型下的中位：早期 %s 个月，晚期 %s 个月（引擎的输入，`data/fits/esme_fits.rds`）。",
+              f2(ES$shape_early, 3), f2(ES$shape_late, 3), f2(ES$shape_ratio_early_late, 3), f2(ES$lrt_chisq, 2), f2(ES$p_lrt, 3), f2(ES$p_wald, 3),
+              if (ES$decision == "common") "共用一个形状" else "分开用", f2(ES$common_shape, 3), f2(ES$common_shape_lo, 3), f2(ES$common_shape_hi, 3),
+              f2(ES$common_median_early_months, 2), f2(ES$common_median_late_months, 2)),
+      "拟合的对数 logistic 在引擎中作为远处复发后的超额风险（其上再加背景死亡），与第五至八轮使用 ESME 中位的方式相同；ESME 的 OS 含背景死亡，转移后数年内、约 50 岁时差别很小。图：`round9/fig_esme_fit.png`。", "")
+  add("### 13.4 模型的修改（用户指定）与校准结果", "",
+      "- 远处复发后的生存（早期、晚期两个子状态）全部改为外部输入：形状与中位取自 13.3 节的拟合，不参与校准。",
+      "- 概率敏感性分析：每个 bootstrap 样本对 ESME 重建个体数据在组内重抽样并重新拟合，联合抽取形状与中位（`esme_draw()`）。",
+      sprintf("- IMpassion132 不再参与基准与抽样，改为早期复发中位的情景（%s 个月，`dr_ext_imp132()`）。", DR_MEDIAN_SOURCES$median[2]),
+      "- 校准参数只剩 k（0.25 至 4）与术前进展的两个参数（约束不变）；目标函数与第七、八轮相同。只做点估计。", "",
+      sprintf("校准值：k = %s（%s）；术前进展后对数 logistic 中位 %s 个月、形状 %s（该中位下的上限 %s），%s。目标函数 %s，其中 KM 部分 %s（第八轮 %s）。",
+              f2(P9$pembro_dr_k, 3), if (ab9[["k_low"]] || ab9[["k_high"]]) "**贴边界**" else "不在边界上", f2(12 * P9$preprog$scale, 2), f2(P9$preprog$shape, 3),
+              f2(pp_shape_cap(P9$preprog$scale), 3), pp_bound_txt(ab9), f2(OB9$value[OB9$part == "total"], 2),
+              f2(OB9$value[1], 2), f2(VS9$round8[VS9$quantity == "km_SSE_both_arms_pp2"], 2)), "",
+      "与第六至八轮的比较（`calibration_vs_previous.csv`）：", "",
+      md_table(transform(VS9, round6 = f2(round6, 4), round7 = f2(round7, 4), round8 = f2(round8, 4), round9 = f2(round9, 4))), "",
+      sprintf("门槛 (a)（`calibration_gate.csv`）：10 个点中 %d 个落在逐点 95%% 区间内%s。",
+              sum(istrue(CG9$inside)), if (nrow(G9_out)) sprintf("；区间外 %s，超出 %s 个百分点（例外规则 (i) 的上限 %g）；全部 10 个点%s Bonferroni 校正后的 99.5%% 区间内",
+                                                             paste(sprintf("%s %d 个月", ifelse(G9_out$arm == "pembro", "帕博利珠单抗", "安慰剂"), G9_out$month), collapse = "、"),
+                                                             paste(f2(G9_out$outside_pp, 4), collapse = "、"), CFG$gate_accept_max_outside_pp,
+                                                             if (all(istrue(CG9$inside_995))) "落在" else "**并非都在**") else ""), "",
+      md_table(transform(CG9, km = f2(km, 2), ci95_lo = f2(ci95_lo, 2), ci95_hi = f2(ci95_hi, 2), ci995_lo = f2(ci995_lo, 2), ci995_hi = f2(ci995_hi, 2),
+                         engine = f2(engine, 2), diff = f2(diff, 3), inside = ifelse(istrue(inside), "是", "**否**"), outside_pp = f2(outside_pp, 4),
+                         inside_995 = ifelse(istrue(inside_995), "是", "**否**"))), "",
+      sprintf("门槛 (b)：模型 5 年 RMST 两臂差 %s 年，KM 差的 bootstrap 95%% 区间 %s 至 %s 年，%s。门槛 (c)：7 年 OS 与 EFS 的 4 个值中 %d 个落在最终分析的 95%% 区间内。",
+              f2(CGR9$engine, 4), f2(CGR9$km_boot_ci95_lo, 4), f2(CGR9$km_boot_ci95_hi, 4), gate9[["b"]], sum(istrue(G79$inside_ci[istrue(G79$gate_c)]))), "",
+      md_table(with(G79[istrue(G79$gate_c), ], data.frame(id = id, reported = f2(value, 1), ci95 = paste0(f2(ci95_lo, 1), "–", f2(ci95_hi, 1)),
+                                                          engine = f2(engine, 2), inside_ci = ifelse(istrue(inside_ci), "是", "**否**")))), "")
+  if (file.exists(FS9f)) {
+    FS9 <- read.csv(FS9f)
+    add(sprintf("诊断（不作判定；`calibration_gate_feasibility_r9.csv`）：在约束范围内（术前进展中位 10 至 26 个月、5 年存活 ≥ 5%%，k 在 0.25 至 4）以 Nelder-Mead 最小化门槛 (a) 的最大超出幅度，%d 个起点中 %d 个找到 10 个点全部在 95%% 区间内的参数（最小超出 %s 个百分点），其中 5 年 RMST 两臂差也落在 (b) 的区间内的 %d 个（(c) 未检查）。即本结构下存在满足 (a) 的参数，校准（最小化目标函数）的解没有落在其中。",
+                nrow(FS9), sum(FS9$max_outside_ci_pp <= 1e-9), f2(min(FS9$max_outside_ci_pp), 4), sum(FS9$max_outside_ci_pp <= 1e-9 & istrue(FS9$rmst_inside_boot_ci))), "")
+  }
+  ad_tab <- function(A) data.frame(量 = ad_lab, 基准 = mapply(f2, A$base, ad_d), `k = 1` = mapply(f2, A$k1, ad_d), check.names = FALSE)
+  t9 <- ad_tab(AD9); t8 <- ad_tab(AD8)
+  add("### 13.5 两臂 OS 差（5 年与 7 年）与帕博利珠单抗 pCR 层的 7 年 OS", "",
+      sprintf("两臂 OS 差（帕博利珠单抗 − 安慰剂；第九轮 k = %s，第八轮 k = %s；参照值同第 8.4 节）：", f2(AD9$k_base[1], 3), f2(AD8$k_base[1], 3)), "",
+      md_table(data.frame(量 = ad_lab, `第九轮 基准` = t9$基准, `第九轮 k = 1` = t9$`k = 1`, `第八轮 基准` = t8$基准, `第八轮 k = 1` = t8$`k = 1`,
+                          参照值 = mapply(f2, AD9$reported, ad_d), check.names = FALSE)), "",
+      sprintf("帕博利珠单抗组 pCR 层的 7 年 OS：第九轮模型 %s%%（k = 1：%s%%），第八轮 %s%%（k = 1：%s%%），报告值 %s%%。",
+              f2(G79$engine[G79$id == "os_pcr_pembro"], 2), f2(G79$engine_k1[G79$id == "os_pcr_pembro"], 2),
+              f2(G78$engine[G78$id == "os_pcr_pembro"], 2), f2(G78$engine_k1[G78$id == "os_pcr_pembro"], 2), f2(G79$value[G79$id == "os_pcr_pembro"], 1)), "")
+}
 
 writeLines(L, file.path(out_dir, "phase1_report.md"), useBytes = TRUE)
 cat("wrote phase1_report.md:", length(L), "lines\n")

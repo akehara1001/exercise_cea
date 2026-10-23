@@ -1,6 +1,8 @@
 """QA overlays: digitized step vertices drawn back onto the source figure.
 
-Usage: python -I R/py/02c_qa_overlay.py <project_root>
+Usage: python -I R/py/02c_qa_overlay.py <project_root> [raster_spec.json] [digitized_dir]
+  with the two optional arguments only the raster figures of that spec are drawn, from and into
+  that directory (ESME: R/py/rasterspec_esme.json data/digitized/esme)
 Writes data/digitized/qa/<fig_id>_overlay.png (vector figures rendered at 300 dpi; raster
 figures on the native embedded image). Extracted points are drawn in black.
 """
@@ -11,7 +13,8 @@ import cv2
 import pymupdf
 
 root = sys.argv[1]
-dd = os.path.join(root, "data", "digitized")
+only_raster = len(sys.argv) > 3
+dd = os.path.join(root, sys.argv[3]) if only_raster else os.path.join(root, "data", "digitized")
 qa = os.path.join(dd, "qa")
 os.makedirs(qa, exist_ok=True)
 
@@ -27,7 +30,7 @@ def save(img, path):
     buf.tofile(path)
 
 
-vs = json.load(open(os.path.join(root, "R", "py", "figspec.json"), encoding="utf-8"))
+vs = {"figures": []} if only_raster else json.load(open(os.path.join(root, "R", "py", "figspec.json"), encoding="utf-8"))
 dpi = 300
 for f in vs["figures"]:
     page = pymupdf.open(os.path.join(root, "input", "papers", f["pdf"]))[f["page"] - 1]
@@ -44,7 +47,7 @@ for f in vs["figures"]:
     save(img, os.path.join(qa, f"{f['fig_id']}_overlay.png"))
     print("wrote", f"{f['fig_id']}_overlay.png")
 
-rs = json.load(open(os.path.join(root, "R", "py", "rasterspec.json"), encoding="utf-8"))
+rs = json.load(open(sys.argv[2] if only_raster else os.path.join(root, "R", "py", "rasterspec.json"), encoding="utf-8"))
 for f in rs["figures"]:
     path = [p for p in os.listdir(dd) if p.startswith(f"{f['fig_id']}_native.")][0]
     img = cv2.imdecode(np.fromfile(os.path.join(dd, path), dtype=np.uint8), cv2.IMREAD_COLOR)
