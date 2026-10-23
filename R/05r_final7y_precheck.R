@@ -4,7 +4,7 @@
 # (data/kn522_final_7y.csv): OS and EFS by arm (with 95% CIs), OS by pCR status, DRFS.
 # Output: output/phase1/r6_vs_final7y.csv (written once, before the round-7 calibration)
 
-source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
+source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 source(file.path(ROOT, "R", "survmodels.R"))
 source(file.path(ROOT, "R", "engine.R"))
 suppressPackageStartupMessages(library(survival))

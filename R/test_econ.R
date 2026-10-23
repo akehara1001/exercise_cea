@@ -5,7 +5,7 @@
 # Output: output/phase2/econ_unit_tests.csv (test, result, the deviation or difference checked);
 # no ICER is written.
 
-source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
+source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 source(file.path(ROOT, "R", "survmodels.R"))
 source(file.path(ROOT, "R", "engine.R"))
 source(file.path(ROOT, "R", "econ.R"))

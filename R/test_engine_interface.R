@@ -1,7 +1,7 @@
 # test_engine_interface.R
 # Checks that the engine interface supports the phase-2 scenarios (docs/model_spec.md). The
 # weights and HRs below are test inputs only, not model inputs.
-source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
+source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 source(file.path(ROOT, "R", "survmodels.R"))
 source(file.path(ROOT, "R", "engine.R"))
 suppressPackageStartupMessages(library(survival))

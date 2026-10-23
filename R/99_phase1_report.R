@@ -1,7 +1,7 @@
 # 99_phase1_report.R
 # Builds output/phase1/phase1_report.md from the code outputs (no hand-entered numbers).
 
-source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
+source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 source(file.path(ROOT, "R", "survmodels.R"))
 source(file.path(ROOT, "R", "engine.R"))
 source(file.path(ROOT, "R", "calibration.R"))

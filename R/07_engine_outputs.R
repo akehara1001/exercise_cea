@@ -12,7 +12,7 @@
 # Outputs: output/phase1/engine_outputs.csv, engine_curves.csv, bootstrap_rebuild_check.csv,
 #          fig_engine_outputs.png
 
-source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
+source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 source(file.path(ROOT, "R", "survmodels.R"))
 source(file.path(ROOT, "R", "engine.R"))
 suppressPackageStartupMessages({

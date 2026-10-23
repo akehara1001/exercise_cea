@@ -2,3 +2,6 @@
 .Rhistory
 .RData
 __pycache__/
+# source PDFs (papers and other source documents) are kept locally, not in the repository
+input/papers/*.pdf
+input/**/*.pdf

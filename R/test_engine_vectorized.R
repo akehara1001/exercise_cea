@@ -2,7 +2,7 @@
 # The closed-form run_branch in engine.R must reproduce a plain cycle-by-cycle recursion of the
 # same model (states EF, PreProg, LRR, DR tunnels, Dead; round 8: DR split into early and late
 # sub-states by the time of entry, each with its own tunnels).
-source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
+source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 source(file.path(ROOT, "R", "survmodels.R"))
 source(file.path(ROOT, "R", "engine.R"))
 suppressPackageStartupMessages(library(survival))

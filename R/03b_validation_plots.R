@@ -2,7 +2,7 @@
 # Digitized step curves vs KM of the reconstructed IPD, with the reported milestones
 # (+-1 percentage point band). Output: output/phase1/fig_validation_<fig>.png
 
-root <- "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"
+root <- Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea")
 suppressPackageStartupMessages({
   library(survival)
   library(ggplot2)

@@ -7,7 +7,7 @@
 # Outputs: data/ipd/<fig>_<arm>.csv, data/ipd/ipd_all.rds,
 #          output/phase1/validation.csv, output/phase1/validation_diagnostics.csv
 
-root <- "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"
+root <- Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea")
 source(file.path(root, "R", "guyot.R"))
 suppressPackageStartupMessages({
   library(survival)

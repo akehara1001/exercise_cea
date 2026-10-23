@@ -41,7 +41,7 @@
 #          8), dr_early_share.csv, fig_calibration_OS.png, fig_engine_checks.png;
 #          data/fits/calibration_candidates.rds, data/fits/engine_params.rds (accepted only)
 
-source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
+source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 source(file.path(ROOT, "R", "survmodels.R"))
 source(file.path(ROOT, "R", "engine.R"))
 source(file.path(ROOT, "R", "calibration.R"))

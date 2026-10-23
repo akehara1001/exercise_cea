@@ -2,7 +2,8 @@
 # Decisions and fixed settings for the phase-1 survival engine. Numbers taken from the papers
 # are not typed here: they are read from data/ (reported_values.csv, pcr_counts.csv, ipd).
 
-ROOT <- "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"
+# project root: environment variable EXERCISE_CEA_ROOT (e.g. on the cluster), else this machine
+ROOT <- Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea")
 
 CFG <- list(
   # user decision 2026-10-21: cohort starts at age 49 (KEYNOTE-522 baseline median)

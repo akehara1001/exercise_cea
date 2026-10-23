@@ -9,7 +9,7 @@
 # Output: output/phase1/calibration_gate_feasibility.csv (grid) and
 #         calibration_gate_feasibility_summary.csv
 
-source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
+source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 source(file.path(ROOT, "R", "survmodels.R"))
 source(file.path(ROOT, "R", "engine.R"))
 suppressPackageStartupMessages({

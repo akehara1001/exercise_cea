@@ -9,7 +9,7 @@
 # Gate: |S_mix - S_overall| <= 1 percentage point at every time, both arms, both years.
 # Outputs: output/phase1/consistency_check.csv, output/phase1/fig_consistency_pCR_mixture.png
 
-root <- "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"
+root <- Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea")
 suppressPackageStartupMessages({
   library(survival)
   library(ggplot2)

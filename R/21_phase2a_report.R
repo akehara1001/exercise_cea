@@ -3,7 +3,7 @@
 # layer (output/phase2/econ_unit_tests.csv) and the list of sources for the rows owned by 原
 # (data/params_hara/hara_values.csv). By instruction it contains no ICER or other result value.
 
-source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
+source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 out_dir <- file.path(ROOT, "output", "phase2")
 rd <- function(...) read.csv(file.path(ROOT, ...), stringsAsFactors = FALSE, encoding = "UTF-8", check.names = FALSE)
 md_table <- function(df) {

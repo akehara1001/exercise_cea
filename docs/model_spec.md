@@ -96,6 +96,10 @@
 
 - 并行进程数 = 物理核数 − 1，用 `parallel::detectCores(logical = FALSE)` 取得。
 - bootstrap 与概率敏感性分析按每 100 次一段存档到磁盘；中断后从已完成的段继续，不重跑已完成的段。
-- 每个并行进程启动时把内部线程数固定为 1：设置环境变量 `OMP_NUM_THREADS=1`，并用 `RhpcBLASctl::blas_set_num_threads(1)` 固定线性代数库的线程数（RhpcBLASctl 在本机 R 4.5.1 尚未安装，第 2 阶段开始时安装）。
+- 每个并行进程启动时把内部线程数固定为 1：设置环境变量 `OMP_NUM_THREADS=1`，并用 `RhpcBLASctl::blas_set_num_threads(1)` 固定线性代数库的线程数（RhpcBLASctl 0.23-42 已装入项目的 renv 库并记入 `renv.lock`；`bootstrap_core.R` 的 `boot_run()` 已按此设定）。
 - 第 2 阶段第一次运行概率敏感性分析之前，先用 100 次做测试，记录每个进程的 CPU 占用率和每次的平均用时，写进报告。如果每个进程仍明显低于一个核，记下当时 CPU 的型号和同时运行的其他进程，交给用户判断。
 - 第 1 阶段第八轮的 bootstrap（`R/06_bootstrap.R`）仍按原设定（进程数 min(11, detectCores() − 1)，结束时一次写出）运行到结束，未中断。
+- 随机数按样本设定（2026-10-23 检查）：第 b 个样本在开始时调用 `set.seed(基础种子 + b)`（拟合失败重抽时再加 1e6 × 重抽次数），与进程数和由哪个进程运行无关，故未改为 L'Ecuyer-CMRG（改了会使第 1 阶段的 bootstrap 无法用现行代码重现）。每个样本的代码在 `R/bootstrap_core.R`，`06_bootstrap.R` 与 `06c_bootstrap_check.R` 共用。`R/test_bootstrap_workers.R` 用 4 个与 8 个进程各跑第 1 至 4 个样本：两者完全相同，且与第 1 阶段 bootstrap 的第 1 至 4 个样本完全相同（差 0，`output/check/bootstrap_workers_test.csv`）。
+- 在其他机器（Longleaf）上运行：设环境变量 `EXERCISE_CEA_ROOT` 为项目根目录（不设时为本机路径）；`renv::restore()` 按 `renv.lock`（R 4.5.1）安装包；步骤 4 以后只需 `data/` 与 `input/params/pubmed/` 等文本，论文 PDF 只在步骤 1 至 3（清点、数字化、重建）中用到，不在仓库中。
+- 参照结果：`Rscript R/06c_bootstrap_check.R` 以基础种子 20261023 按第八轮设定跑 10 次 bootstrap，存 `output/check/bootstrap10_local.rds`（每个样本的参数、各臂第 1、2、3、5、7、10、20 年的 OS 与 EFS、5 年 RMST 两臂差；生成它的提交号、R 版本、平台与 renv.lock 的校验和记在 rds 的 `meta` 中，提交号另见 `output/check/README.md`）。其他机器用 `Rscript R/06c_bootstrap_check.R <标签>` 生成同样的 10 次并与之逐项比较。
+- 论文 PDF 不进入仓库（`.gitignore`：`input/papers/*.pdf`，并扩及 `input/` 下全部 PDF；2026-10-23 起取消跟踪，本地文件保留）。这些 PDF 出现在此前的提交中（5 个提交，19 个文件），推送到私有仓库时随历史一起上传；将来公开代码时，从干净的导出新建公开仓库，不公开这个仓库的历史。

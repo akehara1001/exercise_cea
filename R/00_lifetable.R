@@ -6,7 +6,7 @@
 
 suppressPackageStartupMessages(library(readxl))
 
-root <- "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"
+root <- Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea")
 src <- file.path(root, "input", "lifetable", "life25-12.xlsx")
 out <- file.path(root, "data", "lifetable_female_2025.csv")
 

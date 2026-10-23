@@ -2,7 +2,7 @@
 # constrain_efs5 (survmodels.R) is not binding for the base fits, but it is in some bootstrap
 # replicates. Check it with bounds moved to force it: the constrained fit must land on the bound,
 # and its likelihood must not exceed the unconstrained maximum.
-source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
+source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 source(file.path(ROOT, "R", "survmodels.R"))
 suppressPackageStartupMessages(library(survival))
 ipd <- readRDS(file.path(ROOT, "data", "ipd", "ipd_all.rds"))

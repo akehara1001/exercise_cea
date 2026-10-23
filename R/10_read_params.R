@@ -8,7 +8,7 @@
 # as a 95% interval. Rows without both bounds get no distribution yet (ranges to be set by us).
 # Output: data/params_dist.csv
 
-root <- "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"
+root <- Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea")
 suppressPackageStartupMessages(library(readxl))
 src <- file.path(root, "input", "params", "parameters_v4.xlsx")
 x <- read_excel(src, sheet = "パラメータ", col_types = "text")

@@ -10,7 +10,7 @@
 # Outputs: output/phase1/scenario_preprog_optimistic.csv (parameters), ..._gate.csv (gates (a),
 #          (b), (c), for reference), ..._arm_diff.csv
 
-source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
+source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 source(file.path(ROOT, "R", "survmodels.R"))
 source(file.path(ROOT, "R", "engine.R"))
 source(file.path(ROOT, "R", "calibration.R"))

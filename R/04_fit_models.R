@@ -26,7 +26,7 @@
 # Outputs: output/phase1/model_comparison.csv, model_selection.csv, fig_fit_*.png,
 #          fig_hazard_*.png; data/fits/fits.rds (specs of all candidates and the selection)
 
-source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
+source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 source(file.path(ROOT, "R", "survmodels.R"))
 suppressPackageStartupMessages({
   library(survival)
