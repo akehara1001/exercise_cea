@@ -102,4 +102,7 @@
 - 随机数按样本设定（2026-10-23 检查）：第 b 个样本在开始时调用 `set.seed(基础种子 + b)`（拟合失败重抽时再加 1e6 × 重抽次数），与进程数和由哪个进程运行无关，故未改为 L'Ecuyer-CMRG（改了会使第 1 阶段的 bootstrap 无法用现行代码重现）。每个样本的代码在 `R/bootstrap_core.R`，`06_bootstrap.R` 与 `06c_bootstrap_check.R` 共用。`R/test_bootstrap_workers.R` 用 4 个与 8 个进程各跑第 1 至 4 个样本：两者完全相同，且与第 1 阶段 bootstrap 的第 1 至 4 个样本完全相同（差 0，`output/check/bootstrap_workers_test.csv`）。
 - 在其他机器（Longleaf）上运行：设环境变量 `EXERCISE_CEA_ROOT` 为项目根目录（不设时为本机路径）；`renv::restore()` 按 `renv.lock`（R 4.5.1）安装包；步骤 4 以后只需 `data/` 与 `input/params/pubmed/` 等文本，论文 PDF 只在步骤 1 至 3（清点、数字化、重建）中用到，不在仓库中。
 - 参照结果：`Rscript R/06c_bootstrap_check.R` 以基础种子 20261023 按第八轮设定跑 10 次 bootstrap，存 `output/check/bootstrap10_local.rds`（每个样本的参数、各臂第 1、2、3、5、7、10、20 年的 OS 与 EFS、5 年 RMST 两臂差；生成它的提交号、R 版本、平台与 renv.lock 的校验和记在 rds 的 `meta` 中，提交号另见 `output/check/README.md`）。其他机器用 `Rscript R/06c_bootstrap_check.R <标签>` 生成同样的 10 次并与之逐项比较。
-- 论文 PDF 不进入仓库（`.gitignore`：`input/papers/*.pdf`，并扩及 `input/` 下全部 PDF；2026-10-23 起取消跟踪，本地文件保留）。这些 PDF 出现在此前的提交中（5 个提交，19 个文件），推送到私有仓库时随历史一起上传；将来公开代码时，从干净的导出新建公开仓库，不公开这个仓库的历史。
+- 论文 PDF 不进入仓库（`.gitignore`：`input/papers/*.pdf`，并扩及 `input/` 下全部 PDF；2026-10-23 起取消跟踪，本地文件保留）。这些 PDF 出现在此前的提交中（5 个提交，19 个文件），推送到私有仓库时随历史一起上传；将来公开代码时，从干净的导出新建公开仓库，不公开这个仓库的历史。公开时的排除清单（2026-10-23）：
+  - 公开版本不包含：`input/` 下所有第三方资料（论文 PDF、网页存档、补充材料、PMC 的 XML、NICE 和 CADTH 的页面；以及 PubMed 摘要文本、政府统计与药价的原表等其他第三方原件），以及 `data/digitized/` 中从论文图中裁下的图片（`*_native.png`、`*_native.jpeg`，和 `qa/` 中叠在原图上的质控图）。
+  - 公开版本包含：代码、数字化得到的坐标（`data/digitized/*.csv`）、重建的个体数据（`data/ipd/`）、参数矩阵（`data/fits/`、`data/bootstrap/`）、入力表中我们填写的部分，以及每个第三方来源的出处说明（作者、年份、DOI 或 URL；现有的 `input/papers/SOURCE.md`、`input/lifetable/SOURCE.md`、`input/params/sources_hara.md`、`input/params/efficacy_sources.md` 为基础整理）。
+  - 入力表中尾崎填写的部分是否公开，届时由尾崎决定。
