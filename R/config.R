@@ -18,6 +18,11 @@ CFG <- list(
   max_age = 100,
   # time-in-state tunnels after distant recurrence (months); hazard is held at the last one
   dr_tunnel_months = 240,
+  # user decision 2026-10-22 (round 8; rationale corrected 2026-10-23): distant recurrence entered
+  # up to this many months from randomization is "early", in both arms. ESME (PMID 37385070):
+  # metastasis within 12 months of the end of neo/adjuvant chemotherapy; in the model chemotherapy
+  # ends at week 24 (about 5.5 months), 5.5 + 12 = 17.5, rounded to 18.
+  dr_early_months = 18,
   # step 4 selection settings (fixed before fitting)
   fit_ci_min_at_risk = 20,      # criterion 1 is checked where the KM has >= 20 at risk
   # criterion 1 threshold: share of monthly points where the model lies inside the pointwise

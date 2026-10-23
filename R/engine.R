@@ -19,7 +19,10 @@
 #   and these deaths are removed from the deaths without recurrence of the composition.
 # - LRR -> DR at a constant rate; LRR -> death at the background rate.
 # - DR -> death: background + an excess hazard in time since DR (log-logistic or Weibull;
-#   common to both arms; calibrated, step 5).
+#   common to both arms; calibrated, step 5). Round 8 (2026-10-22): with dr$late_scale, DR is two
+#   sub-states by the time of entry: early (entered up to dr$early_cycles cycles from
+#   randomization) with median dr$scale, late with median dr$late_scale; shape and k shared
+#   (dr_state()).
 # DR excess hazard of the pembrolizumab arms = common hazard x params$pembro_dr_k (round 6:
 #   k estimated in the base calibration); scenario common_dr = TRUE sets k = 1 (common post-DR
 #   mortality in all arms).
@@ -111,18 +114,29 @@ tunnel_state <- function(f, inflow, spec, max_cycles = NULL) {
   exp(-f$Bc) * as.vector(conv)[(K + 1):(2 * K + 1)]
 }
 
+# DR occupancy for an inflow vector (inflow[k] arrives at boundary k). Without dr$late_scale one
+# tunnel_state(); with it, inflow arriving up to boundary dr$early_cycles is early (median
+# dr$scale) and the rest late (median dr$late_scale), each with its own tunnels
+dr_early_mask <- function(inflow, dr) seq_along(inflow) <= dr$early_cycles
+dr_state <- function(f, inflow, dr, max_cycles = NULL) {
+  if (is.null(dr$late_scale)) return(tunnel_state(f, inflow, dr, max_cycles))
+  e <- dr_early_mask(inflow, dr)
+  tunnel_state(f, inflow * e, dr, max_cycles) + tunnel_state(f, inflow * !e, modifyList(dr, list(scale = dr$late_scale)), max_cycles)
+}
+
 # state occupancy, inflows (at the boundary where entrants arrive) and cumulative deaths by
 # source; with dr_first_cycles, also the part of DR within that many cycles of entry (DR_first)
 branch_states <- function(f, preprog, dr, dr_first_cycles = NULL) {
   PP <- tunnel_state(f, f$to_P, preprog)
-  DRs <- tunnel_state(f, f$to_DR, dr)
+  DRs <- dr_state(f, f$to_DR, dr)
   Dead <- 1 - f$EF - f$LR - PP - DRs
   dPP <- c(0, cumsum(f$to_P)) - PP
   out <- data.frame(time = f$t, EF = f$EF, PreProg = PP, LRR = f$LR, DR = DRs, Dead = Dead,
                     Dead_from_EF = f$dEF, Dead_from_AE = f$dAE, Dead_from_LRR = f$dLR, Dead_from_PreProg = dPP,
                     Dead_from_DR = Dead - f$dEF - f$dAE - f$dLR - dPP,
                     In_PreProg = c(0, f$to_P), In_LRR = c(0, f$to_L), In_DR = c(0, f$to_DR))
-  if (!is.null(dr_first_cycles)) out$DR_first <- tunnel_state(f, f$to_DR, dr, dr_first_cycles)
+  if (!is.null(dr_first_cycles)) out$DR_first <- dr_state(f, f$to_DR, dr, dr_first_cycles)
+  if (!is.null(dr$late_scale)) out$In_DR_early <- c(0, f$to_DR * dr_early_mask(f$to_DR, dr))
   out
 }
 
@@ -242,7 +256,7 @@ arm_flows <- function(params, arm) {
   list(base = base, p_pcr = params$p_pcr[[base]], flows = fl)
 }
 os_fast <- function(af, preprog, dr) {
-  os_b <- function(f) f$EF + f$LR + tunnel_state(f, f$to_P, preprog) + tunnel_state(f, f$to_DR, dr)
+  os_b <- function(f) f$EF + f$LR + tunnel_state(f, f$to_P, preprog) + dr_state(f, f$to_DR, dr)
   af$p_pcr * os_b(af$flows$pCR) + (1 - af$p_pcr) * os_b(af$flows$nonpCR)
 }
 

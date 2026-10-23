@@ -1,6 +1,6 @@
 # 06_bootstrap.R
 # Step 6: bootstrap (B = CFG$boot_B) of the survival engine, with the structure and settings of
-# step 5 (round 7, 2026-10-22; run only after step 5 has been accepted: it reads
+# step 5 (round 8, 2026-10-22; run only after step 5 has been accepted: it reads
 # engine_params.rds). Each replicate:
 #   1. EFS by arm x pCR (2022 appendix Fig. S4, IA4): patients resampled within arm with their pCR
 #      label, so the pCR proportion and the stratum sizes vary; each stratum is landmarked at
@@ -9,12 +9,13 @@
 #   2. PreProg entry share = reported count / resampled non-pCR size (arm-level share as reported).
 #   3. OS by arm (2024 Fig. 1A, IA7): resampled within arm; the selected OS models are refitted
 #      (saved only, the engine does not use them; RP knots kept at the base positions).
-#   4. DR median drawn from dr_median_draw() (calibration.R: equal-weight mixture of lognormals
-#      from the ESME and IMpassion132 CIs); the eight 7-year points of the final analysis drawn
+#   4. DR medians drawn: early from dr_median_draw() (calibration.R: equal-weight mixture of
+#      lognormals from the ESME and IMpassion132 CIs), late from dr_late_median_draw() (lognormal
+#      from the ESME late-relapse CI), independently; the eight 7-year points of the final analysis drawn
 #      from their sampling distributions (final7y_draw: normal with the CI-based SE for OS and EFS
 #      by arm, binomial with the IA7 stratum size for OS by pCR status; weights as in the base);
 #      calibration as in 05_calibrate.R against the resampled OS KM and the drawn 7-year points
-#      given that median (PreProg median and shape, DR shape and k estimated together),
+#      given those medians (PreProg median and shape, DR shape and k estimated together),
 #      from the base estimates and the six starts of the base calibration (best of the seven); if
 #      the best ends with optim code 52, five random starts are added and the best of all is kept
 #      (before/after recorded).
@@ -110,7 +111,7 @@ boot_one <- function(b) {
     }
     targets <- lapply(os_b, function(d) 100 * km_at(d, CFG$calib_grid_months))
     fl <- cal_flows(P)
-    dr_med <- dr_median_draw(1)
+    dr_med <- c(early = dr_median_draw(1), late = dr_late_median_draw(1))
     X7b <- final7y_draw(X7)
     cal <- calibrate_os(P, targets, CFG$calib_grid_months, dr_med, starts = c(list(th_base), CAL_STARTS), fl = fl, extra = X7b)
     P <- cal_apply(P, cal$par, dr_med)
@@ -120,6 +121,7 @@ boot_one <- function(b) {
     outv <- engine_outputs(P)
     list(efs = efs_out, efs_binding = bind, pcr = pcr_out, os_models = os_par,
          calib = c(preprog_shape = P$preprog$shape, preprog_median = P$preprog$scale, dr_shape = P$dr$shape, dr_median = P$dr$scale,
+                   dr_late_median = P$dr$late_scale,
                    sse = cal$value, convergence = cal$convergence, cal$at_bound, cal$code52,
                    pembro_dr_k = P$pembro_dr_k, km_rmst5_diff = km_d, engine_rmst5_diff = eng_d),
          outputs = outv, pre_surv = P$pre_surv, targets7 = setNames(X7b$value, X7b$id))
@@ -173,7 +175,7 @@ write.csv(T7m, file.path(boot_dir, "boot_final7y_targets.csv"), row.names = FALS
 
 # summary: base value and bootstrap percentile interval of each parameter and output
 base_calib <- c(preprog_shape = P_base$preprog$shape, preprog_median = P_base$preprog$scale, dr_shape = P_base$dr$shape,
-                dr_median = P_base$dr$scale, pembro_dr_k = P_base$pembro_dr_k)
+                dr_median = P_base$dr$scale, dr_late_median = P_base$dr$late_scale, pembro_dr_k = P_base$pembro_dr_k)
 efs_cvs <- paste0("EFS_", rep(c("pembro", "placebo"), each = 2), "_", c("pCR", "nonpCR"))
 base_efs <- flat(setNames(lapply(efs_cvs, function(cv) fits$selected[[cv]]$pars), efs_cvs))
 base_pcr <- unlist(lapply(c("pembro", "placebo"), function(a) {

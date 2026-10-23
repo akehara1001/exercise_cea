@@ -59,8 +59,11 @@ G7 <- rd("output", "phase1", "calibration_final7y.csv")
 OB <- rd("output", "phase1", "calibration_objective.csv")
 AD <- rd("output", "phase1", "scenario_k1_arm_diff.csv")
 PCC <- rd("data", "pcr_counts.csv")
-VS <- rd("output", "phase1", "calibration_vs_r6.csv")
+VS <- rd("output", "phase1", "calibration_vs_previous.csv")
 R6F <- rd("output", "phase1", "r6_vs_final7y.csv")
+R7F <- rd("output", "phase1", "r7_calibration_final7y.csv")
+DRE <- rd("output", "phase1", "dr_early_share.csv")
+ADU <- rd("output", "phase1", "scenario_k1_arm_diff_ci.csv")
 FA7 <- rd("data", "kn522_final_7y.csv")
 fa7 <- function(id) FA7$value[FA7$id == id]
 iso_date <- function(x) { m <- regmatches(x, regexec("^(\\w+) (\\d+), (\\d{4})$", x))[[1]]
@@ -92,19 +95,59 @@ add("# 第1阶段（生存引擎）报告", "",
 
 # ---------------------------------------------------------------- status
 gfail <- V[istrue(V$gate) & !istrue(V$pass), ]
-# the bootstrap on disk belongs to the current calibration only if its base k equals the adopted k
+# the bootstrap on disk belongs to the current calibration only if its base k equals the adopted k,
+# and it is the full run only if B = CFG$boot_B (a smoke test uses a few replicates)
 boot_done <- !is.null(BRS) && !is.null(EO) && "pembro_dr_k" %in% colnames(BRS$calibration) &&
-  isTRUE(abs(BSUM$base[BSUM$quantity == "pembro_dr_k"] - P$pembro_dr_k) < 1e-9)
+  isTRUE(abs(BSUM$base[BSUM$quantity == "pembro_dr_k"] - P$pembro_dr_k) < 1e-9) && isTRUE(BRS$B == CFG$boot_B)
 pp_bound_txt <- function(ab) {
   x <- c(if (ab[["pp_median_low"]]) "中位 = 10 个月" else NULL, if (ab[["pp_median_high"]]) "中位 = 26 个月" else NULL,
          if (ab[["pp_s5_at_min"]]) "5 年存活 = 5%" else NULL)
   if (length(x)) paste0("贴在约束边界上（", paste(x, collapse = "，"), "）") else "不在约束边界上"
 }
 G_out <- CG[!istrue(CG$inside), ]
+
+# ---------------------------------------------------------------- final state of phase 1
+if (!stop6 && boot_done) {
+  BCf <- BRS$calibration; cntf <- function(x) sum(x, na.rm = TRUE)
+  FP <- data.frame(
+    参数 = c("pCR 比例（帕博利珠单抗 / 安慰剂）", "术前进展后超额死亡：对数 logistic 中位（月）", "术前进展后超额死亡：形状",
+           "远处复发后超额死亡：形状（早期与晚期共用）", "远处复发后中位：早期（月）", "远处复发后中位：晚期（月）",
+           "早期远处复发的界线（随机化后月数）", "帕博利珠单抗组远处复发后风险的倍数 k", "因不良事件死亡（帕博利珠单抗 / 安慰剂）",
+           "局部区域复发 → 远处复发（/年）"),
+    值 = c(sprintf("%s / %s", f2(P$p_pcr[["pembro"]], 4), f2(P$p_pcr[["placebo"]], 4)), f2(12 * P$preprog$scale, 2), f2(P$preprog$shape, 4),
+          f2(P$dr$shape, 4), f2(12 * P$dr$scale, 1), f2(12 * P$dr$late_scale, 1), as.character(CFG$dr_early_months), f2(P$pembro_dr_k, 4),
+          sprintf("%s/%s、%s/%s", P$ae$pembro[["deaths"]], P$ae$pembro[["n_treated"]], P$ae$placebo[["deaths"]], P$ae$placebo[["n_treated"]]),
+          f2(P$lrr_dr[["rate"]], 4)),
+    来源 = c(sprintf("数据（%s）", CFG$pcr_source), "校准（外部约束 10 至 26 个月）", "校准（上限由 5 年存活 ≥ 5% 决定）", "校准",
+           "外部输入（ESME 早期复发）", "外部输入（ESME 晚期复发）", "用户指定（第 8.1 节）", "校准（范围 0.25 至 4）",
+           "数据（2022 年补充材料 Table S5）", "数据（2022 年 Table 1 脚注）"), check.names = FALSE)
+  add("## 第1阶段最终状态", "",
+      sprintf("第 1 阶段以第八轮为最终结构（%s）。引擎默认参数在 `data/fits/engine_params.rds`，bootstrap 参数矩阵在 `data/bootstrap/`。涉及帕博利珠单抗的结果在第 2 阶段以基准与情景 k = 1 两栏并列报告（`docs/model_spec.md` 第 6 节）。", CANDS$structure), "",
+      "最终参数：", "", md_table(FP), "",
+      sprintf("术前进展后死亡的校准值%s；k %s。", pp_bound_txt(CANDS$at_bound), if (istrue(CS$k_at_bound)) "**贴边界**" else "不在边界上"), "",
+      "门槛结果（接受规则 `docs/acceptance_rule_round8.md`，运行前提交）：",
+      sprintf("- (a) %s：10 个点中 %d 个落在 KM 逐点 95%% 区间内%s。", if (istrue(CS$gate_a_strict_pass)) "达标" else if (istrue(CS$gate_a_accepted)) "按例外规则 (i)、(ii) 接受" else "**不达标**",
+              sum(istrue(CG$inside)), if (nrow(G_out)) sprintf("，区间外 %s，超出 %s 个百分点", paste(sprintf("%s %d 个月", ifelse(G_out$arm == "pembro", "帕博利珠单抗", "安慰剂"), G_out$month), collapse = "、"),
+                                                       paste(f2(G_out$outside_pp, 3), collapse = "、")) else ""),
+      sprintf("- (b) %s：模型 5 年 RMST 两臂差 %s 年，KM 差的 bootstrap 95%% 区间 %s 至 %s 年。", if (istrue(CGR$pass)) "达标" else "**不达标**",
+              f2(CGR$engine, 4), f2(CGR$km_boot_ci95_lo, 4), f2(CGR$km_boot_ci95_hi, 4)),
+      sprintf("- (c) %s：7 年 OS 与 EFS 的 4 个值中 %d 个落在最终分析的 95%% 区间内。", if (istrue(CS$gate_c_pass)) "达标" else "**不达标**",
+              sum(istrue(G7$inside_ci[istrue(G7$gate_c)]))), "",
+      sprintf("bootstrap 的边界情况（B = %d，完成 %d 次，失败 %d 次）：k 贴下界 0.25 的 %d 次、贴上界 4 的 %d 次；术前进展中位贴 10 个月的 %d 次、贴 26 个月的 %d 次；5 年存活贴 5%% 的 %d 次；远处复发后形状贴数值边界的 %d 次；optim 返回码 52 而加随机起点重跑的 %d 次（第 9 节）。",
+              BRS$B, nrow(BCf), length(BRS$failed), cntf(BCf[, "k_low"] == 1), cntf(BCf[, "k_high"] == 1), cntf(BCf[, "pp_median_low"] == 1),
+              cntf(BCf[, "pp_median_high"] == 1), cntf(BCf[, "pp_s5_at_min"] == 1), cntf(BCf[, "dr_shape_bound"] == 1), cntf(BCf[, "code52"] == 1)), "",
+      "待尾崎回答：",
+      "- S-JP 的权重定义（`docs/model_spec.md` 第 2 节）。",
+      "- BRCA 检测的对象范围。",
+      "- 帕博利珠单抗组是否也加 S-JP。",
+      "- B30 的定义（第 2 阶段入力表）。",
+      sprintf("- 按 pCR 分层的 EFS 层内 HR 较晚截点值（%s、%s）的原始出处（第 4 节）。",
+              us$value[us$id == "K522_EFS_HR_pCR"], us$value[us$id == "K522_EFS_HR_nonpCR"]), "")
+}
 add("## 状态", "",
     "- 已完成：步骤 1 至 4（含 2026-10-21 与 2026-10-22 的修正）与一致性检查；非 pCR 层分布族已复核。",
     sprintf("- 重建与一致性的门槛项 %d 项，不达标 %d 项。", sum(istrue(V$gate)), nrow(gfail)),
-    sprintf("- 步骤 5（校准第七轮，2026-10-22，加入 KEYNOTE-522 最终分析的 7 年值）：按运行前确定的接受规则（`docs/acceptance_rule_round7.md`，git f811ec4）%s。门槛 (a)：10 个点中 %d 个落在逐点 95%% 区间内%s；门槛 (b)：模型的 5 年 RMST 两臂差 %s 年，%s KM 差（%s 年）的 bootstrap 95%% 区间 %s 至 %s 年内。",
+    sprintf("- 步骤 5（校准第八轮，2026-10-22，远处复发分为早期与晚期）：按运行前确定的接受规则（`docs/acceptance_rule_round8.md`，git e0a722c；与第七轮相同）%s。门槛 (a)：10 个点中 %d 个落在逐点 95%% 区间内%s；门槛 (b)：模型的 5 年 RMST 两臂差 %s 年，%s KM 差（%s 年）的 bootstrap 95%% 区间 %s 至 %s 年内。",
             if (stop6) "**不接受，停止**" else "**接受**", sum(istrue(CG$inside)),
             if (nrow(G_out)) sprintf("，区间外 %d 处（%s），超出幅度 %s 个百分点，均 ≤ %g 且全部 10 个点落在 Bonferroni 校正后的逐点 99.5%% 区间内%s",
                                      nrow(G_out), paste(sprintf("%s %d 个月", ifelse(G_out$arm == "pembro", "帕博利珠单抗", "安慰剂"), G_out$month), collapse = "、"),
@@ -113,11 +156,16 @@ add("## 状态", "",
             f2(CGR$engine, 4), if (istrue(CGR$pass)) "落在" else "不在", f2(CGR$km, 4), f2(CGR$km_boot_ci95_lo, 4), f2(CGR$km_boot_ci95_hi, 4)),
     sprintf("- 门槛 (c)（第七轮新增）：模型 7 年的 OS 与 EFS 4 个值中 %d 个落在最终分析报告的 95%% 区间内，%s（下表）。按 pCR 分层的 7 年 OS 只报告差值（第 8.2 节）。",
             sum(istrue(G7$inside_ci[istrue(G7$gate_c)])), if (istrue(CS$gate_c_pass)) "达标" else "**不达标**"),
-    sprintf("- 帕博利珠单抗组远处复发后死亡风险的倍数 k = %s（第六轮 %s；范围 0.25 至 4，%s）。术前进展后死亡的校准值%s。",
-            f2(P$pembro_dr_k, 3), f2(VS$round6[VS$quantity == "pembro_dr_k"], 3), if (istrue(CS$k_at_bound)) "**贴边界**" else "不在边界上", pp_bound_txt(CANDS$at_bound)),
+    sprintf("- 帕博利珠单抗组远处复发后死亡风险的倍数 k = %s（第六轮 %s，第七轮 %s；范围 0.25 至 4，%s）。术前进展后死亡的校准值%s。",
+            f2(P$pembro_dr_k, 3), f2(VS$round6[VS$quantity == "pembro_dr_k"], 3), f2(VS$round7[VS$quantity == "pembro_dr_k"], 3),
+            if (istrue(CS$k_at_bound)) "**贴边界**" else "不在边界上", pp_bound_txt(CANDS$at_bound)),
+    sprintf("- 远处复发中早期（随机化后 %d 个月以内）所占比例：随机化后 7 年内的远处复发中，帕博利珠单抗组 %s%%、安慰剂组 %s%%；到 100 岁的全部远处复发中 %s%% 与 %s%%（第 8.2 节）。",
+            DRE$early_months[1], f2(100 * DRE$early_share[DRE$arm == "pembro" & DRE$horizon_years == 7], 1), f2(100 * DRE$early_share[DRE$arm == "placebo" & DRE$horizon_years == 7], 1),
+            f2(100 * DRE$early_share[DRE$arm == "pembro" & DRE$horizon_years == max(DRE$horizon_years)], 1),
+            f2(100 * DRE$early_share[DRE$arm == "placebo" & DRE$horizon_years == max(DRE$horizon_years)], 1)),
     if (!stop6 && boot_done) sprintf("- 步骤 6（bootstrap，B = %d，k 在每个样本中一起估计，7 年目标值在每个样本中按抽样分布抽取）与步骤 7（引擎输出，含 7 年）已完成（第 9、10 节）。", BRS$B)
-    else if (!stop6) "- 第七轮的步骤 6（bootstrap）按用户指示中止（2026-10-22，改做第八轮），步骤 6、7 未完成；`data/bootstrap/` 与步骤 7 的输出仍为第六轮的结果，第 9、10 节不列出。" else NULL,
-    if (!stop6 && boot_done) "- 第 1 阶段到此结束（2026-10-22）。第 2 阶段中涉及帕博利珠单抗的结果以基准与 k = 1 两栏并列报告（`docs/model_spec.md` 第 6 节；两臂差的对照见第 8.4 节）。" else NULL,
+    else if (!stop6) "- 步骤 6、7 尚未完成（`data/bootstrap/` 与步骤 7 的输出不属于本轮校准，第 9、10 节不列出）。" else NULL,
+    if (!stop6 && boot_done) "- 第 1 阶段到此结束（2026-10-23）。第 2 阶段中涉及帕博利珠单抗的结果以基准与 k = 1 两栏并列报告（`docs/model_spec.md` 第 6 节；两臂差的对照见第 8.4 节）。" else NULL,
     "- 门槛的修改经过见下一节「门槛修改记录」（全部七项）。", "")
 dir_pem <- all(CG$diff[CG$arm == "pembro"] > 0); dir_pl <- all(CG$diff[CG$arm == "placebo"] < 0)
 add(sprintf("各时点的方向：帕博利珠单抗组模型减 KM 的差在 %d 个时点中 %d 个为正，安慰剂组 %d 个中 %d 个为负%s。",
@@ -183,7 +231,7 @@ LOG <- data.frame(
                      f2(100 * (1 - 0.95^10), 0)),
              sprintf("最终分析提供了 7 年的成熟数据，两臂 OS 差从 5 年时的 %s 个百分点扩大到 %s 个百分点", f2(os_d5, 1), f2(os_d7, 1))))
 add("## 门槛修改记录", "",
-    "按时间列出验证与校准门槛的每次修改。第 1 至 5 项是看到结果后修改的，第 4、5 项的理由是门槛比抽样误差更严；第 6 项在看到第五轮结果之后、第六轮运行之前确定，第 7 项在第七轮运行之前确定，两者都在运行前提交到 git。", "",
+    "按时间列出验证与校准门槛的每次修改。第 1 至 5 项是看到结果后修改的，第 4、5 项的理由是门槛比抽样误差更严；第 6 项在看到第五轮结果之后、第六轮运行之前确定，第 7 项在第七轮运行之前确定，两者都在运行前提交到 git。第八轮的接受规则与第七轮相同（`docs/acceptance_rule_round8.md`，运行前提交 e0a722c），门槛没有修改。", "",
     md_table(setNames(LOG, c("序号", "日期", "对象", "修改前", "修改后", "时点", "看到的结果", "理由"))), "")
 
 add("## 1. 输入文件", "", md_table(man), "",
@@ -289,11 +337,11 @@ add("状态：无事件、术前进展（2026-10-22 新增）、局部区域复�
             rvv("K22A_ae_deaths", "died_drug_related_pembro"), rvv("K22A_ae_deaths", "died_drug_related_placebo"),
             f2(AE$engine_pct_by_1y[AE$arm == "pembro"], 3), f2(AE$engine_pct_by_1y[AE$arm == "placebo"], 3),
             f2(AE$input_pct[AE$arm == "pembro"], 3), f2(AE$input_pct[AE$arm == "placebo"], 3), sum(AE$post_surgery_cycles_capped)), "",
-    sprintf("pCR 比例：帕博利珠单抗 %s，安慰剂 %s。局部区域复发 → 远处复发 %s/年（%d/%d 例，暴露 %s 年）。术前进展后的超额死亡为进入后时间的对数 logistic（第五轮；形状与中位在外部约束下校准），远处复发后的超额死亡为复发后时间的对数 logistic（中位为外部输入，形状校准；帕博利珠单抗组另乘 k，k 一起校准），形状与中位两臂共用（第 8 节）。",
+    sprintf("pCR 比例：帕博利珠单抗 %s，安慰剂 %s。局部区域复发 → 远处复发 %s/年（%d/%d 例，暴露 %s 年）。术前进展后的超额死亡为进入后时间的对数 logistic（第五轮；形状与中位在外部约束下校准），远处复发后的超额死亡为复发后时间的对数 logistic，按进入时点分早期与晚期两个子状态（第八轮；中位分别为外部输入，形状共用并校准；帕博利珠单抗组另乘 k，k 一起校准），两臂共用同一规则（第 8 节）。",
             f2(P$p_pcr[["pembro"]], 4), f2(P$p_pcr[["placebo"]], 4), f2(P$lrr_dr[["rate"]], 3),
             P$lrr_dr[["n_local_then_distant"]], P$lrr_dr[["n_local"]], f2(P$lrr_dr[["exposure_years"]], 2)), "")
 
-add("## 8. 校准（步骤 5，第七轮，2026-10-22）", "")
+add("## 8. 校准（步骤 5，第八轮，2026-10-22）", "")
 el <- abstract("34247335"); es <- abstract("37385070")
 e_n <- regmatches(el, regexec("Of (\\d+) patients treated with NST during the study period, (\\d+) \\(([\\d.]+)%\\) developed disease progression", el, perl = TRUE))[[1]]
 e_fu <- regmatches(el, regexec("At a median live follow-up of (\\d+) months, ([\\d.]+)% were alive without disease", el, perl = TRUE))[[1]]
@@ -305,35 +353,45 @@ ab <- CANDS$at_bound
 n_pp <- sum(sapply(P$composition, function(x) x[["progression_precluding_surgery"]]))
 add("### 8.1 设定", "",
     sprintf("结构（用户指定，一次运行）：%s。", CANDS$structure),
-    sprintf("- 远处复发后的超额死亡：对数 logistic，形状与中位两臂共用；中位为外部输入 %s 个月（ESME）。帕博利珠单抗组的风险为共用风险 × k，k 与其他参数一起校准（范围 %g 至 %g）。理由：用过帕博利珠单抗后复发，可选的有效治疗更少；在共用模型中帕博利珠单抗组各时点均偏高，第 2 年死亡偏少。",
-            f2(12 * DR_MEDIAN_BASE, 1), CFG$pembro_dr_k_bounds[1], CFG$pembro_dr_k_bounds[2]),
-    sprintf("- 术前进展后的超额死亡：进入后时间的对数 logistic，两臂共用，形状与中位校准；外部约束 1：中位 %g 至 %g 个月（下限为 ESME 早期复发的中位 OS %s 个月取整；上限为 Elmore 等 Ann Surg Oncol 2021;28:5477-5485、PMID 34247335 的新辅助治疗期间局部区域进展 %s 例的中位 OS %s 个月，该队列多数后来接受手术〔摘要写 %s 例、%s%%，按 %s 例计为 %s%%〕，比「无法手术的进展」轻，只作上界）；外部约束 2：进入后 5 年的全因存活 ≥ %g%%（同一篇中位随访 %s 个月时 %s%% 无病存活，向下取保守值），实现为形状的上限。",
+    sprintf("- 远处复发后的超额死亡（第八轮的唯一修改）：远处复发按进入时点分为两个子状态。早期：随机化后 %d 个月以内的远处复发（ESME 的定义为新辅助或辅助化疗结束后 12 个月以内；模型中化疗在第 24 周〔约 5.5 个月〕结束，5.5 + 12 = 17.5 个月，取整为 18；两臂同一规则）；晚期：其余。两者都是复发后时间的对数 logistic，中位为外部输入（不参与校准）：早期 %s 个月、晚期 %s 个月（ESME，Grinda 等 Eur J Cancer 2023，PMID 37385070）；形状两个子状态共用，由校准估计。帕博利珠单抗组两个子状态的风险都 × k，k 与其他参数一起校准（范围 %g 至 %g）。远处复发相关的费用（D03 至 D05）两个子状态相同。",
+            CFG$dr_early_months, f2(12 * DR_MEDIAN_BASE[["early"]], 1), f2(12 * DR_MEDIAN_BASE[["late"]], 1), CFG$pembro_dr_k_bounds[1], CFG$pembro_dr_k_bounds[2]),
+    sprintf("- 术前进展后的超额死亡：进入后时间的对数 logistic，两臂共用，形状与中位校准；外部约束 1：中位 %g 至 %g 个月（下限为 ESME 早期复发的中位 OS %s 个月取整；上限为 Elmore 等 Ann Surg Oncol 2021;28:5477-5485、PMID 34247335 的新辅助治疗期间局部区域进展 %s 例的中位 OS %s 个月，该队列多数后来接受手术〔摘要写 %s 例、%s%%，按 %s 例计为 %s%%〕，比「无法手术的进展」轻，只作上界）；外部约束 2：进入后 5 年的全因存活 ≥ %g%%（同一篇中位随访 %s 个月时 %s%% 无病存活，向下取保守值），实现为形状的上限。术前进展两臂合计 %d 例（2024 年 Table 1）。",
             12 * PP_MEDIAN_BOUNDS[1], 12 * PP_MEDIAN_BOUNDS[2], m1[2], e_n[3], e_os[2], e_sx[2], e_sx[3], e_n[3],
-            f2(100 * as.numeric(e_sx[2]) / as.numeric(e_n[3]), 1), 100 * PP_S5_MIN, e_fu[2], e_fu[3]),
-    "- 其余设定不变：因不良事件死亡（第 7 节）；带 5 年约束的 EFS 模型（第 6 节）。结构与第六轮相同。",
+            f2(100 * as.numeric(e_sx[2]) / as.numeric(e_n[3]), 1), 100 * PP_S5_MIN, e_fu[2], e_fu[3], n_pp),
+    "- 其余设定不变：因不良事件死亡（第 7 节）；带 5 年约束的 EFS 模型（第 6 节）；目标函数与第七轮相同。",
     sprintf("- 校准：目标为两臂 OS 与 2024 年 Fig. 1A 的 KM 在第 %d 至 %d 个月逐月的平方误差和（百分点²，不变），加上 KEYNOTE-522 最终分析的 8 个 7 年时点（第七轮新增，见下）。L-BFGS-B，%d 个起点，目标值差 %s。optim 返回码 52 时加 5 个随机起点取最优；基准校准的返回码为 %d。",
             min(CFG$calib_grid_months), max(CFG$calib_grid_months), length(CANDS$starts_values), signif(diff(range(CANDS$starts_values)), 2),
             CANDS$optim$convergence),
     "- 7 年时点的加权：每个点加 ((模型 − 报告值) / SE)²，SE 以百分点计。两臂 7 年 OS 与 EFS 有 95% 置信区间，SE = (上限 − 下限) / (2 × 1.96)；按 pCR 分层的 7 年 OS 没有置信区间，用二项近似 SE = √(p(1 − p)/n)，n 为该层人数（2024 年 IA7 的 pCR 人数，`data/pcr_counts.csv`），不考虑删失，故偏小（权重偏大）。KM 部分不变，相当于每个逐月点的 SE 为 1 个百分点。7 年 EFS 由步骤 4 的 EFS 模型决定，不受校准量影响，两个 EFS 点在目标函数中是常数。",
     sprintf("- 数值来源（`data/kn522_final_7y.csv`，`input/papers/SOURCE.md`）：ascopubs.org 的摘要页返回 403，未取得；两臂 7 年 OS、EFS 及其置信区间与按 pCR 分层的 OS 读自 OncLive（2026-06-01），7 年 OS 与 CancerNetwork（2026-06-01）核对一致，按 pCR 分层的 OS 与 DelveInsight 核对一致；CareNet（2026-06-02）维护中未取得。截点 %s，中位随访 %s 个月。按 pCR 分层的 OS 在报道中没有写明时点（OncLive 写作「at median follow-up」），按用户指示作 7 年值。",
             iso_date(fa7("data_cutoff")), fa7("median_fu_months")),
-    "- 接受规则：运行前确定（2026-10-22，`docs/acceptance_rule_round7.md`，git f811ec4 提交于第七轮运行之前），见文首「状态」与「门槛修改记录」第 7 项。规则为 (a)、(i)、(ii)、(b) 不变，加 (c)；术前进展约束与 k 的边界照常报告，不作停止条件。", "",
+    "- 接受规则：运行前确定（2026-10-22，`docs/acceptance_rule_round8.md`，git e0a722c 提交于第八轮运行之前），与第七轮相同：(a)、(i)、(ii)、(b)、(c)；术前进展约束与 k 的边界照常报告，不作停止条件。另外报告 5 年与 7 年的两臂 OS 差（第 8.4 节）。", "",
     "7 年目标值与权重（`final7y_targets()`）：", "",
     md_table(with(G7[G7$weight_basis != "not in the objective", ], data.frame(id = id, arm = arm, pcr = pcr, endpoint = endpoint, month = month,
                                                                               reported = f2(value, 1), se_pp = f2(se, 3), n = n, weight_basis = weight_basis))), "",
-    "概率敏感性分析中远处复发后中位的分布（`dr_median_draw()`）：两项研究的中位 OS 各取对数正态分布，均值为 log(报告的中位)，标准误 = (log 上限 − log 下限) / (2 × 1.96)，等权混合；bootstrap 中每个样本先抽中位，再校准其余参数。", "",
-    md_table(transform(DR_MEDIAN_SOURCES, se_log = f2((log(hi) - log(lo)) / (2 * qnorm(0.975)), 4))), "",
-    sprintf("IMpassion132 已用全文核对（`input/papers/PIIS0923753424001078.pdf` p.6，PD-L1 阳性人群）：安慰剂组中位 OS %s 个月（95%% CI %s 至 %s），与此前采用的值一致，分布无需修正。参考：mITT 人群安慰剂组为 %s 个月（%s 至 %s），未采用（主要分析为 PD-L1 阳性人群）。ESME 读自摘要（%s 个月，%s 至 %s）。",
-            imp("median_placebo"), imp("lo_placebo"), imp("hi_placebo"), impm("median_placebo"), impm("lo_placebo"), impm("hi_placebo"), m1[2], m1[3], m1[4]), "")
+    "概率敏感性分析中远处复发后中位的分布：早期（`dr_median_draw()`）为两项研究的中位 OS 各取对数正态分布、等权混合（与此前相同）；晚期（`dr_late_median_draw()`）为 ESME 晚期复发的对数正态分布。对数正态的均值为 log(报告的中位)，标准误 = (log 上限 − log 下限) / (2 × 1.96)。bootstrap 中每个样本两个中位各自独立抽取，再校准其余参数。", "",
+    md_table(transform(rbind(data.frame(substate = "早期", DR_MEDIAN_SOURCES), data.frame(substate = "晚期", DR_LATE_MEDIAN_SOURCE, weight = 1)),
+                       se_log = f2((log(hi) - log(lo)) / (2 * qnorm(0.975)), 4))), "",
+    sprintf("IMpassion132 已用全文核对（`input/papers/PIIS0923753424001078.pdf` p.6，PD-L1 阳性人群）：安慰剂组中位 OS %s 个月（95%% CI %s 至 %s），与此前采用的值一致，分布无需修正。参考：mITT 人群安慰剂组为 %s 个月（%s 至 %s），未采用（主要分析为 PD-L1 阳性人群）。ESME 读自摘要（早期 %s 个月，%s 至 %s；晚期 %s 个月，%s 至 %s）。",
+            imp("median_placebo"), imp("lo_placebo"), imp("hi_placebo"), impm("median_placebo"), impm("lo_placebo"), impm("hi_placebo"), m1[2], m1[3], m1[4],
+            m1[5], m1[6], m1[7]), "")
 add("### 8.2 校准结果", "",
     md_table(transform(CAL, SSE_both_arms = f2(SSE_both_arms, 2), rmse_pp = f2(rmse_pp, 3), max_abs_diff_pp = f2(max_abs_diff_pp, 3),
                        gate_max_abs_diff_pp = f2(gate_max_abs_diff_pp, 3), preprog_shape = f2(preprog_shape, 4),
                        preprog_median_months = f2(preprog_median_months, 2), preprog_shape_cap = f2(preprog_shape_cap, 4),
-                       dr_shape = f2(dr_shape, 4), dr_median_months = f2(dr_median_months, 2), pembro_dr_k = f2(pembro_dr_k, 4))), "",
-    sprintf("k = %s（%s）。远处复发后：形状 %s，中位 %s 个月（外部输入）。",
-            f2(P$pembro_dr_k, 3), if (ab[["k_low"]] || ab[["k_high"]]) "**贴边界**" else "在 0.25 至 4 的内部", f2(P$dr$shape, 3), f2(12 * P$dr$scale, 1)),
-    "", "与第六轮的比较（`calibration_vs_r6.csv`；第六轮的值取自提交 e530a56 的输出，另存为 `r6_*.csv`）：", "",
-    md_table(transform(VS, round6 = f2(round6, 4), round7 = f2(round7, 4), change = f2(change, 4))), "",
+                       dr_shape = f2(dr_shape, 4), dr_median_months = f2(dr_median_months, 2), dr_late_median_months = f2(dr_late_median_months, 2),
+                       pembro_dr_k = f2(pembro_dr_k, 4))), "",
+    sprintf("k = %s（%s；第六轮 %s，第七轮 %s）。远处复发后：形状 %s（两个子状态共用），中位早期 %s 个月、晚期 %s 个月（外部输入）。",
+            f2(P$pembro_dr_k, 3), if (ab[["k_low"]] || ab[["k_high"]]) "**贴边界**" else "在 0.25 至 4 的内部",
+            f2(VS$round6[VS$quantity == "pembro_dr_k"], 3), f2(VS$round7[VS$quantity == "pembro_dr_k"], 3),
+            f2(P$dr$shape, 3), f2(12 * P$dr$scale, 1), f2(12 * P$dr$late_scale, 1)),
+    "", "与第六、七轮的比较（`calibration_vs_previous.csv`；第六、七轮的值取自提交 e530a56、d1b5517 的输出，另存为 `r6_*.csv`、`r7_*.csv`；第七轮以前远处复发后只有一个中位）：", "",
+    md_table(transform(VS, round6 = f2(round6, 4), round7 = f2(round7, 4), round8 = f2(round8, 4))), "",
+    sprintf("远处复发中早期所占比例（`dr_early_share.csv`；早期 = 随机化后 %d 个月以内进入；累积发生率为占全臂的百分比；远处复发的进入不受复发后死亡率影响，故基准与 k = 1 相同）：", CFG$dr_early_months), "",
+    md_table(transform(DRE[, c("arm", "horizon_years", "dr_cum_incidence_pct", "early_cum_incidence_pct", "late_cum_incidence_pct", "early_share")],
+                       dr_cum_incidence_pct = f2(dr_cum_incidence_pct, 2), early_cum_incidence_pct = f2(early_cum_incidence_pct, 2),
+                       late_cum_incidence_pct = f2(late_cum_incidence_pct, 2), early_share = f2(early_share, 3))), "",
+    "（horizon_years 为随机化后的年数；51 年即到 100 岁。）", "",
     "目标函数在解处的分解（`calibration_objective.csv`）：", "",
     md_table(transform(OB, value = f2(value, 3))), "",
     sprintf("术前进展后：对数 logistic 形状 %s（该中位下的上限 %s），中位 %s 个月。中位%s；5 年存活%s。进入术前进展后的全因存活：1 年 %s，2 年 %s，5 年 %s（`dr_survival_implied.csv`）。",
@@ -344,9 +402,10 @@ add("### 8.2 校准结果", "",
 r6b <- R6F[R6F$scenario == "base", ]
 r6m <- function(arm, pcr, ep) r6b$model[r6b$arm == arm & r6b$pcr == pcr & r6b$endpoint == ep]
 G7$round6 <- mapply(r6m, G7$arm, G7$pcr, G7$endpoint)
-add("7 年各点：模型与报告值（`calibration_final7y.csv`；round6 为第六轮模型的运行前记录 `r6_vs_final7y.csv`；objective_term 为该点对目标函数的贡献；DRFS 不在目标函数中，只报告）：", "",
+G7$round7 <- R7F$engine[match(G7$id, R7F$id)]
+add("7 年各点：模型与报告值（`calibration_final7y.csv`；round6 为第六轮模型的运行前记录 `r6_vs_final7y.csv`，round7 为第七轮的校准结果 `r7_calibration_final7y.csv`；objective_term 为该点对目标函数的贡献；DRFS 不在目标函数中，只报告）：", "",
     md_table(with(G7, data.frame(id = id, reported = f2(value, 1), ci95 = ifelse(is.na(ci95_lo), "—", paste0(f2(ci95_lo, 1), "–", f2(ci95_hi, 1))),
-                                 round6 = f2(round6, 2), engine = f2(engine, 2), diff = f2(diff, 2), objective_term = ifelse(is.na(objective_term), "—", f2(objective_term, 3)),
+                                 round6 = f2(round6, 2), round7 = f2(round7, 2), engine = f2(engine, 2), diff = f2(diff, 2), objective_term = ifelse(is.na(objective_term), "—", f2(objective_term, 3)),
                                  inside_ci = ifelse(is.na(inside_ci), "—", ifelse(istrue(inside_ci), "是", "**否**")),
                                  gate_c = ifelse(istrue(gate_c), "是", "否（只报告）"), engine_k1 = f2(engine_k1, 2), diff_k1 = f2(diff_k1, 2)))), "")
 pp7 <- G7[G7$id == "os_pcr_pembro", ]
@@ -384,8 +443,22 @@ add(sprintf("两臂 OS 差（帕博利珠单抗 − 安慰剂；`scenario_k1_arm
     ad_txt, "",
     sprintf("偏差方向：帕博利珠单抗的 OS 获益在 5 年%s（%s），在 7 年%s。",
             both_dir(1), if (sign(AD$base_minus_reported[1]) == sign(AD$base_minus_reported[2]) && sign(AD$k1_minus_reported[1]) == sign(AD$k1_minus_reported[2])) "时点 OS 差与 RMST 差方向相同" else "时点 OS 差与 RMST 差方向不全一致", both_dir(3)), "")
+esh <- as.numeric(regmatches(es, regexec("aHR\\): ([\\d.]+) \\(95% CI ([\\d.]+)-([\\d.]+)\\)", es, perl = TRUE))[[1]][2:4])
+late_life <- function(a) 100 * (1 - DRE$early_share[DRE$arm == a & DRE$horizon_years == max(DRE$horizon_years)])
+add("报告的两臂 OS 差的不确定性（`scenario_k1_arm_diff_ci.csv`）：由各臂报告的 95% 置信区间换算——各臂标准误 = 区间宽度 ÷ 3.92，两臂差的标准误 = 两臂标准误的平方和开方（两臂独立），95% CI = 差 ± 1.96 × 标准误。5 年用 2024 年论文（IA7）报告的 5 年 OS，7 年用最终分析的 7 年 OS。", "",
+    md_table(with(ADU, data.frame(年 = year, 帕博利珠单抗 = sprintf("%s [%s, %s]", f2(pembro, 1), f2(pembro_lo, 1), f2(pembro_hi, 1)),
+                                  安慰剂 = sprintf("%s [%s, %s]", f2(placebo, 1), f2(placebo_lo, 1), f2(placebo_hi, 1)),
+                                  两臂差 = f2(diff, 1), 标准误 = f2(se_diff, 2), `95% CI` = sprintf("[%s, %s]", f2(ci95_lo, 1), f2(ci95_hi, 1)),
+                                  基准 = f2(base, 2), `基准在区间内` = ifelse(istrue(base_inside), "是", "**否**"),
+                                  `k = 1` = f2(k1, 2), `k = 1 在区间内` = ifelse(istrue(k1_inside), "是", "**否**"), check.names = FALSE))), "",
+    sprintf("基准和 k = 1 %s。5 年到 7 年间报告的两臂差由 %s 扩大到 %s 个百分点，但两个时点的 95%% CI（[%s, %s] 与 [%s, %s]）大幅重叠，这一扩大在抽样误差范围内无法与噪声区分。因此结构不再调整，涉及帕博利珠单抗的结果按 `docs/model_spec.md` 第 6 节以基准与 k = 1 两栏并列报告。",
+            if (all(istrue(ADU$base_inside)) && all(istrue(ADU$k1_inside))) "在两个时点都落在区间内" else "**并非在两个时点都落在区间内**",
+            f2(ADU$diff[1], 1), f2(ADU$diff[2], 1), f2(ADU$ci95_lo[1], 1), f2(ADU$ci95_hi[1], 1), f2(ADU$ci95_lo[2], 1), f2(ADU$ci95_hi[2], 1)), "",
+    sprintf("第八轮的结构（远处复发分为早期与晚期）是在 ESME 晚期复发数据的依据下保留的，尽管 KM 部分的拟合误差（逐月平方误差和）由第七轮的 %s 增加到 %s。取舍的理由：(1) ESME 中晚期复发的中位 OS 为 %s 个月，早期为 %s 个月，校正 HR %s [%s, %s]，复发时点对复发后生存的影响有外部数据支持；(2) 模型中到 100 岁的远处复发，晚期占帕博利珠单抗组的 %s%%、安慰剂组的 %s%%（第 8.2 节），若一律用早期复发的中位，终生期的复发后生存会系统性偏短；(3) 拟合误差增加后三道门槛仍全部通过，拟合误差的差别不足以推翻有外部依据的结构。",
+            f2(VS$round7[VS$quantity == "km_SSE_both_arms_pp2"], 1), f2(VS$round8[VS$quantity == "km_SSE_both_arms_pp2"], 1),
+            m1[5], m1[2], f2(esh[1], 2), f2(esh[2], 2), f2(esh[3], 2), f2(late_life("pembro"), 1), f2(late_life("placebo"), 1)), "")
 add("### 8.5 隐含的生存与外部对照", "",
-    "模型隐含的生存（`dr_survival_implied.csv`；术前进展从 49.5 岁、远处复发从 50.5 岁计背景死亡；远处复发为共用风险，帕博利珠单抗组另乘 k）：", "",
+    "模型隐含的生存（`dr_survival_implied.csv`；术前进展从 49.5 岁、远处复发（早期与晚期）都从 50.5 岁计背景死亡；远处复发为两臂共用的风险，即 k = 1，帕博利珠单抗组另乘 k）：", "",
     md_table(transform(IMP, median_excess_only_months = f2(median_excess_only_months, 1), median_all_cause_months = f2(median_all_cause_months, 1),
                        surv_1y = f2(surv_1y, 3), surv_2y = f2(surv_2y, 3), surv_5y = f2(surv_5y, 3))), "")
 emx <- aggregate(cbind(max_abs_diff = abs(diff)) ~ check + arm, data = EC, FUN = max)
@@ -393,7 +466,37 @@ add("### 8.6 未用于校准的曲线", "",
     "与引擎的对照（`engine_checks.csv`，各曲线全部时点中差的绝对值最大者，百分点）：", "", md_table(transform(emx, max_abs_diff = f2(max_abs_diff, 3))), "",
     "图：`fig_calibration_OS.png`（灰带为 KM 逐点 95% CI，竖线为门槛时点）、`fig_engine_checks.png`。", "")
 add("### 8.7 此前各轮", "",
-    "第一轮至第三轮不达标；第四轮（术前进展后 Weibull）达标后由用户改设定；第五轮（术前进展后对数 logistic 加外部约束、远处复发后中位外部输入、k 固定为情景）不达标；第六轮（k 纳入基准校准）按规则接受。第七轮的结构与第六轮相同，只在目标函数中加入 7 年时点、在接受规则中加入 (c)。此前各轮的输出可在 git 历史中取回（第五轮为提交 0abaddd，第六轮为 e530a56）。第三轮的可行性扫描 `R/05b_gate_feasibility.R` 保留为诊断。", "")
+    "第一轮至第三轮不达标；第四轮（术前进展后 Weibull）达标后由用户改设定；第五轮（术前进展后对数 logistic 加外部约束、远处复发后中位外部输入、k 固定为情景）不达标；第六轮（k 纳入基准校准）按规则接受；第七轮（目标函数加入 7 年时点，接受规则加入 (c)）按规则接受，其 bootstrap 按用户指示中止，**已被第八轮取代**。第八轮的结构与第七轮相同，只把远处复发分为早期与晚期。此前各轮的输出可在 git 历史中取回（第五轮为提交 0abaddd，第六轮为 e530a56，第七轮为 d1b5517）。第三轮的可行性扫描 `R/05b_gate_feasibility.R` 保留为诊断。", "")
+
+SO <- rd("output", "phase1", "scenario_preprog_optimistic.csv")
+SG <- rd("output", "phase1", "scenario_preprog_optimistic_gate.csv")
+SA <- rd("output", "phase1", "scenario_preprog_optimistic_arm_diff.csv")
+so <- function(q, col = "scenario") SO[[col]][SO$quantity == q]
+sg <- function(g) SG[SG$gate == g, ]
+add("### 8.8 乐观情景：术前进展后中位 26 个月、5 年存活 20%（`R/05s_preprog_optimistic.R`）", "",
+    sprintf("设定（`docs/model_spec.md` 第 6 节）：术前进展后的对数 logistic 固定为中位 %s 个月、进入后 5 年全因存活 %s%%（形状由两者决定，为 %s），依据 Elmore 等的 MD Anderson 队列（第 8.1 节）；远处复发后的形状与 k 按基准的目标函数重新校准，远处复发后的中位与基准相同（早期 %s、晚期 %s 个月）。",
+            f2(so("preprog_median_months"), 0), f2(100 * so("preprog_allcause_surv_5y"), 0), f2(so("preprog_shape"), 4),
+            f2(so("dr_median_early_months"), 1), f2(so("dr_median_late_months"), 1)), "",
+    sprintf("结果（`scenario_preprog_optimistic.csv`）：k = %s（基准 %s），远处复发后形状 %s（基准 %s）；%s。目标函数值 %s。",
+            f2(so("pembro_dr_k"), 3), f2(so("pembro_dr_k", "base"), 3), f2(so("dr_shape"), 4), f2(so("dr_shape", "base"), 4),
+            if (istrue(so("k_at_bound") == 1) || istrue(so("dr_shape_at_bound") == 1)) "**有参数贴边界**" else "k 与形状都不在边界上",
+            f2(so("objective"), 2)), "",
+    sprintf("三道门槛（只作参考，不作判定；`scenario_preprog_optimistic_gate.csv`）：(a) 10 个点中 %d 个落在 KM 逐点 95%% 区间内（%s）；(b) 模型 5 年 RMST 两臂差 %s 年，%s KM 差的 bootstrap 95%% 区间 %s 至 %s 年内；(c) 7 年 OS 与 EFS 的 4 个值中 %d 个落在最终分析的 95%% 区间内。",
+            sum(istrue(sg("a")$inside)), c(inside = "全部在区间内", `accepted by (i)+(ii)` = "按例外规则 (i)、(ii) 可接受", `not met` = "不满足")[[sg("a")$gate_result[1]]],
+            f2(sg("b")$engine, 4), if (istrue(sg("b")$inside)) "落在" else "不在",
+            f2(sg("b")$lo, 4), f2(sg("b")$hi, 4), sum(istrue(sg("c")$inside))), "",
+    md_table(with(SG, data.frame(门槛 = gate, 项目 = item, 模型 = f2(engine, 3), 下限 = f2(lo, 3), 上限 = f2(hi, 3),
+                                在区间内 = ifelse(istrue(inside), "是", "**否**")))), "",
+    "两臂 OS 差（帕博利珠单抗 − 安慰剂；`scenario_preprog_optimistic_arm_diff.csv`；基准、k = 1 与参照值同第 8.4 节）：", "",
+    md_table(data.frame(量 = ad_lab, 参照 = ad_ref, 乐观情景 = mapply(f2, SA$optimistic, ad_d), 基准 = mapply(f2, SA$base, ad_d),
+                        `k = 1` = mapply(f2, SA$k1, ad_d), 参照值 = mapply(f2, SA$reported, ad_d),
+                        乐观情景减参照值 = mapply(f2, SA$optimistic_minus_reported, ad_d), check.names = FALSE)), "",
+    sprintf("该情景的校准目标函数为 %s，基准为 %s；年度门槛点虽然%s在区间内，但整体拟合明显变差，数据不支持这一设定，因此只作为敏感性分析。两个时点上的得失：5 年 RMST 差%s（%s 对 %s，差 %s；基准差 %s），7 年 OS 差%s（%s 对 %s，差 %s；基准差 %s）。",
+            f2(so("objective"), 1), f2(OB$value[OB$part == "total"], 1), if (all(istrue(sg("a")$inside))) "全部" else "并非全部",
+            if (abs(SA$optimistic_minus_reported[2]) < abs(SA$base[2] - SA$reported[2])) "更接近 KM" else "并未更接近 KM",
+            f2(SA$optimistic[2], 4), f2(SA$reported[2], 4), f2(SA$optimistic_minus_reported[2], 4), f2(SA$base[2] - SA$reported[2], 4),
+            if (abs(SA$optimistic_minus_reported[3]) > abs(SA$base[3] - SA$reported[3])) "离报告值更远" else "并未离报告值更远",
+            f2(SA$optimistic[3], 2), f2(SA$reported[3], 2), f2(SA$optimistic_minus_reported[3], 2), f2(SA$base[3] - SA$reported[3], 2)), "")
 
 # ---------------------------------------------------------------- step 6
 if (boot_done) {
@@ -401,13 +504,13 @@ if (boot_done) {
   cnt <- function(x) sum(x, na.rm = TRUE)
   c52 <- BC[, "code52"] == 1
   imp52 <- BC[, "value_before"] - BC[, "value_after"]
-  drm <- 12 * BC[, "dr_median"]
+  drm <- 12 * BC[, "dr_median"]; drl <- 12 * BC[, "dr_late_median"]
   add("## 9. Bootstrap（步骤 6，`R/06_bootstrap.R`）", "",
       sprintf("B = %d，随机种子 %d（第 b 次用种子 + b），并行，耗时 %s 分钟。每次：", BRS$B, BRS$seed, f2(BRS$minutes, 1)),
       "1. 分层 EFS（2022 年补充材料 Fig. S4，IA4）：在各臂内连同 pCR 标签重抽样，pCR 比例与各层人数随之变动；各层在手术时点 landmark，用与基准相同的分布族重拟合并加 5 年约束（边界固定）；术前 KM 重算。",
       "2. 术前进展的进入比例 = 报告例数 / 重抽样后的非 pCR 人数（全臂比例保持报告值）。",
       "3. OS（2024 年 Fig. 1A，IA7）：在各臂内重抽样；所选的 OS 模型重拟合（只保存，引擎不用；RP 结点固定在基准位置）。",
-      "4. 远处复发后中位按第 8.1 节的混合分布抽样；8 个 7 年目标值按其抽样分布抽取（有置信区间的 4 个点：正态，均值为报告值，SD 为第 8.1 节的 SE；按 pCR 分层的 4 个点：二项，n 为该层人数，p 为报告值；权重仍用第 8.1 节的 SE）；再对重抽样后的 OS KM 与抽到的 7 年目标值校准术前进展的中位与形状、远处复发后形状与 k（基准估计值加基准的 6 个起点，取最优；返回码 52 时再加 5 个随机起点取最优）。",
+      "4. 远处复发后的两个中位按第 8.1 节的分布各自抽样（早期：混合分布；晚期：对数正态）；8 个 7 年目标值按其抽样分布抽取（有置信区间的 4 个点：正态，均值为报告值，SD 为第 8.1 节的 SE；按 pCR 分层的 4 个点：二项，n 为该层人数，p 为报告值；权重仍用第 8.1 节的 SE）；再对重抽样后的 OS KM 与抽到的 7 年目标值校准术前进展的中位与形状、远处复发后形状与 k（基准估计值加基准的 6 个起点，取最优；返回码 52 时再加 5 个随机起点取最优）。",
       "5. 引擎在 5、7、10、20 年的 EFS 与 OS（臂 × pCR；帕博利珠单抗组另算情景 k = 1）。",
       "每次都固定的数据设定：生命表、EFS 事件构成与分配比例、因不良事件死亡、局部区域复发 → 远处复发的率、术前进展例数、术前进展的外部约束、5 年约束的边界。拟合失败的样本换种子重抽（计入 attempts）。", "",
       sprintf("结果：完成 %d 次，10 次重抽仍失败 %d 次，换种子重抽的样本 %d 个。optim 返回码（最终）：%s。返回码 52 而加随机起点重跑的 %d 次，其中目标值改善的 %d 次（最大改善 %s）。",
@@ -418,7 +521,8 @@ if (boot_done) {
               cnt(BC[, "k_low"] == 1), cnt(BC[, "k_high"] == 1), cnt(BC[, "pp_median_low"] == 1), cnt(BC[, "pp_median_high"] == 1),
               cnt(BC[, "pp_s5_at_min"] == 1), cnt(BC[, "dr_shape_bound"] == 1),
               paste(colnames(BB)[-1], colSums(BB[, -1, drop = FALSE]), sep = " ", collapse = "，")),
-      sprintf("抽到的远处复发后中位：中位数 %s 个月，2.5%% 至 97.5%% 分位 %s 至 %s 个月。", f2(median(drm), 2), f2(quantile(drm, 0.025), 2), f2(quantile(drm, 0.975), 2)), "",
+      sprintf("抽到的远处复发后中位：早期中位数 %s 个月（2.5%% 至 97.5%% 分位 %s 至 %s）；晚期中位数 %s 个月（%s 至 %s）。",
+              f2(median(drm), 2), f2(quantile(drm, 0.025), 2), f2(quantile(drm, 0.975), 2), f2(median(drl), 2), f2(quantile(drl, 0.025), 2), f2(quantile(drl, 0.975), 2)), "",
       "参数的基准值与 bootstrap 分布（`output/phase1/bootstrap_summary.csv`；参数矩阵在 `data/bootstrap/`，一行一个样本；中位为年）：", "",
       md_table(transform(BSUM[BSUM$group %in% c("calibration", "pCR and PreProg"), ], base = f2(base, 4), boot_mean = f2(boot_mean, 4),
                          boot_median = f2(boot_median, 4), boot_lo = f2(boot_lo, 4), boot_hi = f2(boot_hi, 4))), "",
@@ -460,15 +564,17 @@ add("## 11. 已决事项与待决事项", "",
     "- 校准第四轮（2026-10-22）：门槛 (b) 改为 KM 差的 bootstrap 区间。",
     "- 校准第五轮（2026-10-22）：远处复发后中位改为外部输入（10.1 个月；概率敏感性分析按 ESME 与 IMpassion132 的混合分布抽样）；术前进展后死亡改为对数 logistic，加两条外部约束；返回码 52 时加随机起点。",
     "- 校准第六轮（2026-10-22）：k 纳入基准校准（0.25 至 4）；原 OS 锚定情景撤掉，改设情景 k = 1；接受规则运行前确定；门槛修改记录保留全部六项；IMpassion132 的置信区间已用全文核对。",
-    "- 校准第七轮（2026-10-22）：加入 KEYNOTE-522 最终分析（ASCO 2026）的 7 年值（目标函数 8 个点；门槛 (c)）；接受规则运行前确定；结构不变。",
+    "- 校准第七轮（2026-10-22）：加入 KEYNOTE-522 最终分析（ASCO 2026）的 7 年值（目标函数 8 个点；门槛 (c)）；接受规则运行前确定；结构不变。bootstrap 中止，已被第八轮取代。",
+    sprintf("- 校准第八轮（2026-10-22）：远处复发按进入时点分为早期（随机化后 %d 个月以内）与晚期，中位分别为 ESME 的 %s 与 %s 个月，形状共用；接受规则与第七轮相同，运行前提交。",
+            CFG$dr_early_months, f2(12 * DR_MEDIAN_BASE[["early"]], 1), f2(12 * DR_MEDIAN_BASE[["late"]], 1)),
     "- 第 2 阶段的报告方式（2026-10-22）：涉及帕博利珠单抗的结果（帕博利珠单抗对单用化疗、帕博利珠单抗加运动对帕博利珠单抗）以基准与 k = 1 两栏并列；方向一致时表述为结论稳健，不一致时分别写出两种结论，不选其一（`docs/model_spec.md` 第 6 节）。",
     "",
     "记录（不作处理）：",
     "- 帕博利珠单抗组 pCR 层的 7 年 OS，模型低于报告值（报告值没有置信区间；第 8.2 节）。",
     "",
     "待决：",
-    if (stop6) "- **校准第七轮未被接受**（第 8 节）。按指示未自行增加结构，处理方向待定。" else NULL,
-    if (CANDS$at_bound[["pp_s5_at_min"]]) "- 术前进展后死亡的校准值仍贴在「5 年存活 ≥ 5%」的约束上（第 8.2 节）。" else NULL,
+    if (stop6) "- **校准第八轮未被接受**（第 8 节）。按指示未自行增加结构，处理方向待定。" else NULL,
+    if (istrue(CS$constraint_at_bound)) sprintf("- 术前进展后死亡的校准值%s（第 8.2 节）。", pp_bound_txt(CANDS$at_bound)) else NULL,
     "- 若尾崎日后提供 2023-03-23 截点的分层 KM，5 年约束改为用整条曲线（2026-10-22 的决定）。",
     "",
     "等尾崎回答：",
@@ -477,10 +583,8 @@ add("## 11. 已决事项与待决事项", "",
     "- 帕博利珠单抗组是否也加 S-JP。", "")
 
 add("## 12. 局限性", "",
-    sprintf("- 没有最终分析的 KM 曲线，7 年时的数据只能以时点数值的形式加入。校准用的 KM 到第 %d 个月为止，其后只有 7 年这一个时点；7 年以后的曲线形状没有直接的数据约束。",
-            max(CFG$calib_grid_months)),
-    "- 7 年的数值读自会议报道（OncLive、CancerNetwork、DelveInsight），未能取得 ascopubs.org 的摘要原文；按 pCR 分层的 OS 在报道中没有写明时点，按 7 年值使用（第 8.1 节）。",
-    sprintf("- 术前进展的人数少（两臂合计 %d 例，2024 年 Table 1），其后的死亡分布主要由外部约束决定（第 8.1 节）。", n_pp), "")
+    "- 模型在 5 年和 7 年未能同时重现两臂 OS 差随时间扩大的形状；仅凭公开的汇总数据无法判别这一形状是否超出抽样误差（第 8.4 节）。",
+    sprintf("- 术前进展的人数少（两臂合计 %d 例），其死亡分布主要由外部约束决定，校准值%s（第 8.2 节；乐观情景见第 8.8 节）。", n_pp, pp_bound_txt(CANDS$at_bound)), "")
 
 writeLines(L, file.path(out_dir, "phase1_report.md"), useBytes = TRUE)
 cat("wrote phase1_report.md:", length(L), "lines\n")

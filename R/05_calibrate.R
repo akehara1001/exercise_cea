@@ -1,14 +1,16 @@
 # 05_calibrate.R
-# Step 5, seventh round (2026-10-22). Structure unchanged from round 6 (as set by the user, no
-# stepwise trials):
+# Step 5, eighth round (2026-10-22). Structure of round 7 with one change set by the user (distant
+# recurrence split into early and late), no stepwise trials:
 #   - deaths due to adverse events: per arm, evenly over the treatment period, not calibrated
 #     (engine.R, config.R); removed from the deaths without recurrence of the EFS composition;
 #   - progression precluding surgery is its own state (PreProg); excess death log-logistic in time
 #     since entry, common to both arms; shape and median calibrated under external constraints
 #     (calibration.R): median 10-26 months, all-cause survival 5 years after entry >= 5%;
-#   - excess death after distant recurrence: log-logistic in time since DR, median an external
-#     input (10.1 months, ESME), shape calibrated; in the pembrolizumab arms multiplied by k,
-#     calibrated with the other parameters (0.25 to 4);
+#   - excess death after distant recurrence: log-logistic in time since DR; two sub-states by the
+#     time of entry (round 8): early (DR up to CFG$dr_early_months = 18 months from randomization)
+#     with median 10.1 months and late with median 17.1 months (ESME, external inputs); shape
+#     shared and calibrated; in the pembrolizumab arms multiplied by k, calibrated with the other
+#     parameters (0.25 to 4);
 #   - EFS models with the 5-year constraint (04_fit_models.R, efs5_constraint.csv).
 # Objective: sum over both arms of squared differences (percentage points) between engine OS and
 # the KM of Schmid 2024 Fig. 1A at months 1..78 (unchanged), plus (round 7) eight points of the
@@ -16,8 +18,8 @@
 # OS and EFS by arm, ((engine - reported) / SE)^2 with the SE from the reported 95% CI, and OS by
 # pCR status, with the binomial SE of the stratum size (IA7 pCR counts). The KM part is the same as
 # an SE of 1 point per monthly point.
-# Acceptance rule, fixed before this round was run (docs/acceptance_rule_round7.md, commit
-# f811ec4; config.R):
+# Acceptance rule, fixed before this round was run (docs/acceptance_rule_round8.md, commit
+# e0a722c; same as round 7, docs/acceptance_rule_round7.md; config.R):
 #   (a) in each arm, engine OS inside the pointwise 95% CI of the reconstructed KM (survfit
 #       default, log scale) at 1, 2, 3, 4 and 5 years; if not, accepted only if every point
 #       outside is outside by <= 0.3 points and all 10 points are inside the Bonferroni (99.5%)
@@ -33,9 +35,10 @@
 #          calibration_status.csv, calibration_rmst.csv, calibration_deaths_by_source.csv,
 #          ae_deaths.csv, dr_survival_implied.csv, calibration_curves.csv, engine_checks.csv,
 #          scenario_k1.csv, scenario_k1_gate.csv, scenario_k1_arm_diff.csv (between-arm OS
-#          difference at 5 and 7 years), calibration_final7y.csv (gate (c) and the other
-#          7-year points), calibration_objective.csv, calibration_vs_r6.csv,
-#          fig_calibration_OS.png, fig_engine_checks.png;
+#          difference at 5 and 7 years), scenario_k1_arm_diff_ci.csv (95% CI of the reported
+#          difference), calibration_final7y.csv (gate (c) and the other
+#          7-year points), calibration_objective.csv, calibration_vs_previous.csv (rounds 6, 7,
+#          8), dr_early_share.csv, fig_calibration_OS.png, fig_engine_checks.png;
 #          data/fits/calibration_candidates.rds, data/fits/engine_params.rds (accepted only)
 
 source("C:/Users/原明美/Documents/ClaudeCode/exercise_cea/R/config.R")
@@ -57,17 +60,18 @@ gate_m <- 12 * CFG$gate_years
 target <- lapply(os_ipd, function(d) 100 * km_at(d, g_m))
 X7 <- final7y_targets()                         # calibration.R: 8 points at 7 years with their SE
 
-P0 <- engine_params(dr = list(dist = "llogis", shape = 1, scale = DR_MEDIAN_BASE), preprog = list(dist = "llogis", shape = 1, scale = 1))
+P0 <- engine_params(dr = list(dist = "llogis", shape = 1, scale = DR_MEDIAN_BASE[["early"]], late_scale = DR_MEDIAN_BASE[["late"]],
+                              early_cycles = DR_EARLY_CYCLES), preprog = list(dist = "llogis", shape = 1, scale = 1))
 os_model <- function(P, months = g_m) lapply(arm_of, function(e) 100 * survival_engine(e, "all", times = months / 12, params = P)$OS)
 set.seed(CFG$seed)                              # random restarts if optim returns code 52
 cal <- calibrate_os(P0, target, g_m, DR_MEDIAN_BASE, extra = X7)   # calibration.R (6 starts)
 best <- cal$optim; vals <- cal$starts_values; at_bound <- cal$at_bound
 P1 <- cal_apply(P0, cal$par, DR_MEDIAN_BASE)
-STRUCT <- "AE deaths (data) + PreProg log-logistic (constrained) + DR log-logistic, median external, x k in pembrolizumab arms"
+STRUCT <- "AE deaths (data) + PreProg log-logistic (constrained) + DR early/late log-logistic, medians external, shared shape, x k in pembrolizumab arms"
 constraint_bound <- at_bound[["pp_median_low"]] || at_bound[["pp_median_high"]] || at_bound[["pp_s5_at_min"]]
-cat(sprintf("PreProg log-logistic shape %.4f (cap %.4f), median %.4f months; DR log-logistic shape %.4f, median %.4f months (external); k %.4f; SSE %.2f; starts spread %.2e; convergence %d\n",
-            P1$preprog$shape, pp_shape_cap(P1$preprog$scale), 12 * P1$preprog$scale, P1$dr$shape, 12 * P1$dr$scale, P1$pembro_dr_k,
-            best$value, diff(range(vals)), best$convergence))
+cat(sprintf("PreProg log-logistic shape %.4f (cap %.4f), median %.4f months; DR log-logistic shape %.4f, median early %.4f / late %.4f months (external); k %.4f; objective %.2f; starts spread %.2e; convergence %d\n",
+            P1$preprog$shape, pp_shape_cap(P1$preprog$scale), 12 * P1$preprog$scale, P1$dr$shape, 12 * P1$dr$scale, 12 * P1$dr$late_scale,
+            P1$pembro_dr_k, best$value, diff(range(vals)), best$convergence))
 print(round(vals, 4)); print(at_bound); print(cal$code52)
 
 # gate (a): pointwise 95% CI of the KM at 1-5 years, with the Bonferroni (99.5%) intervals and the
@@ -170,37 +174,60 @@ fit_row <- function(P, stage) {
                rmse_pp = sqrt(mean((m[[a]] - target[[a]])^2)), max_abs_diff_pp = max(abs(m[[a]] - target[[a]])),
                gate_max_abs_diff_pp = max(abs(gg[[a]] - km)), preprog_shape = P$preprog$shape, preprog_median_months = 12 * P$preprog$scale,
                preprog_shape_cap = pp_shape_cap(P$preprog$scale), dr_shape = P$dr$shape, dr_median_months = 12 * P$dr$scale,
+               dr_late_median_months = 12 * P$dr$late_scale,
                pembro_dr_k = P$pembro_dr_k)
   }))
 }
 CAL <- rbind(fit_row(P0, "start value"), fit_row(P1, "calibrated"))
 write.csv(CAL, file.path(out_dir, "calibration.csv"), row.names = FALSE)
 
-# round 7 vs round 6 (output/phase1/r6_*.csv, the round-6 outputs saved from commit e530a56)
-C6 <- read.csv(file.path(out_dir, "r6_calibration.csv")); C6 <- C6[C6$stage == "calibrated", ][1, ]
-R6 <- read.csv(file.path(out_dir, "r6_calibration_rmst.csv"))
+# round 8 vs rounds 6 and 7 (output/phase1/r6_*.csv and r7_*.csv: the outputs of commits e530a56
+# and d1b5517); the late DR median did not exist before round 8
+prev <- function(r) {
+  C <- read.csv(file.path(out_dir, paste0(r, "_calibration.csv"))); C <- C[C$stage == "calibrated", ][1, ]
+  R <- read.csv(file.path(out_dir, paste0(r, "_calibration_rmst.csv")))
+  c(C$pembro_dr_k, C$preprog_median_months, C$preprog_shape, C$preprog_shape_cap, C$dr_shape, C$dr_median_months, NA,
+    R$rmst5_engine[R$arm == "pembro - placebo"], C$SSE_both_arms)
+}
 VS <- data.frame(quantity = c("pembro_dr_k", "preprog_median_months", "preprog_shape", "preprog_shape_cap", "dr_shape",
-                              "rmst5_diff_engine_years", "km_SSE_both_arms_pp2"),
-                 round6 = c(C6$pembro_dr_k, C6$preprog_median_months, C6$preprog_shape, C6$preprog_shape_cap, C6$dr_shape,
-                            R6$rmst5_engine[R6$arm == "pembro - placebo"], C6$SSE_both_arms),
-                 round7 = c(P1$pembro_dr_k, 12 * P1$preprog$scale, P1$preprog$shape, pp_shape_cap(P1$preprog$scale), P1$dr$shape,
-                            RM$rmst5_engine[3], OB$value[1]))
-VS$change <- VS$round7 - VS$round6
-write.csv(VS, file.path(out_dir, "calibration_vs_r6.csv"), row.names = FALSE)
+                              "dr_median_months_early_or_common", "dr_median_months_late", "rmst5_diff_engine_years", "km_SSE_both_arms_pp2"),
+                 round6 = prev("r6"), round7 = prev("r7"),
+                 round8 = c(P1$pembro_dr_k, 12 * P1$preprog$scale, P1$preprog$shape, pp_shape_cap(P1$preprog$scale), P1$dr$shape,
+                            12 * P1$dr$scale, 12 * P1$dr$late_scale, RM$rmst5_engine[3], OB$value[1]))
+write.csv(VS, file.path(out_dir, "calibration_vs_previous.csv"), row.names = FALSE)
+if (file.exists(file.path(out_dir, "calibration_vs_r6.csv"))) file.remove(file.path(out_dir, "calibration_vs_r6.csv"))
 print(VS, row.names = FALSE)
 
-# implied median survival after PreProg (entry ~ age 49.5) and after DR (excess-only and all-cause from age 50.5)
+# share of distant recurrences that are early (entered up to CFG$dr_early_months from
+# randomization), by arm: among all DR entries to age 100 and among those by 5 and 7 years; and
+# the cumulative incidence (percent of the arm). DR entries do not depend on post-DR mortality,
+# so k and the scenario k = 1 do not change them.
+DRE <- do.call(rbind, lapply(names(arm_of), function(a) {
+  e <- survival_engine(arm_of[[a]], "all", params = P1)
+  by <- function(y) { i <- e$time <= y + 1e-9; c(early = sum(e$In_DR_early[i]), all = sum(e$In_DR[i])) }
+  r <- sapply(c(5, 7, 100 - CFG$start_age), by)
+  data.frame(arm = a, horizon_years = c(5, 7, 100 - CFG$start_age), dr_cum_incidence_pct = 100 * r["all", ],
+             early_cum_incidence_pct = 100 * r["early", ], late_cum_incidence_pct = 100 * (r["all", ] - r["early", ]),
+             early_share = r["early", ] / r["all", ], early_months = CFG$dr_early_months)
+}))
+write.csv(DRE, file.path(out_dir, "dr_early_share.csv"), row.names = FALSE)
+print(DRE, row.names = FALSE)
+
+# implied median survival after PreProg (entry ~ age 49.5) and after early and late DR (excess-only
+# and all-cause from age 50.5 for both; common hazard, k = 1)
 tt <- round(seq(0, 40, by = 1 / 1200), 8)
 med <- function(S) tt[which(S <= 0.5)[1]]
 S_ppx <- exp(-dr_cumhaz(P1$preprog, tt))
 S_pp <- S_ppx * S_pop(PP_ENTRY_AGE, tt)
-S_drx <- exp(-dr_cumhaz(P1$dr, tt))
-IMP <- data.frame(state = c("PreProg", "DR"),
-                  median_excess_only_months = 12 * c(med(S_ppx), med(S_drx)),
-                  median_all_cause_months = 12 * c(med(S_pp), med(S_drx * S_pop(CFG$start_age + 1.5, tt))),
-                  surv_1y = c(S_pp[tt == 1], (S_drx * S_pop(CFG$start_age + 1.5, tt))[tt == 1]),
-                  surv_2y = c(S_pp[tt == 2], (S_drx * S_pop(CFG$start_age + 1.5, tt))[tt == 2]),
-                  surv_5y = c(S_pp[tt == 5], (S_drx * S_pop(CFG$start_age + 1.5, tt))[tt == 5]))
+S_dex <- exp(-dr_cumhaz(P1$dr, tt))
+S_dlx <- exp(-dr_cumhaz(modifyList(P1$dr, list(scale = P1$dr$late_scale)), tt))
+S_dr_bg <- S_pop(CFG$start_age + 1.5, tt)
+IMP <- data.frame(state = c("PreProg", "DR early", "DR late"),
+                  median_excess_only_months = 12 * c(med(S_ppx), med(S_dex), med(S_dlx)),
+                  median_all_cause_months = 12 * c(med(S_pp), med(S_dex * S_dr_bg), med(S_dlx * S_dr_bg)),
+                  surv_1y = c(S_pp[tt == 1], (S_dex * S_dr_bg)[tt == 1], (S_dlx * S_dr_bg)[tt == 1]),
+                  surv_2y = c(S_pp[tt == 2], (S_dex * S_dr_bg)[tt == 2], (S_dlx * S_dr_bg)[tt == 2]),
+                  surv_5y = c(S_pp[tt == 5], (S_dex * S_dr_bg)[tt == 5], (S_dlx * S_dr_bg)[tt == 5]))
 write.csv(IMP, file.path(out_dir, "dr_survival_implied.csv"), row.names = FALSE)
 print(IMP, row.names = FALSE)
 
@@ -278,6 +305,24 @@ AD$base_minus_reported <- AD$base - AD$reported; AD$k1_minus_reported <- AD$k1 -
 AD$k_base <- P1$pembro_dr_k
 write.csv(AD, file.path(out_dir, "scenario_k1_arm_diff.csv"), row.names = FALSE)
 print(AD, row.names = FALSE)
+# uncertainty of the reported between-arm OS difference at 5 years (2024 paper, IA7) and 7 years
+# (final analysis): SE of each arm = CI width / 3.92, SE of the difference = sqrt(SE1^2 + SE2^2)
+# (arms independent), 95% CI = difference +- 1.96 SE; base and k = 1 checked against it
+rvf <- read.csv(file.path(ROOT, "data", "reported_values.csv"), stringsAsFactors = FALSE)
+r5 <- function(key) as.numeric(rvf$value[rvf$fact_id == "K24_os_milestones" & rvf$key == key])
+f7 <- function(id, col) G7[[col]][G7$id == id]
+ADU <- data.frame(year = c(5, 7), source = c("2024 paper (IA7), 5-year OS", "final analysis, 7-year OS"),
+                  pembro = c(r5("pembro_5y"), f7("os7_pembro", "value")), pembro_lo = c(r5("pembro_5y_lo"), f7("os7_pembro", "ci95_lo")),
+                  pembro_hi = c(r5("pembro_5y_hi"), f7("os7_pembro", "ci95_hi")),
+                  placebo = c(r5("placebo_5y"), f7("os7_placebo", "value")), placebo_lo = c(r5("placebo_5y_lo"), f7("os7_placebo", "ci95_lo")),
+                  placebo_hi = c(r5("placebo_5y_hi"), f7("os7_placebo", "ci95_hi")))
+ADU$se_pembro <- (ADU$pembro_hi - ADU$pembro_lo) / 3.92; ADU$se_placebo <- (ADU$placebo_hi - ADU$placebo_lo) / 3.92
+ADU$diff <- ADU$pembro - ADU$placebo; ADU$se_diff <- sqrt(ADU$se_pembro^2 + ADU$se_placebo^2)
+ADU$ci95_lo <- ADU$diff - qnorm(0.975) * ADU$se_diff; ADU$ci95_hi <- ADU$diff + qnorm(0.975) * ADU$se_diff
+ADU$base <- AD$base[c(1, 3)]; ADU$k1 <- AD$k1[c(1, 3)]
+ADU$base_inside <- ADU$base >= ADU$ci95_lo & ADU$base <= ADU$ci95_hi; ADU$k1_inside <- ADU$k1 >= ADU$ci95_lo & ADU$k1 <= ADU$ci95_hi
+write.csv(ADU, file.path(out_dir, "scenario_k1_arm_diff_ci.csv"), row.names = FALSE)
+print(ADU, row.names = FALSE)
 saveRDS(list(structure = STRUCT, params = P1, optim = best, starts_values = vals, at_bound = at_bound, code52 = cal$code52,
              constraint_at_bound = constraint_bound),
         file.path(ROOT, "data", "fits", "calibration_candidates.rds"))
@@ -316,7 +361,7 @@ if (!pass_a) {
 }
 
 if (pass) saveRDS(P1, file.path(ROOT, "data", "fits", "engine_params.rds")) else {
-  cat("not accepted under the round-7 rule: stop before step 6\n")
+  cat("not accepted under the round-8 rule: stop before step 6\n")
   if (file.exists(file.path(ROOT, "data", "fits", "engine_params.rds"))) file.remove(file.path(ROOT, "data", "fits", "engine_params.rds"))
 }
 

@@ -43,7 +43,8 @@ rebuild <- function(i) {
     Pb$q_pre[[a]] <- c(pCR = 0, nonpCR = unname(pc[paste0("q_pre_", a)]))
   }
   Pb$preprog <- list(dist = "llogis", shape = unname(cb["preprog_shape"]), scale = unname(cb["preprog_median"]))
-  Pb$dr <- list(dist = "llogis", shape = unname(cb["dr_shape"]), scale = unname(cb["dr_median"]))
+  Pb$dr <- list(dist = "llogis", shape = unname(cb["dr_shape"]), scale = unname(cb["dr_median"]),
+                late_scale = unname(cb["dr_late_median"]), early_cycles = P$dr$early_cycles)
   Pb$pembro_dr_k <- unname(cb["pembro_dr_k"])
   Pb
 }

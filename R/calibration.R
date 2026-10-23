@@ -1,9 +1,12 @@
 # calibration.R
-# Calibration shared by 05_calibrate.R and 06_bootstrap.R (structure of round 6, 2026-10-22):
-#   - DR excess death: log-logistic, common shape and median; median an external input (base
-#     10.1 months, ESME, PMID 37385070; drawn per bootstrap replicate from dr_median_draw());
-#     shape calibrated. In the pembrolizumab arms the DR excess hazard is multiplied by k,
-#     calibrated with the other parameters within CFG$pembro_dr_k_bounds (0.25 to 4).
+# Calibration shared by 05_calibrate.R and 06_bootstrap.R (structure of round 8, 2026-10-22):
+#   - DR excess death: log-logistic in time since DR, two sub-states by the time of entry
+#     (engine.R dr_state()): early (entered up to CFG$dr_early_months from randomization) and
+#     late. Medians are external inputs (ESME, PMID 37385070: early 10.1 months, late 17.1
+#     months; drawn per bootstrap replicate from dr_median_draw() and dr_late_median_draw()); the
+#     shape is shared and calibrated. In the pembrolizumab arms the DR excess hazard (both
+#     sub-states) is multiplied by k, calibrated with the other parameters within
+#     CFG$pembro_dr_k_bounds (0.25 to 4).
 #   - PreProg excess death: log-logistic in time since entry, common to the arms; shape (> 1
 #     allowed) and median calibrated under external constraints: median 10-26 months (ESME
 #     10.1 rounded; Elmore et al., Ann Surg Oncol 2021, PMID 34247335, median OS 26 months) and
@@ -31,7 +34,14 @@ DR_MEDIAN_SOURCES <- data.frame(
   source = c("ESME early relapse (Grinda 2023, PMID 37385070, abstract)", "IMpassion132 placebo, PD-L1-positive (Dent 2024, PMID 38755096, p.6)"),
   median = c(.esme[1], .rvv("IMP132_os", "median_placebo")), lo = c(.esme[2], .rvv("IMP132_os", "lo_placebo")),
   hi = c(.esme[3], .rvv("IMP132_os", "hi_placebo")), weight = c(0.5, 0.5))
-DR_MEDIAN_BASE <- DR_MEDIAN_SOURCES$median[1] / 12
+# late relapse (>= 12 months after the end of chemotherapy), same abstract (round 8)
+.esme_late <- as.numeric(regmatches(.esme_txt, regexec("versus ([\\d.]+) months \\(95% CI ([\\d.]+)-([\\d.]+)\\) in those with late relapse",
+                                                       .esme_txt, perl = TRUE))[[1]][2:4])
+DR_LATE_MEDIAN_SOURCE <- data.frame(source = "ESME late relapse (Grinda 2023, PMID 37385070, abstract)",
+                                    median = .esme_late[1], lo = .esme_late[2], hi = .esme_late[3])
+# base medians in years: early (ESME early relapse) and late (ESME late relapse)
+DR_MEDIAN_BASE <- c(early = DR_MEDIAN_SOURCES$median[1] / 12, late = DR_LATE_MEDIAN_SOURCE$median / 12)
+DR_EARLY_CYCLES <- round(CFG$dr_early_months / (12 * CFG$cycle_years))
 
 PP_MEDIAN_BOUNDS <- c(10, 26) / 12
 PP_S5_MIN <- 0.05
@@ -46,9 +56,10 @@ CAL_UPPER <- c(PP_MEDIAN_BOUNDS[2], 1, log(50), log(CFG$pembro_dr_k_bounds[2]))
 CAL_STARTS <- list(c(11 / 12, 0.5, log(1), log(1)), c(18 / 12, 0.9, log(0.7), log(1.5)), c(12 / 12, 0.99, log(0.5), log(2)),
                    c(24 / 12, 0.3, log(1.5), log(0.8)), c(14 / 12, 0.7, log(2), log(3)), c(10.5 / 12, 0.95, log(0.8), log(1.2)))
 
+# dr_median = c(early, late) in years
 cal_specs <- function(th, dr_median) list(
   preprog = list(dist = "llogis", shape = th[2] * pp_shape_cap(th[1]), scale = th[1]),
-  dr = list(dist = "llogis", shape = exp(th[3]), scale = dr_median),
+  dr = list(dist = "llogis", shape = exp(th[3]), scale = unname(dr_median[1]), late_scale = unname(dr_median[2]), early_cycles = DR_EARLY_CYCLES),
   k = exp(th[4]))
 cal_apply <- function(P, th, dr_median) {
   s <- cal_specs(th, dr_median); P$preprog <- s$preprog; P$dr <- s$dr; P$pembro_dr_k <- s$k; P
@@ -62,7 +73,7 @@ cal_os <- function(fl, s, common_dr = FALSE) {
   list(pembro = os_fast(fl$pembro, s$preprog, drp), placebo = os_fast(fl$placebo, s$preprog, s$dr))
 }
 # OS by pCR branch of an arm at cycle boundaries (os_fast is their mixture)
-branch_os <- function(af, preprog, dr, b) { f <- af$flows[[b]]; f$EF + f$LR + tunnel_state(f, f$to_P, preprog) + tunnel_state(f, f$to_DR, dr) }
+branch_os <- function(af, preprog, dr, b) { f <- af$flows[[b]]; f$EF + f$LR + tunnel_state(f, f$to_P, preprog) + dr_state(f, f$to_DR, dr) }
 # OS and EFS (= event-free occupancy) of both arms by pCR status (all / pCR / nonpCR), each branch
 # computed once; OS_all is the same expression as os_fast()
 cal_curves <- function(fl, s, common_dr = FALSE) lapply(c(pembro = "pembro", placebo = "placebo"), function(a) {
@@ -111,10 +122,16 @@ cal_at_bound <- function(th) c(pp_median_low = th[1] <= CAL_LOWER[1] + 1e-6, pp_
 # targets: list(pembro =, placebo =) in percent at `months` (whole months; cycle must be 1 month).
 # If the best start ends with optim code 52 (L-BFGS-B line-search failure), five random starts are
 # run and the best of all is kept; the before/after values are returned.
-calibrate_os <- function(P, targets, months, dr_median, starts = CAL_STARTS, fl = cal_flows(P), n_random = 5, extra = NULL) {
+# fixed (scenarios): a vector like CAL_LOWER holding the values of the parameters kept fixed and NA
+# for those estimated; NULL estimates all four.
+calibrate_os <- function(P, targets, months, dr_median, starts = CAL_STARTS, fl = cal_flows(P), n_random = 5, extra = NULL,
+                         fixed = NULL) {
   stopifnot(abs(P$cycle - 1 / 12) < 1e-12)
   idx <- months + 1
-  obj <- function(th) {
+  fr <- if (is.null(fixed)) rep(TRUE, length(CAL_LOWER)) else is.na(fixed)
+  full <- function(z) { if (is.null(fixed)) return(z); th <- fixed; th[fr] <- z; th }
+  obj <- function(z) {
+    th <- full(z)
     s <- cal_specs(th, dr_median)
     if (is.null(extra)) {
       o <- cal_os(fl, s)
@@ -126,7 +143,7 @@ calibrate_os <- function(P, targets, months, dr_median, starts = CAL_STARTS, fl 
       v <- v + ((curve_point(cc, extra$arm[i], extra$pcr[i], extra$endpoint[i], extra$month[i]) - extra$value[i]) / extra$se[i])^2
     v
   }
-  run <- function(st) lapply(st, function(s0) optim(s0, obj, method = "L-BFGS-B", lower = CAL_LOWER, upper = CAL_UPPER,
+  run <- function(st) lapply(st, function(s0) optim(s0[fr], obj, method = "L-BFGS-B", lower = CAL_LOWER[fr], upper = CAL_UPPER[fr],
                                                     control = list(factr = 1e5, maxit = 500)))
   opts <- run(starts)
   vals <- sapply(opts, `[[`, "value")
@@ -142,8 +159,8 @@ calibrate_os <- function(P, targets, months, dr_median, starts = CAL_STARTS, fl 
       best <- nb
     }
   }
-  list(par = best$par, value = best$value, convergence = best$convergence, starts_values = vals, optim = best,
-       at_bound = cal_at_bound(best$par), code52 = c52)
+  list(par = full(best$par), value = best$value, convergence = best$convergence, starts_values = vals, optim = best,
+       at_bound = cal_at_bound(full(best$par)), code52 = c52)
 }
 
 # 5-year RMST (years) from OS at monthly boundaries 0..60 (trapezoid)
@@ -159,4 +176,10 @@ dr_median_draw <- function(n = 1) {
   i <- sample.int(nrow(s), n, replace = TRUE, prob = s$weight)
   se <- (log(s$hi) - log(s$lo)) / (2 * qnorm(0.975))
   exp(rnorm(n, log(s$median[i]), se[i])) / 12          # years
+}
+# late-relapse median (round 8): lognormal centred on the ESME late-relapse median with the
+# log-scale SE from its 95% CI; drawn independently of the early median
+dr_late_median_draw <- function(n = 1) {
+  s <- DR_LATE_MEDIAN_SOURCE
+  exp(rnorm(n, log(s$median), (log(s$hi) - log(s$lo)) / (2 * qnorm(0.975)))) / 12   # years
 }
