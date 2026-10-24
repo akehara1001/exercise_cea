@@ -1,6 +1,6 @@
 # 第1阶段（生存引擎）报告
 
-生成时间：2026-10-24 14:52。由 `R/99_phase1_report.R` 从代码输出生成，表中数字均读自 `output/`、`data/` 与 `input/` 下的文件。模型规格见 `docs/model_spec.md`。
+生成时间：2026-10-24 15:13。由 `R/99_phase1_report.R` 从代码输出生成，表中数字均读自 `output/`、`data/` 与 `input/` 下的文件。模型规格见 `docs/model_spec.md`。
 
 ## 第1阶段最终状态
 
@@ -31,7 +31,7 @@
 
 情景（只报告，不参与采用判定；`R/18_round15_scenarios.R`）：「早期复发后 k（外部）」k = 1.307 同时作用于早期远处复发与帕博利珠单抗组的术前进展，门槛 (a) 满足、(b) 满足、(c) 满足；「术前进展后生存（Elmore）」中位 26 个月，门槛 (a) **不满足**、(b) 满足、(c) 满足。第 2 阶段所有涉及帕博利珠单抗的结果以「基准」与「早期复发后 k（外部）」两栏并列报告；Elmore 列入第 2 阶段的情景清单（`docs/model_spec.md` 第 6 节）。
 
-bootstrap：本地参照 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）在提交 e90fa6c 上重新生成（x86_64-w64-mingw32）；`R/06d_reference_bounds.R`：没有任何校准参数——k 10 次都为 1，术前进展的中位为各样本的 ESME 重抽样值（10.00 至 10.00 个月），边界标记全部为否。`data/bootstrap/` 中的 1,000 次是第十四轮的（git 48f4ee8），不属于本结构；第十五轮的 1,000 次 bootstrap 尚未运行（Longleaf 未启动）。
+bootstrap：本地参照 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）在提交 bb5d7bc 上重新生成（x86_64-w64-mingw32）；`R/06d_reference_bounds.R`：没有任何校准参数——k 10 次都为 1，术前进展的中位为各样本的 ESME 重抽样值（9.39 至 10.18 个月），边界标记全部为否。`data/bootstrap/` 中的 1,000 次是第十四轮的（git 48f4ee8），不属于本结构；第十五轮的 1,000 次 bootstrap 尚未运行（Longleaf 未启动）。
 
 待尾崎回答：
 - 含帕博利珠单抗的组的 S-JP 数值 F01P、F04P（尾崎正向临床医生确认；结构已于 2026-10-23 决定，见第 11 节）。
@@ -1067,7 +1067,7 @@ Guyot 算法（`R/guyot.R`），以 IPDfromKM 交叉核对；门槛（用户指�
 ### 14.4 采用的结构与第九轮各道门槛的最终判定
 
 采用第九轮结构。第九轮的校准结果不变（不重新校准，`R/14b_apply_round10.R`），按第十轮的规则判定（`calibration_status.csv`；按第九轮规则的判定另存于 `round9/calibration_status_round9_rule.csv`）：(a) 按 Bonferroni 同时区间接受（10 个点中 9 个在 95% 区间内，全部 10 个点在 99.5% 区间内）；(b) 达标；(c) 达标。`data/fits/engine_params.rds` 已恢复为第九轮的值。
-本地参照结果 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）在提交 e90fa6c 上重新生成（x86_64-w64-mingw32，2026-10-24 09:07:36 EDT）；推送与 Longleaf 的 1,000 次 bootstrap 推迟到第十一轮通过之后（用户 2026-10-23 的指示；第十一轮见第 15 节）。
+本地参照结果 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）在提交 bb5d7bc 上重新生成（x86_64-w64-mingw32，2026-10-24 14:53:49 EDT）；推送与 Longleaf 的 1,000 次 bootstrap 推迟到第十一轮通过之后（用户 2026-10-23 的指示；第十一轮见第 15 节）。
 
 ## 15. 第十一轮（2026-10-23）：分层 EFS 约束改用 KEYNOTE-522 最终分析的 7 年值
 
@@ -1430,5 +1430,5 @@ Fedele 2026：Breast Cancer Res Treat 2026;218:8，DOI 10.1007/s10549-026-08023-
 
 ### 19.3 本地参照与边界报告
 
-本地参照 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）在提交 e90fa6c 上重新生成（x86_64-w64-mingw32，2026-10-24 09:07:36 EDT；`R/` 与 `data/` 无未提交改动：是）。`R/06d_reference_bounds.R`：没有任何校准参数——k 10 次都为 1；术前进展的中位为各样本 ESME 重抽样的早期复发拟合值（10.00、10.00、10.00、10.00、10.00、10.00、10.00、10.00、10.00、10.00 个月），贴 10 个月或 26 个月的标记都为否（约束已撤销）。Longleaf 的 1,000 次 bootstrap 未启动。
+本地参照 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）在提交 bb5d7bc 上重新生成（x86_64-w64-mingw32，2026-10-24 14:53:49 EDT；`R/` 与 `data/` 无未提交改动：是）。`R/06d_reference_bounds.R`：没有任何校准参数——k 10 次都为 1；术前进展的中位为各样本 ESME 重抽样的早期复发拟合值（9.41、9.62、9.39、9.79、9.56、10.18、10.00、9.92、9.62、9.82 个月），贴 10 个月或 26 个月的标记都为否（约束已撤销）。Longleaf 的 1,000 次 bootstrap 未启动。
 
