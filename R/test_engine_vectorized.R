@@ -18,7 +18,7 @@ run_branch_loop <- function(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate, dr, 
   hb <- h$hb; hbx <- h$hbx; dHL <- h$dHL; dHD <- h$dHD; dHX <- h$dHX; dHpre <- h$dHpre; dHA <- h$dHA
   dHdr <- diff(dr_cumhaz(dr, (0:(J + 1)) * cycle)); dHdr[J + 1] <- dHdr[J]
   split <- !is.null(dr$late_scale)
-  drl_spec <- if (split) modifyList(dr, list(scale = dr$late_scale, shape = if (is.null(dr$late_shape)) dr$shape else dr$late_shape)) else dr
+  drl_spec <- if (split) dr_late_spec(dr) else dr                  # round 13: k_late on late DR
   dHdl <- diff(dr_cumhaz(drl_spec, (0:(J + 1)) * cycle)); dHdl[J + 1] <- dHdl[J]
   dHpp <- diff(dr_cumhaz(preprog, (0:(J + 1)) * cycle)); dHpp[J + 1] <- dHpp[J]
   out <- matrix(0, K + 1, 5, dimnames = list(NULL, c("EF", "PreProg", "LRR", "DR", "Dead")))
@@ -48,14 +48,16 @@ P <- engine_params()
 hrf <- function(t) ifelse(t <= 1, 0.7, 1 - 0.3 * exp(-0.5 * (t - 1)))
 cases <- expand.grid(arm = c("pembro", "placebo"), branch = c("pCR", "nonpCR"), dist = c("llogis", "weibull"),
                      shape = c(0.35, 1, 2.5), scale = c(0.3, 0.9, 3), pp = 1:3, use_hr = c(FALSE, TRUE), drug_hr = c(1, 0.6),
-                     ae = c(0, 30), split = c(FALSE, TRUE), stringsAsFactors = FALSE)
+                     ae = c(0, 30), split = c(FALSE, TRUE), k_scope = c("all", "early"), stringsAsFactors = FALSE)
+cases <- cases[!(cases$k_scope == "early" & !cases$split), ]
 pp_specs <- list(list(dist = "exp", rate = 0.2), list(dist = "weibull", shape = 0.5, scale = 0.5), list(dist = "weibull", shape = 2.5, scale = 2))
 worst <- 0; worst_src <- 0
 for (i in seq_len(nrow(cases))) {
   cs <- cases[i, ]
   args <- list(P$efs[[cs$arm]][[cs$branch]], P$pre_surv[[cs$arm]][[cs$branch]], P$q_pre[[cs$arm]][[cs$branch]], P$shares[[cs$arm]],
                P$lrr_dr[["rate"]], c(list(dist = cs$dist, shape = cs$shape, scale = cs$scale, k = if (cs$drug_hr == 1) 1 else 1.7),
-                                     if (cs$split) list(late_scale = 1.9 * cs$scale, late_shape = 1.3 * cs$shape, early_cycles = 18) else NULL),
+                                     if (cs$split) list(late_scale = 1.9 * cs$scale, late_shape = 1.3 * cs$shape, early_cycles = 18) else NULL,
+                                     if (cs$k_scope == "early") list(k_late = 1) else NULL),
                pp_specs[[cs$pp]], P$start_age, P$L, P$cycle,
                P$n_cycles, P$n_tunnel, if (cs$use_hr) hrf else NULL, cs$drug_hr,
                cs$ae * P$ae[[cs$arm]][["rate"]], P$ae_end)
@@ -75,8 +77,9 @@ cat(sprintf("survival_engine: %.1f ms per call\n", 1000 * tm[["elapsed"]] / 20))
 # the base case, with the pembrolizumab DR multiplier k and with the scenario k = 1
 P$pembro_dr_k <- 1.8
 worst_fast <- 0
-for (arm in c("chemo", "pembro")) for (common in c(FALSE, TRUE)) {
-  dr <- P$dr; if (!common && arm == "pembro") dr$k <- P$pembro_dr_k
+for (scope in c("all", "early")) for (arm in c("chemo", "pembro")) for (common in c(FALSE, TRUE)) {
+  P$pembro_dr_k_scope <- scope
+  dr <- P$dr; if (!common && arm == "pembro") dr <- dr_with_k(dr, P$pembro_dr_k, scope)
   a <- os_fast(arm_flows(P, arm), P$preprog, dr)
   b <- survival_engine(arm, "all", params = P, common_dr = common)$OS
   worst_fast <- max(worst_fast, max(abs(a - b)))

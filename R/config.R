@@ -75,6 +75,9 @@ CFG <- list(
   # estimated in the base calibration within [0.25, 4]; scenario "k = 1" (common post-DR
   # mortality) for every comparison involving pembrolizumab
   pembro_dr_k_bounds = c(0.25, 4),
+  # round 13 (2026-10-23, docs/acceptance_rule_round13.md): "early" = k on early DR only (late DR
+  # k = 1); "all" = k on all DR (rounds 6 to 12)
+  pembro_dr_k_scope = "all",
   gate_pp_round1_2 = 1,
   gate_rmst_rel_tol_round3 = 0.20,
   # 5-year stratified EFS constraint (decision 2026-10-22): the 5-year prediction must lie in the
@@ -103,6 +106,8 @@ local({
     stopifnot(length(v) == 2, v[2] %in% c("interval", "equal"))
     CFG$efs_constraint_years <<- as.numeric(v[1]); CFG$efs_constraint_type <<- v[2]
   }
+  sc <- Sys.getenv("EXERCISE_CEA_DR_K_SCOPE", "")                 # round 13: "early" or "all"
+  if (nzchar(sc)) { stopifnot(sc %in% c("early", "all")); CFG$pembro_dr_k_scope <<- sc }
 })
 
 source(file.path(ROOT, "R", "lifetable.R"))

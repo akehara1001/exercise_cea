@@ -95,16 +95,16 @@ CAL_STARTS <- list(c(11 / 12, 0.5, log(1)), c(18 / 12, 0.9, log(1.5)), c(12 / 12
 cal_specs <- function(th, dr_ext) list(
   preprog = list(dist = "llogis", shape = th[2] * pp_shape_cap(th[1]), scale = th[1]),
   dr = dr_ext_spec(dr_ext),
-  k = exp(th[3]))
+  k = exp(th[3]), k_scope = CFG$pembro_dr_k_scope)
 cal_apply <- function(P, th, dr_ext) {
-  s <- cal_specs(th, dr_ext); P$preprog <- s$preprog; P$dr <- s$dr; P$pembro_dr_k <- s$k; P
+  s <- cal_specs(th, dr_ext); P$preprog <- s$preprog; P$dr <- s$dr; P$pembro_dr_k <- s$k; P$pembro_dr_k_scope <- s$k_scope; P
 }
 
 # flows of both arms (pembro, chemo = placebo) for parameter set P
 cal_flows <- function(P) list(pembro = arm_flows(P, "pembro"), placebo = arm_flows(P, "chemo"))
 # OS of both arms at cycle boundaries; common_dr = TRUE is the scenario k = 1
 cal_os <- function(fl, s, common_dr = FALSE) {
-  drp <- s$dr; if (!common_dr) drp$k <- s$k
+  drp <- s$dr; if (!common_dr) drp <- dr_with_k(drp, s$k, s$k_scope)
   list(pembro = os_fast(fl$pembro, s$preprog, drp), placebo = os_fast(fl$placebo, s$preprog, s$dr))
 }
 # OS by pCR branch of an arm at cycle boundaries (os_fast is their mixture)
@@ -112,7 +112,7 @@ branch_os <- function(af, preprog, dr, b) { f <- af$flows[[b]]; f$EF + f$LR + tu
 # OS and EFS (= event-free occupancy) of both arms by pCR status (all / pCR / nonpCR), each branch
 # computed once; OS_all is the same expression as os_fast()
 cal_curves <- function(fl, s, common_dr = FALSE) lapply(c(pembro = "pembro", placebo = "placebo"), function(a) {
-  af <- fl[[a]]; dr <- s$dr; if (a == "pembro" && !common_dr) dr$k <- s$k
+  af <- fl[[a]]; dr <- s$dr; if (a == "pembro" && !common_dr) dr <- dr_with_k(dr, s$k, s$k_scope)
   ob <- lapply(c(pCR = "pCR", nonpCR = "nonpCR"), function(b) branch_os(af, s$preprog, dr, b))
   list(OS_all = af$p_pcr * ob$pCR + (1 - af$p_pcr) * ob$nonpCR, OS_pCR = ob$pCR, OS_nonpCR = ob$nonpCR,
        EFS_all = af$p_pcr * af$flows$pCR$EF + (1 - af$p_pcr) * af$flows$nonpCR$EF, EFS_pCR = af$flows$pCR$EF, EFS_nonpCR = af$flows$nonpCR$EF)

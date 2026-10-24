@@ -10,7 +10,8 @@ set -euo pipefail
 ROOT="${EXERCISE_CEA_ROOT:-C:/Users/原明美/Documents/ClaudeCode/exercise_cea}"
 RS="${RSCRIPT:-/c/Program Files (x86)/R/R-4.5.1/bin/Rscript.exe}"
 label="$1"; setting="$2"
-out="$ROOT/output/phase1/round12/$label"; fits="$ROOT/data/fits/round12/$label"
+round="${ROUND:-round12}"                       # round 13: ROUND=round13
+out="$ROOT/output/phase1/$round/$label"; fits="$ROOT/data/fits/$round/$label"
 mkdir -p "$out" "$fits"
 export EXERCISE_CEA_EFS_CONSTRAINT="$setting"
 "$RS" "$ROOT/R/04_fit_models.R" > "$out/04_fit_models.log" 2>&1 || true

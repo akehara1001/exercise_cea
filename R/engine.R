@@ -31,7 +31,8 @@
 #   randomization) with median dr$scale, late with median dr$late_scale; shape and k shared
 #   (dr_state()).
 # DR excess hazard of the pembrolizumab arms = common hazard x params$pembro_dr_k (round 6:
-#   k estimated in the base calibration); scenario common_dr = TRUE sets k = 1 (common post-DR
+#   k estimated in the base calibration; round 13: early DR only when params$pembro_dr_k_scope is
+#   "early", parameter sets without the field are "all"); scenario common_dr = TRUE sets k = 1 (common post-DR
 #   mortality in all arms).
 # Exercise hooks for phase 2 (no effect by default):
 #   (a) hr0 / wane_start / wane_rate: time-varying HR on EF -> LRR and EF -> DR,
@@ -158,7 +159,12 @@ tunnel_state <- function(f, inflow, spec, max_cycles = NULL) {
 # dr$scale) and the rest late (median dr$late_scale, shape dr$late_shape if given, round 9),
 # each with its own tunnels
 dr_early_mask <- function(inflow, dr) seq_along(inflow) <= dr$early_cycles
-dr_late_spec <- function(dr) modifyList(dr, list(scale = dr$late_scale, shape = if (is.null(dr$late_shape)) dr$shape else dr$late_shape))
+dr_late_spec <- function(dr) modifyList(dr, list(scale = dr$late_scale, shape = if (is.null(dr$late_shape)) dr$shape else dr$late_shape,
+                                                 k = if (is.null(dr$k_late)) dr$k else dr$k_late))
+# the pembrolizumab multiplier k on the DR excess hazard: scope "all" (rounds 6 to 12) on early and
+# late DR; scope "early" (round 13, 2026-10-23, docs/acceptance_rule_round13.md) on early DR only,
+# late DR k = 1 (k_late)
+dr_with_k <- function(dr, k, scope = "all") { dr$k <- k; if (identical(scope, "early")) dr$k_late <- 1; dr }
 dr_state <- function(f, inflow, dr, max_cycles = NULL) {
   if (is.null(dr$late_scale)) return(tunnel_state(f, inflow, dr, max_cycles))
   e <- dr_early_mask(inflow, dr)
@@ -248,6 +254,7 @@ engine_params <- function(fits = readRDS(file.path(ROOT, "data", "fits", "fits.r
   p$dr <- dr
   p$preprog <- preprog
   p$pembro_dr_k <- 1
+  p$pembro_dr_k_scope <- CFG$pembro_dr_k_scope
   p
 }
 
@@ -258,7 +265,7 @@ survival_engine <- function(arm, pcr = "all", times = NULL, params,
   base <- switch(arm, chemo = "placebo", exercise = "placebo", pembro = "pembro", both = "pembro",
                  stop("arm must be chemo, exercise, pembro or both"))
   dr <- params$dr
-  if (base == "pembro" && !common_dr) dr$k <- params$pembro_dr_k
+  if (base == "pembro" && !common_dr) dr <- dr_with_k(dr, params$pembro_dr_k, params$pembro_dr_k_scope)
   hr <- if (hr0 == 1) NULL else function(t) ifelse(t <= wane_start, hr0, 1 - (1 - hr0) * exp(-wane_rate * (t - wane_start)))
   pp <- if (is.null(p_pcr)) params$p_pcr[[base]] else p_pcr
   rb1 <- function(b, dhr) run_branch(params$efs[[base]][[b]], params$pre_surv[[base]][[b]], params$q_pre[[base]][[b]],

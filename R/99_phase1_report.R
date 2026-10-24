@@ -145,7 +145,7 @@ if (adopt9) {
            "数据（2022 年补充材料 Table S5）", "数据（2022 年 Table 1 脚注）"), check.names = FALSE)
   out8 <- DS10[DS10$used_in_rule & !istrue(DS10$round8_inside), ]
   add("## 第1阶段最终状态", "",
-      sprintf("第 1 阶段以**第九轮**为最终结构（%s）。依据：第十轮的判定规则 A（`docs/acceptance_rule_round10.md`，git e8d2134，在诊断之前单独提交）——第八轮模型的远处复发后隐含存活在%s落在 ESME 重建 KM 的 95%% CI 之外；第九轮在第 1 至 4 年的 %d 个点中 %d 个落在区间内（第 14 节）。第八轮（git 694b0f3）只作记录：第 1 至 12 节为第八轮的内容，其参数、bootstrap 与输出的快照在 `data/fits/round8/`、`data/bootstrap/round8/`、`output/phase1/round8/`。引擎默认参数在 `data/fits/engine_params.rds`（第九轮）。涉及帕博利珠单抗的结果在第 2 阶段以基准与情景 k = 1 两栏并列报告（`docs/model_spec.md` 第 6 节）。第十一轮（分层 EFS 约束改用最终分析的 7 年值，2026-10-23）两次都按规则停下、未采用：区间约束停在拟合之后，改为等式约束后停在门槛 (c)（第 15 节）。第十二轮修正了引擎与输入 EFS 的不一致（手术前的背景死亡与因不良事件死亡原先另外加在 KM 之上，术前进展用的是报告比例而非 KM 的下降）；修正后的引擎下第十一轮设定仍在门槛 (c) 不通过，未采用（第 16 节）。**本节的第十轮参数与门槛结果是用修正前的引擎算出的**；修正后的引擎下第十轮设定重新校准的结果见第 16 节（只报告，不作为回退）。",
+      sprintf("第 1 阶段以**第九轮**为最终结构（%s）。依据：第十轮的判定规则 A（`docs/acceptance_rule_round10.md`，git e8d2134，在诊断之前单独提交）——第八轮模型的远处复发后隐含存活在%s落在 ESME 重建 KM 的 95%% CI 之外；第九轮在第 1 至 4 年的 %d 个点中 %d 个落在区间内（第 14 节）。第八轮（git 694b0f3）只作记录：第 1 至 12 节为第八轮的内容，其参数、bootstrap 与输出的快照在 `data/fits/round8/`、`data/bootstrap/round8/`、`output/phase1/round8/`。引擎默认参数在 `data/fits/engine_params.rds`（第九轮）。涉及帕博利珠单抗的结果在第 2 阶段以基准与情景 k = 1 两栏并列报告（`docs/model_spec.md` 第 6 节）。第十一轮（分层 EFS 约束改用最终分析的 7 年值，2026-10-23）两次都按规则停下、未采用：区间约束停在拟合之后，改为等式约束后停在门槛 (c)（第 15 节）。第十二轮修正了引擎与输入 EFS 的不一致（手术前的背景死亡与因不良事件死亡原先另外加在 KM 之上，术前进展用的是报告比例而非 KM 的下降）；修正后的引擎下第十一轮设定仍在门槛 (c) 不通过，未采用（第 16 节）。**本节的第十轮参数与门槛结果是用修正前的引擎算出的**；修正后的引擎下第十轮设定重新校准的结果见第 16 节（只报告，不作为回退）。第十三轮（k 只作用于早期远处复发，2026-10-23）三道门槛都达标，但 k 贴在上界 4，按其规则停下、未采用（第 17 节）。",
               C9f$structure, paste(sprintf("%s第 %d 年", ifelse(out8$group == "early", "早期", "晚期"), out8$year), collapse = "、"),
               nrow(DS10), sum(istrue(DS10$round9_inside))), "",
       "最终参数（第九轮）：", "", md_table(FP9), "",
@@ -983,6 +983,64 @@ if (file.exists(file.path(r12, "round11_setting", "calibration_status.csv"))) {
               if (length(ks)) sprintf("%s 至 %s", f2(min(ks), 2), f2(max(ks), 2)) else "无", f2(as.numeric(cell(cols[[1]], "calibration_vs_previous.csv")$round9[1]), 3)), "",
       "### 16.5 状态", "",
       "主目录（`data/fits/fits.rds`、`engine_params.rds`、`calibration_candidates.rds` 与校准输出）仍为第十轮的文件，**这些是用修正前的引擎算出的**；`config.R` 的默认仍为 5 年、区间约束（设 `EXERCISE_CEA_EFS_CONSTRAINT=7,equal` 即重现第十一轮设定）。引擎的修正已提交。两种设定在修正后引擎下的产物在 `output/phase1/round12/`、`data/fits/round12/`。本地参照 `output/check/bootstrap10_local.rds` 是修正前的引擎生成的，未重新生成；没有运行 `R/06d_reference_bounds.R`；没有启动 Longleaf。", "")
+}
+
+# round 13 (docs/acceptance_rule_round13.md, git 8f979c2): k on early DR only; outputs in
+# output/phase1/round13/round13/
+r13 <- file.path(ROOT, "output", "phase1", "round13", "round13")
+if (file.exists(file.path(r13, "calibration_status.csv"))) {
+  q13 <- function(f) rd("output", "phase1", "round13", "round13", f)
+  q12 <- function(f) rd("output", "phase1", "round12", "round11_setting", f)
+  CS13 <- q13("calibration_status.csv"); CS12 <- q12("calibration_status.csv")
+  G13 <- q13("calibration_gate.csv"); G12 <- q12("calibration_gate.csv")
+  F13 <- q13("calibration_final7y.csv"); F12 <- q12("calibration_final7y.csv")
+  R13 <- q13("calibration_gate_rmst.csv"); R12 <- q12("calibration_gate_rmst.csv")
+  V13 <- q13("calibration_vs_previous.csv"); V12 <- q12("calibration_vs_previous.csv")
+  E13 <- q13("dr_early_share.csv"); E12 <- q12("dr_early_share.csv")
+  KS13 <- q13("diag_k_scan.csv")
+  C13 <- readRDS(file.path(ROOT, "data", "fits", "round13", "round13", "calibration_candidates.rds"))
+  vq13 <- function(V, q) V$round9[V$quantity == q]
+  lab13 <- c(pembro = "帕博利珠单抗", placebo = "安慰剂")
+  gate_rows <- do.call(rbind, lapply(seq_len(nrow(G13)), function(i) data.frame(
+    项目 = sprintf("OS 第 %d 年 %s（KM %s，95%% 区间 %s 至 %s）", G13$month[i] / 12, lab13[G13$arm[i]], f2(G13$km[i], 2), f2(G13$ci95_lo[i], 2), f2(G13$ci95_hi[i], 2)),
+    第十三轮 = sprintf("%s%s", f2(G13$engine[i], 2), if (istrue(G13$inside[i])) "" else " **区间外**"),
+    第十二轮 = sprintf("%s%s", f2(G12$engine[G12$arm == G13$arm[i] & G12$month == G13$month[i]], 2),
+                     if (istrue(G12$inside[G12$arm == G13$arm[i] & G12$month == G13$month[i]])) "" else " **区间外**"), check.names = FALSE)))
+  f7 <- function(F, id) { r <- F[F$id == id, ]; sprintf("%s%s", f2(r$engine, 2), if (istrue(r$inside_ci)) "" else " **区间外**") }
+  es <- function(E, a, h) { r <- E[E$arm == a & E$horizon_years == h, ]; sprintf("%s%%（%s / %s）", f2(100 * r$early_share, 1), f2(r$early_cum_incidence_pct, 2), f2(r$dr_cum_incidence_pct, 2)) }
+  yg <- function(x) if (istrue(x)) "达标" else "**不达标**"
+  TB13 <- rbind(
+    data.frame(项目 = c("门槛 (a)", "门槛 (b)", "门槛 (c)", "k（范围 0.25 至 4）"),
+               第十三轮 = c(yg(CS13$gate_a_accepted), yg(CS13$gate_b_pass), yg(CS13$gate_c_pass), sprintf("**%s（贴上界）**", f2(vq13(V13, "pembro_dr_k"), 3))),
+               第十二轮 = c(yg(CS12$gate_a_accepted), yg(CS12$gate_b_pass), yg(CS12$gate_c_pass), f2(vq13(V12, "pembro_dr_k"), 3)), check.names = FALSE),
+    gate_rows,
+    data.frame(项目 = c("OS 第 7 年 帕博利珠单抗（报告 85.1，82.5 至 87.5）", "OS 第 7 年 安慰剂（报告 77.2，72.7 至 81.1）",
+                      "EFS 第 7 年 帕博利珠单抗（报告 78.3，75.3 至 81.1）", "EFS 第 7 年 安慰剂（报告 69.8，65.0 至 74.2）",
+                      "5 年 RMST 两臂差（年；KM 0.0985，区间 -0.0381 至 0.2421）",
+                      "远处复发中早期的比例，至 7 年 帕博利珠单抗（早期 / 全部，累积发生 %）", "远处复发中早期的比例，至 7 年 安慰剂",
+                      "远处复发中早期的比例，终生 帕博利珠单抗", "远处复发中早期的比例，终生 安慰剂",
+                      "术前进展的中位（月）", "KM 平方误差和（百分点²）"),
+               第十三轮 = c(f7(F13, "os7_pembro"), f7(F13, "os7_placebo"), f7(F13, "efs7_pembro"), f7(F13, "efs7_placebo"), f2(R13$engine, 4),
+                        es(E13, "pembro", 7), es(E13, "placebo", 7), es(E13, "pembro", 51), es(E13, "placebo", 51),
+                        sprintf("%s（贴下界）", f2(vq13(V13, "preprog_median_months"), 2)), f2(vq13(V13, "km_SSE_both_arms_pp2"), 1)),
+               第十二轮 = c(f7(F12, "os7_pembro"), f7(F12, "os7_placebo"), f7(F12, "efs7_pembro"), f7(F12, "efs7_placebo"), f2(R12$engine, 4),
+                        es(E12, "pembro", 7), es(E12, "placebo", 7), es(E12, "pembro", 51), es(E12, "placebo", 51),
+                        sprintf("%s（贴下界）", f2(vq13(V12, "preprog_median_months"), 2)), f2(vq13(V12, "km_SSE_both_arms_pp2"), 1)), check.names = FALSE))
+  ks13 <- KS13$k[istrue(KS13$all_three)]
+  k13 <- C13$params$pembro_dr_k; sh13 <- C13$params$dr$shape; sc13 <- 12 * C13$params$dr$scale
+  med_k <- function(k) sc13 * ((0.5^(-1 / k)) - 1)^(1 / sh13)
+  add("## 17. 第十三轮（2026-10-23）：k 只作用于早期远处复发", "",
+      "规则在任何计算之前单独提交（`docs/acceptance_rule_round13.md`，git 8f979c2）。唯一的改动：帕博利珠单抗组远处复发后风险的倍数 k 只作用于早期远处复发（随机化后 18 个月以内进入），晚期远处复发两臂都取 k = 1；参数个数不变，k 的范围仍为 0.25 至 4；设定沿用第十一轮（7 年、等式约束）与修正后的引擎（git 4c67d2e）；门槛与第十一轮完全相同；情景 k = 1 不变。修改记录如实写明：本修改是看到第十二轮结果（git 3f4be26）之后做出的；数据上的理由是单一 k 无法同时满足第 1 至 5 年与第 7 年（帕博利珠单抗组需要早期较高、后期较低的复发后死亡）；临床上的理由是 k 的依据（用过帕博利珠单抗后再复发时有效治疗较少）适用于治疗期间或结束后不久的复发，KEYNOTE-355 允许距治愈性治疗结束 6 个月以上的复发者再用帕博利珠单抗加化疗，术后帕博利珠单抗约在随机化后 12.5 个月结束，18 个月大致相当于结束后 6 个月。", "",
+      "实现：`R/engine.R` 的 `dr_with_k()`（范围 `\"early\"` 时晚期子状态取 k = 1，`dr_late_spec()` 读 `k_late`），引擎（`survival_engine()`）与校准（`cal_os()`、`cal_curves()`）共用；范围存于参数（`pembro_dr_k_scope`；没有此字段的旧参数按「全部」处理，第十二轮的结果可原样重现）；`config.R` 的 `pembro_dr_k_scope`（默认仍为 `\"all\"`，环境变量 `EXERCISE_CEA_DR_K_SCOPE` 覆盖）。`R/test_engine_vectorized.R` 加入范围 `\"early\"` 的情形。", "",
+      "### 17.1 校准结果（与第十二轮——第十一轮设定、修正后的引擎——并列）", "",
+      md_table(TB13), "",
+      "### 17.2 判定", "",
+      sprintf("三道门槛都达标，但 **k = %s，贴在上界 4**。按规则（k 贴在边界上，即使门槛通过也停下报告）停下，未采用；没有自行增加结构或改变 k 的范围，没有重新生成参照，没有启动 Longleaf。主目录仍为第十轮的文件（用修正前的引擎算出），`config.R` 的默认仍为第十轮的设定（设 `EXERCISE_CEA_EFS_CONSTRAINT=7,equal` 与 `EXERCISE_CEA_DR_K_SCOPE=early` 即重现本轮）；本轮的产物在 `output/phase1/round13/round13/`、`data/fits/round13/round13/`。", f2(k13, 3)), "",
+      "### 17.3 诊断（不作门槛，`R/15b_round11_diag.R`）", "",
+      sprintf("只改 k（其余参数取本轮校准值、不重新优化）时，三道门槛同时满足的 k 为 %s；k 约 1.5 以上时帕博利珠单抗组 7 年 OS 几乎不再随 k 变化（k = 1.5、2、4 时分别为 %s、%s、%s），k 主要改变第 1 至 3 年的死亡时点。按校准值 k = %s，帕博利珠单抗组早期远处复发后超额生存的中位约为 %s 个月（k = 1 时为 ESME 的 %s 个月）。",
+              if (length(ks13)) sprintf("%s 至 %s", f2(min(ks13), 2), f2(max(ks13), 2)) else "无",
+              f2(KS13$os7_pembro[abs(KS13$k - 1.5) < 1e-9], 2), f2(KS13$os7_pembro[abs(KS13$k - 2) < 1e-9], 2), f2(KS13$os7_pembro[abs(KS13$k - 4) < 1e-9], 2),
+              f2(k13, 2), f2(med_k(k13), 1), f2(med_k(1), 1)), "")
 }
 
 writeLines(L, file.path(out_dir, "phase1_report.md"), useBytes = TRUE)
