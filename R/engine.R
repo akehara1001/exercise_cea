@@ -262,11 +262,13 @@ os_fast <- function(af, preprog, dr) {
   af$p_pcr * os_b(af$flows$pCR) + (1 - af$p_pcr) * os_b(af$flows$nonpCR)
 }
 
-# S-JP subgroups of the non-pCR branch. Default reading (to be confirmed with Dr Ozaki): gBRCA
-# carriers who receive olaparib get olaparib only; capecitabine use F01 applies to the others.
+# S-JP subgroups of the non-pCR branch (Dr Ozaki, 2026-10-23): gBRCA carriers (F03) receive olaparib
+# with proportion F04 (no capecitabine), the other carriers nothing; non-carriers receive capecitabine
+# with proportion F01 (defined within gBRCA-negative patients). Arms with pembrolizumab pass F01P and
+# F04P as F01 and F04.
 sjp_mix <- function(F01, F03, F04, hr_cap, hr_ola) {
   w_o <- F03 * F04
-  w_c <- (1 - w_o) * F01
+  w_c <- (1 - F03) * F01
   data.frame(group = c("olaparib", "capecitabine", "neither"), weight = c(w_o, w_c, 1 - w_o - w_c),
              hr = c(hr_ola, hr_cap, 1))
 }
