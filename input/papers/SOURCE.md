@@ -32,3 +32,10 @@ ESME 早期再発 TNBC（2026-10-23 追記、第九轮）
   - Grinda2023_ESME.pdf — 本文（https://hal.science/hal-04205902/document）、sha256 ccf06b22a4ce9eb9ed60084964c52aec83292f79890f7a6109092387e9db8a28
   - Grinda2023_ESME_suppl_mmc1.pdf — 補足資料（https://hal.science/hal-04205902/file/1-s2.0-S0959804923002769-mmc1.pdf）、sha256 5af91d819ba62edb682764dbea8791acfb6934f296c6875b697c0ec20a426be1
 - 使用箇所：Fig. 3a（p.12、転移診断からの OS、早期再発／晩期再発）を R/py/02b_digitize_raster.py（R/py/rasterspec_esme.json）で数値化し data/digitized/esme/ に保存、R/13_esme_fit.R で個票を再構成。PDF は git に入れない（.gitignore）。
+
+利用者が置いたもの（2026-10-23）
+- CHALLENGE.pdf — Courneya KS, et al. Structured exercise after adjuvant chemotherapy for colon cancer. N Engl J Med 2025;393:13-25（CHALLENGE、CCTG CO.21）。DOI 10.1056/NEJMoa2502760。本文 13 ページ。sha256 cc531c2cd7d6e079d549025ef2907f8bc92e3bdcaf15d32deb44f518bf44fccb
+- CHALLENGE_supplement.pdf — 同上の Supplementary Appendix（83 ページ）。sha256 965353e4512a35263a76650dffde44f348235481ffa8b5d1c6dbb1c8493ac91a
+  - 使用箇所：本文 p.19（Results の Safety：as-treated 428 例と 461 例、筋骨格系有害事象 79 例と 53 例）、補足 Table S4（p.77：Musculoskeletal (total)、Any Grade と Grade ≥3）。R/py/16_params_v6.py が読み取り、入力表 v6 の E06、E07、E09、E10 に記入。
+- KN522_final_ASCO2026_abstract.pdf — Schmid P, et al. Neoadjuvant pembrolizumab or placebo plus chemotherapy followed by adjuvant pembrolizumab or placebo for high-risk early-stage TNBC: Final analysis results from the phase 3 KEYNOTE-522 study. J Clin Oncol 2026;44(16_suppl):507。DOI 10.1200/JCO.2026.44.16_suppl.507（ASCO 2026 抄録、1 ページ）。sha256 533add7c3de37c72e3d5e94617f9579be1281c091345aa103445307beec18be1
+  - 使用箇所：全体の 7 年 EFS と OS（95% CI）、HR、データカットオフ、追跡期間中央値（範囲）。R/py/12_final_analysis.py が読み取り、会議報道から読んだ値と一致することを確認（data/kn522_final_7y.csv の *_abstract 行）。抄録には pCR 別の値はない（pCR 別の値は引き続き会議報道による）。

@@ -1,5 +1,5 @@
 # 10_read_params.R
-# Reads input/params/parameters_v5.xlsx (sheet パラメータ; v1 to v4 are in input/params/archive/) into a long table
+# Reads input/params/parameters_v6.xlsx (sheet パラメータ; v1 to v5 are in input/params/archive/) into a long table
 # (data/params_long.csv: one row per parameter x 基本値/下限/上限) and writes
 # output/params_check.md (unfilled rows by owner; non-numeric 基本値; value without source;
 # 下限 > 基本値 or 基本値 > 上限).
@@ -15,7 +15,7 @@
 
 root <- Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea")
 suppressPackageStartupMessages(library(readxl))
-src <- file.path(root, "input", "params", "parameters_v5.xlsx")
+src <- file.path(root, "input", "params", "parameters_v6.xlsx")
 need <- c("param_id", "区分", "項目", "適用する群", "適用する状態", "単位", "基本値", "下限", "上限",
           "価格の年度", "出典", "出典の該当箇所", "担当", "備考")
 fill_cols <- c("基本値", "下限", "上限", "価格の年度", "出典", "出典の該当箇所", "備考")
@@ -117,7 +117,7 @@ oz_line <- function(ver) if (is.na(oz_files[[ver]])) sprintf("- %s：未着（`i
   sprintf("- %s：`%s`（記入のある尾崎の行 %d）", ver, basename(oz_files[[ver]]), sum(x$記入元 == paste("尾崎", ver)))
 L <- c("# パラメータ入力表の確認",
        "",
-       sprintf("対象：`input/params/parameters_v5.xlsx`（%d 行）。`R/10_read_params.R` が生成。", nrow(x)),
+       sprintf("対象：`input/params/parameters_v6.xlsx`（%d 行）。`R/10_read_params.R` が生成。", nrow(x)),
        "",
        "## 0. 尾崎先生の返送分（param_id で結合、v2 に記入のある行は v2、なければ v1）", "",
        oz_line("v1"), oz_line("v2"),

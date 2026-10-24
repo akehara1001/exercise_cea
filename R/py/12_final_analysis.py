@@ -1,7 +1,8 @@
 """KEYNOTE-522 final analysis (Schmid P, et al. J Clin Oncol 2026;44(16_suppl):507,
 doi:10.1200/JCO.2026.44.16_suppl.507; data cutoff 2025-10-14): 7-year values read by regex from the
 saved conference reports in input/papers/kn522_final_analysis/ (the abstract page on ascopubs.org
-returned 403 and was not retrieved; CareNet was under maintenance on 2026-10-22).
+returned 403 and was not retrieved; CareNet was under maintenance on 2026-10-22). Since 2026-10-23
+the abstract PDF placed by the user is read as well and checked against the overall values.
 
 Usage: .venv/Scripts/python.exe -I R/py/12_final_analysis.py <project_root>
 Writes data/kn522_final_7y.csv (one row per value: id, value, lo, hi, outlet, url, file, quote).
@@ -83,6 +84,30 @@ get("CancerNetwork 2026-06-01", r"distant recurrence-free survival rate at 7 yea
 get("DelveInsight", r"Patients with pCR EFS " + F + r"% " + F + r"% " + F + r" Patients with pCR OS [\d.]+% [\d.]+% " + F + r" Patients without pCR EFS " + F + r"% " + F + r"% " + F,
     [("efs_pcr_pembro_check", (1,)), ("efs_pcr_placebo_check", (2,)), ("hr_efs_pcr_check", (3,)), ("hr_os_pcr_check", (4,)),
      ("efs_nonpcr_pembro_check", (5,)), ("efs_nonpcr_placebo_check", (6,)), ("hr_efs_nonpcr_check", (7,))])
+# 2026-10-23: the abstract itself (input/papers/KN522_final_ASCO2026_abstract.pdf, placed by the user):
+# the overall values are read from it and must equal the values from the reports (*_abstract rows).
+# The abstract has no values by pCR status.
+import pymupdf as fitz
+AB = "Abstract (J Clin Oncol 2026;44(16_suppl):507)"
+SRC[AB] = ("https://doi.org/10.1200/JCO.2026.44.16_suppl.507", "../KN522_final_ASCO2026_abstract.pdf")
+T[AB] = re.sub(r"\s+", " ", " ".join(p.get_text() for p in fitz.open(os.path.join(root, "input", "papers", "KN522_final_ASCO2026_abstract.pdf"))))
+T[AB] = re.sub(r"(\d)- (\d)", r"\1-\2", T[AB])          # numbers broken at the end of a line
+get(AB, r"data cutoff date \((October 14, 2025)\), median follow-up \(range\) was " + F + r" mo \(" + F + r"-" + F + r"\)",
+    [("data_cutoff_abstract", (1,)), ("median_fu_months_abstract", (2, 3, 4))])
+get(AB, r"The 7-yr EFS rate \(95% CI\) was " + F + r"% \(" + F + r"-" + F + r"\) in the pembro group vs " + F + r"% \(" + F + r"-" + F +
+    r"\) in the pbo group; the HR was " + F + r" \(95% CI, " + F + r"-" + F + r"\)",
+    [("efs7_pembro_abstract", (1, 2, 3)), ("efs7_placebo_abstract", (4, 5, 6)), ("hr_efs_all_abstract", (7, 8, 9))])
+get(AB, r"The 7-yr OS rate \(95% CI\) was " + F + r"% \(" + F + r"-" + F + r"\) in the pembro group vs " + F + r"% \(" + F + r"-" + F +
+    r"\) in the pbo group; the HR was " + F + r" \(95% CI, " + F + r"-" + F + r"\)",
+    [("os7_pembro_abstract", (1, 2, 3)), ("os7_placebo_abstract", (4, 5, 6)), ("hr_os_all_abstract", (7, 8, 9))])
+assert not re.search(r"pCR\)? (?:EFS|OS|group)|without pCR|with pCR", T[AB]), "the abstract has values by pCR status"
+num3 = lambda r: tuple(float(x) if x not in ("", None) else None for x in (r["value"], r["lo"], r["hi"]))
+rv = {r["id"]: r for r in rows}
+for k in ["efs7_pembro", "efs7_placebo", "os7_pembro", "os7_placebo", "hr_efs_all", "hr_os_all"]:
+    assert num3(rv[k]) == num3(rv[k + "_abstract"]), (k, num3(rv[k]), num3(rv[k + "_abstract"]))
+assert rv["data_cutoff"]["value"] == rv["data_cutoff_abstract"]["value"]
+assert float(rv["median_fu_months"]["value"]) == float(rv["median_fu_months_abstract"]["value"])
+print("abstract: overall 7-year EFS/OS, CIs, HRs, data cutoff and median follow-up equal the values in use")
 out = os.path.join(root, "data", "kn522_final_7y.csv")
 with open(out, "w", newline="", encoding="utf-8") as f:
     w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
