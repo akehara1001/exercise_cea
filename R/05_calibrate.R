@@ -67,11 +67,11 @@ stopifnot(max(abs(esme_refit(ESME_IPD, ESME_FIT$engine$decision) - DR_EXT_BASE))
 P0 <- engine_params(dr = dr_ext_spec(DR_EXT_BASE), preprog = list(dist = "llogis", shape = 1, scale = 1))
 os_model <- function(P, months = g_m) lapply(arm_of, function(e) 100 * survival_engine(e, "all", times = months / 12, params = P)$OS)
 set.seed(CFG$seed)                              # random restarts if optim returns code 52
-cal <- calibrate_os(P0, target, g_m, DR_EXT_BASE, extra = X7)      # calibration.R (6 starts)
+cal <- calibrate_os(P0, target, g_m, DR_EXT_BASE, extra = X7, fixed = cal_fixed())   # calibration.R (6 starts; round 14: k fixed)
 best <- cal$optim; vals <- cal$starts_values; at_bound <- cal$at_bound
 P1 <- cal_apply(P0, cal$par, DR_EXT_BASE)
-STRUCT <- sprintf("AE deaths (data) + PreProg log-logistic (constrained) + DR early/late log-logistic, shape and medians external (ESME fit, %s shape), x k in pembrolizumab arms",
-                  ESME_FIT$engine$decision)
+STRUCT <- sprintf("AE deaths (data) + PreProg log-logistic (constrained) + DR early/late log-logistic, shape and medians external (ESME fit, %s shape), %s",
+                  ESME_FIT$engine$decision, if (is.na(CFG$pembro_dr_k_fixed)) "x k in pembrolizumab arms" else sprintf("k fixed at %g (common post-DR survival)", CFG$pembro_dr_k_fixed))
 constraint_bound <- at_bound[["pp_median_low"]] || at_bound[["pp_median_high"]] || at_bound[["pp_s5_at_min"]]
 cat(sprintf("PreProg log-logistic shape %.4f (cap %.4f), median %.4f months; DR log-logistic shape early %.4f / late %.4f, median early %.4f / late %.4f months (external); k %.4f; objective %.2f; starts spread %.2e; convergence %d\n",
             P1$preprog$shape, pp_shape_cap(P1$preprog$scale), 12 * P1$preprog$scale, P1$dr$shape, P1$dr$late_shape, 12 * P1$dr$scale,

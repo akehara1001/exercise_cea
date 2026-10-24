@@ -1,0 +1,32 @@
+Warning messages:
+1: package 'flexsurv' was built under R version 4.5.3 
+2: package 'flexsurvcure' was built under R version 4.5.3 
+Warning messages:
+1: package 'muhaz' was built under R version 4.5.3 
+2: package 'ggplot2' was built under R version 4.5.3 
+non-pCR family review: families passing = 0 
+              curve        model reported ci95_lo ci95_hi efs_before binding
+     EFS_pembro_pCR      weibull     90.4   87.80   93.00     90.080    TRUE
+    EFS_placebo_pCR      weibull     85.9   81.27   90.53     85.557    TRUE
+  EFS_pembro_nonpCR cure_weibull     57.6   51.91   63.29     60.860    TRUE
+ EFS_placebo_nonpCR cure_weibull     49.7   42.25   57.15     48.428    TRUE
+ efs_after diff_after
+      90.4          0
+      85.9          0
+      57.6          0
+      49.7          0
+              curve        model     AIC    S5   S10   S20 cure_fraction
+     EFS_pembro_pCR      weibull  259.71 91.56 86.83 79.77            NA
+    EFS_placebo_pCR      weibull  146.80 87.92 80.30 68.82            NA
+  EFS_pembro_nonpCR cure_weibull  460.33 65.18 63.12 60.45        0.6426
+ EFS_placebo_nonpCR cure_weibull  331.31 53.03 51.82 49.70        0.5283
+          OS_pembro   cure_lnorm 1041.23 86.42 83.27 79.42        0.8406
+         OS_placebo rp_hazard_k2  702.91 81.10 70.20 55.04            NA
+ efs5_diff scenario_model
+     0.012         llogis
+     0.753         llogis
+    -0.210    cure_llogis
+    -2.767    cure_llogis
+        NA           <NA>
+        NA           <NA>
+done

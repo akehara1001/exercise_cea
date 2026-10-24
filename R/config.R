@@ -78,6 +78,11 @@ CFG <- list(
   # round 13 (2026-10-23, docs/acceptance_rule_round13.md): "early" = k on early DR only (late DR
   # k = 1); "all" = k on all DR (rounds 6 to 12)
   pembro_dr_k_scope = "all",
+  # round 14 (2026-10-23, docs/acceptance_rule_round14.md, adopted): k fixed (not calibrated) at
+  # this value, post-DR survival common to both arms from ESME; NA = k calibrated within
+  # pembro_dr_k_bounds (rounds 6 to 13). The scenario "early-DR k (external)" is in
+  # data/fits/dr_k_external.rds (R/17_round14_kext.R; params_kext() in engine.R)
+  pembro_dr_k_fixed = 1,
   gate_pp_round1_2 = 1,
   gate_rmst_rel_tol_round3 = 0.20,
   # 5-year stratified EFS constraint (decision 2026-10-22): the 5-year prediction must lie in the
@@ -90,10 +95,10 @@ CFG <- list(
   # and round 11 as first run: stopped, output/phase1/round11/, data/fits/round11/); "equal" = fixed
   # at the reported value, bootstrap draws Binomial(n, p)/n per cell (round 11 revised, 2026-10-23,
   # docs/acceptance_rule_round11.md: stopped at gate (c), output/phase1/round11/equality/,
-  # data/fits/round11/equality/). Neither round-11 setting was adopted, so the default stays the
-  # accepted state of round 10 (5, "interval"); 7 and "equal" reproduce the revised round 11.
-  efs_constraint_years = 5,
-  efs_constraint_type = "interval",
+  # data/fits/round11/equality/). Round 14 (adopted, 2026-10-23) uses 7 and "equal"; rounds 3 to 10
+  # are reproduced with 5 and "interval".
+  efs_constraint_years = 7,
+  efs_constraint_type = "equal",
   seed = 20261021,
   boot_B = 1000
 )
@@ -108,6 +113,8 @@ local({
   }
   sc <- Sys.getenv("EXERCISE_CEA_DR_K_SCOPE", "")                 # round 13: "early" or "all"
   if (nzchar(sc)) { stopifnot(sc %in% c("early", "all")); CFG$pembro_dr_k_scope <<- sc }
+  kf <- Sys.getenv("EXERCISE_CEA_DR_K_FIXED", "")                 # round 14: "1", or "NA" to calibrate k
+  if (nzchar(kf)) CFG$pembro_dr_k_fixed <<- suppressWarnings(as.numeric(kf))
 })
 
 source(file.path(ROOT, "R", "lifetable.R"))

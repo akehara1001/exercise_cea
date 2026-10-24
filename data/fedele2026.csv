@@ -1,0 +1,16 @@
+id,value,page,quote
+n_recurrence,54,3,metastatic recurrence was documented in 54 of 209 patients
+n_cohort,209,3,metastatic recurrence was documented in 54 of 209 patients
+followup_median_months,24,3,"After a median follow-up of 24 months, metastatic recur"
+n_recurrence_check,54,4,"Among the 54 patients with metastatic recurrence, 52 were evaluable"
+n_evaluable,52,4,"Among the 54 patients with metastatic recurrence, 52 were evaluable"
+n_attrition,17,4,"attrition occurred in 17 patients (32.7%), while 35 patients (67.3%) initiated systemic therapy"
+pct_attrition,32.7,4,"attrition occurred in 17 patients (32.7%), while 35 patients (67.3%) initiated systemic therapy"
+n_no_attrition,35,4,"attrition occurred in 17 patients (32.7%), while 35 patients (67.3%) initiated systemic therapy"
+pct_no_attrition,67.3,4,"attrition occurred in 17 patients (32.7%), while 35 patients (67.3%) initiated systemic therapy"
+dfi_median_attrition_months,7.4,4,shorter disease- free interval compared with those who initiated treatment (median 7.4 vs. 14.3 months
+dfi_median_no_attrition_months,14.3,4,shorter disease- free interval compared with those who initiated treatment (median 7.4 vs. 14.3 months
+os_median_attrition_months,3.4,5,"within 90 days (3.4 vs. 12.4 months, respectively)"
+os_median_no_attrition_months,12.4,5,"within 90 days (3.4 vs. 12.4 months, respectively)"
+os_median_attrition_months_abstract,3.4,1,Median overall survival from metastatic recurrence was 3.4 months in the attrition group compared with 12.4 months
+os_median_no_attrition_months_abstract,12.4,1,Median overall survival from metastatic recurrence was 3.4 months in the attrition group compared with 12.4 months

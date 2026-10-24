@@ -88,6 +88,8 @@ pp_shape_cap <- function(median) {
 # 6-8 without the DR shape
 CAL_LOWER <- c(PP_MEDIAN_BOUNDS[1], 1e-3, log(CFG$pembro_dr_k_bounds[1]))
 CAL_UPPER <- c(PP_MEDIAN_BOUNDS[2], 1, log(CFG$pembro_dr_k_bounds[2]))
+# round 14: k fixed at CFG$pembro_dr_k_fixed (only the PreProg parameters calibrated); NULL = all free
+cal_fixed <- function() if (is.na(CFG$pembro_dr_k_fixed)) NULL else c(NA, NA, log(CFG$pembro_dr_k_fixed))
 CAL_STARTS <- list(c(11 / 12, 0.5, log(1)), c(18 / 12, 0.9, log(1.5)), c(12 / 12, 0.99, log(2)),
                    c(24 / 12, 0.3, log(0.8)), c(14 / 12, 0.7, log(3)), c(10.5 / 12, 0.95, log(1.2)))
 

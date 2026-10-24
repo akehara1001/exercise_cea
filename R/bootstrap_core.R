@@ -89,7 +89,8 @@ boot_one <- function(b, seed = CFG$seed, tt = c(5, 7, 10, 20)) {
     fl <- cal_flows(P)
     dr_ext <- esme_draw()                      # round 9: ESME IPD resampled and refitted (shape and medians)
     X7b <- final7y_draw(X7)
-    cal <- calibrate_os(P, targets, CFG$calib_grid_months, dr_ext, starts = c(list(th_base), CAL_STARTS), fl = fl, extra = X7b)
+    cal <- calibrate_os(P, targets, CFG$calib_grid_months, dr_ext, starts = c(list(th_base), CAL_STARTS), fl = fl, extra = X7b,
+                        fixed = cal_fixed())                       # round 14: k fixed at CFG$pembro_dr_k_fixed
     P <- cal_apply(P, cal$par, dr_ext)
     km_d <- rmst_km(os_b$pembro) - rmst_km(os_b$placebo)
     o <- cal_os(fl, cal_specs(cal$par, dr_ext))

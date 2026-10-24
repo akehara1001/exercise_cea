@@ -39,3 +39,8 @@ ESME 早期再発 TNBC（2026-10-23 追記、第九轮）
   - 使用箇所：本文 p.19（Results の Safety：as-treated 428 例と 461 例、筋骨格系有害事象 79 例と 53 例）、補足 Table S4（p.77：Musculoskeletal (total)、Any Grade と Grade ≥3）。R/py/16_params_v6.py が読み取り、入力表 v6 の E06、E07、E09、E10 に記入。
 - KN522_final_ASCO2026_abstract.pdf — Schmid P, et al. Neoadjuvant pembrolizumab or placebo plus chemotherapy followed by adjuvant pembrolizumab or placebo for high-risk early-stage TNBC: Final analysis results from the phase 3 KEYNOTE-522 study. J Clin Oncol 2026;44(16_suppl):507。DOI 10.1200/JCO.2026.44.16_suppl.507（ASCO 2026 抄録、1 ページ）。sha256 533add7c3de37c72e3d5e94617f9579be1281c091345aa103445307beec18be1
   - 使用箇所：全体の 7 年 EFS と OS（95% CI）、HR、データカットオフ、追跡期間中央値（範囲）。R/py/12_final_analysis.py が読み取り、会議報道から読んだ値と一致することを確認（data/kn522_final_7y.csv の *_abstract 行）。抄録には pCR 別の値はない（pCR 別の値は引き続き会議報道による）。
+
+利用者が置いたもの（2026-10-23、第十四轮）
+- Fedele2026_BCRT.pdf — Fedele P, Rizzo A, Landriscina M, et al. Early first-line systemic anticancer therapeutic attrition after metastatic recurrence in triple-negative breast cancer following neoadjuvant chemo-immunotherapy: a multicenter real-world study. Breast Cancer Res Treat 2026;218:8。DOI 10.1007/s10549-026-08023-2。9 ページ。sha256 c9c79c715cd27dd6b0b5e4810fd664de4db9be30313ed6511b18429b4e8ade33
+  - 使用箇所：p.4（転移再発 54 例中 52 例が評価可能、90 日以内に一次治療を始めなかった 17 例と始めた 35 例、無病期間の中央値 7.4 と 14.3 か月〔Table 2 も p.4〕）、p.5（再発後 OS の中央値 3.4 と 12.4 か月；抄録 p.1 も同値）、p.3（追跡期間中央値 24 か月、209 例中 54 例が転移再発）。R/py/17_fedele.py が読み取り data/fedele2026.csv に保存、R/17_round14_kext.R が第十四轮の情景「早期再発後 k（外部）」の k を計算。
+  - 注意：抄録は「17 of 54 evaluable patients (32.7%)」と書くが、32.7% は 17/52 で、本文 p.4 の評価可能 52 例と一致する。52 例を用いた。

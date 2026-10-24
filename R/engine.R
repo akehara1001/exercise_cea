@@ -165,6 +165,11 @@ dr_late_spec <- function(dr) modifyList(dr, list(scale = dr$late_scale, shape = 
 # late DR; scope "early" (round 13, 2026-10-23, docs/acceptance_rule_round13.md) on early DR only,
 # late DR k = 1 (k_late)
 dr_with_k <- function(dr, k, scope = "all") { dr$k <- k; if (identical(scope, "early")) dr$k_late <- 1; dr }
+# round 14: parameters of the scenario "early-DR k (external)" (Fedele 2026; R/17_round14_kext.R)
+# from a base parameter set (k = 1): k on early DR only, other parameters unchanged
+params_kext <- function(P, ext = readRDS(file.path(ROOT, "data", "fits", "dr_k_external.rds"))) {
+  P$pembro_dr_k <- ext$k; P$pembro_dr_k_scope <- ext$scope; P
+}
 dr_state <- function(f, inflow, dr, max_cycles = NULL) {
   if (is.null(dr$late_scale)) return(tunnel_state(f, inflow, dr, max_cycles))
   e <- dr_early_mask(inflow, dr)
