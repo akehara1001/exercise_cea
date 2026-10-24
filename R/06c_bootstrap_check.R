@@ -23,7 +23,8 @@ suppressPackageStartupMessages({
 args <- commandArgs(trailingOnly = TRUE)
 label <- if (length(args) >= 1) args[1] else "local"
 n_workers <- if (length(args) >= 2) as.integer(args[2]) else max(1, detectCores(logical = FALSE) - 1)
-SEED <- 20261023; B <- 10; TT <- c(1, 2, 3, 5, 7, 10, 20)
+SEED <- CFG$boot_seed; B <- 10; TT <- c(1, 2, 3, 5, 7, 10, 20)       # 20261023
+stopifnot(SEED == 20261023)
 check_dir <- file.path(ROOT, "output", "check")
 dir.create(check_dir, showWarnings = FALSE)
 

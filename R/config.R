@@ -100,6 +100,11 @@ CFG <- list(
   efs_constraint_years = 7,
   efs_constraint_type = "equal",
   seed = 20261021,
+  # base seed of the bootstrap (06_bootstrap.R, 06c_bootstrap_check.R; replicate b uses boot_seed + b),
+  # 2026-10-24: the same as the local reference, so that the 1,000 replicates are reproduced from the
+  # repository alone. `seed` above stays for the calibration (code-52 restarts) and the KM bootstrap
+  # of gate (b), whose interval it fixes.
+  boot_seed = 20261023,
   boot_B = 1000
 )
 # override of the stratified EFS constraint for one run (round 12, 2026-10-23: both settings are

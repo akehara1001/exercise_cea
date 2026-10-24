@@ -34,7 +34,7 @@ engine_outputs <- function(P, tt = c(5, 7, 10, 20)) {
 }
 flat <- function(l) unlist(lapply(names(l), function(n) setNames(l[[n]], paste0(n, "_", names(l[[n]])))))
 
-boot_one <- function(b, seed = CFG$seed, tt = c(5, 7, 10, 20)) {
+boot_one <- function(b, seed = CFG$boot_seed, tt = c(5, 7, 10, 20)) {
   km_at <- function(d, tm) summary(survfit(Surv(time, status) ~ 1, data = d), times = tm, extend = TRUE)$surv
   rmst_km <- function(d) summary(survfit(Surv(time / 12, status) ~ 1, data = d), rmean = 5)$table[["rmean"]]
   cand_of <- function(id) CANDIDATES[[which(sapply(CANDIDATES, `[[`, "id") == id)]]
@@ -114,7 +114,7 @@ boot_one <- function(b, seed = CFG$seed, tt = c(5, 7, 10, 20)) {
 # replicates 1..B on n_workers processes (PSOCK; serial if n_workers <= 1); returns the list of
 # replicates and the minutes taken. Each worker runs with one thread for OpenMP and the BLAS
 # (docs/model_spec.md section 7; RhpcBLASctl only if installed).
-boot_run <- function(B, n_workers, seed = CFG$seed, tt = c(5, 7, 10, 20)) {
+boot_run <- function(B, n_workers, seed = CFG$boot_seed, tt = c(5, 7, 10, 20)) {
   t0 <- Sys.time()
   if (n_workers <= 1) {
     RES <- lapply(seq_len(B), boot_one, seed = seed, tt = tt)

@@ -26,7 +26,8 @@
 # Fixed in every replicate (data settings): life table, EFS event composition and shares, deaths
 # due to adverse events, LRR -> DR rate, PreProg counts, 5-year constraint bounds.
 # A replicate whose fit fails is redrawn with another seed (counted in `attempts`).
-# Random numbers per replicate (set.seed(CFG$seed + b)); the replicate code is in bootstrap_core.R.
+# Random numbers per replicate (set.seed(CFG$boot_seed + b); 20261023 from 2026-10-24, the phase-1
+# bootstrap of round 8 used CFG$seed = 20261021); the replicate code is in bootstrap_core.R.
 # Outputs: data/bootstrap/boot_replicates.rds and boot_*.csv (parameter matrices and the drawn
 #          7-year targets, one row per replicate); output/phase1/bootstrap_summary.csv
 
@@ -46,7 +47,7 @@ dir.create(boot_dir, showWarnings = FALSE)
 
 source(file.path(ROOT, "R", "bootstrap_core.R"))     # boot_load(), boot_one(), boot_run(), engine_outputs()
 boot_load()
-run <- boot_run(B, n_workers, CFG$seed, c(5, 7, 10, 20))
+run <- boot_run(B, n_workers, CFG$boot_seed, c(5, 7, 10, 20))
 RES <- run$RES; el <- run$minutes
 failed <- sapply(RES, function(r) !is.null(r$error))
 cat(sprintf("B = %d, workers %d, %.1f min; failed after 10 attempts: %d\n", B, n_workers, el, sum(failed)))
@@ -59,7 +60,7 @@ CALm <- mat(function(r) c(attempts = r$attempts, r$calib)); OUTm <- mat(function
 T7m <- mat(function(r) r$targets7)
 PREm <- mat(function(r) unlist(lapply(c("pembro", "placebo"), function(a) lapply(c("pCR", "nonpCR"), function(s)
   setNames(r$pre_surv[[a]][[s]]$surv, paste0("pre_surv_", a, "_", s, "_m", 0:Lm))))))
-saveRDS(list(B = B, seed = CFG$seed, minutes = el, failed = RES[failed], efs = EFSm, efs_binding = BINDm, os_models = OSm,
+saveRDS(list(B = B, seed = CFG$boot_seed, minutes = el, failed = RES[failed], efs = EFSm, efs_binding = BINDm, os_models = OSm,
              pcr_preprog = PCRm, pre_surv = PREm, calibration = CALm, outputs = OUTm, targets7 = T7m),
         file.path(boot_dir, "boot_replicates.rds"))
 write.csv(EFSm, file.path(boot_dir, "boot_efs_params.csv"), row.names = FALSE)
