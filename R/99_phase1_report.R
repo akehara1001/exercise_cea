@@ -145,7 +145,7 @@ if (adopt9) {
            "数据（2022 年补充材料 Table S5）", "数据（2022 年 Table 1 脚注）"), check.names = FALSE)
   out8 <- DS10[DS10$used_in_rule & !istrue(DS10$round8_inside), ]
   add("## 第1阶段最终状态", "",
-      sprintf("第 1 阶段以**第九轮**为最终结构（%s）。依据：第十轮的判定规则 A（`docs/acceptance_rule_round10.md`，git e8d2134，在诊断之前单独提交）——第八轮模型的远处复发后隐含存活在%s落在 ESME 重建 KM 的 95%% CI 之外；第九轮在第 1 至 4 年的 %d 个点中 %d 个落在区间内（第 14 节）。第八轮（git 694b0f3）只作记录：第 1 至 12 节为第八轮的内容，其参数、bootstrap 与输出的快照在 `data/fits/round8/`、`data/bootstrap/round8/`、`output/phase1/round8/`。引擎默认参数在 `data/fits/engine_params.rds`（第九轮）。涉及帕博利珠单抗的结果在第 2 阶段以基准与情景 k = 1 两栏并列报告（`docs/model_spec.md` 第 6 节）。第十一轮（分层 EFS 约束改用最终分析的 7 年值，2026-10-23）两次都按规则停下、未采用：区间约束停在拟合之后，改为等式约束后停在门槛 (c)（第 15 节）。",
+      sprintf("第 1 阶段以**第九轮**为最终结构（%s）。依据：第十轮的判定规则 A（`docs/acceptance_rule_round10.md`，git e8d2134，在诊断之前单独提交）——第八轮模型的远处复发后隐含存活在%s落在 ESME 重建 KM 的 95%% CI 之外；第九轮在第 1 至 4 年的 %d 个点中 %d 个落在区间内（第 14 节）。第八轮（git 694b0f3）只作记录：第 1 至 12 节为第八轮的内容，其参数、bootstrap 与输出的快照在 `data/fits/round8/`、`data/bootstrap/round8/`、`output/phase1/round8/`。引擎默认参数在 `data/fits/engine_params.rds`（第九轮）。涉及帕博利珠单抗的结果在第 2 阶段以基准与情景 k = 1 两栏并列报告（`docs/model_spec.md` 第 6 节）。第十一轮（分层 EFS 约束改用最终分析的 7 年值，2026-10-23）两次都按规则停下、未采用：区间约束停在拟合之后，改为等式约束后停在门槛 (c)（第 15 节）。第十二轮修正了引擎与输入 EFS 的不一致（手术前的背景死亡与因不良事件死亡原先另外加在 KM 之上，术前进展用的是报告比例而非 KM 的下降）；修正后的引擎下第十一轮设定仍在门槛 (c) 不通过，未采用（第 16 节）。**本节的第十轮参数与门槛结果是用修正前的引擎算出的**；修正后的引擎下第十轮设定重新校准的结果见第 16 节（只报告，不作为回退）。",
               C9f$structure, paste(sprintf("%s第 %d 年", ifelse(out8$group == "early", "早期", "晚期"), out8$year), collapse = "、"),
               nrow(DS10), sum(istrue(DS10$round9_inside))), "",
       "最终参数（第九轮）：", "", md_table(FP9), "",
@@ -907,6 +907,82 @@ if (file.exists(file.path(r11, "status.csv"))) {
         sprintf("只改 k（其余参数取本轮校准值、不重新优化）时，三道门槛同时满足的 k 为 %s（校准值 %s）。只作诊断，不作采用。",
                 if (length(ks)) sprintf("%s 至 %s", f2(min(ks), 2), f2(max(ks), 2)) else "无", f2(vq(VSe, "pembro_dr_k"), 3)), "")
   }
+}
+
+# round 12 (docs/acceptance_rule_round12.md, git a1625c1): engine / fitted EFS consistency fixed,
+# round 11 re-judged; outputs in output/phase1/round12/
+r12 <- file.path(ROOT, "output", "phase1", "round12")
+if (file.exists(file.path(r12, "round11_setting", "calibration_status.csv"))) {
+  r2 <- function(...) rd("output", "phase1", "round12", ...)
+  DP <- r2("diag_engine_vs_fit_prefix.csv"); DI <- r2("diag_branch_inputs.csv"); CT <- rd("output", "phase1", "engine_efs_consistency_test.csv")
+  KS12 <- r2("round11_setting", "diag_k_scan.csv")
+  lab12 <- c(pembro = "帕博利珠单抗", placebo = "安慰剂")
+  cols <- list(
+    list(name = "第十一轮设定（修正后引擎）", dir = c("output", "phase1", "round12", "round11_setting")),
+    list(name = "第十一轮（修正前引擎）", dir = c("output", "phase1", "round11", "equality")),
+    list(name = "第十轮设定（修正后引擎，只报告）", dir = c("output", "phase1", "round12", "round10_setting")),
+    list(name = "第十轮（修正前引擎，已接受）", dir = c("output", "phase1")))
+  cell <- function(cl, f) do.call(rd, as.list(c(cl$dir, f)))
+  g7v <- function(G, id) { G <- G[G$id == id, ]; sprintf("%s（%s 至 %s）%s", f2(G$engine, 2), f2(G$ci95_lo, 1), f2(G$ci95_hi, 1), if (istrue(G$inside_ci)) "" else " **区间外**") }
+  ya12 <- function(CS) if (istrue(CS$gate_a_strict_pass)) "达标" else if (istrue(CS$gate_a_accepted)) "按 Bonferroni 同时区间接受" else "**不达标**"
+  colv <- lapply(cols, function(cl) {
+    CS <- cell(cl, "calibration_status.csv"); G <- cell(cl, "calibration_gate.csv"); GR <- cell(cl, "calibration_gate_rmst.csv")
+    G7 <- cell(cl, "calibration_final7y.csv"); V <- cell(cl, "calibration_vs_previous.csv")
+    c(sprintf("%s（95%% 区间内 %d 个）", ya12(CS), sum(istrue(G$inside))), sprintf("%s（%s）", if (istrue(CS$gate_b_pass)) "达标" else "**不达标**", f2(GR$engine, 4)),
+      if (istrue(CS$gate_c_pass)) "达标" else "**不达标**",
+      g7v(G7, "os7_pembro"), g7v(G7, "os7_placebo"), g7v(G7, "efs7_pembro"), g7v(G7, "efs7_placebo"),
+      f2(V$round9[V$quantity == "pembro_dr_k"], 3), f2(V$round9[V$quantity == "preprog_median_months"], 2), f2(V$round9[V$quantity == "km_SSE_both_arms_pp2"], 1))
+  })
+  TB <- data.frame(项目 = c("门槛 (a)", "门槛 (b)：5 年 RMST 两臂差（年）", "门槛 (c)", "7 年 OS 帕博利珠单抗（报告 85.1）", "7 年 OS 安慰剂（报告 77.2）",
+                          "7 年 EFS 帕博利珠单抗（报告 78.3）", "7 年 EFS 安慰剂（报告 69.8）", "k", "术前进展中位（月）", "KM 平方误差和（百分点²）"),
+                   setNames(as.data.frame(do.call(cbind, colv)), sapply(cols, `[[`, "name")), check.names = FALSE)
+  S11f <- cell(cols[[1]], "calibration_status.csv"); G711f <- cell(cols[[1]], "calibration_final7y.csv")
+  oc <- G711f[istrue(G711f$gate_c) & !istrue(G711f$inside_ci), ]
+  ks <- KS12$k[istrue(KS12$all_three)]
+  D7 <- DP[DP$setting == "round11", ]
+  add("## 16. 第十二轮（2026-10-23）：修正引擎与输入 EFS 的不一致，修正后重判第十一轮", "",
+      "规则在任何计算之前单独提交（`docs/acceptance_rule_round12.md`，git a1625c1）。判定依据：引擎的作用是把拟合的 EFS 曲线分解到事件类型和时点上，不应改变 EFS 本身；检查为四个格子和两臂全体，引擎 EFS 与第 4 步拟合曲线在第 1、2、3、5、7、10 年的差都 ≤ 0.05 个百分点（实现的正确性检查，不是统计门槛）。修正原则：已包含在拟合 EFS 曲线中的事件只能在时点或状态之间移动，不能另外加上去。", "",
+      "### 16.1 诊断（修正前的引擎 = git a1625c1 的 `R/engine.R`；`R/16_round12_diag.R`）", "",
+      "第十一轮设定（7 年、等式约束）下引擎 EFS 与拟合曲线之差（百分点）按来源的拆解（一阶近似，余项归入「其他」；第十轮设定的同表在 `round12/diag_engine_vs_fit_prefix.csv`，大小几乎相同）：", "",
+      md_table(data.frame(格子 = sprintf("%s %s", lab12[D7$arm], D7$stratum), 年 = D7$year, 拟合 = f2(D7$fit, 2), 引擎 = f2(D7$engine, 2), 差 = f2(D7$diff, 3),
+                          A手术前背景死亡 = f2(D7$A_pre_background, 3), B手术前因不良事件死亡 = f2(D7$B_pre_ae_deaths, 3),
+                          C术前进展对KM下降 = f2(D7$C_preprog_vs_km, 3), D手术后背景下限 = f2(D7$D_post_background_floor, 3), E其他 = f2(D7$E_other, 3), check.names = FALSE)), "",
+      sprintf("各层的输入：手术时点 KM 的下降 帕博利珠单抗 non-pCR %s%%、安慰剂 non-pCR %s%%（pCR 两层为 0：重建数据中 pCR 层手术前没有事件和删失）；术前进展的报告比例 q_pre %s%%、%s%%；治疗期因不良事件死亡的概率 %s%%、%s%%。",
+              f2(100 * DI$km_drop_to_surgery[DI$setting == "round11" & DI$arm == "pembro" & DI$stratum == "nonpCR"], 2),
+              f2(100 * DI$km_drop_to_surgery[DI$setting == "round11" & DI$arm == "placebo" & DI$stratum == "nonpCR"], 2),
+              f2(100 * DI$q_pre[DI$setting == "round11" & DI$arm == "pembro" & DI$stratum == "nonpCR"], 2),
+              f2(100 * DI$q_pre[DI$setting == "round11" & DI$arm == "placebo" & DI$stratum == "nonpCR"], 2),
+              f2(100 * DI$ae_deaths_prob[DI$setting == "round11" & DI$arm == "pembro"][1], 2), f2(100 * DI$ae_deaths_prob[DI$setting == "round11" & DI$arm == "placebo"][1], 2)), "",
+      md_table(data.frame(
+        来源 = c("因不良事件死亡（手术前）", "背景死亡（手术前）", "术前进展", "pCR 分层开始的时点", "背景死亡下限（手术后，非治愈模型）", "其他"),
+        是否已在拟合曲线中 = c("是（KM 含手术前的全部死亡）", "是（同上）", "是（无法手术的进展是 EFS 事件，在 non-pCR 层手术前的 KM 下降中）",
+                       "是（手术前的事件都在 non-pCR 层；pCR 层手术前的 KM 为 1）", "不适用（拟合风险低于背景时的外推）", "—"),
+        原因与代码位置 = c("旧 `branch_flows()`：`dHA <- ae_rate * ...` 在 [0, ae_end) 全程计入 EF 的总风险 `Ht`，手术前未从 KM 中扣出，两层都计",
+                    "旧 `branch_flows()`：`Ht <- hb + ...` 手术前也含背景死亡 `hb`，叠加在 KM 之上",
+                    "旧 `branch_flows()`：`Spre <- 1 - q_pre * Fpre`，以报告比例 q_pre 代替 KM 的下降（帕博利珠单抗 q < 下降、安慰剂 q > 下降）",
+                    "上面三项在 pCR 层的表现：手术前本无事件，引擎仍计背景死亡与因不良事件死亡（两臂 pCR 层的全部偏差）",
+                    "`pmax(dH - hb, 0)`：10 年内不起作用（0 个周期）；pCR 层的 Weibull 拟合自第 22 年（帕博利珠单抗）、第 27 年（安慰剂）起低于背景死亡率，此后引擎以背景死亡率为下限",
+                    "一阶近似的余项（≤ 0.01 个百分点）"),
+        修正方式 = c("手术前从 KM 的下降中分出（在术前进展之后，最多为余下的部分）；放不下的部分（pCR 层的全部）移到手术后、治疗期结束前，均匀地从超额风险中扣出",
+                 "手术前不另计；KM 的下降中术前进展与因不良事件死亡以外的部分为其他死亡（含背景）",
+                 "手术前最多为 KM 的下降、按 KM 的形状；超出的部分（安慰剂 non-pCR 8.67% − 7.59%）移到手术后最早的周期，从超额风险中扣出，总量仍为 q_pre",
+                 "pCR 层手术前没有离开无事件状态的事件；因不良事件死亡全部在手术后的治疗期内",
+                 "不改（不在本检查的范围；外推的问题，第 2 阶段终生模拟时要注意）",
+                 "—"), check.names = FALSE)), "",
+      "### 16.2 修正与测试", "",
+      "`R/engine.R`：新增 `branch_hazards()`（离开无事件状态的各项风险），`branch_flows()` 与 `R/test_engine_vectorized.R` 的逐周期递推共用；手术前的无事件比例严格等于该层的 KM，手术后的全死因风险等于 EFS 模型（非治愈模型不低于背景）；手术前放不下的事件移到手术后，不另外加。新增单元测试 `R/test_engine_efs_consistency.R`（输出 `output/phase1/engine_efs_consistency_test.csv`），已纳入全部单元测试。", "",
+      sprintf("结果：第十轮设定与第十一轮设定都达标，四个格子与两臂全体在 6 个时点的最大差 %s 个百分点；术前进展的进入量每层都等于 q_pre；终生的因不良事件死亡与治疗期的概率之差最大 %s 个百分点（只报告）。其他单元测试（向量化 3,456 例、接口、费用层、约束）都通过；接口测试与费用层测试的数值因引擎改变而改变。",
+              formatC(max(abs(CT$diff[!is.na(CT$year)])), format = "e", digits = 1), f2(max(abs(CT$diff[is.na(CT$year)])), 3)), "",
+      "### 16.3 校准与门槛（`R/16b_round12_calibrate.sh`）", "",
+      md_table(TB), "",
+      "### 16.4 判定", "",
+      sprintf("**第十一轮设定按规则停下**：门槛 (c) 不达标——%s。门槛与第十一轮完全相同，没有放宽，没有手动指定 k，没有自行改结构或目标函数。第十轮设定在修正后的引擎下三道门槛都达标，但按规则只报告，不作为回退选项（其 non-pCR 层 7 年两臂差有已知偏差：模型 12.43 对报告 7.9 个百分点）。",
+              paste(sprintf("%s 7 年 %s 模型 %s，区间 %s 至 %s（低 %s 个百分点）", lab12[oc$arm], oc$endpoint, f2(oc$engine, 2), f2(oc$ci95_lo, 1), f2(oc$ci95_hi, 1),
+                            f2(pmax(oc$ci95_lo - oc$engine, oc$engine - oc$ci95_hi), 2)), collapse = "；")), "",
+      sprintf("诊断（不作门槛，`R/15b_round11_diag.R`，修正后的引擎）：引擎中按 pCR 分层的 7 年 EFS 与约束值完全相同；只改 k（其余参数取本轮校准值、不重新优化）时三道门槛同时满足的 k 为 %s（校准值 %s）。",
+              if (length(ks)) sprintf("%s 至 %s", f2(min(ks), 2), f2(max(ks), 2)) else "无", f2(as.numeric(cell(cols[[1]], "calibration_vs_previous.csv")$round9[1]), 3)), "",
+      "### 16.5 状态", "",
+      "主目录（`data/fits/fits.rds`、`engine_params.rds`、`calibration_candidates.rds` 与校准输出）仍为第十轮的文件，**这些是用修正前的引擎算出的**；`config.R` 的默认仍为 5 年、区间约束（设 `EXERCISE_CEA_EFS_CONSTRAINT=7,equal` 即重现第十一轮设定）。引擎的修正已提交。两种设定在修正后引擎下的产物在 `output/phase1/round12/`、`data/fits/round12/`。本地参照 `output/check/bootstrap10_local.rds` 是修正前的引擎生成的，未重新生成；没有运行 `R/06d_reference_bounds.R`；没有启动 Longleaf。", "")
 }
 
 writeLines(L, file.path(out_dir, "phase1_report.md"), useBytes = TRUE)

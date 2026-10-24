@@ -7,15 +7,17 @@
 #  2. k only varied over its range (0.25 to 4), the other calibrated parameters fixed: whether
 #     gates (a), (b) and (c) hold at the same time (the objective is not re-optimised).
 # Outputs: output/phase1/round11/equality/diag_engine_efs7.csv, diag_k_scan.csv
-# Usage: Rscript R/15b_round11_diag.R [candidates.rds]
+# Usage: Rscript R/15b_round11_diag.R [candidates.rds] [output dir] [equality constraint csv]
+#   (round 12: run on the fixed engine with output/phase1/round12/round11_setting/; the gate data are
+#   read from output/phase1/, so run right after 05_calibrate.R of that setting)
 
 source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 source(file.path(ROOT, "R", "survmodels.R")); source(file.path(ROOT, "R", "engine.R")); source(file.path(ROOT, "R", "calibration.R"))
 args <- commandArgs(trailingOnly = TRUE)
 cand <- if (length(args) >= 1) args[1] else file.path(ROOT, "data", "fits", "round11", "equality", "calibration_candidates.rds")
-out <- file.path(ROOT, "output", "phase1", "round11", "equality")
+out <- if (length(args) >= 2) args[2] else file.path(ROOT, "output", "phase1", "round11", "equality")
 P1 <- readRDS(cand)$params
-CON <- read.csv(file.path(out, "..", "..", "efs7_equality_constraint.csv"), stringsAsFactors = FALSE)
+CON <- read.csv(if (length(args) >= 3) args[3] else file.path(out, "..", "..", "efs7_equality_constraint.csv"), stringsAsFactors = FALSE)
 arm_of <- c(pembro = "pembro", placebo = "chemo")
 
 E <- do.call(rbind, lapply(names(arm_of), function(a) do.call(rbind, lapply(c("pCR", "nonpCR"), function(s) {

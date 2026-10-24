@@ -1,0 +1,199 @@
+Warning messages:
+1: package 'flexsurv' was built under R version 4.5.3 
+2: package 'flexsurvcure' was built under R version 4.5.3 
+Warning message:
+package 'ggplot2' was built under R version 4.5.3 
+PreProg log-logistic shape 1.6387 (cap 1.6387), median 10.0000 months; DR log-logistic shape early 1.6598 / late 1.6598, median early 9.7339 / late 16.9299 months (external); k 1.5278; objective 155.98; starts spread 8.19e-12; convergence 0
+[1] 155.9774 155.9774 155.9774 155.9774 155.9774 155.9774
+ pp_median_low pp_median_high   pp_s5_at_min       pp_u_low          k_low 
+          TRUE          FALSE           TRUE          FALSE          FALSE 
+        k_high 
+         FALSE 
+            code52       value_before        value_after max_abs_par_change 
+            0.0000           155.9774           155.9774             0.0000 
+gate (a): PASS 
+     arm month       km  ci95_lo  ci95_hi ci995_lo  ci995_hi   engine
+  pembro    12 97.18896 96.03781 98.35390 95.54453  98.86169 97.92267
+  pembro    24 92.20022 90.33977 94.09899 89.54737  94.93167 93.82728
+  pembro    36 89.50960 87.38693 91.68383 86.48519  92.63977 90.82208
+  pembro    48 87.84102 85.57896 90.16288 84.61945  91.18525 88.22921
+  pembro    60 86.55168 84.19113 88.97842 83.19096  90.04817 86.02247
+ placebo    12 98.71795 97.60772 99.84081 97.13177 100.00000 97.96287
+ placebo    24 91.02137 88.22720 93.90402 87.04631  95.17795 92.19969
+ placebo    36 86.90288 83.61557 90.31944 82.23360  91.83729 87.51647
+ placebo    48 83.53193 79.92391 87.30283 78.41320  88.98481 83.54239
+ placebo    60 81.70627 77.94782 85.64594 76.37745  87.40688 80.23090
+        diff inside outside_pp inside_995
+  0.73371198   TRUE          0       TRUE
+  1.62705870   TRUE          0       TRUE
+  1.31248319   TRUE          0       TRUE
+  0.38818181   TRUE          0       TRUE
+ -0.52920829   TRUE          0       TRUE
+ -0.75507638   TRUE          0       TRUE
+  1.17832411   TRUE          0       TRUE
+  0.61358832   TRUE          0       TRUE
+  0.01046464   TRUE          0       TRUE
+ -1.47536578   TRUE          0       TRUE
+              arm   rmst5_km rmst5_engine        diff
+           pembro 4.60794579    4.6420329 0.034087143
+          placebo 4.50944740    4.5172256 0.007778181
+ pembro - placebo 0.09849838    0.1248073 0.026308962
+gate (b): PASS 
+                                            quantity         km km_boot_ci95_lo
+ 5-year OS RMST difference, pembro - placebo (years) 0.09849838     -0.03805283
+ km_boot_ci95_hi boot_B    engine engine_minus_km rel_error round3_allowed_lo
+       0.2420894   1000 0.1248073      0.02630896 0.2671004        0.07879871
+ round3_allowed_hi pass
+         0.1181981 TRUE
+gate (c): PASS 
+                id value       se ci95_lo ci95_hi engine engine_k1  diff
+        os7_pembro  85.1 1.275534    82.5    87.5  82.65     83.80 -2.45
+       os7_placebo  77.2 2.142897    72.7    81.1  75.32     75.32 -1.88
+       efs7_pembro  78.3 1.479619    75.3    81.1  79.27     79.27  0.97
+      efs7_placebo  69.8 2.346982    65.0    74.2  69.09     69.09 -0.71
+     os_pcr_pembro  94.5 1.024695      NA      NA  92.40     93.00 -2.10
+    os_pcr_placebo  91.1 1.932966      NA      NA  90.00     90.00 -1.10
+  os_nonpcr_pembro  69.0 2.720548      NA      NA  66.04     68.13 -2.96
+ os_nonpcr_placebo  59.8 3.727697      NA      NA  56.91     56.91 -2.89
+      drfs7_pembro  82.9       NA      NA      NA  80.83     80.83 -2.07
+     drfs7_placebo  74.2       NA      NA      NA  71.08     71.08 -3.12
+ objective_term inside_ci gate_c
+          3.701      TRUE   TRUE
+          0.770      TRUE   TRUE
+          0.431      TRUE   TRUE
+          0.092      TRUE   TRUE
+          4.217        NA  FALSE
+          0.326        NA  FALSE
+          1.185        NA  FALSE
+          0.601        NA  FALSE
+             NA        NA  FALSE
+             NA        NA  FALSE
+                                        part n_points      value
+        KM OS, months 1-78, both arms (pp^2)      156 144.655046
+ 7-year points, OS and EFS by arm (weighted)        4   4.993726
+  7-year points, OS by pCR status (weighted)        4   6.328596
+                                       total      164 155.977368
+                         quantity     round6     round7     round8      round9
+                      pembro_dr_k  1.4276718  1.4109883  1.4918284   1.5278338
+            preprog_median_months 11.4386984 11.3896966 10.0000000  10.0000000
+                    preprog_shape  1.7716533  1.7670760  1.6387445   1.6387445
+                preprog_shape_cap  1.7716533  1.7670760  1.6387445   1.6387445
+         dr_shape_early_or_common  0.5825028  0.5802138  0.8764977   1.6598360
+ dr_median_months_early_or_common 10.1000000 10.1000000 10.1000000   9.7339116
+            dr_median_months_late         NA         NA 17.1000000  16.9299027
+                    dr_shape_late         NA         NA         NA   1.6598360
+          rmst5_diff_engine_years  0.1235728  0.1249924  0.1175155   0.1248073
+             km_SSE_both_arms_pp2 65.6135152 65.7409900 79.2477583 144.6550463
+     arm horizon_years dr_cum_incidence_pct early_cum_incidence_pct
+  pembro             5             12.60631                4.629839
+  pembro             7             14.80801                4.629839
+  pembro            51             20.26232                4.629839
+ placebo             5             18.55578                5.949989
+ placebo             7             21.45386                5.949989
+ placebo            51             30.96088                5.949989
+ late_cum_incidence_pct early_share early_months
+               7.976472   0.3672636           18
+              10.178171   0.3126577           18
+              15.632483   0.2284950           18
+              12.605791   0.3206542           18
+              15.503870   0.2773389           18
+              25.010889   0.1921777           18
+    state median_excess_only_months median_all_cause_months   surv_1y   surv_2y
+  PreProg                     10.01                    9.99 0.4253132 0.1918550
+ DR early                      9.74                    9.73 0.4134300 0.1821958
+  DR late                     16.93                   16.89 0.6381528 0.3580406
+    surv_5y
+ 0.05000000
+ 0.04619042
+ 0.10816235
+     arm month km_deaths engine_deaths from_event_free   from_ae from_preprog
+  pembro    12  2.811042      2.077330       0.2281902 0.8743717    0.6385052
+  pembro    24  7.799776      6.172717       0.6066386 0.8743717    1.3235262
+  pembro    36 10.490400      9.177917       0.8710209 0.8743717    1.5447162
+  pembro    48 12.158977     11.770795       1.0901293 0.8743717    1.6366812
+  pembro    60 13.448317     13.977526       1.2908712 0.8743717    1.6835004
+ placebo    12  1.282051      2.037128       0.4505105 0.2473353    1.1780947
+ placebo    24  8.978632      7.800308       1.5027473 0.2473353    2.7868812
+ placebo    36 13.097117     12.483529       2.1557366 0.2473353    3.3041878
+ placebo    48 16.468070     16.457605       2.5675395 0.2473353    3.5146298
+ placebo    60 18.293730     19.769096       2.8651723 0.2473353    3.6202942
+     from_LRR    from_DR
+ 0.0003329946  0.3359304
+ 0.0031854692  3.3649952
+ 0.0073800107  5.8804281
+ 0.0118446024  8.1577679
+ 0.0161232867 10.1126591
+ 0.0002180982  0.1609691
+ 0.0034292438  3.2599153
+ 0.0089492631  6.7673197
+ 0.0150377813 10.1130626
+ 0.0208206503 13.0154731
+              arm event_free         ae    preprog          LRR        DR
+           pembro 0.03408082  0.0374117 0.05935610 3.059745e-04 0.2268125
+          placebo 0.08055195  0.0104131 0.12528883 3.777557e-04 0.2661428
+ placebo - pembro 0.04647113 -0.0269986 0.06593273 7.178125e-05 0.0393303
+     total
+ 0.3579671
+ 0.4827744
+ 0.1248073
+     arm source deaths n_treated input_pct period_years engine_pct_by_surgery
+  pembro    any      7       783 0.8939974            1          1.436647e-01
+ placebo    any      1       389 0.2570694            1          6.729701e-17
+ engine_pct_by_1y post_surgery_cycles_capped composition_deaths
+        0.8743717                          0                 19
+        0.2473353                          0                 13
+ expected_background_deaths deaths_without_recurrence_used share_death
+                   5.960682                       6.039318  0.04573879
+                   2.696947                       9.303053  0.09761548
+ share_LRR  share_DR
+ 0.3711016 0.5831596
+ 0.3147853 0.5875992
+scenario k = 1:
+     arm month       km  ci95_lo  ci95_hi engine_base engine_k1     diff_k1
+  pembro    12 97.18896 96.03781 98.35390    97.92267  98.02939  0.84043283
+  pembro    24 92.20022 90.33977 94.09899    93.82728  94.54740  2.34717541
+  pembro    36 89.50960 87.38693 91.68383    90.82208  91.76926  2.25966192
+  pembro    48 87.84102 85.57896 90.16288    88.22921  89.35519  1.51416604
+  pembro    60 86.55168 84.19113 88.97842    86.02247  87.22577  0.67409214
+ placebo    12 98.71795 97.60772 99.84081    97.96287  97.96287 -0.75507638
+ placebo    24 91.02137 88.22720 93.90402    92.19969  92.19969  1.17832411
+ placebo    36 86.90288 83.61557 90.31944    87.51647  87.51647  0.61358832
+ placebo    48 83.53193 79.92391 87.30283    83.54239  83.54239  0.01046464
+ placebo    60 81.70627 77.94782 85.64594    80.23090  80.23090 -1.47536578
+ inside_k1
+      TRUE
+     FALSE
+     FALSE
+      TRUE
+      TRUE
+      TRUE
+      TRUE
+      TRUE
+      TRUE
+      TRUE
+                quantity                       reference      base        k1
+  OS at 5 years (points) reconstructed KM (2024 Fig. 1A) 5.7915699 6.9948703
+ RMST to 5 years (years) reconstructed KM (2024 Fig. 1A) 0.1248073 0.1599099
+  OS at 7 years (points)       final analysis (reported) 7.3263177 8.4814381
+   reported base_minus_reported k1_minus_reported   k_base
+ 4.84541237          0.94615749         2.1494579 1.527834
+ 0.09849838          0.02630896         0.0614115 1.527834
+ 7.90000000         -0.57368235         0.5814381 1.527834
+ year                      source pembro pembro_lo pembro_hi placebo placebo_lo
+    5 2024 paper (IA7), 5-year OS   86.6      84.0      88.8    81.7       77.5
+    7   final analysis, 7-year OS   85.1      82.5      87.5    77.2       72.7
+ placebo_hi se_pembro se_placebo diff  se_diff   ci95_lo   ci95_hi     base
+       85.2   1.22449   1.964286  4.9 2.314691 0.3632893  9.436711 5.791570
+       81.1   1.27551   2.142857  7.9 2.493745 3.0123500 12.787650 7.326318
+       k1 base_inside k1_inside
+ 6.994870        TRUE      TRUE
+ 8.481438        TRUE      TRUE
+                             check     arm max_abs_diff
+1       DRFS vs 2022 Fig. S3 (IA4)  pembro    0.9962130
+2        EFS vs 2024 Fig. 2A (IA7)  pembro    0.5772857
+3 OS non-pCR vs 2024 Fig. S4 (IA7)  pembro    3.7005494
+4     OS pCR vs 2024 Fig. S4 (IA7)  pembro    1.2165585
+5       DRFS vs 2022 Fig. S3 (IA4) placebo    2.6311314
+6        EFS vs 2024 Fig. 2A (IA7) placebo    1.5233344
+7 OS non-pCR vs 2024 Fig. S4 (IA7) placebo    2.2090500
+8     OS pCR vs 2024 Fig. S4 (IA7) placebo    1.7417896

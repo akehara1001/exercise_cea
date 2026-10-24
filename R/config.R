@@ -94,5 +94,15 @@ CFG <- list(
   seed = 20261021,
   boot_B = 1000
 )
+# override of the stratified EFS constraint for one run (round 12, 2026-10-23: both settings are
+# recalibrated): environment variable EXERCISE_CEA_EFS_CONSTRAINT = "<years>,<type>", e.g. "7,equal"
+local({
+  ov <- Sys.getenv("EXERCISE_CEA_EFS_CONSTRAINT", "")
+  if (nzchar(ov)) {
+    v <- trimws(strsplit(ov, ",")[[1]])
+    stopifnot(length(v) == 2, v[2] %in% c("interval", "equal"))
+    CFG$efs_constraint_years <<- as.numeric(v[1]); CFG$efs_constraint_type <<- v[2]
+  }
+})
 
 source(file.path(ROOT, "R", "lifetable.R"))
