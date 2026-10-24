@@ -57,8 +57,9 @@ boot_one <- function(b, seed = CFG$seed, tt = c(5, 7, 10, 20)) {
         a0 <- CFG$start_age + L; d$bh <- mu_pop(a0 + d$time)
         sp <- fit_candidate(cand_of(SEL$model[SEL$curve == cv]), d)$spec
         if (any(!is.finite(sp$pars))) stop("non-finite EFS fit")
-        ci <- fits$efs5_ci[[cv]]
-        r <- constrain_efs5(sp, d, a0, pre, L, ci[["lo"]], ci[["hi"]])
+        # fixed bounds; round 11: 7-year values of the final analysis (fits.rds written before round 11: 5-year)
+        ci <- if (is.null(fits$efs_con_ci)) fits$efs5_ci[[cv]] else fits$efs_con_ci[[cv]]
+        r <- constrain_efs5(sp, d, a0, pre, L, ci[["lo"]], ci[["hi"]], at = if (is.null(fits$efs_con_years)) 5 else fits$efs_con_years)
         if (!r$converged) stop("constraint did not converge")
         P$efs[[a]][[s]] <- r$spec
         efs_out[[cv]] <- r$spec$pars

@@ -5,7 +5,9 @@
 #   1. EFS by arm x pCR (2022 appendix Fig. S4, IA4): patients resampled within arm with their pCR
 #      label, so the pCR proportion and the stratum sizes vary; each stratum is landmarked at
 #      surgery and the selected model (same family as the base) is refitted with the 5-year
-#      constraint (fixed bounds, efs5_constraint.csv); the KM before surgery is recomputed.
+#      constraint (fixed bounds, efs5_constraint.csv); the KM before surgery is recomputed. The
+#      bounds and the time come from data/fits/fits.rds (bootstrap_core.R); a fits.rds from the
+#      round-11 setting (7-year values, efs7_constraint.csv) would carry its own.
 #   2. PreProg entry share = reported count / resampled non-pCR size (arm-level share as reported).
 #   3. OS by arm (2024 Fig. 1A, IA7): resampled within arm; the selected OS models are refitted
 #      (saved only, the engine does not use them; RP knots kept at the base positions).

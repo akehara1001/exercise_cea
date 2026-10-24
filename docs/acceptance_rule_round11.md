@@ -37,7 +37,9 @@
 | OS，pCR 例 | 0.64 [0.37, 1.14] | CancerNetwork 2026-06-01；OncLive 印 [0.39, 1.14]，两篇报道不一致 |
 | OS，non-pCR 例 | 0.76 [0.55, 1.03] | OncLive 2026-06-01、CancerNetwork 2026-06-01 |
 | 全体 EFS | 0.68 [0.54, 0.86] | OncLive 2026-06-01（模型不使用 HR） |
-| 全体 OS | 0.64 | OncLive 印 [0.49, 0.85]，CancerNetwork 印 [0.49, 0.83]（模型不使用 HR） |
+| 全体 OS | 0.64 [0.49, 0.85] | OncLive 2026-06-01、CancerNetwork 2026-06-01（模型不使用 HR） |
+
+更正（2026-10-23，规则提交 0ca5cfe 之后、第十一轮计算之前）：提交时上表「全体 OS」一行写作「OncLive 印 [0.49, 0.85]，CancerNetwork 印 [0.49, 0.83]」，是误读——CancerNetwork 的 [0.49, 0.83] 是 7 年远处无复发生存（DRFS）的 HR，该报道的全体 OS HR 也是 0.64 [0.49, 0.85]。这一行不是约束或门槛的输入，规则本身不变。
 
 注：OncLive 对分层 EFS 写的是 "at median follow-up"，没有写明 7 年；按尾崎的指示作为 7 年值。按全例 pCR 率加权后与全体 7 年 EFS 一致（见上），与 7 年的解释相符。
 

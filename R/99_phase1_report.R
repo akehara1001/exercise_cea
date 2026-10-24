@@ -145,7 +145,7 @@ if (adopt9) {
            "数据（2022 年补充材料 Table S5）", "数据（2022 年 Table 1 脚注）"), check.names = FALSE)
   out8 <- DS10[DS10$used_in_rule & !istrue(DS10$round8_inside), ]
   add("## 第1阶段最终状态", "",
-      sprintf("第 1 阶段以**第九轮**为最终结构（%s）。依据：第十轮的判定规则 A（`docs/acceptance_rule_round10.md`，git e8d2134，在诊断之前单独提交）——第八轮模型的远处复发后隐含存活在%s落在 ESME 重建 KM 的 95%% CI 之外；第九轮在第 1 至 4 年的 %d 个点中 %d 个落在区间内（第 14 节）。第八轮（git 694b0f3）只作记录：第 1 至 12 节为第八轮的内容，其参数、bootstrap 与输出的快照在 `data/fits/round8/`、`data/bootstrap/round8/`、`output/phase1/round8/`。引擎默认参数在 `data/fits/engine_params.rds`（第九轮）。涉及帕博利珠单抗的结果在第 2 阶段以基准与情景 k = 1 两栏并列报告（`docs/model_spec.md` 第 6 节）。",
+      sprintf("第 1 阶段以**第九轮**为最终结构（%s）。依据：第十轮的判定规则 A（`docs/acceptance_rule_round10.md`，git e8d2134，在诊断之前单独提交）——第八轮模型的远处复发后隐含存活在%s落在 ESME 重建 KM 的 95%% CI 之外；第九轮在第 1 至 4 年的 %d 个点中 %d 个落在区间内（第 14 节）。第八轮（git 694b0f3）只作记录：第 1 至 12 节为第八轮的内容，其参数、bootstrap 与输出的快照在 `data/fits/round8/`、`data/bootstrap/round8/`、`output/phase1/round8/`。引擎默认参数在 `data/fits/engine_params.rds`（第九轮）。涉及帕博利珠单抗的结果在第 2 阶段以基准与情景 k = 1 两栏并列报告（`docs/model_spec.md` 第 6 节）。第十一轮（分层 EFS 约束改用最终分析的 7 年值，2026-10-23）按其规则停在拟合之后，未采用（第 15 节）。",
               C9f$structure, paste(sprintf("%s第 %d 年", ifelse(out8$group == "early", "早期", "晚期"), out8$year), collapse = "、"),
               nrow(DS10), sum(istrue(DS10$round9_inside))), "",
       "最终参数（第九轮）：", "", md_table(FP9), "",
@@ -164,7 +164,7 @@ if (adopt9) {
         sprintf("bootstrap 的边界情况（B = %d，完成 %d 次，失败 %d 次）：k 贴下界 0.25 的 %d 次、贴上界 4 的 %d 次；术前进展中位贴 10 个月的 %d 次、贴 26 个月的 %d 次；5 年存活贴 5%% 的 %d 次；optim 返回码 52 而加随机起点重跑的 %d 次。",
                 BR9$B, nrow(BC9), length(BR9$failed), cn(BC9[, "k_low"] == 1), cn(BC9[, "k_high"] == 1), cn(BC9[, "pp_median_low"] == 1),
                 cn(BC9[, "pp_median_high"] == 1), cn(BC9[, "pp_s5_at_min"] == 1), cn(BC9[, "code52"] == 1))
-      } else sprintf("bootstrap：第九轮的 1,000 次交由 Longleaf 运行，尚未完成（`data/bootstrap/` 仍为第八轮的结果，不属于本结构）。本地参照 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）%s。",
+      } else sprintf("bootstrap：第九轮的 1,000 次尚未运行——推送与 Longleaf 的运行推迟到第十一轮通过之后（用户 2026-10-23 的指示），第十一轮按规则停下（第 15 节）（`data/bootstrap/` 仍为第八轮的结果，不属于本结构）。本地参照 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）%s。",
                      if (!is.null(ref_meta)) sprintf("在提交 %s 上生成（%s）", substr(ref_meta$commit, 1, 7), ref_meta$platform) else "尚未生成"), "",
       "待尾崎回答：",
       "- 含帕博利珠单抗的组的 S-JP 数值 F01P、F04P（尾崎正向临床医生确认；结构已于 2026-10-23 决定，见第 11 节）。",
@@ -801,9 +801,47 @@ if (!is.null(DEC10)) {
                 if (istrue(CSnow$gate_a_accepted)) "按 Bonferroni 同时区间接受" else "**不达标**", sum(istrue(G9r$inside)),
                 if (all(istrue(G9r$inside_995))) "在" else "**并非都在**", if (istrue(CSnow$gate_b_pass)) "达标" else "**不达标**",
                 if (istrue(CSnow$gate_c_pass)) "达标" else "**不达标**"),
-        sprintf("本地参照结果 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）%s；1,000 次 bootstrap 交由 Longleaf。",
+        sprintf("本地参照结果 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）%s；推送与 Longleaf 的 1,000 次 bootstrap 推迟到第十一轮通过之后（用户 2026-10-23 的指示；第十一轮见第 15 节）。",
                 if (!is.null(ref_meta10)) sprintf("在提交 %s 上重新生成（%s，%s）", substr(ref_meta10$commit, 1, 7), ref_meta10$platform, ref_meta10$created) else "尚未重新生成"), "")
   }
+}
+
+# round 11 (docs/acceptance_rule_round11.md, git 0ca5cfe): the stratified EFS constraint takes the
+# 7-year values of the final analysis; R/15_round11_check.R applies the stop condition of the rule
+r11 <- file.path(ROOT, "output", "phase1", "round11")
+if (file.exists(file.path(r11, "status.csv"))) {
+  S11 <- rd("output", "phase1", "round11", "status.csv"); C11 <- rd("output", "phase1", "round11", "cells.csv")
+  F11 <- rd("output", "phase1", "round11", "comparison_5y_2023.csv"); H11 <- rd("output", "phase1", "round11", "comparison_hr.csv")
+  lab11 <- c(EFS_pembro_pCR = "pCR 例，帕博利珠单抗", EFS_placebo_pCR = "pCR 例，安慰剂",
+             EFS_pembro_nonpCR = "non-pCR 例，帕博利珠单抗", EFS_placebo_nonpCR = "non-pCR 例，安慰剂")
+  gap <- function(col, st) C11[[col]][C11$curve == paste0("EFS_pembro_", st)] - C11[[col]][C11$curve == paste0("EFS_placebo_", st)]
+  add("## 15. 第十一轮（2026-10-23）：分层 EFS 约束改用 KEYNOTE-522 最终分析的 7 年值", "",
+      "规则在任何第十一轮计算之前单独提交（`docs/acceptance_rule_round11.md`，git 0ca5cfe；尾崎 2026-10-23 的指示）。唯一的改动是约束值的数据来源：由 2023-03-23 截点的 5 年分层 EFS 换成最终分析（J Clin Oncol 2026;44(16_suppl):507，截点 2025-10-14，中位随访 93.8 个月）的 7 年分层 EFS，实现方式不变（随机化后 84 个月的预测落在报告值的二项 95% 区间内，n 为 IA4 的分层人数；区间外时在较近的边界上重新最大化似然）。门槛沿用第十轮判定后的版本，分布族不变，结构为第九轮。最终分析的摘要原文未取得，数值出自会议报道（OncLive 2026-06-01，DelveInsight、CancerNetwork 对照；`data/kn522_final_7y.csv`）。规则文件的数据表中「全体 OS 的 HR」一行在提交时误读了 CancerNetwork（[0.49, 0.83] 是 DRFS 的 HR），已在文件中更正，不影响规则。", "",
+      "pCR 比例的核对（提交前）：按全例 pCR 率 63.0% 对 55.6% 加权，分层 7 年 EFS 合成 78.26% 与 69.83%，与全体的 78.3% 与 69.8% 一致；模型的 pCR 比例为全例值（494/784、217/390）。", "",
+      "### 15.1 四个格子的 7 年 EFS（不作门槛）", "",
+      md_table(data.frame(格子 = lab11[C11$curve], 分布族 = C11$model, 报告值 = f2(C11$reported, 1),
+                          二项95区间 = sprintf("%s 至 %s", f2(C11$ci95_lo, 2), f2(C11$ci95_hi, 2)), 模型 = f2(C11$model_7y, 2),
+                          差 = f2(C11$diff, 2), 约束起作用 = ifelse(istrue(C11$binding), "是", "否"),
+                          差在0.5以内 = ifelse(istrue(C11$within_0_5pp), "是", "**否**"), AIC = f2(C11$AIC, 2), check.names = FALSE)), "",
+      sprintf("合计 AIC %s（第十轮 %s）。4 条曲线在约束前都已落在区间内，约束不起作用，参数与第十轮相同（`data/fits/round11/fits.rds` 的 selected 与 `data/fits/fits.rds` 完全相同）。7 年两臂差：pCR 例模型 %s 对报告 %s 个百分点，non-pCR 例模型 %s 对报告 %s 个百分点。",
+              f2(S11$AIC_total, 2), f2(S11$AIC_total_round10, 2), f2(gap("model_7y", "pCR"), 2), f2(gap("reported", "pCR"), 1),
+              f2(gap("model_7y", "nonpCR"), 2), f2(gap("reported", "nonpCR"), 1)), "",
+      "### 15.2 判定", "",
+      if (istrue(S11$constraint_check_pass)) "加了约束的 4 个格子的差都在 0.5 个百分点以内，继续校准。" else
+        sprintf("**按规则停下**：加了约束的 %d 个格子中 %d 个的差超过 0.5 个百分点（规则：差应在 0.5 个百分点以内，否则说明约束没起作用，停下报告）。原因是约束为区间约束：模型值落在二项区间内（半宽 2.6 至 7.5 个百分点）时参数不变，约束不把模型值固定在报告值上（规则文件提交前已写明）。没有重新校准，没有判定门槛，没有自行改变约束的实现方式。第十轮选定的结构仍为第 1 阶段的最终状态：`data/fits/fits.rds` 已恢复为第十轮的文件，`data/fits/engine_params.rds` 未改动；第十一轮的拟合存于 `data/fits/round11/`、`output/phase1/round11/`。",
+                S11$constrained_cells, S11$constrained_cells - S11$cells_within_0_5pp), "",
+      "### 15.3 不作门槛的跨分析对照", "",
+      "2023-03-23 截点的 5 年分层 EFS（第十一轮起不再作约束）：", "",
+      md_table(data.frame(格子 = lab11[F11$curve], 模型5年 = f2(F11$model_5y, 2), 报告值2023 = f2(F11$reported_2023, 1), 差 = f2(F11$diff, 2), check.names = FALSE)), "",
+      "按 pCR 分层的 HR（最终分析为探索性解析）：", "",
+      md_table(data.frame(终点 = H11$endpoint, 层 = H11$stratum, 最终分析 = sprintf("%s [%s, %s]", H11$final_hr, H11$final_lo, H11$final_hi),
+                          出处 = H11$final_source, 截点2023 = ifelse(is.na(H11$later_cutoff_hr), "", H11$later_cutoff_hr),
+                          IA4重建Cox = ifelse(is.na(H11$ia4_reconstructed_cox_hr), "", f2(H11$ia4_reconstructed_cox_hr, 3)),
+                          备注 = ifelse(H11$endpoint == "EFS", "IA4（2021-03-23）重建个体数据，不分层 Cox；不作门槛",
+                                      paste0("模型输入中没有按 pCR 分层的 OS 曲线；模型值未计算（停在校准之前）",
+                                             ifelse(H11$stratum == "pCR", "；OncLive 印 [0.39, 1.14]", ""))), check.names = FALSE)), "",
+      "### 15.4 未做的部分", "",
+      "按规则停在拟合之后：门槛结果、k、5 年与 7 年的 OS 两臂差、5 年 RMST 两臂差与第十轮的并列，以及 `bootstrap10_local.rds` 的重新生成、推送和 Longleaf 的 1,000 次 bootstrap，都没有做。", "")
 }
 
 writeLines(L, file.path(out_dir, "phase1_report.md"), useBytes = TRUE)

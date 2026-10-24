@@ -1,10 +1,10 @@
 # 第1阶段（生存引擎）报告
 
-生成时间：2026-10-23 18:32。由 `R/99_phase1_report.R` 从代码输出生成，表中数字均读自 `output/`、`data/` 与 `input/` 下的文件。模型规格见 `docs/model_spec.md`。
+生成时间：2026-10-23 18:40。由 `R/99_phase1_report.R` 从代码输出生成，表中数字均读自 `output/`、`data/` 与 `input/` 下的文件。模型规格见 `docs/model_spec.md`。
 
 ## 第1阶段最终状态
 
-第 1 阶段以**第九轮**为最终结构（AE deaths (data) + PreProg log-logistic (constrained) + DR early/late log-logistic, shape and medians external (ESME fit, common shape), x k in pembrolizumab arms）。依据：第十轮的判定规则 A（`docs/acceptance_rule_round10.md`，git e8d2134，在诊断之前单独提交）——第八轮模型的远处复发后隐含存活在早期第 3 年、早期第 4 年、晚期第 3 年、晚期第 4 年落在 ESME 重建 KM 的 95% CI 之外；第九轮在第 1 至 4 年的 8 个点中 8 个落在区间内（第 14 节）。第八轮（git 694b0f3）只作记录：第 1 至 12 节为第八轮的内容，其参数、bootstrap 与输出的快照在 `data/fits/round8/`、`data/bootstrap/round8/`、`output/phase1/round8/`。引擎默认参数在 `data/fits/engine_params.rds`（第九轮）。涉及帕博利珠单抗的结果在第 2 阶段以基准与情景 k = 1 两栏并列报告（`docs/model_spec.md` 第 6 节）。
+第 1 阶段以**第九轮**为最终结构（AE deaths (data) + PreProg log-logistic (constrained) + DR early/late log-logistic, shape and medians external (ESME fit, common shape), x k in pembrolizumab arms）。依据：第十轮的判定规则 A（`docs/acceptance_rule_round10.md`，git e8d2134，在诊断之前单独提交）——第八轮模型的远处复发后隐含存活在早期第 3 年、早期第 4 年、晚期第 3 年、晚期第 4 年落在 ESME 重建 KM 的 95% CI 之外；第九轮在第 1 至 4 年的 8 个点中 8 个落在区间内（第 14 节）。第八轮（git 694b0f3）只作记录：第 1 至 12 节为第八轮的内容，其参数、bootstrap 与输出的快照在 `data/fits/round8/`、`data/bootstrap/round8/`、`output/phase1/round8/`。引擎默认参数在 `data/fits/engine_params.rds`（第九轮）。涉及帕博利珠单抗的结果在第 2 阶段以基准与情景 k = 1 两栏并列报告（`docs/model_spec.md` 第 6 节）。第十一轮（分层 EFS 约束改用最终分析的 7 年值，2026-10-23）按其规则停在拟合之后，未采用（第 15 节）。
 
 最终参数（第九轮）：
 
@@ -28,7 +28,7 @@
 - (b) 达标：模型 5 年 RMST 两臂差 0.1156 年，KM 差的 bootstrap 95% 区间 -0.0381 至 0.2421 年。
 - (c) 达标：7 年 OS 与 EFS 的 4 个值中 4 个落在最终分析的 95% 区间内。
 
-bootstrap：第九轮的 1,000 次交由 Longleaf 运行，尚未完成（`data/bootstrap/` 仍为第八轮的结果，不属于本结构）。本地参照 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）在提交 15dba86 上生成（x86_64-w64-mingw32）。
+bootstrap：第九轮的 1,000 次尚未运行——推送与 Longleaf 的运行推迟到第十一轮通过之后（用户 2026-10-23 的指示），第十一轮按规则停下（第 15 节）（`data/bootstrap/` 仍为第八轮的结果，不属于本结构）。本地参照 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）在提交 15dba86 上生成（x86_64-w64-mingw32）。
 
 待尾崎回答：
 - 含帕博利珠单抗的组的 S-JP 数值 F01P、F04P（尾崎正向临床医生确认；结构已于 2026-10-23 决定，见第 11 节）。
@@ -1065,5 +1065,50 @@ Guyot 算法（`R/guyot.R`），以 IPDfromKM 交叉核对；门槛（用户指�
 ### 14.4 采用的结构与第九轮各道门槛的最终判定
 
 采用第九轮结构。第九轮的校准结果不变（不重新校准，`R/14b_apply_round10.R`），按第十轮的规则判定（`calibration_status.csv`；按第九轮规则的判定另存于 `round9/calibration_status_round9_rule.csv`）：(a) 按 Bonferroni 同时区间接受（10 个点中 9 个在 95% 区间内，全部 10 个点在 99.5% 区间内）；(b) 达标；(c) 达标。`data/fits/engine_params.rds` 已恢复为第九轮的值。
-本地参照结果 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）在提交 15dba86 上重新生成（x86_64-w64-mingw32，2026-10-23 18:03:00 PDT）；1,000 次 bootstrap 交由 Longleaf。
+本地参照结果 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）在提交 15dba86 上重新生成（x86_64-w64-mingw32，2026-10-23 18:03:00 PDT）；推送与 Longleaf 的 1,000 次 bootstrap 推迟到第十一轮通过之后（用户 2026-10-23 的指示；第十一轮见第 15 节）。
+
+## 15. 第十一轮（2026-10-23）：分层 EFS 约束改用 KEYNOTE-522 最终分析的 7 年值
+
+规则在任何第十一轮计算之前单独提交（`docs/acceptance_rule_round11.md`，git 0ca5cfe；尾崎 2026-10-23 的指示）。唯一的改动是约束值的数据来源：由 2023-03-23 截点的 5 年分层 EFS 换成最终分析（J Clin Oncol 2026;44(16_suppl):507，截点 2025-10-14，中位随访 93.8 个月）的 7 年分层 EFS，实现方式不变（随机化后 84 个月的预测落在报告值的二项 95% 区间内，n 为 IA4 的分层人数；区间外时在较近的边界上重新最大化似然）。门槛沿用第十轮判定后的版本，分布族不变，结构为第九轮。最终分析的摘要原文未取得，数值出自会议报道（OncLive 2026-06-01，DelveInsight、CancerNetwork 对照；`data/kn522_final_7y.csv`）。规则文件的数据表中「全体 OS 的 HR」一行在提交时误读了 CancerNetwork（[0.49, 0.83] 是 DRFS 的 HR），已在文件中更正，不影响规则。
+
+pCR 比例的核对（提交前）：按全例 pCR 率 63.0% 对 55.6% 加权，分层 7 年 EFS 合成 78.26% 与 69.83%，与全体的 78.3% 与 69.8% 一致；模型的 pCR 比例为全例值（494/784、217/390）。
+
+### 15.1 四个格子的 7 年 EFS（不作门槛）
+
+| 格子 | 分布族 | 报告值 | 二项95区间 | 模型 | 差 | 约束起作用 | 差在0.5以内 | AIC |
+|---|---|---|---|---|---|---|---|---|
+| pCR 例，帕博利珠单抗 | weibull | 90.4 | 87.80 至 93.00 | 90.08 | -0.32 | 否 | 是 | 259.71 |
+| pCR 例，安慰剂 | weibull | 85.9 | 81.27 至 90.53 | 85.56 | -0.34 | 否 | 是 | 146.80 |
+| non-pCR 例，帕博利珠单抗 | cure_weibull | 57.6 | 51.91 至 63.29 | 60.86 | 3.26 | 否 | **否** | 460.33 |
+| non-pCR 例，安慰剂 | cure_weibull | 49.7 | 42.25 至 57.15 | 48.43 | -1.27 | 否 | **否** | 331.31 |
+
+合计 AIC 1198.15（第十轮 1198.15）。4 条曲线在约束前都已落在区间内，约束不起作用，参数与第十轮相同（`data/fits/round11/fits.rds` 的 selected 与 `data/fits/fits.rds` 完全相同）。7 年两臂差：pCR 例模型 4.52 对报告 4.5 个百分点，non-pCR 例模型 12.43 对报告 7.9 个百分点。
+
+### 15.2 判定
+
+**按规则停下**：加了约束的 4 个格子中 2 个的差超过 0.5 个百分点（规则：差应在 0.5 个百分点以内，否则说明约束没起作用，停下报告）。原因是约束为区间约束：模型值落在二项区间内（半宽 2.6 至 7.5 个百分点）时参数不变，约束不把模型值固定在报告值上（规则文件提交前已写明）。没有重新校准，没有判定门槛，没有自行改变约束的实现方式。第十轮选定的结构仍为第 1 阶段的最终状态：`data/fits/fits.rds` 已恢复为第十轮的文件，`data/fits/engine_params.rds` 未改动；第十一轮的拟合存于 `data/fits/round11/`、`output/phase1/round11/`。
+
+### 15.3 不作门槛的跨分析对照
+
+2023-03-23 截点的 5 年分层 EFS（第十一轮起不再作约束）：
+
+| 格子 | 模型5年 | 报告值2023 | 差 |
+|---|---|---|---|
+| pCR 例，帕博利珠单抗 | 92.21 | 92.2 | 0.01 |
+| pCR 例，安慰剂 | 88.95 | 88.2 | 0.75 |
+| non-pCR 例，帕博利珠单抗 | 62.39 | 62.6 | -0.21 |
+| non-pCR 例，安慰剂 | 49.53 | 52.3 | -2.77 |
+
+按 pCR 分层的 HR（最终分析为探索性解析）：
+
+| 终点 | 层 | 最终分析 | 出处 | 截点2023 | IA4重建Cox | 备注 |
+|---|---|---|---|---|---|---|
+| EFS | pCR | 0.68 [0.44, 1.07] | OncLive 2026-06-01 | 0.65 | 0.722 | IA4（2021-03-23）重建个体数据，不分层 Cox；不作门槛 |
+| EFS | nonpCR | 0.78 [0.59, 1.03] | OncLive 2026-06-01 | 0.72 | 0.712 | IA4（2021-03-23）重建个体数据，不分层 Cox；不作门槛 |
+| OS | pCR | 0.64 [0.37, 1.14] | CancerNetwork 2026-06-01 |  |  | 模型输入中没有按 pCR 分层的 OS 曲线；模型值未计算（停在校准之前）；OncLive 印 [0.39, 1.14] |
+| OS | nonpCR | 0.76 [0.55, 1.03] | OncLive 2026-06-01 |  |  | 模型输入中没有按 pCR 分层的 OS 曲线；模型值未计算（停在校准之前） |
+
+### 15.4 未做的部分
+
+按规则停在拟合之后：门槛结果、k、5 年与 7 年的 OS 两臂差、5 年 RMST 两臂差与第十轮的并列，以及 `bootstrap10_local.rds` 的重新生成、推送和 Longleaf 的 1,000 次 bootstrap，都没有做。
 

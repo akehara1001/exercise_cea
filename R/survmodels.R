@@ -61,8 +61,10 @@ allcause_loglik <- function(spec, time, status, a0) {
 # pre at the landmark, the 5-year EFS from randomization is 100 * pre * S(5 - L). If it lies in
 # [lo, hi] the spec is returned unchanged; otherwise the all-cause likelihood is maximised on the
 # nearer bound, where one parameter follows from the others (cure Weibull: theta; Weibull: scale).
-constrain_efs5 <- function(spec, d, a0, pre, L, lo, hi) {
-  tau <- 5 - L
+# at: the time from randomization in years (round 11: 7, the final analysis; the value is still
+# returned as efs5).
+constrain_efs5 <- function(spec, d, a0, pre, L, lo, hi, at = 5) {
+  tau <- at - L
   v <- 100 * pre * allcause_surv(spec, tau, a0)
   if (v >= lo && v <= hi) return(list(spec = spec, binding = FALSE, bound = NA_real_, efs5 = v, converged = TRUE))
   b <- if (v < lo) lo else hi

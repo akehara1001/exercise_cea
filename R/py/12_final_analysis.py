@@ -58,6 +58,31 @@ get("CancerNetwork 2026-06-01", r"data cutoff of (October 14, 2025), with a medi
     [("data_cutoff", (1,)), ("median_fu_months", (2,))])
 get("DelveInsight", r"Patients with pCR OS " + F + r"% " + F + r"% [\d.]+ Patients without pCR EFS [\d.]+% [\d.]+% [\d.]+ Patients without pCR OS " + F + r"% " + F + r"%",
     [("os_pcr_pembro_check", (1,)), ("os_pcr_placebo_check", (2,)), ("os_nonpcr_pembro_check", (3,)), ("os_nonpcr_placebo_check", (4,))])
+# round 11 (2026-10-23): stratified EFS by pCR status (the constraint values; OncLive writes "at
+# median follow-up", taken as 7-year values by instruction) and the exploratory stratified HRs
+get("OncLive 2026-06-01", r"EFS rates for patients who achieved pathological complete responses \(pCR\) at median follow-up in each arm were " + F +
+    r"% for the pembrolizumab arm compared with " + F + r"% for the placebo arm \(HR, " + F + r"; 95% CI, " + F + r"-" + F + r"\)",
+    [("efs_pcr_pembro", (1,)), ("efs_pcr_placebo", (2,)), ("hr_efs_pcr", (3, 4, 5))])
+get("OncLive 2026-06-01", r"EFS rates among patients who did not achieve pCR were " + F + r"% in the pembrolizumab arm and " + F +
+    r"% in the placebo arm \(HR, " + F + r"; 95% CI, " + F + r"-" + F + r"\)",
+    [("efs_nonpcr_pembro", (1,)), ("efs_nonpcr_placebo", (2,)), ("hr_efs_nonpcr", (3, 4, 5))])
+get("OncLive 2026-06-01", r"OS rates for the same population of patients were [\d.]+% and [\d.]+% \(HR, " + F + r"; 95% CI, " + F + r"-" + F + r"\)",
+    [("hr_os_pcr_onclive", (1, 2, 3))])
+get("OncLive 2026-06-01", r"OS rates in this population of patients in each of the respective arms were [\d.]+% vs [\d.]+% \(HR, " + F + r"; 95% CI, " + F + r"-" + F + r"\)",
+    [("hr_os_nonpcr", (1, 2, 3))])
+get("OncLive 2026-06-01", r"69\.8% \(95% CI, 65\.0%-74\.2%\) with neoadjuvant placebo plus chemotherapy followed by surgery and adjuvant placebo \(HR, " + F + r"; 95% CI, " + F + r"-" + F + r"\)",
+    [("hr_efs_all", (1, 2, 3))])
+get("OncLive 2026-06-01", r"77\.2% \(95% CI, 72\.7%-81\.1%; HR, " + F + r"; 95% CI, " + F + r"-" + F + r"\)",
+    [("hr_os_all_onclive", (1, 2, 3))])
+get("CancerNetwork 2026-06-01", r"among patients who achieved pCR, the OS HR was " + F + r" \(95% CI, " + F + r"–" + F + r"\), and among those who did not, the HR was " + F + r" \(95% CI, " + F + r"–" + F + r"\)",
+    [("hr_os_pcr", (1, 2, 3)), ("hr_os_nonpcr_check", (4, 5, 6))])
+get("CancerNetwork 2026-06-01", r"\(90 of 390\) of patients in the pembrolizumab and placebo arms, respectively \(HR, " + F + r"; 95% CI, " + F + r"–" + F + r"\)",
+    [("hr_os_all", (1, 2, 3))])
+get("CancerNetwork 2026-06-01", r"distant recurrence-free survival rate at 7 years was [\d.]+% vs [\d.]+% \(HR, " + F + r"; 95% CI, " + F + r"–" + F + r"\)",
+    [("hr_drfs_all", (1, 2, 3))])
+get("DelveInsight", r"Patients with pCR EFS " + F + r"% " + F + r"% " + F + r" Patients with pCR OS [\d.]+% [\d.]+% " + F + r" Patients without pCR EFS " + F + r"% " + F + r"% " + F,
+    [("efs_pcr_pembro_check", (1,)), ("efs_pcr_placebo_check", (2,)), ("hr_efs_pcr_check", (3,)), ("hr_os_pcr_check", (4,)),
+     ("efs_nonpcr_pembro_check", (5,)), ("efs_nonpcr_placebo_check", (6,)), ("hr_efs_nonpcr_check", (7,))])
 out = os.path.join(root, "data", "kn522_final_7y.csv")
 with open(out, "w", newline="", encoding="utf-8") as f:
     w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
@@ -65,7 +90,14 @@ with open(out, "w", newline="", encoding="utf-8") as f:
 v = {r["id"]: r["value"] for r in rows}
 for k in ["os7_pembro", "os7_placebo"]:
     assert float(v[k]) == float(v[k + "_check"]), k
-for k in ["os_pcr_pembro", "os_pcr_placebo", "os_nonpcr_pembro", "os_nonpcr_placebo"]:
+for k in ["os_pcr_pembro", "os_pcr_placebo", "os_nonpcr_pembro", "os_nonpcr_placebo",
+          "efs_pcr_pembro", "efs_pcr_placebo", "efs_nonpcr_pembro", "efs_nonpcr_placebo", "hr_efs_pcr", "hr_efs_nonpcr", "hr_os_pcr"]:
     assert float(v[k]) == float(v[k + "_check"]), k
+hv = {r["id"]: (r["value"], r["lo"], r["hi"]) for r in rows}
+assert hv["hr_os_nonpcr"] == hv["hr_os_nonpcr_check"]
+assert hv["hr_os_all"] == hv["hr_os_all_onclive"]
+# the OS HR for the pCR stratum: CancerNetwork 0.64 [0.37, 1.14] (the value used) vs OncLive [0.39, 1.14]
+print("OS HR pCR, CancerNetwork / OncLive:", hv["hr_os_pcr"], hv["hr_os_pcr_onclive"])
+print("OS HR all, CancerNetwork / OncLive:", hv["hr_os_all"], hv["hr_os_all_onclive"])
 for r in rows:
     print(r["id"], r["value"], r["lo"], r["hi"], r["outlet"])
