@@ -12,25 +12,10 @@ run_branch_loop <- function(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate, dr, 
                             start_age, L, cycle, n_cycles, n_tunnel, hr = NULL, drug_hr = 1, ae_rate = 0, ae_end = 0) {
   K <- n_cycles; J <- n_tunnel
   t <- (0:K) * cycle
-  hb <- H_pop(start_age + t[-(K + 1)], cycle)
-  tau0 <- pmax(t[-(K + 1)] - L, 0); tau1 <- pmax(t[-1] - L, 0)
-  post <- t[-(K + 1)] >= L - 1e-9
-  S0 <- spec_surv(efs_spec, tau0); S1 <- spec_surv(efs_spec, tau1)
-  dH <- -log(pmax(S1, 1e-300)) + log(pmax(S0, 1e-300))
-  dHex <- if (efs_spec$family == "cure") dH else pmax(dH - hb, 0)
-  dHex[!post] <- 0
-  dHA <- numeric(K)
-  for (k in 1:K) {
-    if (t[k] < ae_end) dHA[k] <- ae_rate * (min(t[k + 1], ae_end) - t[k])
-    if (post[k]) { dHA[k] <- min(dHA[k], dHex[k]); dHex[k] <- dHex[k] - dHA[k] }
-  }
-  dHex <- dHex * drug_hr
-  km <- function(x) approx(pre_surv$time, pre_surv$surv, xout = pmin(x, L) + 1e-9, method = "constant", f = 0, rule = 2)$y
-  drop_L <- 1 - km(L)
-  Spre <- function(x) 1 - q_pre * (if (drop_L > 0) (1 - km(x)) / drop_L else as.numeric(x >= L))
-  dHpre <- ifelse(!post, -log(pmax(Spre(t[-1]), 1e-300) / pmax(Spre(t[-(K + 1)]), 1e-300)), 0)
-  hrv <- if (is.null(hr)) rep(1, K) else hr((t[-(K + 1)] + t[-1]) / 2)
-  dHL <- shares[["LRR"]] * dHex * hrv; dHD <- shares[["DR"]] * dHex * hrv; dHX <- shares[["death"]] * dHex
+  # hazards of leaving EF: shared with engine.R (round 12: the split of the fitted EFS); this test
+  # checks the recursion over states and tunnels against the closed form
+  h <- branch_hazards(efs_spec, pre_surv, q_pre, shares, start_age, L, cycle, K, hr, drug_hr, ae_rate, ae_end)
+  hb <- h$hb; hbx <- h$hbx; dHL <- h$dHL; dHD <- h$dHD; dHX <- h$dHX; dHpre <- h$dHpre; dHA <- h$dHA
   dHdr <- diff(dr_cumhaz(dr, (0:(J + 1)) * cycle)); dHdr[J + 1] <- dHdr[J]
   split <- !is.null(dr$late_scale)
   drl_spec <- if (split) modifyList(dr, list(scale = dr$late_scale, shape = if (is.null(dr$late_shape)) dr$shape else dr$late_shape)) else dr
@@ -41,9 +26,9 @@ run_branch_loop <- function(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate, dr, 
   shift <- function(v, entry) { n <- numeric(J + 1); n[2:(J + 1)] <- v[1:J]; n[J + 1] <- n[J + 1] + v[J + 1]; n[1] <- entry; n }
   out[1, ] <- c(1, 0, 0, 0, 0)
   for (k in 1:K) {
-    Ht <- hb[k] + dHL[k] + dHD[k] + dHX[k] + dHpre[k] + dHA[k]; pe <- 1 - exp(-Ht)
-    to_L <- ef * pe * dHL[k] / Ht; to_D <- ef * pe * dHD[k] / Ht; to_P <- ef * pe * dHpre[k] / Ht
-    to_X <- ef * pe * (hb[k] + dHX[k] + dHA[k]) / Ht
+    Ht <- hbx[k] + dHL[k] + dHD[k] + dHX[k] + dHpre[k] + dHA[k]; pe <- 1 - exp(-Ht); r <- if (Ht > 0) pe / Ht else 0
+    to_L <- ef * r * dHL[k]; to_D <- ef * r * dHD[k]; to_P <- ef * r * dHpre[k]
+    to_X <- ef * r * (hbx[k] + dHX[k] + dHA[k])
     Hl <- hb[k] + lrr_dr_rate * cycle; pl <- 1 - exp(-Hl)
     l_to_D <- lr * pl * lrr_dr_rate * cycle / Hl; l_to_X <- lr * pl * hb[k] / Hl
     surv_p <- ppv * exp(-(hb[k] + dHpp)); p_to_X <- sum(ppv) - sum(surv_p)

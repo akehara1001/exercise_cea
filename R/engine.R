@@ -4,19 +4,26 @@
 # States: EF (event-free), PreProg (progression precluding surgery), LRR (locoregional
 # recurrence, incl. second primary cancer), DR (distant recurrence, tracked by months since entry:
 # semi-Markov tunnels), Dead.
-# - Neoadjuvant phase [0, L): in the non-pCR branch a share q_pre (reported progression
-#   precluding surgery / non-pCR patients of the arm) moves EF -> PreProg, timed by the branch KM
-#   before surgery; the pCR branch has none by definition. PreProg -> death: background + an
-#   excess hazard in time since PreProg entry (Weibull from 2026-10-22, round 4; common to both
-#   arms, calibrated), tracked with tunnels like DR.
+# The engine splits the fitted EFS of each branch into event types and times; it does not change
+# the EFS itself (round 12, 2026-10-23, docs/acceptance_rule_round12.md: events already in the
+# fitted EFS are moved between times or states, never added; R/test_engine_efs_consistency.R).
+# - Neoadjuvant phase [0, L): EF follows the branch KM (pre_surv) exactly. Its exits are split into
+#   EF -> PreProg (share q_pre = reported progression precluding surgery / non-pCR patients of the
+#   arm, at most the KM drop), EF -> death due to adverse events (the part of the treatment-period
+#   AE deaths that falls before surgery, at most what is left) and other deaths; all timed by the
+#   KM. The pCR branch has no exits before surgery (its KM is flat by construction). PreProg ->
+#   death: background + an excess hazard in time since PreProg entry (common to both arms,
+#   calibrated), tracked with tunnels like DR. (Before round 12 the background and AE deaths were
+#   added on top of the KM and PreProg used q_pre instead of the KM drop.)
 # - From surgery (t >= L): EF leaves with the branch EFS model (arm x pCR, landmarked at L).
-#   Background death (life table) is explicit; the excess part of the EFS hazard is split into
-#   EF -> LRR (local recurrence and second primary cancer), EF -> DR and EF -> death by the arm's
-#   first-event composition.
-# - Deaths due to adverse events: EF -> death at a constant rate per arm over the treatment period
-#   [0, ae_end) (neoadjuvant + adjuvant, about 12 months), in both branches; not calibrated. After
-#   surgery this hazard is taken out of the EFS-model excess hazard (the EFS curve is unchanged)
-#   and these deaths are removed from the deaths without recurrence of the composition.
+#   Background death (life table) is explicit; the excess part of the EFS hazard first carries the
+#   AE deaths of the treatment period after surgery and what did not fit before surgery (AE deaths
+#   spread over the rest of the treatment period, PreProg entries at the earliest cycles after
+#   surgery); the rest is split into EF -> LRR (local recurrence and second primary cancer),
+#   EF -> DR and EF -> death by the arm's first-event composition.
+# - Deaths due to adverse events: a constant rate per arm over the treatment period [0, ae_end)
+#   (neoadjuvant + adjuvant, about 12 months), in both branches; not calibrated; removed from the
+#   deaths without recurrence of the composition.
 # - LRR -> DR at a constant rate; LRR -> death at the background rate.
 # - DR -> death: background + an excess hazard in time since DR (log-logistic or Weibull;
 #   common to both arms; calibrated, step 5). Round 8 (2026-10-22): with dr$late_scale, DR is two
@@ -47,47 +54,79 @@ dr_cumhaz <- function(dr, t) (if (is.null(dr$k)) 1 else dr$k) * switch(dr$dist,
 # depend on the excess death hazards after PreProg and DR (event-free and LRR states, flows into
 # PreProg and DR, deaths from EF and LRR); branch_states() adds the PreProg and DR tunnel states.
 # Calibration and the bootstrap reuse the flows while varying those hazards (os_fast()).
-branch_flows <- function(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate,
-                         start_age, L, cycle, n_cycles, n_tunnel, hr = NULL, drug_hr = 1, ae_rate = 0, ae_end = 0) {
-  K <- n_cycles; J <- n_tunnel
+# hazards of leaving EF per cycle (shared with the loop in R/test_engine_vectorized.R): hbx
+# background death (after surgery only; before surgery it is part of the KM exits), dHL / dHD / dHX
+# to LRR, DR and death (other), dHpre to PreProg, dHA death due to adverse events. In the base case
+# (hr = NULL, drug_hr = 1) the total is the KM hazard before surgery and the all-cause hazard of the
+# EFS model after (non-cure models: not below background).
+branch_hazards <- function(efs_spec, pre_surv, q_pre, shares, start_age, L, cycle, K, hr = NULL, drug_hr = 1,
+                           ae_rate = 0, ae_end = 0) {
   t <- (0:K) * cycle
   hb <- H_pop(start_age + t[-(K + 1)], cycle)                     # background cum hazard per cycle
   # excess EF hazard per cycle after surgery
   tau0 <- pmax(t[-(K + 1)] - L, 0); tau1 <- pmax(t[-1] - L, 0)
-  post <- t[-(K + 1)] >= L - 1e-9
+  post <- t[-(K + 1)] >= L - 1e-9; pre <- !post
   S0 <- spec_surv(efs_spec, tau0); S1 <- spec_surv(efs_spec, tau1)
   dH <- -log(pmax(S1, 1e-300)) + log(pmax(S0, 1e-300))
   dHex <- if (efs_spec$family == "cure") dH else pmax(dH - hb, 0)
-  dHex[!post] <- 0
-  # deaths due to adverse events over [0, ae_end); after surgery they are part of the EFS-model
-  # hazard, so they are taken out of it (at most all of it in a cycle)
-  dHA <- ae_rate * pmax(pmin(t[-1], ae_end) - pmin(t[-(K + 1)], ae_end), 0)
-  dHA[post] <- pmin(dHA[post], dHex[post])
-  dHex[post] <- dHex[post] - dHA[post]
-  dHex <- dHex * drug_hr
-  # pre-surgery progression: share q_pre, timed by the branch KM before surgery (pre_surv)
-  pre <- !post
+  dHex[pre] <- 0
+  # before surgery: the KM hazard, split by shares of its exits (PreProg first, then AE deaths)
   # + 1e-9: k * cycle can fall a rounding error short of the KM knot at the same month
   km <- function(x) approx(pre_surv$time, pre_surv$surv, xout = pmin(x, L) + 1e-9, method = "constant", f = 0, rule = 2)$y
-  drop_L <- 1 - km(L)
-  Fpre <- function(x) if (drop_L > 0) (1 - km(x)) / drop_L else as.numeric(x >= L)
-  Spre <- function(x) 1 - q_pre * Fpre(x)
-  dHpre <- ifelse(pre, -log(pmax(Spre(t[-1]), 1e-300) / pmax(Spre(t[-(K + 1)]), 1e-300)), 0)
+  km_L <- km(L); drop_L <- 1 - km_L
+  dK <- ifelse(pre, -log(pmax(km(t[-1]), 1e-300) / pmax(km(t[-(K + 1)]), 1e-300)), 0)
+  ae_pre <- 1 - exp(-ae_rate * min(L, ae_end))                   # AE deaths falling before surgery
+  P_pre <- min(q_pre, drop_L); A_pre <- min(ae_pre, drop_L - P_pre)
+  f_p <- if (drop_L > 0) P_pre / drop_L else 0; f_a <- if (drop_L > 0) A_pre / drop_L else 0
+  dHpre <- f_p * dK; dHA <- f_a * dK; dHX <- (1 - f_p - f_a) * dK
+  # after surgery; EF in the base case does not depend on the split, so incidences are set with it
+  Hb <- ifelse(pre, dK, hb + dHex)
+  EF0 <- exp(-c(0, cumsum(Hb)))[1:K]
+  inc <- function(h, k) EF0[k] * (1 - exp(-Hb[k])) * h / Hb[k]    # incidence of a part h of Hb[k]
+  ov <- pmax(pmin(t[-1], ae_end) - pmax(t[-(K + 1)], L), 0)        # cycle overlap with [L, ae_end)
+  dHA_post <- ae_rate * ov
+  M_A <- ae_pre - A_pre                                           # AE deaths moved after surgery
+  if (M_A > 1e-15 && sum(ov) > 0) dHA_post <- dHA_post - log(1 - M_A / km_L) * ov / sum(ov)
+  dHA_post <- pmin(dHA_post, dHex)
+  dHA[post] <- dHA_post[post]
+  M_P <- q_pre - P_pre                                            # PreProg entries moved after surgery
+  dHpp <- numeric(K)
+  if (M_P > 1e-15) for (k in which(post)) {
+    room <- dHex[k] - dHA[k]
+    h <- min(room, if (Hb[k] > 0) M_P * Hb[k] / (EF0[k] * (1 - exp(-Hb[k]))) else 0)
+    dHpp[k] <- h; M_P <- M_P - inc(h, k)
+    if (M_P <= 1e-12) break
+  }
+  dHpre[post] <- dHpp[post]
+  rest <- ifelse(post, (dHex - dHA - dHpp) * drug_hr, 0)
   hrv <- if (is.null(hr)) rep(1, K) else hr((t[-(K + 1)] + t[-1]) / 2)
-  dHL <- shares[["LRR"]] * dHex * hrv
-  dHD <- shares[["DR"]] * dHex * hrv
-  dHX <- shares[["death"]] * dHex
+  dHX[post] <- shares[["death"]] * rest[post]
+  list(t = t, post = post, hb = hb, hbx = ifelse(post, hb, 0), dHL = shares[["LRR"]] * rest * hrv, dHD = shares[["DR"]] * rest * hrv,
+       dHX = dHX, dHpre = dHpre, dHA = dHA)
+}
+
+# one branch (arm x pCR status), in two parts: branch_flows() computes everything that does not
+# depend on the excess death hazards after PreProg and DR (event-free and LRR states, flows into
+# PreProg and DR, deaths from EF and LRR); branch_states() adds the PreProg and DR tunnel states.
+# Calibration and the bootstrap reuse the flows while varying those hazards (os_fast()).
+branch_flows <- function(efs_spec, pre_surv, q_pre, shares, lrr_dr_rate,
+                         start_age, L, cycle, n_cycles, n_tunnel, hr = NULL, drug_hr = 1, ae_rate = 0, ae_end = 0) {
+  K <- n_cycles; J <- n_tunnel
+  h <- branch_hazards(efs_spec, pre_surv, q_pre, shares, start_age, L, cycle, K, hr, drug_hr, ae_rate, ae_end)
+  t <- h$t; hb <- h$hb
+  dHL <- h$dHL; dHD <- h$dHD; dHX <- h$dHX; dHpre <- h$dHpre; dHA <- h$dHA
   # Closed form of the cycle-by-cycle recursion (R/test_engine_vectorized.R checks it against a
   # loop). Competing hazards within a cycle; entrants of a cycle enter their state at its end.
-  Ht <- hb + dHL + dHD + dHX + dHpre + dHA
+  Ht <- h$hbx + dHL + dHD + dHX + dHpre + dHA
   EF <- c(1, exp(-cumsum(Ht)))
   efk <- EF[1:K]
   pe <- 1 - exp(-Ht)
-  to_L <- efk * pe * dHL / Ht
-  to_D <- efk * pe * dHD / Ht
-  to_P <- efk * pe * dHpre / Ht
-  to_X <- efk * pe * (hb + dHX) / Ht
-  to_A <- efk * pe * dHA / Ht
+  sh <- function(x) ifelse(Ht > 0, x / Ht, 0)                       # no exits in a cycle: Ht = 0
+  to_L <- efk * pe * sh(dHL)
+  to_D <- efk * pe * sh(dHD)
+  to_P <- efk * pe * sh(dHpre)
+  to_X <- efk * pe * sh(h$hbx + dHX)
+  to_A <- efk * pe * sh(dHA)
   # first-order states: x[k+1] = x[k] exp(-H[k]) + inflow[k]
   lin <- function(inflow, H) { C <- cumsum(H); c(0, exp(-C) * cumsum(inflow * exp(C))) }
   Hl <- hb + lrr_dr_rate * cycle
