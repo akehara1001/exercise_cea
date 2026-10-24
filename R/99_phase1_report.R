@@ -109,8 +109,71 @@ pp_bound_txt <- function(ab) {
 }
 G_out <- CG[!istrue(CG$inside), ]
 
+# ---------------------------------------------------------------- round 10 decision
+# docs/acceptance_rule_round10.md (git e8d2134): rule A adopts the round-9 structure (gate (a) by
+# the Bonferroni intervals only); rule B keeps round 8
+DEC10 <- if (file.exists(file.path(ROOT, "output", "phase1", "round10", "decision.csv"))) rd("output", "phase1", "round10", "decision.csv") else NULL
+CSnow <- rd("output", "phase1", "calibration_status.csv")
+adopt9 <- !is.null(DEC10) && DEC10$rule == "A" && istrue(CSnow$gate_pass)
+r9rule_f <- file.path(ROOT, "output", "phase1", "round9", "calibration_status_round9_rule.csv")
+deaths12_placebo <- sum(ipd$K24_F1A_OS_placebo$status == 1 & ipd$K24_F1A_OS_placebo$time <= 12)
+
 # ---------------------------------------------------------------- final state of phase 1
-if (!stop6 && boot_done) {
+if (adopt9) {
+  C9f <- readRDS(file.path(ROOT, "data", "fits", "calibration_candidates.rds")); P9f <- C9f$params
+  CG9f <- rd("output", "phase1", "calibration_gate.csv"); CGR9f <- rd("output", "phase1", "calibration_gate_rmst.csv")
+  G79f <- rd("output", "phase1", "calibration_final7y.csv"); DS10 <- rd("output", "phase1", "round10", "dr_survival_comparison.csv")
+  ES9f <- rd("output", "phase1", "round9", "esme_shape_test.csv")
+  G9o <- CG9f[!istrue(CG9f$inside), ]
+  ref_meta <- tryCatch(readRDS(file.path(ROOT, "output", "check", "bootstrap10_local.rds"))$meta, error = function(e) NULL)
+  BS_now <- opt("output", "phase1", "bootstrap_summary.csv")
+  BR9 <- if (file.exists(file.path(ROOT, "data", "bootstrap", "boot_replicates.rds"))) readRDS(file.path(ROOT, "data", "bootstrap", "boot_replicates.rds")) else NULL
+  boot9 <- !is.null(BS_now) && !is.null(BR9) && isTRUE(abs(BS_now$base[BS_now$quantity == "pembro_dr_k"] - P9f$pembro_dr_k) < 1e-9) && isTRUE(BR9$B == CFG$boot_B)
+  FP9 <- data.frame(
+    参数 = c("pCR 比例（帕博利珠单抗 / 安慰剂）", "术前进展后超额死亡：对数 logistic 中位（月）", "术前进展后超额死亡：形状",
+           "远处复发后超额死亡：形状（早期 / 晚期）", "远处复发后中位：早期（月）", "远处复发后中位：晚期（月）",
+           "早期远处复发的界线（随机化后月数）", "帕博利珠单抗组远处复发后风险的倍数 k", "因不良事件死亡（帕博利珠单抗 / 安慰剂）",
+           "局部区域复发 → 远处复发（/年）"),
+    值 = c(sprintf("%s / %s", f2(P9f$p_pcr[["pembro"]], 4), f2(P9f$p_pcr[["placebo"]], 4)), f2(12 * P9f$preprog$scale, 2), f2(P9f$preprog$shape, 4),
+          sprintf("%s / %s", f2(P9f$dr$shape, 4), f2(P9f$dr$late_shape, 4)), f2(12 * P9f$dr$scale, 2), f2(12 * P9f$dr$late_scale, 2),
+          as.character(CFG$dr_early_months), f2(P9f$pembro_dr_k, 4),
+          sprintf("%s/%s、%s/%s", P9f$ae$pembro[["deaths"]], P9f$ae$pembro[["n_treated"]], P9f$ae$placebo[["deaths"]], P9f$ae$placebo[["n_treated"]]),
+          f2(P9f$lrr_dr[["rate"]], 4)),
+    来源 = c(sprintf("数据（%s）", CFG$pcr_source), "校准（外部约束 10 至 26 个月）", "校准（上限由 5 年存活 ≥ 5% 决定）",
+           sprintf("外部输入（ESME 重建个体数据的对数 logistic 拟合，%s）", if (ES9f$decision == "common") "共用形状" else "分开的形状"),
+           "外部输入（ESME 拟合）", "外部输入（ESME 拟合）", "用户指定（第 8.1 节）", "校准（范围 0.25 至 4）",
+           "数据（2022 年补充材料 Table S5）", "数据（2022 年 Table 1 脚注）"), check.names = FALSE)
+  out8 <- DS10[DS10$used_in_rule & !istrue(DS10$round8_inside), ]
+  add("## 第1阶段最终状态", "",
+      sprintf("第 1 阶段以**第九轮**为最终结构（%s）。依据：第十轮的判定规则 A（`docs/acceptance_rule_round10.md`，git e8d2134，在诊断之前单独提交）——第八轮模型的远处复发后隐含存活在%s落在 ESME 重建 KM 的 95%% CI 之外；第九轮在第 1 至 4 年的 %d 个点中 %d 个落在区间内（第 14 节）。第八轮（git 694b0f3）只作记录：第 1 至 12 节为第八轮的内容，其参数、bootstrap 与输出的快照在 `data/fits/round8/`、`data/bootstrap/round8/`、`output/phase1/round8/`。引擎默认参数在 `data/fits/engine_params.rds`（第九轮）。涉及帕博利珠单抗的结果在第 2 阶段以基准与情景 k = 1 两栏并列报告（`docs/model_spec.md` 第 6 节）。",
+              C9f$structure, paste(sprintf("%s第 %d 年", ifelse(out8$group == "early", "早期", "晚期"), out8$year), collapse = "、"),
+              nrow(DS10), sum(istrue(DS10$round9_inside))), "",
+      "最终参数（第九轮）：", "", md_table(FP9), "",
+      sprintf("术前进展后死亡的校准值%s；k %s。", pp_bound_txt(C9f$at_bound), if (C9f$at_bound[["k_low"]] || C9f$at_bound[["k_high"]]) "**贴边界**" else "不在边界上"), "",
+      "门槛结果（第九轮的校准结果不变、未重新校准，按第十轮的规则判定）：",
+      sprintf("- (a) 按 Bonferroni 同时区间接受：10 个点中 %d 个落在 KM 逐点 95%% 区间内%s；全部 10 个点%s逐点 99.5%% 区间内。第十轮规则 A 去掉了 0.3 个百分点的附加上限（门槛修改记录第 8 项）。",
+              sum(istrue(CG9f$inside)), if (nrow(G9o)) sprintf("，区间外 %s，超出 %s 个百分点", paste(sprintf("%s %d 个月", ifelse(G9o$arm == "pembro", "帕博利珠单抗", "安慰剂"), G9o$month), collapse = "、"),
+                                                         paste(f2(G9o$outside_pp, 3), collapse = "、")) else "",
+              if (all(istrue(CG9f$inside_995))) "落在" else "**并非都在**"),
+      sprintf("- (b) %s：模型 5 年 RMST 两臂差 %s 年，KM 差的 bootstrap 95%% 区间 %s 至 %s 年。", if (istrue(CGR9f$pass)) "达标" else "**不达标**",
+              f2(CGR9f$engine, 4), f2(CGR9f$km_boot_ci95_lo, 4), f2(CGR9f$km_boot_ci95_hi, 4)),
+      sprintf("- (c) %s：7 年 OS 与 EFS 的 4 个值中 %d 个落在最终分析的 95%% 区间内。", if (istrue(CSnow$gate_c_pass)) "达标" else "**不达标**",
+              sum(istrue(G79f$inside_ci[istrue(G79f$gate_c)]))), "",
+      if (boot9) {
+        BC9 <- BR9$calibration; cn <- function(x) sum(x, na.rm = TRUE)
+        sprintf("bootstrap 的边界情况（B = %d，完成 %d 次，失败 %d 次）：k 贴下界 0.25 的 %d 次、贴上界 4 的 %d 次；术前进展中位贴 10 个月的 %d 次、贴 26 个月的 %d 次；5 年存活贴 5%% 的 %d 次；optim 返回码 52 而加随机起点重跑的 %d 次。",
+                BR9$B, nrow(BC9), length(BR9$failed), cn(BC9[, "k_low"] == 1), cn(BC9[, "k_high"] == 1), cn(BC9[, "pp_median_low"] == 1),
+                cn(BC9[, "pp_median_high"] == 1), cn(BC9[, "pp_s5_at_min"] == 1), cn(BC9[, "code52"] == 1))
+      } else sprintf("bootstrap：第九轮的 1,000 次交由 Longleaf 运行，尚未完成（`data/bootstrap/` 仍为第八轮的结果，不属于本结构）。本地参照 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）%s。",
+                     if (!is.null(ref_meta)) sprintf("在提交 %s 上生成（%s）", substr(ref_meta$commit, 1, 7), ref_meta$platform) else "尚未生成"), "",
+      "待尾崎回答：",
+      "- S-JP 的权重定义（`docs/model_spec.md` 第 2 节）。",
+      "- BRCA 检测的对象范围。",
+      "- 帕博利珠单抗组是否也加 S-JP。",
+      "- B30 的定义（第 2 阶段入力表）。",
+      sprintf("- 按 pCR 分层的 EFS 层内 HR 较晚截点值（%s、%s）的原始出处（第 4 节）。",
+              us$value[us$id == "K522_EFS_HR_pCR"], us$value[us$id == "K522_EFS_HR_nonpCR"]), "")
+} else if (!stop6 && boot_done) {
   BCf <- BRS$calibration; cntf <- function(x) sum(x, na.rm = TRUE)
   FP <- data.frame(
     参数 = c("pCR 比例（帕博利珠单抗 / 安慰剂）", "术前进展后超额死亡：对数 logistic 中位（月）", "术前进展后超额死亡：形状",
@@ -171,8 +234,10 @@ add("## 状态", "",
     if (!stop6 && boot_done) "- 第 1 阶段到此结束（2026-10-23）。第 2 阶段中涉及帕博利珠单抗的结果以基准与 k = 1 两栏并列报告（`docs/model_spec.md` 第 6 节；两臂差的对照见第 8.4 节）。" else NULL,
     "- 门槛的修改经过见下一节「门槛修改记录」（全部七项）。",
     if (file.exists(file.path(ROOT, "output", "phase1", "round9", "esme_fits.csv")))
-      sprintf("- 第九轮（第 2 阶段准备，2026-10-23，远处复发后生存外部锚定于 ESME 曲线）：%s，见第 13 节。以上各项与第 1 至 12 节为第八轮（第 1 阶段最终状态）的快照。",
-              if (istrue(rd("output", "phase1", "calibration_status.csv")$gate_pass)) "按规则接受" else "**未被接受**（停在步骤 6 之前）") else NULL, "")
+      sprintf("- 第九轮（第 2 阶段准备，2026-10-23，远处复发后生存外部锚定于 ESME 曲线）：按第九轮的规则%s，见第 13 节。%s以上各项与第 1 至 12 节为第八轮的快照。",
+              if (istrue((if (file.exists(r9rule_f)) read.csv(r9rule_f) else CSnow)$gate_pass)) "接受" else "**未被接受**（门槛 (a) 超出 0.3 个百分点的上限）",
+              if (!is.null(DEC10)) sprintf("第十轮按判定规则 %s %s，见第 14 节。", DEC10$rule,
+                                           if (adopt9) "采用第九轮结构（门槛 (a) 改为只用 Bonferroni 同时区间后接受）" else "维持第八轮") else "") else NULL, "")
 dir_pem <- all(CG$diff[CG$arm == "pembro"] > 0); dir_pl <- all(CG$diff[CG$arm == "placebo"] < 0)
 add(sprintf("各时点的方向：帕博利珠单抗组模型减 KM 的差在 %d 个时点中 %d 个为正，安慰剂组 %d 个中 %d 个为负%s。",
             sum(CG$arm == "pembro"), sum(CG$diff[CG$arm == "pembro"] > 0), sum(CG$arm == "placebo"), sum(CG$diff[CG$arm == "placebo"] < 0),
@@ -236,8 +301,22 @@ LOG <- data.frame(
              sprintf("10 个时点各按 95%% 检验，即使模型正确，也有相当大的概率至少一点落在区间外（若各点独立为 %s%%；同一臂的各时点正相关，实际略低）",
                      f2(100 * (1 - 0.95^10), 0)),
              sprintf("最终分析提供了 7 年的成熟数据，两臂 OS 差从 5 年时的 %s 个百分点扩大到 %s 个百分点", f2(os_d5, 1), f2(os_d7, 1))))
+if (adopt9) {
+  G9r <- rd("output", "phase1", "calibration_gate.csv"); G9x <- G9r[!istrue(G9r$inside), ]
+  LOG <- rbind(LOG, data.frame(no = 8, date = "2026-10-23", item = "校准门槛 (a) 的接受条件",
+    before = sprintf("(a) 不达标时，同时满足 (i) 每个区间外的点超出 ≤ %g 个百分点、(ii) 全部 10 个点落在 Bonferroni 校正后的逐点 %g%% 区间内则接受",
+                     CFG$gate_accept_max_outside_pp, 100 * CFG$gate_accept_simultaneous_level),
+    after = sprintf("(a) 不达标时，只要全部 10 个点落在 Bonferroni 校正后的逐点 %g%% 区间内即接受（去掉 (i)）", 100 * CFG$gate_accept_simultaneous_level),
+    timing = "看到第九轮结果之后做出；只在第十轮判定规则 A 成立时生效（`docs/acceptance_rule_round10.md`，git e8d2134，在诊断之前提交）",
+    result_seen = sprintf("第九轮：%s超出 95%% 区间 %s 个百分点，比 %g 的上限多 %s 个百分点；全部 10 个点在 99.5%% 区间内",
+                          paste(sprintf("%s %d 个月", ifelse(G9x$arm == "pembro", "帕博利珠单抗", "安慰剂"), G9x$month), collapse = "、"),
+                          f2(max(G9x$outside_pp), 3), CFG$gate_accept_max_outside_pp, f2(max(G9x$outside_pp) - CFG$gate_accept_max_outside_pp, 3)),
+    reason = sprintf("例外规则本来就以同时区间为统计依据，%g 个百分点的附加上限没有统计依据；超出发生在安慰剂组 12 个月，该时点只有 %d 例死亡（重建个体数据）",
+                     CFG$gate_accept_max_outside_pp, deaths12_placebo)))
+}
 add("## 门槛修改记录", "",
-    "按时间列出验证与校准门槛的每次修改。第 1 至 5 项是看到结果后修改的，第 4、5 项的理由是门槛比抽样误差更严；第 6 项在看到第五轮结果之后、第六轮运行之前确定，第 7 项在第七轮运行之前确定，两者都在运行前提交到 git。第八轮的接受规则与第七轮相同（`docs/acceptance_rule_round8.md`，运行前提交 e0a722c），门槛没有修改。", "",
+    paste0("按时间列出验证与校准门槛的每次修改。第 1 至 5 项是看到结果后修改的，第 4、5 项的理由是门槛比抽样误差更严；第 6 项在看到第五轮结果之后、第六轮运行之前确定，第 7 项在第七轮运行之前确定，两者都在运行前提交到 git。第八、九轮的接受规则与第七轮相同（`docs/acceptance_rule_round8.md`、`docs/acceptance_rule_round9.md`，均在运行前提交），门槛没有修改。",
+           if (adopt9) "第 8 项是看到第九轮结果之后做出的，作为第十轮判定规则 A 的一部分在诊断之前提交，规则 A 成立后生效。" else ""), "",
     md_table(setNames(LOG, c("序号", "日期", "对象", "修改前", "修改后", "时点", "看到的结果", "理由"))), "")
 
 add("## 1. 输入文件", "", md_table(man), "",
@@ -598,7 +677,8 @@ if (file.exists(file.path(ROOT, r9("esme_fits.csv")))) {
   EV <- rd(r9("esme_validation.csv")); ED <- rd(r9("esme_diagnostics.csv")); EF <- rd(r9("esme_fits.csv"))
   ES <- rd(r9("esme_shape_test.csv")); EH <- rd(r9("esme_hr.csv")); ERL <- rd("data", "digitized", "esme", "raster_extraction_log.csv")
   ERT <- rd("data", "digitized", "esme", "ESME_F3A_OS_risktable.csv")
-  CS9 <- rd("output", "phase1", "calibration_status.csv"); CG9 <- rd("output", "phase1", "calibration_gate.csv")
+  CS9 <- if (file.exists(r9rule_f)) read.csv(r9rule_f) else rd("output", "phase1", "calibration_status.csv")   # status under the round-9 rule
+  CG9 <- rd("output", "phase1", "calibration_gate.csv")
   CGR9 <- rd("output", "phase1", "calibration_gate_rmst.csv"); G79 <- rd("output", "phase1", "calibration_final7y.csv")
   VS9 <- rd("output", "phase1", "calibration_vs_previous.csv"); OB9 <- rd("output", "phase1", "calibration_objective.csv")
   AD9 <- rd("output", "phase1", "scenario_k1_arm_diff.csv"); AD8 <- rd("output", "phase1", "round8", "scenario_k1_arm_diff.csv")
@@ -610,9 +690,10 @@ if (file.exists(file.path(ROOT, r9("esme_fits.csv")))) {
              b = if (istrue(CS9$gate_b_pass)) "达标" else "**不达标**", c = if (istrue(CS9$gate_c_pass)) "达标" else "**不达标**")
   G9_out <- CG9[!istrue(CG9$inside), ]
   add("## 13. 第九轮（第 2 阶段准备，2026-10-23）：远处复发后生存外部锚定于 ESME 曲线", "",
-      sprintf("结论：按运行前确定的接受规则（`docs/acceptance_rule_round9.md`，git 73748f4；与第七、八轮相同）%s。门槛 (a) %s，(b) %s，(c) %s。%s",
+      sprintf("结论：按运行前确定的接受规则（`docs/acceptance_rule_round9.md`，git 73748f4；与第七、八轮相同）%s。门槛 (a) %s，(b) %s，(c) %s。%s%s",
               if (istrue(CS9$gate_pass)) "**接受**" else "**不接受，停在步骤 6 之前**", gate9[["a"]], gate9[["b"]], gate9[["c"]],
-              if (istrue(CS9$gate_pass)) "" else "按规则没有写出引擎默认参数（`data/fits/engine_params.rds`；第八轮的参数在 `data/fits/round8/`），bootstrap 未运行，没有自行增加结构。"), "")
+              if (istrue(CS9$gate_pass)) "" else "按规则当时没有写出引擎默认参数，bootstrap 未运行，没有自行增加结构。",
+              if (adopt9) "此后第十轮按判定规则 A 采用第九轮结构，第九轮的校准结果不变、按新的 (a) 判定为接受（第 14 节）。" else ""), "")
   add("### 13.1 ESME 论文与数字化", "",
       sprintf("来源：Grinda 等 Eur J Cancer 2023;189:112935（DOI 10.1016/j.ejca.2023.05.023），HAL hal-04205902 的作者稿（CC BY-NC 4.0），经 HAL 的检索 API 取得正文与补充材料（`input/papers/Grinda2023_ESME*.pdf`，不进 git；`input/papers/SOURCE.md`）。Fig. 3a（从转移诊断起的 OS，早期复发 = 新辅助或辅助化疗结束后 12 个月以内）为嵌入的栅格图（%s 像素），用与 KEYNOTE-522 相同的流程数字化（`R/py/02b_digitize_raster.py`，`R/py/rasterspec_esme.json`，输出 `data/digitized/esme/`）。此图没有坐标轴线（ggplot2 浅色主题），刻度取边框外的短刻度线（加权重心，亚像素）；线条为细的 JPEG 抗锯齿线，颜色中心取观测到的线条平均色。",
               ERL$native_px[1]),
@@ -677,6 +758,52 @@ if (file.exists(file.path(ROOT, r9("esme_fits.csv")))) {
       sprintf("帕博利珠单抗组 pCR 层的 7 年 OS：第九轮模型 %s%%（k = 1：%s%%），第八轮 %s%%（k = 1：%s%%），报告值 %s%%。",
               f2(G79$engine[G79$id == "os_pcr_pembro"], 2), f2(G79$engine_k1[G79$id == "os_pcr_pembro"], 2),
               f2(G78$engine[G78$id == "os_pcr_pembro"], 2), f2(G78$engine_k1[G78$id == "os_pcr_pembro"], 2), f2(G79$value[G79$id == "os_pcr_pembro"], 1)), "")
+}
+
+# ---------------------------------------------------------------- round 10
+if (!is.null(DEC10)) {
+  DS10 <- rd("output", "phase1", "round10", "dr_survival_comparison.csv"); MS10 <- rd("output", "phase1", "round10", "mean_survival_after_dr.csv")
+  DT10 <- rd("output", "phase1", "round10", "dr_time_engine.csv")
+  ref_meta10 <- tryCatch(readRDS(file.path(ROOT, "output", "check", "bootstrap10_local.rds"))$meta, error = function(e) NULL)
+  gl <- function(g) ifelse(g == "early", "早期", "晚期")
+  add("## 14. 第十轮（2026-10-23）：以转移后长期存活决定采用第八轮还是第九轮结构", "",
+      "判定规则在任何诊断之前单独提交（`docs/acceptance_rule_round10.md`，git e8d2134）。提交前只确认了 ESME 重建数据的随访最长 47.98 个月（风险表止于 48 个月），据此经用户决定以第 4 年代替原指示的第 5 年。诊断：`R/14_round10_decision.R`，输出在 `output/phase1/round10/`。", "",
+      "### 14.1 远处复发后的存活比例（%）", "",
+      with(list(P8r = readRDS(file.path(ROOT, "data", "fits", "round8", "engine_params.rds")), P9r = readRDS(file.path(ROOT, "data", "fits", "calibration_candidates.rds"))$params),
+           sprintf("隐含值 = 远处复发后超额生存（对数 logistic）× 背景生存（从 %s 岁起），k = 1；第八轮：形状共用 %s、中位为 ESME 摘要的 %s 与 %s 个月；第九轮：ESME 拟合（形状 %s、中位 %s 与 %s 个月）。ESME：重建 KM 的点估计与逐点 95%% CI（对数尺度）；第 4 年取 48 个月（重建数据的最后观察时点 %s 个月的值）。第 3、4 年参与判定，第 1、2 年只报告。",
+                   f2(CFG$start_age + 1.5, 1), f2(P8r$dr$shape, 4), f2(12 * P8r$dr$scale, 1), f2(12 * P8r$dr$late_scale, 1),
+                   f2(P9r$dr$shape, 4), f2(12 * P9r$dr$scale, 2), f2(12 * P9r$dr$late_scale, 2),
+                   f2(max(sapply(readRDS(file.path(ROOT, "data", "ipd", "esme", "esme_ipd.rds")), function(d) max(d$time))), 2))), "",
+      md_table(with(DS10, data.frame(组 = gl(group), 年 = year, 第八轮 = f2(round8, 2), 第九轮 = f2(round9, 2), ESME_KM = f2(esme_km, 2),
+                                     ESME_95CI = sprintf("[%s, %s]", f2(esme_lo, 2), f2(esme_hi, 2)),
+                                     第八轮在CI内 = ifelse(istrue(round8_inside), "是", "**否**"), 第九轮在CI内 = ifelse(istrue(round9_inside), "是", "**否**"),
+                                     参与判定 = ifelse(istrue(used_in_rule), "是", "否（只报告）")))), "",
+      "图：`round10/fig_dr_survival.png`。", "",
+      "### 14.2 判定结果", "",
+      sprintf("规则 %s 成立：第八轮的隐含值在%s落在 ESME 的 95%% CI 之外（参与判定的 %d 个点中第八轮在区间内的 %d 个，第九轮 %d 个）。%s",
+              DEC10$rule, if (nzchar(DEC10$round8_points_outside)) paste(sprintf("%s第 %s 年", gl(sub(" year.*", "", strsplit(DEC10$round8_points_outside, "; ")[[1]])),
+                                                                            sub(".*year ", "", strsplit(DEC10$round8_points_outside, "; ")[[1]])), collapse = "、") else "（无）",
+              DEC10$n_rule_points, DEC10$n_round8_inside, DEC10$n_round9_inside,
+              if (DEC10$rule == "A") "第八轮不用于终生模拟，采用第九轮结构；门槛 (a) 只用 Bonferroni 同时区间（逐点 99.5%）判定，去掉 0.3 个百分点的附加上限（门槛修改记录第 8 项）。" else "维持第八轮为最终结构，第九轮只作记录。"), "",
+      "### 14.3 转移后的平均存活时间与远处复发状态中的停留时间", "",
+      sprintf("转移后的平均存活时间（年，截至终生时间范围 %s 年，即到 100 岁；k = 1）；参考：截至 48 个月的限制平均存活时间，与 ESME 重建 KM 比较（`mean_survival_after_dr.csv`）：", f2(MS10$horizon_years[1], 1)), "",
+      md_table(with(MS10, data.frame(组 = gl(group), 第八轮_终生 = f2(round8_mean_lifetime_years, 3), 第九轮_终生 = f2(round9_mean_lifetime_years, 3),
+                                     差_第九减第八 = f2(diff_mean_lifetime_years, 3), 第八轮_48个月 = f2(round8_rmst48_years, 3), 第九轮_48个月 = f2(round9_rmst48_years, 3),
+                                     ESME_KM_48个月 = f2(esme_km_rmst48_years, 3)))), "",
+      "引擎中每人在远处复发状态的累计停留时间（年，折现前，终生；`dr_time_engine.csv`；第八轮与第九轮各用其校准的 k）：", "",
+      md_table(with(DT10, data.frame(臂 = ifelse(arm == "chemo", "单用化疗", "帕博利珠单抗"), 情景 = ifelse(scenario == "base", "基准", "k = 1"),
+                                     第八轮 = f2(round8_years, 3), 第九轮 = f2(round9_years, 3), 差_年 = f2(diff_years, 3), 差_月 = f2(diff_months, 2),
+                                     第八轮_k = f2(round8_k, 3), 第九轮_k = f2(round9_k, 3)))), "")
+  if (adopt9) {
+    G9r <- rd("output", "phase1", "calibration_gate.csv")
+    add("### 14.4 采用的结构与第九轮各道门槛的最终判定", "",
+        sprintf("采用第九轮结构。第九轮的校准结果不变（不重新校准，`R/14b_apply_round10.R`），按第十轮的规则判定（`calibration_status.csv`；按第九轮规则的判定另存于 `round9/calibration_status_round9_rule.csv`）：(a) %s（10 个点中 %d 个在 95%% 区间内，全部 10 个点%s 99.5%% 区间内）；(b) %s；(c) %s。`data/fits/engine_params.rds` 已恢复为第九轮的值。",
+                if (istrue(CSnow$gate_a_accepted)) "按 Bonferroni 同时区间接受" else "**不达标**", sum(istrue(G9r$inside)),
+                if (all(istrue(G9r$inside_995))) "在" else "**并非都在**", if (istrue(CSnow$gate_b_pass)) "达标" else "**不达标**",
+                if (istrue(CSnow$gate_c_pass)) "达标" else "**不达标**"),
+        sprintf("本地参照结果 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）%s；1,000 次 bootstrap 交由 Longleaf。",
+                if (!is.null(ref_meta10)) sprintf("在提交 %s 上重新生成（%s，%s）", substr(ref_meta10$commit, 1, 7), ref_meta10$platform, ref_meta10$created) else "尚未重新生成"), "")
+  }
 }
 
 writeLines(L, file.path(out_dir, "phase1_report.md"), useBytes = TRUE)

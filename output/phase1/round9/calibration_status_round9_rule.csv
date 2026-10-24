@@ -1,0 +1,2 @@
+"structure","gate_a_strict_pass","gate_a_accepted","gate_b_pass","gate_c_pass","constraint_at_bound","k_at_bound","gate_pass","stop_before_step6"
+"AE deaths (data) + PreProg log-logistic (constrained) + DR early/late log-logistic, shape and medians external (ESME fit, common shape), x k in pembrolizumab arms",FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE

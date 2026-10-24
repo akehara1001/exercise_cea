@@ -93,7 +93,7 @@ G <- do.call(rbind, lapply(names(arm_of), function(a) {
 }))
 write.csv(G, file.path(out_dir, "calibration_gate.csv"), row.names = FALSE)
 pass_a_strict <- all(G$inside)
-accept_a <- pass_a_strict || (all(G$outside_pp <= CFG$gate_accept_max_outside_pp + 1e-9) && all(G$inside_995))
+accept_a <- gate_a_accept(G)                    # calibration.R (round 10: Bonferroni intervals only)
 cat("gate (a):", ifelse(pass_a_strict, "PASS", ifelse(accept_a, "outside the 95% CI but ACCEPTED by rule (i)+(ii)", "FAIL")), "\n")
 print(G, row.names = FALSE)
 

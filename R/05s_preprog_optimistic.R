@@ -55,7 +55,7 @@ CG$engine <- mapply(function(a, m) eng(a, "all", m / 12, "OS"), CG$arm, CG$month
 CG$inside <- CG$engine >= CG$ci95_lo - 1e-9 & CG$engine <= CG$ci95_hi + 1e-9
 CG$outside_pp <- pmax(CG$ci95_lo - CG$engine, CG$engine - CG$ci95_hi, 0)
 CG$inside_995 <- CG$engine >= CG$ci995_lo - 1e-9 & CG$engine <= CG$ci995_hi + 1e-9
-acc_a <- all(CG$inside) || (all(CG$outside_pp <= CFG$gate_accept_max_outside_pp + 1e-9) && all(CG$inside_995))
+acc_a <- gate_a_accept(CG)
 rmst_eng <- function(e, P, cd = FALSE) {
   tt <- seq(0, 5, by = 1 / 120); s <- survival_engine(e, "all", times = tt, params = P, common_dr = cd)$OS
   sum(diff(tt) * (head(s, -1) + tail(s, -1)) / 2)

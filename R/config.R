@@ -66,6 +66,11 @@ CFG <- list(
   gate_years = 1:5,
   gate_accept_max_outside_pp = 0.3,
   gate_accept_simultaneous_level = 1 - 0.05 / 10,
+  # round 10, rule A (docs/acceptance_rule_round10.md, 2026-10-23, decided after seeing the round-9
+  # result): condition (i), the 0.3-point cap, is removed; (a) is accepted when all 10 points lie
+  # inside the Bonferroni (99.5%) pointwise intervals. gate_accept_max_outside_pp is kept for the
+  # record of rounds 6-9 (calibration.R gate_a_accept()).
+  gate_accept_use_max_outside = FALSE,
   # DR excess hazard of the pembrolizumab arms = common log-logistic hazard x k (round 6): k is
   # estimated in the base calibration within [0.25, 4]; scenario "k = 1" (common post-DR
   # mortality) for every comparison involving pembrolizumab

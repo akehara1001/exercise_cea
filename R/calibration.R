@@ -197,6 +197,13 @@ calibrate_os <- function(P, targets, months, dr_ext, starts = CAL_STARTS, fl = c
        at_bound = cal_at_bound(full(best$par)), code52 = c52)
 }
 
+# acceptance of gate (a) from a gate table with columns inside, outside_pp and inside_995: all 10
+# points inside the 95% CIs, or (rounds 6-9) every point outside by <= 0.3 points and all inside
+# the Bonferroni 99.5% intervals, or (round 10, rule A) all inside the Bonferroni intervals only
+gate_a_accept <- function(G) {
+  all(G$inside) || ((!CFG$gate_accept_use_max_outside || all(G$outside_pp <= CFG$gate_accept_max_outside_pp + 1e-9)) && all(G$inside_995))
+}
+
 # 5-year RMST (years) from OS at monthly boundaries 0..60 (trapezoid)
 rmst5_monthly <- function(os) { s <- os[1:61]; sum((head(s, -1) + tail(s, -1)) / 2) / 12 }
 
