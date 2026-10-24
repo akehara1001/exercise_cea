@@ -89,13 +89,22 @@ pp_shape_cap <- function(median) {
 CAL_LOWER <- c(PP_MEDIAN_BOUNDS[1], 1e-3, log(CFG$pembro_dr_k_bounds[1]))
 CAL_UPPER <- c(PP_MEDIAN_BOUNDS[2], 1, log(CFG$pembro_dr_k_bounds[2]))
 # round 14: k fixed at CFG$pembro_dr_k_fixed (only the PreProg parameters calibrated); NULL = all free
-cal_fixed <- function() if (is.na(CFG$pembro_dr_k_fixed)) NULL else c(NA, NA, log(CFG$pembro_dr_k_fixed))
+# round 15: PreProg from ESME (no PreProg parameter calibrated; th[1:2] fixed at placeholders inside
+# the bounds, not used by cal_specs()); with k also fixed nothing is calibrated
+cal_fixed <- function() {
+  pp <- if (identical(CFG$preprog_source, "esme_early")) c(mean(PP_MEDIAN_BOUNDS), 0.5) else c(NA, NA)
+  kk <- if (is.na(CFG$pembro_dr_k_fixed)) NA else log(CFG$pembro_dr_k_fixed)
+  th <- c(pp, kk); if (all(is.na(th))) NULL else th
+}
 CAL_STARTS <- list(c(11 / 12, 0.5, log(1)), c(18 / 12, 0.9, log(1.5)), c(12 / 12, 0.99, log(2)),
                    c(24 / 12, 0.3, log(0.8)), c(14 / 12, 0.7, log(3)), c(10.5 / 12, 0.95, log(1.2)))
 
 # dr_ext = c(shape_early, shape_late, median_early, median_late), external (years)
+# round 15: with CFG$preprog_source "esme_early" the PreProg excess death is the ESME early-relapse
+# fit of dr_ext (shape_early, median_early), th[1:2] are not used
 cal_specs <- function(th, dr_ext) list(
-  preprog = list(dist = "llogis", shape = th[2] * pp_shape_cap(th[1]), scale = th[1]),
+  preprog = if (identical(CFG$preprog_source, "esme_early")) list(dist = "llogis", shape = dr_ext[[1]], scale = dr_ext[[3]]) else
+    list(dist = "llogis", shape = th[2] * pp_shape_cap(th[1]), scale = th[1]),
   dr = dr_ext_spec(dr_ext),
   k = exp(th[3]), k_scope = CFG$pembro_dr_k_scope)
 cal_apply <- function(P, th, dr_ext) {
@@ -151,9 +160,13 @@ final7y_draw <- function(X) {
 
 # boundary flags of a solution: constraint 1 (median at 10 or 26 months), constraint 2 (5-year
 # survival at 5%), and the numerical bounds of u and k
-cal_at_bound <- function(th) c(pp_median_low = th[1] <= CAL_LOWER[1] + 1e-6, pp_median_high = th[1] >= CAL_UPPER[1] - 1e-6,
-                               pp_s5_at_min = th[2] >= 1 - 1e-6, pp_u_low = th[2] <= CAL_LOWER[2] + 1e-9,
-                               k_low = th[3] <= CAL_LOWER[3] + 1e-6, k_high = th[3] >= CAL_UPPER[3] - 1e-6)
+cal_at_bound <- function(th) {
+  b <- c(pp_median_low = th[1] <= CAL_LOWER[1] + 1e-6, pp_median_high = th[1] >= CAL_UPPER[1] - 1e-6,
+         pp_s5_at_min = th[2] >= 1 - 1e-6, pp_u_low = th[2] <= CAL_LOWER[2] + 1e-9,
+         k_low = th[3] <= CAL_LOWER[3] + 1e-6, k_high = th[3] >= CAL_UPPER[3] - 1e-6)
+  if (identical(CFG$preprog_source, "esme_early")) b[c("pp_median_low", "pp_median_high", "pp_s5_at_min", "pp_u_low")] <- FALSE   # round 15
+  b
+}
 
 # targets: list(pembro =, placebo =) in percent at `months` (whole months; cycle must be 1 month).
 # If the best start ends with optim code 52 (L-BFGS-B line-search failure), five random starts are
@@ -178,6 +191,12 @@ calibrate_os <- function(P, targets, months, dr_ext, starts = CAL_STARTS, fl = c
     for (i in seq_len(nrow(extra)))
       v <- v + ((curve_point(cc, extra$arm[i], extra$pcr[i], extra$endpoint[i], extra$month[i]) - extra$value[i]) / extra$se[i])^2
     v
+  }
+  if (!any(fr)) {
+    v <- obj(numeric(0))
+    return(list(par = fixed, value = v, convergence = 0, starts_values = rep(v, length(starts)),
+                optim = list(par = numeric(0), value = v, convergence = 0), at_bound = cal_at_bound(fixed),
+                code52 = c(code52 = FALSE, value_before = v, value_after = v, max_abs_par_change = 0)))
   }
   run <- function(st) lapply(st, function(s0) optim(s0[fr], obj, method = "L-BFGS-B", lower = CAL_LOWER[fr], upper = CAL_UPPER[fr],
                                                     control = list(factr = 1e5, maxit = 500)))

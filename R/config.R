@@ -83,6 +83,11 @@ CFG <- list(
   # pembro_dr_k_bounds (rounds 6 to 13). The scenario "early-DR k (external)" is in
   # data/fits/dr_k_external.rds (R/17_round14_kext.R; params_kext() in engine.R)
   pembro_dr_k_fixed = 1,
+  # round 15 (2026-10-24, docs/acceptance_rule_round15.md): source of the PreProg excess death.
+  # "calibrated" = log-logistic calibrated on OS within median 10-26 months and 5-year survival >= 5%
+  # (rounds 5 to 14); "esme_early" = the ESME early-relapse fit (the same distribution as early DR,
+  # same ESME draw in the bootstrap), nothing calibrated on OS
+  preprog_source = "esme_early",                                # round 15 adopted (2026-10-24)
   gate_pp_round1_2 = 1,
   gate_rmst_rel_tol_round3 = 0.20,
   # 5-year stratified EFS constraint (decision 2026-10-22): the 5-year prediction must lie in the
@@ -118,6 +123,8 @@ local({
   }
   sc <- Sys.getenv("EXERCISE_CEA_DR_K_SCOPE", "")                 # round 13: "early" or "all"
   if (nzchar(sc)) { stopifnot(sc %in% c("early", "all")); CFG$pembro_dr_k_scope <<- sc }
+  ps <- Sys.getenv("EXERCISE_CEA_PREPROG", "")                    # round 15: "esme_early" or "calibrated"
+  if (nzchar(ps)) { stopifnot(ps %in% c("esme_early", "calibrated")); CFG$preprog_source <<- ps }
   kf <- Sys.getenv("EXERCISE_CEA_DR_K_FIXED", "")                 # round 14: "1", or "NA" to calibrate k
   if (nzchar(kf)) CFG$pembro_dr_k_fixed <<- suppressWarnings(as.numeric(kf))
 })

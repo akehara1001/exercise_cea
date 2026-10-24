@@ -167,8 +167,12 @@ dr_late_spec <- function(dr) modifyList(dr, list(scale = dr$late_scale, shape = 
 dr_with_k <- function(dr, k, scope = "all") { dr$k <- k; if (identical(scope, "early")) dr$k_late <- 1; dr }
 # round 14: parameters of the scenario "early-DR k (external)" (Fedele 2026; R/17_round14_kext.R)
 # from a base parameter set (k = 1): k on early DR only, other parameters unchanged
-params_kext <- function(P, ext = readRDS(file.path(ROOT, "data", "fits", "dr_k_external.rds"))) {
-  P$pembro_dr_k <- ext$k; P$pembro_dr_k_scope <- ext$scope; P
+# round 15 (preprog = TRUE when PreProg comes from ESME): k also on PreProg of the pembrolizumab arms
+params_kext <- function(P, ext = readRDS(file.path(ROOT, "data", "fits", "dr_k_external.rds")),
+                        preprog = identical(CFG$preprog_source, "esme_early")) {
+  P$pembro_dr_k <- ext$k; P$pembro_dr_k_scope <- ext$scope
+  if (preprog) P$pembro_preprog_k <- ext$k
+  P
 }
 dr_state <- function(f, inflow, dr, max_cycles = NULL) {
   if (is.null(dr$late_scale)) return(tunnel_state(f, inflow, dr, max_cycles))
@@ -273,8 +277,10 @@ survival_engine <- function(arm, pcr = "all", times = NULL, params,
   if (base == "pembro" && !common_dr) dr <- dr_with_k(dr, params$pembro_dr_k, params$pembro_dr_k_scope)
   hr <- if (hr0 == 1) NULL else function(t) ifelse(t <= wane_start, hr0, 1 - (1 - hr0) * exp(-wane_rate * (t - wane_start)))
   pp <- if (is.null(p_pcr)) params$p_pcr[[base]] else p_pcr
+  ppg <- params$preprog                                 # round 15 scenario: k also on PreProg of the pembrolizumab arms
+  if (base == "pembro" && !common_dr && !is.null(params$pembro_preprog_k)) ppg$k <- params$pembro_preprog_k
   rb1 <- function(b, dhr) run_branch(params$efs[[base]][[b]], params$pre_surv[[base]][[b]], params$q_pre[[base]][[b]],
-                                      params$shares[[base]], params$lrr_dr[["rate"]], dr, params$preprog,
+                                      params$shares[[base]], params$lrr_dr[["rate"]], dr, ppg,
                                       params$start_age, params$L, params$cycle, params$n_cycles, params$n_tunnel, hr, dhr,
                                       params$ae[[base]][["rate"]], params$ae_end,
                                       if (is.null(dr_first_months)) NULL else dr_first_months / (12 * params$cycle))

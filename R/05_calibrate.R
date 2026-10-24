@@ -70,8 +70,8 @@ set.seed(CFG$seed)                              # random restarts if optim retur
 cal <- calibrate_os(P0, target, g_m, DR_EXT_BASE, extra = X7, fixed = cal_fixed())   # calibration.R (6 starts; round 14: k fixed)
 best <- cal$optim; vals <- cal$starts_values; at_bound <- cal$at_bound
 P1 <- cal_apply(P0, cal$par, DR_EXT_BASE)
-STRUCT <- sprintf("AE deaths (data) + PreProg log-logistic (constrained) + DR early/late log-logistic, shape and medians external (ESME fit, %s shape), %s",
-                  ESME_FIT$engine$decision, if (is.na(CFG$pembro_dr_k_fixed)) "x k in pembrolizumab arms" else sprintf("k fixed at %g (common post-DR survival)", CFG$pembro_dr_k_fixed))
+STRUCT <- sprintf("AE deaths (data) + PreProg log-logistic %s + DR early/late log-logistic, shape and medians external (ESME fit, %s shape), %s",
+                  if (identical(CFG$preprog_source, "esme_early")) "external (ESME early-relapse fit)" else "(constrained)", ESME_FIT$engine$decision, if (is.na(CFG$pembro_dr_k_fixed)) "x k in pembrolizumab arms" else sprintf("k fixed at %g (common post-DR survival)", CFG$pembro_dr_k_fixed))
 constraint_bound <- at_bound[["pp_median_low"]] || at_bound[["pp_median_high"]] || at_bound[["pp_s5_at_min"]]
 cat(sprintf("PreProg log-logistic shape %.4f (cap %.4f), median %.4f months; DR log-logistic shape early %.4f / late %.4f, median early %.4f / late %.4f months (external); k %.4f; objective %.2f; starts spread %.2e; convergence %d\n",
             P1$preprog$shape, pp_shape_cap(P1$preprog$scale), 12 * P1$preprog$scale, P1$dr$shape, P1$dr$late_shape, 12 * P1$dr$scale,
@@ -340,7 +340,7 @@ saveRDS(list(structure = STRUCT, params = P1, optim = best, starts_values = vals
 # within the allowed region of the three calibrated parameters (PreProg median 10-26 months and
 # 5-year survival >= 5%, k in [0.25, 4]), the smallest possible excursion of the engine OS
 # outside the KM 95% CIs at 1-5 years (Nelder-Mead on transformed parameters)
-if (!pass_a) {
+if (!pass_a && !identical(CFG$preprog_source, "esme_early")) {   # round 15: no calibrated PreProg parameters to search over
   ci <- lapply(os_ipd, function(d) summary(km_fit(d), times = gate_m, extend = TRUE))
   fl <- cal_flows(P1)
   kb <- log(CFG$pembro_dr_k_bounds)
