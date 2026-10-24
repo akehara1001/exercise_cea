@@ -57,14 +57,19 @@ boot_one <- function(b, seed = CFG$seed, tt = c(5, 7, 10, 20)) {
         a0 <- CFG$start_age + L; d$bh <- mu_pop(a0 + d$time)
         sp <- fit_candidate(cand_of(SEL$model[SEL$curve == cv]), d)$spec
         if (any(!is.finite(sp$pars))) stop("non-finite EFS fit")
-        # fixed bounds; round 11: 7-year values of the final analysis (fits.rds written before round 11: 5-year)
+        # interval constraint with fixed bounds (fits.rds written before round 11: 5-year), or round 11
+        # revised: equality constraint at a value drawn from Binomial(n, p)/n (n: IA4 stratum size, p:
+        # reported value), drawn here inside the replicate's random-number stream
         ci <- if (is.null(fits$efs_con_ci)) fits$efs5_ci[[cv]] else fits$efs_con_ci[[cv]]
-        r <- constrain_efs5(sp, d, a0, pre, L, ci[["lo"]], ci[["hi"]], at = if (is.null(fits$efs_con_years)) 5 else fits$efs_con_years)
+        tgt <- if (identical(fits$efs_con_type, "equal")) 100 * rbinom(1, ci[["n"]], ci[["ref"]] / 100) / ci[["n"]] else NULL
+        r <- constrain_efs5(sp, d, a0, pre, L, ci[["lo"]], ci[["hi"]], at = if (is.null(fits$efs_con_years)) 5 else fits$efs_con_years,
+                            target = tgt)
         if (!r$converged) stop("constraint did not converge")
         P$efs[[a]][[s]] <- r$spec
         efs_out[[cv]] <- r$spec$pars
         bind[[cv]] <- r$binding
         pcr_out[paste0(c("n_", "pre7_"), cv)] <- c(n_s[[s]], pre)
+        if (!is.null(tgt)) pcr_out[paste0("efs_target_", cv)] <- tgt
       }
       pcr_out[paste0(c("p_pcr_", "q_pre_"), a)] <- c(P$p_pcr[[a]], P$q_pre[[a]][["nonpCR"]])
     }

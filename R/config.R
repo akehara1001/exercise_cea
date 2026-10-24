@@ -81,12 +81,16 @@ CFG <- list(
   # 95% CI of the later-cutoff value; CIs are not reported, so binomial (Wald) with the IA4
   # stratum sizes
   efs5_ci_z = qnorm(0.975),
-  # time of the constraint in years: 5 = the 5-year values of the 2023-03-23 cutoff (rounds 3 to 10,
-  # the accepted state); 7 = the 7-year stratified EFS of the KEYNOTE-522 final analysis
-  # (data/kn522_final_7y.csv), same implementation and stratum sizes, at 84 months. Round 11
-  # (2026-10-23, docs/acceptance_rule_round11.md) ran with 7 and stopped (not adopted), so the default
-  # stays 5; its outputs are in output/phase1/round11/ and data/fits/round11/.
+  # time of the constraint in years: 5 = the 5-year values of the 2023-03-23 cutoff (rounds 3 to 10);
+  # 7 = the 7-year stratified EFS of the KEYNOTE-522 final analysis (data/kn522_final_7y.csv), IA4
+  # stratum sizes, at 84 months. Type: "interval" = inside the binomial 95% interval (rounds 3 to 10,
+  # and round 11 as first run: stopped, output/phase1/round11/, data/fits/round11/); "equal" = fixed
+  # at the reported value, bootstrap draws Binomial(n, p)/n per cell (round 11 revised, 2026-10-23,
+  # docs/acceptance_rule_round11.md: stopped at gate (c), output/phase1/round11/equality/,
+  # data/fits/round11/equality/). Neither round-11 setting was adopted, so the default stays the
+  # accepted state of round 10 (5, "interval"); 7 and "equal" reproduce the revised round 11.
   efs_constraint_years = 5,
+  efs_constraint_type = "interval",
   seed = 20261021,
   boot_B = 1000
 )

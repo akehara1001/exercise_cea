@@ -1,0 +1,2 @@
+"round","mode","rule","constrained_cells","cells_within_0_5pp","binding_cells","AIC_total","AIC_total_round10","loglik_change_total","constraint_check_pass","decision"
+11,"equal","docs/acceptance_rule_round11.md (revised, 1996c24)",4,4,4,1198.651,1198.146,-0.253,TRUE,"constraint check passed: go on to the calibration"

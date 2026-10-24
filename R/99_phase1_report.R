@@ -145,7 +145,7 @@ if (adopt9) {
            "数据（2022 年补充材料 Table S5）", "数据（2022 年 Table 1 脚注）"), check.names = FALSE)
   out8 <- DS10[DS10$used_in_rule & !istrue(DS10$round8_inside), ]
   add("## 第1阶段最终状态", "",
-      sprintf("第 1 阶段以**第九轮**为最终结构（%s）。依据：第十轮的判定规则 A（`docs/acceptance_rule_round10.md`，git e8d2134，在诊断之前单独提交）——第八轮模型的远处复发后隐含存活在%s落在 ESME 重建 KM 的 95%% CI 之外；第九轮在第 1 至 4 年的 %d 个点中 %d 个落在区间内（第 14 节）。第八轮（git 694b0f3）只作记录：第 1 至 12 节为第八轮的内容，其参数、bootstrap 与输出的快照在 `data/fits/round8/`、`data/bootstrap/round8/`、`output/phase1/round8/`。引擎默认参数在 `data/fits/engine_params.rds`（第九轮）。涉及帕博利珠单抗的结果在第 2 阶段以基准与情景 k = 1 两栏并列报告（`docs/model_spec.md` 第 6 节）。第十一轮（分层 EFS 约束改用最终分析的 7 年值，2026-10-23）按其规则停在拟合之后，未采用（第 15 节）。",
+      sprintf("第 1 阶段以**第九轮**为最终结构（%s）。依据：第十轮的判定规则 A（`docs/acceptance_rule_round10.md`，git e8d2134，在诊断之前单独提交）——第八轮模型的远处复发后隐含存活在%s落在 ESME 重建 KM 的 95%% CI 之外；第九轮在第 1 至 4 年的 %d 个点中 %d 个落在区间内（第 14 节）。第八轮（git 694b0f3）只作记录：第 1 至 12 节为第八轮的内容，其参数、bootstrap 与输出的快照在 `data/fits/round8/`、`data/bootstrap/round8/`、`output/phase1/round8/`。引擎默认参数在 `data/fits/engine_params.rds`（第九轮）。涉及帕博利珠单抗的结果在第 2 阶段以基准与情景 k = 1 两栏并列报告（`docs/model_spec.md` 第 6 节）。第十一轮（分层 EFS 约束改用最终分析的 7 年值，2026-10-23）两次都按规则停下、未采用：区间约束停在拟合之后，改为等式约束后停在门槛 (c)（第 15 节）。",
               C9f$structure, paste(sprintf("%s第 %d 年", ifelse(out8$group == "early", "早期", "晚期"), out8$year), collapse = "、"),
               nrow(DS10), sum(istrue(DS10$round9_inside))), "",
       "最终参数（第九轮）：", "", md_table(FP9), "",
@@ -845,8 +845,67 @@ if (file.exists(file.path(r11, "status.csv"))) {
   if (file.exists(RB10)) {
     B10 <- rd("output", "check", "bootstrap10_bounds_round10_summary.csv")
     add("### 15.5 参照的边界报告（2026-10-23 补充，只报告不设门槛）", "",
-        sprintf("参照重新生成之后（门槛通过时），报告 10 次中 k 的全部值、贴下界 0.25 与上界 4 的次数，以及术前进展中位贴 10 个月与 26 个月的次数（`R/06d_reference_bounds.R`），与第十轮的参照并列；推送与 Longleaf 的 1,000 次由用户看过之后再定。第十轮的参照（提交 %s）：k = %s；贴 4 的 %d 次（第 %s 次），贴 0.25 的 %d 次；术前进展中位贴 10 个月的 %d 次，贴 26 个月的 %d 次。第十一轮停下，参照未重新生成，本轮的值尚无。",
+        sprintf("参照重新生成之后（门槛通过时），报告 10 次中 k 的全部值、贴下界 0.25 与上界 4 的次数，以及术前进展中位贴 10 个月与 26 个月的次数（`R/06d_reference_bounds.R`），与第十轮的参照并列；推送与 Longleaf 的 1,000 次由用户看过之后再定。第十轮的参照（提交 %s）：k = %s；贴 4 的 %d 次（第 %s 次），贴 0.25 的 %d 次；术前进展中位贴 10 个月的 %d 次，贴 26 个月的 %d 次。第十一轮两次都停下（第 15.6 节），参照未重新生成，本轮的值尚无。",
                 B10$commit, gsub("; ", "、", B10$k_values), B10$k_at_4, gsub(", ", "、", B10$k_at_4_replicates), B10$k_at_0.25, B10$preprog_median_at_10, B10$preprog_median_at_26), "")
+  }
+  # revised round 11: equality constraint (rule 1996c24); outputs in output/phase1/round11/equality/
+  re <- file.path(r11, "equality")
+  if (file.exists(file.path(re, "status.csv")) && file.exists(file.path(re, "calibration_status.csv"))) {
+    rq <- function(f) rd("output", "phase1", "round11", "equality", f)
+    SE <- rq("status.csv"); CE <- rq("cells.csv"); GE <- rq("arm_gap_7y.csv"); FE <- rq("comparison_5y_2023.csv")
+    CSe <- rq("calibration_status.csv"); Ge <- rq("calibration_gate.csv"); GRe <- rq("calibration_gate_rmst.csv"); G7e <- rq("calibration_final7y.csv")
+    VSe <- rq("calibration_vs_previous.csv"); ADe <- rq("scenario_k1_arm_diff.csv"); DE <- rq("diag_engine_efs7.csv"); KS <- rq("diag_k_scan.csv")
+    CS10 <- rd("output", "phase1", "calibration_status.csv"); G10 <- rd("output", "phase1", "calibration_gate.csv")
+    GR10 <- rd("output", "phase1", "calibration_gate_rmst.csv"); G710 <- rd("output", "phase1", "calibration_final7y.csv")
+    VS10 <- rd("output", "phase1", "calibration_vs_previous.csv"); AD10 <- rd("output", "phase1", "scenario_k1_arm_diff.csv")
+    vq <- function(V, q) V$round9[V$quantity == q]
+    adq <- function(A, q, col) A[[col]][A$quantity == q]
+    yn <- function(x) ifelse(istrue(x), "达标", "**不达标**")
+    ya <- function(CS) if (istrue(CS$gate_a_strict_pass)) "达标" else if (istrue(CS$gate_a_accepted)) "按 Bonferroni 同时区间接受" else "**不达标**"
+    g7row <- function(G, id) sprintf("%s（%s 至 %s）", f2(G$engine[G$id == id], 2), f2(G$ci95_lo[G$id == id], 1), f2(G$ci95_hi[G$id == id], 1))
+    out_c <- G7e[istrue(G7e$gate_c) & !istrue(G7e$inside_ci), ]
+    ks <- KS$k[istrue(KS$all_three)]
+    add("### 15.6 修改后的第十一轮：等式约束（2026-10-23）", "",
+        "规则修改在任何新的计算之前单独提交（`docs/acceptance_rule_round11.md` 的「修改」节，git 1996c24）：四个格子在随机化后 84 个月的 EFS 固定为报告值，在此条件下最大化似然，撤销区间约束；0.5 个百分点的检查保留；bootstrap 中每个样本的四个约束值各自从 Binomial(n, p)/n 抽取。修改记录如实写明：本修改是看到第十一轮拟合（git 974b6ef）之后做出的；理由是区间约束自第三轮以来从未起过作用，且不能保证两臂之差正确；0.5 个百分点这一条按等式约束设计，与当时的区间约束不匹配，属于指令错误。", "",
+        "最终分析摘要原文（`input/papers/KN522_final_ASCO2026_abstract.pdf`）与 `data/kn522_final_7y.csv` 的全体数值逐项一致（7 年 EFS 与 OS 及其 95% 置信区间、两个 HR、截点、中位随访 93.8 个月〔84.7 至 102.8〕），门槛 (c) 的取值不变；摘要不含按 pCR 分层的数值。", "",
+        "#### 15.6.1 拟合（`R/15_round11_check.R equal`，`round11/equality/`）", "",
+        md_table(data.frame(格子 = lab11[CE$curve], 报告值 = f2(CE$reported, 1), 约束前 = f2(CE$model_7y_before, 2), 约束后 = f2(CE$model_7y, 2),
+                            对数似然变化 = f2(CE$loglik_change, 3), 约束前参数 = CE$pars_before, 约束后参数 = CE$pars_after, check.names = FALSE)), "",
+        sprintf("0.5 个百分点的检查：4 个格子都在 0.5 个百分点以内（按第 4 步的拟合曲线计，差为 0）。合计对数似然变化 %s，合计 AIC %s（第十轮 %s）。7 年两臂差：pCR 例 %s → %s（报告 %s），non-pCR 例 %s → %s（报告 %s）个百分点。",
+                f2(SE$loglik_change_total, 3), f2(SE$AIC_total, 2), f2(SE$AIC_total_round10, 2),
+                f2(GE$model_before[GE$stratum == "pCR"], 2), f2(GE$model[GE$stratum == "pCR"], 2), f2(GE$reported[GE$stratum == "pCR"], 1),
+                f2(GE$model_before[GE$stratum == "nonpCR"], 2), f2(GE$model[GE$stratum == "nonpCR"], 2), f2(GE$reported[GE$stratum == "nonpCR"], 1)), "",
+        "5 年值与 2023-03-23 截点报告值之差（不作门槛）：", "",
+        md_table(data.frame(格子 = lab11[FE$curve], 约束前 = f2(FE$model_5y_before, 2), 约束后 = f2(FE$model_5y, 2), 报告值2023 = f2(FE$reported_2023, 1),
+                            差 = f2(FE$diff, 2), check.names = FALSE)), "",
+        "#### 15.6.2 校准与门槛（第九轮结构，`R/05_calibrate.R`）", "",
+        md_table(data.frame(项目 = c("门槛 (a)：第 1 至 5 年 10 个点", "门槛 (b)：5 年 RMST 两臂差（年）", "门槛 (c)：7 年 OS 帕博利珠单抗", "门槛 (c)：7 年 OS 安慰剂",
+                                    "门槛 (c)：7 年 EFS 帕博利珠单抗", "门槛 (c)：7 年 EFS 安慰剂", "k", "术前进展中位（月）", "KM 平方误差和（百分点²）",
+                                    "5 年 OS 两臂差（模型 / k = 1 / 报告）", "7 年 OS 两臂差（模型 / k = 1 / 报告）"),
+                            第十一轮等式约束 = c(sprintf("%s（95%% 区间内 %d 个）", ya(CSe), sum(istrue(Ge$inside))),
+                                           sprintf("%s（%s；区间 %s 至 %s）", yn(CSe$gate_b_pass), f2(GRe$engine, 4), f2(GRe$km_boot_ci95_lo, 4), f2(GRe$km_boot_ci95_hi, 4)),
+                                           g7row(G7e, "os7_pembro"), g7row(G7e, "os7_placebo"), g7row(G7e, "efs7_pembro"), g7row(G7e, "efs7_placebo"),
+                                           f2(vq(VSe, "pembro_dr_k"), 3), f2(vq(VSe, "preprog_median_months"), 2), f2(vq(VSe, "km_SSE_both_arms_pp2"), 1),
+                                           sprintf("%s / %s / %s", f2(adq(ADe, "OS at 5 years (points)", "base"), 2), f2(adq(ADe, "OS at 5 years (points)", "k1"), 2), f2(adq(ADe, "OS at 5 years (points)", "reported"), 2)),
+                                           sprintf("%s / %s / %s", f2(adq(ADe, "OS at 7 years (points)", "base"), 2), f2(adq(ADe, "OS at 7 years (points)", "k1"), 2), f2(adq(ADe, "OS at 7 years (points)", "reported"), 1))),
+                            第十轮 = c(sprintf("%s（95%% 区间内 %d 个）", ya(CS10), sum(istrue(G10$inside))),
+                                     sprintf("%s（%s）", yn(CS10$gate_b_pass), f2(GR10$engine, 4)),
+                                     g7row(G710, "os7_pembro"), g7row(G710, "os7_placebo"), g7row(G710, "efs7_pembro"), g7row(G710, "efs7_placebo"),
+                                     f2(vq(VS10, "pembro_dr_k"), 3), f2(vq(VS10, "preprog_median_months"), 2), f2(vq(VS10, "km_SSE_both_arms_pp2"), 1),
+                                     sprintf("%s / %s / %s", f2(adq(AD10, "OS at 5 years (points)", "base"), 2), f2(adq(AD10, "OS at 5 years (points)", "k1"), 2), f2(adq(AD10, "OS at 5 years (points)", "reported"), 2)),
+                                     sprintf("%s / %s / %s", f2(adq(AD10, "OS at 7 years (points)", "base"), 2), f2(adq(AD10, "OS at 7 years (points)", "k1"), 2), f2(adq(AD10, "OS at 7 years (points)", "reported"), 1))),
+                            check.names = FALSE)), "",
+        sprintf("**按规则停下**：门槛 (c) 不达标——%s。没有自行增加结构，没有重新生成参照，没有运行 `R/06d_reference_bounds.R`，没有启动 Longleaf。`R/05_calibrate.R` 按设计删除了 `engine_params.rds`；之后把第十一轮的输出移到 `output/phase1/round11/equality/`、`data/fits/round11/equality/`，主目录的 `fits.rds`、`engine_params.rds`、`calibration_candidates.rds` 与校准输出恢复为第十轮的文件（与提交中的相同），`config.R` 的默认恢复为 5 年、区间约束（已接受的状态；设为 7 年、`equal` 即重现本轮）。",
+                paste(sprintf("%s 7 年 %s：模型 %s，区间 %s 至 %s（低 %s 个百分点）", ifelse(out_c$arm == "pembro", "帕博利珠单抗", "安慰剂"), out_c$endpoint, f2(out_c$engine, 2),
+                              f2(out_c$ci95_lo, 1), f2(out_c$ci95_hi, 1), f2(pmax(out_c$ci95_lo - out_c$engine, out_c$engine - out_c$ci95_hi), 2)), collapse = "；")), "",
+        "#### 15.6.3 诊断（不作门槛，不改结构，`R/15b_round11_diag.R`）", "",
+        "引擎中按 pCR 分层的 7 年 EFS 与约束值（第 4 步的拟合曲线等于约束值）：", "",
+        md_table(data.frame(臂 = ifelse(DE$arm == "pembro", "帕博利珠单抗", "安慰剂"), 层 = DE$stratum, 报告值 = ifelse(is.na(DE$reported), "", f2(DE$reported, 1)),
+                            第4步拟合 = ifelse(is.na(DE$fit_04), "", f2(DE$fit_04, 2)), 引擎 = f2(DE$engine, 2),
+                            引擎减报告值 = ifelse(is.na(DE$engine_minus_reported), "", f2(DE$engine_minus_reported, 2)), check.names = FALSE)), "",
+        "引擎的分层 7 年 EFS 比第 4 步的拟合曲线低 0.11 至 0.69 个百分点（两格超过 0.5）。第十轮的引擎有同样大小的差（对区间约束下的拟合曲线：−0.53、−0.11、−0.19、−0.67），不是等式约束引起的。pCR 两格的差大致等于术前 7 个月内的因不良事件死亡（引擎对 pCR 层也计入，帕博利珠单抗 7/783 × 7/12 ≈ 0.52、安慰剂 1/389 × 7/12 ≈ 0.15 个百分点）；non-pCR 两格还与术前进展的处理有关（推测，未进一步查）。0.5 个百分点的检查按第 4 步的拟合曲线判定为通过；按引擎则有两格不通过。", "",
+        sprintf("只改 k（其余参数取本轮校准值、不重新优化）时，三道门槛同时满足的 k 为 %s（校准值 %s）。只作诊断，不作采用。",
+                if (length(ks)) sprintf("%s 至 %s", f2(min(ks), 2), f2(max(ks), 2)) else "无", f2(vq(VSe, "pembro_dr_k"), 3)), "")
   }
 }
 

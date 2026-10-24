@@ -1,2 +1,2 @@
-"round","rule","constrained_cells","cells_within_0_5pp","binding_cells","AIC_total","AIC_total_round10","constraint_check_pass","calibration_run","accepted","decision"
-11,"docs/acceptance_rule_round11.md",4,2,0,1198.146,1198.146,FALSE,FALSE,FALSE,"stop: constrained cells more than 0.5 points from the reported 7-year EFS (the interval constraint does not bind); calibration not run, round 10 stays the final state"
+"round","mode","rule","constrained_cells","cells_within_0_5pp","binding_cells","AIC_total","AIC_total_round10","loglik_change_total","constraint_check_pass","decision"
+11,"interval","docs/acceptance_rule_round11.md (0ca5cfe)",4,2,0,1198.146,1198.146,0,FALSE,"stop: constrained cells more than 0.5 points from the reported 7-year EFS (the interval constraint does not bind); calibration not run, round 10 stays the final state"

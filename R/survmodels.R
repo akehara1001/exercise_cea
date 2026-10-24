@@ -62,12 +62,14 @@ allcause_loglik <- function(spec, time, status, a0) {
 # [lo, hi] the spec is returned unchanged; otherwise the all-cause likelihood is maximised on the
 # nearer bound, where one parameter follows from the others (cure Weibull: theta; Weibull: scale).
 # at: the time from randomization in years (round 11: 7, the final analysis; the value is still
-# returned as efs5).
-constrain_efs5 <- function(spec, d, a0, pre, L, lo, hi, at = 5) {
+# returned as efs5). target (round 11, equality constraint, 2026-10-23): the EFS at `at` is fixed at
+# target and the likelihood maximised under that condition, whether or not the fit is inside
+# [lo, hi] (lo and hi are then not used).
+constrain_efs5 <- function(spec, d, a0, pre, L, lo, hi, at = 5, target = NULL) {
   tau <- at - L
   v <- 100 * pre * allcause_surv(spec, tau, a0)
-  if (v >= lo && v <= hi) return(list(spec = spec, binding = FALSE, bound = NA_real_, efs5 = v, converged = TRUE))
-  b <- if (v < lo) lo else hi
+  if (is.null(target) && v >= lo && v <= hi) return(list(spec = spec, binding = FALSE, bound = NA_real_, efs5 = v, converged = TRUE))
+  b <- if (!is.null(target)) target else if (v < lo) lo else hi
   s_star <- b / (100 * pre)                                   # all-cause survival at tau on the bound
   make <- switch(paste(spec$family, spec$dist),
     "cure weibull" = function(x) {

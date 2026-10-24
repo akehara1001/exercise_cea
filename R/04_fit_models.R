@@ -227,8 +227,12 @@ write.csv(SEL, file.path(out_dir, "model_selection.csv"), row.names = FALSE)
 # from randomization at CFG$efs_constraint_years inside the 95% CI of the reported value. No CI is
 # reported, so a binomial (Wald) interval with the stratum size of the same pCR analysis (IA4) is
 # used; it ignores censoring and so is narrower than a KM interval would be. The 5-year values of the
-# later cutoff are kept as a comparison (not a gate). Round 11 stopped (not adopted): the default in
-# config.R stays 5 (output efs5_constraint.csv); 7 writes efs7_constraint.csv.
+# later cutoff are kept as a comparison (not a gate). Round 11 as first run (interval) stopped: the
+# constraint never acted; its outputs are in output/phase1/round11/. Revised round 11 (2026-10-23):
+# CFG$efs_constraint_type = "equal" fixes the four cells at the reported values and maximises the
+# likelihood under that condition; the bootstrap draws each value from Binomial(n, p)/n
+# (bootstrap_core.R; n and p in fits.rds efs_con_ci). Output efs<years>_constraint.csv, for "equal"
+# efs<years>_equality_constraint.csv.
 # Families unchanged in round 11 (pCR Weibull, non-pCR cure Weibull, both arms).
 stopifnot(all(SEL$model[SEL$curve %in% c("EFS_pembro_pCR", "EFS_placebo_pCR")] == "weibull"),
           all(SEL$model[SEL$curve %in% c("EFS_pembro_nonpCR", "EFS_placebo_nonpCR")] == "cure_weibull"))
@@ -248,7 +252,8 @@ constrained <- list(); con_rows <- list()
 for (cv in names(curves)[sapply(curves, `[[`, "kind") == "EFS"]) {
   cc <- curves[[cv]]; ci <- efs_con_ci(cc$arm, cc$stratum)
   sp0 <- fits[[cv]][[SEL$model[SEL$curve == cv]]]
-  r <- constrain_efs5(sp0, cc$d, cc$a0, cc$pre, L, ci[["lo"]], ci[["hi"]], at = con_at)
+  r <- constrain_efs5(sp0, cc$d, cc$a0, cc$pre, L, ci[["lo"]], ci[["hi"]], at = con_at,
+                      target = if (CFG$efs_constraint_type == "equal") ci[["ref"]] else NULL)
   constrained[[cv]] <- r$spec
   fr <- function(sp) 100 * cc$pre * allcause_surv(sp, c(con_at, 5, 10, 20) - L, cc$a0)
   pp <- function(sp) paste(names(sp$pars), signif(sp$pars, 5), sep = " = ", collapse = "; ")
@@ -258,14 +263,16 @@ for (cv in names(curves)[sapply(curves, `[[`, "kind") == "EFS"]) {
     reported = ci[["ref"]], ci95_lo = round(ci[["lo"]], 2), ci95_hi = round(ci[["hi"]], 2),
     efs_before = round(e0[1], 3), inside_before = e0[1] >= ci[["lo"]] & e0[1] <= ci[["hi"]], binding = r$binding,
     bound = round(r$bound, 2), converged = r$converged, efs_after = round(e1[1], 3), diff_after = round(e1[1] - ci[["ref"]], 3),
-    npar = length(r$spec$pars), loglik_before = round(ll0, 3), loglik_after = round(ll1, 3),
+    npar = length(r$spec$pars), loglik_before = round(ll0, 3), loglik_after = round(ll1, 3), loglik_change = round(ll1 - ll0, 4),
     AIC_before = round(-2 * ll0 + 2 * length(sp0$pars), 3), AIC_after = round(-2 * ll1 + 2 * length(r$spec$pars), 3),
     efs5_before = round(e0[2], 3), efs5_after = round(e1[2], 3), efs5_later_cutoff = efs5_ref(cc$arm, cc$stratum), efs5_diff_later_cutoff = round(e1[2] - efs5_ref(cc$arm, cc$stratum), 3),
     efs10_before = round(e0[3], 3), efs10_after = round(e1[3], 3), efs20_before = round(e0[4], 3), efs20_after = round(e1[4], 3),
     pars_before = pp(sp0), pars_after = pp(r$spec))
 }
 CON <- do.call(rbind, con_rows)
-con_file <- sprintf("efs%d_constraint.csv", con_at)
+stopifnot(CFG$efs_constraint_type %in% c("interval", "equal"))
+CON$constraint_type <- CFG$efs_constraint_type
+con_file <- sprintf(if (CFG$efs_constraint_type == "equal") "efs%d_equality_constraint.csv" else "efs%d_constraint.csv", con_at)
 write.csv(CON, file.path(out_dir, con_file), row.names = FALSE)
 print(CON[, c("curve", "model", "reported", "ci95_lo", "ci95_hi", "efs_before", "binding", "efs_after", "diff_after")], row.names = FALSE)
 selected <- setNames(lapply(names(curves), function(cv)
@@ -274,7 +281,7 @@ saveRDS(list(curves = lapply(curves, function(x) x[c("a0", "kind")]), specs = fi
              selected = selected,
              selected_unconstrained = setNames(lapply(names(curves), function(cv) fits[[cv]][[SEL$model[SEL$curve == cv]]]), names(curves)),
              efs_con_ci = lapply(curves[sapply(curves, `[[`, "kind") == "EFS"], function(cc) efs_con_ci(cc$arm, cc$stratum)),
-             efs_con_years = con_at,
+             efs_con_years = con_at, efs_con_type = CFG$efs_constraint_type,
              scenario = scen,
              yau_cond = yau_cond, landmark_years = L),
         file.path(ROOT, "data", "fits", "fits.rds"))

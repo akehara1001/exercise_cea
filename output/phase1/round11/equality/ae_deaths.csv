@@ -1,0 +1,3 @@
+"arm","source","deaths","n_treated","input_pct","period_years","engine_pct_by_surgery","engine_pct_by_1y","post_surgery_cycles_capped","composition_deaths","expected_background_deaths","deaths_without_recurrence_used","share_death","share_LRR","share_DR"
+"pembro","any",7,783,0.893997445721584,1,0.518878553026726,0.874055366443651,0,19,5.9606818954434,6.0393181045566,0.0457387859256764,0.371101583251126,0.583159630823198
+"placebo","any",1,389,0.25706940874036,1,0.148309439868012,0.248682016449977,0,13,2.69694697851851,9.30305302148149,0.0976154774326544,0.314785298570004,0.587599223997341
