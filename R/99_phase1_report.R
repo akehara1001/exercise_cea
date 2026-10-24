@@ -842,6 +842,13 @@ if (file.exists(file.path(r11, "status.csv"))) {
                                              ifelse(H11$stratum == "pCR", "；OncLive 印 [0.39, 1.14]", ""))), check.names = FALSE)), "",
       "### 15.4 未做的部分", "",
       "按规则停在拟合之后：门槛结果、k、5 年与 7 年的 OS 两臂差、5 年 RMST 两臂差与第十轮的并列，以及 `bootstrap10_local.rds` 的重新生成、推送和 Longleaf 的 1,000 次 bootstrap，都没有做。", "")
+  RB10 <- file.path(ROOT, "output", "check", "bootstrap10_bounds_round10_summary.csv")
+  if (file.exists(RB10)) {
+    B10 <- rd("output", "check", "bootstrap10_bounds_round10_summary.csv")
+    add("### 15.5 参照的边界报告（2026-10-23 补充，只报告不设门槛）", "",
+        sprintf("参照重新生成之后（门槛通过时），报告 10 次中 k 的全部值、贴下界 0.25 与上界 4 的次数，以及术前进展中位贴 10 个月与 26 个月的次数（`R/06d_reference_bounds.R`），与第十轮的参照并列；推送与 Longleaf 的 1,000 次由用户看过之后再定。第十轮的参照（提交 %s）：k = %s；贴 4 的 %d 次（第 %s 次），贴 0.25 的 %d 次；术前进展中位贴 10 个月的 %d 次，贴 26 个月的 %d 次。第十一轮停下，参照未重新生成，本轮的值尚无。",
+                B10$commit, gsub("; ", "、", B10$k_values), B10$k_at_4, gsub(", ", "、", B10$k_at_4_replicates), B10$k_at_0.25, B10$preprog_median_at_10, B10$preprog_median_at_26), "")
+  }
 }
 
 writeLines(L, file.path(out_dir, "phase1_report.md"), useBytes = TRUE)
