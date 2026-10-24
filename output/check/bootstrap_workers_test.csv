@@ -1,2 +1,7 @@
-"matrix","n_values","w4_vs_w8_identical","w4_vs_w8_max_abs_diff","note"
-NA,NA,NA,NA,"skipped: no accepted engine (data/fits/engine_params.rds)"
+"matrix","n_values","w4_vs_w8_identical","w4_vs_w8_max_abs_diff"
+"efs",44,TRUE,0
+"os_models",32,TRUE,0
+"pcr_preprog",52,TRUE,0
+"calibration",92,TRUE,0
+"outputs",244,TRUE,0
+"targets7",36,TRUE,0

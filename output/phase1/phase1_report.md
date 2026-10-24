@@ -1,6 +1,6 @@
 # 第1阶段（生存引擎）报告
 
-生成时间：2026-10-23 18:00。由 `R/99_phase1_report.R` 从代码输出生成，表中数字均读自 `output/`、`data/` 与 `input/` 下的文件。模型规格见 `docs/model_spec.md`。
+生成时间：2026-10-23 18:30。由 `R/99_phase1_report.R` 从代码输出生成，表中数字均读自 `output/`、`data/` 与 `input/` 下的文件。模型规格见 `docs/model_spec.md`。
 
 ## 第1阶段最终状态
 
@@ -28,7 +28,7 @@
 - (b) 达标：模型 5 年 RMST 两臂差 0.1156 年，KM 差的 bootstrap 95% 区间 -0.0381 至 0.2421 年。
 - (c) 达标：7 年 OS 与 EFS 的 4 个值中 4 个落在最终分析的 95% 区间内。
 
-bootstrap：第九轮的 1,000 次交由 Longleaf 运行，尚未完成（`data/bootstrap/` 仍为第八轮的结果，不属于本结构）。本地参照 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）在提交 12c1f6e 上生成（x86_64-w64-mingw32）。
+bootstrap：第九轮的 1,000 次交由 Longleaf 运行，尚未完成（`data/bootstrap/` 仍为第八轮的结果，不属于本结构）。本地参照 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）在提交 15dba86 上生成（x86_64-w64-mingw32）。
 
 待尾崎回答：
 - S-JP 的权重定义（`docs/model_spec.md` 第 2 节）。
@@ -1062,5 +1062,5 @@ Guyot 算法（`R/guyot.R`），以 IPDfromKM 交叉核对；门槛（用户指�
 ### 14.4 采用的结构与第九轮各道门槛的最终判定
 
 采用第九轮结构。第九轮的校准结果不变（不重新校准，`R/14b_apply_round10.R`），按第十轮的规则判定（`calibration_status.csv`；按第九轮规则的判定另存于 `round9/calibration_status_round9_rule.csv`）：(a) 按 Bonferroni 同时区间接受（10 个点中 9 个在 95% 区间内，全部 10 个点在 99.5% 区间内）；(b) 达标；(c) 达标。`data/fits/engine_params.rds` 已恢复为第九轮的值。
-本地参照结果 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）在提交 12c1f6e 上重新生成（x86_64-w64-mingw32，2026-10-23 15:38:56 JST）；1,000 次 bootstrap 交由 Longleaf。
+本地参照结果 `output/check/bootstrap10_local.rds`（基础种子 20261023，10 次）在提交 15dba86 上重新生成（x86_64-w64-mingw32，2026-10-23 18:03:00 PDT）；1,000 次 bootstrap 交由 Longleaf。
 
