@@ -129,14 +129,18 @@ stops <- sapply(c("pembro", "both"), function(a) inherits(tryCatch(econ_arm(a, P
 runs <- !inherits(tryCatch(econ_arm("chemo", P, pmiss, sjp = TRUE), error = function(e) e), "error")
 add("F01P、F04P 为空时含帕博利珠单抗的臂不运行 S-JP（报错），其余臂可运行", all(stops) && runs, NA)
 # 18. (2026-10-25) DR first line by group: with D03P = D03 and D04P = D04 the results are those of the
-# code before the change (R/econ.R at commit f08bff2, read from git), four arms, without and with S-JP
-peq <- pv; peq[["D03P"]] <- pv[["D03"]]; peq[["D04P"]] <- pv[["D04"]]
+# code before the change (R/econ.R at commit f08bff2, read from git), four arms, without and with S-JP.
+# The programme cost was moved to time 0 afterwards (analysis plan of phase 2): with E01-E05 = 0 the two
+# versions agree on everything else (components compared where both have them)
+peq <- pv; peq[["D03P"]] <- pv[["D03"]]; peq[["D04P"]] <- pv[["D04"]]; peq[sprintf("E%02d", 1:5)] <- 0
+cmp_old <- function(x, y) { k <- intersect(names(x$cost_components), names(y$cost_components))
+  max(abs(x$cost - y$cost), abs(x$qaly - y$qaly), abs(x$ly - y$ly), abs(x$ly_disc - y$ly_disc), abs(x$cost_components[k] - y$cost_components[k])) }
 old_src <- tryCatch(system2("git", c("-C", shQuote(ROOT), "show", "f08bff2:R/econ.R"), stdout = TRUE, stderr = FALSE), error = function(e) character(0))
 if (length(old_src) > 100) {
   old <- new.env(); eval(parse(text = old_src, encoding = "UTF-8"), envir = old)
   dev <- max(sapply(c(FALSE, TRUE), function(sj) max(sapply(ARMS, function(a)
-    cmp(econ_arm(a, P, peq, sjp = sj), old$econ_arm(a, P, peq, sjp = sj))))))
-  add("D03P = D03 且 D04P = D04 时，结果与改动前（提交 f08bff2 的 econ.R）完全一致（四臂，不加与加 S-JP）", dev == 0, dev)
+    cmp_old(econ_arm(a, P, peq, sjp = sj), old$econ_arm(a, P, peq, sjp = sj))))))
+  add("D03P = D03 且 D04P = D04 时（运动方案费用 E01 至 E05 设为 0），结果与改动前（提交 f08bff2 的 econ.R）完全一致（四臂，不加与加 S-JP）", dev == 0, dev)
 } else add("D03P = D03 且 D04P = D04 时，结果与改动前完全一致：读不到提交 f08bff2 的 econ.R（需要 git）", FALSE, NA)
 # 19. D03P and D04P act only in the arms with pembrolizumab (test values D03P = 2 x D03, D04P = D04 + 5):
 # the other arms are unchanged; the arms with pembrolizumab change in cost only (survival unchanged)
@@ -145,6 +149,27 @@ q0 <- lapply(setNames(ARMS, ARMS), function(a) econ_arm(a, P, peq)); q1 <- lappl
 same_other <- max(cmp(q1$chemo, q0$chemo), cmp(q1$exercise, q0$exercise))
 chg <- all(sapply(c("pembro", "both"), function(a) q1[[a]]$cost != q0[[a]]$cost && q1[[a]]$ly == q0[[a]]$ly && q1[[a]]$qaly == q0[[a]]$qaly))
 add("D03P、D04P 只作用于含帕博利珠单抗的两臂（不含的两臂完全不变；含的两臂只有费用改变，生命年与 QALY 不变）", same_other == 0 && chg, same_other)
+# 20. (2026-10-25, phase 2b) programme cost once at time 0 for all patients: in the exercise arms the
+# component equals the chosen E (E01; E02 when set), whatever the effect; 0 in the other arms
+pg <- sapply(ARMS, function(a) econ_arm(a, P, pv)$cost_components[["exercise_programme_E"]])
+pg2 <- econ_arm("both", P, pv, settings = list(exercise_cost = "E02"), exercise = list(hr0 = 0.8))$cost_components[["exercise_programme_E"]]
+add("运动方案费用在时点 0 对全部患者一次计入：加运动的两臂等于所选的 E 值（E01；设定 E02 时为 E02，与效应无关），其余两臂为 0",
+    all(pg[c("exercise", "both")] == pv[["E01"]]) && all(pg[c("chemo", "pembro")] == 0) && pg2 == pv[["E02"]], NA)
+# 21. the cap in closed form: with the programme cost (E01) set to the cap, the net monetary benefits of
+# the two arms are equal (lambda 5,000,000; test value hr0 = 0.8, base path A), main and secondary comparison
+exA <- list(hr0 = 0.8, wane_start = 5, wane_rate = log(2))
+dev <- max(sapply(list(c("both", "pembro"), c("exercise", "chemo")), function(ab) {
+  bo <- econ_arm(ab[1], P, pv, exercise = exA); re <- econ_arm(ab[2], P, pv)
+  pc <- pv; pc[["E01"]] <- programme_cap(bo, re, 5e6); bo2 <- econ_arm(ab[1], P, pc, exercise = exA)
+  abs((5e6 * bo2$qaly - bo2$cost) - (5e6 * re$qaly - re$cost)) }))
+add("以上限作为方案费用（E01）时，两臂的净货币效益之差为 0（λ = 500 万日元，测试值 hr0 = 0.8；主比较与次比较）", dev < 1e-6, dev)
+# 22. path B: the pCR proportion is capped at 1 (delta 0.90 and 0.95 give the same result)
+d90 <- econ_arm("exercise", P, pv, exercise = list(delta_pcr = 0.90)); d95 <- econ_arm("exercise", P, pv, exercise = list(delta_pcr = 0.95))
+add("路径 B：pCR 比例截断在 100%（提高 90 与 95 个百分点结果相同）", cmp(d90, d95) == 0, cmp(d90, d95))
+# 23. wane_start given directly equals the same start through exercise_args() (surgery + 1 year)
+w1 <- econ_arm("both", P, pv, exercise = list(hr0 = 0.8, wane_start = P$L + 1, wane_rate = log(2)))
+w2 <- econ_arm("both", P, pv, exercise = list(hr0 = 0.8, delay_years = 1, wane_rate = log(2)))
+add("直接给出 wane_start（手术 + 1 年）与通过 delay_years = 1 给出的结果相同", cmp(w1, w2) == 0, cmp(w1, w2))
 
 R <- do.call(rbind, T)
 write.csv(R, file.path(out_dir, "econ_unit_tests.csv"), row.names = FALSE)

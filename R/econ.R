@@ -23,8 +23,10 @@
 #     month and in each of the two preceding months (deaths from DR and PreProg by default;
 #     setting terminal_deaths = "all" for all deaths). This is the cohort equivalent of a
 #     3-month tunnel before death;
-#   - exercise programme (exercise arms): the chosen 6-month total (E01, E02 or E03) spread over
-#     months 0-6 while event-free; continuation after surgery E04 a month for E05 months;
+#   - exercise programme (exercise arms): the chosen 6-month total (E01, E02 or E03) once at time 0
+#     for all patients (docs/analysis_plan_phase2.md, 2026-10-25; before, spread over months 0-6 while
+#     event-free), component exercise_programme_E; continuation after surgery E04 a month for E05
+#     months while event-free, component exercise_continue_E04;
 #   - musculoskeletal adverse events (2026-10-25; E06-E10 from CHALLENGE): rate x cost per case,
 #     E06 x E08 in the exercise arms and E07 x E08 in the others, once at time 0;
 #   - BRCA testing F06: every patient of every arm at diagnosis (time 0); it cancels between arms;
@@ -49,12 +51,15 @@ has_exercise <- function(arm) arm %in% c("exercise", "both")
 wk <- function(w) w * 7 / 365.25
 
 # exercise effect (phase 2 inputs; neutral by default): hr0, delay_years, wane_rate on recurrence
-# (engine path A) and delta_pcr on the pCR proportion (path B)
+# (engine path A) and delta_pcr on the pCR proportion (path B, the proportion capped at 1). Optional
+# wane_start (years from randomization) replaces the start of the decay given by exercise_args();
+# fields not given take the neutral values.
 EXERCISE_NEUTRAL <- list(hr0 = 1, delay_years = 0, wane_rate = 0, delta_pcr = 0)
 
 econ_arm <- function(arm, P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_NEUTRAL, common_dr = FALSE, nonpcr_mix = NULL,
                      sjp = FALSE) {
   s <- modifyList(ECON_DEFAULTS, settings)
+  exercise <- modifyList(EXERCISE_NEUTRAL, exercise)
   base <- if (has_pembro(arm)) "pembro" else "placebo"
   # S-JP: groups of the non-pCR branch (sjp_mix(), engine.R); F01P and F04P in the pembrolizumab arms
   w_sjp <- c(olaparib = 0, capecitabine = 0)
@@ -68,7 +73,8 @@ econ_arm <- function(arm, P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_N
   cont_m <- if (has_exercise(arm) && isTRUE(s$exercise_continue)) pv[["E05"]] else 0
   ex <- if (has_exercise(arm)) exercise_args(P, exercise$hr0, exercise$delay_years, exercise$wane_rate, cont_m) else
     list(hr0 = 1, wane_start = 0, wane_rate = 0)
-  pp <- if (has_exercise(arm) && exercise$delta_pcr != 0) P$p_pcr[[base]] + exercise$delta_pcr else NULL
+  if (has_exercise(arm) && !is.null(exercise$wane_start)) ex$wane_start <- exercise$wane_start
+  pp <- if (has_exercise(arm) && exercise$delta_pcr != 0) min(P$p_pcr[[base]] + exercise$delta_pcr, 1) else NULL
   d03 <- if (has_pembro(arm)) "D03P" else "D03"; d04 <- if (has_pembro(arm)) "D04P" else "D04"   # DR first line by group
   e <- survival_engine(arm, "all", times = NULL, params = P, hr0 = ex$hr0, wane_start = ex$wane_start, wane_rate = ex$wane_rate,
                        p_pcr = pp, nonpcr_mix = nonpcr_mix, common_dr = common_dr, dr_first_months = pv[[d04]])
@@ -114,12 +120,10 @@ econ_arm <- function(arm, P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_N
   dd <- diff(dead_cum)                                                     # deaths in cycle k (t[k] to t[k+1])
   tmid <- head(t, -1) + cyc / 2
   cost[["terminal_D06"]] <- sum(sapply(0:2, function(j) sum(pv[["D06"]] / 3 * dd * dsc(pmax(tmid - j * cyc, 0)))))
-  # exercise programme
-  cost[["exercise_E"]] <- if (has_exercise(arm)) {
-    prog <- trap(ifelse(t < 0.5, pv[[s$exercise_cost]] / 0.5, 0) * e$EF * d)
-    contn <- if (isTRUE(s$exercise_continue)) trap(ifelse(t >= L & t < L + pv[["E05"]] / 12, 12 * pv[["E04"]], 0) * e$EF * d) else 0
-    prog + contn
-  } else 0
+  # exercise programme: once at time 0 for all patients; continuation while event-free
+  cost[["exercise_programme_E"]] <- if (has_exercise(arm)) pv[[s$exercise_cost]] else 0
+  cost[["exercise_continue_E04"]] <- if (has_exercise(arm) && isTRUE(s$exercise_continue))
+    trap(ifelse(t >= L & t < L + pv[["E05"]] / 12, 12 * pv[["E04"]], 0) * e$EF * d) else 0
   # utilities
   t_on <- if (has_pembro(arm)) L + wk(3 * s$adj_doses) else L
   u_ef <- ifelse(t < t_on, pv[["U01"]], pv[["U02"]])
@@ -139,6 +143,13 @@ econ_all <- function(P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_NEUTRA
   data.frame(arm = arms, cost = sapply(R, `[[`, "cost"), qaly = sapply(R, `[[`, "qaly"), ly = sapply(R, `[[`, "ly"),
              ly_disc = sapply(R, `[[`, "ly_disc"), row.names = NULL)
 }
+
+# affordable programme cost (docs/analysis_plan_phase2.md section 2): lambda x dQALY - dcost, where
+# dcost leaves out the programme cost (exercise_programme_E; it is at time 0, so the cap is the
+# programme cost at which the net monetary benefits of the two arms are equal). ex, ref: econ_arm() results
+programme_dcost <- function(ex, ref) (ex$cost - ex$cost_components[["exercise_programme_E"]]) -
+  (ref$cost - ref$cost_components[["exercise_programme_E"]])
+programme_cap <- function(ex, ref, lambda) lambda * (ex$qaly - ref$qaly) - programme_dcost(ex, ref)
 
 # increments and ICERs against a reference arm
 increments <- function(tab, ref = "chemo") {
