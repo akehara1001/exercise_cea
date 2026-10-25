@@ -17,7 +17,8 @@
 #     C02: years 3-5, C03: year 6 on);
 #   - LRR: one-time D01 on entry, then D02 a month while in LRR;
 #   - DR: D03 a month for the first D04 months after entry (time-in-state tunnels), then D05 a
-#     month until death;
+#     month until death; in the arms with pembrolizumab D03P and D04P instead of D03 and D04
+#     (2026-10-25: no immunotherapy after recurrence there), D05 the same in all arms;
 #   - terminal care D06 (total for the last 3 months of life): each death is given D06/3 in its
 #     month and in each of the two preceding months (deaths from DR and PreProg by default;
 #     setting terminal_deaths = "all" for all deaths). This is the cohort equivalent of a
@@ -68,8 +69,9 @@ econ_arm <- function(arm, P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_N
   ex <- if (has_exercise(arm)) exercise_args(P, exercise$hr0, exercise$delay_years, exercise$wane_rate, cont_m) else
     list(hr0 = 1, wane_start = 0, wane_rate = 0)
   pp <- if (has_exercise(arm) && exercise$delta_pcr != 0) P$p_pcr[[base]] + exercise$delta_pcr else NULL
+  d03 <- if (has_pembro(arm)) "D03P" else "D03"; d04 <- if (has_pembro(arm)) "D04P" else "D04"   # DR first line by group
   e <- survival_engine(arm, "all", times = NULL, params = P, hr0 = ex$hr0, wane_start = ex$wane_start, wane_rate = ex$wane_rate,
-                       p_pcr = pp, nonpcr_mix = nonpcr_mix, common_dr = common_dr, dr_first_months = pv[["D04"]])
+                       p_pcr = pp, nonpcr_mix = nonpcr_mix, common_dr = common_dr, dr_first_months = pv[[d04]])
   t <- e$time; cyc <- P$cycle; L <- P$L
   d <- (1 + s$discount)^(-t)
   trap <- function(y) sum(cyc * (head(y, -1) + tail(y, -1)) / 2)          # integral over the grid
@@ -105,7 +107,7 @@ econ_arm <- function(arm, P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_N
   # recurrence
   cost[["lrr_entry_D01"]] <- sum(pv[["D01"]] * e$In_LRR * d)
   cost[["lrr_monthly_D02"]] <- trap(12 * pv[["D02"]] * e$LRR * d)
-  cost[["dr_first_line_D03"]] <- trap(12 * pv[["D03"]] * e$DR_first * d)
+  cost[["dr_first_line_D03"]] <- trap(12 * pv[[d03]] * e$DR_first * d)                   # D03P in the arms with pembrolizumab
   cost[["dr_later_lines_D05"]] <- trap(12 * pv[["D05"]] * (e$DR - e$DR_first) * d)
   # terminal care: D06 / 3 in the month of death and each of the two months before
   dead_cum <- if (s$terminal_deaths == "all") e$Dead else e$Dead_from_DR + e$Dead_from_PreProg

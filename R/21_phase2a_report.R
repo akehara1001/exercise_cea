@@ -25,9 +25,10 @@ add("# 第2阶段 2a 报告：费用与 QALY 层（单元测试）与原负责�
 add("## 1. 状态", "",
     sprintf("- 内部入力表（`%s`；此前各版在 `input/params/archive/`）：原负责的 %d 行中已填写 %d 行；尾崎负责的 %d 行中已填写 %d 行（`output/params_check.md`）。",
             src_sheet, nrow(ha), sum(!is.na(ha$value)), nrow(oz), sum(!is.na(oz$value))),
-    "- 费用与 QALY 层：`R/econ.R`（规格见 `docs/model_spec.md` 第 2、5 节）。尾崎的行尚未返回，故只用合成数值做单元测试（`R/test_econ.R`）；生存参数为第 1 阶段的引擎默认（`data/fits/engine_params.rds`，第十五轮）；k 开关的测试用测试值 k = 1.5，只检验结构。",
-    "- 已实现（2026-10-25）：运动的筋骨格系有害事象（费用：加运动的两臂 E06 × E08、不加运动的两臂 E07 × E08；效用：E09 或 E10 × U05 × 12.5 周；都在时点 0 一次计入，E09、E10 为空时不计效用损失）；S-JP 的三条曲线按 `sjp_mix()` 的权重混合，F02、F05 计入接受者（手术时点仍无事件的 non-pCR 患者 × 组权重，折现到手术时点）；F06（BRCA 检测）在时点 0 对全部患者计入四个组。",
-    sprintf("- 尚未计入：只剩尾崎负责的数值（%d 行，含 E08 与 F01P、F04P）。S-JP 情景在 F01P、F04P 到之前不运行（含帕博利珠单抗的臂缺这两个值时 `econ_arm(..., sjp = TRUE)` 报错），不输出任何结果数值。", nrow(oz)), "")
+    "- 费用与 QALY 层：`R/econ.R`（规格见 `docs/model_spec.md` 第 2、5 节）。单元测试（`R/test_econ.R`）只用合成数值，检验结构，不用入力表的值；生存参数为第 1 阶段的引擎默认（`data/fits/engine_params.rds`，第十五轮）；k 开关的测试用测试值 k = 1.5。",
+    "- 已实现（2026-10-25）：运动的筋骨格系有害事象（费用：加运动的两臂 E06 × E08、不加运动的两臂 E07 × E08；效用：E09 或 E10 × U05 × 12.5 周；都在时点 0 一次计入，E09、E10 为空时不计效用损失）；S-JP 的三条曲线按 `sjp_mix()` 的权重混合，F02、F05 计入接受者（手术时点仍无事件的 non-pCR 患者 × 组权重，折现到手术时点）；F06（BRCA 检测）在时点 0 对全部患者计入四个组；远处复发一线治疗的月额与持续期间按组取值（含帕博利珠单抗的两组用 D03P、D04P，其余用 D03、D04；D05 共用）。",
+    sprintf("- 尾崎的数值（2026-10-25 取入：记入案 v1 → 内部入力表 v7，`R/py/22_params_v7.py`，审阅记录 `output/params_ozaki_v1_review.md`）：%d 行全部填写；备考有【要確認】的 %d 行作为暂定值使用；尾崎未设范围的 %d 行由原按规则补上（`docs/model_spec.md` 第 6 节）。按指示尚未运行任何经济学结果，不输出任何结果数值。",
+            nrow(oz), sum(grepl("【要確認", oz$備考, fixed = TRUE)), sum(grepl("幅は原が設定|片側を対称に補った", oz$備考))), "")
 diff_tests <- grepl("终末期费用|加入运动效应", UT$test)
 add("## 2. 单元测试（`output/phase2/econ_unit_tests.csv`）", "",
     md_table(data.frame(序号 = seq_len(nrow(UT)), 测试 = UT$test, 结果 = ifelse(UT$result == "pass", "通过", "**不通过**"),

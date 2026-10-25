@@ -1,6 +1,6 @@
 # test_econ.R
 # Unit tests of the phase 2a cost and QALY layer (R/econ.R) with synthetic parameter values
-# (Dr Ozaki's rows are not back yet). The survival parameters are the engine default of phase 1
+# (not the input sheet: the tests check structure). The survival parameters are the engine default of phase 1
 # (data/fits/engine_params.rds, round 15); the k-switch test uses the test value k = 1.5. The tests
 # check structure, not values.
 # Output: output/phase2/econ_unit_tests.csv (test, result, the deviation or difference checked);
@@ -26,8 +26,9 @@ pv[c("A07")] <- 0.8; pv[["D04"]] <- 8; pv[["E05"]] <- 6
 pv[c("E06", "E07", "E09", "E10")] <- c(0.18, 0.11, 0.007, 0.002)                          # rates
 pv[c("F01", "F01P", "F03", "F04", "F04P", "F07", "F08")] <- c(0.5, 0.4, 0.1, 0.8, 0.7, 0.58, 0.65)   # shares, HRs
 pv[c("U01", "U02", "U03", "U04")] <- c(0.72, 0.80, 0.70, 0.55); pv[["U05"]] <- 0.15
+pv[c("D03P", "D04P")] <- c(round(1.2 * pv[["D03"]]), 10); ids <- c(ids, "D03P", "D04P")   # DR first line, arms with pembrolizumab
 pv <- c(pv, U05_duration_years = 1 / 12)
-cost_ids <- setdiff(ids, c(grep("^B[23]", ids, value = TRUE), "A07", "D04", "E05", "E06", "E07", "E09", "E10",
+cost_ids <- setdiff(ids, c(grep("^B[23]", ids, value = TRUE), "A07", "D04", "D04P", "E05", "E06", "E07", "E09", "E10",
                            "F01", "F01P", "F03", "F04", "F04P", "F07", "F08", sprintf("U%02d", 1:5)))
 
 T <- list()
@@ -127,6 +128,23 @@ pmiss <- pv; pmiss[c("F01P", "F04P")] <- NA
 stops <- sapply(c("pembro", "both"), function(a) inherits(tryCatch(econ_arm(a, P, pmiss, sjp = TRUE), error = function(e) e), "error"))
 runs <- !inherits(tryCatch(econ_arm("chemo", P, pmiss, sjp = TRUE), error = function(e) e), "error")
 add("F01P、F04P 为空时含帕博利珠单抗的臂不运行 S-JP（报错），其余臂可运行", all(stops) && runs, NA)
+# 18. (2026-10-25) DR first line by group: with D03P = D03 and D04P = D04 the results are those of the
+# code before the change (R/econ.R at commit f08bff2, read from git), four arms, without and with S-JP
+peq <- pv; peq[["D03P"]] <- pv[["D03"]]; peq[["D04P"]] <- pv[["D04"]]
+old_src <- tryCatch(system2("git", c("-C", shQuote(ROOT), "show", "f08bff2:R/econ.R"), stdout = TRUE, stderr = FALSE), error = function(e) character(0))
+if (length(old_src) > 100) {
+  old <- new.env(); eval(parse(text = old_src, encoding = "UTF-8"), envir = old)
+  dev <- max(sapply(c(FALSE, TRUE), function(sj) max(sapply(ARMS, function(a)
+    cmp(econ_arm(a, P, peq, sjp = sj), old$econ_arm(a, P, peq, sjp = sj))))))
+  add("D03P = D03 且 D04P = D04 时，结果与改动前（提交 f08bff2 的 econ.R）完全一致（四臂，不加与加 S-JP）", dev == 0, dev)
+} else add("D03P = D03 且 D04P = D04 时，结果与改动前完全一致：读不到提交 f08bff2 的 econ.R（需要 git）", FALSE, NA)
+# 19. D03P and D04P act only in the arms with pembrolizumab (test values D03P = 2 x D03, D04P = D04 + 5):
+# the other arms are unchanged; the arms with pembrolizumab change in cost only (survival unchanged)
+pdf <- peq; pdf[["D03P"]] <- 2 * pv[["D03"]]; pdf[["D04P"]] <- pv[["D04"]] + 5
+q0 <- lapply(setNames(ARMS, ARMS), function(a) econ_arm(a, P, peq)); q1 <- lapply(setNames(ARMS, ARMS), function(a) econ_arm(a, P, pdf))
+same_other <- max(cmp(q1$chemo, q0$chemo), cmp(q1$exercise, q0$exercise))
+chg <- all(sapply(c("pembro", "both"), function(a) q1[[a]]$cost != q0[[a]]$cost && q1[[a]]$ly == q0[[a]]$ly && q1[[a]]$qaly == q0[[a]]$qaly))
+add("D03P、D04P 只作用于含帕博利珠单抗的两臂（不含的两臂完全不变；含的两臂只有费用改变，生命年与 QALY 不变）", same_other == 0 && chg, same_other)
 
 R <- do.call(rbind, T)
 write.csv(R, file.path(out_dir, "econ_unit_tests.csv"), row.names = FALSE)
