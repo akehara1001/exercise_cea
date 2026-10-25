@@ -128,6 +128,43 @@ CR$lab <- ifelse(is.na(CR$hr0), "[0.30, 1.00] 内无交点", ifelse(CR$hr0 < 0.7
 add("### 1.5 E01 至 E03 对应的 hr0 交点（确定性，上限 = 方案费用的 hr0；hr0 小于该值时上限高于方案费用）", "",
     md_table(data.frame(比较 = ifelse(CR$comparison == "main", ifelse(CR$column == "base", "主比较（基准）", "主比较（早期复发后 k 外部）"), "次比较"),
                         `λ（万日元/QALY）` = CR$lambda / 1e4, 方案 = CR$programme, `费用（万日元）` = man(CR$cost), hr0 = CR$lab, check.names = FALSE)), "")
+# 1.6 decomposition of the cap and 1.7 cost-saving crossings (2026-10-25 addition; existing results only,
+# the model is not rerun)
+avoided <- function(d) -d$dC                                     # avoided medical costs, programme cost excluded
+dec_tab <- function(comp, lam) {
+  d <- DC[DC$comparison == comp & DC$column == "base" & DC$axis == "hr0", ]; d <- d[order(d$x), ]
+  cap <- d[[paste0("cap_", lam)]]
+  data.frame(hr0 = sprintf("%.3f", d$x), ΔQALY = sprintf("%.4f", d$dQ), `λ × ΔQALY` = man(lam * 1e4 * d$dQ),
+             `避免的医疗费用（−Δ费用）` = man(avoided(d)), 上限 = man(cap),
+             `避免的医疗费用占上限` = ifelse(cap > 0, pct(avoided(d) / cap), "－"), check.names = FALSE)
+}
+add("### 1.6 上限的分解（确定性，路径 A 基准定义，基准栏）", "",
+    "上限 = λ × ΔQALY + 避免的医疗费用，避免的医疗费用 = −Δ费用（不含运动方案费用；含运动有害事象的费用）。金额单位：万日元。hr0 = 1.00 时上限为负（只有运动有害事象），比例不计。", "")
+for (lam in c(500, 750)) for (comp in c("main", "secondary")) {
+  add(sprintf("#### %s，λ = %d 万日元/QALY", if (comp == "main") "主比较（化疗加帕博利珠单抗再加运动对化疗加帕博利珠单抗）" else "次比较（化疗加运动对单用化疗）", lam), "",
+      md_table(dec_tab(comp, lam)), "")
+}
+sv <- do.call(rbind, lapply(list(c("main", "base"), c("main", "kext"), c("secondary", "base")), function(cc) {
+  d <- DC[DC$comparison == cc[1] & DC$column == cc[2] & DC$axis == "hr0", ]; d <- d[order(d$x), ]
+  data.frame(comparison = cc[1], column = cc[2], programme = names(E), cost = unname(E),
+             hr0 = sapply(E, function(e) approx(avoided(d), d$x, xout = e)$y))
+}))
+write.csv(sv, file.path(M, "det_cost_saving_crossings.csv"), row.names = FALSE, fileEncoding = "UTF-8")
+EXp <- PSA$ex[PSA$ex$axis == "hr0", ]
+ps_sv <- function(comp, col) { d <- EXp[EXp$comparison == comp & EXp$column == col, ]
+  tapply(-d$dC >= E[["E02"]], d$x, mean) }
+p1 <- ps_sv("main", "base"); p2 <- ps_sv("main", "kext"); p3 <- ps_sv("secondary", "base")
+add("### 1.7 \"费用节约\"的交点", "",
+    "避免的医疗费用等于方案费用（E01、E02、E03 的基本值）时的 hr0（确定性，路径 A 基准定义；在 hr0 格点〔间隔 0.025〕之间线性插值，不重新运行模型）。hr0 小于该值时，加运动的组总费用（含方案费用）更低且 QALY 更多（hr0 < 1 时 ΔQALY > 0）。",
+    "主比较（基准栏）与次比较的值与用户由 `det_caps.csv` 独立算得的值（主比较 0.948、0.958、0.997；次比较 0.958、0.966、0.998）一致（2026-10-25 核对）。数值另存 `det_cost_saving_crossings.csv`。", "",
+    md_table(data.frame(方案 = names(E), `费用（万日元）` = man(E),
+                        `主比较（基准）` = sprintf("%.3f", sv$hr0[sv$comparison == "main" & sv$column == "base"]),
+                        `主比较（早期复发后 k 外部）` = sprintf("%.3f", sv$hr0[sv$comparison == "main" & sv$column == "kext"]),
+                        次比较 = sprintf("%.3f", sv$hr0[sv$comparison == "secondary"]), check.names = FALSE)), "",
+    sprintf("PSA：每个 hr0 下避免的医疗费用 ≥ E02（基本值 %s 万日元）的样本比例（1,000 个样本；不依赖 λ）。", man(E[["E02"]])), "",
+    md_table(data.frame(hr0 = sprintf("%.3f", as.numeric(names(p1))), `主比较（基准）` = pct(p1), `主比较（早期复发后 k 外部）` = pct(p2[names(p1)]),
+                        次比较 = pct(p3[names(p1)]), check.names = FALSE)), "")
+
 # 2. reference
 add("## 2. 参照比较：化疗加帕博利珠单抗对单用化疗", "")
 rr <- function(col) { d <- DR[DR$column == col, ]; s <- RS[RS$column == col, ]
