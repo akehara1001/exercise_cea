@@ -13,6 +13,11 @@
 1. **RHEL 9.8 下的 renv 包库路径**：登录节点升级为 RHEL 9.8 后，renv 按操作系统版本选库目录，会去找 `renv/library/linux-rhel-9.8/`；那里是空的，项目库在 `renv/library/linux-rhel-9.7/`。在仓库外的激活脚本 `exercise_cea_env.sh` 中设 `RENV_PATHS_PREFIX=linux-rhel-9.7`，使所有节点都用 9.7 的同一个项目库。这些包是在 9.7 上用 conda 的编译器编译的，glibc 同为 2.34；第十四轮两个作业的计算节点本身都是 RHEL 9.7。
 2. **1,000 次作业内关闭 renv 的 sandbox**：作业中设 `RENV_CONFIG_SANDBOX_ENABLED=FALSE`。原因是工作进程卡在 renv sandbox 的锁上：锁文件在 NFS 上排队，部分进程等了 180 秒，超过 PSOCK 的建立时限（120 秒）；第一次提交（作业 6447531）的 32 个工作进程中有 27 个没有连上主进程，没有跑任何样本。R 的系统库只有基础包，与 sandbox 中的包相同，项目库中没有重名的包，所以加载的包完全一样；关闭 sandbox 后的前 10 次与带 sandbox 运行的 `R/06c_bootstrap_check.R` 逐位相同。
 
+## 可重现性（2026-10-25，第十五轮，`output/phase1/longleaf_bootstrap_round15.md`）
+
+- Longleaf 内要得到逐位相同的结果，须在同一类 CPU 上运行。不同 CPU（EPYC 9654 与 EPYC 7742）上 OpenBLAS 选用的计算内核不同（Cooperlake 与 Zen），经数值优化的拟合（ESME 重拟、OS 样条）相差约 1e-10，在核对容差之内。
+- 跨平台核对要在移动 `data/` 下任何文件之前、在同一个提交上运行（第十五轮的做法：先在 8dcab58 上核对，再提交第十四轮结果的移动 f806079、跑 1,000 次），因为核对只比较 `R/` 与 `data/` 内容完全相同时的结果。
+
 ## 步骤
 
 1. `git pull`，确认工作区中 `R/` 与 `data/` 没有改动。
