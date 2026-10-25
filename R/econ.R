@@ -23,13 +23,22 @@
 #     setting terminal_deaths = "all" for all deaths). This is the cohort equivalent of a
 #     3-month tunnel before death;
 #   - exercise programme (exercise arms): the chosen 6-month total (E01, E02 or E03) spread over
-#     months 0-6 while event-free; continuation after surgery E04 a month for E05 months.
+#     months 0-6 while event-free; continuation after surgery E04 a month for E05 months;
+#   - musculoskeletal adverse events (2026-10-25; E06-E10 from CHALLENGE): rate x cost per case,
+#     E06 x E08 in the exercise arms and E07 x E08 in the others, once at time 0;
+#   - BRCA testing F06: every patient of every arm at diagnosis (time 0); it cancels between arms;
+#   - S-JP (sjp = TRUE; docs/model_spec.md section 2): the non-pCR branch is the sjp_mix() mixture
+#     (F01, F03, F04 in the arms without pembrolizumab, F01P, F03, F04P in the others; HRs F07, F08);
+#     capecitabine F02 and olaparib F05 (totals per person) for the recipients, i.e. the non-pCR
+#     patients event-free at surgery times the group weight, discounted to surgery.
 # Utilities: event-free U01 on treatment (to surgery in the arms without pembrolizumab, to the end
 # of adjuvant pembrolizumab in the others) and U02 after; LRR U03; DR and PreProg U04; severe
 # adverse events: decrement U05 for pv[["U05_duration_years"]] years, once at the start, applied to
 # (settings$ae_disutility_basis) "sum6" (base, v4): the summed incidence of six grade >= 3 adverse
 # events, events per person (B33P / B33C; as in the source, Favre-Bulle 2024 Table S1), or "any"
-# (scenario): the rate of any grade >= 3 adverse event, patients (B32P / B32C).
+# (scenario): the rate of any grade >= 3 adverse event, patients (B32P / B32C). Musculoskeletal
+# adverse events of the exercise programme: the same decrement and duration times the grade >= 3
+# rate, E09 in the exercise arms and E10 in the others, once at time 0; none when E09 / E10 is blank.
 
 ECON_DEFAULTS <- list(discount = 0.02, exercise_cost = "E01", exercise_continue = FALSE, terminal_deaths = "cancer",
                       neo_doses = 8, adj_doses = 9, ae_disutility_basis = "sum6")
@@ -42,9 +51,19 @@ wk <- function(w) w * 7 / 365.25
 # (engine path A) and delta_pcr on the pCR proportion (path B)
 EXERCISE_NEUTRAL <- list(hr0 = 1, delay_years = 0, wane_rate = 0, delta_pcr = 0)
 
-econ_arm <- function(arm, P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_NEUTRAL, common_dr = FALSE, nonpcr_mix = NULL) {
+econ_arm <- function(arm, P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_NEUTRAL, common_dr = FALSE, nonpcr_mix = NULL,
+                     sjp = FALSE) {
   s <- modifyList(ECON_DEFAULTS, settings)
   base <- if (has_pembro(arm)) "pembro" else "placebo"
+  # S-JP: groups of the non-pCR branch (sjp_mix(), engine.R); F01P and F04P in the pembrolizumab arms
+  w_sjp <- c(olaparib = 0, capecitabine = 0)
+  if (isTRUE(sjp)) {
+    if (!is.null(nonpcr_mix)) stop("give either sjp = TRUE or nonpcr_mix")
+    f01 <- if (has_pembro(arm)) "F01P" else "F01"; f04 <- if (has_pembro(arm)) "F04P" else "F04"
+    if (anyNA(pv[c(f01, "F03", f04, "F07", "F08")])) stop("S-JP needs ", f01, ", F03, ", f04, ", F07 and F08 (not run until they are filled)")
+    nonpcr_mix <- sjp_mix(pv[[f01]], pv[["F03"]], pv[[f04]], hr_cap = pv[["F07"]], hr_ola = pv[["F08"]])
+    w_sjp <- setNames(nonpcr_mix$weight[match(c("olaparib", "capecitabine"), nonpcr_mix$group)], c("olaparib", "capecitabine"))
+  }
   cont_m <- if (has_exercise(arm) && isTRUE(s$exercise_continue)) pv[["E05"]] else 0
   ex <- if (has_exercise(arm)) exercise_args(P, exercise$hr0, exercise$delay_years, exercise$wane_rate, cont_m) else
     list(hr0 = 1, wane_start = 0, wane_rate = 0)
@@ -72,6 +91,14 @@ econ_arm <- function(arm, P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_N
   # adverse events, once at the start
   sfx <- if (has_pembro(arm)) "P" else "C"
   cost[["adverse_events_B"]] <- sum(sapply(21:31, function(i) pv[[paste0("B", i, sfx)]] * pv[[sprintf("B%02d", i - 20)]]))
+  # musculoskeletal adverse events of the exercise programme and BRCA testing, once at time 0
+  cost[["musculoskeletal_ae_E06_E08"]] <- pv[[if (has_exercise(arm)) "E06" else "E07"]] * pv[["E08"]]
+  cost[["brca_test_F06"]] <- pv[["F06"]]
+  # S-JP drugs for the recipients: non-pCR patients event-free at surgery x group weight, at surgery
+  pcr_used <- if (is.null(pp)) P$p_pcr[[base]] else pp
+  rec <- if (isTRUE(sjp)) (1 - pcr_used) * survival_engine(arm, "nonpCR", times = L, params = P)$EF * dsc(L) else 0
+  cost[["sjp_capecitabine_F02"]] <- if (isTRUE(sjp)) rec * w_sjp[["capecitabine"]] * pv[["F02"]] else 0
+  cost[["sjp_olaparib_F05"]] <- if (isTRUE(sjp)) rec * w_sjp[["olaparib"]] * pv[["F05"]] else 0
   # follow-up of event-free patients by years since surgery
   band <- ifelse(t < L, 0, ifelse(t < L + 2, pv[["C01"]], ifelse(t < L + 5, pv[["C02"]], pv[["C03"]])))
   cost[["follow_up_C"]] <- trap(band * e$EF * d)
@@ -97,13 +124,15 @@ econ_arm <- function(arm, P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_N
   qaly_states <- trap((e$EF * u_ef + e$LRR * pv[["U03"]] + (e$DR + e$PreProg) * pv[["U04"]]) * d)
   ae_row <- switch(s$ae_disutility_basis, sum6 = "B33", any = "B32", stop("ae_disutility_basis must be sum6 or any"))
   qaly_ae <- pv[[paste0(ae_row, sfx)]] * pv[["U05"]] * pv[["U05_duration_years"]]
+  g3 <- pv[[if (has_exercise(arm)) "E09" else "E10"]]
+  qaly_msk <- if (is.na(g3)) 0 else g3 * pv[["U05"]] * pv[["U05_duration_years"]]   # blank: not graded in the source
   os <- 1 - e$Dead
-  list(arm = arm, cost = sum(cost), cost_components = cost, qaly = qaly_states - qaly_ae, qaly_ae_decrement = qaly_ae,
-       ly = trap(os), ly_disc = trap(os * d), engine = e)
+  list(arm = arm, cost = sum(cost), cost_components = cost, qaly = qaly_states - qaly_ae - qaly_msk, qaly_ae_decrement = qaly_ae,
+       qaly_msk_ae_decrement = qaly_msk, sjp_weights = w_sjp, ly = trap(os), ly_disc = trap(os * d), engine = e)
 }
 
-econ_all <- function(P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_NEUTRAL, common_dr = FALSE, arms = ARMS) {
-  R <- lapply(arms, function(a) econ_arm(a, P, pv, settings, exercise, common_dr))
+econ_all <- function(P, pv, settings = ECON_DEFAULTS, exercise = EXERCISE_NEUTRAL, common_dr = FALSE, arms = ARMS, sjp = FALSE) {
+  R <- lapply(arms, function(a) econ_arm(a, P, pv, settings, exercise, common_dr, sjp = sjp))
   names(R) <- arms
   data.frame(arm = arms, cost = sapply(R, `[[`, "cost"), qaly = sapply(R, `[[`, "qaly"), ly = sapply(R, `[[`, "ly"),
              ly_disc = sapply(R, `[[`, "ly_disc"), row.names = NULL)

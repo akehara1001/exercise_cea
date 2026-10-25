@@ -1,2 +1,2 @@
 "file","platform","commit","reference_platform","reference_commit","comparable","max_abs_diff_OS_pp","max_abs_diff_EFS_pp","max_abs_diff_rmst5_years","tol_pp","tol_rmst_years","pass","note"
-"bootstrap10_longleaf.rds","x86_64-conda-linux-gnu","307c7c9","x86_64-w64-mingw32","bb5d7bc",FALSE,0.0792471419180742,3.54783225020583e-08,0.00124449678891558,0.05,0.001,NA,"R/ or data/ differ between the two commits (or a commit is unknown here): not comparable"
+"bootstrap10_longleaf.rds","x86_64-conda-linux-gnu","8dcab58","x86_64-w64-mingw32","bb5d7bc",TRUE,2.41317223981241e-08,3.54783225020583e-08,5.14224218761683e-10,0.05,0.001,TRUE,""
