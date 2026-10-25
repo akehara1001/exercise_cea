@@ -1302,7 +1302,7 @@ if (file.exists(file.path(r15, "base", "calibration_status.csv")) && file.exists
     th0 <- function(v) BE$b[BE[[v]] < 1e-8]
     tz <- rbind(data.frame(b = th0("EFS_pembro_nonpCR_theta"), arm = "帕博利珠单抗 non-pCR"), data.frame(b = th0("EFS_placebo_nonpCR_theta"), arm = "化疗 non-pCR"))
     tz <- tz[order(tz$b), ]
-    q01 <- function(v) f2(quantile(BE[[v]][BE[[v]] >= 1e-8], 0.01), 2)
+    q01 <- function(v) f2(quantile(BE[[v]], 0.01), 2)                 # all 1,000 replicates, the 4 at 0 included
     sm <- function(q, col) BSm[[col]][BSm$quantity == q]
     yrs <- c(5, 7, 10, 20)
     TOE <- do.call(rbind, lapply(c("OS", "EFS"), function(ep) do.call(rbind, lapply(yrs, function(y) data.frame(
@@ -1329,7 +1329,7 @@ if (file.exists(file.path(r15, "base", "calibration_status.csv")) && file.exists
                 sum(as.matrix(BC[, c("pp_median_low", "pp_median_high", "pp_s5_at_min", "pp_u_low", "k_low", "k_high")])),
                 f2(max(abs(BC$preprog_shape - BC$dr_shape), abs(BC$preprog_median - BC$dr_median)), 0)), "",
         md_table(TPAR), "",
-        sprintf("- EFS 的治愈比例：非 pCR 层的治愈 Weibull 模型中，治愈比例 θ 在 %d 个样本中为 0（< 1e-8；%s）。这是参数空间的自然边界（7 年等式约束下 θ 由约束与另外两个参数决定，实现上要求 θ > 0，θ 只能趋近 0），不是人为约束，不作处理；这 4 个样本在该层实际上是不含治愈部分的 Weibull，7 年值仍满足等式约束。其余样本中 θ 的 1%% 分位为 %s（帕博利珠单抗 non-pCR）与 %s（化疗 non-pCR），基准为 %s 与 %s。EFS 的拟合在第十四轮与本轮之间没有改动，1,000 个样本的 EFS 参数与第十四轮%s，所以第十四轮的 1,000 次同样包含这 4 个样本。",
+        sprintf("- EFS 的治愈比例：非 pCR 层的治愈 Weibull 模型中，治愈比例 θ 在 %d 个样本中为 0（< 1e-8；%s）。这是参数空间的自然边界（7 年等式约束下 θ 由约束与另外两个参数决定，实现上要求 θ > 0，θ 只能趋近 0），不是人为约束，不作处理；这 4 个样本在该层实际上是不含治愈部分的 Weibull，7 年值仍满足等式约束。1,000 个样本（含为 0 的 4 个）中 θ 的 1%% 分位为 %s（帕博利珠单抗 non-pCR）与 %s（化疗 non-pCR），基准为 %s 与 %s；分位数用全部样本计算，因为这 4 个样本按决定属正常样本、不作处理，去掉后再算分位数与此矛盾，并使分布偏高（2026-10-25 更正）。EFS 的拟合在第十四轮与本轮之间没有改动，1,000 个样本的 EFS 参数与第十四轮%s，所以第十四轮的 1,000 次同样包含这 4 个样本。",
                 nrow(tz), paste(sprintf("b = %d 为%s", tz$b, tz$arm), collapse = "、"), q01("EFS_pembro_nonpCR_theta"), q01("EFS_placebo_nonpCR_theta"),
                 f2(P15b$efs$pembro$nonpCR$pars[["theta"]], 3), f2(P15b$efs$placebo$nonpCR$pars[["theta"]], 3),
                 if (!is.null(BE14) && isTRUE(all.equal(BE, BE14))) "逐位相同" else "**不完全相同**"), "",
