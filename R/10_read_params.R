@@ -1,30 +1,32 @@
 # 10_read_params.R
-# Reads input/params/parameters_v8.xlsx (sheet パラメータ; v1 to v7 are in input/params/archive/) into a long table
+# Reads input/params/parameters_v9.xlsx (sheet パラメータ; v1 to v8 are in input/params/archive/) into a long table
 # (data/params_long.csv: one row per parameter x 基本値/下限/上限) and writes
 # output/params_check.md (unfilled rows by owner; non-numeric 基本値; value without source;
 # 下限 > 基本値 or 基本値 > 上限; returned sheets of Ozaki against the internal sheet).
 # Ozaki's values (2026-10-25: input/params/ozaki/parameters_v1_尾崎記入案.xlsx, his v1 with six rows
 # appended) are copied into the internal sheet by R/py/22_params_v7.py, which also sets the ranges he
 # left blank (docs/model_spec.md section 6); R/py/23_params_v8.py then applies the range rules for
-# drug costs at list price (薬価固定) and for rates of 0 events. Here the returned sheets in input/params/ozaki/ (file
+# drug costs at list price (薬価固定) and for rates of 0 events, and R/py/24_params_v9.py the Poisson ranges of
+# B33P and B33C and Ozaki's lower bound of F05. Here the returned sheets in input/params/ozaki/ (file
 # names with "_v1" or "_v2", at most one of each) are checked against the internal sheet, so that no
 # row he filled is dropped silently: a row counts as filled where it differs from the sheet as
 # delivered; it is matched by param_id, or by oz_map for the rows he appended whose param_id is not in
 # the internal sheet; X01 is checked against E06 - E07 and not entered. The script stops on any other
 # param_id, and on a 基本値, 下限, 上限 or 出典 that differs from the internal sheet (a bound he left
-# blank must carry the note of R/py/22_params_v7.py instead; on a 薬価固定 row both bounds must be the
-# rule's, [0.75 x 基本値, 基本値], and his bounds are listed as replaced). Rows owned by 原 come from the internal
+# blank must carry the note of R/py/22_params_v7.py instead; on a 薬価固定 row a side he gave must be his,
+# a side he left blank the rule's: 0.75 x 基本値 for 下限, 基本値 for 上限). Rows owned by 原 come from the internal
 # sheet; an entry of Ozaki's on them is listed, not used.
 # Probability distributions are set here, not in the sheet: costs and durations gamma,
 # proportions and utilities beta, hazard ratios lognormal; parameters from 下限 and 上限 taken
-# as a 95% interval. Rows under 薬価固定 or 0例：PSAは固定 are fixed at 基本値 (dist "fixed"; 下限 and
+# as a 95% interval (counts per patient, unit 件/人, gamma as well: B33P, B33C, v9). Rows under 薬価固定 or
+# 0例：PSAは固定 are fixed at 基本値 (dist "fixed"; 下限 and
 # 上限 are the one-way range only). Rows without both bounds get no distribution yet.
 # Output: data/params_dist.csv (range_rule: the rule by which we set the range, docs/model_spec.md
 # section 6; blank where the range is the owner's)
 
 root <- Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea")
 suppressPackageStartupMessages(library(readxl))
-src <- file.path(root, "input", "params", "parameters_v8.xlsx")
+src <- file.path(root, "input", "params", "parameters_v9.xlsx")
 need <- c("param_id", "区分", "項目", "適用する群", "適用する状態", "単位", "基本値", "下限", "上限",
           "価格の年度", "出典", "出典の該当箇所", "担当", "備考")
 fill_cols <- c("基本値", "下限", "上限", "価格の年度", "出典", "出典の該当箇所", "備考")
@@ -71,7 +73,7 @@ filled_in <- function(ver, id) {   # the returned row for id if 基本値 to 備
 oz_map <- c(X02 = "E08")     # appended 2026-10-25: cost per musculoskeletal adverse event
 oz_check_only <- "X01"       # appended 2026-10-25: increment of the musculoskeletal rate; the model uses E06 and E07
 x$記入元 <- ifelse(x$担当 == "尾崎", "", "内部表")
-oz_not_owned <- oz_mapped <- oz_checked <- oz_replaced <- character(0)
+oz_not_owned <- oz_mapped <- oz_checked <- oz_by_rule <- character(0)
 for (ver in names(oz)) {
   if (is.null(oz[[ver]])) next
   for (id in oz[[ver]]$param_id) {
@@ -90,11 +92,13 @@ for (ver in names(oz)) {
     i <- which(x$param_id == tg)
     bad <- character(0)
     if (!isTRUE(same_num(num(r$基本値), num(x$基本値[i])))) bad <- c(bad, "基本値")
-    if (rule_of(x$備考[i]) == "薬価固定") {      # both bounds by the rule; his bounds are replaced
-      want <- c(下限 = 0.75, 上限 = 1) * num(x$基本値[i])
-      for (k in c("下限", "上限")) if (!isTRUE(same_num(num(x[[k]][i]), want[[k]]))) bad <- c(bad, k)
-      oz_replaced <- c(oz_replaced, sprintf("%s（薬価固定：下限 %s → %s、上限 %s → %s）", id, ifelse(blank(r$下限), "空欄", r$下限), x$下限[i],
-                                            ifelse(blank(r$上限), "空欄", r$上限), x$上限[i]))
+    if (rule_of(x$備考[i]) == "薬価固定") {      # a side he gave is his, a side he left blank the rule's (v9)
+      rule <- c(下限 = 0.75, 上限 = 1) * num(x$基本値[i])
+      for (k in c("下限", "上限")) {
+        want <- if (blank(r[[k]])) rule[[k]] else num(r[[k]])
+        if (!isTRUE(same_num(num(x[[k]][i]), want))) bad <- c(bad, k)
+        if (blank(r[[k]])) oz_by_rule <- c(oz_by_rule, sprintf("%s の%s（薬価固定：空欄 → %s）", id, k, x[[k]][i]))
+      }
     } else for (k in c("下限", "上限")) {
       if (blank(r[[k]])) { if (blank(x[[k]][i]) || rule_of(x$備考[i]) == "") bad <- c(bad, k) }
       else if (!isTRUE(same_num(num(r[[k]]), num(x[[k]][i])))) bad <- c(bad, k)
@@ -120,20 +124,17 @@ badrng <- (!is.na(lo) & !is.na(b) & lo > b) | (!is.na(hi) & !is.na(b) & b > hi)
 nonnum_bounds <- (!blank(x$下限) & is.na(lo)) | (!blank(x$上限) & is.na(hi))
 range_rule <- rule_of(x$備考)
 provisional <- grepl("【要確認", x$備考, fixed = TRUE)
-pending <- c(B33P = "幅と分布は裁定待ち（件数の合計で、ペムブロリズマブ群は件数が例数を超えるため Clopper-Pearson が定義できない。2026-10-25）",
-             B33C = "幅と分布は裁定待ち（B33P と同じ理由。2026-10-25）")
 
 # distributions
 dist_of <- function(unit) ifelse(grepl("ハザード比", unit), "lognormal",
                           ifelse(grepl("^割合|^効用値", unit), "beta",
-                          ifelse(grepl("^円|^月", unit), "gamma", NA)))
+                          ifelse(grepl("^円|^月|^件", unit), "gamma", NA)))
 z <- qnorm(0.975)
 D <- data.frame(param_id = x$param_id, 単位 = x$単位, dist = dist_of(x$単位), base = b, lower = lo, upper = hi,
                 p1 = NA_real_, p2 = NA_real_, note = "", range_rule = range_rule, stringsAsFactors = FALSE)
 for (i in seq_len(nrow(D))) {
   if (is.na(D$base[i])) { D$note[i] <- "基本値未記入"; next }
   if (D$range_rule[i] %in% FIXED_RULES) { D$dist[i] <- "fixed"; D$note[i] <- "PSAは基本値に固定（下限と上限は一元感度分析の幅）"; next }
-  if (D$param_id[i] %in% names(pending)) { D$note[i] <- "幅未設定（裁定待ち）"; next }
   if (is.na(D$lower[i]) || is.na(D$upper[i])) { D$note[i] <- "幅未設定"; next }
   if (D$dist[i] == "lognormal") {
     D$p1[i] <- log(D$base[i]); D$p2[i] <- (log(D$upper[i]) - log(D$lower[i])) / (2 * z)     # meanlog, sdlog
@@ -166,12 +167,12 @@ oz_line <- function(ver) if (is.na(oz_files[[ver]])) sprintf("- %s：未着（`i
   sprintf("- %s：`%s`（記入のある行のうち内部表と照合した尾崎の行 %d）", ver, basename(oz_files[[ver]]), sum(grepl(paste("尾崎", ver), x$記入元)))
 L <- c("# パラメータ入力表の確認",
        "",
-       sprintf("対象：`input/params/parameters_v8.xlsx`（%d 行）。`R/10_read_params.R` が生成。", nrow(x)),
+       sprintf("対象：`input/params/parameters_v9.xlsx`（%d 行）。`R/10_read_params.R` が生成。", nrow(x)),
        "",
-       "## 0. 尾崎先生の返送分（値は `R/py/22_params_v7.py` が内部表に写し、`R/py/23_params_v8.py` が幅の規則を当てた。ここでは返送表の記入のある行を内部表と照合する）", "",
+       "## 0. 尾崎先生の返送分（値は `R/py/22_params_v7.py` が内部表に写し、`R/py/23_params_v8.py` と `R/py/24_params_v9.py` が幅の規則を当てた。ここでは返送表の記入のある行を内部表と照合する）", "",
        oz_line("v1"), oz_line("v2"),
        "- 内部表と異なる値：なし（基本値、下限、上限、出典を照合。異なればここで停止する。返送表で空欄の下限と上限は、内部表の備考に原が設定した旨があることを確認）",
-       sprintf("- 規則で置き換えた尾崎先生の幅：%s", ids_or_none(oz_replaced)),
+       sprintf("- 薬価固定の規則で補った側（尾崎先生が空欄にした側だけ。示された側はそのまま）：%s", ids_or_none(oz_by_rule)),
        sprintf("- 対応づけた追加行：%s", ids_or_none(oz_mapped)),
        sprintf("- 照合だけで内部表に入れない追加行：%s", ids_or_none(oz_checked)),
        sprintf("- 担当が尾崎でない行への記入（採用しない）：%s", ids_or_none(oz_not_owned)),
@@ -202,10 +203,10 @@ L <- c(L, "## 2. 基本値が数値でない行", "", lst(nonnum), "",
        sprintf("- 分布のパラメータが決まった行：%d", sum(!is.na(D$p1))),
        sprintf("- PSA で固定する行（dist = fixed）：%d（%s）", sum(D$dist %in% "fixed"), ids_or_none(D$param_id[D$dist %in% "fixed"])),
        sprintf("- 分布のパラメータも固定の指定もない行：%d", sum(no_dist)), "",
-       lst(no_dist, setNames(ifelse(x$param_id %in% names(pending), pending[x$param_id], D$note), x$param_id)), "",
+       lst(no_dist, setNames(D$note, x$param_id)), "",
        "## 参考：下限または上限が数値でない行", "", lst(nonnum_bounds), "",
        "## 参考：確率分布（コードで設定）", "",
-       "費用と期間はガンマ分布、割合と効用値はベータ分布、ハザード比は対数正規分布。下限と上限を95%区間とみなしてパラメータを求める（`data/params_dist.csv`）。",
+       "費用と期間はガンマ分布、割合と効用値はベータ分布、ハザード比は対数正規分布、1 人あたりの件数（件/人：B33P、B33C）はガンマ分布。下限と上限を95%区間とみなしてパラメータを求める（`data/params_dist.csv`）。",
        "薬価固定と 0例：PSAは固定の行は PSA で基本値に固定し（dist = fixed）、下限と上限は一元感度分析だけに使う。")
 writeLines(L, file.path(root, "output", "params_check.md"), useBytes = TRUE)
 cat(sprintf("rows %d; unfilled 尾崎 %d/%d, 原 %d/%d; non-numeric %d; no source %d; bad range %d; Ozaki v1 %s, v2 %s; checked %d; ranges by rule %d; fixed %d; no distribution %d (%s)\n", nrow(x),
