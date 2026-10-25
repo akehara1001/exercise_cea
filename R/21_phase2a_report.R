@@ -15,6 +15,7 @@ md_table <- function(df) {
 }
 UT <- rd("output", "phase2", "econ_unit_tests.csv")
 PL <- rd("data", "params_long.csv")
+PD <- rd("data", "params_dist.csv")
 base <- PL[PL$stat == "基本値", ]
 src_sheet <- sub(".*`(input/params/[^`]+)`.*", "\\1", grep("^対象：", readLines(file.path(ROOT, "output", "params_check.md"), encoding = "UTF-8"), value = TRUE)[1])
 oz <- base[base$担当 == "尾崎", ]; ha <- base[base$担当 == "原", ]
@@ -27,8 +28,11 @@ add("## 1. 状态", "",
             src_sheet, nrow(ha), sum(!is.na(ha$value)), nrow(oz), sum(!is.na(oz$value))),
     "- 费用与 QALY 层：`R/econ.R`（规格见 `docs/model_spec.md` 第 2、5 节）。单元测试（`R/test_econ.R`）只用合成数值，检验结构，不用入力表的值；生存参数为第 1 阶段的引擎默认（`data/fits/engine_params.rds`，第十五轮）；k 开关的测试用测试值 k = 1.5。",
     "- 已实现（2026-10-25）：运动的筋骨格系有害事象（费用：加运动的两臂 E06 × E08、不加运动的两臂 E07 × E08；效用：E09 或 E10 × U05 × 12.5 周；都在时点 0 一次计入，E09、E10 为空时不计效用损失）；S-JP 的三条曲线按 `sjp_mix()` 的权重混合，F02、F05 计入接受者（手术时点仍无事件的 non-pCR 患者 × 组权重，折现到手术时点）；F06（BRCA 检测）在时点 0 对全部患者计入四个组；远处复发一线治疗的月额与持续期间按组取值（含帕博利珠单抗的两组用 D03P、D04P，其余用 D03、D04；D05 共用）。",
-    sprintf("- 尾崎的数值（2026-10-25 取入：记入案 v1 → 内部入力表 v7，`R/py/22_params_v7.py`，审阅记录 `output/params_ozaki_v1_review.md`）：%d 行全部填写；备考有【要確認】的 %d 行作为暂定值使用；尾崎未设范围的 %d 行由原按规则补上（`docs/model_spec.md` 第 6 节）。按指示尚未运行任何经济学结果，不输出任何结果数值。",
-            nrow(oz), sum(grepl("【要確認", oz$備考, fixed = TRUE)), sum(grepl("幅は原が設定|片側を対称に補った", oz$備考))), "")
+    sprintf("- 尾崎的数值（2026-10-25 取入：记入案 v1 → 内部入力表 v7，`R/py/22_params_v7.py`；v8 起按幅的规则调整，`R/py/23_params_v8.py`；审阅记录 `output/params_ozaki_v1_review.md`）：%d 行全部填写；备考有【要確認】的 %d 行作为暂定值使用。",
+            nrow(oz), sum(grepl("【要確認", oz$備考, fixed = TRUE))),
+    sprintf("- 幅的规则（`data/params_dist.csv` 的 range_rule，`docs/model_spec.md` 第 6 节）：基本值 ±25%% 或单侧对称 %d 行，薬価固定 %d 行，0例：PSAは固定 %d 行；概率敏感性分析中固定为基本值的共 %d 行；既无分布参数也未指定固定的 %d 行（%s，待定）。按指示尚未运行任何经济学结果，不输出任何结果数值。",
+            sum(PD$range_rule %in% c("±25%", "片側対称")), sum(PD$range_rule == "薬価固定"), sum(PD$range_rule == "0例：PSAは固定"),
+            sum(PD$dist %in% "fixed"), sum(is.na(PD$p1) & !(PD$dist %in% "fixed")), paste(PD$param_id[is.na(PD$p1) & !(PD$dist %in% "fixed")], collapse = "、")), "")
 diff_tests <- grepl("终末期费用|加入运动效应", UT$test)
 add("## 2. 单元测试（`output/phase2/econ_unit_tests.csv`）", "",
     md_table(data.frame(序号 = seq_len(nrow(UT)), 测试 = UT$test, 结果 = ifelse(UT$result == "pass", "通过", "**不通过**"),

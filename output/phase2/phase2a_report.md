@@ -1,13 +1,14 @@
 # 第2阶段 2a 报告：费用与 QALY 层（单元测试）与原负责的参数来源
 
-生成时间：2026-10-25 10:48。由 `R/21_phase2a_report.R` 从代码输出生成。按指示本报告不含任何 ICER 或结果数值。
+生成时间：2026-10-25 18:03。由 `R/21_phase2a_report.R` 从代码输出生成。按指示本报告不含任何 ICER 或结果数值。
 
 ## 1. 状态
 
-- 内部入力表（`input/params/parameters_v7.xlsx`；此前各版在 `input/params/archive/`）：原负责的 40 行中已填写 40 行；尾崎负责的 41 行中已填写 41 行（`output/params_check.md`）。
+- 内部入力表（`input/params/parameters_v8.xlsx`；此前各版在 `input/params/archive/`）：原负责的 40 行中已填写 40 行；尾崎负责的 41 行中已填写 41 行（`output/params_check.md`）。
 - 费用与 QALY 层：`R/econ.R`（规格见 `docs/model_spec.md` 第 2、5 节）。单元测试（`R/test_econ.R`）只用合成数值，检验结构，不用入力表的值；生存参数为第 1 阶段的引擎默认（`data/fits/engine_params.rds`，第十五轮）；k 开关的测试用测试值 k = 1.5。
 - 已实现（2026-10-25）：运动的筋骨格系有害事象（费用：加运动的两臂 E06 × E08、不加运动的两臂 E07 × E08；效用：E09 或 E10 × U05 × 12.5 周；都在时点 0 一次计入，E09、E10 为空时不计效用损失）；S-JP 的三条曲线按 `sjp_mix()` 的权重混合，F02、F05 计入接受者（手术时点仍无事件的 non-pCR 患者 × 组权重，折现到手术时点）；F06（BRCA 检测）在时点 0 对全部患者计入四个组；远处复发一线治疗的月额与持续期间按组取值（含帕博利珠单抗的两组用 D03P、D04P，其余用 D03、D04；D05 共用）。
-- 尾崎的数值（2026-10-25 取入：记入案 v1 → 内部入力表 v7，`R/py/22_params_v7.py`，审阅记录 `output/params_ozaki_v1_review.md`）：41 行全部填写；备考有【要確認】的 9 行作为暂定值使用；尾崎未设范围的 17 行由原按规则补上（`docs/model_spec.md` 第 6 节）。按指示尚未运行任何经济学结果，不输出任何结果数值。
+- 尾崎的数值（2026-10-25 取入：记入案 v1 → 内部入力表 v7，`R/py/22_params_v7.py`；v8 起按幅的规则调整，`R/py/23_params_v8.py`；审阅记录 `output/params_ozaki_v1_review.md`）：41 行全部填写；备考有【要確認】的 9 行作为暂定值使用。
+- 幅的规则（`data/params_dist.csv` 的 range_rule，`docs/model_spec.md` 第 6 节）：基本值 ±25% 或单侧对称 16 行，薬価固定 4 行，0例：PSAは固定 4 行；概率敏感性分析中固定为基本值的共 8 行；既无分布参数也未指定固定的 2 行（B33P、B33C，待定）。按指示尚未运行任何经济学结果，不输出任何结果数值。
 
 ## 2. 单元测试（`output/phase2/econ_unit_tests.csv`）
 
