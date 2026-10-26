@@ -4,17 +4,21 @@
 # psa_reference_summary.csv, scenario_caps.csv, scenario_reference.csv, det_yardstick.csv and
 # output/phase2/phase2b_report.md (section 1.7: cost-saving crossings; section 1: programme costs;
 # section 6: effect of the provisional rows).
-# Outputs: output/phase2/ozaki/運動CEA_暫定結果_v1.docx, fig1_cap.png and check_v1.md (mechanical
+# Outputs: output/phase2/ozaki/運動CEA_暫定結果_v2.docx, fig1_cap.png and check_v2.md (mechanical
 # checks of the docx: Heading styles, bold outside label cells, non-black text, 「・」, and the source of
 # every number in the text).
 # Every number placed in the text goes through reg(), which records the shown string, the source and the
 # raw value; the check reads the numbers back from the saved docx and requires each to be registered.
+# v2 (2026-10-25, user instruction; v1 was not sent, it and check_v1.md are in output/phase2/ozaki/archive/):
+# premises line 2 (published data up to the final analysis); table 1 cost per QALY as estimates only, footnote
+# rewritten; figure 1 legend names the solid and the dashed line.
 
 source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 suppressPackageStartupMessages({ library(officer); library(flextable); library(ggplot2); library(grid) })
 M <- file.path(ROOT, "output", "phase2", "main")
 O <- file.path(ROOT, "output", "phase2", "ozaki"); dir.create(O, showWarnings = FALSE, recursive = TRUE)
-DOCX <- file.path(O, "運動CEA_暫定結果_v1.docx")
+VER <- "v2"
+DOCX <- file.path(O, sprintf("運動CEA_暫定結果_%s.docx", VER))
 rd <- function(f) read.csv(file.path(M, f), stringsAsFactors = FALSE, encoding = "UTF-8")
 DC <- rd("det_caps.csv"); SM <- rd("psa_caps_summary.csv"); DR <- rd("det_reference.csv"); RS <- rd("psa_reference_summary.csv")
 SC <- rd("scenario_caps.csv"); SF <- rd("scenario_reference.csv"); YS <- rd("det_yardstick.csv")
@@ -77,7 +81,7 @@ t1row <- function(lab, r, p, srcd, srcp) {
   data.frame(cond = lab,
              dc = cellv(man(r$dC, srcd), man(p$dC_lo, srcp), man(p$dC_hi, srcp)),
              dq = cellv(reg(sprintf("%.3f", r$dQ), srcd, r$dQ), reg(sprintf("%.3f", p$dQ_lo), srcp, p$dQ_lo), reg(sprintf("%.3f", p$dQ_hi), srcp, p$dQ_hi)),
-             icer = cellv(man(r$icer, srcd), man(p$icer_lo, srcp), man(p$icer_hi, srcp)),
+             icer = man(r$icer, srcd),                                     # estimate only (v2)
              p5 = pct(p$p_ce_500, srcp), p7 = pct(p$p_ce_750, srcp), stringsAsFactors = FALSE)
 }
 T1 <- rbind(t1row("基本", r_base, p_base, "det_reference.csv（column = base）", "psa_reference_summary.csv（column = base）"),
@@ -172,7 +176,7 @@ YS_PCR <- reg(sprintf("%.1f", 100 * yb$root), "det_yardstick.csv（axis = pcr, r
 doc <- read_docx()
 doc <- para(doc, "術前化学療法中の運動プログラムとペムブロリズマブの費用効用分析（暫定結果）", size = 14, after = 12)
 doc <- para(doc, "比較は", const("4", "比較した群の数（4 群）"), "群：化学療法のみ、運動を追加、ペムブロリズマブを追加、両方を追加。")
-doc <- para(doc, "生存のデータは KEYNOTE-522 試験（最終解析）に基づいて推計した。")
+doc <- para(doc, "生存のデータは KEYNOTE-522 試験の公表データ（最終解析まで）に基づいて推計した。")
 doc <- para(doc, "公的医療の立場で、費用と効果を年", const("2", "割引率 年 2%（docs/model_spec.md 第 5 節）"), "%で割り引き、生涯にわたり計算した。")
 doc <- para(doc, "判断の基準は1QALYあたり500万円（参照として750万円）とした。")
 doc <- para(doc, "入力値の", const("9", "【要確認】の 9 行（phase2b_report.md 冒頭と第 6 節）"), "項目は確認中の暫定値だが、主要な結果への影響は",
@@ -183,7 +187,8 @@ doc <- para(doc, "表1　ペムブロリズマブの費用対効果（化学療�
             const("2.5", "PSA の 2.5 パーセンタイル（psa_reference_summary.csv、phase2b_report.md）"), "%から",
             const("97.5", "PSA の 97.5 パーセンタイル（同上）"), "%。", after = 6)
 doc <- body_add_flextable(doc, ft1, align = "left")
-doc <- para(doc, sup("✳"), "範囲には、費用が減る場合（負の値）と QALY が減る場合を含むため、目安として示す。", size = 9, after = 1)
+doc <- para(doc, sup("✳"), "1QALYあたりの費用は、費用が減る場合や QALY が減る場合を含むと範囲の解釈が難しいため、推定値のみ示す。不確かさは右の",
+            const("2", "表1の右の確率の列数（2 列）"), "列の確率で示した。", size = 9, after = 1)
 doc <- para(doc, sup("§"), "1QALYあたりの費用がその基準以下となる（費用対効果がよいと判断される）確率。", size = 9, after = 1)
 doc <- para(doc, sup("†"), "ペムブロリズマブ群で、治療開始から早い時期の遠隔再発の後の死亡リスクを、化学療法の時代のデータより高く置いた（外部の研究による）。", size = 9, after = 1)
 doc <- para(doc, sup("‡"), "術前化学療法で病理学的完全奏効が得られなかった例に、日本で使われている術後治療（カペシタビン、gBRCA 陽性例ではオラパリブ）を加えた。この条件では不確かさを反映した範囲と確率を計算していない（－）。", size = 9, after = 1)
@@ -191,7 +196,7 @@ doc <- body_end_block_section(doc, block_section(A4L))
 # figure 1 (portrait)
 doc <- para(doc, "図1　1人あたりかけてよい運動プログラム費用の上限（1QALYあたり500万円の基準）", after = 4)
 doc <- body_add_img(doc, src = FIG, width = 16 / 2.54, height = 19 / 2.54)
-doc <- para(doc, "上限は、運動プログラムを加えても1QALYあたり500万円の基準を満たす、1人あたりのプログラム費用の上限。実線と破線は推定値、帯は不確かさを反映した範囲（",
+doc <- para(doc, "上限は、運動プログラムを加えても1QALYあたり500万円の基準を満たす、1人あたりのプログラム費用の上限。実線はペムブロリズマブを含む治療に上乗せ、破線は化学療法のみに上乗せした場合の推定値、帯は不確かさを反映した範囲（",
             "2.5", "%から", "97.5", "%）。点線は想定1、想定2、想定3の運動プログラムの費用。横軸は、運動によって再発のリスクを何%下げるかをハザード比（HR）で示す。", size = 9, after = 2)
 doc <- para(doc, "HR 0.72 の線は参照として示した、結腸癌の CHALLENGE 試験（", const("3", "CHALLENGE の介入期間 3 年（docs/analysis_plan_phase2.md 第 3 節）"),
             "年間のプログラム、無病生存期間）のハザード比。", size = 9, after = 2)
@@ -244,7 +249,7 @@ rest <- gsub("KEYNOTE-522|表[0-9]|図[0-9]|想定[0-9]", " ", txt)
 toks <- regmatches(rest, gregexpr("[−-]?[0-9][0-9,]*(\\.[0-9]+)?", rest))[[1]]
 toks <- gsub("^-", "−", toks)
 unreg <- setdiff(unique(toks), REG$shown)
-L <- c("# 尾崎先生向け暫定結果資料 v1 の確認", "",
+L <- c(sprintf("# 尾崎先生向け暫定結果資料 %s の確認", VER), "",
        sprintf("対象：`output/phase2/ozaki/%s`（`R/24_ozaki_summary.R` が生成、%s）。数値は `output/phase2/main/` の結果ファイルと `output/phase2/phase2b_report.md` から読み、モデルは実行していない。",
                basename(DOCX), format(Sys.time(), "%Y-%m-%d %H:%M")), "",
        "## 1. 機械的な確認", "",
@@ -267,8 +272,12 @@ L <- c("# 尾崎先生向け暫定結果資料 v1 の確認", "",
        "## 4. 指示からの変更", "",
        sprintf("- 同じ物差しの「再発のリスクを約 57%% 下げる」は、1 − %s = %.1f%% を四捨五入して約 %s%% とした。", sprintf("%.4f", ya$root), 100 * (1 - ya$root), YS_RED),
        "- 「日本の術後治療を入れた場合」は確定的な計算だけで、不確かさの範囲と確率はない（－、表1の脚注‡）。",
-       "- 表2の HR 1.00 の行は値が 0 に近いため小数第 2 位まで示した（脚注✳）。")
-writeLines(L, file.path(O, "check_v1.md"), useBytes = TRUE)
+       "- 表2の HR 1.00 の行は値が 0 に近いため小数第 2 位まで示した（脚注✳）。", "",
+       "## 5. v1 からの変更（v2、2026-10-25。v1 は未送付、`archive/` に移した）", "",
+       "- 前提の第 2 行：「生存のデータは KEYNOTE-522 試験の公表データ（最終解析まで）に基づいて推計した。」",
+       "- 表1：「1QALYあたりの費用（万円）」の列は推定値だけにした（範囲を外した）。脚注✳を「1QALYあたりの費用は、費用が減る場合や QALY が減る場合を含むと範囲の解釈が難しいため、推定値のみ示す。不確かさは右の2列の確率で示した。」に替えた（✳ は列の見出しの右上のまま）。",
+       "- 図1の図注：「実線はペムブロリズマブを含む治療に上乗せ、破線は化学療法のみに上乗せした場合の推定値」。")
+writeLines(L, file.path(O, sprintf("check_%s.md", VER)), useBytes = TRUE)
 cat(sprintf("checks: heading %d, bold body %d, bold numeric cells %d, non-black %d, middle dots %d, Note %d, A4 %s, unregistered numbers %d\n",
             n_heading, n_bold_body, n_bold_numcell, n_nonblack, n_dot, n_note, a4, length(unreg)))
 stopifnot(n_heading == 0, n_bold_body == 0, n_bold_numcell == 0, n_nonblack == 0, n_dot == 0, n_note == 0, a4, length(unreg) == 0)
