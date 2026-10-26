@@ -124,3 +124,21 @@
 - 支持疗法：与 A05 同一口径，即按日本癌治疗学会制吐薬適正使用ガイドライン 2023（第 3 版）的催吐性风险选择制吐药，药价与 A05 相同（デキサート注射液 6.6 mg）；G-CSF 只在一次预防的对象方案中计入（A05 中只有 AC/EC）。依据与选择写入 v10 的计算根据。
 - 月额 = 每 3 周的费用 × 30.4375 / 21（与尾崎计算根据的月换算相同）。
 - 由 `R/py/25_params_v10.py` 计算并写入 `input/params/parameters_v10.xlsx`（パラメータ工作表新增「シナリオ値」列，新增工作表「シナリオ」〔机读，每个情景 × 参数一行〕与「計算根拠_原」）；v9 移到 `input/params/archive/`；`R/10_read_params.R` 改读 v10（`data/params_long.csv`、`data/params_dist.csv` 的内容不变，由重跑核对）。只作情景值，不改 D05 的基本值与范围。
+
+## 10. 补算：日本人群效用值的情景与各情景的分界点（2026-10-26，在计算之前单独提交）
+
+本节的计算都是确定性的（基准参数），不做 PSA，不改变已有结果。程序：`R/22_phase2b_main.R` 新增模式 `plan10`；结果存入 `output/phase2/main/`，文件名以 `sc_util_jp_` 与 `sc_crossings` 开头；报告由 `R/23_phase2b_report.R` 在第 7 节新增第 7.5 节。
+
+### 10.1 日本人群效用值的情景（补入）
+
+- `docs/model_spec.md` 第 5 节与 `input/params/sources_hara.md`「日本人群的情景」把日本人群的效用值（U01、U02 = Iwatani 2021；U04 = Shiroiwa 2017；U03、U05 沿用基准）定为正式情景，但本计划第 6 节列出的效用情景只有美国、英国、澳大利亚的价值集，漏了日本人群。这是原的计划遗漏，现补入。
+- 值取自 `data/params_hara/utility_scenarios.csv` 的 japan 列：U01 0.89、U02 0.89、U03 0.830（基准）、U04 0.742、U05 0.022（基准）。
+- 定义与其他效用情景相同（第 8 节）：只替换 U01 至 U05，其余同基准；主比较与次比较在 hr0 格点与 pCR 格点上的上限（基准栏），以及参照比较的 ICER。结果存为 `sc_util_jp_det_caps.csv`、`sc_util_jp_det_reference.csv`。
+
+### 10.2 各情景的分界点
+
+- 对象：效用值的四个情景（日本人群、美国、英国、澳大利亚）、「术前进展后生存（Elmore）」、S-JP。各情景的定义同第 8 节（Elmore 只把术前进展后的中位改为 26 个月；S-JP 四组都用 `sjp = TRUE`）。
+- 主比较（基准栏）与次比较的分界点：上限 = E02 的 hr0（λ = 500 万日元/QALY；同一函数也给出 750 万日元的值）；避免的医疗费用（−Δ费用，不含方案费用）= E01、E02、E03 的 hr0。路径 A 基准定义。
+- 求法与稿件 Table 2 的基准分界点相同：Table 2 读 `sc_base_crossings.csv`，它由第 9 节 `plan9` 的 `crossings()` 求出，即在 hr0 ∈ [0.30, 1.00] 上用 `uniroot`（tol = 1e-6）连续求解，不用格点插值（报告第 1.7 节的格点插值不用）。为此把 `crossings()` 移到脚本顶层，加上参数集、S-JP 与是否含 k 外部栏的参数，函数体的求法不变；改动后重跑 `plan9_det`，核对其输出与已提交的文件逐字节相同。
+- 结果存为 `sc_crossings.csv`（scenario 列）。同一程序对基准再算一次，核对与 `sc_base_crossings.csv` 一致；美国、英国、澳大利亚、Elmore、S-JP 的格点上限与参照 ICER 核对与 `scenario_caps.csv`、`scenario_reference.csv` 一致。
+- 报告第 7.5 节：基准与上述六个情景的主比较与次比较上限（hr0 = 0.85，λ = 500 万日元）、分界点与参照 ICER。S-JP 依赖暂定值 F01P（第 7 节）；Elmore 为边界情景（与试验第 1 至 3 年的 OS 不一致），报告中注明。
