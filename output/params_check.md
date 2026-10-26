@@ -1,6 +1,6 @@
 # パラメータ入力表の確認
 
-対象：`input/params/parameters_v9.xlsx`（81 行）。`R/10_read_params.R` が生成。
+対象：`input/params/parameters_v10.xlsx`（81 行）。`R/10_read_params.R` が生成。
 
 ## 0. 尾崎先生の返送分（値は `R/py/22_params_v7.py` が内部表に写し、`R/py/23_params_v8.py` と `R/py/24_params_v9.py` が幅の規則を当てた。ここでは返送表の記入のある行を内部表と照合する）
 

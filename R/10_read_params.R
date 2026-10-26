@@ -1,5 +1,5 @@
 # 10_read_params.R
-# Reads input/params/parameters_v9.xlsx (sheet パラメータ; v1 to v8 are in input/params/archive/) into a long table
+# Reads input/params/parameters_v10.xlsx (sheet パラメータ; v1 to v9 are in input/params/archive/) into a long table
 # (data/params_long.csv: one row per parameter x 基本値/下限/上限) and writes
 # output/params_check.md (unfilled rows by owner; non-numeric 基本値; value without source;
 # 下限 > 基本値 or 基本値 > 上限; returned sheets of Ozaki against the internal sheet).
@@ -21,21 +21,23 @@
 # as a 95% interval (counts per patient, unit 件/人, gamma as well: B33P, B33C, v9). Rows under 薬価固定 or
 # 0例：PSAは固定 are fixed at 基本値 (dist "fixed"; 下限 and
 # 上限 are the one-way range only). Rows without both bounds get no distribution yet.
+# v10 (R/py/25_params_v10.py, 2026-10-26) adds the column シナリオ値 and the sheets シナリオ and 計算根拠_原 (scenario
+# values of docs/analysis_plan_phase2.md section 9, read by R/22_phase2b_main.R plan9); the column is not used here.
 # Output: data/params_dist.csv (range_rule: the rule by which we set the range, docs/model_spec.md
 # section 6; blank where the range is the owner's)
 
 root <- Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea")
 suppressPackageStartupMessages(library(readxl))
-src <- file.path(root, "input", "params", "parameters_v9.xlsx")
+src <- file.path(root, "input", "params", "parameters_v10.xlsx")
 need <- c("param_id", "区分", "項目", "適用する群", "適用する状態", "単位", "基本値", "下限", "上限",
           "価格の年度", "出典", "出典の該当箇所", "担当", "備考")
 fill_cols <- c("基本値", "下限", "上限", "価格の年度", "出典", "出典の該当箇所", "備考")
-read_sheet <- function(path) {
+read_sheet <- function(path, extra = character(0)) {   # extra: columns after 備考 (the internal sheet v10: シナリオ値)
   s <- as.data.frame(read_excel(path, sheet = "パラメータ", col_types = "text"), stringsAsFactors = FALSE)
-  stopifnot(identical(names(s), need), !anyDuplicated(s$param_id))
+  stopifnot(identical(names(s), c(need, extra)), !anyDuplicated(s$param_id))
   s
 }
-x <- read_sheet(src)
+x <- read_sheet(src, extra = "シナリオ値")
 blank <- function(v) is.na(v) | trimws(v) == ""
 num <- function(v) suppressWarnings(as.numeric(gsub(",", "", trimws(v))))
 same_num <- function(a, b) abs(a - b) <= 1e-9 * pmax(1, abs(b))
@@ -167,7 +169,7 @@ oz_line <- function(ver) if (is.na(oz_files[[ver]])) sprintf("- %s：未着（`i
   sprintf("- %s：`%s`（記入のある行のうち内部表と照合した尾崎の行 %d）", ver, basename(oz_files[[ver]]), sum(grepl(paste("尾崎", ver), x$記入元)))
 L <- c("# パラメータ入力表の確認",
        "",
-       sprintf("対象：`input/params/parameters_v9.xlsx`（%d 行）。`R/10_read_params.R` が生成。", nrow(x)),
+       sprintf("対象：`input/params/parameters_v10.xlsx`（%d 行）。`R/10_read_params.R` が生成。", nrow(x)),
        "",
        "## 0. 尾崎先生の返送分（値は `R/py/22_params_v7.py` が内部表に写し、`R/py/23_params_v8.py` と `R/py/24_params_v9.py` が幅の規則を当てた。ここでは返送表の記入のある行を内部表と照合する）", "",
        oz_line("v1"), oz_line("v2"),

@@ -1,0 +1,6 @@
+"factor","label","value","status"
+"incidence","每年新发乳腺癌人数（女性，不含上皮内）",102592,"found"
+"tnbc","TNBC 比例",0.101,"found_mismatch"
+"stage_2_3","II、III 期比例（TNBC 内）",0.663,"found_mismatch"
+"neoadjuvant","接受术前化疗的比例",0.250278,"found_mismatch"
+"N","年对象人数（尾崎确认待ち）",1719.37684733069,"computed"

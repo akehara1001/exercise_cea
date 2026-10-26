@@ -1,6 +1,6 @@
 # 23_phase2b_report.R
 # Figures and output/phase2/phase2b_report.md from the results of R/22_phase2b_main.R
-# (output/phase2/main/). Plan: docs/analysis_plan_phase2.md. Internal check only: the rows marked
+# (output/phase2/main/; section 7 from its plan9 part, 2026-10-26). Plan: docs/analysis_plan_phase2.md. Internal check only: the rows marked
 # 【要確認】 are provisional and the results are not for Dr Ozaki as they are.
 
 source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
@@ -221,5 +221,109 @@ add("## 6. 依赖暂定值（【要確認】）的程度", "",
     md_table(data.frame(param_id = pm$param_id, 项目 = pm$item, `主比较上限的幅（万日元）` = man(pm$w),
                         `参照 ICER 的幅（万日元/QALY）` = man(abs(pr$icer_high - pr$icer_low)[match(pm$param_id, pr$param_id)]), check.names = FALSE)), "",
     "F01P 只在 S-JP 情景中起作用（第 4.3 节）；E03 只是一条水平线（方案费用），不进入上限的计算。其余结果都含这些暂定值（基本值），PSA 中按其范围抽样。", "")
+# 7. section 9 of the plan (2026-10-26): scenarios of the costs after metastatic recurrence, decomposition
+# of the incremental costs, net benefit for one year's patients (R/22_phase2b_main.R plan9)
+SCN <- c(sc_metcost50 = "情景①（转移复发治疗费 50%）", sc_eribulin = "情景②（D05 = 艾立布林中心）")
+SCX <- as.data.frame(readxl::read_excel(file.path(ROOT, "input", "params", "parameters_v10.xlsx"), sheet = "シナリオ"), stringsAsFactors = FALSE)
+KX <- as.data.frame(readxl::read_excel(file.path(ROOT, "input", "params", "parameters_v10.xlsx"), sheet = "計算根拠_原", skip = 3, col_types = "text"), stringsAsFactors = FALSE)
+S9 <- lapply(names(SCN), function(s) list(DC = rd(paste0(s, "_det_caps.csv")), DR = rd(paste0(s, "_det_reference.csv")), CR = rd(paste0(s, "_crossings.csv")),
+                                          SM = rd(paste0(s, "_psa_caps_summary.csv")), RS = rd(paste0(s, "_psa_reference_summary.csv")),
+                                          PSA = readRDS(file.path(M, paste0(s, "_psa_results.rds")))))
+names(S9) <- names(SCN)
+CRB <- rd("sc_base_crossings.csv"); SV <- rd("det_cost_saving_crossings.csv")
+add("## 7. 补充：转移复发治疗费的情景、增量费用的分解、一年对象患者的净收益（分析计划第 9 节）", "",
+    sprintf("2026-10-26 补充，依据尾崎 2026-10-26 邮件。分析计划第 9 节在计算前单独提交（5e1c0dd）。计算：`R/22_phase2b_main.R plan9`（PSA 运行时 git HEAD 为 %s；两个情景 × %d 个样本，%d 个进程，%.1f 分钟）。第 1 至 6 节的基准结果不变；用同一程序按基本值重算的上限与 E 交点与 `det_caps.csv`、`det_e_crossings.csv` 一致（脚本内核对）。结果文件以 `sc_metcost50_`、`sc_eribulin_`、`sc_base_`、`decomp_`、`cohort_value` 开头。",
+            S9[[1]]$PSA$commit, length(unique(S9[[1]]$PSA$ex$rep)), S9[[1]]$PSA$workers, S9[[1]]$PSA$minutes), "")
+# 7.1 scenarios
+add("### 7.1 转移复发治疗费的情景", "",
+    md_table(data.frame(情景 = SCN[SCX[["シナリオ"]]], param_id = SCX$param_id, `基本值（万日元/月）` = man(SCX[["基本値"]]),
+                        `情景值（万日元/月）` = man(SCX[["シナリオ値"]]), 倍率 = sprintf("%.4f", SCX[["倍率（シナリオ値 ÷ 基本値）"]]), check.names = FALSE, row.names = NULL)), "",
+    "值取自入力表 v10（`input/params/parameters_v10.xlsx`，工作表「シナリオ」；パラメータ工作表的「シナリオ値」列；基本值与范围不变）。PSA 用基准 PSA 的同一 1,000 个 bootstrap 样本与同一组参数抽样，被替换的参数在每个样本中乘以上表的倍率（相对不确定性同基准）。只做路径 A（基准定义）。", "")
+add("#### 7.1.1 情景②的 D05：艾立布林方案的月额（入力表 v10「計算根拠_原」）", "",
+    md_table(data.frame(项目 = KX[["項目"]], 值 = ifelse(is.na(suppressWarnings(as.numeric(KX[["値"]]))), KX[["値"]],
+                                                       trimws(formatC(suppressWarnings(as.numeric(KX[["値"]])), format = "fg", digits = 10, big.mark = ","))),
+                        单位 = KX[["単位"]], 式 = KX[["式"]], 出处 = KX[["出典・根拠"]], check.names = FALSE, row.names = NULL)), "")
+k <- 2
+for (s in names(SCN)) for (lam in c(500, 750)) {
+  DC <- S9[[s]]$DC; SM <- S9[[s]]$SM
+  t1 <- tab_caps("main", "base", "hr0", HRS, lam); t2 <- tab_caps("main", "kext", "hr0", HRS, lam); t3 <- tab_caps("secondary", "base", "hr0", HRS, lam)
+  add(sprintf("#### 7.1.%d %s：上限（路径 A 基准定义），λ = %d 万日元/QALY", k, SCN[[s]], lam), "",
+      md_table(data.frame(hr0 = t1$x, `主比较（基准）上限` = t1$cap, `P(≥E02)` = t1$p, `主比较（早期复发后 k 外部）上限` = t2$cap, `P(≥E02) ` = t2$p,
+                          `次比较 上限` = t3$cap, `P(≥E02)  ` = t3$p, check.names = FALSE)), "")
+  k <- k + 1
+}
+DC <- rd("det_caps.csv"); SM <- rd("psa_caps_summary.csv")       # tab_caps() reads DC and SM: back to the base results
+add("全部格点（间隔 0.025）见 `sc_*_det_caps.csv`、`sc_*_psa_caps_summary.csv`。确定性值（PSA 中位数 [2.5%, 97.5%]），万日元；基准见第 1.1、1.2 节。", "")
+cmp_lab <- function(d) ifelse(d$comparison == "main", ifelse(d$column == "base", "主比较（基准）", "主比较（早期复发后 k 外部）"), "次比较")
+hr_lab <- function(v) ifelse(is.na(v), "无交点", ifelse(v < 0.70, sprintf("%.3f（主轴外）", v), sprintf("%.3f", v)))
+pick <- function(d, ty, lam = NA) { d <- d[d$type == ty & (if (is.na(lam)) is.na(d$lambda) else d$lambda == lam), ]; d[order(match(d$comparison, c("main", "secondary")), match(d$column, c("base", "kext")), d$programme), ] }
+b <- pick(CRB, "avoided_eq_programme"); s1 <- pick(S9$sc_metcost50$CR, "avoided_eq_programme"); s2 <- pick(S9$sc_eribulin$CR, "avoided_eq_programme")
+stopifnot(identical(paste(b$comparison, b$column, b$programme), paste(s1$comparison, s1$column, s1$programme)),
+          identical(paste(b$comparison, b$column, b$programme), paste(s2$comparison, s2$column, s2$programme)))
+iv <- SV$hr0[match(paste(b$comparison, b$column, b$programme), paste(SV$comparison, SV$column, SV$programme))]
+add(sprintf("#### 7.1.%d \"避免的医疗费用 = 方案费用\"的 hr0（确定性，uniroot 连续求解，不依赖 λ）", k), "",
+    md_table(data.frame(比较 = cmp_lab(b), 方案 = b$programme, `费用（万日元）` = man(b$cost), 基准 = hr_lab(b$hr0),
+                        `基准（第 1.7 节，格点插值）` = sprintf("%.3f", iv), `情景①` = hr_lab(s1$hr0), `情景②` = hr_lab(s2$hr0), check.names = FALSE)), "",
+    sprintf("hr0 小于该值时，加运动的组总费用（含方案费用）更低。基准的连续解与第 1.7 节的格点插值之差最大 %.5f。", max(abs(b$hr0 - iv))), "")
+k <- k + 1
+xs <- do.call(rbind, lapply(c(5e6, 7.5e6), function(l) { b <- pick(CRB, "cap_eq_programme", l); s1 <- pick(S9$sc_metcost50$CR, "cap_eq_programme", l)
+  s2 <- pick(S9$sc_eribulin$CR, "cap_eq_programme", l)
+  data.frame(比较 = cmp_lab(b), `λ（万日元/QALY）` = l / 1e4, 方案 = b$programme, `费用（万日元）` = man(b$cost), 基准 = hr_lab(b$hr0),
+             `情景①` = hr_lab(s1$hr0), `情景②` = hr_lab(s2$hr0), check.names = FALSE) }))
+add(sprintf("#### 7.1.%d 上限 = 方案费用的 hr0（确定性，同第 1.5 节）", k), "", md_table(xs), "")
+k <- k + 1
+rr9 <- function(lab, DRx, RSx) do.call(rbind, lapply(c("base", "kext"), function(col) { d <- DRx[DRx$column == col, ]; s <- RSx[RSx$column == col, ]
+  data.frame(情景 = lab, 栏 = if (col == "base") "基准" else "早期复发后 k（外部）", `Δ费用（万日元）` = cell(d$dC, s$dC_median, s$dC_lo, s$dC_hi),
+             ΔQALY = sprintf("%.3f（%.3f [%.3f, %.3f]）", d$dQ, s$dQ_median, s$dQ_lo, s$dQ_hi), `ICER（万日元/QALY）` = cell(d$icer, s$icer_median, s$icer_lo, s$icer_hi),
+             `P(划算), 500 万` = pct(s$p_ce_500), `P(划算), 750 万` = pct(s$p_ce_750), check.names = FALSE) }))
+add(sprintf("#### 7.1.%d 参照比较（化疗加帕博利珠单抗对单用化疗）", k), "",
+    md_table(rbind(rr9("基准（第 2 节）", DR, RS), rr9(SCN[["sc_metcost50"]], S9$sc_metcost50$DR, S9$sc_metcost50$RS),
+                   rr9(SCN[["sc_eribulin"]], S9$sc_eribulin$DR, S9$sc_eribulin$RS))), "",
+    "确定性值（PSA 中位数 [2.5%, 97.5%]）。转移复发的治疗费下降时，帕博利珠单抗因减少复发而避免的费用变小，Δ费用与 ICER 上升。", "")
+
+# 7.2 decomposition
+DLAB <- c(exercise_programme = "运动方案费用（E02）", exercise_ae = "运动有害事象（E06 / E07 × E08）", pembrolizumab_drug = "帕博利珠单抗药剂费（A03）",
+          administration = "给药费用（A04）", immune_ae = "免疫相关不良事件（B21 至 B30 × B01 至 B10）", chemo_ae = "化疗不良事件（发热性中性粒细胞减少，B31 × B11）",
+          follow_up = "随访（C01 至 C03）", lrr = "局部区域复发的治疗（D01、D02）", dr_first_line = "远处复发：一次治疗（D03 / D03P）",
+          dr_later_lines = "远处复发：二次治疗以后（D05）", terminal_care = "终末期医疗（D06）", other = "其他", total = "合计（= Δ费用）",
+          total_without_programme = "合计（不含方案费用）= −避免的医疗费用", total_with_E01 = "参考：方案费用取 E01 时的合计", total_with_E03 = "参考：方案费用取 E03 时的合计")
+DR9 <- rd("decomp_reference.csv"); DM9 <- rd("decomp_main_hr085.csv"); DRC <- rd("decomp_reference_components.csv"); DMC <- rd("decomp_main_hr085_components.csv")
+dtab <- function(d, share = TRUE) { tot <- d$d_base[d$category == "total"]
+  data.frame(类别 = DLAB[d$category], `Δ费用，基准（万日元）` = man(d$d_base), `占合计（基准）` = if (share) ifelse(d$category %in% names(DLAB)[1:12], pct(d$d_base / tot), "") else "－",
+             `Δ费用，早期复发后 k 外部（万日元）` = man(d$d_kext), check.names = FALSE, row.names = NULL) }
+oth <- function(C) { o <- C[C$column == "base" & C$category == "other" & abs(C$d) > 0.5, ]
+  if (!nrow(o)) "无（全部为 0）" else paste(sprintf("%s %s", o$component, man(o$d)), collapse = "、") }
+add("### 7.2 增量费用的分解（确定性，折现后，基准参数）", "",
+    "#### 7.2.1 参照比较：化疗加帕博利珠单抗对单用化疗", "", md_table(dtab(DR9)), "",
+    sprintf("「其他」的内訳（基准栏，万日元，|Δ| ≥ 0.5 日元的成分）：%s。免疫相关不良事件为帕博利珠单抗组的发生率减去单用化疗组（安慰剂组）的发生率后乘以每件费用。逐成分的值见 `decomp_reference_components.csv`。",
+            oth(DRC)), "",
+    "#### 7.2.2 主比较：两者都加对化疗加帕博利珠单抗，hr0 = 0.85（路径 A 基准定义）", "", md_table(dtab(DM9, share = FALSE)), "",
+    sprintf("「其他」的内訳（基准栏）：%s。两组都用帕博利珠单抗，不良事件的费用相同（0）；帕博利珠单抗药剂费与给药费用的差来自术后给药时点无事件者的比例（运动减少复发）。「合计（不含方案费用）」与第 1.6 节 hr0 = 0.85 的避免的医疗费用一致（脚本内核对）。",
+            oth(DMC)), "")
+
+# 7.3 net benefit for one year's patients
+NS <- read.csv(file.path(ROOT, "input", "params", "cohort_N_sources.csv"), stringsAsFactors = FALSE, encoding = "UTF-8", check.names = FALSE)
+NV <- rd("cohort_value_N.csv"); CV <- rd("cohort_value.csv"); Nn <- NV$value[NV$factor == "N"]
+st_lab <- c(found = "取得", found_mismatch = "取得（定义与公式不完全一致）", not_found = "取不到（停下）")
+fmt_v <- function(f, v) ifelse(is.na(v), "－", ifelse(f == "incidence", yen(v), sprintf("%.4f", v)))
+add("### 7.3 一年对象患者的净收益（主比较，λ = 500 万日元/QALY，方案费用 E02）", "",
+    "#### 7.3.1 年对象人数 N 的推算（**尾崎确认待ち**）", "",
+    md_table(data.frame(因子 = NS$label, 值 = fmt_v(NS$factor, NS$value), 状态 = st_lab[NS$status], 数据年份 = NS$data_year, 出处 = NS$source,
+                        位置 = NS$location, 备注 = NS$note, check.names = FALSE, row.names = NULL)), "",
+    if (is.na(Nn)) sprintf("N 未算出：%s 取不到，按指示停下，不自行假设。下表只报告每人的值。", paste(NS$label[NS$status == "not_found"], collapse = "、"))
+    else sprintf("N = %s（%s）。%s与公式的定义差距大（见备注），N 只是暂定的量级，待尾崎确认。", yen(round(Nn)), paste(fmt_v(NS$factor, NS$value), collapse = " × "), paste(NS$label[grepl("不一致（大）", NS$note)], collapse = "、")), "")
+oku <- function(v) ifelse(is.na(v), "－", formatC(v / 1e8, format = "f", digits = 1, big.mark = ","))
+add("#### 7.3.2 净收益（\"如果有效\"时的条件值）", "",
+    md_table(data.frame(栏 = ifelse(CV$column == "base", "基准", "早期复发后 k（外部）"), hr0 = sprintf("%.2f", CV$hr0),
+                        `上限（万日元）` = man(CV$cap_det), `每人净收益 = 上限 − E02（万日元）` = cell(CV$nb_person_det, CV$nb_person_median, CV$nb_person_lo, CV$nb_person_hi),
+                        N = ifelse(is.na(CV$N), "－", yen(round(CV$N))),
+                        `一年对象患者的净收益（亿日元）` = ifelse(is.na(CV$N), "－", sprintf("%s（%s [%s, %s]）", oku(CV$nb_total_det), oku(CV$nb_total_median), oku(CV$nb_total_lo), oku(CV$nb_total_hi))),
+                        check.names = FALSE)), "",
+    "这是\"如果运动的复发风险比为该 hr0\"时的条件值，不是期望值（运动效应的大小未知，本研究不对其设分布）。确定性值（PSA 中位数 [2.5%, 97.5%]，由第 1 节的 PSA 样本计算；N 不抽样）。净收益按 λ = 500 万日元/QALY 换算 QALY，减去方案费用 E02（19.24 万日元）。", "")
+add("### 7.4 不做 EVPI 的理由", "",
+    sprintf("EVPI 需要假设运动效应（hr0）的分布。划算的分界点（主比较的 E02 交点 hr0 = %.3f，第 1.5 节）接近 1：hr0 = 0.95 时上限 ≥ E02 的概率为 %s，hr0 = 1.00 时为 %s（第 1.1 节）。所以 EVPI 几乎完全由所假设的分布在 hr0 ≥ 1（分界点以上）一侧放多少概率决定，反映的是这一假设而不是数据（与分析计划第 6 节不做运动效应合成分布的理由相同）。",
+            CR$hr0[CR$comparison == "main" & CR$column == "base" & CR$lambda == 5e6 & CR$programme == "E02"],
+            pct(SM$p_cap500_ge_E02[SM$comparison == "main" & SM$column == "base" & SM$axis == "hr0" & abs(SM$x - 0.95) < 1e-9]),
+            pct(SM$p_cap500_ge_E02[SM$comparison == "main" & SM$column == "base" & SM$axis == "hr0" & abs(SM$x - 1.00) < 1e-9])), "")
 writeLines(L, file.path(ROOT, "output", "phase2", "phase2b_report.md"), useBytes = TRUE)
 cat("wrote phase2b_report.md:", length(L), "lines\n")
