@@ -1,4 +1,4 @@
-"""Figures 1 to 3 of the manuscript, v1 (Python / matplotlib), and figures_v1.docx.
+"""Figures 1 to 3 of the manuscript (Python / matplotlib), and figures_<VER>.docx.
 
 Reads the phase 2 outputs and the parameter workbook; does not run the model.
 Each figure is drawn at its final size (170 mm wide) so that every glyph is at
@@ -21,7 +21,7 @@ from PIL import Image
 
 from docx.shared import Mm
 from docx_util import new_document, page_break, para
-from v1_common import BUILD, FIGDIR, OUT, ROOT, STAR, SUPP, Params, Registry, csv, fnum, rel
+from common import BUILD, VER, FIGDIR, OUT, ROOT, STAR, SUPP, Params, Registry, csv, fnum, rel
 
 sys.stdout.reconfigure(encoding="utf-8")
 SKILL = Path.home() / ".claude" / "skills" / "nature-figure" / "scripts"
@@ -283,7 +283,7 @@ def fig3():
 
 p1, p2, p3 = fig1(), fig2(), fig3()
 
-# ================================================================ figures_v1.docx
+# ================================================================ figures_<VER>.docx
 S1 = STAR
 cap = {
     1: ["Fig. 1. Structure of the state-transition " + "model^{" + S1 + "}",
@@ -314,10 +314,10 @@ cap = {
         f"{S1}Modeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. AE, adverse event; JPY, Japanese yen; QALY, quality-adjusted life year."],
 }
 for tok, why in (("1", "1-month cycles (Table 1)"), ("49", "starting age (Table 1)"), ("100", "time horizon (Table 1)"), ("7", "surgery month (Table 1)"),
-                 ("18", "early recurrence cut-off (Table 1)"), ("0.70", "HR range (Table 2)"), ("1.00", "HR range (Table 2)"), ("0.95", "zoom range (Table 2 row)"),
+                 ("18", "early recurrence cut-off (Table 1)"), ("0.70", "HR range (Table 1)"), ("1.00", "HR range (Table 1)"), ("0.95", "zoom range lower end (Fig. 2b axis; Supplementary Table S4 grid point)"),
                  ("5", "threshold JPY 5 million / 5-year effect duration (Table 1)"), ("95", "95% UI"), ("0.72", "CHALLENGE HR (Table 1)"), ("3", "3-year CHALLENGE program (Table 1)"),
                  ("2026", "price year"), ("2", "discount rate"), ("2.5", "UI percentile"), ("97.5", "UI percentile"), ("1,000", "PSA samples / JPY 1,000 unit"),
-                 ("0.85", "HR of the one-way analysis (Table 2 row)"), ("25", "range rule ±25% (docs/model_spec.md section 6)"),
+                 ("0.85", "HR of the one-way analysis (Table 2 base-case rows)"), ("25", "range rule ±25% (docs/model_spec.md section 6)"),
                  ("75", "drug-price rule: lower bound 0.75 x base (docs/model_spec.md section 6)")):
     REG.label(tok, "figure legends", why)
 REG.r("21", "Fig. 3 legend", "output/phase2/main/oneway_base.csv", "number of rows that change the result (see Fig. 3 bars)", 21)
@@ -337,7 +337,7 @@ for i, (pdf, png, tif) in enumerate((p1, p2, p3), start=1):
                                  tiff_pixels="x".join(map(str, Image.open(tif).size)))
     for j, t in enumerate(cap[i]):
         para(doc, t, space_after=0)
-doc.save(OUT / "figures_v1.docx")
+doc.save(OUT / f"figures_{VER}.docx")
 json.dump({"rows": REG.rows, "labels": REG.labels, "images": img_info},
           open(BUILD / "_ledger_figures.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=str)
 print(json.dumps(img_info, indent=1))

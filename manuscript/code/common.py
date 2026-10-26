@@ -1,9 +1,9 @@
-"""Shared helpers for the v1 tables and figures (manuscript step 1).
+"""Shared helpers for the manuscript tables and figures (manuscript step 1).
 
 Reads the phase 1 and phase 2 outputs only; nothing here runs the model.
 Every number shown in a table or figure is passed through Registry.r(), which
 records the displayed string, where it is shown, the source file, the location
-in that file and the raw value. The ledger (numbers_ledger_v1.md) is written
+in that file and the raw value. The ledger (numbers_ledger_<VER>.md) is written
 from the registry.
 """
 from __future__ import annotations
@@ -19,14 +19,18 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 MAIN = ROOT / "output" / "phase2" / "main"
 P1 = ROOT / "output" / "phase1"
-OUT = ROOT / "manuscript" / "v1"
+VER = "v2"  # version written by this run; earlier versions are in manuscript/archive/
+PREV = "v1"
+BASE = "v1（manuscript/archive/v1/ 的交付物与同一套生成代码）"
+OUT = ROOT / "manuscript" / VER
+ARCHIVE_PREV = ROOT / "manuscript" / "archive" / PREV
 FIGDIR = OUT / "figures"
 BUILD = ROOT / "manuscript" / "code" / "_build"  # registry json (intermediate, not a deliverable)
 BUILD.mkdir(parents=True, exist_ok=True)
 PARAMS_XLSX = ROOT / "input" / "params" / "parameters_v10.xlsx"
 
 # Provisional supplementary numbering, by the planned first citation in the text
-# (table_figure_plan_v1.md section 4). Change here only; the tables and figure
+# (table_figure_plan_<VER>.md section 4). Change here only; the tables and figure
 # legends read these labels.
 SUPP = {
     "params": "S1",            # all inputs (Methods, Study background)
@@ -34,11 +38,11 @@ SUPP = {
     "fig_validation": "S1",    # Supplementary Fig. S1: model OS/EFS vs reconstructed KM and final analysis
     "validation": "S2",        # Supplementary Table S2: validation criteria and 7-year comparison
     "cheers": "S3",            # CHEERS 2022 checklist (end of Statistical analysis)
-    "capgrid": "S4",           # data of Fig. 2: full HR grid, both thresholds, early-recurrence scenario
+    "capgrid": "S4",           # data of Fig. 2 (former Table 2 panel A): full HR grid, both thresholds, early-recurrence scenario
     "duration": "S5",          # effect duration and post-operative continuation, full grid
     "oneway": "S6",            # data of Fig. 3
-    "netbenefit": "S7",        # one-year cohort net benefit (N pending)
-    "elmore": "S8",            # boundary scenario (Elmore)
+    "netbenefit": "S7",        # one-year cohort net benefit (N from the JBCS registry report no. 55)
+    "other": "S8",             # other scenarios: utility value sets (Japan first, US, UK, Australia) and Elmore
     "pathB": "S9",             # effect on pCR (path B)
 }
 

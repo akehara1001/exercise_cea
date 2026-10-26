@@ -1,9 +1,9 @@
-"""Read back tables_v1.docx and figures_v1.docx, check them against WRITING_RULES
+"""Read back tables_<VER>.docx and figures_<VER>.docx, check them against WRITING_RULES
 (format, footnote symbols, every number registered), and write
-numbers_ledger_v1.md, check_v1.md and MANIFEST_v1.md.
+numbers_ledger_<VER>.md, check_<VER>.md and MANIFEST_<VER>.md.
 
-Run after make_tables_v1.py and make_figures_v1.py, and after
-table_figure_plan_v1.md is final (the manifest hashes it).
+Run after make_tables.py and make_figures.py, and after
+table_figure_plan_<VER>.md is final (the manifest hashes it).
 """
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ from docx.shared import Pt
 from docx.table import Table
 from docx.text.paragraph import Paragraph
 
-from v1_common import BUILD, FIGDIR, NUM_RE, OUT, ROOT, STAR, rel, sha256
+from common import BASE, BUILD, PREV, VER, FIGDIR, NUM_RE, OUT, ROOT, STAR, rel, sha256
 
 sys.stdout.reconfigure(encoding="utf-8")
 REF_RE = re.compile(r"\b(?:Supplementary )?(?:Tables?|Figs?\.) S?\d+(?:\s*(?:and|to|,)\s*S?\d+)*")
@@ -114,8 +114,8 @@ def check_doc(path, ledger, landscape):
 
 tl = json.load(open(BUILD / "_ledger_tables.json", encoding="utf-8"))
 fl = json.load(open(BUILD / "_ledger_figures.json", encoding="utf-8"))
-rt, _ = check_doc(OUT / "tables_v1.docx", tl, landscape=True)
-rf, fdoc = check_doc(OUT / "figures_v1.docx", fl, landscape=False)
+rt, _ = check_doc(OUT / f"tables_{VER}.docx", tl, landscape=True)
+rf, fdoc = check_doc(OUT / f"figures_{VER}.docx", fl, landscape=False)
 # embedded pictures: effective dpi at the inserted size
 pics = []
 for i, shp in enumerate(fdoc.inline_shapes, start=1):
@@ -132,7 +132,7 @@ al = json.load(open(FIGDIR / "fig2.alignment.json", encoding="utf-8"))
 rf["collision_audit"] = audits
 rf["fig2_alignment"] = (al.get("verdict"), al.get("summary"))
 
-# ---------------------------------------------------------------- check_v1.md
+# ---------------------------------------------------------------- check_<VER>.md
 def fmt_res(r):
     L = [f"### {r['file']}", "", "| 项目 | 结果 | 应为 |", "|---|---|---|"]
     for k, want in (("paragraphs_and_cells", None), ("text_runs", None), ("runs_not_TNR_12pt", 0), ("runs_non_black", 0),
@@ -150,7 +150,7 @@ def fmt_res(r):
 
 
 now = dt.datetime.now().strftime("%Y-%m-%d %H:%M")
-C = [f"# v1 表图的回读检查（{now}，`manuscript/code/make_ledger_v1.py`）", "",
+C = [f"# {VER} 表图的回读检查（{now}，`manuscript/code/make_ledger.py`）", "",
      "从交付的 docx 读回，不读生成脚本的中间结果。数字检查：从段落与单元格文字中抽出所有数字（与字母或连字符相连的编号如 E01、S1、EQ-5D、KEYNOTE-522 不算；"
      "“Table 2”“Fig. 3”“Supplementary Table S4”这类编号先去掉），逐个与登记表（数值行与定义/编号行）比对；反向检查登记的数值是否都出现在文档中。", ""]
 C += fmt_res(rt) + [""] + fmt_res(rf)
@@ -161,26 +161,50 @@ C += ["", "nature-figure 的检查（导出的 PDF）：", ""]
 for f, (v, s) in audits.items():
     C.append(f"- {f} 碰撞检查：{v}，{s}")
 C.append(f"- fig2 面板对齐：{rf['fig2_alignment'][0]}，{rf['fig2_alignment'][1]}")
-C.append("- 字号下限（audit_pdf_text.py --min-pt 8）：三张图 below minimum 都为 0（见本次运行的终端输出，记录于 table_figure_plan_v1.md 第 7 节）。")
-(OUT / "check_v1.md").write_text("\n".join(C) + "\n", encoding="utf-8")
+C.append(f"- 字号下限（audit_pdf_text.py --min-pt 8）：三张图 below minimum 都为 0（见本次运行的终端输出，记录于 table_figure_plan_{VER}.md 第 7 节）。")
+(OUT / f"check_{VER}.md").write_text("\n".join(C) + "\n", encoding="utf-8")
 
-# ---------------------------------------------------------------- numbers_ledger_v1.md
-L = [f"# 数字对照表 v1（{now}，由 `manuscript/code/make_ledger_v1.py` 从登记表生成）", "",
+# ---------------------------------------------------------------- numbers_ledger_<VER>.md
+PROVISIONAL = {"E03": "remote low-cost program cost (input table v10 note: 【要確認】)",
+               "D02": "monthly cost after locoregional recurrence (input table v10 note: 【要確認】)"}
+
+
+def provisional(x):
+    """Rows that show a provisional input or a result computed directly from one."""
+    txt = f"{x['where']} {x['loc']}"
+    if "E03" in txt:
+        return "【要確認】E03"
+    if x["source"].endswith("oneway_base.csv") and x["where"].startswith("Fig. 3, bars"):
+        return "【要確認】含 D02 的一行"
+    return ""
+
+
+
+L = [f"# 数字对照表 {VER}（{now}，由 `manuscript/code/make_ledger.py` 从登记表生成）", "",
      "每个显示在表或图中的数字：显示值、位置、来源文件、来源中的位置、原始值。舍入：从原始值一次四舍五入（half up）；舍入为 0 的值不带负号；"
      "费用以千日元（JPY 1,000）显示，与第 2 阶段报告的“万日元 1 位小数”精度相同（例：272.6 万日元 = 2,726 千日元）。", "",
-     "## 1. Table 1–3（tables_v1.docx）", "", "| # | 显示 | 位置 | 来源文件 | 来源中的位置 | 原始值 |", "|---|---|---|---|---|---|"]
+     f"## 1. Table 1–3（tables_{VER}.docx）", "", "| # | 显示 | 位置 | 来源文件 | 来源中的位置 | 原始值 | 暂定 |", "|---|---|---|---|---|---|---|"]
 for i, x in enumerate(tl["rows"], start=1):
-    L.append(f"| {i} | {x['shown']} | {x['where']} | `{x['source']}` | {x['loc']} | {x['raw']} |")
+    L.append(f"| {i} | {x['shown']} | {x['where']} | `{x['source']}` | {x['loc']} | {x['raw']} | {provisional(x)} |")
 L += ["", "### 派生值的核对（Table 3 的“转移复发治疗费 50%”“艾立布林”两栏的类别值）", "",
       "两情景只改变费用参数，生存不变，所以各类别 = 基准栏的类别值 × 情景倍率（D03/D03P 与 D05 的类别），其余类别不变。"
       "核对：各类别之和与模型算出的 Δ费用（`sc_*_det_reference.csv` 的 dC）之差：", ""]
 for k, v in tl["derived_check"].items():
     L.append(f"- {k}：类别之和 {v['sum_of_categories']:.6f} 日元，模型 {v['modelled_total']:.6f} 日元，差 {v['difference']:.3e} 日元")
-L += ["", "## 2. Fig. 1–3（figures_v1.docx 与 manuscript/v1/figures/）", "",
+L += ["", f"## 2. Fig. 1–3（figures_{VER}.docx 与 manuscript/{VER}/figures/）", "",
       "图中的线、带、柱直接由下列文件的列画出（数值不经手写）；刻度数字是坐标轴的标度，不是结果，不登记。", "",
-      "| # | 显示 | 位置 | 来源文件 | 来源中的位置 | 原始值 |", "|---|---|---|---|---|---|"]
+      "| # | 显示 | 位置 | 来源文件 | 来源中的位置 | 原始值 | 暂定 |", "|---|---|---|---|---|---|---|"]
 for i, x in enumerate(fl["rows"], start=1):
-    L.append(f"| {i} | {x['shown']} | {x['where']} | `{x['source']}` | {x['loc']} | {x['raw']} |")
+    L.append(f"| {i} | {x['shown']} | {x['where']} | `{x['source']}` | {x['loc']} | {x['raw']} | {provisional(x)} |")
+prov_rows = [(sec, x) for sec, rows in (("Table", tl["rows"]), ("Fig.", fl["rows"])) for x in rows if provisional(x)]
+L += ["", "### 暂定值（【要確認】）", "",
+      "入力表 v10 中备考为【要確認】、并在本版表图中显示（或直接由其算出）的值：E03（远程低价方案费用）与 D02（局部区域复发后的月额，只出现在 Fig. 3 的一行）。"
+      "其余【要確認】行（B03、B04、B07–B10、F01P）只进入模型，不在表图中单独显示。", "",
+      "| 显示 | 位置 | 输入 |", "|---|---|---|"]
+for sec, x in prov_rows:
+    L.append(f"| {x['shown']} | {x['where']} | {provisional(x)} |")
+for k, v in PROVISIONAL.items():
+    L.append(f"| — | 输入 {k} | {v} |")
 L += ["", "## 3. 编号与定义中的数字（不是结果；同一数字在别处作为值登记时以那里为准）", "", "| 显示 | 位置 | 说明 |", "|---|---|---|"]
 for x in tl["labels"] + fl["labels"]:
     L.append(f"| {x['shown']} | {x['where']} | {x['reason']} |")
@@ -189,23 +213,23 @@ L += ["", "## 4. 来源文件的 sha256（生成时）", "", "| 文件 | sha256 
 for s in SRC:
     p = ROOT / s
     L.append(f"| `{s}` | {sha256(p) if p.exists() else '（不在仓库：' + s + '）'} |")
-(OUT / "numbers_ledger_v1.md").write_text("\n".join(L) + "\n", encoding="utf-8")
+(OUT / f"numbers_ledger_{VER}.md").write_text("\n".join(L) + "\n", encoding="utf-8")
 
-# ---------------------------------------------------------------- MANIFEST_v1.md
-deliv = ["tables_v1.docx", "figures_v1.docx", "table_figure_plan_v1.md", "numbers_ledger_v1.md", "check_v1.md"]
+# ---------------------------------------------------------------- MANIFEST_<VER>.md
+deliv = [f"tables_{VER}.docx", f"figures_{VER}.docx", f"table_figure_plan_{VER}.md", f"numbers_ledger_{VER}.md", f"check_{VER}.md", f"diff_{PREV}_{VER}.md"]
 figs = sorted(p.name for p in FIGDIR.iterdir() if p.suffix in (".pdf", ".png", ".tiff", ".svg"))
 code = sorted(p.name for p in (ROOT / "manuscript" / "code").glob("*.py"))
-M = [f"# MANIFEST v1（{dt.date.today().isoformat()}）", "",
-     "- 版本：v1（执笔第 1 步：表、图、补充材料清单、数字对照表）。底本：无（新建）。manuscript、supplementary、title page 尚未作成。",
-     "- 数值来源：第 2 阶段主分析的输出（`output/phase2/main/`）、第 1 阶段输出、入力表 v10；不重新计算模型。来源文件与 sha256 见 numbers_ledger_v1.md 第 4 节。", "",
+M = [f"# MANIFEST {VER}（{dt.date.today().isoformat()}）", "",
+     f"- 版本：{VER}（执笔第 1 步：表、图、补充材料清单、数字对照表）。底本：{BASE}。manuscript、supplementary、title page 尚未作成。",
+     f"- 数值来源：第 2 阶段主分析的输出（`output/phase2/main/`）、第 1 阶段输出、入力表 v10；不重新计算模型。来源文件与 sha256 见 numbers_ledger_{VER}.md 第 4 节。", "",
      "| 文件 | sha256 |", "|---|---|"]
 for d in deliv:
-    M.append(f"| manuscript/v1/{d} | {sha256(OUT / d)} |")
+    M.append(f"| manuscript/{VER}/{d} | {sha256(OUT / d)} |")
 for f in figs:
-    M.append(f"| manuscript/v1/figures/{f} | {sha256(FIGDIR / f)} |")
+    M.append(f"| manuscript/{VER}/figures/{f} | {sha256(FIGDIR / f)} |")
 for c in code:
     M.append(f"| manuscript/code/{c} | {sha256(ROOT / 'manuscript' / 'code' / c)} |")
-(OUT / "MANIFEST_v1.md").write_text("\n".join(M) + "\n", encoding="utf-8")
+(OUT / f"MANIFEST_{VER}.md").write_text("\n".join(M) + "\n", encoding="utf-8")
 
 summary = {k: rt[k] for k in ("empty_cells", "runs_not_TNR_12pt", "runs_non_black", "heading_style_paragraphs", "bold_runs_outside_tables",
                              "bold_runs_in_cells_with_digits", "middle_dot", "paragraphs_starting_Note", "em_dash_outside_cells",

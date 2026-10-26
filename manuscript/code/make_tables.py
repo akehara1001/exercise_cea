@@ -1,8 +1,8 @@
-"""Tables 1 to 3 of the manuscript, v1 (tables_v1.docx).
+"""Tables 1 to 3 of the manuscript (tables_<VER>.docx).
 
 Reads the phase 1 and phase 2 outputs and the parameter workbook; does not run
-the model. Writes manuscript/v1/tables_v1.docx and the table part of the number
-registry (manuscript/code/_build/_ledger_tables.json, used by make_ledger_v1.py).
+the model. Writes manuscript/<VER>/tables_<VER>.docx and the table part of the number
+registry (manuscript/code/_build/_ledger_tables.json, used by make_ledger.py).
 """
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ import sys
 import numpy as np
 
 from docx_util import new_document, new_section, para, table
-from v1_common import (BUILD, OUT, P1, ROOT, STAR, SUPP, Params, Registry, csv, fk,
+from common import (BUILD, VER, OUT, P1, ROOT, STAR, SUPP, Params, Registry, csv, fk,
                        fnum, fyen, one, pct, rel)
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -188,7 +188,7 @@ t1.append([f"Exercise program, total over the {REG.r('6', f'{T}, exercise progra
            "CHALLENGE program cost; medical fee schedule"])
 t1.append(["Musculoskeletal adverse event of exercise, per event", yen("E08", "musculoskeletal adverse event cost"), "Medical fee schedule"])
 
-grp("Utilities")
+grp("Utilities" + sup(S3))
 t1.append(["Event-free, during treatment", val("U01", "utilities", 3), "KEYNOTE-522 EQ-5D, German value set"])
 t1.append(["Event-free, after treatment", val("U02", "utilities", 3), "KEYNOTE-522 EQ-5D, German value set"])
 t1.append(["Locoregional recurrence", val("U03", "utilities", 3), "KEYNOTE-522 EQ-5D, German value set"])
@@ -201,7 +201,7 @@ t1.append(["Grade 3 or higher adverse event",
 
 grp("Exercise effect")
 t1.append(["Effect on recurrence",
-           f"Recurrence HR{sup(S3)} from {doc_num('0.70', 'effect on recurrence', AP, 'hr0 取 0.70 至 1.00', 0.70)} to {doc_num('1.00', 'effect on recurrence', AP, 'hr0 取 0.70 至 1.00', 1.00)}; "
+           f"Recurrence HR{sup(S4)} from {doc_num('0.70', 'effect on recurrence', AP, 'hr0 取 0.70 至 1.00', 0.70)} to {doc_num('1.00', 'effect on recurrence', AP, 'hr0 取 0.70 至 1.00', 1.00)}; "
            "no effect on deaths without recurrence or on events before surgery", "Assumption"])
 t1.append(["Effect duration, base case",
            f"HR held for {doc_num('5', 'effect duration', AP, '随机化后 5 年内保持 hr0', 5)} years after randomization, then the effect halves every year", "Assumption"])
@@ -241,7 +241,9 @@ t1_notes = [
     "BRCA, breast cancer gene; EQ-5D, EuroQol 5-dimension questionnaire; ESME, Epidemiological Strategy and Medical Economics database; "
     "HR, hazard ratio; JPY, Japanese yen; pCR, pathological complete response; QALY, quality-adjusted life year.",
     f"{S2}Program cost reported in the CHALLENGE cost analysis for the 3-year program, condensed to the 6 months of neoadjuvant therapy and converted from 2024 Canadian dollars by purchasing power parity.",
-    f"{S3}Recurrence HR: hazard ratio for locoregional and distant recurrence after surgery in an arm with exercise, relative to the same treatment without exercise; 1.00 means no effect.",
+    f"{S3}Base case: EQ-5D values from KEYNOTE-522 with the German value set, because no report applying a Japanese value set to KEYNOTE-522 data with standard errors was found. "
+    f"Values from Japanese populations are used in a scenario (Supplementary Table {SUPP['other']}).",
+    f"{S4}Recurrence HR: hazard ratio for locoregional and distant recurrence after surgery in an arm with exercise, relative to the same treatment without exercise; 1.00 means no effect.",
 ]
 # numbers in the notes that are not values of the table body: register as definitions
 for tok, why in (("2026", "price year, as in the Prices row"), ("5", "EQ-5D instrument name (EuroQol 5-dimension)"),
@@ -282,81 +284,110 @@ def cross(df, file, comp, typ, prog, where):
     return REG.r(fnum(v, 3), where, file, f"comparison = {comp}, column = base, type = {typ}{lam}, programme = {prog}, hr0", v)
 
 
-t2 = [["Recurrence HR or quantity", ARM_MAIN, ARM_SEC]]
+t2 = [["Break-even point or scenario", ARM_MAIN, ARM_SEC]]
 bold2 = set()
-t2.append(["A. Maximum affordable cost by recurrence HR" + sup(S2) + ", base-case effect duration"])
-bold2.add(len(t2) - 1)
-for h in (0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 1.00):
-    lab = REG.r(f"{h:.2f}", f"{T}, Panel A row label", "output/phase2/main/det_caps.csv", f"x = {h:.2f} (hr0 grid)", h)
-    t2.append([lab,
-               capcell("main", h, "output/phase2/main/det_caps.csv", "output/phase2/main/psa_caps_summary.csv", dc, ps, f"{T}, Panel A, HR {h:.2f}, main"),
-               capcell("secondary", h, "output/phase2/main/det_caps.csv", "output/phase2/main/psa_caps_summary.csv", dc, ps, f"{T}, Panel A, HR {h:.2f}, secondary")])
-t2.append(["B. Recurrence HR at which, in the base case,"])
+RED = " (reduction in recurrence hazard, %)"
+avoided_e02_main = []  # reductions behind the range stated in footnote ✳✳✳
+
+
+def crossred(df, file, comp, typ, prog, where):
+    """Break-even cell 'HR (reduction %)': reduction = 100 x (1 - HR) from the raw HR, 1 decimal."""
+    hr = cross(df, file, comp, typ, prog, where)
+    sub = df[(df.comparison == comp) & (df.column == "base") & (df.type == typ) & (df.programme == prog)]
+    if typ == "cap_eq_programme":
+        sub = sub[np.isclose(sub["lambda"], 5e6)]
+    v = float(sub.iloc[0].hr0)
+    red = 100.0 * (1.0 - v)
+    if comp == "main" and typ == "avoided_eq_programme" and prog == "E02":
+        avoided_e02_main.append(red)
+    lam = ", lambda = 5e+06" if typ == "cap_eq_programme" else ""
+    r = REG.r(fnum(red, 1), where + ", reduction %", file,
+              f"comparison = {comp}, column = base, type = {typ}{lam}, programme = {prog}: 100 x (1 - hr0)", red)
+    return f"{hr} ({r})"
+
+
+t2.append(["A. Recurrence HR" + sup(S2) + RED + " at which, in the base case,"])
 bold2.add(len(t2) - 1)
 XBF = "output/phase2/main/sc_base_crossings.csv"
 t2.append([f"The maximum affordable cost equals the cost of the {PROG['E02']}",
-           cross(xb, XBF, "main", "cap_eq_programme", "E02", f"{T}, Panel B, cap = E02, main"),
-           cross(xb, XBF, "secondary", "cap_eq_programme", "E02", f"{T}, Panel B, cap = E02, secondary")])
+           crossred(xb, XBF, "main", "cap_eq_programme", "E02", f"{T}, Panel A, cap = E02, main"),
+           crossred(xb, XBF, "secondary", "cap_eq_programme", "E02", f"{T}, Panel A, cap = E02, secondary")])
 for e in ("E01", "E02", "E03"):
     t2.append([f"Medical costs avoided{sup(S3)} equal the cost of the {PROG[e]}",
-               cross(xb, XBF, "main", "avoided_eq_programme", e, f"{T}, Panel B, avoided = {e}, main"),
-               cross(xb, XBF, "secondary", "avoided_eq_programme", e, f"{T}, Panel B, avoided = {e}, secondary")])
-t2.append(["C. Maximum affordable cost under alternative effect durations" + sup(S4)])
+               crossred(xb, XBF, "main", "avoided_eq_programme", e, f"{T}, Panel A, avoided = {e}, main"),
+               crossred(xb, XBF, "secondary", "avoided_eq_programme", e, f"{T}, Panel A, avoided = {e}, secondary")])
+
+DCF, PSF = "output/phase2/main/det_caps.csv", "output/phase2/main/psa_caps_summary.csv"
+BASE_ROW = "Base case, recurrence HR " + REG.label("0.85", f"{T}, Panels B and C row label", "recurrence HR of the base-case comparison row (Supplementary Table S4 grid point)")
+t2.append(["B. Maximum affordable cost under alternative effect durations" + sup(S4)])
 bold2.add(len(t2) - 1)
+t2.append([BASE_ROW,
+           capcell("main", 0.85, DCF, PSF, dc, ps, f"{T}, Panel B, base case, main (intended repeat of Supplementary Table S4)"),
+           capcell("secondary", 0.85, DCF, PSF, dc, ps, f"{T}, Panel B, base case, secondary (intended repeat of Supplementary Table S4)")])
 for key, scen in (("dur1", "path_a_s1"), ("dur2", "path_a_s2")):
     cells = []
     for comp in ("main", "secondary"):
         r = scap[(scap.scenario == scen) & (scap.comparison == comp) & (scap.axis == "hr0") & np.isclose(scap.x, 0.85)]
         assert len(r) == 1
         v = float(r.iloc[0].cap_500)
-        cells.append(REG.r(fk(v), f"{T}, Panel C, {key}, {comp}", "output/phase2/main/scenario_caps.csv",
+        cells.append(REG.r(fk(v), f"{T}, Panel B, {key}, {comp}", "output/phase2/main/scenario_caps.csv",
                            f"scenario = {scen}, comparison = {comp}, column = base, axis = hr0, x = 0.85, cap_500", v))
     t2.append([SC[key], *cells])
-# check: the base row of scenario_caps.csv equals det_caps.csv at 0.85 (the value shown in panel A)
+# check: the base row of scenario_caps.csv equals det_caps.csv at 0.85 (the base-case row)
 for comp in ("main", "secondary"):
     a = scap[(scap.scenario == "base") & (scap.comparison == comp) & (scap.axis == "hr0") & np.isclose(scap.x, 0.85)].cap_500.iloc[0]
     b = dc[(dc.comparison == comp) & (dc.column == "base") & (dc.axis == "hr0") & np.isclose(dc.x, 0.85)].cap_500.iloc[0]
     assert abs(a - b) < 1e-6, (comp, a, b)
-t2.append(["D. Metastatic treatment cost scenarios" + sup(S4)])
+t2.append(["C. Metastatic treatment cost scenarios" + sup(S4)])
 bold2.add(len(t2) - 1)
+t2.append([BASE_ROW,
+           capcell("main", 0.85, DCF, PSF, dc, ps, f"{T}, Panel C, base case, main (intended repeat of Supplementary Table S4)"),
+           capcell("secondary", 0.85, DCF, PSF, dc, ps, f"{T}, Panel C, base case, secondary (intended repeat of Supplementary Table S4)")])
 for key, pre in (("m50", "sc_metcost50"), ("eri", "sc_eribulin")):
     det_f, psa_f, x_f = (f"output/phase2/main/{pre}_{s}" for s in ("det_caps.csv", "psa_caps_summary.csv", "crossings.csv"))
     d_df, p_df, x_df = csv(f"{pre}_det_caps.csv"), csv(f"{pre}_psa_caps_summary.csv"), csv(f"{pre}_crossings.csv")
     t2.append([SC[key]])
     t2.append(["Maximum affordable cost",
-               capcell("main", 0.85, det_f, psa_f, d_df, p_df, f"{T}, Panel D, {key}, cap, main"),
-               capcell("secondary", 0.85, det_f, psa_f, d_df, p_df, f"{T}, Panel D, {key}, cap, secondary")])
-    t2.append([f"Recurrence HR at which the maximum affordable cost equals the cost of the {PROG['E02']}",
-               cross(x_df, x_f, "main", "cap_eq_programme", "E02", f"{T}, Panel D, {key}, cap = E02, main"),
-               cross(x_df, x_f, "secondary", "cap_eq_programme", "E02", f"{T}, Panel D, {key}, cap = E02, secondary")])
-    t2.append([f"Recurrence HR at which medical costs avoided equal the cost of the {PROG['E02']}",
-               cross(x_df, x_f, "main", "avoided_eq_programme", "E02", f"{T}, Panel D, {key}, avoided = E02, main"),
-               cross(x_df, x_f, "secondary", "avoided_eq_programme", "E02", f"{T}, Panel D, {key}, avoided = E02, secondary")])
-REG.label("0.85", f"{T}, footnote", "recurrence HR of panels C and D, as in panel A row 0.85")
+               capcell("main", 0.85, det_f, psa_f, d_df, p_df, f"{T}, Panel C, {key}, cap, main"),
+               capcell("secondary", 0.85, det_f, psa_f, d_df, p_df, f"{T}, Panel C, {key}, cap, secondary")])
+    t2.append([f"Recurrence HR{RED} at which the maximum affordable cost equals the cost of the {PROG['E02']}",
+               crossred(x_df, x_f, "main", "cap_eq_programme", "E02", f"{T}, Panel C, {key}, cap = E02, main"),
+               crossred(x_df, x_f, "secondary", "cap_eq_programme", "E02", f"{T}, Panel C, {key}, cap = E02, secondary")])
+    t2.append([f"Recurrence HR{RED} at which medical costs avoided{sup(S3)} equal the cost of the {PROG['E02']}",
+               crossred(x_df, x_f, "main", "avoided_eq_programme", "E02", f"{T}, Panel C, {key}, avoided = E02, main"),
+               crossred(x_df, x_f, "secondary", "avoided_eq_programme", "E02", f"{T}, Panel C, {key}, avoided = E02, secondary")])
+assert len(avoided_e02_main) == 3
+red_lo, red_hi = fnum(min(avoided_e02_main), 1), fnum(max(avoided_e02_main), 1)
 REG.label("49", f"{T}, footnote", "starting age (Table 1)")
-REG.label("5", f"{T}, title", "JPY 5 million per QALY threshold (analysis plan section 2: λ = 500 万日元/QALY)")
+REG.label("5", f"{T}, title/footnote", "JPY 5 million per QALY threshold (analysis plan section 2: λ = 500 万日元/QALY) / 5-year base-case effect duration (Table 1)")
 REG.label("2026", f"{T}, footnote", "price year (Table 1)")
 REG.label("2", f"{T}, footnote", "discount rate (Table 1)")
-REG.label("1,000", f"{T}, footnote/header", "number of PSA samples (psa_caps_summary.csv column n = 1000) or the JPY 1,000 unit")
-REG.label("2.5", f"{T}, footnote", "percentile definition of the UI (analysis plan section 5)")
-REG.label("97.5", f"{T}, footnote", "percentile definition of the UI (analysis plan section 5)")
+REG.label("1,000", f"{T}, footnote/header", "number of PSA samples (Table 1) or the JPY 1,000 unit")
+REG.label("2.5", f"{T}, footnote", "percentile definition of the UI (Table 1)")
+REG.label("97.5", f"{T}, footnote", "percentile definition of the UI (Table 1)")
 REG.label("95", f"{T}, footnote", "95% UI")
-REG.label("1.00", f"{T}, footnote", "no-effect value of the HR")
+REG.label("1.00", f"{T}, footnote", "no-effect value of the HR (Table 1)")
+REG.label("100", f"{T}, footnote", "reduction = 100 x (1 - HR)")
+REG.label("1", f"{T}, footnote", "reduction = 100 x (1 - HR)")
 assert (ps.n == 1000).all()
 
-t2_title = ("Table 2. Maximum affordable cost of an exercise program per patient by the recurrence hazard ratio with exercise, "
-            "at a willingness-to-pay threshold of JPY 5 million per " + "QALY" + sup(S1))
+t2_title = ("Table 2. Recurrence hazard ratios at which exercise breaks even, and the maximum affordable cost of an exercise program per patient "
+            "under alternative effect durations and metastatic treatment costs, at a willingness-to-pay threshold of JPY 5 million per " + "QALY" + sup(S1))
 t2_notes = [
     f"{S1}Modeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Maximum affordable cost: the largest program cost per patient at which adding exercise remains cost-effective, equal to the threshold "
     "multiplied by the incremental QALYs minus the incremental medical costs other than the program cost (musculoskeletal adverse events of exercise included). "
-    "Cells show the deterministic estimate and the 95% UI [2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples]. "
+    "Cells with a bracket show the deterministic estimate and the 95% UI [2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples]. "
     "Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. "
     "HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year; UI, uncertainty interval.",
     f"{S2}Hazard ratio for locoregional and distant recurrence after surgery in the arm with exercise, relative to the same treatment without exercise; 1.00 means no effect. "
-    "In panels A and B the effect is held for 5 years after randomization and then halves every year (Table 1).",
-    f"{S3}Reduction in lifetime medical costs other than the program cost. At recurrence HRs below these values, the arm with exercise has lower total costs, program included, and more QALYs.",
-    f"{S4}At a recurrence HR of 0.85. Effect durations and cost scenarios are defined in Table 1. "
-    "Panel C shows deterministic estimates only (no probabilistic analysis was run for these durations); panel D keeps the base-case effect duration.",
+    "The value in parentheses is the reduction in the recurrence hazard, 100 × (1 − HR), in %. "
+    "In panels A and C the effect is held for 5 years after randomization and then halves every year (Table 1).",
+    f"{S3}Reduction in lifetime medical costs other than the program cost. At recurrence HRs below these values, the arm with exercise has lower total costs, program included, and more QALYs. "
+    f"The reductions of {red_lo}% to {red_hi}% at which medical costs avoided equal the program cost (base case and both metastatic cost scenarios) "
+    f"hold only for exercise added to chemotherapy plus pembrolizumab with the {PROG['E02']}.",
+    f"{S4}At a recurrence HR of 0.85. The base-case row repeats the base-case estimate (Supplementary Table {SUPP['capgrid']}) for comparison within the panel. "
+    "Effect durations and cost scenarios are defined in Table 1. The alternative effect durations show deterministic estimates only (no probabilistic analysis was run for them); "
+    "panel C keeps the base-case effect duration.",
 ]
 
 # ================================================================ Table 3
@@ -464,7 +495,7 @@ t3.append(["Increase in pCR with exercise added to chemotherapy alone, percentag
            REG.r(fnum(100 * yp.root, 1), f"{T}, Panel C, pCR", "output/phase2/main/det_yardstick.csv", "axis = pcr, root x 100", 100 * yp.root), "—", "—", "—", "—"])
 for tok, why in (("5", "JPY 5 million threshold"), ("7.5", "JPY 7.5 million threshold (analysis plan section 1)"), ("1,000", "JPY 1,000 unit / 1,000 PSA samples"),
                  ("2.5", "UI percentile"), ("97.5", "UI percentile"), ("95", "95% UI"), ("2026", "price year"), ("2", "discount rate"),
-                 ("0.70", "lower end of the HR range in Table 2"), ("1.00", "upper end of the HR range in Table 2"),
+                 ("0.70", "lower end of the HR range (Table 1)"), ("1.00", "upper end of the HR range (Table 1)"),
                  ("0", "lower end of the pCR range in Table 1"), ("10", "upper end of the pCR range in Table 1"), ("0.5", "multiplier in Table 1"), ("49", "starting age (Table 1)")):
     REG.label(tok, f"{T}, title/footnotes", why)
 assert (pr.n == 1000).all()
@@ -481,7 +512,7 @@ t3_notes = [
     f"{S2}Probabilistic analysis and the cost decomposition were not run for this scenario.",
     f"{S3}Category values equal the base-case values with the distant-recurrence treatment costs multiplied by the scenario factor in Table 1 (survival is unchanged); they add to the modeled total.",
     f"{S4}Effect at which exercise added to chemotherapy alone yields the same incremental QALYs as pembrolizumab in the base case. "
-    f"Both values lie outside the ranges studied in Table 2 (recurrence HR 0.70 to 1.00) and Supplementary Table {SUPP['pathB']} (pCR increase 0 to 10 percentage points).",
+    f"Both values lie outside the ranges studied: recurrence HR 0.70 to 1.00 (Supplementary Table {SUPP['capgrid']}) and pCR increase 0 to 10 percentage points (Supplementary Table {SUPP['pathB']}).",
 ]
 
 # ================================================================ write docx
@@ -501,10 +532,10 @@ table(doc, t3, bold_rows=bold3)
 for n in t3_notes:
     para(doc, n)
 OUT.mkdir(parents=True, exist_ok=True)
-doc.save(OUT / "tables_v1.docx")
+doc.save(OUT / f"tables_{VER}.docx")
 
 json.dump({"rows": REG.rows, "labels": REG.labels,
            "derived_check": {k: dict(sum_of_categories=v[0], modelled_total=v[1], difference=v[2]) for k, v in derived_check.items()}},
           open(BUILD / "_ledger_tables.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=float)
-print("tables_v1.docx written;", len(REG.rows), "registered numbers,", len(REG.labels), "labels")
+print(f"tables_{VER}.docx written;", len(REG.rows), "registered numbers,", len(REG.labels), "labels")
 print("derived decomposition check (yen):", {k: round(v[2], 9) for k, v in derived_check.items()})
