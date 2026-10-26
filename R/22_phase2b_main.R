@@ -7,7 +7,8 @@
 #   plan9 (section 9 of the plan, 2026-10-26; not part of "all"): plan9_det = scenarios of the costs after
 #        metastatic recurrence (deterministic, crossings) and the decomposition of the incremental costs;
 #        plan9_psa = the scenarios over the same 1,000 replicates and parameter draws; plan9_cohort = net
-#        benefit for one year's patients (from the existing results and input/params/cohort_N_sources.csv);
+#        benefit for one year's patients (from the existing results and input/params/cohort_N_jbcs2024.csv, by
+#        the 9.3 addendum; the earlier cohort_value.csv and cohort_value_N.csv are superseded and not rewritten);
 #        plan9 = the three. The files of det and psa are not rewritten.
 # Usage: Rscript R/22_phase2b_main.R [det|psa|all|plan9|plan9_det|plan9_psa|plan9_cohort] [workers]
 #        (default all, physical cores - 1)
@@ -410,23 +411,30 @@ if (WHAT %in% c("plan9", "plan9_psa")) {
   cat(sprintf("plan9 PSA: 2 scenarios x %d replicates on %d workers, %.1f minutes\n", nB, N_WORKERS, mins))
 }
 if (WHAT %in% c("plan9", "plan9_cohort")) {
-  # 9.3 net benefit for one year's patients: (cap - E02) x N, main comparison, lambda 5,000,000, hr0 0.95, 0.90,
-  # 0.85; conditional on the effect. N from input/params/cohort_N_sources.csv (product of the factors; blank
-  # when a factor was not found: then only the values per person)
-  NF <- read.csv(file.path(ROOT, "input", "params", "cohort_N_sources.csv"), stringsAsFactors = FALSE, encoding = "UTF-8", check.names = FALSE)
-  stopifnot(identical(NF$factor, c("incidence", "tnbc", "stage_2_3", "neoadjuvant")))
-  N <- if (all(NF$status != "not_found") && !anyNA(NF$value)) prod(NF$value) else NA_real_
-  wcsv(rbind(NF[, c("factor", "label", "value", "status")], data.frame(factor = "N", label = "年对象人数（尾崎确认待ち）", value = N,
-             status = if (is.na(N)) "not_computed" else "computed")), "cohort_value_N.csv")
+  # 9.3 net benefit for one year's patients, by the addendum of 2026-10-26 (it withdraws N = 1,719 from four factors;
+  # their files cohort_value.csv and cohort_value_N.csv, from 6704e54, are kept and marked as superseded): N from
+  # the JBCS registry report no. 55 (input/params/cohort_N_jbcs2024.csv). The patients with pembrolizumab by the
+  # main comparison, the rest by the secondary; net benefit per person = cap (lambda 5,000,000) - E02; hr0 0.95,
+  # 0.90, 0.85; conditional on the effect. PSA: the two parts added within each replicate of psa_results.rds
+  # (N not sampled). Sensitivity: N 2,900 and 4,000 at the same share of pembrolizumab.
+  NJ <- read.csv(file.path(ROOT, "input", "params", "cohort_N_jbcs2024.csv"), stringsAsFactors = FALSE, encoding = "UTF-8", check.names = FALSE)
+  nv <- setNames(NJ$value, NJ$item)
+  stopifnot(nv[["nac_stage2"]] + nv[["nac_stage3"]] == nv[["nac_total"]])
+  share <- nv[["nac_pembro"]] / nv[["nac_total"]]
+  NS <- data.frame(setting = c("main", "sens_2023", "sens_upper"), N = c(nv[["nac_total"]], nv[["sens_N_2023"]], nv[["sens_N_upper"]]))
+  NS$n_pembro <- NS$N * share; NS$n_other <- NS$N - NS$n_pembro
   DC0 <- read.csv(file.path(OUT, "det_caps.csv")); PS <- readRDS(file.path(OUT, "psa_results.rds"))$ex
-  CV <- do.call(rbind, lapply(c("base", "kext"), function(cn) do.call(rbind, lapply(c(0.95, 0.90, 0.85), function(h) {
-    d <- DC0[DC0$comparison == "main" & DC0$column == cn & DC0$axis == "hr0" & abs(DC0$x - h) < 1e-9, ]
-    p <- PS[PS$comparison == "main" & PS$column == cn & PS$axis == "hr0" & abs(PS$x - h) < 1e-9, ]
-    stopifnot(nrow(d) == 1, nrow(p) == 1000)
-    nb <- d$cap_500 - PV0[["E02"]]; qq <- q(p$cap_500 - PV0[["E02"]])
-    data.frame(comparison = "main", column = cn, hr0 = h, lambda = LAMBDA[1], programme = "E02", programme_cost = PV0[["E02"]],
-               cap_det = d$cap_500, nb_person_det = nb, nb_person_median = qq[1], nb_person_lo = qq[2], nb_person_hi = qq[3],
-               N = N, nb_total_det = nb * N, nb_total_median = qq[1] * N, nb_total_lo = qq[2] * N, nb_total_hi = qq[3] * N)
-  }))))
-  wcsv(CV, "cohort_value.csv")
+  nb_det <- function(comp, cn, h) { d <- DC0[DC0$comparison == comp & DC0$column == cn & DC0$axis == "hr0" & abs(DC0$x - h) < 1e-9, ]
+    stopifnot(nrow(d) == 1); d$cap_500 - PV0[["E02"]] }
+  nb_psa <- function(comp, cn, h) { p <- PS[PS$comparison == comp & PS$column == cn & PS$axis == "hr0" & abs(PS$x - h) < 1e-9, ]
+    stopifnot(nrow(p) == 1000, identical(sort(p$rep), 1:1000)); p <- p[order(p$rep), ]; p$cap_500 - PV0[["E02"]] }   # by replicate
+  CJ <- do.call(rbind, lapply(seq_len(nrow(NS)), function(i) do.call(rbind, lapply(c("base", "kext"), function(cn) do.call(rbind, lapply(c(0.95, 0.90, 0.85), function(h) {
+    m <- nb_det("main", cn, h); s <- nb_det("secondary", "base", h)
+    qq <- q(NS$n_pembro[i] * nb_psa("main", cn, h) + NS$n_other[i] * nb_psa("secondary", "base", h))
+    data.frame(setting = NS$setting[i], N = NS$N[i], n_pembro = NS$n_pembro[i], n_other = NS$n_other[i], column = cn, hr0 = h, lambda = LAMBDA[1],
+               programme = "E02", programme_cost = PV0[["E02"]], nb_person_main_det = m, nb_person_secondary_det = s,
+               total_pembro_det = NS$n_pembro[i] * m, total_other_det = NS$n_other[i] * s, total_det = NS$n_pembro[i] * m + NS$n_other[i] * s,
+               total_median = qq[1], total_lo = qq[2], total_hi = qq[3])
+  }))))))
+  wcsv(CJ, "cohort_value_jbcs2024.csv")
 }

@@ -232,7 +232,7 @@ S9 <- lapply(names(SCN), function(s) list(DC = rd(paste0(s, "_det_caps.csv")), D
 names(S9) <- names(SCN)
 CRB <- rd("sc_base_crossings.csv"); SV <- rd("det_cost_saving_crossings.csv")
 add("## 7. 补充：转移复发治疗费的情景、增量费用的分解、一年对象患者的净收益（分析计划第 9 节）", "",
-    sprintf("2026-10-26 补充，依据尾崎 2026-10-26 邮件。分析计划第 9 节在计算前单独提交（5e1c0dd）。计算：`R/22_phase2b_main.R plan9`（PSA 运行时 git HEAD 为 %s；两个情景 × %d 个样本，%d 个进程，%.1f 分钟）。第 1 至 6 节的基准结果不变；用同一程序按基本值重算的上限与 E 交点与 `det_caps.csv`、`det_e_crossings.csv` 一致（脚本内核对）。结果文件以 `sc_metcost50_`、`sc_eribulin_`、`sc_base_`、`decomp_`、`cohort_value` 开头。",
+    sprintf("2026-10-26 补充，依据尾崎 2026-10-26 邮件。分析计划第 9 节在计算前单独提交（5e1c0dd），第 9.3 节的追记（N 的来源更新）同样（078c02f）。计算：`R/22_phase2b_main.R plan9`（PSA 运行时 git HEAD 为 %s；两个情景 × %d 个样本，%d 个进程，%.1f 分钟）。第 1 至 6 节的基准结果不变；用同一程序按基本值重算的上限与 E 交点与 `det_caps.csv`、`det_e_crossings.csv` 一致（脚本内核对）。结果文件以 `sc_metcost50_`、`sc_eribulin_`、`sc_base_`、`decomp_`、`cohort_value` 开头。",
             S9[[1]]$PSA$commit, length(unique(S9[[1]]$PSA$ex$rep)), S9[[1]]$PSA$workers, S9[[1]]$PSA$minutes), "")
 # 7.1 scenarios
 add("### 7.1 转移复发治疗费的情景", "",
@@ -301,25 +301,42 @@ add("### 7.2 增量费用的分解（确定性，折现后，基准参数）", "
     sprintf("「其他」的内訳（基准栏）：%s。两组都用帕博利珠单抗，不良事件的费用相同（0）；帕博利珠单抗药剂费与给药费用的差来自术后给药时点无事件者的比例（运动减少复发）。「合计（不含方案费用）」与第 1.6 节 hr0 = 0.85 的避免的医疗费用一致（脚本内核对）。",
             oth(DMC)), "")
 
-# 7.3 net benefit for one year's patients
-NS <- read.csv(file.path(ROOT, "input", "params", "cohort_N_sources.csv"), stringsAsFactors = FALSE, encoding = "UTF-8", check.names = FALSE)
-NV <- rd("cohort_value_N.csv"); CV <- rd("cohort_value.csv"); Nn <- NV$value[NV$factor == "N"]
-st_lab <- c(found = "取得", found_mismatch = "取得（定义与公式不完全一致）", not_found = "取不到（停下）")
-fmt_v <- function(f, v) ifelse(is.na(v), "－", ifelse(f == "incidence", yen(v), sprintf("%.4f", v)))
-add("### 7.3 一年对象患者的净收益（主比较，λ = 500 万日元/QALY，方案费用 E02）", "",
-    "#### 7.3.1 年对象人数 N 的推算（**尾崎确认待ち**）", "",
-    md_table(data.frame(因子 = NS$label, 值 = fmt_v(NS$factor, NS$value), 状态 = st_lab[NS$status], 数据年份 = NS$data_year, 出处 = NS$source,
-                        位置 = NS$location, 备注 = NS$note, check.names = FALSE, row.names = NULL)), "",
-    if (is.na(Nn)) sprintf("N 未算出：%s 取不到，按指示停下，不自行假设。下表只报告每人的值。", paste(NS$label[NS$status == "not_found"], collapse = "、"))
-    else sprintf("N = %s（%s）。%s与公式的定义差距大（见备注），N 只是暂定的量级，待尾崎确认。", yen(round(Nn)), paste(fmt_v(NS$factor, NS$value), collapse = " × "), paste(NS$label[grepl("不一致（大）", NS$note)], collapse = "、")), "")
+# 7.3 net benefit for one year's patients (9.3 addendum of 2026-10-26: N from the JBCS registry report no. 55;
+# the earlier N = 1,719 from four factors is superseded)
+NJ <- read.csv(file.path(ROOT, "input", "params", "cohort_N_jbcs2024.csv"), stringsAsFactors = FALSE, encoding = "UTF-8", check.names = FALSE)
+nj <- setNames(NJ$value, NJ$item); CJ <- rd("cohort_value_jbcs2024.csv")
 oku <- function(v) ifelse(is.na(v), "－", formatC(v / 1e8, format = "f", digits = 1, big.mark = ","))
-add("#### 7.3.2 净收益（\"如果有效\"时的条件值）", "",
-    md_table(data.frame(栏 = ifelse(CV$column == "base", "基准", "早期复发后 k（外部）"), hr0 = sprintf("%.2f", CV$hr0),
-                        `上限（万日元）` = man(CV$cap_det), `每人净收益 = 上限 − E02（万日元）` = cell(CV$nb_person_det, CV$nb_person_median, CV$nb_person_lo, CV$nb_person_hi),
-                        N = ifelse(is.na(CV$N), "－", yen(round(CV$N))),
-                        `一年对象患者的净收益（亿日元）` = ifelse(is.na(CV$N), "－", sprintf("%s（%s [%s, %s]）", oku(CV$nb_total_det), oku(CV$nb_total_median), oku(CV$nb_total_lo), oku(CV$nb_total_hi))),
-                        check.names = FALSE)), "",
-    "这是\"如果运动的复发风险比为该 hr0\"时的条件值，不是期望值（运动效应的大小未知，本研究不对其设分布）。确定性值（PSA 中位数 [2.5%, 97.5%]，由第 1 节的 PSA 样本计算；N 不抽样）。净收益按 λ = 500 万日元/QALY 换算 QALY，减去方案费用 E02（19.24 万日元）。", "")
+show <- c("nac_total", "nac_stage2", "nac_stage3", "nac_pembro", "sens_N_2023", "sens_N_upper")
+add("### 7.3 一年对象患者的净收益（λ = 500 万日元/QALY，方案费用 E02；分析计划第 9.3 节追记）", "",
+    "#### 7.3.1 对象人数（日本乳癌学会 全国乳がん患者登録調査報告 第 55 号，2024 年次症例，確定版）", "",
+    md_table(data.frame(项目 = NJ$label[match(show, NJ$item)], 人数 = yen(nj[show]), 出处 = NJ$source[match(show, NJ$item)],
+                        备注 = trimws(sub("。?会员限定资料。原表由尾崎提供后存档于.*$", "", NJ$note[match(show, NJ$item)])), check.names = FALSE, row.names = NULL)), "",
+    "第 55 号为会员限定资料；原表由尾崎提供后存档于 `input/params/sources_cohort/local/`（不提交；2026-10-26 时尚未收到）。", "",
+    sprintf("数值依据尾崎 2026-10-26 邮件（`input/params/cohort_N_jbcs2024.csv`）。主计算：帕博利珠单抗的 %s 人按主比较的每人净收益，其余 %s 人按次比较的每人净收益，两者相加（尾崎提供了帕博利珠单抗的实际使用人数，按实际组成合计比全部套用主比较更准确）。敏感性的两个 N 保持帕博利珠单抗比例 %s / %s = %.4f（66%%）。",
+            yen(nj[["nac_pembro"]]), yen(nj[["nac_total"]] - nj[["nac_pembro"]]), yen(nj[["nac_pembro"]]), yen(nj[["nac_total"]]), nj[["nac_pembro"]] / nj[["nac_total"]]), "",
+    sprintf("另记（不作分析）：登录中术前化疗例的 pCR（ypT0/is N0）2024 年为 %.0f%%，低于 KEYNOTE-522 帕博利珠单抗组的 %.1f%%；口径不完全相同（登录含未用帕博利珠单抗的病例），留作 Discussion 的材料。",
+            100 * nj[["pcr_registry"]], 100 * nj[["pcr_kn522"]]), "")
+cj_tab <- function(d) data.frame(栏 = ifelse(d$column == "base", "基准", "早期复发后 k（外部）"), hr0 = sprintf("%.2f", d$hr0),
+  `帕博利珠单抗例（人）` = formatC(d$n_pembro, format = "f", digits = if (all(abs(d$n_pembro - round(d$n_pembro)) < 1e-9)) 0 else 1, big.mark = ","),
+  `每人净收益：主比较（万日元）` = man(d$nb_person_main_det),
+  `其余（人）` = formatC(d$n_other, format = "f", digits = if (all(abs(d$n_other - round(d$n_other)) < 1e-9)) 0 else 1, big.mark = ","),
+  `每人净收益：次比较（万日元）` = man(d$nb_person_secondary_det),
+  `帕博利珠单抗部分（亿日元）` = oku(d$total_pembro_det), `其余部分（亿日元）` = oku(d$total_other_det),
+  `合计（亿日元）` = sprintf("%s（%s [%s, %s]）", oku(d$total_det), oku(d$total_median), oku(d$total_lo), oku(d$total_hi)), check.names = FALSE, row.names = NULL)
+st <- c(main = "主计算", sens_2023 = "敏感性", sens_upper = "敏感性")
+add("#### 7.3.2 净收益（\"如果有效\"时的条件值）", "")
+for (s in c("main", "sens_2023", "sens_upper")) {
+  d <- CJ[CJ$setting == s, ]
+  add(sprintf("%s：N = %s（%s）", st[[s]], yen(d$N[1]), sub("^敏感性：N（(.*)）$", "\\1", NJ$label[match(c(main = "nac_total", sens_2023 = "sens_N_2023", sens_upper = "sens_N_upper")[[s]], NJ$item)])), "",
+      md_table(cj_tab(d)), "")
+}
+add("每人净收益 = 上限（λ = 500 万日元/QALY）− E02（19.24 万日元），确定性值；合计为确定性值（PSA 中位数 [2.5%, 97.5%]），PSA 在第 1 节的每个样本内把两部分相加后取分位数（N 不抽样）。次比较不涉及帕博利珠单抗，两栏的其余部分相同。这是\"如果运动的复发风险比为该 hr0\"时的条件值，不是期望值（运动效应的大小未知，本研究不对其设分布）。全部数值见 `cohort_value_jbcs2024.csv`。", "")
+CV <- rd("cohort_value.csv"); NV <- rd("cohort_value_N.csv")
+ov <- CV[CV$column == "base", ]; ov <- ov[order(-ov$hr0), ]
+add("#### 7.3.3 已取代：由 4 个因子推算的 N", "",
+    sprintf("6704e54 中由 4 个因子推算的 N = %s（%s；`input/params/cohort_N_sources.csv`）按分析计划第 9.3 节追记撤销。理由：术前化疗比例来自免疫治疗以前（2012–2016 年），分母含 I 期；病期分布来自 2004 年。其结果文件 `cohort_value.csv`、`cohort_value_N.csv` 保留，不再使用（当时全部套用主比较，基准栏 hr0 = %s 时一年净收益为 %s 亿日元）。",
+            yen(round(NV$value[NV$factor == "N"])), paste(sprintf("%s", ifelse(NV$factor[1:4] == "incidence", yen(NV$value[1:4]), sprintf("%.4g", NV$value[1:4]))), collapse = " × "),
+            paste(sprintf("%.2f", ov$hr0), collapse = "、"), paste(oku(ov$nb_total_det), collapse = "、")), "")
 add("### 7.4 不做 EVPI 的理由", "",
     sprintf("EVPI 需要假设运动效应（hr0）的分布。划算的分界点（主比较的 E02 交点 hr0 = %.3f，第 1.5 节）接近 1：hr0 = 0.95 时上限 ≥ E02 的概率为 %s，hr0 = 1.00 时为 %s（第 1.1 节）。所以 EVPI 几乎完全由所假设的分布在 hr0 ≥ 1（分界点以上）一侧放多少概率决定，反映的是这一假设而不是数据（与分析计划第 6 节不做运动效应合成分布的理由相同）。",
             CR$hr0[CR$comparison == "main" & CR$column == "base" & CR$lambda == 5e6 & CR$programme == "E02"],
