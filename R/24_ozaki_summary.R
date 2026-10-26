@@ -12,12 +12,14 @@
 # v2 (2026-10-25, user instruction; v1 was not sent, it and check_v1.md are in output/phase2/ozaki/archive/):
 # premises line 2 (published data up to the final analysis); table 1 cost per QALY as estimates only, footnote
 # rewritten; figure 1 legend names the solid and the dashed line.
+# v3 (2026-10-25, user instruction; v2 not sent, it and check_v2.md in archive/): table 1 caption says that the
+# columns of incremental cost and QALYs carry the ranges.
 
 source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
 suppressPackageStartupMessages({ library(officer); library(flextable); library(ggplot2); library(grid) })
 M <- file.path(ROOT, "output", "phase2", "main")
 O <- file.path(ROOT, "output", "phase2", "ozaki"); dir.create(O, showWarnings = FALSE, recursive = TRUE)
-VER <- "v2"
+VER <- "v3"
 DOCX <- file.path(O, sprintf("運動CEA_暫定結果_%s.docx", VER))
 rd <- function(f) read.csv(file.path(M, f), stringsAsFactors = FALSE, encoding = "UTF-8")
 DC <- rd("det_caps.csv"); SM <- rd("psa_caps_summary.csv"); DR <- rd("det_reference.csv"); RS <- rd("psa_reference_summary.csv")
@@ -183,7 +185,7 @@ doc <- para(doc, "入力値の", const("9", "【要確認】の 9 行（phase2b_
             const("1", "phase2b_report.md 第 6 節：主比較の上限への影響の最大が 0.0 万円（1 万円未満）"), "万円未満。")
 doc <- body_end_block_section(doc, block_section(A4P))
 # table 1 (landscape)
-doc <- para(doc, "表1　ペムブロリズマブの費用対効果（化学療法のみとの比較）。各欄は推定値 [不確かさを反映した範囲]。範囲は",
+doc <- para(doc, "表1　ペムブロリズマブの費用対効果（化学療法のみとの比較）。増分費用と増分QALYの欄は推定値 [不確かさを反映した範囲]。範囲は",
             const("2.5", "PSA の 2.5 パーセンタイル（psa_reference_summary.csv、phase2b_report.md）"), "%から",
             const("97.5", "PSA の 97.5 パーセンタイル（同上）"), "%。", after = 6)
 doc <- body_add_flextable(doc, ft1, align = "left")
@@ -276,7 +278,9 @@ L <- c(sprintf("# 尾崎先生向け暫定結果資料 %s の確認", VER), "",
        "## 5. v1 からの変更（v2、2026-10-25。v1 は未送付、`archive/` に移した）", "",
        "- 前提の第 2 行：「生存のデータは KEYNOTE-522 試験の公表データ（最終解析まで）に基づいて推計した。」",
        "- 表1：「1QALYあたりの費用（万円）」の列は推定値だけにした（範囲を外した）。脚注✳を「1QALYあたりの費用は、費用が減る場合や QALY が減る場合を含むと範囲の解釈が難しいため、推定値のみ示す。不確かさは右の2列の確率で示した。」に替えた（✳ は列の見出しの右上のまま）。",
-       "- 図1の図注：「実線はペムブロリズマブを含む治療に上乗せ、破線は化学療法のみに上乗せした場合の推定値」。")
+       "- 図1の図注：「実線はペムブロリズマブを含む治療に上乗せ、破線は化学療法のみに上乗せした場合の推定値」。", "",
+       "## 6. v2 からの変更（v3、2026-10-25。v2 は未送付、`archive/` に移した）", "",
+       "- 表1の見出し：「各欄は推定値 [不確かさを反映した範囲]」を「増分費用と増分QALYの欄は推定値 [不確かさを反映した範囲]」に替えた。ほかは v2 のまま。")
 writeLines(L, file.path(O, sprintf("check_%s.md", VER)), useBytes = TRUE)
 cat(sprintf("checks: heading %d, bold body %d, bold numeric cells %d, non-black %d, middle dots %d, Note %d, A4 %s, unregistered numbers %d\n",
             n_heading, n_bold_body, n_bold_numcell, n_nonblack, n_dot, n_note, a4, length(unreg)))
