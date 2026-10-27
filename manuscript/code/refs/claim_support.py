@@ -172,7 +172,8 @@ CLAIMS = [
     C("M.SA.7 s2", "jbcs55", f"file:{JB}", '"nac_pembro","其中术前用帕博利珠单抗","2294"', status="provided", note=PROV),
     # ---------------------------------------------------------------- Discussion, Implications, Limitations (v7; text of the user)
     C("D.3 s2", "licata2025", "abstract", "Recurrences within 24 months account for most recurrences in patients with TNBC who relapse after neoadjuvant "
-      "chemo-immunotherapy."),
+      "chemo-immunotherapy.", "17.5% (KEYNOTE-522)", "The proportion of early relapse ranged from 64.6% in NSABP B-59/GeparDouze to 82.9% in GeparNuevo.",
+      note="v9 'after neoadjuvant chemotherapy with pembrolizumab': KEYNOTE-522 is one of the five trials, and the early share is above half in all of them"),
     C("D.4 s3", "courneya2025", "abstract", "0.72; 95% confidence interval [CI], 0.55 to 0.94"),
     C("D.4 s3", "courneya2014", "abstract", "(HR, 0.68; 95% confidence interval (CI), 0.37-1.24; log-rank, P = 0.21)",
       note="exploratory follow-up of one trial; the text calls both 'much smaller' than the HR of 0.425 of Table 3"),
@@ -186,7 +187,6 @@ CLAIMS = [
       "was cost-effective versus chemotherapy alone in patients with high-risk, early-stage TNBC in Switzerland"),
     C("D.5 s1", "pollinger2025", "abstract", "both of which were lower than the 2022 Egyptian cost-effectiveness threshold",
       "In Egypt, pembrolizumab + chemotherapy/pembrolizumab is a cost-effective treatment"),
-    C("D.5 s3", "c2h_list", "check", "pembrolizumab (キイトルーダ) not among them"),
     # v8: paragraph 6 replaced by the user's text
     C("D.6 s1", "chan2026", "abstract", "demonstrated that a 3-year structured exercise program (SEP) improved disease-free and overall survival",
       "This prespecified economic evaluation used prospectively collected data from all trial participants",
@@ -202,15 +202,16 @@ CLAIMS = [
       note="the reviews contain evaluations of effects on fatigue, fitness or quality of life (full texts of khan2019 and gublergut2021); "
            "the sentence refers to those evaluations, not to every evaluation in the reviews"),
     C("D.7 s2", "jbcs55", f"file:{JB}", '"pcr_registry","登录中术前化疗例的 pCR（ypT0/is N0，2024 年）","0.47"', status="provided", note=PROV),
-    # v8: fitness only; mijwel2018 (no fitness outcome) removed by the user's decision of 2026-10-27
-    C("IMP.1 s1", "furmaniak2016", "abstract", "physical exercise during adjuvant treatment for breast cancer probably improves physical fitness",
-      note="the trials of the review were during adjuvant treatment; the sentence applies them to neoadjuvant chemotherapy"),
+    # v9: fitness during adjuvant chemotherapy, and supervised exercise delivered during neoadjuvant chemotherapy
+    C("IMP.1 s1", "furmaniak2016", "abstract", "physical exercise during adjuvant treatment for breast cancer probably improves physical fitness"),
     C("IMP.1 s1", "courneya2007", "abstract", "breast cancer patients initiating adjuvant chemotherapy",
-      "they did improve self-esteem, physical fitness, body composition, and chemotherapy completion rate",
-      note="adjuvant chemotherapy; the sentence applies the result to neoadjuvant chemotherapy"),
+      "they did improve self-esteem, physical fitness, body composition, and chemotherapy completion rate"),
     C("IMP.1 s1", "vanwaart2015", "abstract", "patients undergoing adjuvant chemotherapy for breast cancer",
-      "Onco-Move and OnTrack resulted in less decline in cardiorespiratory fitness (P < .001)",
-      note="adjuvant chemotherapy; the sentence applies the result to neoadjuvant chemotherapy"),
+      "Onco-Move and OnTrack resulted in less decline in cardiorespiratory fitness (P < .001)"),
+    C("IMP.1 s1", "kjeldsted2025", "abstract", "received supervised high-intensity interval training and progressive resistance training 3 times weekly "
+      "during 18 to 24 weeks of neoadjuvant chemotherapy"),
+    C("IMP.1 s1", "schmidt2025", "abstract", "were randomly assigned to supervised resistance training (RT, n = 60) or aerobic training (AT, n = 60) "
+      "twice weekly during NACT"),
     C("L.2 s1", "grinda2023", "abstract", "All ESME patients diagnosed between 2008 and 2020",
       note="the abstract gives the period of diagnosis; 'largely before immunotherapy and antibody-drug conjugates' is inferred from that period "
            "and is not stated in the abstract"),

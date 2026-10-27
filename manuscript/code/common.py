@@ -19,10 +19,10 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 MAIN = ROOT / "output" / "phase2" / "main"
 P1 = ROOT / "output" / "phase1"
-VER = "v8"  # version written by this run; earlier versions are in manuscript/archive/
-PREV = "v7"
-BASE = "v7（manuscript/archive/v7/ 的交付物与同一套生成代码；本文 manuscript_v8.docx 由 manuscript_v7.docx 直接编辑而成）"
-STEP = "v8：最后的文字修改；插入标题与 Abstract"
+VER = "v9"  # version written by this run; earlier versions are in manuscript/archive/
+PREV = "v8"
+BASE = "v8（manuscript/archive/v8/ 的交付物与同一套生成代码；本文 manuscript_v9.docx 由 manuscript_v8.docx 直接编辑而成）"
+STEP = "v9：最后的修改（Implications、D.3、D.5、标题、Abstract）"
 OUT = ROOT / "manuscript" / VER
 ARCHIVE_PREV = ROOT / "manuscript" / "archive" / PREV
 FIGDIR = OUT / "figures"
