@@ -1,0 +1,90 @@
+{
+ "date": "2026-10-27",
+ "crossref_abstract": {
+  "kn522final2026": "507 Background: KEYNOTE-522 (NCT03036488) showed statistically significant and clinically meaningful improvements in pCR, EFS, and OS with the addition of pembrolizumab (pembro) to chemotherapy (chemo) in participants (pts) with high-risk early-stage TNBC. Here, we present updated results from the final analysis. Methods: Eligible pts with previously untreated, non-metastatic, centrally confirmed TNBC (stage T1c N1-2 or T2-4 N0-2 per AJCC) were randomized 2:1 to neoadjuvant pembro 200 mg Q3W or placebo (pbo), both given with 4 cycles of paclitaxel + carboplatin, then 4 cycles of doxorubicin or epirubicin + cyclophosphamide. After definitive surgery, pts received adjuvant pembro or pbo for 9 cycles or until recurrence or unacceptable toxicity. Dual primary endpoints are pCR (ypT0/Tis ypN0) and EFS (time from randomization to disease progression that precluded definitive surgery, local/distant recurrence, second primary cancer, or death from any cause); OS is the key secondary endpoint. Results: 1174 pts were randomized to pembro (n = 784) or pbo (n = 390). At the data cutoff date (October 14, 2025), median follow-up (range) was 93.8 mo (84.7-102.8). The 7-yr EFS rate (95% CI) was 78.3% (75.3-81.1) in the pembro group vs 69.8% (65.0-74.2) in the pbo group; the HR was 0.68 (95% CI, 0.54-0.86). The 7-yr OS rate (95% CI) was 85.1% (82.5-87.5) in the pembro group vs 77.2% (72.7-81.1) in the pbo group; the HR was 0.64 (95% CI, 0.49-0.85). The benefit of pembro on EFS and OS was generally consistent across most prespecified subgroups, including those defined by PD-L1 expression, nodal status, and disease stage. Rates of grade ≥3 treatment-related AEs were 77.1% in the pembro group and 73.3% in the pbo group (death incidence, 0.5% vs 0.3%, respectively); rates of any grade immune-mediated AEs were 35.0% vs 13.1%, respectively. Conclusions: After a median follow-up of 7.8 years, neoadjuvant pembro + chemo followed by adjuvant pembro continues to show a clinically meaningful survival benefit compared with neoadjuvant chemo alone in pts with high-risk early-stage TNBC. Clinical trial information: NCT03036488 .",
+  "ohtera2018": ""
+ },
+ "affiliations": {
+  "fedele2026": [
+   "Breast Care Unit, University Hospital Consortium Policlinico of Bari, 70124, Bari, Italy.",
+   "Day Hospital Oncologico IRCCS CROB, 85028, Rionero in Vulture, Potenza, Italy.",
+   "Directorate of Health Professions and Nursing, Asl Bari, 70123, Bari, Italy.",
+   "Medical Directorate, IRCCS-CROB (Scientific Institute for Research, Hospitalization and Healthcare) Basilicata Cancer Institute, 85028, Rionero in Vulture, Potenza, Italy.",
+   "Oncology Unit, Dario Camberlingo Hospital, 72021, Francavilla Fontana, Brindisi, Italy.",
+   "Oncology Unit, Dario Camberlingo Hospital, 72021, Francavilla Fontana, Brindisi, Italy. palma.fedele@asl.brindisi.it.",
+   "Oncology Unit, Fondazione \"Casa Sollievo della Sofferenza\", IRCCS, 71013, San Giovanni Rotondo, Foggia, Italy.",
+   "Oncology Unit, Mons. Dimiccoli Hospital, 70051, Barletta, Italy.",
+   "Oncology Unit, Sacro Cuore di Ges&#xf9; Hospital, 73014, Gallipoli, Lecce, Italy.",
+   "Oncology Unit, San Carlo Hospital, 85100, Potenza, Italy.",
+   "Oncology Unit, San Paolo Hospital, 70123, Bari, Italy.",
+   "Oncology Unit, Teresa Masselli Mascia Hospital, 71013, San Severo, Foggia, Italy.",
+   "Oncology Unit, Vito Fazzi Hospital, 73100, Lecce, Italy.",
+   "S.S.D. C.O.r.O. Bed Management Presa in Carico, TDM, IRCCS Istituto Tumori \"Giovanni Paolo II\", 70124, Bari, Italy.",
+   "Trial Office, IRCCS-CROB (Scientific Institute for Research, Hospitalization and Healthcare) Basilicata Cancer Institute, 85028, Rionero in Vulture, Potenza, Italy.",
+   "U.O. Medical Oncology and Biomolecular Therapy, Department of Medical and Surgical Sciences, University of Foggia, 71100, Foggia, Italy."
+  ],
+  "elmore2021": [
+   "Department of Breast Medical Oncology, The University of Texas MD Anderson Cancer Center, Houston, TX, USA.",
+   "Department of Breast Surgical Oncology, The University of Texas MD Anderson Cancer Center, Houston, TX, USA.",
+   "Department of Breast Surgical Oncology, The University of Texas MD Anderson Cancer Center, Houston, TX, USA. MTeshome@mdanderson.org.",
+   "Department of Investigational Cancer Therapeutics, The University of Texas MD Anderson Cancer Center, Houston, TX, USA.",
+   "Department of Radiation Oncology, The University of Texas MD Anderson Cancer Center, Houston, TX, USA."
+  ],
+  "grinda2023": [
+   "Department of Biostatistics, DRCI, Centre L&#xe9;on B&#xe9;rard, 28 Promenade L&#xe9;a et Napol&#xe9;on Bullukian, 69008 Lyon, France.",
+   "Department of Cancer Medicine, Gustave Roussy, 114 Rue Edouard Vaillant, 94800 Villejuif, France.",
+   "Department of Cancer Medicine, Gustave Roussy, 114 Rue Edouard Vaillant, 94800 Villejuif, France; Sorbonne University, Medicine, 21 rue de l'&#xc9;cole de m&#xe9;decine, 75006 Paris, France. Electronic address: thomas.grinda@gustaveroussy.fr.",
+   "Department of Medical Oncology, Centre Antoine Lacassagne, 06000 Nice, France.",
+   "Department of Medical Oncology, Centre Eug&#xe8;ne Marquis, Avenue de la Bataille Flandres-Dunkerque, 35000 Rennes, France.",
+   "Department of Medical Oncology, Centre Fran&#xe7;ois Baclesse, 3 Avenue du G&#xe9;n&#xe9;ral Harris, 14000 Caen, France.",
+   "Department of Medical Oncology, Centre Henri Becquerel, Rue d'Amiens, 76000 Rouen, France.",
+   "Department of Medical Oncology, Centre Jean Perrin, 58 Rue Montalembert, 63011 Clermont Ferrand, France.",
+   "Department of Medical Oncology, Centre L&#xe9;on B&#xe9;rard, 28 Prom. L&#xe9;a et Napol&#xe9;on Bullukian, 69008 Lyon, France.",
+   "Department of Medical Oncology, Centre Paul Strauss, 3 Rue de la Porte de l'H&#xf4;pital, 67000 Strasbourg, France.",
+   "Department of Medical Oncology, Institut Bergoni&#xe9;, 229 Cours de l'Argonne, 33000 Bordeaux, France.",
+   "Department of Medical Oncology, Institut Claudius Regaud - IUCT Oncopole, 1 Avenue Ir&#xe8;ne-Joliot-Curie, 31059 Toulouse, France.",
+   "Department of Medical Oncology, Institut Curie, 26 Rue d'Ulm, 75005 Paris &amp; Saint-Cloud, France.",
+   "Department of Medical Oncology, Institut Paoli-Calmettes, 232 Boulevard de Sainte-Marguerite, 13009 Marseille, France.",
+   "Department of Medical Oncology, Institut de Canc&#xe9;rologie Jean-Godinot, 1 Rue du G&#xe9;n&#xe9;ral Koenig, 51100 Reims, France.",
+   "Department of Medical Oncology, Institut de Canc&#xe9;rologie de Bourgogne, 21079 Dijon, France.",
+   "Department of Medical Oncology, Institut de Canc&#xe9;rologie de l'Ouest Pays de Loire, 15 rue Andr&#xe9; Boquel, 49055 Angers, France.",
+   "Department of Medical Oncology, Institut du Cancer de Montpellier, Montpellier University, INSERM U1194, 208 Rue des Apothicaires, 34298 Montpellier, France.",
+   "Department of Research and Development, R&amp;D Unicancer, 101 Rue de Tolbiac, 75654 Paris, France.",
+   "Department of Research and Development, R&amp;D Unicancer, 101 Rue de Tolbiac, 75654 Paris, France; University of Bordeaux, Inserm, Bordeaux Population Health Research Center, Epicene Team, UMR 1219, 33000 Bordeaux, France.",
+   "Medical Oncology Department, Centre Oscar Lambret, 3 Rue Fr&#xe9;d&#xe9;ric Combemale, 59000 Lille, France.",
+   "Medical Oncology Department, Institut de Canc&#xe9;rologie de Lorraine, Vandoeuvre-l&#xe8;s-Nancy, 6 Avenue de Bourgogne, 54519 Vand&#x153;uvre-l&#xe8;s-Nancy, France."
+  ]
+ },
+ "pmc": {
+  "khan2019": {
+   "pmcid": "PMC6548756",
+   "sha256": "a580f2d2310607aa559ab416618e2b6c5d5edbb94af9b35fb3f9a83c8338a8e3",
+   "bytes": 109213
+  },
+  "gublergut2021": {
+   "pmcid": "PMC8521580",
+   "sha256": "ce92594b0cbfad6d4c6b72997932a28ed77f1fccc6d9d12ab1ff317e5c2a4b14",
+   "bytes": 172474
+  },
+  "favrebulle2024": {
+   "pmcid": "PMC10781656",
+   "sha256": "c5de3bef94284eb268c022b59cc327a14139ef66ded302134cfd40b911fe47f5",
+   "bytes": 94178
+  },
+  "huang2023": {
+   "pmcid": "PMC9988745",
+   "sha256": "5496016c0e48053a91c37a65d0f0c23c886b333230cf9e91c83c591beb320724",
+   "bytes": 106821
+  },
+  "kwong2024": {
+   "pmcid": "PMC11333381",
+   "sha256": "497370a5ecf5a7f01f14c5e4558db839866203d66409b6179a546069fd3df90b",
+   "bytes": 122661
+  },
+  "iwatani2021": {
+   "pmcid": "PMC8535054",
+   "sha256": "6dd8709881a66d0e3eef933cb6e82728d92dad3c6b257cf979085256ab1ba370",
+   "bytes": 74650
+  }
+ }
+}

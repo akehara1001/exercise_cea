@@ -1,9 +1,15 @@
-"""English labels for the input table (parameters_v10.xlsx) used in Supplementary Table S1.
+"""English labels for the input table (parameters_v10.xlsx) used in Supplementary Table S2.
 
-Item names follow the Japanese item column; sources translate only the Japanese
-parts of the source column. Personal communications are cited without names
-(whether to name the clinical experts is the authors' decision).
+Item names follow the Japanese item column. Each source text of the workbook is
+mapped to a short label with reference markers (cite(); the full references are
+in the reference list). Personal communications are cited without names, as
+breast medical oncologists at Japanese hospitals (decision N6, 2026-10-26); the
+number of experts follows the source text of the workbook.
 """
+from references import cite
+
+PC1 = "A breast medical oncologist at a Japanese hospital (personal communication, October 2026)"
+PC2 = "Two breast medical oncologists at Japanese hospitals (personal communication, October 2026)"
 
 ITEM = {
     "A01": "Paclitaxel plus carboplatin (12 weeks), drug cost",
@@ -108,32 +114,57 @@ UNIT = {
     "円/サイクル": "JPY per cycle",
 }
 
-FEE = "Medical fee schedule, fiscal year 2026"
-PRICE = "National drug price list, fiscal year 2026"
+FEE = "Medical fee schedule" + cite("fee2026")
+PRICE = "national drug price list"
+KN522 = "KEYNOTE-522 (interim analysis 4)" + cite("schmid2022")
+EMA = "European Medicines Agency assessment report" + cite("ema2022")
 SOURCE = {
     "A06・A08の値から構成": "Derived from inputs A06 and A08",
     "C01の値から構成": "Derived from input C01",
     "Chan KKW, et al. J Clin Oncol 2026;44:2130-9; 世界銀行PPP 2024; カナダ銀行 為替2024":
-        "Chan KKW, et al. J Clin Oncol 2026;44:2130-9; World Bank purchasing power parity 2024; Bank of Canada exchange rate 2024",
+        "CHALLENGE cost-utility analysis; purchasing power parity and exchange rate" + cite("chan2026", "worldbank_ppp", "boc_fx"),
     "Nusawat C, et al. Eur J Health Econ 2026. doi:10.1007/s10198-026-01912-9（厚労省 医療保険部会2022を引用）; Ohtera S, et al. ISPOR AP 2018":
-        "Nusawat C, et al. Eur J Health Econ 2026. doi:10.1007/s10198-026-01912-9 (citing a 2022 Ministry of Health, Labour and Welfare committee report); Ohtera S, et al. ISPOR Asia Pacific 2018",
+        "Published Japanese estimates" + cite("nusawat2026", "ohtera2018"),
+    "Nusawat C, et al. Eur J Health Econ 2026. doi:10.1007/s10198-026-01912-9": "Published Japanese estimate" + cite("nusawat2026"),
+    "Yoshinami T, et al. Breast Cancer 2025;32:857-66. doi:10.1007/s12282-025-01714-6": "Published Japanese estimate, used as a proxy" + cite("yoshinami2025"),
+    "Yoshinami T, et al. Breast Cancer 2025;32:857-66. doi:10.1007/s12282-025-01714-6; Nusawat C, et al. Eur J Health Econ 2026. doi:10.1007/s10198-026-01912-9":
+        "Published Japanese estimates" + cite("yoshinami2025", "nusawat2026"),
     "厚生労働省 薬価基準収載品目リスト（注射薬）tp20261014-01_02.xlsx（令和8年10月14日収載品目反映版、令和8年4月1日以降の薬価）":
-        "Ministry of Health, Labour and Welfare. National drug price list, injections (prices from April 2026; list as of 14 October 2026)",
+        "National drug price list" + cite("price2026"),
     "春日井市民病院 入院費用概算金額; 中電病院 手術費用等概算一覧表; K476（令和8年度）; Kuemmel S, et al. Ann Surg Oncol 2026":
-        "Published cost estimates of two Japanese hospitals; medical fee schedule code K476, fiscal year 2026; Kuemmel S, et al. Ann Surg Oncol 2026",
+        "Published cost estimates of Kasugai Municipal Hospital and Chuden Hospital; medical fee schedule code K476; KEYNOTE-522 surgical outcomes"
+        + cite("hosp_kasugai", "hosp_chuden", "fee2026", "kuemmel2026"),
+    "Kuemmel S, et al. Ann Surg Oncol 2026;33:5550-7": "KEYNOTE-522 surgical outcomes" + cite("kuemmel2026"),
+    "Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23)": KN522,
+    "EMA. Keytruda assessment report EMEA/H/C/003820/II/0110 (EMA/257879/2022; KEYNOTE-522, database cutoff 2021-03-23)": EMA,
+    "Schmid P, et al. N Engl J Med 2022;386:556-67 (KEYNOTE-522, IA4, data cutoff 2021-03-23); EMA. Keytruda assessment report EMEA/H/C/003820/II/0110 (EMA/257879/2022; KEYNOTE-522, database cutoff 2021-03-23)":
+        "KEYNOTE-522 (interim analysis 4); European Medicines Agency assessment report" + cite("schmid2022", "ema2022"),
+    "Schmid P, et al. N Engl J Med 2022;386:556-67, Supplementary Appendix (IA4, data cutoff 2021-03-23)":
+        "KEYNOTE-522 supplementary appendix (interim analysis 4)" + cite("schmid2022"),
     "立花和之進 先生、押正徳 先生（個人的連絡、2026年10月）; Andrade MdeO, et al. Breast Cancer Res Treat 2026;216:27（Neo-Real/GBECAM 0123）; Valachis A, et al. Br J Cancer 2026;135:329-35":
-        "Clinical experts (personal communication, October 2026); Andrade MdeO, et al. Breast Cancer Res Treat 2026;216:27; Valachis A, et al. Br J Cancer 2026;135:329-35",
-    "立花和之進 先生（個人的連絡、2026年10月23日）": "Clinical expert (personal communication, October 2026)",
-    "立花和之進 先生（個人的連絡、2026年10月24日、10月23日の回答を訂正）": "Clinical expert (personal communication, October 2026)",
+        PC2 + "; real-world and expert-consensus studies" + cite("andrade2026", "valachis2026"),
+    "立花和之進 先生（個人的連絡、2026年10月23日）": PC1,
+    "立花和之進 先生（個人的連絡、2026年10月24日、10月23日の回答を訂正）": PC1,
     "立花和之進 先生（個人的連絡、2026年10月24日）; TROPION-Breast02（第一三共/AstraZeneca 2025年10月）; Cortes J, et al. Lancet 2020; Miller K, et al. NEJM 2007; 薬価基準 令和8年度":
-        "Clinical expert (personal communication, October 2026); TROPION-Breast02 (Daiichi Sankyo and AstraZeneca, October 2025); Cortes J, et al. Lancet 2020; Miller K, et al. N Engl J Med 2007; " + PRICE,
-    "立花和之進 先生（個人的連絡、2026年10月24日）; 押正徳 先生（2026年10月24日、gBRCA陽性例の経験なし）": "Clinical experts (personal communication, October 2026)",
-    "立花和之進 先生（個人的連絡、2026年10月24日）; 薬価基準 令和8年度": "Clinical expert (personal communication, October 2026); " + PRICE,
-    "薬価基準 令和8年度; Masuda N, et al. N Engl J Med 2017;376:2147-59": PRICE + "; Masuda N, et al. N Engl J Med 2017;376:2147-59",
-    "薬価基準 令和8年度; リムパーザ添付文書": PRICE + "; olaparib package insert",
-    "薬価基準 令和8年度; 日本癌治療学会 制吐薬適正使用ガイドライン2023（第3版）": PRICE + "; Japan Society of Clinical Oncology antiemetic guideline 2023 (3rd edition)",
+        PC1 + "; trials; " + PRICE + cite("tropion2025", "cortes2020", "miller2007", "price2026"),
+    "立花和之進 先生（個人的連絡、2026年10月24日）; 押正徳 先生（2026年10月24日、gBRCA陽性例の経験なし）": PC2,
+    "立花和之進 先生（個人的連絡、2026年10月24日）; 薬価基準 令和8年度": PC1 + "; " + PRICE + cite("price2026"),
+    "Nusawat C, et al. Eur J Health Econ 2026. doi:10.1007/s10198-026-01912-9（厚労省 医療保険部会2022を引用）; Ohtera S, et al. ISPOR AP 2018 ": None,
+    "Courneya KS, et al. N Engl J Med 2025;393:13-25": "CHALLENGE trial" + cite("courneya2025"),
+    "Courneya KS, et al. N Engl J Med 2025;393:13-25 (CHALLENGE, CCTG CO.21). DOI 10.1056/NEJMoa2502760": "CHALLENGE trial" + cite("courneya2025"),
+    "薬価基準 令和8年度; Masuda N, et al. N Engl J Med 2017;376:2147-59": "National drug price list; CREATE-X" + cite("price2026", "masuda2017"),
+    "Fujisawa F, et al. Mol Clin Oncol 2021;14:96. doi:10.3892/mco.2021.2258": "Japanese single-institution study" + cite("fujisawa2021"),
+    "薬価基準 令和8年度; リムパーザ添付文書": "National drug price list; olaparib package insert" + cite("price2026", "olaparib_pi"),
+    "Masuda N, et al. 2017. N Engl J Med 376:2147-59. DOI 10.1056/NEJMoa1612645": "CREATE-X" + cite("masuda2017"),
+    "Garber JE, et al. 2026. Ann Oncol (online ahead of print). DOI 10.1016/j.annonc.2026.08.002": "OlympiA, updated analysis" + cite("garber2026"),
+    "Favre-Bulle A, Huang M, Haiderali A, Bhadhuri A. Pharmacoecon Open 2024;8(1):91-101. DOI 10.1007/s41669-023-00445-8, PMID 37999854":
+        "KEYNOTE-522 EQ-5D-5L, German value set" + cite("favrebulle2024"),
+    "Favre-Bulle A, et al. Pharmacoecon Open 2024;8(1):91-101. DOI 10.1007/s41669-023-00445-8, PMID 37999854":
+        "KEYNOTE-522 EQ-5D-5L, German value set" + cite("favrebulle2024"),
+    "薬価基準 令和8年度; 日本癌治療学会 制吐薬適正使用ガイドライン2023（第3版）": "National drug price list; antiemetic guideline" + cite("price2026", "jsco2023"),
     "診療報酬点数表 令和8年度": FEE,
 }
+SOURCE = {k: v for k, v in SOURCE.items() if v is not None}
 
 RANGE_RULE = {"±25%": "±25% (assumed)", "片側対称": "mirrored (assumed)", "薬価固定": "drug price, lower only", "0例：PSAは固定": "zero events, fixed in PSA"}
 
@@ -143,6 +174,4 @@ def source(text: str, prev: str | None) -> str:
         return prev
     if text in SOURCE:
         return SOURCE[text]
-    if any("぀" <= ch <= "ヿ" or "一" <= ch <= "鿿" for ch in text):
-        raise KeyError(f"untranslated source: {text}")
-    return text
+    raise KeyError(f"source without a mapped label and reference: {text}")

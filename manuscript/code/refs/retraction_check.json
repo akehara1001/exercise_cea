@@ -1,0 +1,535 @@
+{
+ "andrade2026": {
+  "doi": "10.1007/s10549-026-07938-0",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "ax2022": {
+  "doi": "10.1080/0284186X.2022.2075238",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "ax2023": {
+  "doi": "10.1080/0284186X.2023.2200149",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "boudewijns2023": {
+  "doi": "10.1007/s40258-022-00774-5",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "campbell2019": {
+  "doi": "10.1249/MSS.0000000000002116",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "cannioto2021": {
+  "doi": "10.1093/jnci/djaa046",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "chan2026": {
+  "doi": "10.1200/JCO-26-00765",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "chisaki2025": {
+  "doi": "10.1007/s40261-025-01445-8",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "cortes2011": {
+  "doi": "10.1016/S0140-6736(11)60070-6",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "cortes2020": {
+  "doi": "10.1016/S0140-6736(20)32531-9",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "courneya2007": {
+  "doi": "10.1200/JCO.2006.08.2024",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "courneya2014": {
+  "doi": "10.1249/MSS.0000000000000297",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "courneya2025": {
+  "doi": "10.1056/NEJMoa2502760",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "deboniface2022": {
+  "doi": "10.1371/journal.pone.0274804",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "dent2007": {
+  "doi": "10.1158/1078-0432.CCR-06-3045",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "diasrato2026": {
+  "doi": "10.1007/s00520-026-11156-1",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "elmore2021": {
+  "doi": "10.1245/s10434-021-10444-w",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "esmo2023": {
+  "doi": "10.1016/j.annonc.2023.10.008",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "favrebulle2024": {
+  "doi": "10.1007/s41669-023-00445-8",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "fedele2026": {
+  "doi": "10.1007/s10549-026-08023-2",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "fujisawa2021": {
+  "doi": "10.3892/mco.2021.2258",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "furmaniak2016": {
+  "doi": "10.1002/14651858.CD005001.pub3",
+  "crossref_ok": true,
+  "crossref_update_to": [
+   {
+    "type": "new_version",
+    "doi": "10.1002/14651858.cd005001.pub2"
+   }
+  ],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "garber2026": {
+  "doi": "10.1016/j.annonc.2026.08.002",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "grinda2023": {
+  "doi": "10.1016/j.ejca.2023.05.023",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "gublergut2021": {
+  "doi": "10.1007/s11764-021-01002-0",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "guyot2012": {
+  "doi": "10.1186/1471-2288-12-9",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "hasegawa2020": {
+  "doi": "10.1016/j.jval.2019.10.005",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "huang2023": {
+  "doi": "10.1007/s12325-022-02365-1",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "husereau2022": {
+  "doi": "10.1136/bmj-2021-067975",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "iwatani2021": {
+  "doi": "10.3390/curroncol28050356",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "iyengar2025": {
+  "doi": "10.1002/cncr.35575",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "kakinuma2025": {
+  "doi": "10.1007/s10388-025-01144-5",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "kashiwa2024": {
+  "doi": "10.1007/s12029-024-01106-7",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "khan2019": {
+  "doi": "10.1007/s10549-019-05235-7",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "kjeldsted2025": {
+  "doi": "10.1158/1078-0432.CCR-25-0416",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "kn522final2026": {
+  "doi": "10.1200/JCO.2026.44.16_suppl.507",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "kuemmel2026": {
+  "doi": "10.1245/s10434-026-19121-2",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "kwong2024": {
+  "doi": "10.1007/s40487-024-00285-4",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "licata2025": {
+  "doi": "10.1158/1078-0432.CCR-25-1478",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "liedtke2008": {
+  "doi": "10.1200/JCO.2007.14.4147",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "ludwig2018": {
+  "doi": "10.1007/s40273-018-0615-8",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "masuda2017": {
+  "doi": "10.1056/NEJMoa1612645",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "may2017": {
+  "doi": "10.1136/bmjopen-2016-012187",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "mijwel2018": {
+  "doi": "10.1007/s10549-017-4571-3",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "miller2007": {
+  "doi": "10.1056/NEJMoa072113",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "morimoto2026": {
+  "doi": "10.1007/s41669-025-00634-7",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "nusawat2026": {
+  "doi": "10.1007/s10198-026-01912-9",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "ohtera2018": {
+  "doi": "10.1016/j.jval.2018.07.458",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "perrier2020": {
+  "doi": "10.1007/s00520-019-05078-4",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "pollinger2025": {
+  "doi": "10.1080/13696998.2024.2441073",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "sanft2023": {
+  "doi": "10.1200/JCO.23.00871",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "schmid2020": {
+  "doi": "10.1056/NEJMoa1910549",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "schmid2022": {
+  "doi": "10.1056/NEJMoa2112651",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "schmid2024": {
+  "doi": "10.1056/NEJMoa2409932",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "schmidt2025": {
+  "doi": "10.1016/j.jshs.2025.101064",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "shiroiwa2017": {
+  "doi": "10.1186/s12885-017-3774-7",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "shiroiwa2020": {
+  "doi": "10.1017/S0266462320000264",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "sugiura2023": {
+  "doi": "10.1093/jjco/hyad050",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "taniguchi2026": {
+  "doi": "10.1016/j.vhri.2025.101555",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "tomura2025": {
+  "doi": "10.1007/s11096-024-01826-7",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "tutt2021": {
+  "doi": "10.1056/NEJMoa2105215",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "valachis2026": {
+  "doi": "10.1038/s41416-026-03452-8",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "vanwaart2015": {
+  "doi": "10.1200/JCO.2014.59.1081",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "vanwaart2018": {
+  "doi": "10.1007/s10198-017-0936-0",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "wang2023": {
+  "doi": "10.1016/j.ypmed.2023.107491",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ },
+ "yoshinami2025": {
+  "doi": "10.1007/s12282-025-01714-6",
+  "crossref_ok": true,
+  "crossref_update_to": [],
+  "crossref_relations": {},
+  "openalex_ok": true,
+  "openalex_is_retracted": false
+ }
+}

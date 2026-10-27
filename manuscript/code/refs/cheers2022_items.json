@@ -1,0 +1,174 @@
+{
+ "source": "Husereau D, et al. BMJ 2022;376:e067975, Table 1 (PMC8749494 full-text XML from Europe PMC, retrieved 2026-10-26)",
+ "xml_sha256": "39eb4b25f1585b9223278cee38ba27f2105f98d4db289f70a7950c0785cde3b8",
+ "items": [
+  {
+   "item": 1,
+   "topic": "Title",
+   "guidance": "Identify the study as an economic evaluation and specify the interventions being compared.",
+   "section": "Title"
+  },
+  {
+   "item": 2,
+   "topic": "Abstract",
+   "guidance": "Provide a structured summary that highlights context, key methods, results, and alternative analyses.",
+   "section": "Abstract"
+  },
+  {
+   "item": 3,
+   "topic": "Background and objectives",
+   "guidance": "Give the context for the study, the study question, and its practical relevance for decision making in policy or practice.",
+   "section": "Introduction"
+  },
+  {
+   "item": 4,
+   "topic": "Health economic analysis plan",
+   "guidance": "Indicate whether a health economic analysis plan was developed and where available.",
+   "section": "Methods"
+  },
+  {
+   "item": 5,
+   "topic": "Study population",
+   "guidance": "Describe characteristics of the study population (such as age range, demographics, socioeconomic, or clinical characteristics).",
+   "section": "Methods"
+  },
+  {
+   "item": 6,
+   "topic": "Setting and location",
+   "guidance": "Provide relevant contextual information that may influence findings.",
+   "section": "Methods"
+  },
+  {
+   "item": 7,
+   "topic": "Comparators",
+   "guidance": "Describe the interventions or strategies being compared and why chosen.",
+   "section": "Methods"
+  },
+  {
+   "item": 8,
+   "topic": "Perspective",
+   "guidance": "State the perspective(s) adopted by the study and why chosen.",
+   "section": "Methods"
+  },
+  {
+   "item": 9,
+   "topic": "Time horizon",
+   "guidance": "State the time horizon for the study and why appropriate.",
+   "section": "Methods"
+  },
+  {
+   "item": 10,
+   "topic": "Discount rate",
+   "guidance": "Report the discount rate(s) and reason chosen.",
+   "section": "Methods"
+  },
+  {
+   "item": 11,
+   "topic": "Selection of outcomes",
+   "guidance": "Describe what outcomes were used as the measure(s) of benefit(s) and harm(s).",
+   "section": "Methods"
+  },
+  {
+   "item": 12,
+   "topic": "Measurement of outcomes",
+   "guidance": "Describe how outcomes used to capture benefit(s) and harm(s) were measured.",
+   "section": "Methods"
+  },
+  {
+   "item": 13,
+   "topic": "Valuation of outcomes",
+   "guidance": "Describe the population and methods used to measure and value outcomes.",
+   "section": "Methods"
+  },
+  {
+   "item": 14,
+   "topic": "Measurement and valuation of resources and costs",
+   "guidance": "Describe how costs were valued.",
+   "section": "Methods"
+  },
+  {
+   "item": 15,
+   "topic": "Currency, price date, and conversion",
+   "guidance": "Report the dates of the estimated resource quantities and unit costs, plus the currency and year of conversion.",
+   "section": "Methods"
+  },
+  {
+   "item": 16,
+   "topic": "Rationale and description of model",
+   "guidance": "If modelling is used, describe in detail and why used. Report if the model is publicly available and where it can be accessed.",
+   "section": "Methods"
+  },
+  {
+   "item": 17,
+   "topic": "Analytics and assumptions",
+   "guidance": "Describe any methods for analysing or statistically transforming data, any extrapolation methods, and approaches for validating any model used.",
+   "section": "Methods"
+  },
+  {
+   "item": 18,
+   "topic": "Characterising heterogeneity",
+   "guidance": "Describe any methods used for estimating how the results of the study vary for subgroups.",
+   "section": "Methods"
+  },
+  {
+   "item": 19,
+   "topic": "Characterising distributional effects",
+   "guidance": "Describe how impacts are distributed across different individuals or adjustments made to reflect priority populations.",
+   "section": "Methods"
+  },
+  {
+   "item": 20,
+   "topic": "Characterising uncertainty",
+   "guidance": "Describe methods to characterise any sources of uncertainty in the analysis.",
+   "section": "Methods"
+  },
+  {
+   "item": 21,
+   "topic": "Approach to engagement with patients and others affected by the study",
+   "guidance": "Describe any approaches to engage patients or service recipients, the general public, communities, or stakeholders (such as clinicians or payers) in the design of the study.",
+   "section": "Methods"
+  },
+  {
+   "item": 22,
+   "topic": "Study parameters",
+   "guidance": "Report all analytic inputs (such as values, ranges, references) including uncertainty or distributional assumptions.",
+   "section": "Results"
+  },
+  {
+   "item": 23,
+   "topic": "Summary of main results",
+   "guidance": "Report the mean values for the main categories of costs and outcomes of interest and summarise them in the most appropriate overall measure.",
+   "section": "Results"
+  },
+  {
+   "item": 24,
+   "topic": "Effect of uncertainty",
+   "guidance": "Describe how uncertainty about analytic judgments, inputs, or projections affect findings. Report the effect of choice of discount rate and time horizon, if applicable.",
+   "section": "Results"
+  },
+  {
+   "item": 25,
+   "topic": "Effect of engagement with patients and others affected by the study",
+   "guidance": "Report on any difference patient/service recipient, general public, community, or stakeholder involvement made to the approach or findings of the study",
+   "section": "Results"
+  },
+  {
+   "item": 26,
+   "topic": "Study findings, limitations, generalisability, and current knowledge",
+   "guidance": "Report key findings, limitations, ethical or equity considerations not captured, and how these could affect patients, policy, or practice.",
+   "section": "Discussion"
+  },
+  {
+   "item": 27,
+   "topic": "Source of funding",
+   "guidance": "Describe how the study was funded and any role of the funder in the identification, design, conduct, and reporting of the analysis",
+   "section": "Other relevant information"
+  },
+  {
+   "item": 28,
+   "topic": "Conflicts of interest",
+   "guidance": "Report authors conflicts of interest according to journal or International Committee of Medical Journal Editors requirements.",
+   "section": "Other relevant information"
+  }
+ ]
+}

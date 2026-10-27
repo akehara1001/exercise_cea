@@ -1,0 +1,81 @@
+# MANIFEST v5（2026-10-27）
+
+- 版本：v5（执笔第 3 步 v5：Introduction、Methods 与参考文献，Results 的修改，S1（CHEERS）与 Supplementary Methods S1，待决事项）。底本：v4（manuscript/archive/v4/ 的交付物与同一套生成代码；本文 manuscript_v5.docx 由 results_v4.docx 直接编辑而成）。Discussion、Implications、Limitations、Abstract 按指示未写。
+- 数值来源：第 1、2 阶段的输出与入力表 v10；不重新计算模型。来源文件与 sha256 见 numbers_ledger_v5.md 第 8 节。
+- 参考文献：77 条；书目与 DOI 的实测见 references_v5.md。
+
+| 文件 | sha256 |
+|---|---|
+| manuscript/v5/manuscript_v5.docx | 3bc70868f828327987ffb7a53e90d40ca012eebd52b19fb9d380263b0c0af54c |
+| manuscript/v5/tables_v5.docx | e8365200bc18a2867ee21a925853997f865f439be087f746c7db92a1c25bc59d |
+| manuscript/v5/figures_v5.docx | e1ea15eb69c625abb24f03084510e0408f3641ae4eb33bfcc408d9364a31c6f2 |
+| manuscript/v5/supplement_v5.docx | 76ddc2edaab51f98e2b2023aacdcbf0640f7779f5145d387e7438cbcbe15d51b |
+| manuscript/v5/table_figure_plan_v5.md | f68b2a57baa0db886ca907a5039af232904b3e50d9b0363c6f69e4497f45eede |
+| manuscript/v5/numbers_ledger_v5.md | 3f05af8bc09eeccde9a53ef6a2e14b44b217ca10d23826fc2b6c44b61b18b5b5 |
+| manuscript/v5/references_v5.md | 58e6857eec9cd17229427c6a7c2d231aad9e0757491bcf5f4c2336d77685423d |
+| manuscript/v5/check_v5.md | 36776b559952a2d28255dcdb1a2ab698cdbd5f1a248377dcba550db0bda2df62 |
+| manuscript/v5/diff_v4_v5.md | 7f6a1aa124a1baf3df53fb4436703aa7ecb029523b0b1fcafda229f8defd09c9 |
+| manuscript/v5/figures/fig1.pdf | 6633066ca0a54e2eebf25b255c4db6ae5f48c77fb85a929eca70e861783c428f |
+| manuscript/v5/figures/fig1.png | 323b93d81a9cbf8713986882e59eb2bf0e6e326c39054a8b334c905262321133 |
+| manuscript/v5/figures/fig1.svg | 9fc09cb146019821f0ea2454acd627e54a283a044b2e9a8668433a9ebe7fb0ee |
+| manuscript/v5/figures/fig1.tiff | c13b748ed3c7d5880f81da06e5ae9c4cccf8d6285c2108c7b0be1c5c04d78543 |
+| manuscript/v5/figures/fig2.pdf | a036f39c5bc88839c4300c39568bacfa76ac43eef4aaebf54a8e5a0aa72423a7 |
+| manuscript/v5/figures/fig2.png | 22ec96b78d9142c0f7302ec3075d79d0f3ed8507373c372f0c57e616c34b8b2e |
+| manuscript/v5/figures/fig2.svg | 5771a979f5a4cab177d338d809392810af9ca7a683e57ef6911d418bd703572d |
+| manuscript/v5/figures/fig2.tiff | 662046bf6a3d4847b0a0992324e2cbe902981dc2dab4f16fd96d6006a5d8b3d7 |
+| manuscript/v5/figures/fig3.pdf | 415892a24e5ec31edd434d97642fdded39d16e138df20f1f668629edd91953ca |
+| manuscript/v5/figures/fig3.png | fcf866e21f6ffbf93549b4bcae6b5aed1095039f2bb86c5ab988e3f3e78e7601 |
+| manuscript/v5/figures/fig3.svg | d403119f62869caaac281d177912fdda22907dd982b9c062a5007a053b334fd6 |
+| manuscript/v5/figures/fig3.tiff | d7926e1e9d8664dcb69188bcc253bc98cda25bc9347927d256abe826fc54ea8a |
+| manuscript/v5/figures/figS1.pdf | 0cf5e0d2e7c3e21dba95c221398c4bdc32d1af2cf6a49c576cc1680df2b62bd7 |
+| manuscript/v5/figures/figS1.png | 3b29009f4faa868f9b8be14ce61eb5544d16c44f12bc8617b30cfe9ba75a02e4 |
+| manuscript/v5/figures/figS1.svg | d566a84abdae389ee5fb6da83a6b280732d6ee0114b1cfb397b1b8c72c3c1c95 |
+| manuscript/v5/figures/figS1.tiff | a8d539597d5d5b3f297caf7261aed8d97bf67274302d49d3bb29f011b100807c |
+| manuscript/v5/figures/figS2.pdf | badf06d892b138838f71afd3f622900e89fd4fdb9c6f12029257d1b696f0c623 |
+| manuscript/v5/figures/figS2.png | 9e4ac6843fd0a1b09cbc095b455a24345d9ac63db95f09a0e1660a0c405b3681 |
+| manuscript/v5/figures/figS2.svg | a284ea80a9367de3b7b736dc2bef8a5e61fc8207a0e7e905d449d89abdb318e9 |
+| manuscript/v5/figures/figS2.tiff | d2b92781519eb67bd1ae7bc6fb89bb5d8944628a50af707b2acc4e9129c88136 |
+| manuscript/code/common.py | 639d1b99a822c78c0c28acaae9fc263bccfa65c37b4d7cbb9a47e2f42dd9d95f |
+| manuscript/code/compare_versions.py | 0f6e2fc1c5e23c9363426efc381ce9e8796796a48c8e61024d31be48f366aa41 |
+| manuscript/code/docx_util.py | 4fb2c47eb1816faee0e06826fc1dbc8e6ce916d8515376fbdfcd16ecab11c7b4 |
+| manuscript/code/edit_manuscript.py | 71a5a2d025b9f71d6298aea4d70c16e3d66431692e5a895fb084861812d761f3 |
+| manuscript/code/edit_results.py | 7f2df8061e055df735b5045efefe36b37a0db323320efc2150f73116088d683b |
+| manuscript/code/extract_engine_params.R | 37ad8fb451aca5ce2e858f2070e30a9b79fa405b6853c57b040745668c8d2b43 |
+| manuscript/code/make_figures.py | 33a989491932371e9f481c441fe6265d1d1bbe9e0967c571d3be67fa10217b81 |
+| manuscript/code/make_ledger.py | 5849e349d10295bb68469819a9fba2be1e5e5e42b9695764dd4ba8e7bd18c24e |
+| manuscript/code/make_references_doc.py | a76a4ae54a77f360bedd4b1f24a1555ea3513b137e10c73276fc0b40e6f89f92 |
+| manuscript/code/make_results.py | a3e527e4f0a50e34ec27f7fccf57589db026ad6980f4aafe557d591a561aade7 |
+| manuscript/code/make_supplement.py | fb153f8c6e1c42591024f83657e9a338c13f98526b52889c30936fc1514b9471 |
+| manuscript/code/make_tables.py | 5c964bcf412c90e27e099dacceaf408704f151f0ef22c0afda8162e4158f14d6 |
+| manuscript/code/number_refs.py | 6f1015b9a2c696b491a8aaefd343b4f85102a53fd41c3874a2bd1c7cf25b6200 |
+| manuscript/code/param_names.py | 4727aea9e3fc61e328cba937d3ab3fa5501033c01b56989d8a783519ccaf28bc |
+| manuscript/code/references.py | 78ebb37a6c90008ba0ffd8f1b0e6c26e79b5ca026cff1940f89f1bbc410a2b24 |
+| manuscript/code/refs/cheers2022_items.json | e155de0840844ed21d69a27b7dd52c758ce200d33b645667f3e3790cda38fec7 |
+| manuscript/code/refs/claim_support.py | 753265697fd3570b6210424a6a12cc7831a5e61515b352bf957004b03790483f |
+| manuscript/code/refs/crossref_meta.json | 0d3fa0473da9613560084d177d8fbcc8c023313a95df0b0c6f05ff4d80b14d00 |
+| manuscript/code/refs/crossref_meta.py | 7079f19d17f4c7506b07552056ef3bcb9dd064f140515a0dae264e06a6ca3813 |
+| manuscript/code/refs/doi_check.json | b3a3db4dc88361464e0911e76bf2435c73eceefdcca7fb5f025be5f40289bae1 |
+| manuscript/code/refs/doi_head_abstracts.json | db992474c44dc698747fc4df8b5781f8b9370c9d1d5cb20f9edd340f9f423675 |
+| manuscript/code/refs/doi_head_abstracts.py | 65a5aaefc5d5b3310efec4bd84b759ccea73f516eb72e9133fbe9eb2cf46dd80 |
+| manuscript/code/refs/fetch_refs.py | dfbb8e65d7e69595384270aed11dbc663dcd73ff1b4ed32f533f899d14905121 |
+| manuscript/code/refs/fetch_support.py | 81bacf6d1e3e135f7364b54d9ae5828773f658e3c3ab76816982f88068dfee73 |
+| manuscript/code/refs/lit_search.py | 5d25b81dfda5b5cad2da6187b8a44de4e1e9a2508acbbb676c44b9a6b5d5472d |
+| manuscript/code/refs/pubmed_meta.json | 36b2238c6caebd28a31062cdb09d1e165fe0bfabd83df378e74727e612e821f9 |
+| manuscript/code/refs/retraction_check.json | cccdbb0f676a1ef8de58d51fb32c6f75cacd414e4c8a31a60cffd7e0ac704eb5 |
+| manuscript/code/refs/retraction_check.py | 64b1d224f2af4c8fa9d5dd6bd9edd1a0796ffd26752f53697be50639b6ef36c8 |
+| manuscript/code/refs/searches/search_challenge.json | 8b6c2012ef90edf34b0dbc80ea66c6c2735c686556bc82dd95de052bc318f414 |
+| manuscript/code/refs/searches/search_chemo_rct_survival.json | b0c8ece5c1077861cfa3462d8b724e4019c0cb5a6bf7a084624056440578405c |
+| manuscript/code/refs/searches/search_econ_reviews.json | 67f874b7b05d7d67a52dd26edbd656e1a72de7cb6dc9fb3aae66d158af44bc64 |
+| manuscript/code/refs/searches/search_headroom.json | ae0ba0551c2b9bc532533b3b70af50ee23ade691aff3aa773b2b2b12c77a65ac |
+| manuscript/code/refs/searches/search_nac_pcr.json | d9014bc88fcdc47732213ac710a862f8562e619db14e1a463b65eaff42d1db54 |
+| manuscript/code/refs/searches/search_novelty.json | 40e04579c8fdb5fdeabd00fec396255b59db3fb6c30de0f7af89de8f416dd83f |
+| manuscript/code/refs/searches/search_novelty_chemo.json | 1ac67422f15bcd23c7bfd4a4daf597d33966863025f929191875c30291d5ed73 |
+| manuscript/code/refs/searches/search_novelty_variants.json | 82bfd7bfcda64999085e8a167f2d9ddd6967bfe0fe3f4a3aedfa19c90b0ef1f1 |
+| manuscript/code/refs/searches/search_pembro_cea.json | ad8b38f82ef5be939c9a56472c86ad3879b27ec4bf852344cf4b82fb9fefd90e |
+| manuscript/code/refs/searches/search_pembro_japan.json | 1192d91b20fc40775404609a87b8c754aeb57a1472c86ae1c569e500ef192f1a |
+| manuscript/code/refs/searches/search_pembro_tnbc_any.json | 2a9e0ee42a9a545b658048063570303bf54928e8f8aa6f090b9616d7965dea5a |
+| manuscript/code/refs/searches/search_tnbc_recurrence.json | 675bd12493fd8cbcbc4d9cf7730e007c8d1bf3d91fb7083cc52a80657e81fd6c |
+| manuscript/code/refs/support_cache.json | 174ba9b40f619780566a0cdad3ded2057d4f9520469796c7df8e72dcc62d487b |
+| manuscript/code/refs/verify_doi.py | 415ec8bec058bb0a30a72610870fc0b4772b0f778cd4b672e255749d171dfb05 |
+| manuscript/code/word_pages.ps1 | 45bf7084d5fadc68d25d0f743652d3eb862e41ec5e036f7e5f7c5d48a7590ef3 |
+| manuscript/code/word_pages.py | 336f4d3eb6635e5257f6e63c0d334bc93c2bf1fb9e918954acb17609ed46c1b7 |

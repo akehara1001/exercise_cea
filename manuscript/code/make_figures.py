@@ -2,7 +2,9 @@
 
 Reads the phase 2 outputs and the parameter workbook; does not run the model.
 Each figure is drawn at its final size (170 mm wide) so that every glyph is at
-least 8 pt as printed. Exports PDF (for the audits), PNG and TIFF at 600 dpi.
+least 8 pt as printed. Exports PDF (for the audits), PNG and TIFF at 600 dpi. The docx
+is written to _build/figures_marked.docx with reference markers; number_refs.py
+writes manuscript/<VER>/figures_<VER>.docx.
 """
 from __future__ import annotations
 
@@ -21,6 +23,7 @@ from PIL import Image
 
 from docx.shared import Mm
 from docx_util import new_document, page_break, para
+from references import cite
 from common import BUILD, VER, FIGDIR, OUT, ROOT, STAR, SUPP, Params, Registry, csv, fnum, rel
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -327,7 +330,7 @@ cap = {
         "Lines show deterministic estimates at a willingness-to-pay threshold of JPY 5 million per QALY for exercise added to chemotherapy plus pembrolizumab "
         "(solid line, circles) and to chemotherapy alone (dashed line, triangles); the dark and light grey bands, edged by thin solid and dashed lines, show their 95% UIs. "
         "Horizontal lines mark the costs of the three program designs in Table 1; exercise is cost-effective wherever a curve lies above the line of the program. "
-        "The dotted vertical line in (a) marks the hazard ratio of 0.72 for disease-free survival with a 3-year exercise program in colon cancer (CHALLENGE trial). "
+        "The dotted vertical line in (a) marks the hazard ratio of 0.72 for disease-free survival with a 3-year exercise program in colon cancer (CHALLENGE trial)" + cite("courneya2025") + ". "
         f"The effect is held for 5 years after randomization and then halves every year. The plotted values are listed in Supplementary Table {SUPP['capgrid']}.",
         f"{S1}Modeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. "
         "95% UI: 2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples. "
@@ -365,7 +368,7 @@ for i, (pdf, png, tif) in enumerate((p1, p2, p3), start=1):
                                  tiff_pixels="x".join(map(str, Image.open(tif).size)))
     for j, t in enumerate(cap[i]):
         para(doc, t, space_after=0)
-doc.save(OUT / f"figures_{VER}.docx")
+doc.save(BUILD / "figures_marked.docx")
 json.dump({"rows": REG.rows, "labels": REG.labels, "images": img_info},
           open(BUILD / "_ledger_figures.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=str)
 print(json.dumps(img_info, indent=1))

@@ -1,0 +1,1573 @@
+{
+ "key": "chemo_rct_survival",
+ "date": "2026-10-26",
+ "pubmed": {
+  "query": "(exercise[tiab] OR \"physical activity\"[tiab] OR \"Exercise\"[mh] OR \"Exercise Therapy\"[mh] OR prehabilitation[tiab] OR \"aerobic training\"[tiab] OR \"resistance training\"[tiab]) AND (\"Breast Neoplasms\"[mh] OR \"breast cancer\"[tiab] OR \"breast carcinoma\"[tiab]) AND chemotherapy[tiab] AND (randomized controlled trial[pt] OR randomi*[tiab]) AND (\"disease-free\"[tiab] OR recurrence[tiab] OR \"invasive disease-free\"[tiab] OR survival[tiab]) AND (\"2000/01/01\"[dp] : \"2026/12/31\"[dp])",
+  "count": 67,
+  "hits": [
+   {
+    "pmid": "42718967",
+    "title": "Utidelone-associated chemotherapy-induced peripheral neuropathy: an evidence-stratified narrative review of mechanisms, risk identification, and management strategies.",
+    "year": "2026",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2026.1927392",
+    "first_author": "Li S",
+    "pubtype": [
+     "Journal Article",
+     "Review"
+    ]
+   },
+   {
+    "pmid": "42528605",
+    "title": "Sarcopenia in breast cancer: prognostic values and emerging therapeutic strategies.",
+    "year": "2026",
+    "journal": "Front Surg",
+    "doi": "10.3389/fsurg.2026.1884147",
+    "first_author": "Xiang B",
+    "pubtype": [
+     "Journal Article",
+     "Review"
+    ]
+   },
+   {
+    "pmid": "41704018",
+    "title": "The effect of two remote exercise programs on cardiorespiratory fitness, cardiac function, and vascular health in patients with breast cancer.",
+    "year": "2026",
+    "journal": "Physiol Rep",
+    "doi": "10.14814/phy2.70787",
+    "first_author": "Weeldreyer NR",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "41689378",
+    "title": "Exercise-induced immune response in breast cancer patients during prehabilitation, neoadjuvant or adjuvant treatment: A systematic review and meta-analysis.",
+    "year": "2026",
+    "journal": "Eur J Clin Invest",
+    "doi": "10.1111/eci.70176",
+    "first_author": "Ubaghs S",
+    "pubtype": [
+     "Journal Article",
+     "Meta-Analysis",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "41366586",
+    "title": "Effects of Exercise or Diet or Combined Interventions on Treatment Efficacy of Chemotherapy for Cancer: A Systematic Review.",
+    "year": "2025",
+    "journal": "Curr Nutr Rep",
+    "doi": "10.1007/s13668-025-00702-8",
+    "first_author": "Crespo-Garcia C",
+    "pubtype": [
+     "Journal Article",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "40954654",
+    "title": "Effect of mat Pilates on postural control in breast cancer survivors receiving endocrine therapy: a randomized controlled clinical trial.",
+    "year": "2025",
+    "journal": "J Bodyw Mov Ther",
+    "doi": "10.1016/j.jbmt.2025.06.022",
+    "first_author": "Bertoli J",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "40898993",
+    "title": "Efficacy and Safety of Curcumin as an Adjuvant to Standard Chemotherapy in Advanced and Metastatic Breast Cancer Patients: A Randomized Controlled Study.",
+    "year": "2025",
+    "journal": "Phytother Res",
+    "doi": "10.1002/ptr.70086",
+    "first_author": "Goyal S",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "40867298",
+    "title": "Prehabilitation Prior to Chemotherapy in Humans: A Review of Current Evidence and Future Directions.",
+    "year": "2025",
+    "journal": "Cancers (Basel)",
+    "doi": "10.3390/cancers17162670",
+    "first_author": "Pietrakiewicz K",
+    "pubtype": [
+     "Journal Article",
+     "Review"
+    ]
+   },
+   {
+    "pmid": "40783722",
+    "title": "Evaluating the effects of a resistance exercise intervention for sarcopenia in patients receiving neoadjuvant chemotherapy for breast cancer: study protocol for a randomized controlled trial.",
+    "year": "2025",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-025-14721-9",
+    "first_author": "Jang MK",
+    "pubtype": [
+     "Journal Article",
+     "Clinical Trial Protocol"
+    ]
+   },
+   {
+    "pmid": "40745221",
+    "title": "Randomised phase-2 screening trial of intermittent energy restriction plus resistance exercise versus resistance exercise alone during chemotherapy for advanced breast cancer.",
+    "year": "2025",
+    "journal": "Br J Cancer",
+    "doi": "10.1038/s41416-025-03129-8",
+    "first_author": "Harvie M",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial",
+     "Clinical Trial, Phase II"
+    ]
+   },
+   {
+    "pmid": "40241061",
+    "title": "Physical rehabilitation program for cardiorespiratory health and quality of life among breast cancer survivors in UAE: a randomized control trial.",
+    "year": "2025",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-025-14005-2",
+    "first_author": "Rashid FA",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "40064980",
+    "title": "Impact of adapted physical activity and diet counselling on health-related quality of life in women undergoing adjuvant breast cancer therapy.",
+    "year": "2025",
+    "journal": "Sci Rep",
+    "doi": "10.1038/s41598-025-91569-w",
+    "first_author": "Touraine C",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "39267010",
+    "title": "Exercise as part of survivorship care in metastatic breast cancer: protocol for the randomized EMBody trial.",
+    "year": "2024",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-024-12883-6",
+    "first_author": "Cancilla MA",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "39163116",
+    "title": "Effectiveness of Aerobic Training for Adverse Symptoms Related to Chemotherapy During Treatment: Protocol for a Randomized Controlled Trial With Cost-Effectiveness Assessment.",
+    "year": "2024",
+    "journal": "JMIR Res Protoc",
+    "doi": "10.2196/60828",
+    "first_author": "Selles WL",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "39024773",
+    "title": "Effect of a comprehensive lifestyle intervention program on body weight and health behavior in women with breast cancer: Results from a randomized controlled trial.",
+    "year": "2024",
+    "journal": "Clin Nutr",
+    "doi": "10.1016/j.clnu.2024.07.002",
+    "first_author": "Hauner D",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial",
+     "Clinical Trial, Phase III"
+    ]
+   },
+   {
+    "pmid": "38631832",
+    "title": "Effects of different exercise interventions on chemotherapy-related cognitive impairment in patients with breast cancer: a study protocol for systematic review and network meta-analysis.",
+    "year": "2024",
+    "journal": "BMJ Open",
+    "doi": "10.1136/bmjopen-2023-078934",
+    "first_author": "Dong Y",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "38384575",
+    "title": "Effects of aerobic combined with resistance exercise on cardiorespiratory fitness and cardiometabolic health in breast cancer survivors: A Systematic Review, meta-analysis and meta-regression.",
+    "year": "2024",
+    "journal": "Heliyon",
+    "doi": "10.1016/j.heliyon.2024.e26318",
+    "first_author": "Cheng L",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "38104536",
+    "title": "The Effect of Exercise on Cardiotoxicity in Women with Breast Cancer Receiving Anthracycline-Based Chemotherapy: A Systematic Review and Meta-Analysis.",
+    "year": "2024",
+    "journal": "Oncology",
+    "doi": "10.1159/000535737",
+    "first_author": "Chiang CH",
+    "pubtype": [
+     "Systematic Review",
+     "Meta-Analysis",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "37598196",
+    "title": "Neo-train: study protocol and feasibility results for a two-arm randomized controlled trial investigating the effect of supervised exercise during neoadjuvant chemotherapy on tumour response in patients with breast cancer.",
+    "year": "2023",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-023-11284-5",
+    "first_author": "Kjeldsted E",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "37208019",
+    "title": "The KORE-INNOVATION trial, a prospective controlled multi-site clinical study to implement and assess the effects of an innovative peri-operative care pathway for patients with ovarian cancer: rationale, methods and trial design.",
+    "year": "2023",
+    "journal": "Int J Gynecol Cancer",
+    "doi": "10.1136/ijgc-2023-004531",
+    "first_author": "Inci MG",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "36227931",
+    "title": "Physical exercise during neoadjuvant chemotherapy for breast cancer as a mean to increase pathological complete response rates: Trial protocol of the randomized Neo-ACT trial.",
+    "year": "2022",
+    "journal": "PLoS One",
+    "doi": "10.1371/journal.pone.0274804",
+    "first_author": "de Boniface J",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "35619910",
+    "title": "Reducing Metabolic Dysregulation in Obese Latina and/or Hispanic Breast Cancer Survivors Using Physical Activity (ROSA) Trial: A Study Protocol.",
+    "year": "2022",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2022.864844",
+    "first_author": "Gonzalo-Encabo P",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "35079838",
+    "title": "Prevention of Chemotherapy-Induced Peripheral Neuropathy With PRESIONA, a Therapeutic Exercise and Blood Flow Restriction Program: A Randomized Controlled Study Protocol.",
+    "year": "2022",
+    "journal": "Phys Ther",
+    "doi": "10.1093/ptj/pzab282",
+    "first_author": "Lopez-Garzon M",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "34961754",
+    "title": "Physical Fitness and Chemotherapy Tolerance in Patients with Early-Stage Breast Cancer.",
+    "year": "2022",
+    "journal": "Med Sci Sports Exerc",
+    "doi": "10.1249/MSS.0000000000002828",
+    "first_author": "Groen WG",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "34922621",
+    "title": "The influence of a supervised group exercise intervention combined with active lifestyle recommendations on breast cancer survivors' health, physical functioning, and quality of life indices: study protocol for a randomized and controlled trial.",
+    "year": "2021",
+    "journal": "Trials",
+    "doi": "10.1186/s13063-021-05843-z",
+    "first_author": "Riani Costa LA",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "34629067",
+    "title": "Rationale and design of the Diet Restriction and Exercise-induced Adaptations in Metastatic breast cancer (DREAM) study: a 2-arm, parallel-group, phase II, randomized control trial of a short-term, calorie-restricted, and ketogenic diet plus exercise during intravenous chemotherapy versus usual care.",
+    "year": "2021",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-021-08808-2",
+    "first_author": "Kirkham AA",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "33981951",
+    "title": "Physical Activity, Weight, and Outcomes in Patients Receiving Chemotherapy for Metastatic Breast Cancer (C40502/Alliance).",
+    "year": "2021",
+    "journal": "JNCI Cancer Spectr",
+    "doi": "10.1093/jncics/pkab025",
+    "first_author": "Ligibel JA",
+    "pubtype": [
+     "Clinical Trial, Phase III",
+     "Journal Article",
+     "Randomized Controlled Trial",
+     "Research Support, N.I.H., Extramural",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "33956212",
+    "title": "Additional cardiovascular fitness when progressing from moderate- to high-intensity exercise training in previously trained breast cancer survivors.",
+    "year": "2021",
+    "journal": "Support Care Cancer",
+    "doi": "10.1007/s00520-021-06259-w",
+    "first_author": "Bell RA",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "33670615",
+    "title": "Does Physical Activity Have an Impact on Recurrence Dynamics in Early Breast Cancer Patients?",
+    "year": "2021",
+    "journal": "J Clin Med",
+    "doi": "10.3390/jcm10040831",
+    "first_author": "Biganzoli E",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "33528004",
+    "title": "Attenuating Treatment-Related Cardiotoxicity in Women Recently Diagnosed With Breast Cancer via a Tailored Therapeutic Exercise Program: Protocol of the ATOPE Trial.",
+    "year": "2021",
+    "journal": "Phys Ther",
+    "doi": "10.1093/ptj/pzab014",
+    "first_author": "Postigo-Martin P",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't",
+     "Clinical Trial Protocol"
+    ]
+   },
+   {
+    "pmid": "33521531",
+    "title": "Rationale and description of a lifestyle intervention programme to achieve moderate weight loss in women with non-metastatic breast cancer: the lifestyle intervention part of the SUCCESS C Study.",
+    "year": "2020",
+    "journal": "BMJ Nutr Prev Health",
+    "doi": "10.1136/bmjnph-2020-000119",
+    "first_author": "Hauner D",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "33220396",
+    "title": "Exercise Therapy and Radiation Therapy for Cancer: A Systematic Review.",
+    "year": "2021",
+    "journal": "Int J Radiat Oncol Biol Phys",
+    "doi": "10.1016/j.ijrobp.2020.11.024",
+    "first_author": "Zaorsky NG",
+    "pubtype": [
+     "Journal Article",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "33178447",
+    "title": "Evaluation of a novel strategy to implement exercise evidence into clinical practice in breast cancer care: protocol for the NEXT-BRCA randomised controlled trial.",
+    "year": "2020",
+    "journal": "BMJ Open Sport Exerc Med",
+    "doi": "10.1136/bmjsem-2020-000922",
+    "first_author": "Smith-Turchyn J",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "33036567",
+    "title": "Feasibility and efficacy of a supervised home-based physical exercise program for metastatic cancer patients receiving oral targeted therapy: study protocol for the phase II/III - UNICANCER SdS 01 QUALIOR trial.",
+    "year": "2020",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-020-07381-4",
+    "first_author": "Joly F",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "33033025",
+    "title": "Exercise in older women with breast cancer during systemic therapy: study protocol of a randomised controlled trial (BREACE).",
+    "year": "2020",
+    "journal": "BMJ Open",
+    "doi": "10.1136/bmjopen-2020-038674",
+    "first_author": "Andersen HH",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "32620149",
+    "title": "Design and methods of a national, multicenter, randomized and controlled trial to assess the efficacy of a physical activity program to improve health-related quality of life and reduce fatigue in women with metastatic breast cancer: ABLE02 trial.",
+    "year": "2020",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-020-07093-9",
+    "first_author": "Delrieu L",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "32454823",
+    "title": "Effectiveness of a Global Multidisciplinary Supportive and Educational Intervention in Thermal Resort on Anthropometric and Biological Parameters, and the Disease-Free Survival after Breast Cancer Treatment Completion (PACThe).",
+    "year": "2020",
+    "journal": "J Oncol",
+    "doi": "10.1155/2020/4181850",
+    "first_author": "Vasson MP",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "32147571",
+    "title": "A randomized placebo-controlled trial of bupropion for Cancer-related fatigue: Study design and procedures.",
+    "year": "2020",
+    "journal": "Contemp Clin Trials",
+    "doi": "10.1016/j.cct.2020.105976",
+    "first_author": "Jim HSL",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article",
+     "Research Support, N.I.H., Extramural",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "31307527",
+    "title": "Impact of exercise training on cardiotoxicity and cardiac health outcomes in women with breast cancer anthracycline chemotherapy: a study protocol for a randomized controlled trial.",
+    "year": "2019",
+    "journal": "Trials",
+    "doi": "10.1186/s13063-019-3499-9",
+    "first_author": "Antunes P",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "30878132",
+    "title": "Impact of exercise on chemotherapy completion rate: A systematic review of the evidence and recommendations for future exercise oncology research.",
+    "year": "2019",
+    "journal": "Crit Rev Oncol Hematol",
+    "doi": "10.1016/j.critrevonc.2019.02.005",
+    "first_author": "Bland KA",
+    "pubtype": [
+     "Journal Article",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "30680617",
+    "title": "Feasibility of an exercise and nutritional intervention for weight management during adjuvant treatment for localized breast cancer: the PASAPAS randomized controlled trial.",
+    "year": "2019",
+    "journal": "Support Care Cancer",
+    "doi": "10.1007/s00520-019-4658-y",
+    "first_author": "Foucaut AM",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "29598955",
+    "title": "Prognostic Impact of Weight Change During Adjuvant Chemotherapy in Patients With High-Risk Early Breast Cancer: Results From the ADEBAR Study.",
+    "year": "2018",
+    "journal": "Clin Breast Cancer",
+    "doi": "10.1016/j.clbc.2018.01.008",
+    "first_author": "Mutschler NS",
+    "pubtype": [
+     "Clinical Trial, Phase III",
+     "Journal Article",
+     "Multicenter Study",
+     "Randomized Controlled Trial",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "29376559",
+    "title": "Physical activity for women with breast cancer after adjuvant therapy.",
+    "year": "2018",
+    "journal": "Cochrane Database Syst Rev",
+    "doi": "10.1002/14651858.CD011292.pub2",
+    "first_author": "Lahart IM",
+    "pubtype": [
+     "Journal Article",
+     "Meta-Analysis",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "29316888",
+    "title": "The preventive effect of sensorimotor- and vibration exercises on the onset of Oxaliplatin- or vinca-alkaloid induced peripheral neuropathies - STOP.",
+    "year": "2018",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-017-3866-4",
+    "first_author": "Streckmann F",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "28862123",
+    "title": "Results of 1-year Diet and Exercise Interventions for ER+/PR±/HER2- Breast Cancer Patients Correlated with Treatment Type.",
+    "year": "2017",
+    "journal": "Chirurgia (Bucur)",
+    "doi": "10.21614/chirurgia.112.4.457",
+    "first_author": "Artene DV",
+    "pubtype": [
+     "Comparative Study",
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "28629338",
+    "title": "A phase 2 randomized trial to evaluate the impact of a supervised exercise program on cardiotoxicity at 3 months in patients with HER2 overexpressing breast cancer undergoing adjuvant treatment by trastuzumab: design of the CARDAPAC study.",
+    "year": "2017",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-017-3420-4",
+    "first_author": "Jacquinot Q",
+    "pubtype": [
+     "Clinical Trial, Phase II",
+     "Journal Article",
+     "Multicenter Study",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "28166765",
+    "title": "Optitrain: a randomised controlled exercise trial for women with breast cancer undergoing chemotherapy.",
+    "year": "2017",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-017-3079-x",
+    "first_author": "Wengström Y",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "27650122",
+    "title": "Exercise for women receiving adjuvant therapy for breast cancer.",
+    "year": "2016",
+    "journal": "Cochrane Database Syst Rev",
+    "doi": "10.1002/14651858.CD005001.pub3",
+    "first_author": "Furmaniak AC",
+    "pubtype": [
+     "Journal Article",
+     "Meta-Analysis",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "27629548",
+    "title": "Rationale and design of the multidisciplinary team IntervenTion in cArdio-oNcology study (TITAN).",
+    "year": "2016",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-016-2761-8",
+    "first_author": "Pituskin E",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "27464488",
+    "title": "Promoting weight loss through diet and exercise in overweight or obese breast cancer survivors (InForma): study protocol for a randomized controlled trial.",
+    "year": "2016",
+    "journal": "Trials",
+    "doi": "10.1186/s13063-016-1487-x",
+    "first_author": "Gnagnarella P",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "26307105",
+    "title": "Comparison of physical interventions, behavioral interventions, natural health products, and pharmacologics to manage hot flashes in patients with breast or prostate cancer: protocol for a systematic review incorporating network meta-analyses.",
+    "year": "2015",
+    "journal": "Syst Rev",
+    "doi": "10.1186/s13643-015-0099-y",
+    "first_author": "Hutton B",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, N.I.H., Extramural",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "26293147",
+    "title": "Supervised physical exercise improves VO2max, quality of life, and health in early stage breast cancer patients: a randomized controlled trial.",
+    "year": "2015",
+    "journal": "Breast Cancer Res Treat",
+    "doi": "10.1007/s10549-015-3541-x",
+    "first_author": "Casla S",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "25641925",
+    "title": "Impact of weight change during neoadjuvant chemotherapy on pathologic response in triple-negative breast cancer.",
+    "year": "2015",
+    "journal": "Cancer Med",
+    "doi": "10.1002/cam4.388",
+    "first_author": "Bao J",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "25625592",
+    "title": "A review of obesity, insulin resistance, and the role of exercise in breast cancer patients.",
+    "year": "2015",
+    "journal": "Nutr Cancer",
+    "doi": "10.1080/01635581.2015.990569",
+    "first_author": "Ghose A",
+    "pubtype": [
+     "Journal Article",
+     "Review"
+    ]
+   },
+   {
+    "pmid": "24934783",
+    "title": "Randomized trial of a telephone-based weight loss intervention in postmenopausal women with breast cancer receiving letrozole: the LISA trial.",
+    "year": "2014",
+    "journal": "J Clin Oncol",
+    "doi": "10.1200/JCO.2013.53.1517",
+    "first_author": "Goodwin PJ",
+    "pubtype": [
+     "Journal Article",
+     "Multicenter Study",
+     "Randomized Controlled Trial",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "24708832",
+    "title": "Randomized controlled trial to evaluate the effects of combined progressive exercise on metabolic syndrome in breast cancer survivors: rationale, design, and methods.",
+    "year": "2014",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/1471-2407-14-238",
+    "first_author": "Dieli-Conwright CM",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial",
+     "Research Support, N.I.H., Extramural"
+    ]
+   },
+   {
+    "pmid": "24707505",
+    "title": "A Community-Based Exercise and Support Group Program in African-American Breast Cancer Survivors (ABCs).",
+    "year": "2013",
+    "journal": "J Phys Ther Health Promot",
+    "doi": "10.18005/pthp0101003",
+    "first_author": "Nock NL",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "24633595",
+    "title": "Effects of exercise during adjuvant chemotherapy on breast cancer outcomes.",
+    "year": "2014",
+    "journal": "Med Sci Sports Exerc",
+    "doi": "10.1249/MSS.0000000000000297",
+    "first_author": "Courneya KS",
+    "pubtype": [
+     "Journal Article",
+     "Multicenter Study",
+     "Randomized Controlled Trial",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "23430010",
+    "title": "The effect of aerobic exercise on metabolic and inflammatory markers in breast cancer survivors--a pilot study.",
+    "year": "2013",
+    "journal": "Support Care Cancer",
+    "doi": "10.1007/s00520-013-1743-5",
+    "first_author": "Guinan E",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "22399859",
+    "title": "Bootcamp during neoadjuvant chemotherapy for breast cancer: a randomized pilot trial.",
+    "year": "2012",
+    "journal": "Breast Cancer (Auckl)",
+    "doi": "10.4137/BCBCR.S9221",
+    "first_author": "Rao R",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "20925920",
+    "title": "Rationale and design of the Exercise Intensity Trial (EXCITE): A randomized trial comparing the effects of moderate versus moderate to high-intensity aerobic training in women with operable breast cancer.",
+    "year": "2010",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/1471-2407-10-531",
+    "first_author": "Jones LW",
+    "pubtype": [
+     "Clinical Trial, Phase III",
+     "Journal Article",
+     "Randomized Controlled Trial",
+     "Research Support, N.I.H., Extramural"
+    ]
+   },
+   {
+    "pmid": "21494405",
+    "title": "The German SUCCESS C Study - The First European Lifestyle Study on Breast Cancer.",
+    "year": "2010",
+    "journal": "Breast Care (Basel)",
+    "doi": "10.1159/000322677",
+    "first_author": "Rack B",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "18297781",
+    "title": "Development and evaluation of a decision aid for patients considering first-line chemotherapy for metastatic breast cancer.",
+    "year": "2008",
+    "journal": "Health Expect",
+    "doi": "10.1111/j.1369-7625.2007.00470.x",
+    "first_author": "Chiew KS",
+    "pubtype": [
+     "Evaluation Study",
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "17182833",
+    "title": "Lifestyle factors and survival in women with breast cancer.",
+    "year": "2007",
+    "journal": "J Nutr",
+    "doi": "10.1093/jn/137.1.236S",
+    "first_author": "Kushi LH",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, N.I.H., Extramural",
+     "Research Support, U.S. Gov't, Non-P.H.S."
+    ]
+   },
+   {
+    "pmid": "17054230",
+    "title": "Exercise for women receiving adjuvant therapy for breast cancer.",
+    "year": "2006",
+    "journal": "Cochrane Database Syst Rev",
+    "doi": "10.1002/14651858.CD005001.pub2",
+    "first_author": "Markes M",
+    "pubtype": [
+     "Journal Article",
+     "Meta-Analysis",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "16053036",
+    "title": "Obesity and cancer: the risks, science, and potential management strategies.",
+    "year": "2005",
+    "journal": "Oncology (Williston Park)",
+    "doi": "",
+    "first_author": "McTiernan A",
+    "pubtype": [
+     "Journal Article",
+     "Review"
+    ]
+   },
+   {
+    "pmid": "12655532",
+    "title": "Physical activity levels before and after a diagnosis of breast carcinoma: the Health, Eating, Activity, and Lifestyle (HEAL) study.",
+    "year": "2003",
+    "journal": "Cancer",
+    "doi": "10.1002/cncr.11227",
+    "first_author": "Irwin ML",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, U.S. Gov't, P.H.S."
+    ]
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "((TITLE:exercise OR ABSTRACT:exercise) OR (TITLE:\"physical activity\" OR ABSTRACT:\"physical activity\") OR (TITLE:prehabilitation OR ABSTRACT:prehabilitation) OR (TITLE:\"aerobic training\" OR ABSTRACT:\"aerobic training\") OR (TITLE:\"resistance training\" OR ABSTRACT:\"resistance training\")) AND ((TITLE:\"breast cancer\" OR ABSTRACT:\"breast cancer\") OR (TITLE:\"breast neoplasms\" OR ABSTRACT:\"breast neoplasms\") OR (TITLE:\"breast carcinoma\" OR ABSTRACT:\"breast carcinoma\")) AND (TITLE:chemotherapy OR ABSTRACT:chemotherapy) AND ((TITLE:randomized OR ABSTRACT:randomized) OR (TITLE:randomised OR ABSTRACT:randomised)) AND ((TITLE:\"disease-free\" OR ABSTRACT:\"disease-free\") OR (TITLE:recurrence OR ABSTRACT:recurrence) OR (TITLE:survival OR ABSTRACT:survival)) AND PUB_YEAR:[2000 TO 2026]",
+  "count": 66,
+  "hits": [
+   {
+    "id": "42528605",
+    "src": "MED",
+    "pmid": "42528605",
+    "title": "Sarcopenia in breast cancer: prognostic values and emerging therapeutic strategies.",
+    "year": "2026",
+    "journal": "Front Surg",
+    "doi": "10.3389/fsurg.2026.1884147",
+    "first_author": "Xiang B",
+    "pubtype": "review-article; review; journal article"
+   },
+   {
+    "id": "41689378",
+    "src": "MED",
+    "pmid": "41689378",
+    "title": "Exercise-induced immune response in breast cancer patients during prehabilitation, neoadjuvant or adjuvant treatment: A systematic review and meta-analysis.",
+    "year": "2026",
+    "journal": "Eur J Clin Invest",
+    "doi": "10.1111/eci.70176",
+    "first_author": "Ubaghs S",
+    "pubtype": "meta-analysis; systematic review; journal article"
+   },
+   {
+    "id": "40783722",
+    "src": "MED",
+    "pmid": "40783722",
+    "title": "Evaluating the effects of a resistance exercise intervention for sarcopenia in patients receiving neoadjuvant chemotherapy for breast cancer: study protocol for a randomized controlled trial.",
+    "year": "2025",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-025-14721-9",
+    "first_author": "Jang MK",
+    "pubtype": "clinical trial protocol; research-article; journal article"
+   },
+   {
+    "id": "40867298",
+    "src": "MED",
+    "pmid": "40867298",
+    "title": "Prehabilitation Prior to Chemotherapy in Humans: A Review of Current Evidence and Future Directions.",
+    "year": "2025",
+    "journal": "Cancers (Basel)",
+    "doi": "10.3390/cancers17162670",
+    "first_author": "Pietrakiewicz K",
+    "pubtype": "review-article; review; journal article"
+   },
+   {
+    "id": "40745221",
+    "src": "MED",
+    "pmid": "40745221",
+    "title": "Randomised phase-2 screening trial of intermittent energy restriction plus resistance exercise versus resistance exercise alone during chemotherapy for advanced breast cancer.",
+    "year": "2025",
+    "journal": "Br J Cancer",
+    "doi": "10.1038/s41416-025-03129-8",
+    "first_author": "Harvie M",
+    "pubtype": "clinical trial, phase ii; research-article; randomized controlled trial; journal article"
+   },
+   {
+    "id": "41704018",
+    "src": "MED",
+    "pmid": "41704018",
+    "title": "The effect of two remote exercise programs on cardiorespiratory fitness, cardiac function, and vascular health in patients with breast cancer.",
+    "year": "2026",
+    "journal": "Physiol Rep",
+    "doi": "10.14814/phy2.70787",
+    "first_author": "Weeldreyer NR",
+    "pubtype": "research-article; randomized controlled trial; journal article"
+   },
+   {
+    "id": "40898993",
+    "src": "MED",
+    "pmid": "40898993",
+    "title": "Efficacy and Safety of Curcumin as an Adjuvant to Standard Chemotherapy in Advanced and Metastatic Breast Cancer Patients: A Randomized Controlled Study.",
+    "year": "2025",
+    "journal": "Phytother Res",
+    "doi": "10.1002/ptr.70086",
+    "first_author": "Goyal S",
+    "pubtype": "randomized controlled trial; journal article"
+   },
+   {
+    "id": "41366586",
+    "src": "MED",
+    "pmid": "41366586",
+    "title": "Effects of Exercise or Diet or Combined Interventions on Treatment Efficacy of Chemotherapy for Cancer: A Systematic Review.",
+    "year": "2025",
+    "journal": "Curr Nutr Rep",
+    "doi": "10.1007/s13668-025-00702-8",
+    "first_author": "Crespo-Garcia C",
+    "pubtype": "systematic review; journal article"
+   },
+   {
+    "id": "39163116",
+    "src": "MED",
+    "pmid": "39163116",
+    "title": "Effectiveness of Aerobic Training for Adverse Symptoms Related to Chemotherapy During Treatment: Protocol for a Randomized Controlled Trial With Cost-Effectiveness Assessment.",
+    "year": "2024",
+    "journal": "JMIR Res Protoc",
+    "doi": "10.2196/60828",
+    "first_author": "Selles WL",
+    "pubtype": "clinical trial protocol; research support, non-u.s. gov't; research-article; journal article"
+   },
+   {
+    "id": "37598196",
+    "src": "MED",
+    "pmid": "37598196",
+    "title": "Neo-train: study protocol and feasibility results for a two-arm randomized controlled trial investigating the effect of supervised exercise during neoadjuvant chemotherapy on tumour response in patients with breast cancer.",
+    "year": "2023",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-023-11284-5",
+    "first_author": "Kjeldsted E",
+    "pubtype": "clinical trial protocol; research-article; journal article"
+   },
+   {
+    "id": "PPR993714",
+    "src": "PPR",
+    "pmid": "",
+    "title": "Predicting responses to chemotherapy from nutrition in triple negative breast cancer patients (The PRE-NUTRITIVE Study): protocol for a prospective feasibility study",
+    "year": "2025",
+    "journal": "",
+    "doi": "10.1101/2025.03.21.25324389",
+    "first_author": "Cioccoloni G",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "38631832",
+    "src": "MED",
+    "pmid": "38631832",
+    "title": "Effects of different exercise interventions on chemotherapy-related cognitive impairment in patients with breast cancer: a study protocol for systematic review and network meta-analysis.",
+    "year": "2024",
+    "journal": "BMJ Open",
+    "doi": "10.1136/bmjopen-2023-078934",
+    "first_author": "Dong Y",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "40064980",
+    "src": "MED",
+    "pmid": "40064980",
+    "title": "Impact of adapted physical activity and diet counselling on health-related quality of life in women undergoing adjuvant breast cancer therapy.",
+    "year": "2025",
+    "journal": "Sci Rep",
+    "doi": "10.1038/s41598-025-91569-w",
+    "first_author": "Touraine C",
+    "pubtype": "research-article; randomized controlled trial; journal article"
+   },
+   {
+    "id": "39267010",
+    "src": "MED",
+    "pmid": "39267010",
+    "title": "Exercise as part of survivorship care in metastatic breast cancer: protocol for the randomized EMBody trial.",
+    "year": "2024",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-024-12883-6",
+    "first_author": "Cancilla MA",
+    "pubtype": "clinical trial protocol; research-article; journal article"
+   },
+   {
+    "id": "42718967",
+    "src": "MED",
+    "pmid": "42718967",
+    "title": "Utidelone-associated chemotherapy-induced peripheral neuropathy: an evidence-stratified narrative review of mechanisms, risk identification, and management strategies.",
+    "year": "2026",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2026.1927392",
+    "first_author": "Li S",
+    "pubtype": "review-article; review; journal article"
+   },
+   {
+    "id": "40241061",
+    "src": "MED",
+    "pmid": "40241061",
+    "title": "Physical rehabilitation program for cardiorespiratory health and quality of life among breast cancer survivors in UAE: a randomized control trial.",
+    "year": "2025",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-025-14005-2",
+    "first_author": "Rashid FA",
+    "pubtype": "research-article; randomized controlled trial; journal article"
+   },
+   {
+    "id": "36227931",
+    "src": "MED",
+    "pmid": "36227931",
+    "title": "Physical exercise during neoadjuvant chemotherapy for breast cancer as a mean to increase pathological complete response rates: Trial protocol of the randomized Neo-ACT trial.",
+    "year": "2022",
+    "journal": "PLoS One",
+    "doi": "10.1371/journal.pone.0274804",
+    "first_author": "de Boniface J",
+    "pubtype": "clinical trial protocol; research support, non-u.s. gov't; research-article; journal article"
+   },
+   {
+    "id": "38104536",
+    "src": "MED",
+    "pmid": "38104536",
+    "title": "The Effect of Exercise on Cardiotoxicity in Women with Breast Cancer Receiving Anthracycline-Based Chemotherapy: A Systematic Review and Meta-Analysis.",
+    "year": "2024",
+    "journal": "Oncology",
+    "doi": "10.1159/000535737",
+    "first_author": "Chiang CH",
+    "pubtype": "meta-analysis; other; systematic review; journal article"
+   },
+   {
+    "id": "PPR277010",
+    "src": "PPR",
+    "pmid": "",
+    "title": "Impact of Physical Activity on Recurrence Dynamics in Early Breast Cancer Patients",
+    "year": "2021",
+    "journal": "",
+    "doi": "10.20944/preprints202102.0074.v1",
+    "first_author": "Biganzoli E",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "33670615",
+    "src": "MED",
+    "pmid": "33670615",
+    "title": "Does Physical Activity Have an Impact on Recurrence Dynamics in Early Breast Cancer Patients?",
+    "year": "2021",
+    "journal": "J Clin Med",
+    "doi": "10.3390/jcm10040831",
+    "first_author": "Biganzoli E",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "35619910",
+    "src": "MED",
+    "pmid": "35619910",
+    "title": "Reducing Metabolic Dysregulation in Obese Latina and/or Hispanic Breast Cancer Survivors Using Physical Activity (ROSA) Trial: A Study Protocol.",
+    "year": "2022",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2022.864844",
+    "first_author": "Gonzalo-Encabo P",
+    "pubtype": "methods-article; journal article"
+   },
+   {
+    "id": "39024773",
+    "src": "MED",
+    "pmid": "39024773",
+    "title": "Effect of a comprehensive lifestyle intervention program on body weight and health behavior in women with breast cancer: Results from a randomized controlled trial.",
+    "year": "2024",
+    "journal": "Clin Nutr",
+    "doi": "10.1016/j.clnu.2024.07.002",
+    "first_author": "Hauner D",
+    "pubtype": "clinical trial, phase iii; randomized controlled trial; journal article"
+   },
+   {
+    "id": "34922621",
+    "src": "MED",
+    "pmid": "34922621",
+    "title": "The influence of a supervised group exercise intervention combined with active lifestyle recommendations on breast cancer survivors' health, physical functioning, and quality of life indices: study protocol for a randomized and controlled trial.",
+    "year": "2021",
+    "journal": "Trials",
+    "doi": "10.1186/s13063-021-05843-z",
+    "first_author": "Riani Costa LA",
+    "pubtype": "clinical trial protocol; research-article; journal article"
+   },
+   {
+    "id": "34961754",
+    "src": "MED",
+    "pmid": "34961754",
+    "title": "Physical Fitness and Chemotherapy Tolerance in Patients with Early-Stage Breast Cancer.",
+    "year": "2022",
+    "journal": "Med Sci Sports Exerc",
+    "doi": "10.1249/mss.0000000000002828",
+    "first_author": "Groen WG",
+    "pubtype": "research support, non-u.s. gov't; research-article; journal article"
+   },
+   {
+    "id": "PPR131149",
+    "src": "PPR",
+    "pmid": "",
+    "title": "Impact of physical activity on recurrence dynamics in early breast cancer patients",
+    "year": "2020",
+    "journal": "",
+    "doi": "10.21203/rs.2.24350/v1",
+    "first_author": "Biganzoli EM",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "33981951",
+    "src": "MED",
+    "pmid": "33981951",
+    "title": "Physical Activity, Weight, and Outcomes in Patients Receiving Chemotherapy for Metastatic Breast Cancer (C40502/Alliance).",
+    "year": "2021",
+    "journal": "JNCI Cancer Spectr",
+    "doi": "10.1093/jncics/pkab025",
+    "first_author": "Ligibel JA",
+    "pubtype": "clinical trial, phase iii; research support, non-u.s. gov't; research-article; randomized controlled trial; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "28166765",
+    "src": "MED",
+    "pmid": "28166765",
+    "title": "Optitrain: a randomised controlled exercise trial for women with breast cancer undergoing chemotherapy.",
+    "year": "2017",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-017-3079-x",
+    "first_author": "Wengström Y",
+    "pubtype": "research-article; randomized controlled trial; journal article"
+   },
+   {
+    "id": "32454823",
+    "src": "MED",
+    "pmid": "32454823",
+    "title": "Effectiveness of a Global Multidisciplinary Supportive and Educational Intervention in Thermal Resort on Anthropometric and Biological Parameters, and the Disease-Free Survival after Breast Cancer Treatment Completion (PACThe).",
+    "year": "2020",
+    "journal": "J Oncol",
+    "doi": "10.1155/2020/4181850",
+    "first_author": "Vasson MP",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "33178447",
+    "src": "MED",
+    "pmid": "33178447",
+    "title": "Evaluation of a novel strategy to implement exercise evidence into clinical practice in breast cancer care: protocol for the NEXT-BRCA randomised controlled trial.",
+    "year": "2020",
+    "journal": "BMJ Open Sport Exerc Med",
+    "doi": "10.1136/bmjsem-2020-000922",
+    "first_author": "Smith-Turchyn J",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "IND608620841",
+    "src": "AGR",
+    "pmid": "",
+    "title": "Effects of aerobic combined with resistance exercise on cardiorespiratory fitness and cardiometabolic health in breast cancer survivors: A Systematic Review, meta-analysis and meta-regression",
+    "year": "2024",
+    "journal": "Heliyon",
+    "doi": "",
+    "first_author": "Cheng L",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "33033025",
+    "src": "MED",
+    "pmid": "33033025",
+    "title": "Exercise in older women with breast cancer during systemic therapy: study protocol of a randomised controlled trial (BREACE).",
+    "year": "2020",
+    "journal": "BMJ Open",
+    "doi": "10.1136/bmjopen-2020-038674",
+    "first_author": "Andersen HH",
+    "pubtype": "clinical trial protocol; research support, non-u.s. gov't; research-article; journal article"
+   },
+   {
+    "id": "38384575",
+    "src": "MED",
+    "pmid": "38384575",
+    "title": "Effects of aerobic combined with resistance exercise on cardiorespiratory fitness and cardiometabolic health in breast cancer survivors: A Systematic Review, meta-analysis and meta-regression.",
+    "year": "2024",
+    "journal": "Heliyon",
+    "doi": "10.1016/j.heliyon.2024.e26318",
+    "first_author": "Cheng L",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "34629067",
+    "src": "MED",
+    "pmid": "34629067",
+    "title": "Rationale and design of the Diet Restriction and Exercise-induced Adaptations in Metastatic breast cancer (DREAM) study: a 2-arm, parallel-group, phase II, randomized control trial of a short-term, calorie-restricted, and ketogenic diet plus exercise during intravenous chemotherapy versus usual care.",
+    "year": "2021",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-021-08808-2",
+    "first_author": "Kirkham AA",
+    "pubtype": "clinical trial protocol; research-article; journal article"
+   },
+   {
+    "id": "35079838",
+    "src": "MED",
+    "pmid": "35079838",
+    "title": "Prevention of Chemotherapy-Induced Peripheral Neuropathy With PRESIONA, a Therapeutic Exercise and Blood Flow Restriction Program: A Randomized Controlled Study Protocol.",
+    "year": "2022",
+    "journal": "Phys Ther",
+    "doi": "10.1093/ptj/pzab282",
+    "first_author": "Lopez-Garzon M",
+    "pubtype": "clinical trial protocol; research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "31307527",
+    "src": "MED",
+    "pmid": "31307527",
+    "title": "Impact of exercise training on cardiotoxicity and cardiac health outcomes in women with breast cancer anthracycline chemotherapy: a study protocol for a randomized controlled trial.",
+    "year": "2019",
+    "journal": "Trials",
+    "doi": "10.1186/s13063-019-3499-9",
+    "first_author": "Antunes P",
+    "pubtype": "clinical trial protocol; research-article; journal article"
+   },
+   {
+    "id": "33528004",
+    "src": "MED",
+    "pmid": "33528004",
+    "title": "Attenuating Treatment-Related Cardiotoxicity in Women Recently Diagnosed With Breast Cancer via a Tailored Therapeutic Exercise Program: Protocol of the ATOPE Trial.",
+    "year": "2021",
+    "journal": "Phys Ther",
+    "doi": "10.1093/ptj/pzab014",
+    "first_author": "Postigo-Martin P",
+    "pubtype": "clinical trial protocol; research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "PPR148447",
+    "src": "PPR",
+    "pmid": "",
+    "title": "Impact of exercise training on cardiotoxicity and cardiac health outcomes in women with breast cancer undergoing anthracycline-containing chemotherapy: a study protocol for a randomized controlled trial.",
+    "year": "2019",
+    "journal": "",
+    "doi": "10.21203/rs.2.266/v2",
+    "first_author": "Antunes P",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "32620149",
+    "src": "MED",
+    "pmid": "32620149",
+    "title": "Design and methods of a national, multicenter, randomized and controlled trial to assess the efficacy of a physical activity program to improve health-related quality of life and reduce fatigue in women with metastatic breast cancer: ABLE02 trial.",
+    "year": "2020",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-020-07093-9",
+    "first_author": "Delrieu L",
+    "pubtype": "clinical trial protocol; research-article; journal article"
+   },
+   {
+    "id": "33521531",
+    "src": "MED",
+    "pmid": "33521531",
+    "title": "Rationale and description of a lifestyle intervention programme to achieve moderate weight loss in women with non-metastatic breast cancer: the lifestyle intervention part of the SUCCESS C Study.",
+    "year": "2020",
+    "journal": "BMJ Nutr Prev Health",
+    "doi": "10.1136/bmjnph-2020-000119",
+    "first_author": "Hauner D",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "29376559",
+    "src": "MED",
+    "pmid": "29376559",
+    "title": "Physical activity for women with breast cancer after adjuvant therapy.",
+    "year": "2018",
+    "journal": "Cochrane Database Syst Rev",
+    "doi": "10.1002/14651858.cd011292.pub2",
+    "first_author": "Lahart IM",
+    "pubtype": "meta-analysis; systematic review; systematic-review; journal article"
+   },
+   {
+    "id": "24633595",
+    "src": "MED",
+    "pmid": "24633595",
+    "title": "Effects of exercise during adjuvant chemotherapy on breast cancer outcomes.",
+    "year": "2014",
+    "journal": "Med Sci Sports Exerc",
+    "doi": "10.1249/mss.0000000000000297",
+    "first_author": "Courneya KS",
+    "pubtype": "research support, non-u.s. gov't; multicenter study; randomized controlled trial; journal article"
+   },
+   {
+    "id": "30680617",
+    "src": "MED",
+    "pmid": "30680617",
+    "title": "Feasibility of an exercise and nutritional intervention for weight management during adjuvant treatment for localized breast cancer: the PASAPAS randomized controlled trial.",
+    "year": "2019",
+    "journal": "Support Care Cancer",
+    "doi": "10.1007/s00520-019-4658-y",
+    "first_author": "Foucaut AM",
+    "pubtype": "randomized controlled trial; journal article"
+   },
+   {
+    "id": "30878132",
+    "src": "MED",
+    "pmid": "30878132",
+    "title": "Impact of exercise on chemotherapy completion rate: A systematic review of the evidence and recommendations for future exercise oncology research.",
+    "year": "2019",
+    "journal": "Crit Rev Oncol Hematol",
+    "doi": "10.1016/j.critrevonc.2019.02.005",
+    "first_author": "Bland KA",
+    "pubtype": "systematic review; journal article"
+   },
+   {
+    "id": "29598955",
+    "src": "MED",
+    "pmid": "29598955",
+    "title": "Prognostic Impact of Weight Change During Adjuvant Chemotherapy in Patients With High-Risk Early Breast Cancer: Results From the ADEBAR Study.",
+    "year": "2018",
+    "journal": "Clin Breast Cancer",
+    "doi": "10.1016/j.clbc.2018.01.008",
+    "first_author": "Mutschler NS",
+    "pubtype": "clinical trial, phase iii; research support, non-u.s. gov't; multicenter study; randomized controlled trial; journal article"
+   },
+   {
+    "id": "33036567",
+    "src": "MED",
+    "pmid": "33036567",
+    "title": "Feasibility and efficacy of a supervised home-based physical exercise program for metastatic cancer patients receiving oral targeted therapy: study protocol for the phase II/III - UNICANCER SdS 01 QUALIOR trial.",
+    "year": "2020",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-020-07381-4",
+    "first_author": "Joly F",
+    "pubtype": "clinical trial protocol; research-article; journal article"
+   },
+   {
+    "id": "28629338",
+    "src": "MED",
+    "pmid": "28629338",
+    "title": "A phase 2 randomized trial to evaluate the impact of a supervised exercise program on cardiotoxicity at 3 months in patients with HER2 overexpressing breast cancer undergoing adjuvant treatment by trastuzumab: design of the CARDAPAC study.",
+    "year": "2017",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-017-3420-4",
+    "first_author": "Jacquinot Q",
+    "pubtype": "clinical trial, phase ii; research-article; multicenter study; randomized controlled trial; journal article"
+   },
+   {
+    "id": "25625592",
+    "src": "MED",
+    "pmid": "25625592",
+    "title": "A review of obesity, insulin resistance, and the role of exercise in breast cancer patients.",
+    "year": "2015",
+    "journal": "Nutr Cancer",
+    "doi": "10.1080/01635581.2015.990569",
+    "first_author": "Ghose A",
+    "pubtype": "review; journal article"
+   },
+   {
+    "id": "27464488",
+    "src": "MED",
+    "pmid": "27464488",
+    "title": "Promoting weight loss through diet and exercise in overweight or obese breast cancer survivors (InForma): study protocol for a randomized controlled trial.",
+    "year": "2016",
+    "journal": "Trials",
+    "doi": "10.1186/s13063-016-1487-x",
+    "first_author": "Gnagnarella P",
+    "pubtype": "research support, non-u.s. gov't; research-article; randomized controlled trial; journal article"
+   },
+   {
+    "id": "33220396",
+    "src": "MED",
+    "pmid": "33220396",
+    "title": "Exercise Therapy and Radiation Therapy for Cancer: A Systematic Review.",
+    "year": "2021",
+    "journal": "Int J Radiat Oncol Biol Phys",
+    "doi": "10.1016/j.ijrobp.2020.11.024",
+    "first_author": "Zaorsky NG",
+    "pubtype": "research-article; systematic review; journal article"
+   },
+   {
+    "id": "20925920",
+    "src": "MED",
+    "pmid": "20925920",
+    "title": "Rationale and design of the Exercise Intensity Trial (EXCITE): A randomized trial comparing the effects of moderate versus moderate to high-intensity aerobic training in women with operable breast cancer.",
+    "year": "2010",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/1471-2407-10-531",
+    "first_author": "Jones LW",
+    "pubtype": "clinical trial, phase iii; research-article; randomized controlled trial; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "27650122",
+    "src": "MED",
+    "pmid": "27650122",
+    "title": "Exercise for women receiving adjuvant therapy for breast cancer.",
+    "year": "2016",
+    "journal": "Cochrane Database Syst Rev",
+    "doi": "10.1002/14651858.cd005001.pub3",
+    "first_author": "Furmaniak AC",
+    "pubtype": "meta-analysis; systematic review; systematic-review; journal article"
+   },
+   {
+    "id": "24708832",
+    "src": "MED",
+    "pmid": "24708832",
+    "title": "Randomized controlled trial to evaluate the effects of combined progressive exercise on metabolic syndrome in breast cancer survivors: rationale, design, and methods.",
+    "year": "2014",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/1471-2407-14-238",
+    "first_author": "Dieli-Conwright CM",
+    "pubtype": "research-article; randomized controlled trial; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "32147571",
+    "src": "MED",
+    "pmid": "32147571",
+    "title": "A randomized placebo-controlled trial of bupropion for Cancer-related fatigue: Study design and procedures.",
+    "year": "2020",
+    "journal": "Contemp Clin Trials",
+    "doi": "10.1016/j.cct.2020.105976",
+    "first_author": "Jim HSL",
+    "pubtype": "clinical trial protocol; research support, non-u.s. gov't; research-article; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "26293147",
+    "src": "MED",
+    "pmid": "26293147",
+    "title": "Supervised physical exercise improves VO2max, quality of life, and health in early stage breast cancer patients: a randomized controlled trial.",
+    "year": "2015",
+    "journal": "Breast Cancer Res Treat",
+    "doi": "10.1007/s10549-015-3541-x",
+    "first_author": "Casla S",
+    "pubtype": "research support, non-u.s. gov't; randomized controlled trial; journal article"
+   },
+   {
+    "id": "22399859",
+    "src": "MED",
+    "pmid": "22399859",
+    "title": "Bootcamp during neoadjuvant chemotherapy for breast cancer: a randomized pilot trial.",
+    "year": "2012",
+    "journal": "Breast Cancer (Auckl)",
+    "doi": "10.4137/bcbcr.s9221",
+    "first_author": "Rao R",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "23430010",
+    "src": "MED",
+    "pmid": "23430010",
+    "title": "The effect of aerobic exercise on metabolic and inflammatory markers in breast cancer survivors--a pilot study.",
+    "year": "2013",
+    "journal": "Support Care Cancer",
+    "doi": "10.1007/s00520-013-1743-5",
+    "first_author": "Guinan E",
+    "pubtype": "randomized controlled trial; journal article"
+   },
+   {
+    "id": "24934783",
+    "src": "MED",
+    "pmid": "24934783",
+    "title": "Randomized trial of a telephone-based weight loss intervention in postmenopausal women with breast cancer receiving letrozole: the LISA trial.",
+    "year": "2014",
+    "journal": "J Clin Oncol",
+    "doi": "10.1200/jco.2013.53.1517",
+    "first_author": "Goodwin PJ",
+    "pubtype": "research support, non-u.s. gov't; multicenter study; randomized controlled trial; journal article"
+   },
+   {
+    "id": "24707505",
+    "src": "MED",
+    "pmid": "24707505",
+    "title": "A Community-Based Exercise and Support Group Program in African-American Breast Cancer Survivors (ABCs).",
+    "year": "2013",
+    "journal": "J Phys Ther Health Promot",
+    "doi": "10.18005/pthp0101003",
+    "first_author": "Nock NL",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "29316888",
+    "src": "MED",
+    "pmid": "29316888",
+    "title": "The preventive effect of sensorimotor- and vibration exercises on the onset of Oxaliplatin- or vinca-alkaloid induced peripheral neuropathies - STOP.",
+    "year": "2018",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-017-3866-4",
+    "first_author": "Streckmann F",
+    "pubtype": "research support, non-u.s. gov't; research-article; randomized controlled trial; journal article"
+   },
+   {
+    "id": "17182833",
+    "src": "MED",
+    "pmid": "17182833",
+    "title": "Lifestyle factors and survival in women with breast cancer.",
+    "year": "2007",
+    "journal": "J Nutr",
+    "doi": "10.1093/jn/137.1.236s",
+    "first_author": "Kushi LH",
+    "pubtype": "research support, u.s. gov't, non-p.h.s.; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "18297781",
+    "src": "MED",
+    "pmid": "18297781",
+    "title": "Development and evaluation of a decision aid for patients considering first-line chemotherapy for metastatic breast cancer.",
+    "year": "2008",
+    "journal": "Health Expect",
+    "doi": "10.1111/j.1369-7625.2007.00470.x",
+    "first_author": "Chiew KS",
+    "pubtype": "research support, non-u.s. gov't; research-article; evaluation study; journal article"
+   },
+   {
+    "id": "17054230",
+    "src": "MED",
+    "pmid": "17054230",
+    "title": "Exercise for women receiving adjuvant therapy for breast cancer.",
+    "year": "2006",
+    "journal": "Cochrane Database Syst Rev",
+    "doi": "10.1002/14651858.cd005001.pub2",
+    "first_author": "Markes M",
+    "pubtype": "meta-analysis; systematic review; journal article"
+   },
+   {
+    "id": "12655532",
+    "src": "MED",
+    "pmid": "12655532",
+    "title": "Physical activity levels before and after a diagnosis of breast carcinoma: the Health, Eating, Activity, and Lifestyle (HEAL) study.",
+    "year": "2003",
+    "journal": "Cancer",
+    "doi": "10.1002/cncr.11227",
+    "first_author": "Irwin ML",
+    "pubtype": "research support, u.s. gov't, p.h.s.; research-article; journal article"
+   },
+   {
+    "id": "691049",
+    "src": "ETH",
+    "pmid": "",
+    "title": "Fatigue and exercise in cancer",
+    "year": "2011",
+    "journal": "",
+    "doi": "",
+    "first_author": "Wilson S.",
+    "pubtype": "dissertation"
+   },
+   {
+    "id": "16053036",
+    "src": "MED",
+    "pmid": "16053036",
+    "title": "Obesity and cancer: the risks, science, and potential management strategies.",
+    "year": "2005",
+    "journal": "Oncology (Williston Park)",
+    "doi": "",
+    "first_author": "McTiernan A.",
+    "pubtype": "review; journal article"
+   },
+   {
+    "id": "26307105",
+    "src": "MED",
+    "pmid": "26307105",
+    "title": "Comparison of physical interventions, behavioral interventions, natural health products, and pharmacologics to manage hot flashes in patients with breast or prostate cancer: protocol for a systematic review incorporating network meta-analyses.",
+    "year": "2015",
+    "journal": "Syst Rev",
+    "doi": "10.1186/s13643-015-0099-y",
+    "first_author": "Hutton B",
+    "pubtype": "research support, non-u.s. gov't; research-article; journal article; research support, n.i.h., extramural"
+   }
+  ]
+ }
+}

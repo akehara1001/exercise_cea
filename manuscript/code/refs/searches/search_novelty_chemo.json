@@ -1,0 +1,242 @@
+{
+ "key": "novelty_chemo",
+ "date": "2026-10-26",
+ "pubmed": {
+  "query": "(exercise[tiab] OR \"physical activity\"[tiab] OR \"Exercise\"[mh] OR \"Exercise Therapy\"[mh] OR prehabilitation[tiab] OR \"aerobic training\"[tiab] OR \"resistance training\"[tiab]) AND (\"Breast Neoplasms\"[mh] OR \"breast cancer\"[tiab] OR \"breast carcinoma\"[tiab]) AND (chemotherapy[tiab] OR \"Antineoplastic Agents\"[mh]) AND (\"cost-effectiveness\"[tiab] OR \"cost effectiveness\"[tiab] OR \"cost-utility\"[tiab] OR \"cost utility\"[tiab] OR \"economic evaluation\"[tiab] OR QALY*[tiab] OR \"Cost-Benefit Analysis\"[mh]) AND (\"2000/01/01\"[dp] : \"2026/12/31\"[dp])",
+  "count": 10,
+  "hits": [
+   {
+    "pmid": "39163116",
+    "title": "Effectiveness of Aerobic Training for Adverse Symptoms Related to Chemotherapy During Treatment: Protocol for a Randomized Controlled Trial With Cost-Effectiveness Assessment.",
+    "year": "2024",
+    "journal": "JMIR Res Protoc",
+    "doi": "10.2196/60828",
+    "first_author": "Selles WL",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "37729837",
+    "title": "Mobile health interventions for cancer patient education: A scoping review.",
+    "year": "2023",
+    "journal": "Int J Med Inform",
+    "doi": "10.1016/j.ijmedinf.2023.105214",
+    "first_author": "Samadbeik M",
+    "pubtype": [
+     "Scoping Review",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "34518245",
+    "title": "Connected device and therapeutic patient education to promote physical activity among women with localised breast cancer (DISCO trial): protocol for a multicentre 2×2 factorial randomised controlled trial.",
+    "year": "2021",
+    "journal": "BMJ Open",
+    "doi": "10.1136/bmjopen-2020-045448",
+    "first_author": "Touillaud M",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "31729566",
+    "title": "Cost-effectiveness of an exercise and nutritional intervention versus usual nutritional care during adjuvant treatment for localized breast cancer: the PASAPAS randomized controlled trial.",
+    "year": "2020",
+    "journal": "Support Care Cancer",
+    "doi": "10.1007/s00520-019-05078-4",
+    "first_author": "Perrier L",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "29086085",
+    "title": "Cost-utility and cost-effectiveness of physical exercise during adjuvant chemotherapy.",
+    "year": "2018",
+    "journal": "Eur J Health Econ",
+    "doi": "10.1007/s10198-017-0936-0",
+    "first_author": "van Waart H",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "28875575",
+    "title": "Can weight gain be prevented in women receiving treatment for breast cancer? A systematic review of intervention studies.",
+    "year": "2017",
+    "journal": "Obes Rev",
+    "doi": "10.1111/obr.12591",
+    "first_author": "Thomson ZO",
+    "pubtype": [
+     "Journal Article",
+     "Meta-Analysis",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "28264824",
+    "title": "Cost-effectiveness analysis of an 18-week exercise programme for patients with breast and colon cancer undergoing adjuvant chemotherapy: the randomised PACT study.",
+    "year": "2017",
+    "journal": "BMJ Open",
+    "doi": "10.1136/bmjopen-2016-012187",
+    "first_author": "May AM",
+    "pubtype": [
+     "Journal Article",
+     "Multicenter Study",
+     "Randomized Controlled Trial",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "25523144",
+    "title": "Cost-effectiveness of trastuzumab in metastatic breast cancer: mainly a matter of price in the EU?",
+    "year": "2015",
+    "journal": "Health Policy",
+    "doi": "10.1016/j.healthpol.2014.12.002",
+    "first_author": "Garattini L",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "24096188",
+    "title": "Adapted physical activity and diet (APAD) during adjuvant breast cancer therapy: design and implementation of a prospective randomized controlled trial.",
+    "year": "2013",
+    "journal": "Contemp Clin Trials",
+    "doi": "10.1016/j.cct.2013.09.016",
+    "first_author": "Carayol M",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "21138561",
+    "title": "Design of the Physical exercise during Adjuvant Chemotherapy Effectiveness Study (PACES): a randomized controlled trial to evaluate effectiveness and cost-effectiveness of physical exercise in improving physical fitness and reducing fatigue.",
+    "year": "2010",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/1471-2407-10-673",
+    "first_author": "van Waart H",
+    "pubtype": [
+     "Journal Article",
+     "Multicenter Study",
+     "Randomized Controlled Trial",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "((TITLE:exercise OR ABSTRACT:exercise) OR (TITLE:\"physical activity\" OR ABSTRACT:\"physical activity\") OR (TITLE:prehabilitation OR ABSTRACT:prehabilitation) OR (TITLE:\"aerobic training\" OR ABSTRACT:\"aerobic training\") OR (TITLE:\"resistance training\" OR ABSTRACT:\"resistance training\")) AND ((TITLE:\"breast cancer\" OR ABSTRACT:\"breast cancer\") OR (TITLE:\"breast neoplasms\" OR ABSTRACT:\"breast neoplasms\") OR (TITLE:\"breast carcinoma\" OR ABSTRACT:\"breast carcinoma\")) AND (TITLE:chemotherapy OR ABSTRACT:chemotherapy) AND ((TITLE:\"cost-effectiveness\" OR ABSTRACT:\"cost-effectiveness\") OR (TITLE:\"cost effectiveness\" OR ABSTRACT:\"cost effectiveness\") OR (TITLE:\"cost-utility\" OR ABSTRACT:\"cost-utility\") OR (TITLE:\"cost utility\" OR ABSTRACT:\"cost utility\") OR (TITLE:\"economic evaluation\" OR ABSTRACT:\"economic evaluation\") OR (TITLE:QALY OR ABSTRACT:QALY) OR (TITLE:\"quality-adjusted life year\" OR ABSTRACT:\"quality-adjusted life year\")) AND PUB_YEAR:[2000 TO 2026]",
+  "count": 9,
+  "hits": [
+   {
+    "id": "39163116",
+    "src": "MED",
+    "pmid": "39163116",
+    "title": "Effectiveness of Aerobic Training for Adverse Symptoms Related to Chemotherapy During Treatment: Protocol for a Randomized Controlled Trial With Cost-Effectiveness Assessment.",
+    "year": "2024",
+    "journal": "JMIR Res Protoc",
+    "doi": "10.2196/60828",
+    "first_author": "Selles WL",
+    "pubtype": "clinical trial protocol; research support, non-u.s. gov't; research-article; journal article"
+   },
+   {
+    "id": "29086085",
+    "src": "MED",
+    "pmid": "29086085",
+    "title": "Cost-utility and cost-effectiveness of physical exercise during adjuvant chemotherapy.",
+    "year": "2018",
+    "journal": "Eur J Health Econ",
+    "doi": "10.1007/s10198-017-0936-0",
+    "first_author": "van Waart H",
+    "pubtype": "randomized controlled trial; journal article"
+   },
+   {
+    "id": "31729566",
+    "src": "MED",
+    "pmid": "31729566",
+    "title": "Cost-effectiveness of an exercise and nutritional intervention versus usual nutritional care during adjuvant treatment for localized breast cancer: the PASAPAS randomized controlled trial.",
+    "year": "2020",
+    "journal": "Support Care Cancer",
+    "doi": "10.1007/s00520-019-05078-4",
+    "first_author": "Perrier L",
+    "pubtype": "randomized controlled trial; journal article"
+   },
+   {
+    "id": "34518245",
+    "src": "MED",
+    "pmid": "34518245",
+    "title": "Connected device and therapeutic patient education to promote physical activity among women with localised breast cancer (DISCO trial): protocol for a multicentre 2×2 factorial randomised controlled trial.",
+    "year": "2021",
+    "journal": "BMJ Open",
+    "doi": "10.1136/bmjopen-2020-045448",
+    "first_author": "Touillaud M",
+    "pubtype": "clinical trial protocol; other; research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "28264824",
+    "src": "MED",
+    "pmid": "28264824",
+    "title": "Cost-effectiveness analysis of an 18-week exercise programme for patients with breast and colon cancer undergoing adjuvant chemotherapy: the randomised PACT study.",
+    "year": "2017",
+    "journal": "BMJ Open",
+    "doi": "10.1136/bmjopen-2016-012187",
+    "first_author": "May AM",
+    "pubtype": "research support, non-u.s. gov't; research-article; multicenter study; randomized controlled trial; journal article"
+   },
+   {
+    "id": "37729837",
+    "src": "MED",
+    "pmid": "37729837",
+    "title": "Mobile health interventions for cancer patient education: A scoping review.",
+    "year": "2023",
+    "journal": "Int J Med Inform",
+    "doi": "10.1016/j.ijmedinf.2023.105214",
+    "first_author": "Samadbeik M",
+    "pubtype": "scoping review; review; journal article"
+   },
+   {
+    "id": "PPR201731",
+    "src": "PPR",
+    "pmid": "",
+    "title": "PancREatic Cancer and Individualised Supervised Exercise (PRECISE): a feasibility trial protocol for patients with resectable pancreatic ductal adenocarcinoma",
+    "year": "2020",
+    "journal": "",
+    "doi": "10.12688/amrcopenres.12907.2",
+    "first_author": "O'Connor D",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "24096188",
+    "src": "MED",
+    "pmid": "24096188",
+    "title": "Adapted physical activity and diet (APAD) during adjuvant breast cancer therapy: design and implementation of a prospective randomized controlled trial.",
+    "year": "2013",
+    "journal": "Contemp Clin Trials",
+    "doi": "10.1016/j.cct.2013.09.016",
+    "first_author": "Carayol M",
+    "pubtype": "research support, non-u.s. gov't; randomized controlled trial; journal article"
+   },
+   {
+    "id": "28875575",
+    "src": "MED",
+    "pmid": "28875575",
+    "title": "Can weight gain be prevented in women receiving treatment for breast cancer? A systematic review of intervention studies.",
+    "year": "2017",
+    "journal": "Obes Rev",
+    "doi": "10.1111/obr.12591",
+    "first_author": "Thomson ZO",
+    "pubtype": "meta-analysis; systematic review; journal article"
+   }
+  ]
+ }
+}

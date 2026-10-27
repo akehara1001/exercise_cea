@@ -1,0 +1,2264 @@
+{
+ "dent2007": {
+  "pmid": "17671126",
+  "doi": "10.1158/1078-0432.CCR-06-3045",
+  "pmc": "",
+  "authors": [
+   "Dent R",
+   "Trudeau M",
+   "Pritchard KI",
+   "Hanna WM",
+   "Kahn HK",
+   "Sawka CA",
+   "Lickley LA",
+   "Rawlinson E",
+   "Sun P",
+   "Narod SA"
+  ],
+  "title": "Triple-negative breast cancer: clinical features and patterns of recurrence.",
+  "journal": "Clin Cancer Res",
+  "year": "2007",
+  "volume": "13",
+  "issue": "15 Pt 1",
+  "pages": "4429-34",
+  "elocation": [],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "To compare the clinical features, natural history, and outcomes for women with \"triple-negative\" breast cancer with women with other types of breast cancer. We studied a cohort of 1,601 patients with breast cancer, diagnosed between January 1987 and December 1997 at Women's College Hospital in Toronto. Triple-negative breast cancers were defined as those that were estrogen receptor negative, progesterone receptor negative, and HER2neu negative. The prognostic significance of triple-negative breast cancer was explored. The median follow-up time of the 1,601 women was 8.1 years. One hundred and eighty of 1,601 patients (11.2%) had triple-negative breast cancer. Compared with other women with breast cancer, those with triple-negative breast cancer had an increased likelihood of distant recurrence (hazard ratio, 2.6; 95% confidence interval, 2.0-3.5; P < 0.0001) and death (hazard ratio, 3.2; 95% confidence interval, 2.3-4.5; P < 0.001) within 5 years of diagnosis but not thereafter. The pattern of recurrence was also qualitatively different; among the triple-negative group, the risk of distant recurrence peaked at approximately 3 years and declined rapidly thereafter. Among the \"other\" group, the recurrence risk seemed to be constant over the period of follow-up. Triple-negative breast cancers have a more aggressive clinical course than other forms of breast cancer, but the adverse effect is transient.",
+  "locator": "Dent R[au] AND triple-negative[ti] AND patterns of recurrence[ti] AND 2007[dp]"
+ },
+ "liedtke2008": {
+  "pmid": "18250347",
+  "doi": "10.1200/JCO.2007.14.4147",
+  "pmc": "",
+  "authors": [
+   "Liedtke C",
+   "Mazouni C",
+   "Hess KR",
+   "André F",
+   "Tordai A",
+   "Mejia JA",
+   "Symmans WF",
+   "Gonzalez-Angulo AM",
+   "Hennessy B",
+   "Green M",
+   "Cristofanilli M",
+   "Hortobagyi GN",
+   "Pusztai L"
+  ],
+  "title": "Response to neoadjuvant therapy and long-term survival in patients with triple-negative breast cancer.",
+  "journal": "J Clin Oncol",
+  "year": "2008",
+  "volume": "26",
+  "issue": "8",
+  "pages": "1275-81",
+  "elocation": [
+   "10.1200/JCO.2007.14.4147"
+  ],
+  "pubtypes": [
+   "Comparative Study",
+   "Journal Article",
+   "Research Support, N.I.H., Extramural",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "Triple-negative breast cancer (TNBC) is defined by the lack of estrogen receptor (ER), progesterone receptor (PR), and human epidermal growth factor receptor 2 (HER-2) expression. In this study, we compared response to neoadjuvant chemotherapy and survival between patients with TNBC and non-TNBC. Analysis of a prospectively collected clinical database was performed. We included 1,118 patients who received neoadjuvant chemotherapy at M.D. Anderson Cancer Center for stage I-III breast cancer from 1985 to 2004 and for whom complete receptor information were available. Clinical and pathologic parameters, pathologic complete response rates (pCR), survival measurements, and organ-specific relapse rates were compared between patients with TNBC and non-TNBC. Two hundred fifty-five patients (23%) had TNBC. Patients with TNBC compared with non-TNBC had significantly higher pCR rates (22% v 11%; P = .034), but decreased 3-year progression-free survival rates (P < .0001) and 3-year overall survival (OS) rates (P < .0001). TNBC was associated with increased risk for visceral metastases (P = .0005), lower risk for bone recurrence (P = .027), and shorter postrecurrence survival (P < .0001). Recurrence and death rates were higher for TNBC only in the first 3 years. If pCR was achieved, patients with TNBC and non-TNBC had similar survival (P = .24). In contrast, patients with residual disease (RD) had worse OS if they had TNBC compared with non-TNBC (P < .0001). Patients with TNBC have increased pCR rates compared with non-TNBC, and those with pCR have excellent survival. However, patients with RD after neoadjuvant chemotherapy have significantly worse survival if they have TNBC compared with non-TNBC, particularly in the first 3 years.",
+  "locator": "Liedtke C[au] AND triple-negative[ti] AND 2008[dp] AND J Clin Oncol[ta]"
+ },
+ "licata2025": {
+  "pmid": "40689866",
+  "doi": "10.1158/1078-0432.CCR-25-1478",
+  "pmc": "PMC12434393",
+  "authors": [
+   "Licata L",
+   "Mariani M",
+   "Viale G",
+   "Dent R",
+   "Tolaney SM",
+   "Schmid P",
+   "Hamilton E",
+   "Sotiriou C",
+   "Pusztai L",
+   "Bianchini G"
+  ],
+  "title": "Timing of Recurrence after Neoadjuvant Chemo-Immunotherapy in Patients with Early-Stage Triple-Negative Breast Cancer.",
+  "journal": "Clin Cancer Res",
+  "year": "2025",
+  "volume": "31",
+  "issue": "18",
+  "pages": "3916-3921",
+  "elocation": [
+   "10.1158/1078-0432.CCR-25-1478"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "Neoadjuvant chemo-immunotherapy for high-risk triple-negative breast cancer (TNBC) has been shown to reduce the risk of recurrence and improve survival. However, the prognosis for patients with metastatic TNBC remains poor, especially for those with an early recurrence, who represent an urgent unmet need. Defining the most common timing of recurrences after chemo-immunotherapy is crucial for shaping the design of future clinical trials. We analyzed five clinical trials of neoadjuvant chemo-immunotherapy in early-stage TNBC to quantify the contribution of early recurrences (within 24 months from randomization) to the overall risk of relapse. Event-free survival data were extracted from Kaplan-Meier curves using PlotDigitizer. Events were evaluated up to 48 months, a time frame with consistent follow-up across trials and minimal later events. The primary endpoint was the proportion of early versus total recurrences by 48 months; secondary analyses stratified this by pathologic complete response status. Overall recurrence rates by 48 months in the immunotherapy arms were as follows: 14.3% (GeparNuevo), 14.8% (NSABP B-59/GeparDouze), 17.5% (KEYNOTE-522), 20.2% (IMpassion031), and 29.2% (NeoTRIP). The proportion of early relapse ranged from 64.6% in NSABP B-59/GeparDouze to 82.9% in GeparNuevo. This proportion was higher in patients with residual disease after neoadjuvant therapy (range, 69.4%-88.6%). Patients who achieved a pathologic complete response showed a similar proportion of early and late events. Recurrences within 24 months account for most recurrences in patients with TNBC who relapse after neoadjuvant chemo-immunotherapy. Clinical trials are needed to define the optimal therapy for this patient population.",
+  "locator": "10.1158/1078-0432.ccr-25-1478"
+ },
+ "schmid2020": {
+  "pmid": "32101663",
+  "doi": "10.1056/NEJMoa1910549",
+  "pmc": "",
+  "authors": [
+   "Schmid P",
+   "Cortes J",
+   "Pusztai L",
+   "McArthur H",
+   "Kümmel S",
+   "Bergh J",
+   "Denkert C",
+   "Park YH",
+   "Hui R",
+   "Harbeck N",
+   "Takahashi M",
+   "Foukakis T",
+   "Fasching PA",
+   "Cardoso F",
+   "Untch M",
+   "Jia L",
+   "Karantza V",
+   "Zhao J",
+   "Aktan G",
+   "Dent R",
+   "O'Shaughnessy J",
+   "KEYNOTE-522 Investigators"
+  ],
+  "title": "Pembrolizumab for Early Triple-Negative Breast Cancer.",
+  "journal": "N Engl J Med",
+  "year": "2020",
+  "volume": "382",
+  "issue": "9",
+  "pages": "810-821",
+  "elocation": [
+   "10.1056/NEJMoa1910549"
+  ],
+  "pubtypes": [
+   "Clinical Trial, Phase III",
+   "Journal Article",
+   "Multicenter Study",
+   "Randomized Controlled Trial",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "Previous trials showed promising antitumor activity and an acceptable safety profile associated with pembrolizumab in patients with early triple-negative breast cancer. Whether the addition of pembrolizumab to neoadjuvant chemotherapy would significantly increase the percentage of patients with early triple-negative breast cancer who have a pathological complete response (defined as no invasive cancer in the breast and negative nodes) at definitive surgery is unclear. In this phase 3 trial, we randomly assigned (in a 2:1 ratio) patients with previously untreated stage II or stage III triple-negative breast cancer to receive neoadjuvant therapy with four cycles of pembrolizumab (at a dose of 200 mg) every 3 weeks plus paclitaxel and carboplatin (784 patients; the pembrolizumab-chemotherapy group) or placebo every 3 weeks plus paclitaxel and carboplatin (390 patients; the placebo-chemotherapy group); the two groups then received an additional four cycles of pembrolizumab or placebo, and both groups received doxorubicin-cyclophosphamide or epirubicin-cyclophosphamide. After definitive surgery, the patients received adjuvant pembrolizumab or placebo every 3 weeks for up to nine cycles. The primary end points were a pathological complete response at the time of definitive surgery and event-free survival in the intention-to-treat population. At the first interim analysis, among the first 602 patients who underwent randomization, the percentage of patients with a pathological complete response was 64.8% (95% confidence interval [CI], 59.9 to 69.5) in the pembrolizumab-chemotherapy group and 51.2% (95% CI, 44.1 to 58.3) in the placebo-chemotherapy group (estimated treatment difference, 13.6 percentage points; 95% CI, 5.4 to 21.8; P<0.001). After a median follow-up of 15.5 months (range, 2.7 to 25.0), 58 of 784 patients (7.4%) in the pembrolizumab-chemotherapy group and 46 of 390 patients (11.8%) in the placebo-chemotherapy group had disease progression that precluded definitive surgery, had local or distant recurrence or a second primary tumor, or died from any cause (hazard ratio, 0.63; 95% CI, 0.43 to 0.93). Across all treatment phases, the incidence of treatment-related adverse events of grade 3 or higher was 78.0% in the pembrolizumab-chemotherapy group and 73.0% in the placebo-chemotherapy group, including death in 0.4% (3 patients) and 0.3% (1 patient), respectively. Among patients with early triple-negative breast cancer, the percentage with a pathological complete response was significantly higher among those who received pembrolizumab plus neoadjuvant chemotherapy than among those who received placebo plus neoadjuvant chemotherapy. (Funded by Merck Sharp & Dohme [a subsidiary of Merck]; KEYNOTE-522 ClinicalTrials.gov number, NCT03036488.).",
+  "locator": "10.1056/NEJMoa1910549"
+ },
+ "schmid2022": {
+  "pmid": "35139274",
+  "doi": "10.1056/NEJMoa2112651",
+  "pmc": "",
+  "authors": [
+   "Schmid P",
+   "Cortes J",
+   "Dent R",
+   "Pusztai L",
+   "McArthur H",
+   "Kümmel S",
+   "Bergh J",
+   "Denkert C",
+   "Park YH",
+   "Hui R",
+   "Harbeck N",
+   "Takahashi M",
+   "Untch M",
+   "Fasching PA",
+   "Cardoso F",
+   "Andersen J",
+   "Patt D",
+   "Danso M",
+   "Ferreira M",
+   "Mouret-Reynier MA",
+   "Im SA",
+   "Ahn JH",
+   "Gion M",
+   "Baron-Hay S",
+   "Boileau JF",
+   "Ding Y",
+   "Tryfonidis K",
+   "Aktan G",
+   "Karantza V",
+   "O'Shaughnessy J",
+   "KEYNOTE-522 Investigators"
+  ],
+  "title": "Event-free Survival with Pembrolizumab in Early Triple-Negative Breast Cancer.",
+  "journal": "N Engl J Med",
+  "year": "2022",
+  "volume": "386",
+  "issue": "6",
+  "pages": "556-567",
+  "elocation": [
+   "10.1056/NEJMoa2112651"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Multicenter Study",
+   "Randomized Controlled Trial",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "The addition of pembrolizumab to neoadjuvant chemotherapy led to a significantly higher percentage of patients with early triple-negative breast cancer having a pathological complete response (defined as no invasive cancer in the breast and negative nodes) at definitive surgery in an earlier analysis of this phase 3 trial of neoadjuvant and adjuvant therapy. The primary results regarding event-free survival in this trial have not been reported. We randomly assigned, in a 2:1 ratio, patients with previously untreated stage II or III triple-negative breast cancer to receive neoadjuvant therapy with four cycles of pembrolizumab (at a dose of 200 mg) or placebo every 3 weeks plus paclitaxel and carboplatin, followed by four cycles of pembrolizumab or placebo plus doxorubicin-cyclophosphamide or epirubicin-cyclophosphamide. After definitive surgery, patients received adjuvant pembrolizumab (pembrolizumab-chemotherapy group) or placebo (placebo-chemotherapy group) every 3 weeks for up to nine cycles. The primary end points were pathological complete response (the results for which have been reported previously) and event-free survival, defined as the time from randomization to the date of disease progression that precluded definitive surgery, local or distant recurrence, occurrence of a second primary cancer, or death from any cause. Safety was also assessed. Of the 1174 patients who underwent randomization, 784 were assigned to the pembrolizumab-chemotherapy group and 390 to the placebo-chemotherapy group. The median follow-up at this fourth planned interim analysis (data cutoff, March 23, 2021) was 39.1 months. The estimated event-free survival at 36 months was 84.5% (95% confidence interval [CI], 81.7 to 86.9) in the pembrolizumab-chemotherapy group, as compared with 76.8% (95% CI, 72.2 to 80.7) in the placebo-chemotherapy group (hazard ratio for event or death, 0.63; 95% CI, 0.48 to 0.82; P<0.001). Adverse events occurred predominantly during the neoadjuvant phase and were consistent with the established safety profiles of pembrolizumab and chemotherapy. In patients with early triple-negative breast cancer, neoadjuvant pembrolizumab plus chemotherapy, followed by adjuvant pembrolizumab after surgery, resulted in significantly longer event-free survival than neoadjuvant chemotherapy alone. (Funded by Merck Sharp and Dohme, a subsidiary of Merck; KEYNOTE-522 ClinicalTrials.gov number, NCT03036488.).",
+  "locator": "10.1056/NEJMoa2112651"
+ },
+ "schmid2024": {
+  "pmid": "39282906",
+  "doi": "10.1056/NEJMoa2409932",
+  "pmc": "",
+  "authors": [
+   "Schmid P",
+   "Cortes J",
+   "Dent R",
+   "McArthur H",
+   "Pusztai L",
+   "Kümmel S",
+   "Denkert C",
+   "Park YH",
+   "Hui R",
+   "Harbeck N",
+   "Takahashi M",
+   "Im SA",
+   "Untch M",
+   "Fasching PA",
+   "Mouret-Reynier MA",
+   "Foukakis T",
+   "Ferreira M",
+   "Cardoso F",
+   "Zhou X",
+   "Karantza V",
+   "Tryfonidis K",
+   "Aktan G",
+   "O'Shaughnessy J",
+   "KEYNOTE-522 Investigators"
+  ],
+  "title": "Overall Survival with Pembrolizumab in Early-Stage Triple-Negative Breast Cancer.",
+  "journal": "N Engl J Med",
+  "year": "2024",
+  "volume": "391",
+  "issue": "21",
+  "pages": "1981-1991",
+  "elocation": [
+   "10.1056/NEJMoa2409932"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Randomized Controlled Trial",
+   "Clinical Trial, Phase III",
+   "Multicenter Study"
+  ],
+  "abstract": "In patients with early-stage triple-negative breast cancer, the phase 3 KEYNOTE-522 trial showed significant improvements in pathological complete response and event-free survival with the addition of pembrolizumab to platinum-containing chemotherapy. Here we report the final results for overall survival. We randomly assigned, in a 2:1 ratio, patients with previously untreated stage II or III triple-negative breast cancer to receive neoadjuvant therapy with four cycles of pembrolizumab (at a dose of 200 mg) or placebo every 3 weeks plus paclitaxel and carboplatin, followed by four cycles of pembrolizumab or placebo plus doxorubicin-cyclophosphamide or epirubicin-cyclophosphamide. After definitive surgery, patients received adjuvant pembrolizumab (pembrolizumab-chemotherapy group) or placebo (placebo-chemotherapy group) every 3 weeks for up to nine cycles. The primary end points were pathological complete response and event-free survival. Overall survival was a secondary end point. Of the 1174 patients who underwent randomization, 784 were assigned to the pembrolizumab-chemotherapy group and 390 to the placebo-chemotherapy group. At the data-cutoff date (March 22, 2024), the median follow-up was 75.1 months (range, 65.9 to 84.0). The estimated overall survival at 60 months was 86.6% (95% confidence interval [CI], 84.0 to 88.8) in the pembrolizumab-chemotherapy group, as compared with 81.7% (95% CI, 77.5 to 85.2) in the placebo-chemotherapy group (P = 0.002). Adverse events were consistent with the established safety profiles of pembrolizumab and chemotherapy. Neoadjuvant pembrolizumab plus chemotherapy followed by adjuvant pembrolizumab resulted in a significant improvement, as compared with neoadjuvant chemotherapy alone, in overall survival among patients with early-stage triple-negative breast cancer. (Funded by Merck Sharp and Dohme, a subsidiary of Merck [Rahway, NJ]; KEYNOTE-522 ClinicalTrials.gov number, NCT03036488.).",
+  "locator": "Schmid P[au] AND overall survival[ti] AND pembrolizumab[ti] AND 2024[dp] AND N Engl J Med[ta]"
+ },
+ "courneya2025": {
+  "pmid": "40450658",
+  "doi": "10.1056/NEJMoa2502760",
+  "pmc": "",
+  "authors": [
+   "Courneya KS",
+   "Vardy JL",
+   "O'Callaghan CJ",
+   "Gill S",
+   "Friedenreich CM",
+   "Wong RKS",
+   "Dhillon HM",
+   "Coyle V",
+   "Chua NS",
+   "Jonker DJ",
+   "Beale PJ",
+   "Haider K",
+   "Tang PA",
+   "Bonaventura T",
+   "Wong R",
+   "Lim HJ",
+   "Burge ME",
+   "Hubay S",
+   "Sanatani M",
+   "Campbell KL",
+   "Arthuso FZ",
+   "Turner J",
+   "Meyer RM",
+   "Brundage M",
+   "O'Brien P",
+   "Tu D",
+   "Booth CM",
+   "CHALLENGE Investigators"
+  ],
+  "title": "Structured Exercise after Adjuvant Chemotherapy for Colon Cancer.",
+  "journal": "N Engl J Med",
+  "year": "2025",
+  "volume": "393",
+  "issue": "1",
+  "pages": "13-25",
+  "elocation": [
+   "10.1056/NEJMoa2502760"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Randomized Controlled Trial",
+   "Clinical Trial, Phase III",
+   "Multicenter Study"
+  ],
+  "abstract": "Preclinical and observational studies suggest that exercise may improve cancer outcomes. However, definitive level 1 evidence is lacking. In this phase 3, randomized trial conducted at 55 centers, we assigned patients with resected colon cancer who had completed adjuvant chemotherapy to participate in a structured exercise program (exercise group) or to receive health-education materials alone (health-education group) over a 3-year period. The primary end point was disease-free survival. From 2009 through 2024, a total of 889 patients underwent randomization to the exercise group (445 patients) or the health-education group (444 patients). At a median follow-up of 7.9 years, disease-free survival was significantly longer in the exercise group than in the health-education group (hazard ratio for disease recurrence, new primary cancer, or death, 0.72; 95% confidence interval [CI], 0.55 to 0.94; P = 0.02). The 5-year disease-free survival was 80.3% in the exercise group and 73.9% in the health-education group (difference, 6.4 percentage points; 95% CI, 0.6 to 12.2). Results support longer overall survival in the exercise group than in the health-education group (hazard ratio for death, 0.63; 95% CI, 0.43 to 0.94). The 8-year overall survival was 90.3% in the exercise group and 83.2% in the health-education group (difference, 7.1 percentage points; 95% CI, 1.8 to 12.3). Musculoskeletal adverse events occurred more often in the exercise group than in the health-education group (in 18.5% vs. 11.5% of patients). A 3-year structured exercise program initiated soon after adjuvant chemotherapy for colon cancer resulted in significantly longer disease-free survival and findings consistent with longer overall survival. (Funded by the Canadian Cancer Society and others; CHALLENGE ClinicalTrials.gov number, NCT00819208.).",
+  "locator": "10.1056/NEJMoa2502760"
+ },
+ "courneya2007": {
+  "pmid": "17785708",
+  "doi": "10.1200/JCO.2006.08.2024",
+  "pmc": "",
+  "authors": [
+   "Courneya KS",
+   "Segal RJ",
+   "Mackey JR",
+   "Gelmon K",
+   "Reid RD",
+   "Friedenreich CM",
+   "Ladha AB",
+   "Proulx C",
+   "Vallance JK",
+   "Lane K",
+   "Yasui Y",
+   "McKenzie DC"
+  ],
+  "title": "Effects of aerobic and resistance exercise in breast cancer patients receiving adjuvant chemotherapy: a multicenter randomized controlled trial.",
+  "journal": "J Clin Oncol",
+  "year": "2007",
+  "volume": "25",
+  "issue": "28",
+  "pages": "4396-404",
+  "elocation": [],
+  "pubtypes": [
+   "Journal Article",
+   "Multicenter Study",
+   "Randomized Controlled Trial",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "Breast cancer chemotherapy may cause unfavorable changes in physical functioning, body composition, psychosocial functioning, and quality of life (QOL). We evaluated the relative merits of aerobic and resistance exercise in blunting these effects. We conducted a multicenter randomized controlled trial in Canada between 2003 and 2005 that randomly assigned 242 breast cancer patients initiating adjuvant chemotherapy to usual care (n = 82), supervised resistance exercise (n = 82), or supervised aerobic exercise (n = 78) for the duration of their chemotherapy (median, 17 weeks; 95% CI, 9 to 24 weeks). Our primary end point was cancer-specific QOL assessed by the Functional Assessment of Cancer Therapy-Anemia scale. Secondary end points were fatigue, psychosocial functioning, physical fitness, body composition, chemotherapy completion rate, and lymphedema. The follow-up assessment rate for our primary end point was 92.1%, and adherence to the supervised exercise was 70.2%. Unadjusted and adjusted mixed-model analyses indicated that aerobic exercise was superior to usual care for improving self-esteem (P = .015), aerobic fitness (P = .006), and percent body fat (adjusted P = .076). Resistance exercise was superior to usual care for improving self-esteem (P = .018), muscular strength (P < .001), lean body mass (P = .015), and chemotherapy completion rate (P = .033). Changes in cancer-specific QOL, fatigue, depression, and anxiety favored the exercise groups but did not reach statistical significance. Exercise did not cause lymphedema or adverse events. Neither aerobic nor resistance exercise significantly improved cancer-specific QOL in breast cancer patients receiving chemotherapy, but they did improve self-esteem, physical fitness, body composition, and chemotherapy completion rate without causing lymphedema or significant adverse events.",
+  "locator": "Courneya KS[au] AND adjuvant chemotherapy[ti] AND 2007[dp] AND J Clin Oncol[ta] AND breast[ti]"
+ },
+ "courneya2014": {
+  "pmid": "24633595",
+  "doi": "10.1249/MSS.0000000000000297",
+  "pmc": "",
+  "authors": [
+   "Courneya KS",
+   "Segal RJ",
+   "McKenzie DC",
+   "Dong H",
+   "Gelmon K",
+   "Friedenreich CM",
+   "Yasui Y",
+   "Reid RD",
+   "Crawford JJ",
+   "Mackey JR"
+  ],
+  "title": "Effects of exercise during adjuvant chemotherapy on breast cancer outcomes.",
+  "journal": "Med Sci Sports Exerc",
+  "year": "2014",
+  "volume": "46",
+  "issue": "9",
+  "pages": "1744-51",
+  "elocation": [
+   "10.1249/MSS.0000000000000297"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Multicenter Study",
+   "Randomized Controlled Trial",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "Observational studies suggest that physical activity after a breast cancer diagnosis is associated with improved cancer outcomes; however, no randomized data are available. Here, we report an exploratory follow-up of cancer outcomes from the Supervised Trial of Aerobic versus Resistance Training (START). The START was a Canadian multicenter trial that randomized 242 breast cancer patients between 2003 and 2005 to usual care (n = 82), supervised aerobic (n = 78), or resistance (n = 82) exercise during chemotherapy. The primary end point for this exploratory analysis was disease-free survival (DFS). Secondary end points were overall survival, distant DFS, and recurrence-free interval. The two exercise arms were combined for analysis (n = 160), and selected subgroups were explored. After a median follow-up of 89 months, there were 25/160 (15.6%) DFS events in the exercise groups and 18/82 (22.0%) in the control group. Eight-year DFS was 82.7% for the exercise groups compared with 75.6% for the control group (HR, 0.68; 95% confidence interval (CI), 0.37-1.24; log-rank, P = 0.21). Slightly stronger effects were observed for overall survival (HR, 0.60; 95% CI, 0.27-1.33; log-rank, P = 0.21), distant DFS (HR, 0.62; 95% CI, 0.32-1.19; log-rank, P = 0.15), and recurrence-free interval (HR, 0.58; 95% CI, 0.30-1.11; Gray test, P = 0.095). Subgroup analyses suggested potentially stronger exercise effects on DFS for women who were overweight/obese (HR, 0.59; 95% CI, 0.27-1.27), had stage II/III cancer (HR, 0.61; 95% CI, 0.31-1.20), estrogen receptor-positive tumors (HR, 0.58; 95% CI, 0.26-1.29), human epidermal growth factor receptor 2-positive tumors (HR, 0.21; 95% CI, 0.04-1.02), received taxane-based chemotherapies (HR, 0.46; 95% CI, 0.19-1.15), and ≥85% of their planned chemotherapy (HR, 0.50; 95% CI, 0.25-1.01). This exploratory follow-up of the START provides the first randomized data to suggest that adding exercise to standard chemotherapy may improve breast cancer outcomes. A definitive phase III trial is warranted.",
+  "locator": "10.1249/MSS.0000000000000297"
+ },
+ "vanwaart2015": {
+  "pmid": "25918291",
+  "doi": "10.1200/JCO.2014.59.1081",
+  "pmc": "",
+  "authors": [
+   "van Waart H",
+   "Stuiver MM",
+   "van Harten WH",
+   "Geleijn E",
+   "Kieffer JM",
+   "Buffart LM",
+   "de Maaker-Berkhof M",
+   "Boven E",
+   "Schrama J",
+   "Geenen MM",
+   "Meerum Terwogt JM",
+   "van Bochove A",
+   "Lustig V",
+   "van den Heiligenberg SM",
+   "Smorenburg CH",
+   "Hellendoorn-van Vreeswijk JA",
+   "Sonke GS",
+   "Aaronson NK"
+  ],
+  "title": "Effect of Low-Intensity Physical Activity and Moderate- to High-Intensity Physical Exercise During Adjuvant Chemotherapy on Physical Fitness, Fatigue, and Chemotherapy Completion Rates: Results of the PACES Randomized Clinical Trial.",
+  "journal": "J Clin Oncol",
+  "year": "2015",
+  "volume": "33",
+  "issue": "17",
+  "pages": "1918-27",
+  "elocation": [
+   "10.1200/JCO.2014.59.1081"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Randomized Controlled Trial",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "We evaluated the effectiveness of a low-intensity, home-based physical activity program (Onco-Move) and a moderate- to high-intensity, combined supervised resistance and aerobic exercise program (OnTrack) versus usual care (UC) in maintaining or enhancing physical fitness, minimizing fatigue, enhancing health-related quality of life, and optimizing chemotherapy completion rates in patients undergoing adjuvant chemotherapy for breast cancer. We randomly assigned patients who were scheduled to undergo adjuvant chemotherapy (N = 230) to Onco-Move, OnTrack, or UC. Performance-based and self-reported outcomes were assessed before random assignment, at the end of chemotherapy, and at the 6-month follow-up. We used generalized estimating equations to compare the groups over time. Onco-Move and OnTrack resulted in less decline in cardiorespiratory fitness (P < .001), better physical functioning (P ≤ .001), less nausea and vomiting (P = .029 and .031, respectively) and less pain (P = .003 and .011, respectively) compared with UC. OnTrack also resulted in better outcomes for muscle strength (P = .002) and physical fatigue (P < .001). At the 6-month follow-up, most outcomes returned to baseline levels for all three groups. A smaller percentage of participants in OnTrack required chemotherapy dose adjustments than those in the UC or Onco-Move groups (P = .002). Both intervention groups returned earlier (P = .012), as well as for more hours per week (P = .014), to work than the control group. A supervised, moderate- to high-intensity, combined resistance and aerobic exercise program is most effective for patients with breast cancer undergoing adjuvant chemotherapy. A home-based, low-intensity physical activity program represents a viable alternative for women who are unable or unwilling to follow the higher intensity program.",
+  "locator": "van Waart H[au] AND 2015[dp] AND J Clin Oncol[ta]"
+ },
+ "mijwel2018": {
+  "pmid": "29139007",
+  "doi": "10.1007/s10549-017-4571-3",
+  "pmc": "PMC5847033",
+  "authors": [
+   "Mijwel S",
+   "Backman M",
+   "Bolam KA",
+   "Jervaeus A",
+   "Sundberg CJ",
+   "Margolin S",
+   "Browall M",
+   "Rundqvist H",
+   "Wengström Y"
+  ],
+  "title": "Adding high-intensity interval training to conventional training modalities: optimizing health-related outcomes during chemotherapy for breast cancer: the OptiTrain randomized controlled trial.",
+  "journal": "Breast Cancer Res Treat",
+  "year": "2018",
+  "volume": "168",
+  "issue": "1",
+  "pages": "79-93",
+  "elocation": [
+   "10.1007/s10549-017-4571-3"
+  ],
+  "pubtypes": [
+   "Comparative Study",
+   "Journal Article",
+   "Randomized Controlled Trial"
+  ],
+  "abstract": "Exercise training is an effective and safe way to counteract cancer-related fatigue (CRF) and to improve health-related quality of life (HRQoL). High-intensity interval training has proven beneficial for the health of clinical populations. The aim of this randomized controlled trial was to compare the effects of resistance and high-intensity interval training (RT-HIIT), and moderate-intensity aerobic and high-intensity interval training (AT-HIIT) to usual care (UC) in women with breast cancer undergoing chemotherapy. The primary endpoint was CRF and the secondary endpoints were HRQoL and cancer treatment-related symptoms. Two hundred and forty women planned to undergo chemotherapy were randomized to supervised RT-HIIT, AT-HIIT, or UC. Measurements were performed at baseline and at 16 weeks. Questionnaires included Piper Fatigue Scale, EORTC-QLQ-C30, and Memorial Symptom Assessment Scale. The RT-HIIT group was superior to UC for CRF: total CRF (p = 0.02), behavior/daily life (p = 0.01), and sensory/physical (p = 0.03) CRF. Role functioning significantly improved while cognitive functioning was unchanged for RT-HIIT compared to declines shown in the UC group (p = 0.04). AT-HIIT significantly improved emotional functioning versus UC (p = 0.01) and was superior to UC for pain symptoms (p = 0.03). RT-HIIT reported a reduced symptom burden, while AT-HIIT remained stable compared to deteriorations shown by UC (p < 0.01). Only RT-HIIT was superior to UC for total symptoms (p < 0.01). 16 weeks of resistance and HIIT was effective in preventing increases in CRF and in reducing symptom burden for patients during chemotherapy for breast cancer. These findings add to a growing body of evidence supporting the inclusion of structured exercise prescriptions, including HIIT, as a vital component of cancer rehabilitation. Clinicaltrials.gov Registration Number: NCT02522260.",
+  "locator": "29139007"
+ },
+ "furmaniak2016": {
+  "pmid": "27650122",
+  "doi": "10.1002/14651858.CD005001.pub3",
+  "pmc": "PMC6457768",
+  "authors": [
+   "Furmaniak AC",
+   "Menig M",
+   "Markes MH"
+  ],
+  "title": "Exercise for women receiving adjuvant therapy for breast cancer.",
+  "journal": "Cochrane Database Syst Rev",
+  "year": "2016",
+  "volume": "9",
+  "issue": "9",
+  "pages": "CD005001",
+  "elocation": [
+   "CD005001",
+   "10.1002/14651858.CD005001.pub3"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Meta-Analysis",
+   "Systematic Review"
+  ],
+  "abstract": "A huge clinical research database on adjuvant cancer treatment has verified improvements in breast cancer outcomes such as recurrence and mortality rates. On the other hand, adjuvant and neoadjuvant therapy with chemotherapy and radiotherapy impacts on quality of life due to substantial short- and long-term side effects. A number of studies have evaluated the effect of exercise interventions on those side effects. This is an updated version of the original Cochrane review published in 2006. The original review identified some benefits of physical activity on physical fitness and the resulting capacity for performing activities of daily life. It also identified a lack of evidence for other outcomes, providing clear justification for an updated review. To assess the effect of aerobic or resistance exercise interventions during adjuvant treatment for breast cancer on treatment-related side effects such as physical deterioration, fatigue, diminished quality of life, depression, and cognitive dysfunction. We carried out an updated search in the Cochrane Breast Cancer Group Specialised Register (30 March 2015), the Cochrane Central Register of Controlled Trials (CENTRAL) (Issue 2, 2015), MEDLINE (1966 to 30 March 2015), and EMBASE (1966 to 30 March 2015). We did not update the original searches in CINAHL (1982 to 2004), SPORTDiscus (1975 to 2004), PsycINFO (1872 to 2003), SIGLE (1880 to 2004), and ProQuest Digital Dissertations (1861 to 2004). We searched the World Health Organization International Clinical Trials Registry Platform (WHO ICTRP) and ClinicalTrials.gov for ongoing trials on 30 March 2015. We screened references in relevant reviews and published clinical trials. We included randomised controlled trials that examined aerobic or resistance exercise or both in women undergoing adjuvant treatment for breast cancer. Published and unpublished trials were eligible. Two review authors independently performed data extraction, assessed trials, and graded the methodological quality using Cochrane's 'Risk of bias' tool. Any disagreements were resolved through discussion or by consulting the third review author. We entered data into Review Manager for analysis. For outcomes assessed with a variety of instruments, we used the standardised mean difference (SMD) as a summary statistic for meta-analysis; for those assessed with the same instrument, we used the mean difference (MD). For this 2015 update we included a total of 32 studies with 2626 randomised women, 8 studies from the original search and 24 studies from the updated search. We found evidence that physical exercise during adjuvant treatment for breast cancer probably improves physical fitness (SMD 0.42, 95% confidence interval (CI) 0.25 to 0.59; 15 studies; 1310 women; moderate-quality evidence) and slightly reduces fatigue (SMD -0.28, 95% CI -0.41 to -0.16; 19 studies; 1698 women; moderate-quality evidence). Exercise may lead to little or no improvement in health-related quality of life (MD 1.10, 95% CI -5.28 to 7.48; 1 study; 68 women; low-quality evidence), a slight improvement in cancer site-specific quality of life (MD 4.24, 95% CI -1.81 to 10.29; 4 studies; 262 women; low-quality evidence), and an improvement in cognitive function (MD -11.55, 95% CI -22.06 to -1.05; 2 studies; 213 women; low-quality evidence). Exercise probably leads to little or no difference in cancer-specific quality of life (SMD 0.12, 95% CI 0.00 to 0.25; 12 studies; 1012 women; moderate-quality evidence) and little or no difference in depression (SMD -0.15, 95% CI -0.30 to 0.01; 5 studies; 674 women; moderate-quality evidence). Evidence for other outcomes ranged from low to moderate quality. Seven trials reported a very small number of adverse events. Exercise during adjuvant treatment for breast cancer can be regarded as a supportive self care intervention that probably results in less fatigue, improved physical fitness, and little or no difference in cancer-specific quality of life and depression. Exercise may also slightly improve cancer site-specific quality of life and cognitive function, while it may result in little or no difference in health-related quality of life. This review is based on trials with a considerable degree of clinical heterogeneity regarding adjuvant cancer treatments and exercise interventions. Due to the difficulty of blinding exercise trials, all included trials were at high risk for performance bias. Furthermore, the majority of trials were at high risk for detection bias, largely due to most outcomes being self reported.The findings of the updated review have enabled us to make a more precise conclusion that both aerobic and resistance exercise can be regarded as beneficial for individuals with adjuvant therapy-related side effects. Further research is required to determine the optimal type, intensity, and timing of an exercise intervention. Furthermore, long-term evaluation is required due to possible long-term side effects of adjuvant treatment.",
+  "locator": "10.1002/14651858.CD005001.pub3"
+ },
+ "campbell2019": {
+  "pmid": "31626055",
+  "doi": "10.1249/MSS.0000000000002116",
+  "pmc": "PMC8576825",
+  "authors": [
+   "Campbell KL",
+   "Winters-Stone KM",
+   "Wiskemann J",
+   "May AM",
+   "Schwartz AL",
+   "Courneya KS",
+   "Zucker DS",
+   "Matthews CE",
+   "Ligibel JA",
+   "Gerber LH",
+   "Morris GS",
+   "Patel AV",
+   "Hue TF",
+   "Perna FM",
+   "Schmitz KH"
+  ],
+  "title": "Exercise Guidelines for Cancer Survivors: Consensus Statement from International Multidisciplinary Roundtable.",
+  "journal": "Med Sci Sports Exerc",
+  "year": "2019",
+  "volume": "51",
+  "issue": "11",
+  "pages": "2375-2390",
+  "elocation": [
+   "10.1249/MSS.0000000000002116"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Practice Guideline",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "The number of cancer survivors worldwide is growing, with over 15.5 million cancer survivors in the United States alone-a figure expected to double in the coming decades. Cancer survivors face unique health challenges as a result of their cancer diagnosis and the impact of treatments on their physical and mental well-being. For example, cancer survivors often experience declines in physical functioning and quality of life while facing an increased risk of cancer recurrence and all-cause mortality compared with persons without cancer. The 2010 American College of Sports Medicine Roundtable was among the first reports to conclude that cancer survivors could safely engage in enough exercise training to improve physical fitness and restore physical functioning, enhance quality of life, and mitigate cancer-related fatigue. A second Roundtable was convened in 2018 to advance exercise recommendations beyond public health guidelines and toward prescriptive programs specific to cancer type, treatments, and/or outcomes. Overall findings retained the conclusions that exercise training and testing were generally safe for cancer survivors and that every survivor should \"avoid inactivity.\" Enough evidence was available to conclude that specific doses of aerobic, combined aerobic plus resistance training, and/or resistance training could improve common cancer-related health outcomes, including anxiety, depressive symptoms, fatigue, physical functioning, and health-related quality of life. Implications for other outcomes, such as peripheral neuropathy and cognitive functioning, remain uncertain. The proposed recommendations should serve as a guide for the fitness and health care professional working with cancer survivors. More research is needed to fill remaining gaps in knowledge to better serve cancer survivors, as well as fitness and health care professionals, to improve clinical practice.",
+  "locator": "Campbell KL[au] AND exercise guidelines[ti] AND 2019[dp] AND Med Sci Sports Exerc[ta]"
+ },
+ "cannioto2021": {
+  "pmid": "32239145",
+  "doi": "10.1093/jnci/djaa046",
+  "pmc": "PMC7781460",
+  "authors": [
+   "Cannioto RA",
+   "Hutson A",
+   "Dighe S",
+   "McCann W",
+   "McCann SE",
+   "Zirpoli GR",
+   "Barlow W",
+   "Kelly KM",
+   "DeNysschen CA",
+   "Hershman DL",
+   "Unger JM",
+   "Moore HCF",
+   "Stewart JA",
+   "Isaacs C",
+   "Hobday TJ",
+   "Salim M",
+   "Hortobagyi GN",
+   "Gralow JR",
+   "Albain KS",
+   "Budd GT",
+   "Ambrosone CB"
+  ],
+  "title": "Physical Activity Before, During, and After Chemotherapy for High-Risk Breast Cancer: Relationships With Survival.",
+  "journal": "J Natl Cancer Inst",
+  "year": "2021",
+  "volume": "113",
+  "issue": "1",
+  "pages": "54-63",
+  "elocation": [
+   "10.1093/jnci/djaa046"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, N.I.H., Extramural",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "Although physical activity has been consistently associated with reduced breast cancer mortality, evidence is largely based on data collected at one occasion. We examined how pre- and postdiagnosis physical activity was associated with survival outcomes in high-risk breast cancer patients. Included were 1340 patients enrolled in the Diet, Exercise, Lifestyle and Cancer Prognosis (DELCaP) Study, a prospective study of lifestyle and prognosis ancillary to a SWOG clinical trial (S0221). Activity before diagnosis, during treatment, and at 1- and 2-year intervals after enrollment was collected. Patients were categorized according to the Physical Activity Guidelines for Americans as meeting the minimum guidelines (yes/no) and incrementally as inactive, low active, moderately active (meeting the guidelines), or high active. In joint-exposure analyses, patients meeting the guidelines before and 1 year after diagnosis experienced statistically significant reductions in hazards of recurrence (hazard ratio [HR] = 0.59, 95% confidence interval [CI] = 0.42 to 0.82) and mortality (HR = 0.51, 95% CI = 0.34-0.77); associations were stronger at 2-year follow-up for recurrence (HR = 0.45, 95% CI = 0.31 to 0.65) and mortality (HR = 0.32, 95% CI = 0.19 to 0.52). In time-dependent analyses, factoring in activity from all time points, we observed striking associations with mortality for low- (HR = 0.41, 95% CI = 0.24 to 0.68), moderate- (HR = 0.42, 95% CI = 0.23 to 0.76), and high-active patients (HR = 0.31, 95% CI = 0.18 to 0.53). Meeting the minimum guidelines for physical activity both before diagnosis and after treatment appears to be associated with statistically significantly reduced hazards of recurrence and mortality among breast cancer patients. When considering activity from all time points, including during treatment, lower volumes of regular activity were associated with similar overall survival advantages as meeting and exceeding the guidelines.",
+  "locator": "Cannioto RA[au] AND 2021[dp] AND J Natl Cancer Inst[ta]"
+ },
+ "sanft2023": {
+  "pmid": "37656930",
+  "doi": "10.1200/JCO.23.00871",
+  "pmc": "PMC10691793",
+  "authors": [
+   "Sanft T",
+   "Harrigan M",
+   "McGowan C",
+   "Cartmel B",
+   "Zupa M",
+   "Li FY",
+   "Ferrucci LM",
+   "Puklin L",
+   "Cao A",
+   "Nguyen TH",
+   "Neuhouser ML",
+   "Hershman DL",
+   "Basen-Engquist K",
+   "Jones BA",
+   "Knobf T",
+   "Chagpar AB",
+   "Silber A",
+   "Tanasijevic A",
+   "Ligibel JA",
+   "Irwin ML"
+  ],
+  "title": "Randomized Trial of Exercise and Nutrition on Chemotherapy Completion and Pathologic Complete Response in Women With Breast Cancer: The Lifestyle, Exercise, and Nutrition Early After Diagnosis Study.",
+  "journal": "J Clin Oncol",
+  "year": "2023",
+  "volume": "41",
+  "issue": "34",
+  "pages": "5285-5295",
+  "elocation": [
+   "10.1200/JCO.23.00871"
+  ],
+  "pubtypes": [
+   "Randomized Controlled Trial",
+   "Journal Article"
+  ],
+  "abstract": "Successful completion of chemotherapy is critical to improve breast cancer outcomes. Relative dose intensity (RDI), defined as the ratio of chemotherapy delivered to prescribed, is a measure of chemotherapy completion and is associated with cancer mortality. The effect of exercise and eating a healthy diet on RDI is unknown. We conducted a randomized trial of an exercise and nutrition intervention on RDI and pathologic complete response (pCR) in women diagnosed with breast cancer initiating chemotherapy. One hundred seventy-three women with stage I-III breast cancer were randomly assigned to usual care (UC; n = 86) or a home-based exercise and nutrition intervention with counseling sessions delivered by oncology-certified registered dietitians (n = 87). Chemotherapy dose adjustments and delays and pCR were abstracted from electronic medical records. T-tests and chi-square tests were used to examine the effect of the intervention versus UC on RDI and pCR. Participants randomly assigned to intervention had greater improvements in exercise and diet quality compared with UC (P < .05). RDI was 92.9% ± 12.1% and 93.6% ± 11.1% for intervention and UC, respectively (P = .69); the proportion of patients in the intervention versus UC who achieved ≥85% RDI was 81% and 85%, respectively (P = .44). The proportion of patients who had at least one dose reduction and/or delay was 38% intervention and 36% UC (P = .80). Among 72 women who received neoadjuvant chemotherapy, women randomly assigned to intervention were more likely to have a pCR than those randomly assigned to UC (53% v 28%; P = .037). Although a diet and exercise intervention did not affect RDI, the intervention was associated with a higher pCR in patients with hormone receptor-positive/human epidermal growth factor receptor 2-negative and triple-negative breast cancer undergoing neoadjuvant chemotherapy.",
+  "locator": "10.1200/JCO.23.00871"
+ },
+ "kjeldsted2025": {
+  "pmid": "40788186",
+  "doi": "10.1158/1078-0432.CCR-25-0416",
+  "pmc": "PMC12521908",
+  "authors": [
+   "Kjeldsted E",
+   "Ammitzbøll G",
+   "Lænkholm AV",
+   "Rasic D",
+   "Ceballos SG",
+   "Jørgensen LB",
+   "Skou ST",
+   "Bojesen RD",
+   "Lodin A",
+   "Tolver A",
+   "Rosthøj S",
+   "Jack S",
+   "Gehl J",
+   "Dalton SO"
+  ],
+  "title": "Effects of Supervised Exercise during Neoadjuvant Chemotherapy on Tumor Response in Patients with Breast Cancer (Neo-train): A Randomized Controlled Trial.",
+  "journal": "Clin Cancer Res",
+  "year": "2025",
+  "volume": "31",
+  "issue": "20",
+  "pages": "4265-4277",
+  "elocation": [
+   "10.1158/1078-0432.CCR-25-0416"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Randomized Controlled Trial"
+  ],
+  "abstract": "Preclinical studies have indicated that physical exercise may enhance chemotherapy efficacy. However, clinical trials are needed to investigate these findings. We hypothesized that an exercise program during neoadjuvant chemotherapy would improve tumor response in patients with breast cancer. Neo-train was a randomized controlled trial allocating patients with breast cancer to the usual care control (CON) group or the exercise (EX) group that received supervised high-intensity interval training and progressive resistance training 3 times weekly during 18 to 24 weeks of neoadjuvant chemotherapy. The two groups were compared on tumor size, assessed using magnetic resonance imaging as primary outcome, and secondary clinical/pathologic, biological, physical, and patient-reported outcomes. From 2021 to 2023, 102 participants were randomly assigned to the EX (n = 50) or CON (n = 52) group. We found no between-group differences in median tumor size change from baseline to presurgery (EX vs. CON -3.0 mm [95% confidence interval (CI), -8.0 to 14.0]), the proportion with radiologic complete response [EX 65% vs. CON 56%; odds ratio 1.16 (95% CI, 0.39-3.91)], or pathologic complete response [EX 59% vs. CON 56%; odds ratio 1.03 (95% CI, 0.43-2.46)]. The exercise program was associated with higher relative dose intensity, fewer dose delays, shorter hospital stays, and increased cardiorespiratory fitness, muscle strength, and level of physical activity. We found no differences in tumor-infiltrating lymphocytes, body composition, health-related quality of life, anxiety, depression, psychological distress, or participation in rehabilitation between groups. Although the exercise program did not affect tumor size, the positive effects on chemotherapy completion and shorter hospitalizations suggest improved treatment tolerance.",
+  "locator": "10.1158/1078-0432.CCR-25-0416"
+ },
+ "schmidt2025": {
+  "pmid": "40447136",
+  "doi": "10.1016/j.jshs.2025.101064",
+  "pmc": "PMC12395146",
+  "authors": [
+   "Schmidt ME",
+   "Goldschmidt S",
+   "Kreutz C",
+   "Müller J",
+   "Schneeweiss A",
+   "May AM",
+   "Rosenberger F",
+   "Wiskemann J",
+   "Steindorf K"
+  ],
+  "title": "Effects of aerobic or resistance exercise during neoadjuvant chemotherapy on tumor response and therapy completion in women with breast cancer: The randomized controlled BENEFIT trial.",
+  "journal": "J Sport Health Sci",
+  "year": "2025",
+  "volume": "14",
+  "issue": "",
+  "pages": "101064",
+  "elocation": [
+   "101064",
+   "10.1016/j.jshs.2025.101064",
+   "S2095-2546(25)00043-2"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Randomized Controlled Trial",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "The potential of exercise as a concurrent therapy for actively treated primary tumors has been suggested by emerging preclinical and observational studies. However, clinical trials regarding this question are scarce. Therefore, we conducted a randomized controlled trial investigating the effects of aerobic or resistance exercise concomitant to neoadjuvant chemotherapy (NACT) on tumor size. In the BENEFIT study (German title: Bewegung bei neoadjuvanter chemotherapie zur verbesserung der fitness), patients with breast cancer scheduled for NACT were randomly assigned to supervised resistance training (RT, n = 60) or aerobic training (AT, n = 60) twice weekly during NACT or to a waitlist control group (WCG, n = 60). The primary outcome, \"change in tumor size\", as well as the secondary clinical outcomes pathologic complete response (pCR), type of surgery (breast conserving/mastectomy), axillary lymph node dissection (ALND, yes/no), premature discontinuation of chemotherapy (yes/no), and relative dose intensity (RDI) were derived from clinical records. Due to the highly skewed distribution, the primary outcome was categorized. Multiple (ordinal) logistic regression analyses were performed. Overall, there was no significant difference in post-intervention tumor size between RT or AT and WCG. However, there was a significant effect modification by hormone receptor (HR) status (pinteraction = 0.030). Among patients with HR+ tumors, results suggest a beneficial effect of AT on tumor shrinkage (odds ratio (OR) = 2.37, 95% confidence interval (95%CI): 0.97‒5.78), on pCR (OR = 3.21, 95%CI: 0.97‒10.61); and on ALND (OR = 3.76, 95%CI: 0.78‒18.06) compared to WCG. The effects of RT were slightly less pronounced. For HR-subtypes, beneficial effects on RDI were found for AT (OR = 3.71, 95%CI: 1.20‒11.50) and similarly for RT (OR = 2.58, 95%CI: 0.88‒7.59). Both AT and RT had favorable effects on premature discontinuation of chemotherapy (OR (no vs. yes) = 2.34, 95%CI: 1.10‒5.06), irrespective of tumor receptor status. While there was no significant effect on the primary outcome in the overall group, aerobic and resistance exercise concomitant to NACT seem to beneficially affect tumor shrinkage and pCR, reduce the need for ALND among patients with HR+ breast cancers, and prevent low RDI among patients with HR- breast cancers. These results warrant confirmation in further trials.",
+  "locator": "10.1016/j.jshs.2025.101064"
+ },
+ "diasrato2026": {
+  "pmid": "42714641",
+  "doi": "10.1007/s00520-026-11156-1",
+  "pmc": "",
+  "authors": [
+   "Dias Rato N",
+   "Garcia C",
+   "Pinto D",
+   "Guedes H",
+   "Joaquim A",
+   "Viamonte S",
+   "Helguero L",
+   "Viana J",
+   "Alves A"
+  ],
+  "title": "Exercise and pathologic complete response to cancer treatment: a systematic review and meta-analysis.",
+  "journal": "Support Care Cancer",
+  "year": "2026",
+  "volume": "34",
+  "issue": "10",
+  "pages": "",
+  "elocation": [
+   "948",
+   "10.1007/s00520-026-11156-1"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Meta-Analysis",
+   "Systematic Review"
+  ],
+  "abstract": "Neoadjuvant chemotherapy (NACT) is a commonly recommended approach for treating several cancers, and improving patients' outcomes to this therapy is important. This systematic review and meta-analysis assessed the impact of exercise on pathologic complete response (pCR), a key short-term marker of treatment efficacy, in patients with solid tumors receiving NACT. Four electronic databases were searched for randomized controlled trials with physical exercise during NACT as an intervention published until May 2025. Risk of bias was assessed using Cochrane RoB 2.0 and the TESTEX scale. A random-effect meta-analysis using the inverse variance method synthesized the results. Heterogeneity was assessed using I2 and chi2 statistics. Risk ratio estimated the effect size. Eight studies involving 504 patients with breast, esophageal, gastric, or rectal cancer were included in the final analysis. Exercise interventions consisted of aerobic and resistance exercise. Overall, there were no significant differences between exercise and control groups in the rate of pCR to NACT (pooled risk ratio: 1.08 (95% CI: 0.82 to 1.43) Z = 0.56, p = 0.58). However, meta-regression data from breast cancer (BC) studies (4 studies, 367 participants) suggest exercise may be associated with enhanced tumor response to NACT in HR + /HER2- subtypes (regression coefficient: 0.83 (95% CI: -0.00 to 1.67), p = 0.05). Exercise during NACT did not improve pCR across cancer types. Exploratory meta-regression findings suggest a possible benefit of exercise in BC patients with the HR + /HER2- subtype. These results should be interpreted with caution due to the small number of studies and low certainty of the evidence.",
+  "locator": "10.1007/s00520-026-11156-1"
+ },
+ "deboniface2022": {
+  "pmid": "36227931",
+  "doi": "10.1371/journal.pone.0274804",
+  "pmc": "PMC9562167",
+  "authors": [
+   "de Boniface J",
+   "Altena R",
+   "Haddad Ringborg C",
+   "Bolam KA",
+   "Wengström Y"
+  ],
+  "title": "Physical exercise during neoadjuvant chemotherapy for breast cancer as a mean to increase pathological complete response rates: Trial protocol of the randomized Neo-ACT trial.",
+  "journal": "PLoS One",
+  "year": "2022",
+  "volume": "17",
+  "issue": "10",
+  "pages": "e0274804",
+  "elocation": [
+   "e0274804",
+   "10.1371/journal.pone.0274804"
+  ],
+  "pubtypes": [
+   "Clinical Trial Protocol",
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "In early breast cancer, neoadjuvant chemotherapy (NACT) is increasingly used. The proof of efficacy is pathologically complete response (pCR), i.e. the absence of invasive tumour in breast and lymph nodes at surgery. Today, pCR is a common endpoint in pharmaceutical trials since it is significantly associated with survival especially in triple-negative and HER2-positive subtypes. Apart from the mitigation of treatment-related toxicity and symptoms, physical exercise mediates anti-tumoral systemic effects associated with tumour regression in preclinical and clinical models. The aim of Neo-ACT is to test the hypothesis that physical exercise can improve pCR rates in breast cancer patients receiving NACT. The Neo-ACT trial is a prospective clinical trial, randomising T1-3N0-2 breast cancer patients planned for NACT to either a home-based physical exercise intervention supported by a mobile application or routine care. The primary endpoint is pCR; secondary endpoints are patient-reported quality of life, toxicity-related outcomes, and oncological outcomes such as Residual Cancer Burden, objective radiological tumour response, as well as overall, breast cancer-specific and disease-free survival at 2, 5 and 10 years. The intervention consists of a combination of high-intensity interval and resistance training of progressing intensity, and includes at least 150 min of moderate to vigorous physical activity per week, inclusive of two weekly 60-min exercise sessions. In order to show an improvement in pCR of 10%, a total of 712 participants need to be included in the analysis. The Neo-ACT has been registered at clinicaltrials.gov on January 11, 2022 (NCT05184582). If Neo-ACT can prove the oncological efficacy of physical exercise, implementation of training programmes into NACT schedules will be pursued. The use of a digitally led exercise intervention aims to test the potential of such a strategy for use in rural areas and areas of limited resources.",
+  "locator": "10.1371/journal.pone.0274804"
+ },
+ "iyengar2025": {
+  "pmid": "39306704",
+  "doi": "10.1002/cncr.35575",
+  "pmc": "PMC11695174",
+  "authors": [
+   "Iyengar NM",
+   "Scott JM",
+   "Lee J",
+   "Lavery JA",
+   "Foug KL",
+   "Lee CP",
+   "Michalski MG",
+   "Chun SS",
+   "Harrison J",
+   "Moskowitz CS",
+   "Jones LW"
+  ],
+  "title": "Effects of exercise therapy on chemotherapy delivery and response in primary breast cancer: A secondary analysis of a randomized trial.",
+  "journal": "Cancer",
+  "year": "2025",
+  "volume": "131",
+  "issue": "1",
+  "pages": "e35575",
+  "elocation": [
+   "10.1002/cncr.35575"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Randomized Controlled Trial",
+   "Clinical Trial, Phase II"
+  ],
+  "abstract": "Whether structured exercise therapy improves chemotherapy delivery, tolerability, and tumor response is unclear. This was a secondary analysis of a phase 2 trial investigating exercise therapy (n = 72) versus usual care (n = 72) in patients with primary breast cancer. Exercise therapy comprised individualized treadmill walking three times weekly for 20-50 minutes per session at 55%-100% of pretreatment exercise capacity. Chemotherapy delivery was assessed according to the relative dose intensity (RDI), tolerability was assessed according to patient-reported outcomes and blood laboratory values, and response was assessed based on the pathologic complete response rate in patients who received neoadjuvant chemotherapy. In the exercise therapy group, 51 patients (71%) reached 100% RDI (median, 100%; interquartile range, 100%-100%) compared with 41 patients (57%) in the usual care group (median, 100%; interquartile range, 95%-100%; p = .08). Tolerability was similar in both groups; the rates of grade 3 or higher neutropenia and anemia were 22% versus 39% and 7% versus 10% in the exercise and usual care groups, respectively. In patients who received anthracyclines (n = 104), 41 (77%) had 100% chemotherapy RDI in the exercise therapy group versus 29 (57%) in the usual care group (p = .026). In the neoadjuvant chemotherapy subgroup (n = 51 tumors), the postneoadjuvant therapy (yp) pathologic complete response (ypT0ypN0) rate was 27% (95% confidence interval, 12%-50%) in the exercise therapy group compared with 28% (95% confidence interval, 13%-47%) in the usual care group (p > .9). In patients with primary breast cancer, exercise therapy was associated with improved delivery of anthracycline-based chemotherapy. Although exercise therapy was not significantly associated with tumor response, effects varied by tumor subtype (trial registration: Clinicaltrials.gov identifier NCT01943695).",
+  "locator": "10.1002/cncr.35575"
+ },
+ "khan2019": {
+  "pmid": "30997624",
+  "doi": "10.1007/s10549-019-05235-7",
+  "pmc": "PMC6548756",
+  "authors": [
+   "Khan KA",
+   "Mazuquin B",
+   "Canaway A",
+   "Petrou S",
+   "Bruce J"
+  ],
+  "title": "Systematic review of economic evaluations of exercise and physiotherapy for patients treated for breast cancer.",
+  "journal": "Breast Cancer Res Treat",
+  "year": "2019",
+  "volume": "176",
+  "issue": "1",
+  "pages": "37-52",
+  "elocation": [
+   "10.1007/s10549-019-05235-7"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Systematic Review"
+  ],
+  "abstract": "Treatments for breast cancer can lead to chronic musculoskeletal problems. This study aimed to systematically review the evidence surrounding the cost-effectiveness of exercise and physiotherapy interventions aimed at reducing the risk of physical symptoms and functional limitations due to breast cancer treatment. A systematic review of the cost-effectiveness of exercise and physiotherapy interventions during and following treatment for breast cancer was undertaken according to PRISMA guidelines. Literature searches were carried out in Ovid MEDLINE, Ovid Embase, Web of Science, EconLit, CINAHL, PsycINFO, Scopus and the Cochrane Library. Cost-effectiveness evidence was summarised in a descriptive manner and studies were assessed using quality appraisal tools. The review protocol was registered on PROSPERO. A total of 7783 articles were identified and seven were included in the final review. Five studies undertook trial-based economic evaluations, whereas two studies conducted economic evaluation based on decision models. One study was a cost-effectiveness analysis (CEA), three undertook stand-alone cost-utility analyses (CUA) and three studies were combined CEAs and CUAs. Three studies reported favourable cost-effectiveness results for different exercise or physiotherapy interventions. In contrast, four studies found that exercise and physiotherapy interventions were not cost-effective on the basis of quality-adjusted life year outcomes. The evidence surrounding the cost-effectiveness of exercise and physiotherapy interventions for the treatment of breast cancer remains sparse with contrasting conclusions. Future research should particularly aim to broaden the evidence base by disentangling the contributing effects of frequency, intensity, time and type of exercise and physiotherapy interventions on cost-effectiveness outcomes.",
+  "locator": "10.1007/s10549-019-05235-7"
+ },
+ "gublergut2021": {
+  "pmid": "33624172",
+  "doi": "10.1007/s11764-021-01002-0",
+  "pmc": "PMC8521580",
+  "authors": [
+   "Gubler-Gut BE",
+   "Pöhlmann J",
+   "Flatz A",
+   "Schwenkglenks M",
+   "Rohrmann S"
+  ],
+  "title": "Cost-effectiveness of physical activity interventions in cancer survivors of developed countries: a systematic review.",
+  "journal": "J Cancer Surviv",
+  "year": "2021",
+  "volume": "15",
+  "issue": "6",
+  "pages": "961-975",
+  "elocation": [
+   "10.1007/s11764-021-01002-0"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't",
+   "Systematic Review"
+  ],
+  "abstract": "Physical activity has been shown to improve survival and quality of life of cancer patients. Due to differences in patient populations, healthcare settings, and types of intervention, cost-effectiveness analyses of physical activity interventions in cancer survivors are difficult to compare. Available evidence from breast cancer survivor research has shown inconsistent results, and transfer of results to other types of cancer is not straightforward. This paper systematically reviewed current evidence on the cost-effectiveness of physical activity interventions in cancer survivors independent of cancer type compared to usual care or another experimental intervention. The literature search was conducted in seven databases and enhanced by a search for gray literature. Eligible studies were restricted to developed countries and assessed using the CHEERS, CHEC, and PHILIPS checklists. The study protocol was pre-published in PROSPERO. Seven studies, five cost-utility, and two combined cost-utility/cost-effectiveness analyses fully met the inclusion criteria. They covered eight different types of cancer and various interventions. The cost-effectiveness analyses were of moderate to high methodological quality. A high probability of cost-effectiveness was reported in two analyses. One intervention appeared to be not cost-effective, and one to be cost-effective only from an organizational perspective. Three other analyses reported a cost-effectiveness better than US$ 101,195 (€ 80,000) per QALY gained. Physical activity interventions in cancer survivors of developed countries were cost-effective in some but not all clinical trials reviewed. Cost-effectiveness of physical activity interventions appear to depend upon the intensity of the activity.",
+  "locator": "10.1007/s11764-021-01002-0"
+ },
+ "wang2023": {
+  "pmid": "36965520",
+  "doi": "10.1016/j.ypmed.2023.107491",
+  "pmc": "",
+  "authors": [
+   "Wang Y",
+   "McCarthy AL",
+   "Hayes SC",
+   "Gordon LG",
+   "Chiu V",
+   "Bailey TG",
+   "Stewart E",
+   "Tuffaha H"
+  ],
+  "title": "Economic evaluation of exercise interventions for individuals with cancer: A systematic review.",
+  "journal": "Prev Med",
+  "year": "2023",
+  "volume": "172",
+  "issue": "",
+  "pages": "107491",
+  "elocation": [
+   "10.1016/j.ypmed.2023.107491",
+   "S0091-7435(23)00071-3"
+  ],
+  "pubtypes": [
+   "Systematic Review",
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "While there is good evidence that exercise is an effective adjunct therapy to cancer care, little is known about its value for money. The aim of this systematic review is to explore the available evidence pertaining to the cost-effectiveness of exercise interventions following cancer. A search of eight online databases (CINAHL, the Cochrane Library (NHSEED), Econlit, Embase, PsycInfo, PubMed, Scopus, Web of science) was first conducted on 26 March 2021 and updated on 8 March 2022. Only economic evaluations with results in the form of incremental cost-effectiveness ratio (ICER) were included. The Consolidated Health Economics Evaluation Reporting Standards (CHEERS) was used to appraise the quality of reporting in the studies. The study protocol was registered in PROSPERO. Sixteen studies comprising seven (44%) cost-utility analyses (CUA), one (6%) cost-effectiveness analyses (CEA) and eight (50%) combined CUA and CEA were identified. These studies explored exercise in five cancer types (breast, colon, lung, prostate, and blood), with half (50%) in breast cancer. Seven studies (44%) adopted societal perspectives. Exercise interventions were found to be cost-effective in five of ten (50%) trial-based economic evaluations and in five of the six (83%) model-based economic evaluations. Most exercise interventions included were supervised, while close supervision and individualized exercise sessions incurred higher costs. Exercise interventions in cancer care are cost-effective for various cancer types despite considerable heterogeneity in exercise delivery and the type of analysis used for economic evaluation. There is clear value in using decision-analytic modelling to account for the long-term benefits of exercise in cancer care.",
+  "locator": "10.1016/j.ypmed.2023.107491"
+ },
+ "may2017": {
+  "pmid": "28264824",
+  "doi": "10.1136/bmjopen-2016-012187",
+  "pmc": "PMC5353266",
+  "authors": [
+   "May AM",
+   "Bosch MJ",
+   "Velthuis MJ",
+   "van der Wall E",
+   "Steins Bisschop CN",
+   "Los M",
+   "Erdkamp F",
+   "Bloemendal HJ",
+   "de Roos MA",
+   "Verhaar M",
+   "Ten Bokkel Huinink D",
+   "Peeters PH",
+   "de Wit GA"
+  ],
+  "title": "Cost-effectiveness analysis of an 18-week exercise programme for patients with breast and colon cancer undergoing adjuvant chemotherapy: the randomised PACT study.",
+  "journal": "BMJ Open",
+  "year": "2017",
+  "volume": "7",
+  "issue": "3",
+  "pages": "e012187",
+  "elocation": [
+   "e012187",
+   "10.1136/bmjopen-2016-012187"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Multicenter Study",
+   "Randomized Controlled Trial",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "Meta-analyses show that exercise interventions during cancer treatment reduce cancer-related fatigue. However, little is known about the cost-effectiveness of such interventions. Here we aim to assess the cost-effectiveness of the 18-week physical activity during cancer treatment (PACT) intervention for patients with breast and colon cancer. The PACT trial showed beneficial effects for fatigue and physical fitness. Cost-effectiveness analyses with a 9-month time horizon (18 weeks of intervention and 18 weeks of follow-up) within the randomised controlled multicentre PACT study. Outpatient clinics of 7 hospitals in the Netherlands (1 academic and 6 general hospitals) PARTICIPANTS: 204 patients with breast cancer and 33 with colon cancer undergoing adjuvant treatment including chemotherapy. Supervised 1-hour aerobic and resistance exercise (twice per week for 18 weeks) or usual care. Costs, quality-adjusted life years (QALY) and the incremental cost-effectiveness ratio. For colon cancer, the cost-effectiveness analysis showed beneficial effects of the exercise intervention with incremental costs savings of €4321 and QALY improvements of 0.03. 100% of bootstrap simulations indicated that the intervention is dominant (ie, cheaper and more effective). For breast cancer, the results did not indicate that the exercise intervention was cost-effective. Incremental costs were €2912, and the incremental effect was 0.01 QALY. At a Dutch threshold value of €20 000 per QALY, the probability that the intervention is cost-effective was 2%. Our results suggest that the 18-week exercise programme was cost-effective for colon cancer, but not for breast cancer. ISRCTN43801571.",
+  "locator": "10.1136/bmjopen-2016-012187"
+ },
+ "vanwaart2018": {
+  "pmid": "29086085",
+  "doi": "10.1007/s10198-017-0936-0",
+  "pmc": "",
+  "authors": [
+   "van Waart H",
+   "van Dongen JM",
+   "van Harten WH",
+   "Stuiver MM",
+   "Huijsmans R",
+   "Hellendoorn-van Vreeswijk JAJH",
+   "Sonke GS",
+   "Aaronson NK"
+  ],
+  "title": "Cost-utility and cost-effectiveness of physical exercise during adjuvant chemotherapy.",
+  "journal": "Eur J Health Econ",
+  "year": "2018",
+  "volume": "19",
+  "issue": "6",
+  "pages": "893-904",
+  "elocation": [
+   "10.1007/s10198-017-0936-0"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Randomized Controlled Trial"
+  ],
+  "abstract": "A home-based, low-intensity physical activity program (Onco-Move) and a supervised, moderate-to-high intensity, combined resistance and aerobic exercise program (OnTrack) have proven to be effective in maintaining physical fitness and reducing fatigue among breast cancer patients undergoing adjuvant chemotherapy. This study evaluated the cost-utility and cost-effectiveness of Onco-Move and OnTrack. A total of 230 patients were randomized to Onco-Move, OnTrack, or usual care (UC). Health outcomes included quality-adjusted life years (QALYs), general and physical fatigue, and physical fitness measured at baseline, end of chemotherapy, and 6-month follow-up. Societal costs included professional and informal health care, work absenteeism, and unpaid productivity costs. Cost data were based on 3-monthly questionnaires, supplemented by medication data obtained from pharmacies. Onco-Move is not likely to be cost-effective due to the relatively high willingness-to-pay necessary to reach reasonable probabilities of cost-effectiveness (QALY, general and physical fatigue). Incremental cost-effectiveness ratios for OnTrack compared to UC were €26,916/QALY, €788/1-point decrease in general fatigue and €1402/1-point decrease in physical fatigue. The probability of OnTrack being cost-effective ranged from 31% at a willingness-to-pay (WTP) of €0-79% at a WTP of €80,000/QALY, 97% at a WTP of €15,000/1-point decrease in general fatigue, and 86% at a WTP of €24,000/1-point decrease in physical fatigue. Both interventions had a low probability of being cost-effective for physical fitness. The probability of cost-effectiveness for both interventions was greater among compliant participants. Onco-Move is not likely to be cost-effective. Depending on the decision-makers' willingness-to-pay, OnTrack could be considered cost-effective in comparison with UC. Trial registration Clinical trial registration number of the Netherlands Trial Register-NTR2159.",
+  "locator": "10.1007/s10198-017-0936-0"
+ },
+ "perrier2020": {
+  "pmid": "31729566",
+  "doi": "10.1007/s00520-019-05078-4",
+  "pmc": "",
+  "authors": [
+   "Perrier L",
+   "Foucaut AM",
+   "Morelle M",
+   "Touillaud M",
+   "Kempf-Lépine AS",
+   "Heinz D",
+   "Gomez F",
+   "Meyrand R",
+   "Baudinet C",
+   "Berthouze S",
+   "Reynes E",
+   "Carretier J",
+   "Guillemaut S",
+   "Pérol D",
+   "Trédan O",
+   "Philip T",
+   "Bachmann P",
+   "Fervers B"
+  ],
+  "title": "Cost-effectiveness of an exercise and nutritional intervention versus usual nutritional care during adjuvant treatment for localized breast cancer: the PASAPAS randomized controlled trial.",
+  "journal": "Support Care Cancer",
+  "year": "2020",
+  "volume": "28",
+  "issue": "6",
+  "pages": "2829-2842",
+  "elocation": [
+   "10.1007/s00520-019-05078-4"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Randomized Controlled Trial"
+  ],
+  "abstract": "We undertook a cost-effectiveness analysis (CEA) to compare an exercise and nutritional program with the usual nutritional care concomitant to adjuvant chemotherapy in localized breast cancer patients. The CEA was designed as part of the interventional, controlled, randomized, single-center, open-label PASAPAS study. Breast cancer patients receiving first-line adjuvant chemotherapy at a French Comprehensive Cancer Center were randomized 2:1 to a 6-month exercise program of supervised indoor and outdoor group sessions in addition to usual nutritional care (exercise arm) or a usual nutritional care group receiving dietary and physical activity counseling (control arm). Costs were assessed from the French national insurance perspective (in Euros, 2012). Incremental cost-effectiveness ratios (ICERs) were calculated for four criteria: body mass index, waist circumference, body fat percentage, and estimated aerobic capacity. Uncertainty around the ICERs was captured by a probabilistic analysis using a non-parametric bootstrap method. The analysis was based on 60 patients enrolled between 2011 and 2013. Average intervention costs per participant were €412 in the exercise arm (n = 41) and €117 (n = 19) in the control arm. Total mean costs were €17,344 (standard deviation 9,928) and €20,615 (standard deviation 14,904), respectively, did not differ significantly (p = 0.51). The 6-month exercise program was deemed to be cost-effective compared with usual care for the estimated aerobic capacity. Multicenter randomized studies with long-term costs and outcomes should be done to provide additional evidence. Clinical trial: The PASAPAS study is registered under ClinicalTrials.gov. Trial registration ID: NCT01331772.",
+  "locator": "10.1007/s00520-019-05078-4"
+ },
+ "ax2023": {
+  "pmid": "37074759",
+  "doi": "10.1080/0284186X.2023.2200149",
+  "pmc": "",
+  "authors": [
+   "Ax AK",
+   "Husberg M",
+   "Johansson B",
+   "Demmelmaier I",
+   "Berntsen S",
+   "Sjövall K",
+   "Börjeson S",
+   "Nordin K",
+   "Davidson T"
+  ],
+  "title": "Cost-effectiveness of different exercise intensities during oncological treatment in the Phys-Can RCT.",
+  "journal": "Acta Oncol",
+  "year": "2023",
+  "volume": "62",
+  "issue": "4",
+  "pages": "414-421",
+  "elocation": [
+   "10.1080/0284186X.2023.2200149"
+  ],
+  "pubtypes": [
+   "Randomized Controlled Trial",
+   "Journal Article"
+  ],
+  "abstract": "Cost-effectiveness is important in the prioritisation between interventions in health care. Exercise is cost-effective compared to usual care during oncological treatment; however, the significance of exercise intensity to the cost-effectiveness is unclear. In the present study, we aimed to evaluate the long-term cost-effectiveness of the randomised controlled trial Phys-Can, a six-month exercise programme of high (HI) or low-to-moderate intensity (LMI) during (neo)adjuvant oncological treatment. A cost-effectiveness analysis was performed, based on 189 participants with breast, colorectal, or prostate cancer (HI: n = 99 and LMI: n = 90) from the Phys-Can RCT in Sweden. Costs were estimated from a societal perspective, and included cost of the exercise intervention, health care utilisation and productivity loss. Health outcomes were assessed as quality-adjusted life-years (QALYs), using EQ-5D-5L at baseline, post intervention and 12 months after the completion of the intervention. At 12-month follow-up after the intervention, the total cost per participant did not differ significantly between HI (€27,314) and LMI exercise (€29,788). There was no significant difference in health outcome between the intensity groups. On average HI generated 1.190 QALYs and LMI 1.185 QALYs. The mean incremental cost-effectiveness ratio indicated that HI was cost effective compared with LMI, but the uncertainty was large. We conclude that HI and LMI exercise have similar costs and effects during oncological treatment. Hence, based on cost-effectiveness, we suggest that decision makers and clinicians can consider implementing both HI and LMI exercise programmes and recommend either intensity to the patients with cancer during oncological treatment to facilitate improvement of health.",
+  "locator": "10.1080/0284186X.2023.2200149"
+ },
+ "ax2022": {
+  "pmid": "35607981",
+  "doi": "10.1080/0284186X.2022.2075238",
+  "pmc": "",
+  "authors": [
+   "Ax AK",
+   "Husberg M",
+   "Johansson B",
+   "Demmelmaier I",
+   "Berntsen S",
+   "Sjövall K",
+   "Börjeson S",
+   "Nordin K",
+   "Davidson T"
+  ],
+  "title": "Long-term resource utilisation and associated costs of exercise during (neo)adjuvant oncological treatment: the Phys-Can project.",
+  "journal": "Acta Oncol",
+  "year": "2022",
+  "volume": "61",
+  "issue": "7",
+  "pages": "888-896",
+  "elocation": [
+   "10.1080/0284186X.2022.2075238"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Randomized Controlled Trial"
+  ],
+  "abstract": "Exercise during oncological treatment is beneficial to patient health and can counteract the side effects of treatment. Knowledge of the societal costs associated with an exercise intervention, however, is limited. The aims of the present study were to evaluate the long-term resource utilisation and societal costs of an exercise intervention conducted during (neo)adjuvant oncological treatment in a randomised control trial (RCT) versus usual care (UC), and to compare high-intensity (HI) versus low-to-moderate intensity (LMI) exercise in the RCT. We used data from the Physical Training and Cancer (Phys-Can) project. In the RCT, 577 participants were randomised to HI or to LMI of combined endurance and resistance training for 6 months, during oncological treatment. The project also included 89 participants with UC in a longitudinal observational study. We measured at baseline and after 18 months. Resource utilisation and costs of the exercise intervention, health care, and productivity loss were compared using analyses of covariance (RCT vs. UC) and t test (HI vs. LMI). Complete data were available for 619 participants (RCT HI: n = 269, LMI: n = 265, and UC: n = 85). We found no difference in total societal costs between the exercise intervention groups in the RCT and UC. However, participants in the RCT had lower rates of disability pension days (p < .001), corresponding costs (p = .001), and pharmacy costs (p = .018) than the UC group. Nor did we find differences in resource utilisation or costs between HI and LMI exercise int the RCT. Our study showed no difference in total societal costs between the comprehensive exercise intervention and UC or between the exercise intensities. This suggests that exercise, with its well-documented health benefits during oncological treatment, produces neither additional costs nor savings.",
+  "locator": "10.1080/0284186X.2022.2075238"
+ },
+ "chan2026": {
+  "pmid": "42218651",
+  "doi": "10.1200/JCO-26-00765",
+  "pmc": "",
+  "authors": [
+   "Chan KKW",
+   "Chu RWK",
+   "Cheung MC",
+   "Courneya KS",
+   "O'Callaghan CJ",
+   "Vardy JL",
+   "Gill S",
+   "Friedenreich C",
+   "Wong RKS",
+   "Dhillon HM",
+   "Coyle V",
+   "Chua NS",
+   "Jonker DJ",
+   "Meyer RM",
+   "Ahmed S",
+   "Zalcberg JR",
+   "Clarke SJ",
+   "O'Brien P",
+   "Tang PA",
+   "Wong R",
+   "Lim HJ",
+   "Burge ME",
+   "Brundage M",
+   "Hay AE",
+   "Tu D",
+   "Booth CM",
+   "CHALLENGE Investigators",
+   "CHALLENGE investigators"
+  ],
+  "title": "Structured Exercise Program After Adjuvant Chemotherapy for Colon Cancer: A Cost-Utility Analysis of the CHALLENGE Trial.",
+  "journal": "J Clin Oncol",
+  "year": "2026",
+  "volume": "44",
+  "issue": "22",
+  "pages": "2130-2139",
+  "elocation": [
+   "10.1200/JCO-26-00765"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Clinical Trial, Phase III",
+   "Randomized Controlled Trial"
+  ],
+  "abstract": "The phase III CHALLENGE trial (CCTG CO.21) demonstrated that a 3-year structured exercise program (SEP) improved disease-free and overall survival versus health education materials (HEM) in patients with stage III or high-risk stage II colon cancer after surgery and adjuvant chemotherapy. We assessed the cost-effectiveness of the SEP versus HEM. This prespecified economic evaluation used prospectively collected data from all trial participants (N = 889). The base case adopted the Canadian public payer perspective and included direct health care costs over a 5-year time horizon with a 1.5% discount rate. 36-Item Short Form (SF-36) outcomes were mapped to Short-Form 6-Dimension (SF-6D) utilities using a validated algorithm. Mean costs (2024 in Canadian dollars [CAD]) and effects (life-years [LYs] and quality-adjusted LYs [QALYs]) per participant in each intervention group were used to estimate the incremental costs, incremental LYs/QALYs, incremental cost-effectiveness ratio (ICER, $ CAD/life-year gain [LYG]), and incremental cost-utility ratio ($ CAD/QALY) when applicable. Uncertainty was assessed via bootstrapping (1,000 samples). Notable scenario analyses included a 10-year time horizon and a societal perspective incorporating lost wages because of missed work, measured through the Work Productivity and Activity Impairment questionnaire. In the base case, despite an up-front cost of $2,917 (CAD)/participant to provide the SEP, the SEP strategy (total cost: $31,957 (CAD)/participant) was dominant over HEM (total cost: $33,546 (CAD)/participant), being less costly (-$1,589/participant) and more effective (+0.05 LYs/participant; +0.10 QALYs/participant). The SEP was dominant in 53% of bootstrap samples, and 80% fell below a $50,000 (CAD) per QALY willingness-to-pay threshold. Major cost drivers were cancer recurrence or new malignancy and anticancer therapy. Scenario analyses were consistent with the base case. The SEP was less costly and more effective than HEM. This study can inform payers and health systems with implementation of SEPs in routine care.",
+  "locator": "10.1200/JCO-26-00765"
+ },
+ "boudewijns2023": {
+  "pmid": "36575333",
+  "doi": "10.1007/s40258-022-00774-5",
+  "pmc": "",
+  "authors": [
+   "Boudewijns EA",
+   "Otten TM",
+   "Gobianidze M",
+   "Ramaekers BL",
+   "van Schayck OCP",
+   "Joore MA"
+  ],
+  "title": "Headroom Analysis for Early Economic Evaluation: A Systematic Review.",
+  "journal": "Appl Health Econ Health Policy",
+  "year": "2023",
+  "volume": "21",
+  "issue": "2",
+  "pages": "195-204",
+  "elocation": [
+   "10.1007/s40258-022-00774-5"
+  ],
+  "pubtypes": [
+   "Systematic Review",
+   "Journal Article"
+  ],
+  "abstract": "The headroom analysis is an early economic evaluation that quantifies the highest price at which an intervention may still be cost effective. Currently, there is no comprehensive review on how it is applied. This study investigated the application of the headroom analysis, specifically (1) how the headroom analysis is framed (2) the analytical approach and sources of evidence used, and (3) how expert judgement is used and reported. A systematic search was conducted in PubMed, Embase, Web of Science, EconLit, and Google Scholar on 28 April 2022. Studies were eligible if they reported an application of the headroom analysis. Data were presented in tabular form and summarised descriptively. We identified 42 relevant papers. The headroom analysis was applied to medicines (29%), diagnostic or screening tests (29%), procedures, programmes and systems (21%), medical devices (19%), and a combined test and device (2%). All studies used model-based analyses, with 40% using simple models and 60% using more comprehensive models. Thirty-three percent of the studies assumed perfect effectiveness of the health technology, while 67% adopted realistic assumptions. Ten percent of the studies calculated an effectiveness-seeking headroom instead of a cost-seeking headroom. Expert judgement was used in 71% of the studies; 23 studies (55%) used expert opinion, 6 studies (14%) used expert elicitation, and 1 study (2%) used both. Because the application of the headroom analysis varies considerably, we recommend its appropriate use and clear reporting of analytical approaches, level of evidence available, and the use of expert judgement.",
+  "locator": "10.1007/s40258-022-00774-5"
+ },
+ "huang2023": {
+  "pmid": "36648737",
+  "doi": "10.1007/s12325-022-02365-1",
+  "pmc": "PMC9988745",
+  "authors": [
+   "Huang M",
+   "A Fasching P",
+   "Haiderali A",
+   "Xue W",
+   "Yang C",
+   "Pan W",
+   "Zhou ZY",
+   "Hu P",
+   "Chaudhuri M",
+   "Le Bailly De Tilleghem C",
+   "Cappoen N",
+   "O'Shaughnessy J"
+  ],
+  "title": "Cost-Effectiveness of Neoadjuvant Pembrolizumab Plus Chemotherapy Followed by Adjuvant Single-Agent Pembrolizumab for High-Risk Early-Stage Triple-Negative Breast Cancer in the United States.",
+  "journal": "Adv Ther",
+  "year": "2023",
+  "volume": "40",
+  "issue": "3",
+  "pages": "1153-1170",
+  "elocation": [
+   "10.1007/s12325-022-02365-1"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "The randomized phase III KEYNOTE-522 trial demonstrated that addition of pembrolizumab to neoadjuvant chemotherapy provided a significant improvement in event-free survival and a favorable trend in overall survival for high-risk early-stage triple-negative breast cancer (eTNBC). This analysis evaluated the cost-effectiveness of pembrolizumab in combination with chemotherapy as neoadjuvant treatment and continued as a single-agent adjuvant treatment after surgery vs. neoadjuvant chemotherapy for patients with high-risk eTNBC in the USA. The analysis was conducted from a US third-party public healthcare payer perspective. A multistate transition model was developed using efficacy and safety data from the KEYNOTE-522 trial. The model included four mutually exclusive health states: event-free, locoregional recurrence, distant metastasis, and death to simulate patients' lifetime disease course. Quality-adjusted life years (QALYs) were calculated on the basis of EuroQoL-5 Dimensions utility data collected in KEYNOTE-522. Costs for drug acquisition/administration, adverse events, disease management, and subsequent therapies were reported (2021 US dollars). Costs and outcomes were discounted at 3% annually. A series of sensitivity analyses were performed to test the robustness of the main results. In the base case scenario, pembrolizumab plus chemotherapy followed by pembrolizumab resulted in expected gains of 3.37 life years (LYs) and 2.90 QALYs, and an incremental cost of $79,046 versus chemotherapy. The incremental cost per QALY gained was $27,285, which is lower than all commonly cited US willingness-to-pay thresholds. Sensitivity analyses showed the results were robust over plausible values of key model inputs and assumptions. Compared with neoadjuvant chemotherapy, pembrolizumab in combination with chemotherapy as neoadjuvant treatment and continued as a single-agent adjuvant treatment after surgery is considered a cost-effective option for high-risk eTNBC in the USA.",
+  "locator": "10.1007/s12325-022-02365-1"
+ },
+ "kwong2024": {
+  "pmid": "39037537",
+  "doi": "10.1007/s40487-024-00285-4",
+  "pmc": "PMC11333381",
+  "authors": [
+   "Kwong A",
+   "Leung R",
+   "Chan TC",
+   "Khandelwal A",
+   "Mishra K",
+   "Huang M"
+  ],
+  "title": "Cost-effectiveness of Pembrolizumab in Combination with Chemotherapy as Neoadjuvant Treatment and Continued as a Single Agent Adjuvant Treatment for High-Risk Early-Stage Triple-Negative Breast Cancer in Hong Kong.",
+  "journal": "Oncol Ther",
+  "year": "2024",
+  "volume": "12",
+  "issue": "3",
+  "pages": "525-547",
+  "elocation": [
+   "10.1007/s40487-024-00285-4"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "The phase III randomized KEYNOTE-522 trial demonstrated that pembrolizumab in combination with chemotherapy as neoadjuvant treatment followed by adjuvant pembrolizumab (pembrolizumab + chemotherapy) provided significant improvements in event-free survival (EFS) and overall survival (OS) for patients with high-risk early-stage triple-negative breast cancer (eTNBC). The objective was to assess the cost-effectiveness of pembrolizumab + chemotherapy compared to neoadjuvant chemotherapy alone (chemotherapy) in patients with high-risk eTNBC from a Hong Kong third-party payer perspective. A multistate transition model with four health states (event-free), locoregional recurrence, distant metastases, and death) was developed to assess the lifetime medical costs and health outcomes (3% annual discount), along with incremental cost-effectiveness ratios (ICERs) using efficacy and safety data from the KEYNOTE-522 trial. The health state utilities were derived from KEYNOTE-522 Euro-QoL-five-dimension five-level questionnaire (EQ-5D-5L) data. Costs were expressed in 2022 Hong Kong dollars (HKD). Scenario and sensitivity analyses were performed to assess the robustness of results. Over a 32-year time horizon, base case results showed that pembrolizumab + chemotherapy was associated with a 3.42 year longer EFS and expected gains of 3.05 life years (LYs) and 2.45 quality-adjusted life years (QALYs) compared to chemotherapy. The resultant ICERs were HKD 135,200 per QALY gained and HKD 108,463 per LY gained, which were lower than the World Health Organization (WHO) cost-effectiveness threshold of three times gross domestic product (GDP) per capita for Hong Kong of HKD 1,171,308 per QALY. The one-way sensitivity analyses (OWSA) and probabilistic sensitivity analysis (PSA) showed the results were robust across various inputs and alternative scenarios. On the basis of the analysis conducted for a 56-year-old cohort with high-risk eTNBC and assumptions in the model, pembrolizumab + chemotherapy represents a cost-effective proposition (as the ICER is approximately 35% of the GDP per capita in Hong Kong) for patients with high-risk eTNBC in Hong Kong.",
+  "locator": "10.1007/s40487-024-00285-4"
+ },
+ "favrebulle2024": {
+  "pmid": "37999854",
+  "doi": "10.1007/s41669-023-00445-8",
+  "pmc": "PMC10781656",
+  "authors": [
+   "Favre-Bulle A",
+   "Huang M",
+   "Haiderali A",
+   "Bhadhuri A"
+  ],
+  "title": "Cost-Effectiveness of Neoadjuvant Pembrolizumab plus Chemotherapy Followed by Adjuvant Pembrolizumab in Patients with High-Risk, Early-Stage, Triple-Negative Breast Cancer in Switzerland.",
+  "journal": "Pharmacoecon Open",
+  "year": "2024",
+  "volume": "8",
+  "issue": "1",
+  "pages": "91-101",
+  "elocation": [
+   "10.1007/s41669-023-00445-8"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "This study assessed the cost-effectiveness of neoadjuvant pembrolizumab plus chemotherapy followed by adjuvant pembrolizumab versus neoadjuvant chemotherapy plus placebo followed by adjuvant placebo for patients with high-risk, early-stage, triple-negative breast cancer (TNBC) from a Swiss third-party payer perspective over a lifetime horizon (51 years). A transition model with four health states (event-free, locoregional recurrence, distant metastasis, and death) was developed to assess the cost-effectiveness of pembrolizumab plus chemotherapy versus chemotherapy alone for the treatment of high-risk, early-stage TNBC. Data were utilized from the KEYNOTE-522 randomized controlled trial (ClinicalTrials.gov, NCT03036488). The incremental cost-effectiveness ratio (ICER) was calculated, which was reported as cost per life year or quality-adjusted life year (QALY) gained. A one-way deterministic sensitivity analysis, a probabilistic sensitivity analysis (PSA) and scenario analyses were conducted to assess the robustness of the model results. Base-case results estimated an ICER of 14,114 Swiss francs (CHF)/QALY for pembrolizumab plus chemotherapy versus chemotherapy alone. Results were most sensitive to changes in the extrapolation of event-free survival (EFS). All sensitivity and scenario analyses generated ICERs below the willingness-to-pay threshold of CHF100,000/QALY, and the PSA showed a 98.8% probability that the ICER would be below this threshold. Due to the limited follow-up period in the KEYNOTE-522 trial, EFS data were extrapolated over the lifetime horizon to inform transition probabilities. Extensive validation and scenario analyses ensured the results were robust. The model demonstrated that neoadjuvant pembrolizumab plus chemotherapy followed by adjuvant pembrolizumab was cost-effective versus chemotherapy alone in patients with high-risk, early-stage TNBC in Switzerland.",
+  "locator": "10.1007/s41669-023-00445-8"
+ },
+ "pollinger2025": {
+  "pmid": "39665251",
+  "doi": "10.1080/13696998.2024.2441073",
+  "pmc": "",
+  "authors": [
+   "Pöllinger B",
+   "Haiderali A",
+   "Huang M",
+   "Akyol Ersoy B",
+   "Abdelaziz AH",
+   "Kassem L",
+   "Elsisi GH"
+  ],
+  "title": "The cost-effectiveness of treatment for high-risk, early-stage, triple-negative breast cancer in Egypt: an analysis of neoadjuvant pembrolizumab plus chemotherapy followed by adjuvant single-agent pembrolizumab.",
+  "journal": "J Med Econ",
+  "year": "2025",
+  "volume": "28",
+  "issue": "1",
+  "pages": "105-113",
+  "elocation": [
+   "10.1080/13696998.2024.2441073"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "The cost-effectiveness of neoadjuvant pembrolizumab + chemotherapy followed by adjuvant pembrolizumab compared to neoadjuvant chemotherapy plus placebo followed by adjuvant placebo was assessed in high-risk, early-stage, triple-negative breast cancer patients from an Egyptian societal perspective over a lifetime horizon. A 4-state Markov cohort model was developed to compare the cost-effectiveness of pembrolizumab + chemotherapy/pembrolizumab vs chemotherapy alone for the treatment of high-risk, early-stage, triple-negative breast cancer. The model simulated the clinical course of high-risk, early-stage, triple-negative breast cancer across four health states: event-free survival, locoregional recurrence, distant metastasis, and death. Clinical inputs for the simulation were derived from modeling of efficacy and safety data collected in the KEYNOTE-522 trial. Direct medical costs and indirect costs were reported in 2022 Egyptian pounds (EGP) and converted to US dollars ($). Probabilistic and deterministic sensitivity analyses were conducted to assess the robustness of model results. Compared with chemotherapy alone, pembrolizumab + chemotherapy/pembrolizumab led to expected gains of 2.92 life years and 2.25 quality-adjusted life years, respectively, while increasing overall treatment costs by EGP 491,695 ($102,436). Incremental costs per year gained were EGP 218,285 ($45,476) per quality-adjusted life year and EGP 168,223 ($35,046) per life year, both of which were lower than the 2022 Egyptian cost-effectiveness threshold of EGP 398,439 ($83,008). The findings of sensitivity analyses indicated that the model was robust across a range of inputs and assumptions. In Egypt, pembrolizumab + chemotherapy/pembrolizumab is a cost-effective treatment for high-risk, early-stage, triple-negative breast cancer when considering health-related quality-of-life and years of life gained.",
+  "locator": "10.1080/13696998.2024.2441073"
+ },
+ "sugiura2023": {
+  "pmid": "37259600",
+  "doi": "10.1093/jjco/hyad050",
+  "pmc": "",
+  "authors": [
+   "Sugiura K",
+   "Hiratsuka H",
+   "Oshima G",
+   "Aiko S"
+  ],
+  "title": "Cost-effectiveness analysis of pembrolizumab in patients with treatment-refractory metastatic colorectal cancer in Japan.",
+  "journal": "Jpn J Clin Oncol",
+  "year": "2023",
+  "volume": "53",
+  "issue": "8",
+  "pages": "691-697",
+  "elocation": [
+   "10.1093/jjco/hyad050"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "The immune checkpoint inhibitor pembrolizumab has recently been recognized as a standard treatment regimen for patients with metastatic colorectal cancer and the microsatellite-instability-high/mismatch repair-deficient mutation. However, its cost-effectiveness in late-line treatment remains unclear. The aim of this study was to assess the cost-effectiveness of pembrolizumab for patients with microsatellite-instability-high/mismatch repair-deficient metastatic colorectal cancer. Markov decision modeling using treatment costs, disease-free survival and overall survival was performed to examine the cost-effectiveness of pembrolizumab monotherapy compared with chemotherapy, and best supportive care. The Japanese healthcare payer's perspective was adopted. The outcomes were modeled on the basis of published literature. The primary outcome was the incremental cost-effectiveness ratio between the strategies. Sensitivity analyses were performed and the effects of uncertainty on the model parameters were investigated. Pembrolizumab monotherapy had incremental cost-effectiveness ratios of $408204.3 per quality-adjusted life-year gained compared with best supportive care and $489123.4 per quality-adjusted life-year gained compared with chemotherapy. Given a Japanese willingness-to-pay threshold of $69560.38 per quality-adjusted life-year, the base case results suggested that pembrolizumab monotherapy was not cost-effective. The sensitivity analysis results were in line with the base case results. Pembrolizumab monotherapy is not a cost-effective option in late-line treatment for patients with metastatic colorectal cancer and microsatellite-instability-high/mismatch repair-deficient mutation in the Japanese healthcare system. Further studies on its cost-effectiveness in first-line treatment are warranted.",
+  "locator": "10.1093/jjco/hyad050"
+ },
+ "kakinuma2025": {
+  "pmid": "40652068",
+  "doi": "10.1007/s10388-025-01144-5",
+  "pmc": "PMC12450808",
+  "authors": [
+   "Kakinuma H",
+   "Takada D",
+   "Itoshima H",
+   "Kunisawa S",
+   "Moriwaki K",
+   "Honda M",
+   "Fushimi K",
+   "Imanaka Y"
+  ],
+  "title": "Cost-effectiveness analysis of pembrolizumab plus chemotherapy versus chemotherapy as first line chemotherapy for patients with unresectable advanced esophageal cancer in Japan.",
+  "journal": "Esophagus",
+  "year": "2025",
+  "volume": "22",
+  "issue": "4",
+  "pages": "583-592",
+  "elocation": [
+   "10.1007/s10388-025-01144-5"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Comparative Study"
+  ],
+  "abstract": "Although pembrolizumab plus chemotherapy (Pembro + Chemo) is the recommended first-line therapy for advanced esophageal cancer, it remains unclear whether it is more cost-effective than chemotherapy (Chemo). We evaluated the cost-effectiveness of Pembro + Chemo versus Chemo from a Japanese healthcare payer perspective. A partitioned survival analysis model was developed to predict costs and quality-adjusted life years (QALY) for Pembro + Chemo and Chemo. The model parameters were based on a previous randomized controlled trial and a nationwide administrative database in Japan. The incremental cost-effectiveness ratio (ICER) of Pembro + Chemo compared with Chemo was estimated. A subgroup analysis on the level of PD-L1 Combined Positive Score (CPS) ≥ 10 was also conducted. Additionally, one-way deterministic sensitivity analysis and probabilistic sensitivity analysis with Monte Carlo simulations (5,000 simulations) were conducted. The ICER of Pembro + Chemo over Chemo was estimated at USD 176,479 per QALY. The subgroup analysis for patients with PD-L1 CPS ≥ 10 showed an ICER of USD 126,862 per QALY. One-way deterministic sensitivity analysis demonstrated that the ICER remained above the willingness-to-pay threshold of USD 50,000-100,000 per QALY in all scenarios, with the utility of progression-free survival in the Pembro + Chemo group having the greatest influence on the ICER. Probabilistic sensitivity analysis showed that the probability of Pembro + Chemo being cost-effective was 0% at the willingness-to-pay threshold. The addition of pembrolizumab to chemotherapy was not cost-effective in treating advanced esophageal cancer in Japan.",
+  "locator": "10.1007/s10388-025-01144-5"
+ },
+ "taniguchi2026": {
+  "pmid": "41380627",
+  "doi": "10.1016/j.vhri.2025.101555",
+  "pmc": "",
+  "authors": [
+   "Taniguchi S",
+   "Moriwaki K",
+   "Morimoto K",
+   "Shimozuma K"
+  ],
+  "title": "Cost-Effectiveness of Pembrolizumab as First-Line Therapy for Advanced Colorectal Cancer With High Microsatellite Instability or Mismatched Repair Deficiency in Japan.",
+  "journal": "Value Health Reg Issues",
+  "year": "2026",
+  "volume": "54",
+  "issue": "",
+  "pages": "101555",
+  "elocation": [
+   "10.1016/j.vhri.2025.101555",
+   "S2212-1099(25)00481-9"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "This study aimed to evaluate the cost-effectiveness of pembrolizumab (PEM) for treating patients with advanced colorectal cancer with high microsatellite instability or mismatched repair deficiency in Japan. A partitioned survival analysis model was developed to predict costs and quality-adjusted life-years (QALYs) in PEM and standard-of-care (SoC) groups. Survival data for model extrapolation were obtained from the KEYNOTE-177 trial. Drug costs were based on official Japanese pricing, and other medical costs were estimated using a claims database provided by a health insurance association. A 2% discount rate was applied. Utility values were derived from previously published studies. The incremental cost-effectiveness ratio (ICER) of PEM compared with SoC was calculated and evaluated against Japan's willingness-to-pay threshold. Sensitivity analyses were conducted to assess parameter uncertainty. The incremental cost of PEM compared with SoC was estimated at JPY15 554 008 with an incremental gain of 2.47 QALYs. Based on these results, the ICER for PEM compared with SoC was JPY6 299 749 per QALY. In a scenario without a restriction on the duration of PEM administration, the ICER was estimated at JPY21 408 155 per QALY. Although outcomes varied depending on the PEM treatment duration and the medical cost setting after disease progression in the SoC group, PEM was suggested to be more cost-effective than SoC at the reference willingness-to-pay threshold of JPY15 million per QALY in Japan.",
+  "locator": "10.1016/j.vhri.2025.101555"
+ },
+ "chisaki2025": {
+  "pmid": "40317386",
+  "doi": "10.1007/s40261-025-01445-8",
+  "pmc": "",
+  "authors": [
+   "Chisaki Y",
+   "Nakamura N",
+   "Komuro T",
+   "Nyuji H",
+   "Harano M",
+   "Kitada N"
+  ],
+  "title": "Cost-Effectiveness Analysis of Pembrolizumab Plus Chemotherapy Compared with Chemotherapy as First-Line Treatment for Advanced PD-L1-Positive Triple-Negative Breast Cancer from a Japanese Healthcare Perspective.",
+  "journal": "Clin Drug Investig",
+  "year": "2025",
+  "volume": "45",
+  "issue": "6",
+  "pages": "317-326",
+  "elocation": [
+   "10.1007/s40261-025-01445-8"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Comparative Study"
+  ],
+  "abstract": "Pembrolizumab has been approved for the immunotherapy of programmed death ligand 1 (PD-L1)-positive triple-negative breast cancer (TNBC) based on the KEYNOTE-355 trial. However, cost-effectiveness evidence is limited. The purpose of this study was to evaluate the cost-effectiveness of pembrolizumab plus chemotherapy compared with chemotherapy alone for patients with PD-L1-positive inoperable or metastatic TNBC from a Japanese healthcare perspective. The cost-effectiveness analysis was performed for pembrolizumab, of which the drug price was determined at 214,498 Japanese yen (JPY), or 1631 US dollars (USD) (1 USD = 131.5 JPY) for KEYTRUDA® (100 mg), using a partition survival model based on the KEYNOTE-355 trial subgroup analysis in Japan. The comparison was made using quality-adjusted life years (QALYs) and the incremental cost-effectiveness ratio (ICER). One-way deterministic and probabilistic sensitivity analyses (PSA), which evaluate the impact of parameter uncertainty, were performed to assess the robustness and calculate the acceptable probability, defined as the probability of the ICER being below the willingness-to-pay (WTP). Pembrolizumab plus chemotherapy provided an additional 0.676 QALYs at an incremental cost of 8,503,072 JPY. The ICER for pembrolizumab plus chemotherapy compared with conventional chemotherapy was 12,577,178 JPY (95,644 USD) per QALY. The ICER per QALY was below the willingness-to-pay threshold of 15,000,000 JPY. PSAs revealed that the acceptable probability was 83.9% at 15,000,000 JPY. The pembrolizumab plus chemotherapy is likely to be a cost-effective option compared with conventional chemotherapy for patients with PD-L1-positive inoperable or metastatic TNBC in a Japanese medical environment from a healthcare system.",
+  "locator": "10.1007/s40261-025-01445-8"
+ },
+ "tomura2025": {
+  "pmid": "39565452",
+  "doi": "10.1007/s11096-024-01826-7",
+  "pmc": "PMC11919958",
+  "authors": [
+   "Tomura K",
+   "Sakamaki H",
+   "Nawata S",
+   "Ishida H",
+   "Tanaka K",
+   "Kogo M"
+  ],
+  "title": "Cost-effectiveness analysis of first line pembrolizumab monotherapy for high programmed cell death ligand 1 expressed, advanced non-small cell lung cancer in Japan.",
+  "journal": "Int J Clin Pharm",
+  "year": "2025",
+  "volume": "47",
+  "issue": "2",
+  "pages": "304-313",
+  "elocation": [
+   "10.1007/s11096-024-01826-7"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "Pembrolizumab monotherapy significantly extends progression-free and overall survival compared to platinum-based chemotherapy for advanced non-small cell lung cancer (NSCLC), but also has a significant impact on medical costs. To clarify the health economic evidence for selecting the first-line treatment for patients with stage IV advanced NSCLC with a programmed cell death ligand 1 tumor proportion score of 50% or greater in Japan, we assessed the cost-effectiveness of pembrolizumab monotherapy compared with that of platinum-based chemotherapy. Using a Markov model, the study simulated three health states for patients, based on clinical data and utility values from KEYNOTE-024. Transition probabilities were estimated exponentially. Direct medical costs were calculated according to the 2022 National Health Insurance Medical Fee Points and Drug Price Standards. The outcomes measured included life years, quality-adjusted life years, and incremental cost-effectiveness ratio, with sensitivity analysis performed to evaluate the effect of uncertainties. Pembrolizumab led to an additional 1.58 life years and 1.23 quality-adjusted life years at an additional cost of 7,009,888 Japanese yen (48,448 U.S. dollars [USD]), resulting in incremental cost-effectiveness ratio of 4,436,638 Japanese yen (30,663 USD) per life year and 5,699,096 Japanese yen (39,388 USD) per quality-adjusted life year. Pembrolizumab was deemed cost-effective under a threshold of 7.5 million Japanese yen (51,835 USD) per quality-adjusted life year. Pembrolizumab monotherapy is a cost-effective option for the first-line treatment of advanced NSCLC with high programmed cell death ligand 1 expression in Japan, providing valuable health economic evidence for treatment selection.",
+  "locator": "10.1007/s11096-024-01826-7"
+ },
+ "kashiwa2024": {
+  "pmid": "39172318",
+  "doi": "10.1007/s12029-024-01106-7",
+  "pmc": "",
+  "authors": [
+   "Kashiwa M",
+   "Maeda H"
+  ],
+  "title": "Comparative Cost-Effectiveness of Gemcitabine and Cisplatin in Combination with S-1, Durvalumab, or Pembrolizumab as First-Line Triple Treatment for Advanced Biliary Tract Cancer.",
+  "journal": "J Gastrointest Cancer",
+  "year": "2024",
+  "volume": "55",
+  "issue": "4",
+  "pages": "1569-1580",
+  "elocation": [
+   "10.1007/s12029-024-01106-7"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Comparative Study"
+  ],
+  "abstract": "The clinical effectiveness of triple chemotherapy consisting of gemcitabine, cisplatin plus either S-1 (GCS), durvalumab (DGC), or pembrolizumab (PGC) as first-line treatment for advanced biliary tract cancer (BTC) has been reported. However, their comparative cost-effectiveness is unclear. We conducted a model-based cost-effectiveness analysis from the perspective of Japanese healthcare payer. A 10-year partitioned survival model was constructed by comparing the time-dependent hazards of the KHBO1401-MITSUBA, TOPAZ-1, and KEYNOTE-966 trials. The cost and utility came from previously published reports. Quality-adjusted life years (QALY) were used to measure the effects on health. Costs for direct medical care were taken into account. There was a one-way analysis and a probability sensitivity analysis. A willingness-to-pay threshold of 7.5 million yen (57,034 USD) per QALY was defined. The incremental costs per QALY for GCS, DGC, and PGC in the base case study were 3,779,374 JPY (28,740 USD), 86,058,056 JPY (65,4434 USD), and 28,982,059 JPY (220,396 USD), respectively. No parameter had an influence beyond the threshold in a one-way sensitivity analysis. A probabilistic sensitivity analysis revealed that the probability of GCS, DGC, and PGC being cost-effective at the threshold was 85.6%, 0%, and 0%, respectively. Given the current circumstances, it is probable that triple therapy utilizing GCS will emerge as a plausible and efficient primary chemotherapy strategy for patients with advanced BTC in the Japanese healthcare system, as opposed to DGC and PGC.",
+  "locator": "10.1007/s12029-024-01106-7"
+ },
+ "morimoto2026": {
+  "pmid": "41665852",
+  "doi": "10.1007/s41669-025-00634-7",
+  "pmc": "PMC13194900",
+  "authors": [
+   "Morimoto K",
+   "Moriwaki K",
+   "Nishikawa Y",
+   "Maeda T",
+   "Toyama M",
+   "Agatsuma N",
+   "Kojima S",
+   "Utsumi T",
+   "Takahashi Y",
+   "Shimozuma K",
+   "Nakayama T"
+  ],
+  "title": "Comparative Cost-Effectiveness Analysis of Multiple First-Line Treatments for HER2-Negative Unresectable Advanced or Recurrent Gastric Cancer in Japan.",
+  "journal": "Pharmacoecon Open",
+  "year": "2026",
+  "volume": "10",
+  "issue": "3",
+  "pages": "471-489",
+  "elocation": [
+   "10.1007/s41669-025-00634-7"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "HER2-negative unresectable advanced or recurrent gastric cancer (GC) has a poor prognosis. This study evaluated the comparative cost-effectiveness of multiple first-line treatment options from the Japanese healthcare payer perspective. A partitioned survival model was developed to estimate the cost-effectiveness of each regimen. Hazard ratios were derived from a network meta-analysis to project long-term costs and quality-adjusted life years (QALYs) gained. Regimens included pembrolizumab plus chemotherapy (Pem + Chemo); zolbetuximab plus chemotherapy (Zolb + Chemo); nivolumab plus chemotherapy (NIVO + Chemo); 5-fluorouracil, oxaliplatin, and levofolinate (FOLFOX); capecitabine and oxaliplatin (CapeOx); S-1 and oxaliplatin (SOX), capecitabine and cisplatin (Cape + CDDP); and S-1 and cisplatin (S-1 + CDDP). Cost parameters were obtained from a Japanese medical claims database. Incremental cost-effectiveness ratios (ICERs) were calculated for each regimen. Sensitivity analyses were conducted to assess parameter uncertainty. Scenario analysis was conducted by incorporating tislelizumab, which is approved and recommended in countries outside Japan. On the basis of the base-case analysis, CapeOx, SOX, Pem + Chemo (5-FU + CDDP, CapeOx), and Zolb + CapeOx were located on the efficiency frontier. The ICER of SOX versus CapeOx was USD 85,649/QALY. Pem + Chemo versus SOX had an ICER of USD 345,103/QALY. Zolb + CapeOx versus Pem + Chemo had an ICER of USD 1,637,571/QALY. Probabilistic sensitivity analysis showed SOX had the highest probability (40.33%) of being the most cost-effective. At a willingness-to-pay threshold of USD 100,000/QALY (Japan's HTA upper reference), SOX was identified as the most cost-effective first-line treatment for HER2-negative unresectable advanced or recurrent GC in Japan.",
+  "locator": "10.1007/s41669-025-00634-7"
+ },
+ "husereau2022": {
+  "pmid": "35017145",
+  "doi": "10.1136/bmj-2021-067975",
+  "pmc": "PMC8749494",
+  "authors": [
+   "Husereau D",
+   "Drummond M",
+   "Augustovski F",
+   "de Bekker-Grob E",
+   "Briggs AH",
+   "Carswell C",
+   "Caulley L",
+   "Chaiyakunapruk N",
+   "Greenberg D",
+   "Loder E",
+   "Mauskopf J",
+   "Mullins CD",
+   "Petrou S",
+   "Pwu RF",
+   "Staniszewska S",
+   "CHEERS 2022 ISPOR Good Research Practices Task Force"
+  ],
+  "title": "Consolidated Health Economic Evaluation Reporting Standards 2022 (CHEERS 2022) statement: updated reporting guidance for health economic evaluations.",
+  "journal": "BMJ",
+  "year": "2022",
+  "volume": "376",
+  "issue": "",
+  "pages": "e067975",
+  "elocation": [
+   "e067975",
+   "10.1136/bmj-2021-067975"
+  ],
+  "pubtypes": [
+   "Guideline",
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "Health economic evaluations are comparative analyses of alternative courses of action in terms of their costs and consequences. The Consolidated Health Economic Evaluation Reporting Standards (CHEERS) statement, published in 2013, was created to ensure health economic evaluations are identifiable, interpretable, and useful for decision making. It was intended as guidance to help authors report accurately which health interventions were being compared and in what context, how the evaluation was undertaken, what the findings were, and other details that may aid readers and reviewers in interpretation and use of the study. The new CHEERS 2022 statement replaces previous CHEERS reporting guidance. It reflects the need for guidance that can be more easily applied to all types of health economic evaluation, new methods and developments in the field, as well as the increased role of stakeholder involvement including patients and the public. It is also broadly applicable to any form of intervention intended to improve the health of individuals or the population, whether simple or complex, and without regard to context (such as health care, public health, education, social care, etc). This summary article presents the new CHEERS 2022 28-item checklist and recommendations for each item. The CHEERS 2022 statement is primarily intended for researchers reporting economic evaluations for peer reviewed journals as well as the peer reviewers and editors assessing them for publication. However, we anticipate familiarity with reporting requirements will be useful for analysts when planning studies. It may also be useful for health technology assessment bodies seeking guidance on reporting, as there is an increasing emphasis on transparency in decision making.",
+  "locator": "10.1136/bmj-2021-067975"
+ },
+ "hasegawa2020": {
+  "pmid": "31952673",
+  "doi": "10.1016/j.jval.2019.10.005",
+  "pmc": "",
+  "authors": [
+   "Hasegawa M",
+   "Komoto S",
+   "Shiroiwa T",
+   "Fukuda T"
+  ],
+  "title": "Formal Implementation of Cost-Effectiveness Evaluations in Japan: A Unique Health Technology Assessment System.",
+  "journal": "Value Health",
+  "year": "2020",
+  "volume": "23",
+  "issue": "1",
+  "pages": "43-51",
+  "elocation": [
+   "10.1016/j.jval.2019.10.005",
+   "S1098-3015(19)35170-8"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "In April 2019, Japan formally introduced health technology assessment (HTA) and, more specifically, a cost-effectiveness analysis, to inform healthcare decision making, mainly when it comes to the pricing of new technologies. This article provides an overview of this new policy, which was implemented formally after a pilot program. In the fiscal year (FY) 2012, discussions on cost-effectiveness assessments were initiated in Japan. After 7 years of deliberations, a cost-effectiveness assessment was implemented formally in April 2019. In Japan, the cost-effectiveness analysis has been used to inform price adjustments of healthcare technologies, although it has not yet been used for decision making on insurance coverage. Selection criteria were established because not all drugs and medical devices could be evaluated owing to a shortage of experts. Exclusion criteria have also been applied to prevent access restriction. The scope of the evaluation's price adjustment target is limited to part of the product price. If the cost per quality-adjusted life-year (QALY) threshold falls below ¥5 million per QALY, the price adjustment rate changes stepwise according to the cost per QALY. In addition to price reduction, a price-raising scheme has also been implemented for scenarios where products are evaluated to be highly cost-effective and innovative. This article describes the first formally implemented HTA system in Japan. Although it is too early to make any conclusions about its effect, the Japan-specific context makes this system unique. To fully understand the opportunities and challenges of the new system, it is vital that Japan accumulates experience with this system and develops human resources in health economic evaluation.",
+  "locator": "Hasegawa M[au] AND cost-effectiveness[ti] AND Japan[ti] AND 2020[dp] AND Value Health[ta]"
+ },
+ "shiroiwa2020": {
+  "pmid": "32419677",
+  "doi": "10.1017/S0266462320000264",
+  "pmc": "",
+  "authors": [
+   "Shiroiwa T"
+  ],
+  "title": "Cost-effectiveness evaluation for pricing medicines and devices: A new value-based price adjustment system in Japan.",
+  "journal": "Int J Technol Assess Health Care",
+  "year": "2020",
+  "volume": "36",
+  "issue": "3",
+  "pages": "270-276",
+  "elocation": [
+   "10.1017/S0266462320000264"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "In Japan, a new cost-effectiveness evaluation system for medicine and medical device pricing was employed in April 2019 after a trial implementation. This study describes the discussions held from April 2016 to March 2019 concerning the newly introduced system. Using published government documents, discussions with stakeholders, and the minutes of the Chuikyo committee meetings, the following issues are addressed: (i) the results of the trial implementation and (ii) an overview of the newly introduced system. During the trial implementation, thirteen products were evaluated and their prices adjusted. The process of the new system-which was to be implemented in FY 2019-takes about 15-18 months to complete after listing of the target products by the National Health Insurance. The target products are selected principally based on sales volume, degree of innovation (premium), and disclosure of rationale for price setting. First, a manufacturer submits the cost-effectiveness data, which is then reviewed by the Center for Outcomes Research and Economic Evaluation for Health (C2H) in collaboration with academics. The results of the cost-effectiveness evaluation are not considered during the decision-making process concerning the product's listing. The price adjustment system is similar to value-based pricing (VBP); hence, the new system can be considered as VBP adjustment. Cost-effectiveness evaluation can help promote both technological innovation and sustainability of the healthcare system. We need to create a greater capacity for enhancing this academic review system.",
+  "locator": "Shiroiwa T[au] AND price adjustment[ti] AND 2020[dp]"
+ },
+ "guyot2012": {
+  "pmid": "22297116",
+  "doi": "10.1186/1471-2288-12-9",
+  "pmc": "PMC3313891",
+  "authors": [
+   "Guyot P",
+   "Ades AE",
+   "Ouwens MJ",
+   "Welton NJ"
+  ],
+  "title": "Enhanced secondary analysis of survival data: reconstructing the data from published Kaplan-Meier survival curves.",
+  "journal": "BMC Med Res Methodol",
+  "year": "2012",
+  "volume": "12",
+  "issue": "",
+  "pages": "9",
+  "elocation": [
+   "10.1186/1471-2288-12-9"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "The results of Randomized Controlled Trials (RCTs) on time-to-event outcomes that are usually reported are median time to events and Cox Hazard Ratio. These do not constitute the sufficient statistics required for meta-analysis or cost-effectiveness analysis, and their use in secondary analyses requires strong assumptions that may not have been adequately tested. In order to enhance the quality of secondary data analyses, we propose a method which derives from the published Kaplan Meier survival curves a close approximation to the original individual patient time-to-event data from which they were generated. We develop an algorithm that maps from digitised curves back to KM data by finding numerical solutions to the inverted KM equations, using where available information on number of events and numbers at risk. The reproducibility and accuracy of survival probabilities, median survival times and hazard ratios based on reconstructed KM data was assessed by comparing published statistics (survival probabilities, medians and hazard ratios) with statistics based on repeated reconstructions by multiple observers. The validation exercise established there was no material systematic error and that there was a high degree of reproducibility for all statistics. Accuracy was excellent for survival probabilities and medians, for hazard ratios reasonable accuracy can only be obtained if at least numbers at risk or total number of events are reported. The algorithm is a reliable tool for meta-analysis and cost-effectiveness analyses of RCTs reporting time-to-event data. It is recommended that all RCTs should report information on numbers at risk and total number of events alongside KM curves.",
+  "locator": "10.1186/1471-2288-12-9"
+ },
+ "grinda2023": {
+  "pmid": "37385070",
+  "doi": "10.1016/j.ejca.2023.05.023",
+  "pmc": "",
+  "authors": [
+   "Grinda T",
+   "Antoine A",
+   "Jacot W",
+   "Cottu PH",
+   "de la Motte Rouge T",
+   "Frenel JS",
+   "Mailliez A",
+   "Dalenc F",
+   "Goncalves A",
+   "Clatot F",
+   "Mouret Reynier MA",
+   "Levy C",
+   "Ferrero JM",
+   "Desmoulins I",
+   "Uwer L",
+   "Petit T",
+   "Jouannaud C",
+   "Arnedos M",
+   "Chevrot M",
+   "Courtinard C",
+   "Tredan O",
+   "Brain E",
+   "Pérol D",
+   "Pistilli B",
+   "Delaloge S"
+  ],
+  "title": "Real-world clinical and survival outcomes of patients with early relapsed triple-negative breast cancer from the ESME national cohort.",
+  "journal": "Eur J Cancer",
+  "year": "2023",
+  "volume": "189",
+  "issue": "",
+  "pages": "112935",
+  "elocation": [
+   "10.1016/j.ejca.2023.05.023",
+   "S0959-8049(23)00276-9"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Multicenter Study",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "Early metastatic relapse of triple-negative breast cancer (mTNBC) after anthracyclins and/or taxanes based (A/T) primary treatment represents a highly aggressive cancer situation requiring urgent characterisation and handling. Epidemio-Strategy-Medico-Economical-Metastatic Breast Cancer (ESME-MBC) database, a multicenter, national, observational cohort (NCT03275311) provides recent data on this entity. All ESME patients diagnosed between 2008 and 2020 with mTNBC occurring as a relapse after a systemic neoadjuvant/adjuvant taxane and/or anthracycline-based chemotherapy were included. Early relapses were defined by a metastatic diagnosis up to 12 months of the end of neo/adjuvant A/T chemotherapy. We assessed overall survival (OS) and progression-free-survival under first-line treatment (PFS1) by early versus late relapse (≥12 months). Patients with early relapse (N = 881, 46%) were younger and had a larger tumour burden at primary diagnosis than those with late relapses (N = 1045). Early relapse rates appeared stable over time. Median OS was 10.1 months (95% CI 9.3-10.9) in patients with early relapse versus 17.1 months (95% CI 15.7-18.2) in those with late relapse (adjusted hazard-ratio (aHR): 1.92 (95% CI 1.73-2.13); p < 0.001). The median PFS1 was respectively 3.1 months (95% CI 2.9-3.4) and 5.3 months (95% CI 5.1-5.8); (aHR: 1.66; [95% CI 1.50-1.83]; p < 0.001). Among early relapsed patients, a higher number of metastatic sites, visceral disease but not treatment types, were independently associated with a poorer OS. These real-world data provide strong evidence on the dismal prognosis, higher treatment resistance and major unmet medical need associated with early relapsed mTNBC. Database registration: clinicaltrials.gov Identifier NCT032753.",
+  "locator": "37385070"
+ },
+ "elmore2021": {
+  "pmid": "34247335",
+  "doi": "10.1245/s10434-021-10444-w",
+  "pmc": "",
+  "authors": [
+   "Elmore LC",
+   "Kuerer HM",
+   "Barcenas CH",
+   "Smith BD",
+   "Miggins MV",
+   "Lucci A",
+   "Caudle AS",
+   "Meric-Bernstam F",
+   "Hunt KK",
+   "Teshome M"
+  ],
+  "title": "Clinical Course of Breast Cancer Patients with Local-Regional Progression During Neoadjuvant Systemic Therapy.",
+  "journal": "Ann Surg Oncol",
+  "year": "2021",
+  "volume": "28",
+  "issue": "10",
+  "pages": "5477-5485",
+  "elocation": [
+   "10.1245/s10434-021-10444-w"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "Neoadjuvant systemic therapy (NST) is standard for locally advanced breast cancer and is now frequently considered for those with early-stage and node-positive disease. We aimed to evaluate the treatment course and outcomes in patients with disease progression during NST. Patients diagnosed with unilateral stage I-III breast cancer between 2005 and 2015 with documented local-regional progression while receiving NST, by clinical examination and/or imaging after two or more cycles of chemotherapy, were identified from a prospective database, stratified by receipt of surgery and outcomes analyzed. Of 6362 patients treated with NST during the study period, 124 (1.9%) developed disease progression. At a median live follow-up of 71 months, 23.4% were alive without disease and 70.2% had died from breast cancer. Median overall survival (OS) time for patients with progression was 26 months and median distant disease-free survival (DFS) was 14 months. Triple-negative breast cancer was associated with a higher likelihood of death (p < 0.001) and development of distant metastasis (p = 0.002). Among patients who had surgery (104, 89.3%), 40 (38.5%) developed local-regional recurrence, 67 (64.4%) developed distant metastasis, and 69 (66.3%) died from breast cancer. Median OS and median distant DFS in this subgroup was 31 and 16 months, respectively. High rates of local-regional and distant failure were seen following disease progression while receiving NST. This suggests aggressive tumor biology and the need to study novel systemic therapies. Poor survival outcomes despite surgical management highlight the importance of careful patient selection when considering operative intervention after progression while receiving NST.",
+  "locator": "10.1245/s10434-021-10444-w"
+ },
+ "fedele2026": {
+  "pmid": "42430019",
+  "doi": "10.1007/s10549-026-08023-2",
+  "pmc": "",
+  "authors": [
+   "Fedele P",
+   "Rizzo A",
+   "Landriscina M",
+   "Stucci LS",
+   "Inneo C",
+   "Morritti M",
+   "Morelli F",
+   "Giuliani F",
+   "Moraca L",
+   "Cairo G",
+   "Giampaglia M",
+   "Tedesco B",
+   "Melaccio A",
+   "Maselli FM",
+   "Gnoni A",
+   "Licchetta A",
+   "Fumai F",
+   "Vitale E",
+   "Marino FR",
+   "Zifarone E",
+   "Lanotte L",
+   "Ardito R",
+   "Gadaleta-Caldarola G"
+  ],
+  "title": "Early first-line systemic anticancer therapeutic attrition after metastatic recurrence in triple-negative breast cancer following neoadjuvant chemo-immunotherapy: a multicenter real-world study.",
+  "journal": "Breast Cancer Res Treat",
+  "year": "2026",
+  "volume": "218",
+  "issue": "1",
+  "pages": "",
+  "elocation": [
+   "8",
+   "10.1007/s10549-026-08023-2"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Multicenter Study"
+  ],
+  "abstract": "To assess the incidence and determinants of early first-line systemic anticancer therapeutic attrition after metastatic recurrence in triple-negative breast cancer (TNBC) treated with neoadjuvant chemo-immunotherapy. We conducted a retrospective multicenter analysis of 209 consecutive patients with early-stage TNBC treated with neoadjuvant chemo-immunotherapy. After a median follow-up of 24 months, 54 developed metastatic recurrence. Early first-line systemic anticancer therapeutic attrition was defined as failure to initiate systemic anticancer therapy within 90 days of documented recurrence. Associations were evaluated using univariate and multivariable logistic regression. Among patients who developed metastatic recurrence, 17 of 54 evaluable patients (32.7%) experienced early first-line systemic anticancer therapeutic attrition. Patients who did not initiate treatment had a significantly shorter disease-free interval compared with those who received first-line therapy (median 7.4 vs. 14.3 months; p = 0.011). PD-L1 positivity was more frequent in the attrition group (64.7% vs. 28.6%; p = 0.021), and central nervous system metastases were more commonly observed (41.2% vs. 20.0%). Median overall survival from metastatic recurrence was 3.4 months in the attrition group compared with 12.4 months in the no-attrition group. In multivariable analysis, shorter disease-free interval (OR 0.87 per month; 95% CI 0.78-0.97), PD-L1 positivity (OR 8.73; 95% CI 1.81-42.04), and presence of central nervous system metastases (OR 7.09; 95% CI 1.41-35.57) were independently associated with early first-line therapeutic attrition. In this real-world multicenter cohort, nearly one-third of patients with TNBC experiencing metastatic recurrence after neoadjuvant chemo-immunotherapy did not initiate first-line systemic therapy within a clinically relevant timeframe. Early first-line systemic anticancer therapeutic attrition represents a meaningful gap in the care continuum and warrants improved surveillance and multidisciplinary management strategies. Not applicable.",
+  "locator": "10.1007/s10549-026-08023-2"
+ },
+ "ludwig2018": {
+  "pmid": "29460066",
+  "doi": "10.1007/s40273-018-0615-8",
+  "pmc": "PMC5954069",
+  "authors": [
+   "Ludwig K",
+   "Graf von der Schulenburg JM",
+   "Greiner W"
+  ],
+  "title": "German Value Set for the EQ-5D-5L.",
+  "journal": "Pharmacoeconomics",
+  "year": "2018",
+  "volume": "36",
+  "issue": "6",
+  "pages": "663-674",
+  "elocation": [
+   "10.1007/s40273-018-0615-8"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "The objective of this study was to develop a value set for EQ-5D-5L based on the societal preferences of the German population. As the first country to do so, the study design used the improved EQ-5D-5L valuation protocol 2.0 developed by the EuroQol Group, including a feedback module as internal validation and a quality control process that was missing in the first wave of EQ-5D-5L valuation studies. A representative sample of the general German population (n = 1158) was interviewed using a composite time trade-off and a discrete choice experiment under close quality control. Econometric modeling was used to estimate values for all 3125 possible health states described by EQ-5D-5L. The value set was based on a hybrid model including all available information from the composite time trade-off and discrete choice experiment valuations without any exclusions due to data issues. The final German value set was constructed from a combination of a conditional logit model for the discrete choice experiment data and a censored at -1 Tobit model for the composite time trade-off data, correcting for heteroskedasticity. The value set had logically consistent parameter estimates (p < 0.001 for all coefficients). The predicted EQ-5D-5L index values ranged from -0.661 to 1. This study provided values for the health states of the German version of EQ-5D-5L representing the preferences of the German population. The study successfully employed for the first time worldwide the improved protocol 2.0. The value set enables the use of the EQ-5D-5L instrument in economic evaluations and in clinical studies.",
+  "locator": "Ludwig K[au] AND EQ-5D-5L[ti] AND German[ti] AND 2018[dp]"
+ },
+ "iwatani2021": {
+  "pmid": "34677274",
+  "doi": "10.3390/curroncol28050356",
+  "pmc": "PMC8535054",
+  "authors": [
+   "Iwatani T",
+   "Noto S",
+   "Tsugawa K"
+  ],
+  "title": "Changes in Health State Utility Values in Japanese Patients with End-Stage Breast Cancer.",
+  "journal": "Curr Oncol",
+  "year": "2021",
+  "volume": "28",
+  "issue": "5",
+  "pages": "4203-4212",
+  "elocation": [
+   "10.3390/curroncol28050356"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "We aimed to determine the dynamic trends in health state utility values (HSUVs) in patients with end-stage breast cancer. We selected 181 patients comprising 137 with primary breast cancer (PBC) and 44 with metastatic breast cancer (MBC) (28 survivors and 16 patients with MBC death). HSUVs were 0.90 and 0.89 in patients with PBC and 0.83 and 0.80 in those with MBC (survivors) at 6 and 3 months, respectively, before the end of the observation period; these values were 0.73 and 0.66, respectively, in those with MBC (deceased) during the aforementioned period. The root-mean-squared error (RMSE) for the decrease in HSUVs over 3 months was 0.10, 0.096, and 0.175 for patients with PBC, MBC (survivors), and MBC (deceased), respectively. One-way analysis of variance for differences in absolute error among the groups was significant (p = 0.0102). Multiple comparisons indicated a difference of 0.068 in absolute error between patients with PBC and those with MBC (deceased) (p = 0.0082). Patients with end-stage breast cancer had well-controlled HSUVs 3 months before death, with a sharp decline in HSUVs in the 3 months leading up to death.",
+  "locator": "10.3390/curroncol28050356"
+ },
+ "shiroiwa2017": {
+  "pmid": "29149882",
+  "doi": "10.1186/s12885-017-3774-7",
+  "pmc": "PMC5693567",
+  "authors": [
+   "Shiroiwa T",
+   "Fukuda T",
+   "Shimozuma K",
+   "Mouri M",
+   "Hagiwara Y",
+   "Kawahara T",
+   "Ohsumi S",
+   "Hozumi Y",
+   "Sagara Y",
+   "Ohashi Y",
+   "Mukai H"
+  ],
+  "title": "Cost-effectiveness analysis of the introduction of S-1 therapy for first-line metastatic breast cancer treatment in Japan: results from the randomized phase III SELECT BC trial.",
+  "journal": "BMC Cancer",
+  "year": "2017",
+  "volume": "17",
+  "issue": "1",
+  "pages": "773",
+  "elocation": [
+   "773",
+   "10.1186/s12885-017-3774-7"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "This study evaluated the cost-effectiveness of replacing standard intravenous therapy (taxane) with oral S-1 therapy for first-line metastatic breast cancer treatment. This cost-effectiveness analysis was based on data from a randomized phase III trial (SELECT BC). As cost-effectiveness was a secondary endpoint of the SELECT BC trial, some of the randomized patients participated in an EQ-5D survey (N = 391) and health economic survey (N = 146). The EQ-5D responses, claims, and prescription data were collected for as long as possible until death. The expected quality-adjusted life years (QALY) obtained from each treatment were calculated using patient-level EQ-5D data, and the expected cost was calculated using patient-level claim data. The analysis was performed from the perspective of public healthcare payers. The estimated EQ-5D least-square means and 95% CI up to 48 months were 0.764 (95% CI, 0.741-0.782) and 0.742 (95% CI, 0.720-0.764) in the S-1 and taxane arms, respectively. The expected QALY was 2.11 for the S-1 arm and 2.04 for the taxane arm, with expected costs of JPY 5.13 million (USD 46,600) and JPY 5.56 million (USD 50,500), respectively. These results show that S-1 is cost-saving. According to probabilistic sensitivity analysis, S-1 was dominant with a probability of 63%. When the willingness to pay (WTP) value was JPY 5 million (USD 45,500) per QALY, the probability of being cost-effective was 92%. Our results show that the introduction of oral S-1 therapy for metastatic breast cancer is highly likely to be cost-effective. UMIN CTR C000000416 . Registered on May 10, 2006.",
+  "locator": "10.1186/s12885-017-3774-7"
+ },
+ "masuda2017": {
+  "pmid": "28564564",
+  "doi": "10.1056/NEJMoa1612645",
+  "pmc": "",
+  "authors": [
+   "Masuda N",
+   "Lee SJ",
+   "Ohtani S",
+   "Im YH",
+   "Lee ES",
+   "Yokota I",
+   "Kuroi K",
+   "Im SA",
+   "Park BW",
+   "Kim SB",
+   "Yanagita Y",
+   "Ohno S",
+   "Takao S",
+   "Aogi K",
+   "Iwata H",
+   "Jeong J",
+   "Kim A",
+   "Park KH",
+   "Sasano H",
+   "Ohashi Y",
+   "Toi M"
+  ],
+  "title": "Adjuvant Capecitabine for Breast Cancer after Preoperative Chemotherapy.",
+  "journal": "N Engl J Med",
+  "year": "2017",
+  "volume": "376",
+  "issue": "22",
+  "pages": "2147-2159",
+  "elocation": [
+   "10.1056/NEJMoa1612645"
+  ],
+  "pubtypes": [
+   "Clinical Trial, Phase III",
+   "Comparative Study",
+   "Journal Article",
+   "Multicenter Study",
+   "Randomized Controlled Trial"
+  ],
+  "abstract": "Patients who have residual invasive carcinoma after the receipt of neoadjuvant chemotherapy for human epidermal growth factor receptor 2 (HER2)-negative breast cancer have poor prognoses. The benefit of adjuvant chemotherapy in these patients remains unclear. We randomly assigned 910 patients with HER2-negative residual invasive breast cancer after neoadjuvant chemotherapy (containing anthracycline, taxane, or both) to receive standard postsurgical treatment either with capecitabine or without (control). The primary end point was disease-free survival. Secondary end points included overall survival. The result of the prespecified interim analysis met the primary end point, so this trial was terminated early. The final analysis showed that disease-free survival was longer in the capecitabine group than in the control group (74.1% vs. 67.6% of the patients were alive and free from recurrence or second cancer at 5 years; hazard ratio for recurrence, second cancer, or death, 0.70; 95% confidence interval [CI], 0.53 to 0.92; P=0.01). Overall survival was longer in the capecitabine group than in the control group (89.2% vs. 83.6% of the patients were alive at 5 years; hazard ratio for death, 0.59; 95% CI, 0.39 to 0.90; P=0.01). Among patients with triple-negative disease, the rate of disease-free survival was 69.8% in the capecitabine group versus 56.1% in the control group (hazard ratio for recurrence, second cancer, or death, 0.58; 95% CI, 0.39 to 0.87), and the overall survival rate was 78.8% versus 70.3% (hazard ratio for death, 0.52; 95% CI, 0.30 to 0.90). The hand-foot syndrome, the most common adverse reaction to capecitabine, occurred in 73.4% of the patients in the capecitabine group. After standard neoadjuvant chemotherapy containing anthracycline, taxane, or both, the addition of adjuvant capecitabine therapy was safe and effective in prolonging disease-free survival and overall survival among patients with HER2-negative breast cancer who had residual invasive disease on pathological testing. (Funded by the Advanced Clinical Research Organization and the Japan Breast Cancer Research Group; CREATE-X UMIN Clinical Trials Registry number, UMIN000000843 .).",
+  "locator": "10.1056/NEJMoa1612645"
+ },
+ "tutt2021": {
+  "pmid": "34081848",
+  "doi": "10.1056/NEJMoa2105215",
+  "pmc": "PMC9126186",
+  "authors": [
+   "Tutt ANJ",
+   "Garber JE",
+   "Kaufman B",
+   "Viale G",
+   "Fumagalli D",
+   "Rastogi P",
+   "Gelber RD",
+   "de Azambuja E",
+   "Fielding A",
+   "Balmaña J",
+   "Domchek SM",
+   "Gelmon KA",
+   "Hollingsworth SJ",
+   "Korde LA",
+   "Linderholm B",
+   "Bandos H",
+   "Senkus E",
+   "Suga JM",
+   "Shao Z",
+   "Pippas AW",
+   "Nowecki Z",
+   "Huzarski T",
+   "Ganz PA",
+   "Lucas PC",
+   "Baker N",
+   "Loibl S",
+   "McConnell R",
+   "Piccart M",
+   "Schmutzler R",
+   "Steger GG",
+   "Costantino JP",
+   "Arahmani A",
+   "Wolmark N",
+   "McFadden E",
+   "Karantza V",
+   "Lakhani SR",
+   "Yothers G",
+   "Campbell C",
+   "Geyer CE",
+   "OlympiA Clinical Trial Steering Committee and Investigators"
+  ],
+  "title": "Adjuvant Olaparib for Patients with BRCA1- or BRCA2-Mutated Breast Cancer.",
+  "journal": "N Engl J Med",
+  "year": "2021",
+  "volume": "384",
+  "issue": "25",
+  "pages": "2394-2405",
+  "elocation": [
+   "10.1056/NEJMoa2105215"
+  ],
+  "pubtypes": [
+   "Clinical Trial, Phase III",
+   "Journal Article",
+   "Multicenter Study",
+   "Randomized Controlled Trial",
+   "Research Support, N.I.H., Extramural"
+  ],
+  "abstract": "Poly(adenosine diphosphate-ribose) polymerase inhibitors target cancers with defects in homologous recombination repair by synthetic lethality. New therapies are needed to reduce recurrence in patients with BRCA1 or BRCA2 germline mutation-associated early breast cancer. We conducted a phase 3, double-blind, randomized trial involving patients with human epidermal growth factor receptor 2 (HER2)-negative early breast cancer with BRCA1 or BRCA2 germline pathogenic or likely pathogenic variants and high-risk clinicopathological factors who had received local treatment and neoadjuvant or adjuvant chemotherapy. Patients were randomly assigned (in a 1:1 ratio) to 1 year of oral olaparib or placebo. The primary end point was invasive disease-free survival. A total of 1836 patients underwent randomization. At a prespecified event-driven interim analysis with a median follow-up of 2.5 years, the 3-year invasive disease-free survival was 85.9% in the olaparib group and 77.1% in the placebo group (difference, 8.8 percentage points; 95% confidence interval [CI], 4.5 to 13.0; hazard ratio for invasive disease or death, 0.58; 99.5% CI, 0.41 to 0.82; P<0.001). The 3-year distant disease-free survival was 87.5% in the olaparib group and 80.4% in the placebo group (difference, 7.1 percentage points; 95% CI, 3.0 to 11.1; hazard ratio for distant disease or death, 0.57; 99.5% CI, 0.39 to 0.83; P<0.001). Olaparib was associated with fewer deaths than placebo (59 and 86, respectively) (hazard ratio, 0.68; 99% CI, 0.44 to 1.05; P = 0.02); however, the between-group difference was not significant at an interim-analysis boundary of a P value of less than 0.01. Safety data were consistent with known side effects of olaparib, with no excess serious adverse events or adverse events of special interest. Among patients with high-risk, HER2-negative early breast cancer and germline BRCA1 or BRCA2 pathogenic or likely pathogenic variants, adjuvant olaparib after completion of local treatment and neoadjuvant or adjuvant chemotherapy was associated with significantly longer survival free of invasive or distant disease than was placebo. Olaparib had limited effects on global patient-reported quality of life. (Funded by the National Cancer Institute and AstraZeneca; OlympiA ClinicalTrials.gov number, NCT02032823.).",
+  "locator": "10.1056/NEJMoa2105215"
+ },
+ "garber2026": {
+  "pmid": "42636977",
+  "doi": "10.1016/j.annonc.2026.08.002",
+  "pmc": "",
+  "authors": [
+   "Garber JE",
+   "Cameron D",
+   "Campbell C",
+   "Yothers G",
+   "Taboada M",
+   "El-Abed S",
+   "Rastogi P",
+   "McConnell R",
+   "Correa A",
+   "Delaloge S",
+   "Liu WT",
+   "Sharma P",
+   "Bergh J",
+   "Janni W",
+   "Balmaña J",
+   "Loman N",
+   "Španić T",
+   "Friedman S",
+   "Freeman T",
+   "Armstrong A",
+   "Korde L",
+   "Im S",
+   "Sagara Y",
+   "Viale G",
+   "Bliss J",
+   "Gianni L",
+   "Jóhannsson Ó",
+   "Zoppoli G",
+   "Martinez De Dueñas E",
+   "Marmé F",
+   "Fein L",
+   "Arnedos M",
+   "Ford J",
+   "Schmutzler R",
+   "Loibl S",
+   "Linderholm B",
+   "Lakhani SR",
+   "Gnant M",
+   "Gelmon K",
+   "Domchek SM",
+   "Senkus E",
+   "Eisen A",
+   "Jager A",
+   "Piccart M",
+   "Phillips KA",
+   "Traina T",
+   "Stickeler E",
+   "Singer CF",
+   "Shao Z",
+   "Liu X",
+   "Tipping H",
+   "Aktan G",
+   "Martinez M",
+   "Canon JL",
+   "Takahashi M",
+   "Yasojima H",
+   "Middleton K",
+   "Pristauz-Telsnigg G",
+   "Pfeiler G",
+   "Virani S",
+   "Valdes-Albini F",
+   "Wolmark N",
+   "Diaz Mesa I",
+   "Paterson V",
+   "Gelber RD",
+   "Geyer CE",
+   "Tutt ANJ"
+  ],
+  "title": "Sustained benefit of adjuvant olaparib in women with germline BRCA1- and BRCA2-associated high-risk HER2-negative early breast cancer: updated results from the OlympiA phase III trial.",
+  "journal": "Ann Oncol",
+  "year": "2026",
+  "volume": "",
+  "issue": "",
+  "pages": "",
+  "elocation": [
+   "S0923-7534(26)01456-0",
+   "10.1016/j.annonc.2026.08.002"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "The randomised phase III OlympiA trial (NCT02032823) compared 1 year of adjuvant olaparib [oral poly (ADP-ribose) polymerase inhibitor] with placebo in 1836 patients with pathogenic/likely pathogenic BRCA1 or BRCA2 [germline BRCA pathogenic variants (gBRCApvs)] germline variants and high-risk human epidermal growth factor receptor 2 (HER2)-negative early breast cancer (BC). Previous interim analyses (IAs) demonstrated statistically significant improvements in invasive disease-free survival (IDFS), distant disease-free survival (DDFS) and overall survival (OS), irrespective of hormone receptor status, prior platinum administration, timing of prior chemotherapy or type of gBRCApv. Herein are the results of the third prespecified IA with a median follow-up (MFU) of 6.1 years. Descriptive analyses are presented for the primary endpoint IDFS and key secondary endpoints of DDFS and OS. Estimates of the hazard ratio (HR) based on the stratified Cox's proportional hazards model and 95% confidence intervals (CIs) are presented with yearly event rates at an MFU of ≤6.1 years. Safety analyses included adverse events of special interest (AESIs). Olaparib benefits were maintained in IDFS (HR 0.65, 95% CI 0.53-0.78), DDFS (HR 0.65, 95% CI 0.53-0.81) and OS (HR 0.72, 95% CI 0.56-0.93). The 6-year OS for olaparib versus placebo was 87.5% versus 83.2% (difference 4.4%, 95% CI 0.9% to 6.7%). Olaparib benefit was consistent across all key subgroups, including patients with high-risk hormone receptor-positive disease. There were fewer BRCA-associated new BC and ovarian/fallopian tube cancer cases and there was no increase in AESI risks (6.3% versus 9.3%), including myelodysplastic syndrome (MDS)/acute myeloid leukaemia (AML) (0.4% versus 0.7%), with olaparib versus placebo. At an MFU of 6.1 years, 1 year of adjuvant olaparib after (neo)adjuvant chemotherapy demonstrated ongoing clinically meaningful improvements in IDFS, DDFS and OS in patients with gBRCApvs and high-risk, HER2-negative early BC, with acceptable toxicity and without increased risk of MDS/AML. These data continue to provide support for adjuvant olaparib in the treatment of gBRCApv-associated high-risk, HER2-negative early BC.",
+  "locator": "10.1016/j.annonc.2026.08.002"
+ },
+ "cortes2011": {
+  "pmid": "21376385",
+  "doi": "10.1016/S0140-6736(11)60070-6",
+  "pmc": "",
+  "authors": [
+   "Cortes J",
+   "O'Shaughnessy J",
+   "Loesch D",
+   "Blum JL",
+   "Vahdat LT",
+   "Petrakova K",
+   "Chollet P",
+   "Manikas A",
+   "Diéras V",
+   "Delozier T",
+   "Vladimirov V",
+   "Cardoso F",
+   "Koh H",
+   "Bougnoux P",
+   "Dutcus CE",
+   "Seegobin S",
+   "Mir D",
+   "Meneses N",
+   "Wanders J",
+   "Twelves C",
+   "EMBRACE (Eisai Metastatic Breast Cancer Study Assessing Physician's Choice Versus E7389) investigators"
+  ],
+  "title": "Eribulin monotherapy versus treatment of physician's choice in patients with metastatic breast cancer (EMBRACE): a phase 3 open-label randomised study.",
+  "journal": "Lancet",
+  "year": "2011",
+  "volume": "377",
+  "issue": "9769",
+  "pages": "914-23",
+  "elocation": [
+   "10.1016/S0140-6736(11)60070-6"
+  ],
+  "pubtypes": [
+   "Clinical Trial, Phase III",
+   "Comparative Study",
+   "Journal Article",
+   "Multicenter Study",
+   "Randomized Controlled Trial",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "Treatments with survival benefit are greatly needed for women with heavily pretreated metastatic breast cancer. Eribulin mesilate is a non-taxane microtubule dynamics inhibitor with a novel mode of action. We aimed to compare overall survival of heavily pretreated patients receiving eribulin versus currently available treatments. In this phase 3 open-label study, women with locally recurrent or metastatic breast cancer were randomly allocated (2:1) to eribulin mesilate (1·4 mg/m(2) administered intravenously during 2-5 min on days 1 and 8 of a 21-day cycle) or treatment of physician's choice (TPC). Patients had received between two and five previous chemotherapy regimens (two or more for advanced disease), including an anthracycline and a taxane, unless contraindicated. Randomisation was stratified by geographical region, previous capecitabine treatment, and human epidermal growth factor receptor 2 status. Patients and investigators were not masked to treatment allocation. The primary endpoint was overall survival in the intention-to-treat population. This study is registered at ClinicalTrials.gov, number NCT00388726. 762 women were randomly allocated to treatment groups (508 eribulin, 254 TPC). Overall survival was significantly improved in women assigned to eribulin (median 13·1 months, 95% CI 11·8-14·3) compared with TPC (10·6 months, 9·3-12·5; hazard ratio 0·81, 95% CI 0·66-0·99; p=0·041). The most common adverse events in both groups were asthenia or fatigue (270 [54%] of 503 patients on eribulin and 98 [40%] of 247 patients on TPC at all grades) and neutropenia (260 [52%] patients receiving eribulin and 73 [30%] of those on TPC at all grades). Peripheral neuropathy was the most common adverse event leading to discontinuation from eribulin, occurring in 24 (5%) of 503 patients. Eribulin showed a significant and clinically meaningful improvement in overall survival compared with TPC in women with heavily pretreated metastatic breast cancer. This finding challenges the notion that improved overall survival is an unrealistic expectation during evaluation of new anticancer therapies in the refractory setting. Eisai.",
+  "locator": "Cortes J[au] AND eribulin[ti] AND 2011[dp] AND Lancet[ta]"
+ },
+ "cortes2020": {
+  "pmid": "33278935",
+  "doi": "10.1016/S0140-6736(20)32531-9",
+  "pmc": "",
+  "authors": [
+   "Cortes J",
+   "Cescon DW",
+   "Rugo HS",
+   "Nowecki Z",
+   "Im SA",
+   "Yusof MM",
+   "Gallardo C",
+   "Lipatov O",
+   "Barrios CH",
+   "Holgado E",
+   "Iwata H",
+   "Masuda N",
+   "Otero MT",
+   "Gokmen E",
+   "Loi S",
+   "Guo Z",
+   "Zhao J",
+   "Aktan G",
+   "Karantza V",
+   "Schmid P",
+   "KEYNOTE-355 Investigators"
+  ],
+  "title": "Pembrolizumab plus chemotherapy versus placebo plus chemotherapy for previously untreated locally recurrent inoperable or metastatic triple-negative breast cancer (KEYNOTE-355): a randomised, placebo-controlled, double-blind, phase 3 clinical trial.",
+  "journal": "Lancet",
+  "year": "2020",
+  "volume": "396",
+  "issue": "10265",
+  "pages": "1817-1828",
+  "elocation": [
+   "10.1016/S0140-6736(20)32531-9",
+   "S0140-6736(20)32531-9"
+  ],
+  "pubtypes": [
+   "Clinical Trial, Phase III",
+   "Comparative Study",
+   "Journal Article",
+   "Randomized Controlled Trial",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "Pembrolizumab monotherapy showed durable antitumour activity and manageable safety in patients with metastatic triple-negative breast cancer. We aimed to examine whether the addition of pembrolizumab would enhance the antitumour activity of chemotherapy in patients with metastatic triple-negative breast cancer. In this randomised, placebo-controlled, double-blind, phase 3 trial, done in 209 sites in 29 countries, we randomly assigned patients 2:1 with untreated locally recurrent inoperable or metastatic triple-negative breast cancer using a block method (block size of six) and an interactive voice-response system with integrated web-response to pembrolizumab (200 mg) every 3 weeks plus chemotherapy (nab-paclitaxel; paclitaxel; or gemcitabine plus carboplatin) or placebo plus chemotherapy. Randomisation was stratified by type of on-study chemotherapy (taxane or gemcitabine-carboplatin), PD-L1 expression at baseline (combined positive score [CPS] ≥1 or <1), and previous treatment with the same class of chemotherapy in the neoadjuvant or adjuvant setting (yes or no). Eligibility criteria included age at least 18 years, centrally confirmed triple-negative breast cancer; at least one measurable lesion; provision of a newly obtained tumour sample for determination of triple-negative breast cancer status and PD-L1 status by immunohistochemistry at a central laboratory; an Eastern Cooperative Oncology Group performance status score 0 or 1; and adequate organ function. The sponsor, investigators, other study site staff (except for the unmasked pharmacist), and patients were masked to pembrolizumab versus saline placebo administration. In addition, the sponsor, the investigators, other study site staff, and patients were masked to patient-level tumour PD-L1 biomarker results. Dual primary efficacy endpoints were progression-free survival and overall survival assessed in the PD-L1 CPS of 10 or more, CPS of 1 or more, and intention-to-treat populations. The definitive assessment of progression-free survival was done at this interim analysis; follow-up to assess overall survival is continuing. For progression-free survival, a hierarchical testing strategy was used, such that testing was done first in patients with CPS of 10 or more (prespecified statistical criterion was α=0·00411 at this interim analysis), then in patients with CPS of 1 or more (α=0·00111 at this interim analysis, with partial alpha from progression-free survival in patients with CPS of 10 or more passed over), and finally in the intention-to-treat population (α=0·00111 at this interim analysis). This study is registered with ClinicalTrials.gov, NCT02819518, and is ongoing. Between Jan 9, 2017, and June 12, 2018, of 1372 patients screened, 847 were randomly assigned to treatment, with 566 patients in the pembrolizumab-chemotherapy group and 281 patients in the placebo-chemotherapy group. At the second interim analysis (data cutoff, Dec 11, 2019), median follow-up was 25·9 months (IQR 22·8-29·9) in the pembrolizumab-chemotherapy group and 26·3 months (22·7-29·7) in the placebo-chemotherapy group. Among patients with CPS of 10 or more, median progression-free survival was 9·7 months with pembrolizumab-chemotherapy and 5·6 months with placebo-chemotherapy (hazard ratio [HR] for progression or death, 0·65, 95% CI 0·49-0·86; one-sided p=0·0012 [primary objective met]). Median progression-free survival was 7·6 and 5·6 months (HR, 0·74, 0·61-0·90; one-sided p=0·0014 [not significant]) among patients with CPS of 1 or more and 7·5 and 5·6 months (HR, 0·82, 0·69-0·97 [not tested]) among the intention-to-treat population. The pembrolizumab treatment effect increased with PD-L1 enrichment. Grade 3-5 treatment-related adverse event rates were 68% in the pembrolizumab-chemotherapy group and 67% in the placebo-chemotherapy group, including death in <1% in the pembrolizumab-chemotherapy group and 0% in the placebo-chemotherapy group. Pembrolizumab-chemotherapy showed a significant and clinically meaningful improvement in progression-free survival versus placebo-chemotherapy among patients with metastatic triple-negative breast cancer with CPS of 10 or more. These findings suggest a role for the addition of pembrolizumab to standard chemotherapy for the first-line treatment of metastatic triple-negative breast cancer. Merck Sharp & Dohme Corp, a subsidiary of Merck & Co, Inc.",
+  "locator": "Cortes J[au] AND pembrolizumab[ti] AND 2020[dp] AND Lancet[ta] AND KEYNOTE-355[ti]"
+ },
+ "miller2007": {
+  "pmid": "18160686",
+  "doi": "10.1056/NEJMoa072113",
+  "pmc": "",
+  "authors": [
+   "Miller K",
+   "Wang M",
+   "Gralow J",
+   "Dickler M",
+   "Cobleigh M",
+   "Perez EA",
+   "Shenkier T",
+   "Cella D",
+   "Davidson NE"
+  ],
+  "title": "Paclitaxel plus bevacizumab versus paclitaxel alone for metastatic breast cancer.",
+  "journal": "N Engl J Med",
+  "year": "2007",
+  "volume": "357",
+  "issue": "26",
+  "pages": "2666-76",
+  "elocation": [],
+  "pubtypes": [
+   "Clinical Trial, Phase III",
+   "Comparative Study",
+   "Journal Article",
+   "Randomized Controlled Trial",
+   "Research Support, N.I.H., Extramural",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "abstract": "In an open-label, randomized, phase 3 trial, we compared the efficacy and safety of paclitaxel with that of paclitaxel plus bevacizumab, a monoclonal antibody against vascular endothelial growth factor, as initial treatment for metastatic breast cancer. We randomly assigned patients to receive 90 mg of paclitaxel per square meter of body-surface area on days 1, 8, and 15 every 4 weeks, either alone or with 10 mg of bevacizumab per kilogram of body weight on days 1 and 15. The primary end point was progression-free survival; overall survival was a secondary end point. From December 2001 through May 2004, a total of 722 patients were enrolled. Paclitaxel plus bevacizumab significantly prolonged progression-free survival as compared with paclitaxel alone (median, 11.8 vs. 5.9 months; hazard ratio for progression, 0.60; P<0.001) and increased the objective response rate (36.9% vs. 21.2%, P<0.001). The overall survival rate, however, was similar in the two groups (median, 26.7 vs. 25.2 months; hazard ratio, 0.88; P=0.16). Grade 3 or 4 hypertension (14.8% vs. 0.0%, P<0.001), proteinuria (3.6% vs. 0.0%, P<0.001), headache (2.2% vs. 0.0%, P=0.008), and cerebrovascular ischemia (1.9% vs. 0.0%, P=0.02) were more frequent in patients receiving paclitaxel plus bevacizumab. Infection was more common in patients receiving paclitaxel plus bevacizumab (9.3% vs. 2.9%, P<0.001), but febrile neutropenia was uncommon (<1% overall). Initial therapy of metastatic breast cancer with paclitaxel plus bevacizumab prolongs progression-free survival, but not overall survival, as compared with paclitaxel alone. (ClinicalTrials.gov number, NCT00028990 [ClinicalTrials.gov].).",
+  "locator": "Miller K[au] AND bevacizumab[ti] AND paclitaxel[ti] AND 2007[dp] AND N Engl J Med[ta]"
+ },
+ "kuemmel2026": {
+  "pmid": "41739398",
+  "doi": "10.1245/s10434-026-19121-2",
+  "pmc": "",
+  "authors": [
+   "Kuemmel S",
+   "Fasching PA",
+   "Schmid P",
+   "Harbeck N",
+   "Takahashi M",
+   "Untch M",
+   "Boileau JF",
+   "Cortes J",
+   "Dent R",
+   "O'Shaughnessy J",
+   "Pusztai L",
+   "Foukakis T",
+   "Park YH",
+   "Hui R",
+   "Cardoso F",
+   "Denkert C",
+   "Jia L",
+   "Pan W",
+   "Karantza V",
+   "McArthur H"
+  ],
+  "title": "Surgical Outcomes After Neoadjuvant Pembrolizumab Plus Chemotherapy for Triple-Negative Breast Cancer: Results from the Randomized, Placebo-Controlled Phase 3 KEYNOTE-522 Study.",
+  "journal": "Ann Surg Oncol",
+  "year": "2026",
+  "volume": "33",
+  "issue": "6",
+  "pages": "5550-5557",
+  "elocation": [
+   "10.1245/s10434-026-19121-2"
+  ],
+  "pubtypes": [
+   "Journal Article",
+   "Randomized Controlled Trial",
+   "Clinical Trial, Phase III",
+   "Multicenter Study"
+  ],
+  "abstract": "We prospectively evaluated surgical outcomes following neoadjuvant pembrolizumab or placebo added to neoadjuvant chemotherapy among participants with early-stage triple-negative breast cancer (TNBC) in the phase 3 KEYNOTE-522 study (NCT03036488). Participants with previously untreated, early-stage TNBC (AJCC stage T1c N1-2 or T2-4 N0-2) were randomized 2:1 to neoadjuvant pembrolizumab/placebo plus paclitaxel-carboplatin for 4 cycles, followed by pembrolizumab/placebo plus doxorubicin/epirubicin and cyclophosphamide for 4 cycles. After definitive surgery, participants received adjuvant pembrolizumab/placebo Q3W for 9 cycles. Surgery type and timing, nodal status postsurgery, and adverse events within 30 days following surgery were recorded. Among 1,174 randomized participants (pembrolizumab plus chemotherapy, n = 784; placebo plus chemotherapy, n = 390), similar proportions underwent breast-conserving surgery (45.2% vs. 45.6%) and mastectomy (44.0% vs. 42.6%). Median (10th‒90th percentile) time from end of on-study neoadjuvant treatment to surgery was 1.2 (0.9‒1.9) months in the pembrolizumab plus chemotherapy group and 1.2 (0.9‒1.7) months in the placebo plus chemotherapy group. Median (10th‒90th percentile) time from surgery to adjuvant pembrolizumab/placebo was 2.6 (1.0‒3.9) months in the pembrolizumab plus chemotherapy group and 2.7 (1.1‒4.0) months in the placebo plus chemotherapy group. The only AE occurring in ≥5% of participants between 0 and 30 days postsurgery was procedural pain (7.0% vs. 5.8%). The rate of pathological complete nodal response at surgery was 76.7% in the pembrolizumab plus chemotherapy group versus 69.9% in the placebo plus chemotherapy group. These findings show that adding neoadjuvant pembrolizumab to chemotherapy had no adverse impact on surgical outcomes (including type, timing, and safety). Trial registration ClinicalTrials.gov, NCT03036488 https://www. gov/study/NCT03036488.",
+  "locator": "41739398"
+ },
+ "nusawat2026": {
+  "pmid": "41779321",
+  "doi": "10.1007/s10198-026-01912-9",
+  "pmc": "",
+  "authors": [
+   "Nusawat C",
+   "Sato S",
+   "Taniguchi J",
+   "Kimura Y",
+   "Yasunaga H"
+  ],
+  "title": "Cost-effectiveness analysis of immune checkpoint inhibitors versus platinum-based doublet chemotherapy in the first-line treatment of advanced non-small-cell lung cancer with High PD-L1 expression in Japan.",
+  "journal": "Eur J Health Econ",
+  "year": "2026",
+  "volume": "",
+  "issue": "",
+  "pages": "",
+  "elocation": [
+   "10.1007/s10198-026-01912-9"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "This study comprehensively evaluated the cost-effectiveness of pembrolizumab, atezolizumab, and nivolumab plus ipilimumab compared with platinum-based doublet chemotherapy as the first-line treatment for advanced NSCLC with PD-L1 TPS ≥ 50% in Japan, incorporating recent Japan-specific clinical trial data and real-world cost estimates from a nationwide administrative database. A Markov model was developed to conduct the cost-effectiveness comparison. The model simulated patient transitions between progression-free status, progressed disease, and death over a lifetime horizon using a six-week cycle. Clinical effectiveness data were obtained from pivotal trials, with transition probabilities adjusted using Japanese-specific survival data. Health state utilities were derived from published literature using the EQ-5D questionnaire. Costs were derived from the Diagnosis Procedure Combination database. The analysis was conducted from the Japanese health care payer's perspective, using quality-adjusted life years (QALYs) and incremental cost-effectiveness ratios (ICERs). One-way deterministic and probabilistic sensitivity analyses were performed. Pembrolizumab had the most favorable cost-effectiveness profile, with an ICER of USD 13,423/QALY, well within Japan's willingness-to-pay threshold of USD 35,000/QALY. Nivolumab plus ipilimumab had an ICER of USD 31,150/QALY, whereas atezolizumab had the highest ICER at USD 44,281/QALY. Sensitivity analyses identified key ICER drivers. Results from probabilistic sensitivity analyses were consistent with those of the primary analyses. Pembrolizumab is a cost-effective first-line treatment for advanced NSCLC with PD-L1 TPS ≥ 50% in Japan. Nivolumab plus ipilimumab is also a viable option. Atezolizumab is the least cost-effective.",
+  "locator": "10.1007/s10198-026-01912-9"
+ },
+ "yoshinami2025": {
+  "pmid": "40388078",
+  "doi": "10.1007/s12282-025-01714-6",
+  "pmc": "PMC12174221",
+  "authors": [
+   "Yoshinami T",
+   "Shibata N",
+   "Tamaki K",
+   "Ishimaru K",
+   "Ito S",
+   "Nukada T",
+   "Ohno S"
+  ],
+  "title": "Real-world evidence of febrile neutropenia-related hospitalization on patients with perioperative chemotherapy for early breast cancer in Japan.",
+  "journal": "Breast Cancer",
+  "year": "2025",
+  "volume": "32",
+  "issue": "4",
+  "pages": "857-866",
+  "elocation": [
+   "10.1007/s12282-025-01714-6"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "To clarify particularly how febrile neutropenia-related hospitalization (FNH) affects patients' daily lives, by analyzing real-world data on FNH among patients with early breast cancer (EBC) receiving perioperative chemotherapy in Japan. This retrospective nationwide large-scale database study was conducted using anonymized claims data from 2010 to 2020. The patients with EBC who had available surgical records were included. Men, those aged < 18 years, and those who had not available chemotherapy records were excluded. FNH was defined as hospitalization during perioperative chemotherapy for EBC, with administration of intravenous antibacterial drugs and a diagnosis of FN, sepsis, infection, or fever. The analysis population included 33,310 EBC patients with a mean age of 56.9 years, who received a total of 267,535 perioperative chemotherapy cycles. FNH occurred in 1,910 patients (5.73%) and 2144 chemotherapy cycles (0.80%). Median duration of FNH was 6.0 days. Fourth-generation cephalosporins were the most used intravenous antibacterial drugs (50.42%). Median duration of intravenous antibacterial drugs administration was 4.0 days. Therapeutic granulocyte-colony stimulating factor (G-CSF) was used in 1285 patients (67.28%). Median cost for FNH was estimated to be 189 thousand yen in 1,474 chemotherapy cycles with FNH, in which patients received intravenous antibacterial drugs administration for 3-8 days. This nationwide real-world data analysis revealed the incidence, duration, treatment patterns, and medical cost of FNH in patients with EBC receiving perioperative chemotherapy in Japan. These findings indicate that FNH imposes a considerable burden on patients' daily lives, including time and financial impacts, contributing to the implementation of appropriate shared decision-making for primary G-CSF prophylaxis.",
+  "locator": "10.1007/s12282-025-01714-6"
+ },
+ "fujisawa2021": {
+  "pmid": "33767865",
+  "doi": "10.3892/mco.2021.2258",
+  "pmc": "PMC7976388",
+  "authors": [
+   "Fujisawa F",
+   "Tamaki Y",
+   "Inoue T",
+   "Nakayama T",
+   "Yagi T",
+   "Kittaka N",
+   "Yoshinami T",
+   "Nishio M",
+   "Matsui S",
+   "Kusama H",
+   "Kamiura S"
+  ],
+  "title": "Prevalence of BRCA1 and BRCA2 mutations in Japanese patients with triple-negative breast cancer: A single institute retrospective study.",
+  "journal": "Mol Clin Oncol",
+  "year": "2021",
+  "volume": "14",
+  "issue": "5",
+  "pages": "96",
+  "elocation": [
+   "96",
+   "10.3892/mco.2021.2258"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "Numerous databases for risk assessment of BRCA1/2 gene mutations contain insufficient data about Asians. Furthermore, few studies have reported the prevalence of germline BRCA1/2 mutations in Japanese patients, particularly those with triple-negative breast cancer (TNBC). The present study was a retrospective analysis of data from patients with TNBC who underwent BRCA1/2 mutation testing at Osaka International Cancer Institute (Osaka, Japan) between October 2014 and March 2020. A total of 65 patients with TNBC underwent a test for BRCA1/2 mutations, and 13 (20.0%) had deleterious mutations in the BRCA1 or BRCA2 genes. Furthermore, 12 out of 29 patients with a family history of breast or ovarian cancer had deleterious BRCA1/2 mutations, and only 1 of 34 without a family history had a mutation (41.4 vs. 2.9%; P=0.014). No patients aged >60 years had BRCA1/2 mutations; however, the age of diagnosis was not a significant risk factor for BRCA1/2 mutations (P=0.60). The prevalence of BRCA1/2 mutations in the present cohort of Japanese patients with TNBC was slightly higher than those reported in other larger studies from Europe and North America. Further data from large prospective studies are required to more precisely define the prevalence of BRCA1/2 mutations.",
+  "locator": "10.3892/mco.2021.2258"
+ },
+ "andrade2026": {
+  "pmid": "41848921",
+  "doi": "10.1007/s10549-026-07938-0",
+  "pmc": "",
+  "authors": [
+   "Andrade MO",
+   "Bonadio RC",
+   "Ipiña A",
+   "Testa L",
+   "Tavares MC",
+   "Balint FC",
+   "Dos Anjos CH",
+   "Gagliato DM",
+   "de Brito ML",
+   "Winocur M",
+   "Assad-Suzuki D",
+   "Rosa DD",
+   "Gomes NJB",
+   "Nunes NCC",
+   "de Sousa IM",
+   "Gouveia MC",
+   "Madasi F",
+   "Bines J",
+   "Gallina C",
+   "Ferreira RDP",
+   "Santos CL",
+   "Tavares M",
+   "Monteiro MR",
+   "de Souza ZS",
+   "Gomes AMU",
+   "Zucchetti BM",
+   "Ferrari A",
+   "Monteiro MMF",
+   "Signorini PA",
+   "Sanches S",
+   "Hoff PM",
+   "Ferreira G",
+   "Estevez-Diz MDP",
+   "Barroso-Sousa R"
+  ],
+  "title": "Treatment patterns and safety of adjuvant therapy after chemoimmunotherapy for early-stage triple-negative breast cancer: real-world data from the Neo-Real/GBECAM 0123 study.",
+  "journal": "Breast Cancer Res Treat",
+  "year": "2026",
+  "volume": "216",
+  "issue": "3",
+  "pages": "",
+  "elocation": [
+   "27",
+   "10.1007/s10549-026-07938-0"
+  ],
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "abstract": "For early-stage triple-negative breast cancer (TNBC), the KEYNOTE-522 trial established neoadjuvant pembrolizumab plus chemotherapy (CT), followed by adjuvant pembrolizumab, as the standard of care. Nevertheless, uncertainties remain on how to integrate this regimen with other adjuvant therapies such as capecitabine or olaparib. This study evaluated real-world treatment patterns and safety of adjuvant therapies following neoadjuvant chemoimmunotherapy. The Neo-Real study includes patients with TNBC treated with neoadjuvant pembrolizumab plus CT in Brazil and Argentina. This study describes real-world adjuvant treatment patterns and safety; survival outcomes are not reported in this analysis. Among 726 patients included, 692 underwent surgery, and 62.9% achieved pathologic complete response (pCR). Of those with pCR, 84.8% received adjuvant pembrolizumab alone, while 14.3% received no adjuvant therapy. Among patients with residual disease and no germline BRCA1/2 mutations (n = 207), 57.5% received pembrolizumab plus capecitabine, 26.1% pembrolizumab alone, and 12.6% capecitabine alone. In BRCA1/2-mutated patients (n = 26), 57.7% received pembrolizumab plus olaparib, 19.2% pembrolizumab alone, and 11.5% olaparib alone. Safety data were available for 359 patients. Adjuvant pembrolizumab alone caused a lower incidence of grade ≥ 3 AEs (6.7%) compared with combination regimens (P = 0.002). Drug discontinuation due to toxicity occurred in 5.7%, 11.2%, and 7.7% of patients receiving pembrolizumab, pembrolizumab + capecitabine, and pembrolizumab + olaparib, respectively (P = 0.126). Most patients with pCR continued adjuvant pembrolizumab, while combination strategies predominated among those with residual disease and were associated with higher rates of grade ≥ 3 AEs. The efficacy of these combined regimens remains to be determined.",
+  "locator": "Andrade[au] AND 2026[dp] AND Breast Cancer Res Treat[ta] AND capecitabine[tiab]"
+ },
+ "valachis2026": {
+  "pmid": "42056378",
+  "doi": "10.1038/s41416-026-03452-8",
+  "pmc": "PMC13373156",
+  "authors": [
+   "Valachis A",
+   "Geisler J",
+   "Karihtala P",
+   "Tuxen MK"
+  ],
+  "title": "Insights on postneoadjuvant treatment among patients with triple-negative breast cancer and residual disease after neoadjuvant therapy: can expert consensus help to interpret the current evidence?",
+  "journal": "Br J Cancer",
+  "year": "2026",
+  "volume": "135",
+  "issue": "3",
+  "pages": "329-335",
+  "elocation": [
+   "10.1038/s41416-026-03452-8"
+  ],
+  "pubtypes": [
+   "Consensus Statement",
+   "Journal Article"
+  ],
+  "abstract": "As treatment strategies for early triple-negative breast cancer continue to evolve, translating clinical evidence into practice can be challenging, especially as the standard of care also shifts and may differ across studies. The management of patients with triple-negative breast cancer who have residual disease after neoadjuvant therapy exemplifies a complex clinical scenario with emerging yet sometimes difficult-to-interpret evidence. Through a critical appraisal of current data and an expert consensus discussion from the Nordic region, the authors present a perspective on postneoadjuvant treatment options for triple-negative breast cancer and discuss potential approaches based on available evidence and expert opinion.",
+  "locator": "Valachis A[au] AND 2026[dp] AND Br J Cancer[ta]"
+ }
+}

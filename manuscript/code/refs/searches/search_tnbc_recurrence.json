@@ -1,0 +1,2278 @@
+{
+ "key": "tnbc_recurrence",
+ "date": "2026-10-26",
+ "pubmed": {
+  "query": "(\"triple-negative\"[ti] OR \"triple negative\"[ti]) AND breast[ti] AND (recurrence[ti] OR relapse[ti] OR \"distant recurrence\"[ti] OR survival[ti]) AND (\"pattern\"[ti] OR \"outcome\"[ti] OR \"outcomes\"[ti] OR clinical[ti]) AND (\"2005/01/01\"[dp] : \"2026/12/31\"[dp])",
+  "count": 88,
+  "hits": [
+   {
+    "pmid": "42666323",
+    "title": "Clinical and pathological indicators for predicting disease-free survival after radical surgery in elderly patients with early-stage triple-negative invasive ductal carcinoma of the breast.",
+    "year": "2026",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2026.1922118",
+    "first_author": "Zhang T",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "42554864",
+    "title": "First-line treatment patterns and real-world survival outcomes in PD-L1-negative locally recurrent inoperable or metastatic triple-negative breast cancer in the United States.",
+    "year": "2026",
+    "journal": "Breast Cancer Res Treat",
+    "doi": "10.1007/s10549-026-08040-1",
+    "first_author": "Traina TA",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "42499497",
+    "title": "Rapid relapse in triple-negative breast cancer: clinical patterns, platinum resistance, and implications for clonal evolution.",
+    "year": "2026",
+    "journal": "Front Pharmacol",
+    "doi": "10.3389/fphar.2026.1889398",
+    "first_author": "Ma T",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "42488634",
+    "title": "Survival outcomes of axillary de-escalation following neoadjuvant chemo-immunotherapy in clinically node-positive triple-negative breast cancer: a national cancer database study.",
+    "year": "2026",
+    "journal": "Front Immunol",
+    "doi": "10.3389/fimmu.2026.1892648",
+    "first_author": "Li Z",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "42343076",
+    "title": "Risk stratification and relapse pattern in triple-negative breast cancer with pathological complete response after neoadjuvant treatment: the European GAMBIT real-world study.",
+    "year": "2026",
+    "journal": "Nat Commun",
+    "doi": "10.1038/s41467-026-74056-2",
+    "first_author": "Massa D",
+    "pubtype": [
+     "Journal Article",
+     "Multicenter Study",
+     "Observational Study"
+    ]
+   },
+   {
+    "pmid": "42235455",
+    "title": "Adjuvant chemotherapy in stage I triple-negative breast cancer: A systematic review and meta-analysis of survival outcomes.",
+    "year": "2026",
+    "journal": "Cancer Treat Rev",
+    "doi": "10.1016/j.ctrv.2026.103156",
+    "first_author": "Jacobs F",
+    "pubtype": [
+     "Journal Article",
+     "Systematic Review",
+     "Meta-Analysis"
+    ]
+   },
+   {
+    "pmid": "42173241",
+    "title": "Diabetes Mellitus and Survival Outcomes in Women With Early-Stage Triple-Negative Breast Cancer: A Multicentre Population-Based Cohort Study From Saskatchewan.",
+    "year": "2026",
+    "journal": "Can J Diabetes",
+    "doi": "10.1016/j.jcjd.2026.05.005",
+    "first_author": "Shahid RK",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "41913624",
+    "title": "[Association between molecular typing and prognosis with recurrence pattern in triple-negative breast cancer patients].",
+    "year": "2026",
+    "journal": "Zhonghua Yi Xue Za Zhi",
+    "doi": "10.3760/cma.j.cn112137-20251201-03143",
+    "first_author": "Chen ZJ",
+    "pubtype": [
+     "English Abstract",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "41701617",
+    "title": "Receipt of guideline-concordant local and chemotherapy-based systemic therapy for patients with triple-negative breast cancer: 10-year survival outcomes in a multi-state population-based analysis.",
+    "year": "2026",
+    "journal": "Cancer",
+    "doi": "10.1002/cncr.70267",
+    "first_author": "Lipscomb J",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "41644812",
+    "title": "Real-world use and survival outcomes of sacituzumab govitecan in metastatic triple-negative breast cancer and hormone receptor-positive/HER2-negative metastatic breast cancer.",
+    "year": "2026",
+    "journal": "Br J Cancer",
+    "doi": "10.1038/s41416-026-03346-9",
+    "first_author": "Shaaban AE",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "41521352",
+    "title": "Triple-negative breast cancer survival outcomes: prognostic model validated with SEER database.",
+    "year": "2026",
+    "journal": "Discov Oncol",
+    "doi": "10.1007/s12672-025-04251-y",
+    "first_author": "Gao H",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "41282047",
+    "title": "Influence of HER2 Changes on Survival Outcomes After Neoadjuvant Chemotherapy in Peruvian Patients With Triple-Negative Breast Cancer.",
+    "year": "2025",
+    "journal": "Breast J",
+    "doi": "10.1155/tbj/3770655",
+    "first_author": "Morante Z",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "41167699",
+    "title": "The Prognostic Impact of HER2 Status and Survival Outcomes in Metastatic Triple Negative Breast Cancer.",
+    "year": "2025",
+    "journal": "In Vivo",
+    "doi": "10.21873/invivo.14160",
+    "first_author": "Turkel A",
+    "pubtype": [
+     "Journal Article",
+     "Multicenter Study"
+    ]
+   },
+   {
+    "pmid": "41061347",
+    "title": "Understanding first-line treatment patterns and survival outcomes across sociodemographic groups of women with metastatic triple-negative breast cancer in the United States: a real-world study.",
+    "year": "2025",
+    "journal": "ESMO Open",
+    "doi": "10.1016/j.esmoop.2025.105841",
+    "first_author": "Tolaney SM",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "41037226",
+    "title": "Triple-Negative Breast Cancer, Recurrence, and Survival Outcomes in Young Black Women.",
+    "year": "2025",
+    "journal": "J Racial Ethn Health Disparities",
+    "doi": "10.1007/s40615-025-02630-3",
+    "first_author": "Matar-Ujvary R",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "41036550",
+    "title": "Real-world survival outcomes of neoadjuvant versus adjuvant chemotherapy in operable triple-negative breast cancer: a propensity score matched registry-based study.",
+    "year": "2025",
+    "journal": "Acta Oncol",
+    "doi": "10.2340/1651-226X.2025.43990",
+    "first_author": "Inan El-Naggar A",
+    "pubtype": [
+     "Journal Article",
+     "Comparative Study"
+    ]
+   },
+   {
+    "pmid": "40956004",
+    "title": "Real-World Treatment Patterns and Survival Outcomes in Metastatic Triple Negative Breast Cancer: Immunotherapy- Versus Anti-Angiogenic Therapy-Combined-With-Chemotherapy.",
+    "year": "2025",
+    "journal": "Cancer Med",
+    "doi": "10.1002/cam4.71164",
+    "first_author": "Wang Y",
+    "pubtype": [
+     "Journal Article",
+     "Comparative Study"
+    ]
+   },
+   {
+    "pmid": "40849239",
+    "title": "Prediction of Overall and Relapse-Free Survival in Triple-Negative Breast Cancer Patients Through Machine Learning-Based Clustering on Clinical Data.",
+    "year": "2025",
+    "journal": "Clin Breast Cancer",
+    "doi": "10.1016/j.clbc.2025.07.027",
+    "first_author": "Alzate-Granados JP",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "40841714",
+    "title": "Survival outcomes after systemic treatment of high-grade triple-negative metaplastic breast cancer versus triple-negative breast cancer of no special type.",
+    "year": "2025",
+    "journal": "Virchows Arch",
+    "doi": "10.1007/s00428-025-04224-0",
+    "first_author": "Grosse C",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "40339509",
+    "title": "Age and comorbidity in relation to treatment and survival outcomes in triple-negative breast cancer: A Swedish nationwide registry-based study.",
+    "year": "2025",
+    "journal": "J Geriatr Oncol",
+    "doi": "10.1016/j.jgo.2025.102255",
+    "first_author": "Nyqvist-Streng J",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "40107153",
+    "title": "Immune-related adverse events are associated with better event-free survival in a phase I/II clinical trial of durvalumab concomitant with neoadjuvant chemotherapy in early-stage triple-negative breast cancer.",
+    "year": "2025",
+    "journal": "ESMO Open",
+    "doi": "10.1016/j.esmoop.2025.104494",
+    "first_author": "Rios-Hoyo A",
+    "pubtype": [
+     "Journal Article",
+     "Clinical Trial, Phase II",
+     "Clinical Trial, Phase I"
+    ]
+   },
+   {
+    "pmid": "40078245",
+    "title": "Triple-Negative, HER2/Neu, and Ki67 Markers in Breast Cancer Patients Undergoing Standard of Care Treatment in India: Real-World Evidence on Tumor Aggressiveness and Survival Outcomes.",
+    "year": "2025",
+    "journal": "Cureus",
+    "doi": "10.7759/cureus.78798",
+    "first_author": "Dhiman P",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "40009381",
+    "title": "Genetic Alterations, Therapy Response, and Survival Among Patients With Triple-Negative Breast Cancer: A Secondary Analysis of a Randomized Clinical Trial.",
+    "year": "2025",
+    "journal": "JAMA Netw Open",
+    "doi": "10.1001/jamanetworkopen.2024.61639",
+    "first_author": "Richters L",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial",
+     "Clinical Trial, Phase II",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "39857116",
+    "title": "Exploring the Prognostic Role of Trop-2, CD47, and CD163 Expression Levels on Survival Outcomes in Patients with Triple-Negative Breast Cancer.",
+    "year": "2025",
+    "journal": "Diagnostics (Basel)",
+    "doi": "10.3390/diagnostics15020232",
+    "first_author": "Yüceer RO",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "39842182",
+    "title": "Comparative survival outcomes of neoadjuvant and adjuvant therapy in patients with T1c, node-negative, triple-negative breast cancer: A population-based analysis.",
+    "year": "2025",
+    "journal": "Breast",
+    "doi": "10.1016/j.breast.2025.103877",
+    "first_author": "Zheng YZ",
+    "pubtype": [
+     "Journal Article",
+     "Comparative Study"
+    ]
+   },
+   {
+    "pmid": "39608504",
+    "title": "miRNA signatures affecting the survival outcome in distant metastasis of triple-negative breast cancer.",
+    "year": "2025",
+    "journal": "Biochem Pharmacol",
+    "doi": "10.1016/j.bcp.2024.116683",
+    "first_author": "Balkrishna A",
+    "pubtype": [
+     "Journal Article",
+     "Review",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "39446010",
+    "title": "[Clinical management of a patient with non-triple-negative breast cancer who converts to a triple-negative subtype at recurrence.].",
+    "year": "2024",
+    "journal": "Recenti Prog Med",
+    "doi": "10.1701/4357.43481",
+    "first_author": "Poggio F",
+    "pubtype": [
+     "Journal Article",
+     "Case Reports",
+     "English Abstract"
+    ]
+   },
+   {
+    "pmid": "38987035",
+    "title": "Impacts of Tumor Stage at Diagnosis and Adjuvant Therapy on Long-Term Survival Outcomes in Patients With Triple-Negative Breast Cancer Achieving Pathologic Complete Response After Neoadjuvant Chemotherapy.",
+    "year": "2025",
+    "journal": "Clin Breast Cancer",
+    "doi": "10.1016/j.clbc.2024.06.013",
+    "first_author": "Chen AX",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "38812540",
+    "title": "YTHDF2 favors protumoral macrophage polarization and implies poor survival outcomes in triple negative breast cancer.",
+    "year": "2024",
+    "journal": "iScience",
+    "doi": "10.1016/j.isci.2024.109902",
+    "first_author": "Jin H",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "38552382",
+    "title": "Mammographic density changes after neoadjuvant chemotherapy in triple-negative breast cancer: Association with treatment and survival outcome.",
+    "year": "2024",
+    "journal": "Clin Imaging",
+    "doi": "10.1016/j.clinimag.2024.110136",
+    "first_author": "Choi Y",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "38095878",
+    "title": "Atezolizumab in Combination With Carboplatin and Survival Outcomes in Patients With Metastatic Triple-Negative Breast Cancer: The TBCRC 043 Phase 2 Randomized Clinical Trial.",
+    "year": "2024",
+    "journal": "JAMA Oncol",
+    "doi": "10.1001/jamaoncol.2023.5424",
+    "first_author": "Lehmann BD",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't",
+     "Research Support, N.I.H., Extramural"
+    ]
+   },
+   {
+    "pmid": "38023174",
+    "title": "Subpopulation treatment effect pattern plot analysis: a prognostic model for distant recurrence-free survival to estimate delayed adjuvant chemotherapy initiation effect in triple-negative breast cancer.",
+    "year": "2023",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2023.1193927",
+    "first_author": "Morante Z",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "37667955",
+    "title": "Effects of different targeted therapies associated with adjuvant chemotherapy on clinical remission, survival and safety in patients with triple-negative breast cancer: a systematic review and meta-analysis.",
+    "year": "2023",
+    "journal": "Eur Rev Med Pharmacol Sci",
+    "doi": "10.26355/eurrev_202308_33431",
+    "first_author": "Li JG",
+    "pubtype": [
+     "Meta-Analysis",
+     "Systematic Review",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "37507258",
+    "title": "Temporal Variation of Treatment Patterns and Survival Outcomes of Triple-Negative Breast Cancer Patients: A Real-World Experience From 2000 to 2014.",
+    "year": "2023",
+    "journal": "Clin Breast Cancer",
+    "doi": "10.1016/j.clbc.2023.07.003",
+    "first_author": "Valcarcel B",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "37404105",
+    "title": "Prediction of Tumor Progression During Neoadjuvant Chemotherapy and Survival Outcome in Patients With Triple-Negative Breast Cancer.",
+    "year": "2023",
+    "journal": "Korean J Radiol",
+    "doi": "10.3348/kjr.2022.0974",
+    "first_author": "Yoen H",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "37385070",
+    "title": "Real-world clinical and survival outcomes of patients with early relapsed triple-negative breast cancer from the ESME national cohort.",
+    "year": "2023",
+    "journal": "Eur J Cancer",
+    "doi": "10.1016/j.ejca.2023.05.023",
+    "first_author": "Grinda T",
+    "pubtype": [
+     "Journal Article",
+     "Multicenter Study",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "36740512",
+    "title": "Complete response in the axilla and the non-triple negative subtype are favourable prognostic factors for survival outcomes in inflammatory breast cancer.",
+    "year": "2023",
+    "journal": "Breast",
+    "doi": "10.1016/j.breast.2023.01.011",
+    "first_author": "Kuhar CG",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "36681737",
+    "title": "Survival Outcomes in Women with Unilateral, Triple-Negative, Breast Cancer Correlated with Contralateral Prophylactic Mastectomy.",
+    "year": "2023",
+    "journal": "Ann Surg Oncol",
+    "doi": "10.1245/s10434-022-13056-0",
+    "first_author": "Fasano GA",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "36522800",
+    "title": "'Why is survival with triple negative breast cancer so low? insights and talking points from preclinical and clinical research'.",
+    "year": "2022",
+    "journal": "Expert Opin Investig Drugs",
+    "doi": "10.1080/13543784.2022.2159805",
+    "first_author": "Passalacqua MI",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "36341391",
+    "title": "SDF-1 expression and tumor-infiltrating lymphocytes identify clinical subtypes of triple-negative breast cancer with different responses to neoadjuvant chemotherapy and survival.",
+    "year": "2022",
+    "journal": "Front Immunol",
+    "doi": "10.3389/fimmu.2022.940635",
+    "first_author": "Wang RX",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "36000130",
+    "title": "Racial and Ethnic Inequality in Survival Outcomes of Women With Triple Negative Breast Cancer.",
+    "year": "2022",
+    "journal": "Cureus",
+    "doi": "10.7759/cureus.27120",
+    "first_author": "Makhani SS",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "35759017",
+    "title": "Survival outcome assessment for triple-negative breast cancer: a nomogram analysis based on integrated clinicopathological, sonographic, and mammographic characteristics.",
+    "year": "2022",
+    "journal": "Eur Radiol",
+    "doi": "10.1007/s00330-022-08910-4",
+    "first_author": "Sheng DL",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "35574419",
+    "title": "Chemotherapy Decision-Making and Survival Outcomes in Older Women With Early Triple-Negative Breast Cancer: Evidence From Real-World Practice.",
+    "year": "2022",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2022.867583",
+    "first_author": "Xiu M",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "35403702",
+    "title": "Survival outcomes for dose-dense paclitaxel plus carboplatin neoadjuvant vs standard adjuvant chemotherapy in stage II to III triple-negative breast cancer: A prospective cohort study with propensity-matched analysis.",
+    "year": "2022",
+    "journal": "Int J Cancer",
+    "doi": "10.1002/ijc.34022",
+    "first_author": "Xiu M",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "35184463",
+    "title": "[Efficacy and survival outcomes of dose-dense carboplatin plus paclitaxel as neoadjuvant chemotherapy for triple-negative breast cancer].",
+    "year": "2022",
+    "journal": "Zhonghua Zhong Liu Za Zhi",
+    "doi": "10.3760/cma.j.cn112152-20210705-00496",
+    "first_author": "Liu Y",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "35044810",
+    "title": "CALGB 40603 (Alliance): Long-Term Outcomes and Genomic Correlates of Response and Survival After Neoadjuvant Chemotherapy With or Without Carboplatin and Bevacizumab in Triple-Negative Breast Cancer.",
+    "year": "2022",
+    "journal": "J Clin Oncol",
+    "doi": "10.1200/JCO.21.01506",
+    "first_author": "Shepherd JH",
+    "pubtype": [
+     "Clinical Trial, Phase II",
+     "Journal Article",
+     "Randomized Controlled Trial",
+     "Research Support, N.I.H., Extramural",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "34580591",
+    "title": "Research on Effectiveness of Prior Cancer on Survival Outcomes for Patients with Nonmetastatic Triple-Negative Breast Cancer: A Competing Risk Analysis and Propensity Score Matching Analysis of the SEER Database.",
+    "year": "2021",
+    "journal": "J Oncol",
+    "doi": "10.1155/2021/9988624",
+    "first_author": "Chen H",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "34529241",
+    "title": "Features from MRI texture analysis associated with survival outcomes in triple-negative breast cancer patients.",
+    "year": "2022",
+    "journal": "Breast Cancer",
+    "doi": "10.1007/s12282-021-01294-1",
+    "first_author": "Kamiya S",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "34307126",
+    "title": "Long-Term Cardiac Safety and Survival Outcomes of Neoadjuvant Pegylated Liposomal Doxorubicin in Elderly Patients or Prone to Cardiotoxicity and Triple Negative Breast Cancer. Final Results of the Multicentre Phase II CAPRICE Study.",
+    "year": "2021",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2021.645026",
+    "first_author": "Gil-Gil MJ",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "34006465",
+    "title": "Treatment-associated survival outcomes in real-world patients with de novo metastatic triple-negative breast cancer: Age as a significant treatment effect-modifier.",
+    "year": "2022",
+    "journal": "J Formos Med Assoc",
+    "doi": "10.1016/j.jfma.2021.04.028",
+    "first_author": "Chung WP",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "33844001",
+    "title": "Clinical and Demographic Factors, Treatment Patterns, and Overall Survival Associated With Rare Triple-Negative Breast Carcinomas in the US.",
+    "year": "2021",
+    "journal": "JAMA Netw Open",
+    "doi": "10.1001/jamanetworkopen.2021.4123",
+    "first_author": "Elimimian EB",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "33381180",
+    "title": "Survival Outcome and Impact of Chemotherapy in T1 Node-Negative Triple-Negative Breast Cancer: A SEER Database Analysis.",
+    "year": "2020",
+    "journal": "J Oncol",
+    "doi": "10.1155/2020/8880727",
+    "first_author": "Zhang J",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "33376535",
+    "title": "Comparison of the expression levels of lysine-specific demethylase 1 and survival outcomes between triple-negative and non-triple-negative breast cancer.",
+    "year": "2021",
+    "journal": "Oncol Lett",
+    "doi": "10.3892/ol.2020.12363",
+    "first_author": "Zhao K",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "33300950",
+    "title": "Effect of Capecitabine Maintenance Therapy Using Lower Dosage and Higher Frequency vs Observation on Disease-Free Survival Among Patients With Early-Stage Triple-Negative Breast Cancer Who Had Received Standard Treatment: The SYSUCC-001 Randomized Clinical Trial.",
+    "year": "2021",
+    "journal": "JAMA",
+    "doi": "10.1001/jama.2020.23370",
+    "first_author": "Wang X",
+    "pubtype": [
+     "Clinical Trial, Phase III",
+     "Comparative Study",
+     "Journal Article",
+     "Multicenter Study",
+     "Randomized Controlled Trial",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "33102205",
+    "title": "The Survival Outcomes of T1aN0M0 Triple-Negative Breast Cancer With Adjuvant Chemotherapy.",
+    "year": "2020",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2020.01753",
+    "first_author": "Fu WF",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "32951717",
+    "title": "Clinical observation on the effect of Chinese medicine-\"TCM formula\" intervention on recurrence and metastasis of triple negative breast cancer.",
+    "year": "2020",
+    "journal": "Complement Ther Med",
+    "doi": "10.1016/j.ctim.2020.102456",
+    "first_author": "Wang Y",
+    "pubtype": [
+     "Journal Article",
+     "Observational Study"
+    ]
+   },
+   {
+    "pmid": "32928917",
+    "title": "Association of Pathologic Complete Response with Long-Term Survival Outcomes in Triple-Negative Breast Cancer: A Meta-Analysis.",
+    "year": "2020",
+    "journal": "Cancer Res",
+    "doi": "10.1158/0008-5472.CAN-20-1792",
+    "first_author": "Huang M",
+    "pubtype": [
+     "Journal Article",
+     "Meta-Analysis",
+     "Research Support, Non-U.S. Gov't",
+     "Review"
+    ]
+   },
+   {
+    "pmid": "32923150",
+    "title": "Age-related mutational signature negatively associated with immune activity and survival outcome in triple-negative breast cancer.",
+    "year": "2020",
+    "journal": "Oncoimmunology",
+    "doi": "10.1080/2162402X.2020.1788252",
+    "first_author": "Chen H",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "32894832",
+    "title": "Predictors of Response and Survival Outcomes of Triple Negative Breast Cancer Receiving Neoadjuvant Chemotherapy.",
+    "year": "2020",
+    "journal": "Chemotherapy",
+    "doi": "10.1159/000509638",
+    "first_author": "Zhu M",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "32789480",
+    "title": "Effect of Adjuvant Paclitaxel and Carboplatin on Survival in Women With Triple-Negative Breast Cancer: A Phase 3 Randomized Clinical Trial.",
+    "year": "2020",
+    "journal": "JAMA Oncol",
+    "doi": "10.1001/jamaoncol.2020.2965",
+    "first_author": "Yu KD",
+    "pubtype": [
+     "Clinical Trial, Phase III",
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "32755985",
+    "title": "Evaluation of Pathologic Complete Response as a Surrogate for Long-Term Survival Outcomes in Triple-Negative Breast Cancer.",
+    "year": "2020",
+    "journal": "J Natl Compr Canc Netw",
+    "doi": "10.6004/jnccn.2020.7550",
+    "first_author": "Huang M",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't",
+     "Review"
+    ]
+   },
+   {
+    "pmid": "32657608",
+    "title": "Objective response of first-line chemotherapy of triple-negative breast cancer translates into survival benefit: an analysis in an independent, prospective clinical trial and a real-world setting.",
+    "year": "2020",
+    "journal": "Neoplasma",
+    "doi": "10.4149/neo_2020_200225N182",
+    "first_author": "Li T",
+    "pubtype": [
+     "Clinical Trial, Phase III",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "32644110",
+    "title": "Association of Circulating Tumor DNA and Circulating Tumor Cells After Neoadjuvant Chemotherapy With Disease Recurrence in Patients With Triple-Negative Breast Cancer: Preplanned Secondary Analysis of the BRE12-158 Randomized Clinical Trial.",
+    "year": "2020",
+    "journal": "JAMA Oncol",
+    "doi": "10.1001/jamaoncol.2020.2295",
+    "first_author": "Radovich M",
+    "pubtype": [
+     "Clinical Trial, Phase II",
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "32539858",
+    "title": "Survival outcomes of neoadjuvant versus adjuvant chemotherapy in triple-negative breast cancer: a meta-analysis of 36,480 cases.",
+    "year": "2020",
+    "journal": "World J Surg Oncol",
+    "doi": "10.1186/s12957-020-01907-7",
+    "first_author": "Xia LY",
+    "pubtype": [
+     "Comparative Study",
+     "Journal Article",
+     "Meta-Analysis"
+    ]
+   },
+   {
+    "pmid": "32184654",
+    "title": "Effect of Clinical and Treatment Factors on Survival Outcomes of Triple Negative Breast Cancer Patients.",
+    "year": "2020",
+    "journal": "Breast Cancer (Dove Med Press)",
+    "doi": "10.2147/BCTT.S236483",
+    "first_author": "Wen S",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "31821036",
+    "title": "Kinetic volume analysis on dynamic contrast-enhanced MRI of triple-negative breast cancer: associations with survival outcomes.",
+    "year": "2020",
+    "journal": "Br J Radiol",
+    "doi": "10.1259/bjr.20190712",
+    "first_author": "Hayashi Y",
+    "pubtype": [
+     "Evaluation Study",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "31308743",
+    "title": "Heterogeneity of targeted lung lesion predicts platinum-based first-line therapy outcomes and overall survival for metastatic triple-negative breast cancer patients with lung metastasis: a \"PET biopsy\" method.",
+    "year": "2019",
+    "journal": "Cancer Manag Res",
+    "doi": "10.2147/CMAR.S204364",
+    "first_author": "Xie Y",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "30566471",
+    "title": "Real-life clinical pattern, management, and survival in Thai patients with early-stage or metastatic triple-negative breast cancer.",
+    "year": "2018",
+    "journal": "PLoS One",
+    "doi": "10.1371/journal.pone.0209040",
+    "first_author": "Srimuninnimit V",
+    "pubtype": [
+     "Journal Article",
+     "Multicenter Study",
+     "Observational Study",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "30347025",
+    "title": "Atezolizumab Plus nab-Paclitaxel in the Treatment of Metastatic Triple-Negative Breast Cancer With 2-Year Survival Follow-up: A Phase 1b Clinical Trial.",
+    "year": "2019",
+    "journal": "JAMA Oncol",
+    "doi": "10.1001/jamaoncol.2018.5152",
+    "first_author": "Adams S",
+    "pubtype": [
+     "Clinical Trial, Phase I",
+     "Journal Article",
+     "Multicenter Study",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "29885790",
+    "title": "Impact of Detection Method and Age on Survival Outcomes in Triple-Negative Breast Cancer: A Population-Based Cohort Analysis.",
+    "year": "2018",
+    "journal": "Clin Breast Cancer",
+    "doi": "10.1016/j.clbc.2018.04.013",
+    "first_author": "Rayson D",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "29344276",
+    "title": "The Clinicopathological Features and Survival Outcomes of Different Histological Subtypes in Triple-negative Breast Cancer.",
+    "year": "2018",
+    "journal": "J Cancer",
+    "doi": "10.7150/jca.22280",
+    "first_author": "Liao HY",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "29310602",
+    "title": "Clinical and pathological factors influencing survival in a large cohort of triple-negative breast cancer patients.",
+    "year": "2018",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-017-3969-y",
+    "first_author": "Urru SAM",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "36118401",
+    "title": "A Comparative Study of Clinical Profile and Relapse Patterns in TRIPLE-NEGATIVE and Non-Triple-Negative Breast Cancer Patients Treated with Curative Intent.",
+    "year": "2017",
+    "journal": "Indian J Surg Oncol",
+    "doi": "10.1007/s13193-017-0634-5",
+    "first_author": "Deo SVS",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "28756019",
+    "title": "Survival outcome of weak estrogen/progesterone receptor expression in HER2 negative breast cancer is similar to triple negative breast cancer.",
+    "year": "2017",
+    "journal": "Eur J Surg Oncol",
+    "doi": "10.1016/j.ejso.2017.07.001",
+    "first_author": "Liao GS",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "28715532",
+    "title": "Germline Mutation Status, Pathological Complete Response, and Disease-Free Survival in Triple-Negative Breast Cancer: Secondary Analysis of the GeparSixto Randomized Clinical Trial.",
+    "year": "2017",
+    "journal": "JAMA Oncol",
+    "doi": "10.1001/jamaoncol.2017.1007",
+    "first_author": "Hahnen E",
+    "pubtype": [
+     "Comparative Study",
+     "Journal Article",
+     "Multicenter Study",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "27514374",
+    "title": "Association between mesothelin expression and survival outcomes in patients with triple-negative breast cancer: a protocol for a systematic review.",
+    "year": "2016",
+    "journal": "Syst Rev",
+    "doi": "10.1186/s13643-016-0313-6",
+    "first_author": "Wang M",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "27386241",
+    "title": "Failure patterns and survival outcomes in triple negative breast cancer (TNBC): a 15 year comparison of 448 non-Hispanic black and white women.",
+    "year": "2016",
+    "journal": "Springerplus",
+    "doi": "10.1186/s40064-016-2444-6",
+    "first_author": "Prasad S",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "26842691",
+    "title": "Outcomes of Triple-Negative Breast Cancers (TNBC) Compared with Non-TNBC: Does the Survival Vary for All Stages?",
+    "year": "2016",
+    "journal": "World J Surg",
+    "doi": "10.1007/s00268-016-3422-4",
+    "first_author": "Agarwal G",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "26230976",
+    "title": "Early Stage Triple-Negative Breast Cancer: Imaging and Clinical-Pathologic Factors Associated with Recurrence.",
+    "year": "2016",
+    "journal": "Radiology",
+    "doi": "10.1148/radiol.2015150089",
+    "first_author": "Bae MS",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "24939141",
+    "title": "Primary relapse site pattern in women with triple-negative breast cancer.",
+    "year": "2014",
+    "journal": "Pathol Res Pract",
+    "doi": "10.1016/j.prp.2014.05.011",
+    "first_author": "Beca F",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "23292831",
+    "title": "Analysis of pattern, time and risk factors influencing recurrence in triple-negative breast cancer patients.",
+    "year": "2013",
+    "journal": "Med Oncol",
+    "doi": "10.1007/s12032-012-0388-4",
+    "first_author": "Pogoda K",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "23040004",
+    "title": "Impact of body mass index on survival outcome among women with early stage triple-negative breast cancer.",
+    "year": "2012",
+    "journal": "Clin Breast Cancer",
+    "doi": "10.1016/j.clbc.2012.07.013",
+    "first_author": "Dawood S",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "21837669",
+    "title": "Impact of low estrogen/progesterone receptor expression on survival outcomes in breast cancers previously classified as triple negative breast cancers.",
+    "year": "2012",
+    "journal": "Cancer",
+    "doi": "10.1002/cncr.26431",
+    "first_author": "Raghav KP",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, N.I.H., Extramural",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "19778431",
+    "title": "Site-specific relapse pattern of the triple negative tumors in Chinese breast cancer patients.",
+    "year": "2009",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/1471-2407-9-342",
+    "first_author": "Lin Y",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "19552840",
+    "title": "[Clinical-pathological characteristics and survival of triple negative breast cancer].",
+    "year": "2009",
+    "journal": "Zhonghua Yi Xue Za Zhi",
+    "doi": "",
+    "first_author": "He Q",
+    "pubtype": [
+     "Controlled Clinical Trial",
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "19299237",
+    "title": "Survival outcomes for patients with metastatic triple-negative breast cancer: implications for clinical practice and trial design.",
+    "year": "2009",
+    "journal": "Clin Breast Cancer",
+    "doi": "10.3816/CBC.2009.n.005",
+    "first_author": "Kassam F",
+    "pubtype": [
+     "Journal Article",
+     "Multicenter Study",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "18833576",
+    "title": "Sites of distant recurrence and clinical outcomes in patients with metastatic triple-negative breast cancer: high incidence of central nervous system metastases.",
+    "year": "2008",
+    "journal": "Cancer",
+    "doi": "10.1002/cncr.23930",
+    "first_author": "Lin NU",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, N.I.H., Extramural",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "17671126",
+    "title": "Triple-negative breast cancer: clinical features and patterns of recurrence.",
+    "year": "2007",
+    "journal": "Clin Cancer Res",
+    "doi": "10.1158/1078-0432.CCR-06-3045",
+    "first_author": "Dent R",
+    "pubtype": [
+     "Journal Article"
+    ]
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "TITLE:(\"triple-negative\" AND breast AND (recurrence OR relapse) AND ((TITLE:pattern OR ABSTRACT:pattern) OR (TITLE:outcome OR ABSTRACT:outcome) OR (TITLE:outcomes OR ABSTRACT:outcomes) OR (TITLE:clinical OR ABSTRACT:clinical))) AND PUB_YEAR:[2005 TO 2026]",
+  "count": 111,
+  "hits": [
+   {
+    "id": "42749377",
+    "src": "MED",
+    "pmid": "42749377",
+    "title": "Recurrence detection in patients with triple-negative breast cancer following the current standard of care: a microsimulation model.",
+    "year": "2026",
+    "journal": "BMJ Open",
+    "doi": "10.1136/bmjopen-2025-115240",
+    "first_author": "Samur S",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "42499497",
+    "src": "MED",
+    "pmid": "42499497",
+    "title": "Rapid relapse in triple-negative breast cancer: clinical patterns, platinum resistance, and implications for clonal evolution.",
+    "year": "2026",
+    "journal": "Front Pharmacol",
+    "doi": "10.3389/fphar.2026.1889398",
+    "first_author": "Ma T",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "42343076",
+    "src": "MED",
+    "pmid": "42343076",
+    "title": "Risk stratification and relapse pattern in triple-negative breast cancer with pathological complete response after neoadjuvant treatment: the European GAMBIT real-world study.",
+    "year": "2026",
+    "journal": "Nat Commun",
+    "doi": "10.1038/s41467-026-74056-2",
+    "first_author": "Massa D",
+    "pubtype": "research-article; multicenter study; journal article; observational study"
+   },
+   {
+    "id": "41913624",
+    "src": "MED",
+    "pmid": "41913624",
+    "title": "[Association between molecular typing and prognosis with recurrence pattern in triple-negative breast cancer patients].",
+    "year": "2026",
+    "journal": "Zhonghua Yi Xue Za Zhi",
+    "doi": "10.3760/cma.j.cn112137-20251201-03143",
+    "first_author": "Chen ZJ",
+    "pubtype": "journal article; english abstract"
+   },
+   {
+    "id": "41037226",
+    "src": "MED",
+    "pmid": "41037226",
+    "title": "Triple-Negative Breast Cancer, Recurrence, and Survival Outcomes in Young Black Women.",
+    "year": "2025",
+    "journal": "J Racial Ethn Health Disparities",
+    "doi": "10.1007/s40615-025-02630-3",
+    "first_author": "Matar-Ujvary R",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "42565301",
+    "src": "MED",
+    "pmid": "42565301",
+    "title": "Relationship between bisphosphonate use and risks of recurrence and mortality among hormone receptor-positive and triple-negative breast cancer patients.",
+    "year": "2026",
+    "journal": "Cancer",
+    "doi": "10.1002/cncr.70562",
+    "first_author": "Huang L",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "41922423",
+    "src": "MED",
+    "pmid": "41922423",
+    "title": "Modeling optimal timing of immunotherapy and chemotherapy to prevent resistance and recurrence in triple-negative breast cancer.",
+    "year": "2026",
+    "journal": "Sci Rep",
+    "doi": "10.1038/s41598-026-44611-4",
+    "first_author": "Daneshparvar M",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "42362737",
+    "src": "MED",
+    "pmid": "42362737",
+    "title": "Interpretable machine learning reveals the synergistic impact of essential hypertension on early recurrence in triple-negative breast cancer.",
+    "year": "2026",
+    "journal": "Sci Rep",
+    "doi": "10.1038/s41598-026-59274-4",
+    "first_author": "Du Z",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "PPR1274794",
+    "src": "PPR",
+    "pmid": "",
+    "title": "Deciphering the recurrence-associated coding and non-coding genes in triple-negative breast cancer using an integrated omics approach",
+    "year": "2026",
+    "journal": "",
+    "doi": "10.21203/rs.3.rs-10095883/v1",
+    "first_author": "Bose GS",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "40849239",
+    "src": "MED",
+    "pmid": "40849239",
+    "title": "Prediction of Overall and Relapse-Free Survival in Triple-Negative Breast Cancer Patients Through Machine Learning-Based Clustering on Clinical Data.",
+    "year": "2025",
+    "journal": "Clin Breast Cancer",
+    "doi": "10.1016/j.clbc.2025.07.027",
+    "first_author": "Alzate-Granados JP",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "41998636",
+    "src": "MED",
+    "pmid": "41998636",
+    "title": "MnUA-DOX-artesunate hydrogel remodels immunosuppressive tumor microenvironment and prevents postoperative recurrence in triple-negative breast cancer.",
+    "year": "2026",
+    "journal": "J Nanobiotechnology",
+    "doi": "10.1186/s12951-026-04381-7",
+    "first_author": "Cai K",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "40959564",
+    "src": "MED",
+    "pmid": "40959564",
+    "title": "Dual-Function RNA Biomarkers: Integrating Relapse Prediction and Immune Profiling in Triple-Negative Breast Cancer.",
+    "year": "2025",
+    "journal": "Int J Med Sci",
+    "doi": "10.7150/ijms.119142",
+    "first_author": "Wen Y",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "40763488",
+    "src": "MED",
+    "pmid": "40763488",
+    "title": "Central nervous system relapse in triple-negative breast cancer patients achieving pathological complete response after neoadjuvant chemotherapy: A retrospective cohort analysis.",
+    "year": "2025",
+    "journal": "Breast",
+    "doi": "10.1016/j.breast.2025.104553",
+    "first_author": "Polho GB",
+    "pubtype": "brief-report; journal article"
+   },
+   {
+    "id": "PPR1054258",
+    "src": "PPR",
+    "pmid": "",
+    "title": "Modeling Optimal Timing of Immunotherapy and Chemotherapy to Prevent Resistance and Recurrence in Triple-Negative Breast Cancer",
+    "year": "2025",
+    "journal": "",
+    "doi": "10.21203/rs.3.rs-6963681/v1",
+    "first_author": "Daneshparvar M",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "42430019",
+    "src": "MED",
+    "pmid": "42430019",
+    "title": "Early first-line systemic anticancer therapeutic attrition after metastatic recurrence in triple-negative breast cancer following neoadjuvant chemo-immunotherapy: a multicenter real-world study.",
+    "year": "2026",
+    "journal": "Breast Cancer Res Treat",
+    "doi": "10.1007/s10549-026-08023-2",
+    "first_author": "Fedele P",
+    "pubtype": "multicenter study; journal article"
+   },
+   {
+    "id": "41710672",
+    "src": "MED",
+    "pmid": "41710672",
+    "title": "Pan-immune-inflammation value and prognostic nutritional index can predict the 2-year recurrence of triple-negative breast cancer patients after radical resection.",
+    "year": "2026",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2026.1739129",
+    "first_author": "Xia Z",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "42831720",
+    "src": "MED",
+    "pmid": "42831720",
+    "title": "[Sacituzumab govitecan in a patient with early bone recurrence of triple-negative breast cancer refractory to first-line chemotherapy.]",
+    "year": "2026",
+    "journal": "Recenti Prog Med",
+    "doi": "10.1701/4781.48076",
+    "first_author": "Battaglia C.",
+    "pubtype": "journal article; english abstract; case reports"
+   },
+   {
+    "id": "40545963",
+    "src": "MED",
+    "pmid": "40545963",
+    "title": "Extracellular Vesicle Proteome Analysis Improves Diagnosis of Recurrence in Triple-Negative Breast Cancer.",
+    "year": "2025",
+    "journal": "J Extracell Vesicles",
+    "doi": "10.1002/jev2.70089",
+    "first_author": "Hyon JY",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "40689866",
+    "src": "MED",
+    "pmid": "40689866",
+    "title": "Timing of Recurrence after Neoadjuvant Chemo-Immunotherapy in Patients with Early-Stage Triple-Negative Breast Cancer.",
+    "year": "2025",
+    "journal": "Clin Cancer Res",
+    "doi": "10.1158/1078-0432.ccr-25-1478",
+    "first_author": "Licata L",
+    "pubtype": "brief-report; journal article"
+   },
+   {
+    "id": "PPR1123113",
+    "src": "PPR",
+    "pmid": "",
+    "title": "MnUA–DOX–Artesunate Hydrogel Remodels Immunosuppressive Tumor Microenvironment and Prevents Postoperative Recurrence in Triple-negative Breast Cancer",
+    "year": "2025",
+    "journal": "",
+    "doi": "10.21203/rs.3.rs-7975044/v1",
+    "first_author": "Cai K",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "40690158",
+    "src": "MED",
+    "pmid": "40690158",
+    "title": "Circulating tumor DNA detection of local recurrence in a patient with early stage triple-negative breast cancer.",
+    "year": "2025",
+    "journal": "Breast Cancer Res Treat",
+    "doi": "10.1007/s10549-025-07773-9",
+    "first_author": "Alkassis S",
+    "pubtype": "journal article; case reports"
+   },
+   {
+    "id": "42139922",
+    "src": "MED",
+    "pmid": "42139922",
+    "title": "A dual-asymmetric hemostatic Janus hydrogel patch inhibits postoperative recurrence and metastasis of triple-negative breast cancer by suppressing COX-2/PGE&lt;sub&gt;2&lt;/sub&gt; axis.",
+    "year": "2026",
+    "journal": "Biomaterials",
+    "doi": "10.1016/j.biomaterials.2026.124298",
+    "first_author": "Mi D",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "40118933",
+    "src": "MED",
+    "pmid": "40118933",
+    "title": "Dynamic ctDNA tracking stratifies relapse risk for triple negative breast cancer patients receiving neoadjuvant chemotherapy.",
+    "year": "2025",
+    "journal": "Nat Commun",
+    "doi": "10.1038/s41467-025-57988-z",
+    "first_author": "Li S",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "40067427",
+    "src": "MED",
+    "pmid": "40067427",
+    "title": "Body composition as a potential biomarker of recurrence risk in patients with triple-negative breast cancer.",
+    "year": "2025",
+    "journal": "Breast Cancer Res Treat",
+    "doi": "10.1007/s10549-025-07675-w",
+    "first_author": "De Vis JB",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "40150035",
+    "src": "MED",
+    "pmid": "40150035",
+    "title": "The Diagnostics of Disease Relapse Within Five-Year Follow-Up and the Role of Androgen Receptor Expression in Patients with Early Triple-Negative Breast Cancer.",
+    "year": "2025",
+    "journal": "Diagnostics (Basel)",
+    "doi": "10.3390/diagnostics15060692",
+    "first_author": "Spurnić I",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "PPR955914",
+    "src": "PPR",
+    "pmid": "",
+    "title": "Body composition as a novel biomarker of recurrence risk in patients with triple-negative breast cancer",
+    "year": "2024",
+    "journal": "",
+    "doi": "10.21203/rs.3.rs-5437121/v1",
+    "first_author": "Vis JBD",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "40274284",
+    "src": "MED",
+    "pmid": "40274284",
+    "title": "Serum analytes as predictors of disease recurrence and the duration of invasive disease-free survival in patients with triple negative breast cancer enrolled in the OXEL trial treated with immunotherapy, chemotherapy, or chemoimmunotherapy.",
+    "year": "2025",
+    "journal": "J Immunother Cancer",
+    "doi": "10.1136/jitc-2024-011379",
+    "first_author": "Toney NJ",
+    "pubtype": "research-article; evaluation study; journal article"
+   },
+   {
+    "id": "39964003",
+    "src": "MED",
+    "pmid": "39964003",
+    "title": "NIR-II photothermal therapy combined with activatable immunotherapy against the recurrence and metastasis of orthotopic triple-negative breast cancer.",
+    "year": "2025",
+    "journal": "Nanoscale",
+    "doi": "10.1039/d4nr04981k",
+    "first_author": "Lei W",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "36874102",
+    "src": "MED",
+    "pmid": "36874102",
+    "title": "Characteristics of recurrence, predictors for relapse and prognosis of rapid relapse triple-negative breast cancer.",
+    "year": "2023",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2023.1119611",
+    "first_author": "Cai SL",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "39286481",
+    "src": "MED",
+    "pmid": "39286481",
+    "title": "Development and validation of a nomogram for predicting rapid relapse in triple-negative breast cancer patients treated with neoadjuvant chemotherapy.",
+    "year": "2024",
+    "journal": "Front Cell Dev Biol",
+    "doi": "10.3389/fcell.2024.1417366",
+    "first_author": "Ma T",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "PPR879231",
+    "src": "PPR",
+    "pmid": "",
+    "title": "Dynamic ctDNA tracking stratifies individual relapse risk for early triple negative breast cancer patients receiving neoadjuvant chemotherapy",
+    "year": "2024",
+    "journal": "",
+    "doi": "10.21203/rs.3.rs-4480804/v1",
+    "first_author": "Liu Q",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "39828065",
+    "src": "MED",
+    "pmid": "39828065",
+    "title": "ZNF703 promotes Triple-Negative breast cancer cell progression and in combination with STK11 predicts disease recurrence (ZS -TNBC Model).",
+    "year": "2025",
+    "journal": "Gene",
+    "doi": "10.1016/j.gene.2025.149258",
+    "first_author": "Wang G",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "37750222",
+    "src": "MED",
+    "pmid": "37750222",
+    "title": "Locoregional recurrence in triple negative breast cancer: past, present, and future.",
+    "year": "2023",
+    "journal": "Expert Rev Anticancer Ther",
+    "doi": "10.1080/14737140.2023.2262760",
+    "first_author": "Tran J",
+    "pubtype": "review; journal article"
+   },
+   {
+    "id": "38670590",
+    "src": "MED",
+    "pmid": "38670590",
+    "title": "Identification of a Gene Expression Signature to Predict the Risk of Early Recurrence and the Degree of Immune Cell Infiltration in Triple-negative Breast Cancer.",
+    "year": "2024",
+    "journal": "Cancer Genomics Proteomics",
+    "doi": "10.21873/cgp.20450",
+    "first_author": "Sato K",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "39446010",
+    "src": "MED",
+    "pmid": "39446010",
+    "title": "[Clinical management of a patient with non-triple-negative breast cancer who converts to a triple-negative subtype at recurrence.]",
+    "year": "2024",
+    "journal": "Recenti Prog Med",
+    "doi": "10.1701/4357.43481",
+    "first_author": "Poggio F.",
+    "pubtype": "journal article; english abstract; case reports"
+   },
+   {
+    "id": "39550672",
+    "src": "MED",
+    "pmid": "39550672",
+    "title": "[Sacituzumab govitecan in the second line treatment in a patient with triple-negative breast cancer with extensive locoregional recurrence.]",
+    "year": "2024",
+    "journal": "Recenti Prog Med",
+    "doi": "10.1701/4365.43611",
+    "first_author": "Bonomo MV",
+    "pubtype": "journal article; english abstract; case reports"
+   },
+   {
+    "id": "39099998",
+    "src": "MED",
+    "pmid": "39099998",
+    "title": "Clinicopathological Profiles of and Patterns of Recurrence in Triple-Negative Breast Cancer Patients at a Cancer Care Center in Southern India.",
+    "year": "2024",
+    "journal": "Cureus",
+    "doi": "10.7759/cureus.63886",
+    "first_author": "Inampudi P",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "38019269",
+    "src": "MED",
+    "pmid": "38019269",
+    "title": "Alcohol, Smoking, and Risks of Breast Cancer Recurrence and Mortality among Women with Luminal, Triple-Negative, and HER2-Overexpressing Breast Cancer.",
+    "year": "2024",
+    "journal": "Cancer Epidemiol Biomarkers Prev",
+    "doi": "10.1158/1055-9965.epi-23-1081",
+    "first_author": "Loroña NC",
+    "pubtype": "research support, non-u.s. gov't; research-article; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "37208678",
+    "src": "MED",
+    "pmid": "37208678",
+    "title": "Estrogen receptor beta expression in triple negative breast cancers is not associated with recurrence or survival.",
+    "year": "2023",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-023-10795-5",
+    "first_author": "Takano EA",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "37596179",
+    "src": "MED",
+    "pmid": "37596179",
+    "title": "Triple-negative breast cancer: predictive model of early recurrence based on MRI features.",
+    "year": "2023",
+    "journal": "Clin Radiol",
+    "doi": "10.1016/j.crad.2023.07.008",
+    "first_author": "Yu X",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "38422624",
+    "src": "MED",
+    "pmid": "38422624",
+    "title": "Breast-conserving surgery is not associated with increased local recurrence in patients with early-stage node-negative triple-negative breast cancer treated with neoadjuvant chemotherapy.",
+    "year": "2024",
+    "journal": "Breast",
+    "doi": "10.1016/j.breast.2024.103701",
+    "first_author": "Krug D",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "37861556",
+    "src": "MED",
+    "pmid": "37861556",
+    "title": "MRI-based radiomics approach for the prediction of recurrence-free survival in triple-negative breast cancer after breast-conserving surgery or mastectomy.",
+    "year": "2023",
+    "journal": "Medicine (Baltimore)",
+    "doi": "10.1097/md.0000000000035646",
+    "first_author": "Zhao J",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "38023174",
+    "src": "MED",
+    "pmid": "38023174",
+    "title": "Subpopulation treatment effect pattern plot analysis: a prognostic model for distant recurrence-free survival to estimate delayed adjuvant chemotherapy initiation effect in triple-negative breast cancer.",
+    "year": "2023",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2023.1193927",
+    "first_author": "Morante Z",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "38505617",
+    "src": "MED",
+    "pmid": "38505617",
+    "title": "Immunotherapeutic IL-6R and targeting the MCT-1/IL-6/CXCL7/PD-L1 circuit prevent relapse and metastasis of triple-negative breast cancer.",
+    "year": "2024",
+    "journal": "Theranostics",
+    "doi": "10.7150/thno.92922",
+    "first_author": "Haq ATA",
+    "pubtype": "research support, non-u.s. gov't; research-article; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "35819909",
+    "src": "MED",
+    "pmid": "35819909",
+    "title": "Nomograms predicting recurrence in patients with triple negative breast cancer based on ultrasound and clinicopathological features.",
+    "year": "2022",
+    "journal": "Br J Radiol",
+    "doi": "10.1259/bjr.20220305",
+    "first_author": "Zhang L",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "37588732",
+    "src": "MED",
+    "pmid": "37588732",
+    "title": "A novel eight-gene Immune Cell-Associated Predictive Gene model to predict recurrence in triple-negative breast cancer.",
+    "year": "2023",
+    "journal": "Transl Cancer Res",
+    "doi": "10.21037/tcr-22-2608",
+    "first_author": "Sui XY",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "PPR710280",
+    "src": "PPR",
+    "pmid": "",
+    "title": "Immunotherapeutic IL-6R and Targeting the MCT-1/IL-6/CXCL7/PD-L1 Circuit Prevent Relapse and Metastasis of Triple-Negative Breast Cancer",
+    "year": "2023",
+    "journal": "",
+    "doi": "10.21203/rs.3.rs-3270568/v1",
+    "first_author": "Haq ATA",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "36031887",
+    "src": "MED",
+    "pmid": "36031887",
+    "title": "Triple negative breast cancer and reconstruction: Predictors of recurrence, complications, and mortality.",
+    "year": "2022",
+    "journal": "Breast Dis",
+    "doi": "10.3233/bd-220005",
+    "first_author": "Sogunro O",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "36176751",
+    "src": "MED",
+    "pmid": "36176751",
+    "title": "Persistent EGFR/K-RAS/SIAH pathway activation drives chemo-resistance and early tumor relapse in triple-negative breast cancer.",
+    "year": "2022",
+    "journal": "Cancer Drug Resist",
+    "doi": "10.20517/cdr.2022.31",
+    "first_author": "Tang AH",
+    "pubtype": "review-article; review; journal article"
+   },
+   {
+    "id": "34006255",
+    "src": "MED",
+    "pmid": "34006255",
+    "title": "Genomic features of rapid versus late relapse in triple negative breast cancer.",
+    "year": "2021",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-021-08320-7",
+    "first_author": "Zhang Y",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "34434572",
+    "src": "MED",
+    "pmid": "34434572",
+    "title": "Prognostic factors for early relapse in non-metastatic triple negative breast cancer - real world data.",
+    "year": "2021",
+    "journal": "Rep Pract Oncol Radiother",
+    "doi": "10.5603/rpor.a2021.0073",
+    "first_author": "Soares RF",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "34347212",
+    "src": "MED",
+    "pmid": "34347212",
+    "title": "Antihypertensive medications and risks of recurrence and mortality in luminal, triple-negative, and HER2-overexpressing breast cancer.",
+    "year": "2021",
+    "journal": "Cancer Causes Control",
+    "doi": "10.1007/s10552-021-01485-3",
+    "first_author": "Lorona NC",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "33586064",
+    "src": "MED",
+    "pmid": "33586064",
+    "title": "Socioeconomic and Surgical Disparities are Associated with Rapid Relapse in Patients with Triple-Negative Breast Cancer.",
+    "year": "2021",
+    "journal": "Ann Surg Oncol",
+    "doi": "10.1245/s10434-021-09688-3",
+    "first_author": "Obeng-Gyasi S",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "PPR303107",
+    "src": "PPR",
+    "pmid": "",
+    "title": "Genomic Features of Rapid Versus Late Relapse in Triple Negative Breast Cancer&nbsp;",
+    "year": "2021",
+    "journal": "",
+    "doi": "10.21203/rs.3.rs-332432/v1",
+    "first_author": "Zhang Y",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "33220939",
+    "src": "MED",
+    "pmid": "33220939",
+    "title": "Intraoperative opioids are associated with improved recurrence-free survival in triple-negative breast cancer.",
+    "year": "2021",
+    "journal": "Br J Anaesth",
+    "doi": "10.1016/j.bja.2020.10.021",
+    "first_author": "Montagna G",
+    "pubtype": "research-article; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "33071806",
+    "src": "MED",
+    "pmid": "33071806",
+    "title": "Predicting Relapse in Patients With Triple Negative Breast Cancer (TNBC) Using a Deep-Learning Approach.",
+    "year": "2020",
+    "journal": "Front Physiol",
+    "doi": "10.3389/fphys.2020.511071",
+    "first_author": "Yu G",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "35366112",
+    "src": "MED",
+    "pmid": "35366112",
+    "title": "Programmed death receptor ligand-2 (PD-L2) bearing extracellular vesicles as a new biomarker to identify early triple-negative breast cancer patients at high risk for relapse.",
+    "year": "2023",
+    "journal": "J Cancer Res Clin Oncol",
+    "doi": "10.1007/s00432-022-03980-9",
+    "first_author": "Hoffmann O",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "33691275",
+    "src": "MED",
+    "pmid": "33691275",
+    "title": "Sociodemographic Factors Associated With Rapid Relapse in Triple-Negative Breast Cancer: A Multi-Institution Study.",
+    "year": "2021",
+    "journal": "J Natl Compr Canc Netw",
+    "doi": "10.6004/jnccn.2020.7659",
+    "first_author": "Asad S",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "34513603",
+    "src": "MED",
+    "pmid": "34513603",
+    "title": "PIK3CA mutation in non-metastatic triple-negative breast cancer as a potential biomarker of early relapse: A case report.",
+    "year": "2021",
+    "journal": "World J Clin Oncol",
+    "doi": "10.5306/wjco.v12.i8.702",
+    "first_author": "Valencia GA",
+    "pubtype": "journal article; case reports; case-report"
+   },
+   {
+    "id": "35447368",
+    "src": "MED",
+    "pmid": "35447368",
+    "title": "A neutrophil-mediated carrier regulates tumor stemness by inhibiting autophagy to prevent postoperative triple-negative breast cancer recurrence and metastasis.",
+    "year": "2022",
+    "journal": "Acta Biomater",
+    "doi": "10.1016/j.actbio.2022.04.017",
+    "first_author": "Ren K",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "34249690",
+    "src": "MED",
+    "pmid": "34249690",
+    "title": "INSTIGO Trial: Evaluation of a Plasma Protein Profile as a Predictive Biomarker for Metastatic Relapse of Triple Negative Breast Cancer.",
+    "year": "2021",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2021.653370",
+    "first_author": "Veyssière H",
+    "pubtype": "methods-article; journal article"
+   },
+   {
+    "id": "34043046",
+    "src": "MED",
+    "pmid": "34043046",
+    "title": "A triple combination gemcitabine + romidepsin + cisplatin to effectively control triple-negative breast cancer tumor development, recurrence, and metastasis.",
+    "year": "2021",
+    "journal": "Cancer Chemother Pharmacol",
+    "doi": "10.1007/s00280-021-04298-y",
+    "first_author": "Pattarawat P",
+    "pubtype": "research-article; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "35572493",
+    "src": "MED",
+    "pmid": "35572493",
+    "title": "Prognostic significance of the expression levels of T-cell immunoglobulin mucin-3 and its ligand galectin-9 for relapse-free survival in triple-negative breast cancer.",
+    "year": "2022",
+    "journal": "Oncol Lett",
+    "doi": "10.3892/ol.2022.13318",
+    "first_author": "Yoshikawa K",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "32076078",
+    "src": "MED",
+    "pmid": "32076078",
+    "title": "Three-dimensional radiomics of triple-negative breast cancer: Prediction of systemic recurrence.",
+    "year": "2020",
+    "journal": "Sci Rep",
+    "doi": "10.1038/s41598-020-59923-2",
+    "first_author": "Koh J",
+    "pubtype": "research support, non-u.s. gov't; research-article; validation study; journal article"
+   },
+   {
+    "id": "31048497",
+    "src": "MED",
+    "pmid": "31048497",
+    "title": "A Multigene Assay Determines Risk of Recurrence in Patients with Triple-Negative Breast Cancer.",
+    "year": "2019",
+    "journal": "Cancer Res",
+    "doi": "10.1158/0008-5472.can-18-3014",
+    "first_author": "Stewart RL",
+    "pubtype": "research support, non-u.s. gov't; research-article; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "PPR76821",
+    "src": "PPR",
+    "pmid": "",
+    "title": "Machine learning predicts rapid relapse of triple negative breast cancer",
+    "year": "2019",
+    "journal": "",
+    "doi": "10.1101/613604",
+    "first_author": "Zhang Y",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "32644110",
+    "src": "MED",
+    "pmid": "32644110",
+    "title": "Association of Circulating Tumor DNA and Circulating Tumor Cells After Neoadjuvant Chemotherapy With Disease Recurrence in Patients With Triple-Negative Breast Cancer: Preplanned Secondary Analysis of the BRE12-158 Randomized Clinical Trial.",
+    "year": "2020",
+    "journal": "JAMA Oncol",
+    "doi": "10.1001/jamaoncol.2020.2295",
+    "first_author": "Radovich M",
+    "pubtype": "clinical trial, phase ii; brief-report; randomized controlled trial; journal article"
+   },
+   {
+    "id": "32951717",
+    "src": "MED",
+    "pmid": "32951717",
+    "title": "Clinical observation on the effect of Chinese medicine-\"TCM formula\" intervention on recurrence and metastasis of triple negative breast cancer.",
+    "year": "2020",
+    "journal": "Complement Ther Med",
+    "doi": "10.1016/j.ctim.2020.102456",
+    "first_author": "Wang Y",
+    "pubtype": "journal article; observational study"
+   },
+   {
+    "id": "32430151",
+    "src": "MED",
+    "pmid": "32430151",
+    "title": "Breast conservation therapy confers survival and distant recurrence advantage over mastectomy for stage II Triple Negative Breast cancer.",
+    "year": "2021",
+    "journal": "Am J Surg",
+    "doi": "10.1016/j.amjsurg.2020.04.016",
+    "first_author": "Macfie R",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "31383035",
+    "src": "MED",
+    "pmid": "31383035",
+    "title": "Profiling molecular regulators of recurrence in chemorefractory triple-negative breast cancers.",
+    "year": "2019",
+    "journal": "Breast Cancer Res",
+    "doi": "10.1186/s13058-019-1171-7",
+    "first_author": "Hancock BA",
+    "pubtype": "research support, non-u.s. gov't; research-article; journal article"
+   },
+   {
+    "id": "36118401",
+    "src": "MED",
+    "pmid": "36118401",
+    "title": "A Comparative Study of Clinical Profile and Relapse Patterns in TRIPLE-NEGATIVE and Non<b>-</b>Triple-Negative Breast Cancer Patients Treated with Curative Intent.",
+    "year": "2017",
+    "journal": "Indian J Surg Oncol",
+    "doi": "10.1007/s13193-017-0634-5",
+    "first_author": "Deo SVS",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "29997947",
+    "src": "MED",
+    "pmid": "29997947",
+    "title": "The effect of delayed adjuvant chemotherapy on relapse of triple-negative breast cancer.",
+    "year": "2018",
+    "journal": "J Thorac Dis",
+    "doi": "10.21037/jtd.2018.04.94",
+    "first_author": "Li S",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "24939141",
+    "src": "MED",
+    "pmid": "24939141",
+    "title": "Primary relapse site pattern in women with triple-negative breast cancer.",
+    "year": "2014",
+    "journal": "Pathol Res Pract",
+    "doi": "10.1016/j.prp.2014.05.011",
+    "first_author": "Beca F",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "PPR136772",
+    "src": "PPR",
+    "pmid": "",
+    "title": "Recurrence in Stage I and II Triple-Negative Breast Cancer: Analysis of Clinicopathologic and Imaging Factors",
+    "year": "2019",
+    "journal": "",
+    "doi": "10.21203/rs.2.12471/v1",
+    "first_author": "Eom HJ",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "31946334",
+    "src": "MED",
+    "pmid": "31946334",
+    "title": "A Reliable Multi-classifier Multi-objective Model for Predicting Recurrence in Triple Negative Breast Cancer<sup>.</sup>",
+    "year": "2019",
+    "journal": "Annu Int Conf IEEE Eng Med Biol Soc",
+    "doi": "10.1109/embc.2019.8857030",
+    "first_author": "Chen X",
+    "pubtype": "research support, non-u.s. gov't; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "30110125",
+    "src": "MED",
+    "pmid": "30110125",
+    "title": "CYPOR is a novel and independent prognostic biomarker of recurrence-free survival in triple-negative breast cancer patients.",
+    "year": "2019",
+    "journal": "Int J Cancer",
+    "doi": "10.1002/ijc.31798",
+    "first_author": "Pedersen MH",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "33021710",
+    "src": "MED",
+    "pmid": "33021710",
+    "title": "Risk Factors for Ipsilateral Breast Tumor Recurrence in Triple-Negative or HER2-Positive Breast Cancer Patients Who Achieve a Pathologic Complete Response After Neoadjuvant Chemotherapy.",
+    "year": "2021",
+    "journal": "Ann Surg Oncol",
+    "doi": "10.1245/s10434-020-09176-0",
+    "first_author": "Ishitobi M",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "30959467",
+    "src": "MED",
+    "pmid": "30959467",
+    "title": "Predictors of Locoregional Recurrence After Failure to Achieve Pathologic Complete Response to Neoadjuvant Chemotherapy in Triple-Negative Breast Cancer.",
+    "year": "2019",
+    "journal": "J Natl Compr Canc Netw",
+    "doi": "10.6004/jnccn.2018.7103",
+    "first_author": "Gabani P",
+    "pubtype": "journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "28410844",
+    "src": "MED",
+    "pmid": "28410844",
+    "title": "Folate Receptor Alpha Expression Is Associated With Increased Risk of Recurrence in Triple-negative Breast Cancer.",
+    "year": "2017",
+    "journal": "Clin Breast Cancer",
+    "doi": "10.1016/j.clbc.2017.03.007",
+    "first_author": "Ginter PS",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "27783163",
+    "src": "MED",
+    "pmid": "27783163",
+    "title": "Evaluation of Local and Distant Recurrence Patterns in Patients with Triple-Negative Breast Cancer According to Age.",
+    "year": "2017",
+    "journal": "Ann Surg Oncol",
+    "doi": "10.1245/s10434-016-5631-3",
+    "first_author": "Radosa JC",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "23292831",
+    "src": "MED",
+    "pmid": "23292831",
+    "title": "Analysis of pattern, time and risk factors influencing recurrence in triple-negative breast cancer patients.",
+    "year": "2013",
+    "journal": "Med Oncol",
+    "doi": "10.1007/s12032-012-0388-4",
+    "first_author": "Pogoda K",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "34839351",
+    "src": "MED",
+    "pmid": "34839351",
+    "title": "Effector memory cytotoxic CD3&lt;sup&gt;+&lt;/sup&gt;/CD8&lt;sup&gt;+&lt;/sup&gt;/CD45RO&lt;sup&gt;+&lt;/sup&gt; T cells are predictive of good survival and a lower risk of recurrence in triple-negative breast cancer.",
+    "year": "2022",
+    "journal": "Mod Pathol",
+    "doi": "10.1038/s41379-021-00973-w",
+    "first_author": "Sun X",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "29670372",
+    "src": "MED",
+    "pmid": "29670372",
+    "title": "Postmastectomy radiotherapy reduces locoregional and disease recurrence in patients with stage II-III triple-negative breast cancer treated with neoadjuvant chemotherapy and mastectomy.",
+    "year": "2018",
+    "journal": "Onco Targets Ther",
+    "doi": "10.2147/ott.s158482",
+    "first_author": "Chen X",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "25547678",
+    "src": "MED",
+    "pmid": "25547678",
+    "title": "A serum microRNA signature predicts tumor relapse and survival in triple-negative breast cancer patients.",
+    "year": "2015",
+    "journal": "Clin Cancer Res",
+    "doi": "10.1158/1078-0432.ccr-14-2011",
+    "first_author": "Kleivi Sahlberg K",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "26230976",
+    "src": "MED",
+    "pmid": "26230976",
+    "title": "Early Stage Triple-Negative Breast Cancer: Imaging and Clinical-Pathologic Factors Associated with Recurrence.",
+    "year": "2016",
+    "journal": "Radiology",
+    "doi": "10.1148/radiol.2015150089",
+    "first_author": "Bae MS",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "31153730",
+    "src": "MED",
+    "pmid": "31153730",
+    "title": "Breast cancer hormone receptor negativity, triple-negative type, mastectomy and not receiving adjuvant radiotherapy were associated with axillary recurrence after sentinel lymph node biopsy.",
+    "year": "2020",
+    "journal": "Asian J Surg",
+    "doi": "10.1016/j.asjsur.2019.05.001",
+    "first_author": "Sekine C",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "27191991",
+    "src": "MED",
+    "pmid": "27191991",
+    "title": "Pathological complete response as a surrogate for relapse-free survival in patients with triple negative breast cancer after neoadjuvant chemotherapy.",
+    "year": "2017",
+    "journal": "Oncotarget",
+    "doi": "10.18632/oncotarget.9369",
+    "first_author": "Li J",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "26298189",
+    "src": "MED",
+    "pmid": "26298189",
+    "title": "FOXA2 mRNA expression is associated with relapse in patients with Triple-Negative/Basal-like breast carcinoma.",
+    "year": "2015",
+    "journal": "Breast Cancer Res Treat",
+    "doi": "10.1007/s10549-015-3553-6",
+    "first_author": "Perez-Balaguer A",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "27421134",
+    "src": "MED",
+    "pmid": "27421134",
+    "title": "SPARC overexpression in primary tumors correlates with disease recurrence and overall survival in patients with triple negative breast cancer.",
+    "year": "2016",
+    "journal": "Oncotarget",
+    "doi": "10.18632/oncotarget.10532",
+    "first_author": "Zhu A",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "19778431",
+    "src": "MED",
+    "pmid": "19778431",
+    "title": "Site-specific relapse pattern of the triple negative tumors in Chinese breast cancer patients.",
+    "year": "2009",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/1471-2407-9-342",
+    "first_author": "Lin Y",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "23929266",
+    "src": "MED",
+    "pmid": "23929266",
+    "title": "Loss of androgen receptor expression predicts early recurrence in triple-negative and basal-like breast cancer.",
+    "year": "2014",
+    "journal": "Mod Pathol",
+    "doi": "10.1038/modpathol.2013.145",
+    "first_author": "Thike AA",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "23826420",
+    "src": "MED",
+    "pmid": "23826420",
+    "title": "An associated classification of triple negative breast cancer: the risk of relapse and the response to chemotherapy.",
+    "year": "2013",
+    "journal": "Int J Clin Exp Pathol",
+    "doi": "",
+    "first_author": "Zhang J",
+    "pubtype": "research support, non-u.s. gov't; research-article; journal article"
+   },
+   {
+    "id": "28133218",
+    "src": "MED",
+    "pmid": "28133218",
+    "title": "[A Patient with a Pathological Complete Response to Neo-Adjuvant Chemotherapy for Triple-Negative Breast Cancer Followed by Recurrence after Six Months].",
+    "year": "2016",
+    "journal": "Gan To Kagaku Ryoho",
+    "doi": "",
+    "first_author": "Hayashi K",
+    "pubtype": "journal article; case reports"
+   },
+   {
+    "id": "24558065",
+    "src": "MED",
+    "pmid": "24558065",
+    "title": "Predictive factors and patterns of recurrence in patients with triple negative breast cancer.",
+    "year": "2014",
+    "journal": "Ann Surg Oncol",
+    "doi": "10.1245/s10434-014-3546-4",
+    "first_author": "Steward L",
+    "pubtype": "research support, non-u.s. gov't; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "27214603",
+    "src": "MED",
+    "pmid": "27214603",
+    "title": "The value of adjuvant radiotherapy on survival and recurrence in triple-negative breast cancer: A systematic review and meta-analysis of 5507 patients.",
+    "year": "2016",
+    "journal": "Cancer Treat Rev",
+    "doi": "10.1016/j.ctrv.2016.05.001",
+    "first_author": "O'Rorke MA",
+    "pubtype": "meta-analysis; systematic review; journal article"
+   },
+   {
+    "id": "26855904",
+    "src": "MED",
+    "pmid": "26855904",
+    "title": "Effect of young age, positive margins, and triple negative status on disease recurrence after breast conserving therapy.",
+    "year": "2016",
+    "journal": "Gland Surg",
+    "doi": "10.3978/j.issn.2227-684x.2015.05.08",
+    "first_author": "Lertsithichai P",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "17671126",
+    "src": "MED",
+    "pmid": "17671126",
+    "title": "Triple-negative breast cancer: clinical features and patterns of recurrence.",
+    "year": "2007",
+    "journal": "Clin Cancer Res",
+    "doi": "10.1158/1078-0432.ccr-06-3045",
+    "first_author": "Dent R",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "26516288",
+    "src": "MED",
+    "pmid": "26516288",
+    "title": "Breast parenchymal signal enhancement ratio at preoperative magnetic resonance imaging: association with early recurrence in triple-negative breast cancer patients.",
+    "year": "2016",
+    "journal": "Acta Radiol",
+    "doi": "10.1177/0284185115609803",
+    "first_author": "Park VY",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "25228818",
+    "src": "MED",
+    "pmid": "25228818",
+    "title": "Locoregional recurrence of triple-negative breast cancer: effect of type of surgery and adjuvant postoperative radiotherapy.",
+    "year": "2014",
+    "journal": "Breast Cancer (Dove Med Press)",
+    "doi": "10.2147/bctt.s69309",
+    "first_author": "Bayoumi Y",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "21138871",
+    "src": "MED",
+    "pmid": "21138871",
+    "title": "DNA repair protein biomarkers associated with time to recurrence in triple-negative breast cancer.",
+    "year": "2010",
+    "journal": "Clin Cancer Res",
+    "doi": "10.1158/1078-0432.ccr-10-0292",
+    "first_author": "Alexander BM",
+    "pubtype": "research-article; evaluation study; journal article"
+   },
+   {
+    "id": "18833576",
+    "src": "MED",
+    "pmid": "18833576",
+    "title": "Sites of distant recurrence and clinical outcomes in patients with metastatic triple-negative breast cancer: high incidence of central nervous system metastases.",
+    "year": "2008",
+    "journal": "Cancer",
+    "doi": "10.1002/cncr.23930",
+    "first_author": "Lin NU",
+    "pubtype": "research support, non-u.s. gov't; research-article; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "22147002",
+    "src": "MED",
+    "pmid": "22147002",
+    "title": "Triple-negative subtype predicts poor overall survival and high locoregional relapse in inflammatory breast cancer.",
+    "year": "2011",
+    "journal": "Oncologist",
+    "doi": "10.1634/theoncologist.2011-0196",
+    "first_author": "Li J",
+    "pubtype": "research support, non-u.s. gov't; research-article; research support, u.s. gov't, non-p.h.s.; journal article"
+   },
+   {
+    "id": "23437271",
+    "src": "MED",
+    "pmid": "23437271",
+    "title": "Aurora-A identifies early recurrence and poor prognosis and promises a potential therapeutic target in triple negative breast cancer.",
+    "year": "2013",
+    "journal": "PLoS One",
+    "doi": "10.1371/journal.pone.0056919",
+    "first_author": "Xu J",
+    "pubtype": "research support, non-u.s. gov't; research-article; journal article"
+   },
+   {
+    "id": "21632501",
+    "src": "MED",
+    "pmid": "21632501",
+    "title": "Beta-blocker use is associated with improved relapse-free survival in patients with triple-negative breast cancer.",
+    "year": "2011",
+    "journal": "J Clin Oncol",
+    "doi": "10.1200/jco.2010.33.4441",
+    "first_author": "Melhem-Bertrandt A",
+    "pubtype": "research-article; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "23701942",
+    "src": "MED",
+    "pmid": "23701942",
+    "title": "Metastatic triple-negative breast cancers at first relapse have fewer tumor-infiltrating lymphocytes than their matched primary breast tumors: a pilot study.",
+    "year": "2013",
+    "journal": "Hum Pathol",
+    "doi": "10.1016/j.humpath.2013.03.010",
+    "first_author": "Cimino-Mathews A",
+    "pubtype": "research-article; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "19671105",
+    "src": "MED",
+    "pmid": "19671105",
+    "title": "T1N0 triple negative breast cancer: risk of recurrence and adjuvant chemotherapy.",
+    "year": "2009",
+    "journal": "Breast J",
+    "doi": "10.1111/j.1524-4741.2009.00789.x",
+    "first_author": "Kaplan HG",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "24440093",
+    "src": "MED",
+    "pmid": "24440093",
+    "title": "Association of increased osteopontin and splice variant-c mRNA expression with HER2 and triple-negative/basal-like breast carcinomas subtypes and recurrence.",
+    "year": "2014",
+    "journal": "Hum Pathol",
+    "doi": "10.1016/j.humpath.2013.10.015",
+    "first_author": "Ortiz-Martínez F",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "22544643",
+    "src": "MED",
+    "pmid": "22544643",
+    "title": "Clinicopathologic features, patterns of recurrence, and survival among women with triple-negative breast cancer in the National Comprehensive Cancer Network.",
+    "year": "2012",
+    "journal": "Cancer",
+    "doi": "10.1002/cncr.27581",
+    "first_author": "Lin NU",
+    "pubtype": "research support, non-u.s. gov't; research-article; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "22647688",
+    "src": "MED",
+    "pmid": "22647688",
+    "title": "Tumor characteristics and recurrence patterns in triple negative breast cancer: a comparison between younger (<65) and elderly (≥65) patients.",
+    "year": "2012",
+    "journal": "Eur J Cancer",
+    "doi": "10.1016/j.ejca.2012.04.019",
+    "first_author": "Königsberg R",
+    "pubtype": "comparative study; research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "22241914",
+    "src": "MED",
+    "pmid": "22241914",
+    "title": "Triple-negative breast cancer: early assessment with 18F-FDG PET/CT during neoadjuvant chemotherapy identifies patients who are unlikely to achieve a pathologic complete response and are at a high risk of early relapse.",
+    "year": "2012",
+    "journal": "J Nucl Med",
+    "doi": "10.2967/jnumed.111.094045",
+    "first_author": "Groheux D",
+    "pubtype": "clinical trial; journal article"
+   },
+   {
+    "id": "18619055",
+    "src": "MED",
+    "pmid": "18619055",
+    "title": "[Recurrence and survival rates among early breast cancer cases with triple negative immunophenotype].",
+    "year": "2008",
+    "journal": "Gac Med Mex",
+    "doi": "",
+    "first_author": "Gerson R",
+    "pubtype": "journal article; english abstract"
+   }
+  ]
+ }
+}

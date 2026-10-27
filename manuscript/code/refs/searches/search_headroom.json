@@ -1,0 +1,963 @@
+{
+ "key": "headroom",
+ "date": "2026-10-26",
+ "pubmed": {
+  "query": "(headroom[tiab] AND (\"cost-effectiveness\"[tiab] OR \"cost effectiveness\"[tiab] OR \"health technology\"[tiab]))",
+  "count": 44,
+  "hits": [
+   {
+    "pmid": "42769049",
+    "title": "Manufacturing cost analysis and exploratory economic evaluation of natural killer cell immunotherapy for paediatric solid tumors.",
+    "year": "2026",
+    "journal": "Clin Transl Immunology",
+    "doi": "10.1002/cti2.70122",
+    "first_author": "Wahid ST",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "41642906",
+    "title": "Economic evaluation of a digital health intervention for cancer care: Cost-utility analysis of the OncoCare app.",
+    "year": "2026",
+    "journal": "J Oncol Pharm Pract",
+    "doi": "10.1177/10781552251409104",
+    "first_author": "Prakash GH",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "41036565",
+    "title": "Cost-effectiveness of robotic-assisted versus conventional total knee arthroplasty: an analysis from a middle income country.",
+    "year": "2025",
+    "journal": "Acta Orthop",
+    "doi": "10.2340/17453674.2025.44753",
+    "first_author": "Ruangsomboon P",
+    "pubtype": [
+     "Journal Article",
+     "Comparative Study"
+    ]
+   },
+   {
+    "pmid": "40540171",
+    "title": "Innovation Headroom for a Highly Accurate PD-L1 Companion Diagnostic in Non-small Cell Lung Cancer.",
+    "year": "2025",
+    "journal": "Pharmacoeconomics",
+    "doi": "10.1007/s40273-025-01512-0",
+    "first_author": "Akinsoji T",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "40389316",
+    "title": "Modelling diabetes and depression in Pakistan: using economic modelling to inform intervention design and a clinical trial of a behavioural activation intervention.",
+    "year": "2025",
+    "journal": "BMJ Open",
+    "doi": "10.1136/bmjopen-2024-092158",
+    "first_author": "Glynn D",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "40387696",
+    "title": "Early health economic analysis of virtual reality therapy for pain management after surgery.",
+    "year": "2025",
+    "journal": "Int J Surg",
+    "doi": "10.1097/JS9.0000000000002385",
+    "first_author": "Groenveld TD",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "40325830",
+    "title": "Innovative Approaches to Improve the Success of Pituitary Surgery in Cushing's Disease: A Cost-Effectiveness Perspective.",
+    "year": "2025",
+    "journal": "Clin Endocrinol (Oxf)",
+    "doi": "10.1111/cen.15263",
+    "first_author": "Jacobs FJC",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "39867672",
+    "title": "Assessing the Value of Further Investment in R&D Using Mixed Methods: A Case Study of Biosensor-Integrated Arteriovenous Grafts.",
+    "year": "2025",
+    "journal": "J Mark Access Health Policy",
+    "doi": "10.3390/jmahp13010001",
+    "first_author": "Owusu Achiaw S",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "39697990",
+    "title": "Forecasting the value of innovation in total knee arthroplasty care: A headroom approach.",
+    "year": "2024",
+    "journal": "J Exp Orthop",
+    "doi": "10.1002/jeo2.70096",
+    "first_author": "Otten TM",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "39676693",
+    "title": "An early economic evaluation of active surveillance for low-risk ductal carcinoma in situ.",
+    "year": "2024",
+    "journal": "Future Oncol",
+    "doi": "10.1080/14796694.2024.2421152",
+    "first_author": "Byng D",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "39481753",
+    "title": "An Attribution of Value Framework for Combination Treatments.",
+    "year": "2025",
+    "journal": "Value Health",
+    "doi": "10.1016/j.jval.2024.08.012",
+    "first_author": "Briggs AH",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "39302149",
+    "title": "Early evaluation of a screen-and-treat strategy using high-risk HPV testing for Uganda: Implications for screening coverage and treatment.",
+    "year": "2024",
+    "journal": "J Glob Health",
+    "doi": "10.7189/jogh.14.04157",
+    "first_author": "Sultanov M",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "38828004",
+    "title": "Balancing innovation and affordability in anti-obesity medications: the role of an alternative weight-maintenance program.",
+    "year": "2024",
+    "journal": "Health Aff Sch",
+    "doi": "10.1093/haschl/qxae055",
+    "first_author": "Kim DD",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "38159505",
+    "title": "The added value of risk assessment and subsequent targeted treatment for epileptic seizures after stroke: An early-HTA analysis.",
+    "year": "2024",
+    "journal": "Epilepsy Behav",
+    "doi": "10.1016/j.yebeh.2023.109594",
+    "first_author": "Elschot EP",
+    "pubtype": [
+     "Review",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "36808801",
+    "title": "The value of maintaining cognition in patients with mild cognitive impairment: The innovation headroom and potential cost-effectiveness of roflumilast.",
+    "year": "2023",
+    "journal": "Alzheimers Dement",
+    "doi": "10.1002/alz.13001",
+    "first_author": "Handels R",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "36575333",
+    "title": "Headroom Analysis for Early Economic Evaluation: A Systematic Review.",
+    "year": "2023",
+    "journal": "Appl Health Econ Health Policy",
+    "doi": "10.1007/s40258-022-00774-5",
+    "first_author": "Boudewijns EA",
+    "pubtype": [
+     "Systematic Review",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "36357336",
+    "title": "Exploring the approach to parameter uncertainty in early economic evaluations of surgical technology - a systematic review.",
+    "year": "2023",
+    "journal": "Expert Rev Pharmacoecon Outcomes Res",
+    "doi": "10.1080/14737167.2023.2145946",
+    "first_author": "Browne IL",
+    "pubtype": [
+     "Systematic Review",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "36245363",
+    "title": "Economic evaluation of remote monitoring of patients with an implantable cardiac defibrillator (REMOTE-CIED study).",
+    "year": "2024",
+    "journal": "J Telemed Telecare",
+    "doi": "10.1177/1357633X221129176",
+    "first_author": "de Graaf G",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "36223444",
+    "title": "",
+    "year": "2022",
+    "journal": "",
+    "doi": "10.3310/KSRS2009",
+    "first_author": "Sheikh A",
+    "pubtype": [
+     "Review"
+    ]
+   },
+   {
+    "pmid": "34480325",
+    "title": "The Potential Cost-Effectiveness of a Cell-Based Bioelectronic Implantable Device Delivering Interferon-β1a Therapy Versus Injectable Interferon-β1a Treatment in Relapsing-Remitting Multiple Sclerosis.",
+    "year": "2022",
+    "journal": "Pharmacoeconomics",
+    "doi": "10.1007/s40273-021-01081-y",
+    "first_author": "Visser LA",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "33682555",
+    "title": "Early economic evaluation of an intervention to improve uptake of the NHS England Diabetes Prevention Programme.",
+    "year": "2022",
+    "journal": "Expert Rev Pharmacoecon Outcomes Res",
+    "doi": "10.1080/14737167.2021.1895755",
+    "first_author": "Frempong SN",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "33308234",
+    "title": "The potential of real-time analytics to improve care for mechanically ventilated patients in the intensive care unit: an early economic evaluation.",
+    "year": "2020",
+    "journal": "Cost Eff Resour Alloc",
+    "doi": "10.1186/s12962-020-00254-4",
+    "first_author": "Bakker L",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "33169949",
+    "title": "The Potential Added Value of Novel Hearing Therapeutics: An Early Health Economic Model for Hearing Loss.",
+    "year": "2020",
+    "journal": "Otol Neurotol",
+    "doi": "10.1097/MAO.0000000000002744",
+    "first_author": "Mandavia R",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "33059782",
+    "title": "Value of mesenchymal stem cell therapy for patients with septic shock: an early health economic evaluation.",
+    "year": "2020",
+    "journal": "Int J Technol Assess Health Care",
+    "doi": "10.1017/S0266462320000781",
+    "first_author": "Thavorn K",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "32840445",
+    "title": "Potential Value of Haptic Feedback in Minimally Invasive Surgery for Deep Endometriosis.",
+    "year": "2020",
+    "journal": "Surg Innov",
+    "doi": "10.1177/1553350620944267",
+    "first_author": "Vlek SL",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "31982976",
+    "title": "Early cost-utility analysis of tissue-engineered heart valves compared to bioprostheses in the aortic position in elderly patients.",
+    "year": "2020",
+    "journal": "Eur J Health Econ",
+    "doi": "10.1007/s10198-020-01159-y",
+    "first_author": "Huygens SA",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "31377968",
+    "title": "Early Economic Evaluation to Identify the Necessary Test Characteristics of a New Typhoid Test to be Cost Effective in Ghana.",
+    "year": "2020",
+    "journal": "Pharmacoecon Open",
+    "doi": "10.1007/s41669-019-0159-7",
+    "first_author": "Frempong SN",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "31287794",
+    "title": "Clinical biomarker innovation: when is it worthwhile?",
+    "year": "2019",
+    "journal": "Clin Chem Lab Med",
+    "doi": "10.1515/cclm-2019-0098",
+    "first_author": "Kluytmans A",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "30605643",
+    "title": "What Is the Potential of Tissue-Engineered Pulmonary Valves in Children?",
+    "year": "2019",
+    "journal": "Ann Thorac Surg",
+    "doi": "10.1016/j.athoracsur.2018.11.066",
+    "first_author": "Huygens SA",
+    "pubtype": [
+     "Journal Article",
+     "Meta-Analysis",
+     "Research Support, Non-U.S. Gov't",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "29946228",
+    "title": "The early economic evaluation of novel biomarkers to accelerate their translation into clinical applications.",
+    "year": "2018",
+    "journal": "Cost Eff Resour Alloc",
+    "doi": "10.1186/s12962-018-0105-z",
+    "first_author": "de Graaf G",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "29183175",
+    "title": "Economic evaluation of medical tests at the early phases of development: a systematic review of empirical studies.",
+    "year": "2018",
+    "journal": "Expert Rev Pharmacoecon Outcomes Res",
+    "doi": "10.1080/14737167.2018.1411194",
+    "first_author": "Frempong SN",
+    "pubtype": [
+     "Journal Article",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "28889817",
+    "title": "A SYSTEMATIC APPROACH FOR ASSESSING, IN THE ABSENCE OF FULL EVIDENCE, WHETHER MULTICOMPONENT INTERVENTIONS CAN BE MORE COST-EFFECTIVE THAN SINGLE COMPONENT INTERVENTIONS.",
+    "year": "2017",
+    "journal": "Int J Technol Assess Health Care",
+    "doi": "10.1017/S0266462317000721",
+    "first_author": "Mewes JC",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "28882494",
+    "title": "The merits of decision modelling in the earliest stages of the IDEAL framework: An innovative case in DIEP flap breast reconstructions.",
+    "year": "2017",
+    "journal": "J Plast Reconstr Aesthet Surg",
+    "doi": "10.1016/j.bjps.2017.07.011",
+    "first_author": "Hummelink S",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "28554333",
+    "title": "HEADROOM BEYOND THE QUALITY- ADJUSTED LIFE-YEAR: THE CASE OF COMPLEX PEDIATRIC NEUROLOGY.",
+    "year": "2017",
+    "journal": "Int J Technol Assess Health Care",
+    "doi": "10.1017/S0266462317000046",
+    "first_author": "van Nimwegen KJM",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "27401932",
+    "title": "Early health economic modelling of single-stage cartilage repair. Guiding implementation of technologies in regenerative medicine.",
+    "year": "2017",
+    "journal": "J Tissue Eng Regen Med",
+    "doi": "10.1002/term.2197",
+    "first_author": "de Windt TS",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "27287375",
+    "title": "A five-year model to assess the early cost-effectiveness of new diagnostic tests in the early diagnosis of rheumatoid arthritis.",
+    "year": "2016",
+    "journal": "Arthritis Res Ther",
+    "doi": "10.1186/s13075-016-1020-3",
+    "first_author": "Buisman LR",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "27002226",
+    "title": "THE EARLY BIRD CATCHES THE WORM: EARLY COST-EFFECTIVENESS ANALYSIS OF NEW MEDICAL TESTS.",
+    "year": "2016",
+    "journal": "Int J Technol Assess Health Care",
+    "doi": "10.1017/S0266462316000064",
+    "first_author": "Buisman LR",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "26555013",
+    "title": "Cost-Effectiveness Model for Evaluating New Diagnostic Tests in the Evaluation of Patients With Inflammatory Arthritis at Risk of Having Rheumatoid Arthritis.",
+    "year": "2016",
+    "journal": "Arthritis Care Res (Hoboken)",
+    "doi": "10.1002/acr.22776",
+    "first_author": "Luime JJ",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "26048353",
+    "title": "Disinvestment and Value-Based Purchasing Strategies for Pharmaceuticals: An International Review.",
+    "year": "2015",
+    "journal": "Pharmacoeconomics",
+    "doi": "10.1007/s40273-015-0293-8",
+    "first_author": "Parkinson B",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't",
+     "Review"
+    ]
+   },
+   {
+    "pmid": "25343671",
+    "title": "Cost-effectiveness of risk assessment and tailored treatment for peripheral arterial disease patients.",
+    "year": "2014",
+    "journal": "Biomark Med",
+    "doi": "10.2217/bmm.14.45",
+    "first_author": "Vaidya A",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "23796286",
+    "title": "Probability elicitation to inform early health economic evaluations of new medical technologies: a case study in heart failure disease management.",
+    "year": "2013",
+    "journal": "Value Health",
+    "doi": "10.1016/j.jval.2013.02.008",
+    "first_author": "Cao Q",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "22976505",
+    "title": "Evaluation of a predevelopment service delivery intervention: an application to improve clinical handovers.",
+    "year": "2012",
+    "journal": "BMJ Qual Saf",
+    "doi": "10.1136/bmjqs-2012-001210",
+    "first_author": "Yao GL",
+    "pubtype": [
+     "Evaluation Study",
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "22792877",
+    "title": "Using health technology assessment to support optimal use of technologies in current practice: the challenge of \"disinvestment\".",
+    "year": "2012",
+    "journal": "Int J Technol Assess Health Care",
+    "doi": "10.1017/S0266462312000372",
+    "first_author": "Henshall C",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "18038428",
+    "title": "Cost-effectiveness analysis at the development phase of a potential health technology: examples based on tissue engineering of bladder and urethra.",
+    "year": "2007",
+    "journal": "J Tissue Eng Regen Med",
+    "doi": "10.1002/term.36",
+    "first_author": "McAteer H",
+    "pubtype": [
+     "Journal Article"
+    ]
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(TITLE:headroom OR ABSTRACT:headroom) AND ((TITLE:\"cost-effectiveness\" OR ABSTRACT:\"cost-effectiveness\") OR (TITLE:\"health technology\" OR ABSTRACT:\"health technology\"))",
+  "count": 40,
+  "hits": [
+   {
+    "id": "40540171",
+    "src": "MED",
+    "pmid": "40540171",
+    "title": "Innovation Headroom for a Highly Accurate PD-L1 Companion Diagnostic in Non-small Cell Lung Cancer.",
+    "year": "2025",
+    "journal": "Pharmacoeconomics",
+    "doi": "10.1007/s40273-025-01512-0",
+    "first_author": "Akinsoji T",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "40325830",
+    "src": "MED",
+    "pmid": "40325830",
+    "title": "Innovative Approaches to Improve the Success of Pituitary Surgery in Cushing's Disease: A Cost-Effectiveness Perspective.",
+    "year": "2025",
+    "journal": "Clin Endocrinol (Oxf)",
+    "doi": "10.1111/cen.15263",
+    "first_author": "Jacobs FJC",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "36808801",
+    "src": "MED",
+    "pmid": "36808801",
+    "title": "The value of maintaining cognition in patients with mild cognitive impairment: The innovation headroom and potential cost-effectiveness of roflumilast.",
+    "year": "2023",
+    "journal": "Alzheimers Dement",
+    "doi": "10.1002/alz.13001",
+    "first_author": "Handels R",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "42769049",
+    "src": "MED",
+    "pmid": "42769049",
+    "title": "Manufacturing cost analysis and exploratory economic evaluation of natural killer cell immunotherapy for paediatric solid tumors.",
+    "year": "2026",
+    "journal": "Clin Transl Immunology",
+    "doi": "10.1002/cti2.70122",
+    "first_author": "Wahid ST",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "39697990",
+    "src": "MED",
+    "pmid": "39697990",
+    "title": "Forecasting the value of innovation in total knee arthroplasty care: A headroom approach.",
+    "year": "2024",
+    "journal": "J Exp Orthop",
+    "doi": "10.1002/jeo2.70096",
+    "first_author": "Otten TM",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "41036565",
+    "src": "MED",
+    "pmid": "41036565",
+    "title": "Cost-effectiveness of robotic-assisted versus conventional total knee arthroplasty: an analysis from a middle income country.",
+    "year": "2025",
+    "journal": "Acta Orthop",
+    "doi": "10.2340/17453674.2025.44753",
+    "first_author": "Ruangsomboon P",
+    "pubtype": "comparative study; research-article; journal article"
+   },
+   {
+    "id": "41642906",
+    "src": "MED",
+    "pmid": "41642906",
+    "title": "Economic evaluation of a digital health intervention for cancer care: Cost-utility analysis of the OncoCare app.",
+    "year": "2026",
+    "journal": "J Oncol Pharm Pract",
+    "doi": "10.1177/10781552251409104",
+    "first_author": "Prakash GH",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "36575333",
+    "src": "MED",
+    "pmid": "36575333",
+    "title": "Headroom Analysis for Early Economic Evaluation: A Systematic Review.",
+    "year": "2023",
+    "journal": "Appl Health Econ Health Policy",
+    "doi": "10.1007/s40258-022-00774-5",
+    "first_author": "Boudewijns EA",
+    "pubtype": "systematic review; journal article"
+   },
+   {
+    "id": "39481753",
+    "src": "MED",
+    "pmid": "39481753",
+    "title": "An Attribution of Value Framework for Combination Treatments.",
+    "year": "2025",
+    "journal": "Value Health",
+    "doi": "10.1016/j.jval.2024.08.012",
+    "first_author": "Briggs AH",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "39302149",
+    "src": "MED",
+    "pmid": "39302149",
+    "title": "Early evaluation of a screen-and-treat strategy using high-risk HPV testing for Uganda: Implications for screening coverage and treatment.",
+    "year": "2024",
+    "journal": "J Glob Health",
+    "doi": "10.7189/jogh.14.04157",
+    "first_author": "Sultanov M",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "PMC11719274",
+    "src": "PMC",
+    "pmid": "",
+    "title": "PP53 Potential Cost-Effectiveness And Innovation Headroom Of A More Accurate Companion Diagnostic For PD-L1 In Non-Small-Cell Lung Cancer",
+    "year": "2025",
+    "journal": "Int J Technol Assess Health Care",
+    "doi": "",
+    "first_author": "",
+    "pubtype": "abstract"
+   },
+   {
+    "id": "40387696",
+    "src": "MED",
+    "pmid": "40387696",
+    "title": "Early health economic analysis of virtual reality therapy for pain management after surgery.",
+    "year": "2025",
+    "journal": "Int J Surg",
+    "doi": "10.1097/js9.0000000000002385",
+    "first_author": "Groenveld TD",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "PPR1187047",
+    "src": "PPR",
+    "pmid": "",
+    "title": "The Affordable Intervention Cost Ceiling: a burden-derived economic framework for cardiovascular–kidney–metabolic prevention in China, Japan, and South Korea",
+    "year": "2026",
+    "journal": "",
+    "doi": "10.21203/rs.3.rs-9562745/v1",
+    "first_author": "Wu X",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "38159505",
+    "src": "MED",
+    "pmid": "38159505",
+    "title": "The added value of risk assessment and subsequent targeted treatment for epileptic seizures after stroke: An early-HTA analysis.",
+    "year": "2024",
+    "journal": "Epilepsy Behav",
+    "doi": "10.1016/j.yebeh.2023.109594",
+    "first_author": "Elschot EP",
+    "pubtype": "review; journal article"
+   },
+   {
+    "id": "39867672",
+    "src": "MED",
+    "pmid": "39867672",
+    "title": "Assessing the Value of Further Investment in R&amp;D Using Mixed Methods: A Case Study of Biosensor-Integrated Arteriovenous Grafts.",
+    "year": "2025",
+    "journal": "J Mark Access Health Policy",
+    "doi": "10.3390/jmahp13010001",
+    "first_author": "Owusu Achiaw S",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "34480325",
+    "src": "MED",
+    "pmid": "34480325",
+    "title": "The Potential Cost-Effectiveness of a Cell-Based Bioelectronic Implantable Device Delivering Interferon-β1a Therapy Versus Injectable Interferon-β1a Treatment in Relapsing-Remitting Multiple Sclerosis.",
+    "year": "2022",
+    "journal": "Pharmacoeconomics",
+    "doi": "10.1007/s40273-021-01081-y",
+    "first_author": "Visser LA",
+    "pubtype": "research support, non-u.s. gov't; research-article; journal article"
+   },
+   {
+    "id": "40389316",
+    "src": "MED",
+    "pmid": "40389316",
+    "title": "Modelling diabetes and depression in Pakistan: using economic modelling to inform intervention design and a clinical trial of a behavioural activation intervention.",
+    "year": "2025",
+    "journal": "BMJ Open",
+    "doi": "10.1136/bmjopen-2024-092158",
+    "first_author": "Glynn D",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "28554333",
+    "src": "MED",
+    "pmid": "28554333",
+    "title": "HEADROOM BEYOND THE QUALITY- ADJUSTED LIFE-YEAR: THE CASE OF COMPLEX PEDIATRIC NEUROLOGY.",
+    "year": "2017",
+    "journal": "Int J Technol Assess Health Care",
+    "doi": "10.1017/s0266462317000046",
+    "first_author": "van Nimwegen KJM",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "27002226",
+    "src": "MED",
+    "pmid": "27002226",
+    "title": "THE EARLY BIRD CATCHES THE WORM: EARLY COST-EFFECTIVENESS ANALYSIS OF NEW MEDICAL TESTS.",
+    "year": "2016",
+    "journal": "Int J Technol Assess Health Care",
+    "doi": "10.1017/s0266462316000064",
+    "first_author": "Buisman LR",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "33059782",
+    "src": "MED",
+    "pmid": "33059782",
+    "title": "Value of mesenchymal stem cell therapy for patients with septic shock: an early health economic evaluation.",
+    "year": "2020",
+    "journal": "Int J Technol Assess Health Care",
+    "doi": "10.1017/s0266462320000781",
+    "first_author": "Thavorn K",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "26555013",
+    "src": "MED",
+    "pmid": "26555013",
+    "title": "Cost-Effectiveness Model for Evaluating New Diagnostic Tests in the Evaluation of Patients With Inflammatory Arthritis at Risk of Having Rheumatoid Arthritis.",
+    "year": "2016",
+    "journal": "Arthritis Care Res (Hoboken)",
+    "doi": "10.1002/acr.22776",
+    "first_author": "Luime JJ",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "31982976",
+    "src": "MED",
+    "pmid": "31982976",
+    "title": "Early cost-utility analysis of tissue-engineered heart valves compared to bioprostheses in the aortic position in elderly patients.",
+    "year": "2020",
+    "journal": "Eur J Health Econ",
+    "doi": "10.1007/s10198-020-01159-y",
+    "first_author": "Huygens SA",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "25343671",
+    "src": "MED",
+    "pmid": "25343671",
+    "title": "Cost-effectiveness of risk assessment and tailored treatment for peripheral arterial disease patients.",
+    "year": "2014",
+    "journal": "Biomark Med",
+    "doi": "10.2217/bmm.14.45",
+    "first_author": "Vaidya A",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "31287794",
+    "src": "MED",
+    "pmid": "31287794",
+    "title": "Clinical biomarker innovation: when is it worthwhile?",
+    "year": "2019",
+    "journal": "Clin Chem Lab Med",
+    "doi": "10.1515/cclm-2019-0098",
+    "first_author": "Kluytmans A",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "33682555",
+    "src": "MED",
+    "pmid": "33682555",
+    "title": "Early economic evaluation of an intervention to improve uptake of the NHS England Diabetes Prevention Programme.",
+    "year": "2022",
+    "journal": "Expert Rev Pharmacoecon Outcomes Res",
+    "doi": "10.1080/14737167.2021.1895755",
+    "first_author": "Frempong SN",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "27287375",
+    "src": "MED",
+    "pmid": "27287375",
+    "title": "A five-year model to assess the early cost-effectiveness of new diagnostic tests in the early diagnosis of rheumatoid arthritis.",
+    "year": "2016",
+    "journal": "Arthritis Res Ther",
+    "doi": "10.1186/s13075-016-1020-3",
+    "first_author": "Buisman LR",
+    "pubtype": "research support, non-u.s. gov't; research-article; journal article"
+   },
+   {
+    "id": "28889817",
+    "src": "MED",
+    "pmid": "28889817",
+    "title": "A SYSTEMATIC APPROACH FOR ASSESSING, IN THE ABSENCE OF FULL EVIDENCE, WHETHER MULTICOMPONENT INTERVENTIONS CAN BE MORE COST-EFFECTIVE THAN SINGLE COMPONENT INTERVENTIONS.",
+    "year": "2017",
+    "journal": "Int J Technol Assess Health Care",
+    "doi": "10.1017/s0266462317000721",
+    "first_author": "Mewes JC",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "29183175",
+    "src": "MED",
+    "pmid": "29183175",
+    "title": "Economic evaluation of medical tests at the early phases of development: a systematic review of empirical studies.",
+    "year": "2018",
+    "journal": "Expert Rev Pharmacoecon Outcomes Res",
+    "doi": "10.1080/14737167.2018.1411194",
+    "first_author": "Frempong SN",
+    "pubtype": "systematic review; journal article"
+   },
+   {
+    "id": "33308234",
+    "src": "MED",
+    "pmid": "33308234",
+    "title": "The potential of real-time analytics to improve care for mechanically ventilated patients in the intensive care unit: an early economic evaluation.",
+    "year": "2020",
+    "journal": "Cost Eff Resour Alloc",
+    "doi": "10.1186/s12962-020-00254-4",
+    "first_author": "Bakker L",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "32840445",
+    "src": "MED",
+    "pmid": "32840445",
+    "title": "Potential Value of Haptic Feedback in Minimally Invasive Surgery for Deep Endometriosis.",
+    "year": "2020",
+    "journal": "Surg Innov",
+    "doi": "10.1177/1553350620944267",
+    "first_author": "Vlek SL",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "31377968",
+    "src": "MED",
+    "pmid": "31377968",
+    "title": "Early Economic Evaluation to Identify the Necessary Test Characteristics of a New Typhoid Test to be Cost Effective in Ghana.",
+    "year": "2020",
+    "journal": "Pharmacoecon Open",
+    "doi": "10.1007/s41669-019-0159-7",
+    "first_author": "Frempong SN",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "30605643",
+    "src": "MED",
+    "pmid": "30605643",
+    "title": "What Is the Potential of Tissue-Engineered Pulmonary Valves in Children?",
+    "year": "2019",
+    "journal": "Ann Thorac Surg",
+    "doi": "10.1016/j.athoracsur.2018.11.066",
+    "first_author": "Huygens SA",
+    "pubtype": "meta-analysis; research support, non-u.s. gov't; systematic review; journal article"
+   },
+   {
+    "id": "33169949",
+    "src": "MED",
+    "pmid": "33169949",
+    "title": "The Potential Added Value of Novel Hearing Therapeutics: An Early Health Economic Model for Hearing Loss.",
+    "year": "2020",
+    "journal": "Otol Neurotol",
+    "doi": "10.1097/mao.0000000000002744",
+    "first_author": "Mandavia R",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "27401932",
+    "src": "MED",
+    "pmid": "27401932",
+    "title": "Early health economic modelling of single-stage cartilage repair. Guiding implementation of technologies in regenerative medicine.",
+    "year": "2017",
+    "journal": "J Tissue Eng Regen Med",
+    "doi": "10.1002/term.2197",
+    "first_author": "de Windt TS",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "18038428",
+    "src": "MED",
+    "pmid": "18038428",
+    "title": "Cost-effectiveness analysis at the development phase of a potential health technology: examples based on tissue engineering of bladder and urethra.",
+    "year": "2007",
+    "journal": "J Tissue Eng Regen Med",
+    "doi": "10.1002/term.36",
+    "first_author": "McAteer H",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "23796286",
+    "src": "MED",
+    "pmid": "23796286",
+    "title": "Probability elicitation to inform early health economic evaluations of new medical technologies: a case study in heart failure disease management.",
+    "year": "2013",
+    "journal": "Value Health",
+    "doi": "10.1016/j.jval.2013.02.008",
+    "first_author": "Cao Q",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "36223444",
+    "src": "MED",
+    "pmid": "36223444",
+    "title": "Electronic prescribing systems in hospitals to improve medication safety: a multimethods research programme",
+    "year": "2022",
+    "journal": "",
+    "doi": "",
+    "first_author": "Sheikh A",
+    "pubtype": "review"
+   },
+   {
+    "id": "26048353",
+    "src": "MED",
+    "pmid": "26048353",
+    "title": "Disinvestment and Value-Based Purchasing Strategies for Pharmaceuticals: An International Review.",
+    "year": "2015",
+    "journal": "Pharmacoeconomics",
+    "doi": "10.1007/s40273-015-0293-8",
+    "first_author": "Parkinson B",
+    "pubtype": "research support, non-u.s. gov't; review; journal article"
+   },
+   {
+    "id": "22792877",
+    "src": "MED",
+    "pmid": "22792877",
+    "title": "Using health technology assessment to support optimal use of technologies in current practice: the challenge of \"disinvestment\".",
+    "year": "2012",
+    "journal": "Int J Technol Assess Health Care",
+    "doi": "10.1017/s0266462312000372",
+    "first_author": "Henshall C",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "22976505",
+    "src": "MED",
+    "pmid": "22976505",
+    "title": "Evaluation of a predevelopment service delivery intervention: an application to improve clinical handovers.",
+    "year": "2012",
+    "journal": "BMJ Qual Saf",
+    "doi": "10.1136/bmjqs-2012-001210",
+    "first_author": "Yao GL",
+    "pubtype": "research support, non-u.s. gov't; research-article; evaluation study; journal article"
+   }
+  ]
+ }
+}

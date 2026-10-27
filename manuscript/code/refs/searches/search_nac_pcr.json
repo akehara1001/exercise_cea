@@ -1,0 +1,475 @@
+{
+ "key": "nac_pcr",
+ "date": "2026-10-26",
+ "pubmed": {
+  "query": "(exercise[tiab] OR \"physical activity\"[tiab] OR \"Exercise\"[mh] OR \"Exercise Therapy\"[mh] OR prehabilitation[tiab] OR \"aerobic training\"[tiab] OR \"resistance training\"[tiab]) AND (neoadjuvant[tiab] OR preoperative[tiab] OR \"Neoadjuvant Therapy\"[mh]) AND (\"Breast Neoplasms\"[mh] OR \"breast cancer\"[tiab] OR \"breast carcinoma\"[tiab]) AND (\"pathologic complete response\"[tiab] OR \"pathological complete response\"[tiab] OR pCR[tiab] OR \"tumor response\"[tiab] OR \"tumour response\"[tiab]) AND (\"2000/01/01\"[dp] : \"2026/12/31\"[dp])",
+  "count": 21,
+  "hits": [
+   {
+    "pmid": "42714641",
+    "title": "Exercise and pathologic complete response to cancer treatment: a systematic review and meta-analysis.",
+    "year": "2026",
+    "journal": "Support Care Cancer",
+    "doi": "10.1007/s00520-026-11156-1",
+    "first_author": "Dias Rato N",
+    "pubtype": [
+     "Journal Article",
+     "Meta-Analysis",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "42528605",
+    "title": "Sarcopenia in breast cancer: prognostic values and emerging therapeutic strategies.",
+    "year": "2026",
+    "journal": "Front Surg",
+    "doi": "10.3389/fsurg.2026.1884147",
+    "first_author": "Xiang B",
+    "pubtype": [
+     "Journal Article",
+     "Review"
+    ]
+   },
+   {
+    "pmid": "41896651",
+    "title": "Associations of health-related fitness and physical activity with chemotherapy outcomes in breast cancer.",
+    "year": "2026",
+    "journal": "Br J Cancer",
+    "doi": "10.1038/s41416-026-03384-3",
+    "first_author": "Kokts-Porietis RL",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "41458599",
+    "title": "Home-Combo: an online home-based exercise intervention for women with breast cancer undergoing neoadjuvant chemotherapy: study protocol for a 2-arm pragmatic randomized controlled trial.",
+    "year": "2025",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2025.1682839",
+    "first_author": "Ramos PGF",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "40788186",
+    "title": "Effects of Supervised Exercise during Neoadjuvant Chemotherapy on Tumor Response in Patients with Breast Cancer (Neo-train): A Randomized Controlled Trial.",
+    "year": "2025",
+    "journal": "Clin Cancer Res",
+    "doi": "10.1158/1078-0432.CCR-25-0416",
+    "first_author": "Kjeldsted E",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "40447136",
+    "title": "Effects of aerobic or resistance exercise during neoadjuvant chemotherapy on tumor response and therapy completion in women with breast cancer: The randomized controlled BENEFIT trial.",
+    "year": "2025",
+    "journal": "J Sport Health Sci",
+    "doi": "10.1016/j.jshs.2025.101064",
+    "first_author": "Schmidt ME",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "39617533",
+    "title": "Corrigendum to \"Moderate physical activity during neoadjuvant chemotherapy in breast cancer patients: effect on cancer-related inflammation and pathological complete response-the Neo-Runner study\": [ESMO Open 9 (2024) 10.1016/j.esmoop.2024.103665].",
+    "year": "2024",
+    "journal": "ESMO Open",
+    "doi": "10.1016/j.esmoop.2024.103983",
+    "first_author": "Garrone O",
+    "pubtype": [
+     "Published Erratum"
+    ]
+   },
+   {
+    "pmid": "39432116",
+    "title": "Exploring the effect of exercise training on breast cancer's pathologic response and tumor immune microenvironment after neoadjuvant chemotherapy.",
+    "year": "2024",
+    "journal": "Support Care Cancer",
+    "doi": "10.1007/s00520-024-08942-0",
+    "first_author": "Guedes H",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "39306704",
+    "title": "Effects of exercise therapy on chemotherapy delivery and response in primary breast cancer: A secondary analysis of a randomized trial.",
+    "year": "2025",
+    "journal": "Cancer",
+    "doi": "10.1002/cncr.35575",
+    "first_author": "Iyengar NM",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial",
+     "Clinical Trial, Phase II"
+    ]
+   },
+   {
+    "pmid": "39121813",
+    "title": "Moderate physical activity during neoadjuvant chemotherapy in breast cancer patients: effect on cancer-related inflammation and pathological complete response-the Neo-Runner study.",
+    "year": "2024",
+    "journal": "ESMO Open",
+    "doi": "10.1016/j.esmoop.2024.103665",
+    "first_author": "Garrone O",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "38933645",
+    "title": "The Relationship Between Body Composition and Pathological Response to Neoadjuvant Chemotherapy in Breast Cancer Patients.",
+    "year": "2024",
+    "journal": "Cureus",
+    "doi": "10.7759/cureus.61145",
+    "first_author": "Isıklar A",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "38564089",
+    "title": "Associations of pre-diagnosis physical activity with treatment tolerance and treatment efficacy in breast cancer patients with neoadjuvant chemotherapy.",
+    "year": "2024",
+    "journal": "Breast Cancer",
+    "doi": "10.1007/s12282-024-01569-3",
+    "first_author": "Lin D",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "37656930",
+    "title": "Randomized Trial of Exercise and Nutrition on Chemotherapy Completion and Pathologic Complete Response in Women With Breast Cancer: The Lifestyle, Exercise, and Nutrition Early After Diagnosis Study.",
+    "year": "2023",
+    "journal": "J Clin Oncol",
+    "doi": "10.1200/JCO.23.00871",
+    "first_author": "Sanft T",
+    "pubtype": [
+     "Randomized Controlled Trial",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "37598196",
+    "title": "Neo-train: study protocol and feasibility results for a two-arm randomized controlled trial investigating the effect of supervised exercise during neoadjuvant chemotherapy on tumour response in patients with breast cancer.",
+    "year": "2023",
+    "journal": "BMC Cancer",
+    "doi": "10.1186/s12885-023-11284-5",
+    "first_author": "Kjeldsted E",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "36490309",
+    "title": "Circulating levels of MOTS-c in patients with breast cancer treated with metformin.",
+    "year": "2022",
+    "journal": "Aging (Albany NY)",
+    "doi": "10.18632/aging.204423",
+    "first_author": "Cuyàs E",
+    "pubtype": [
+     "Randomized Controlled Trial",
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "36227931",
+    "title": "Physical exercise during neoadjuvant chemotherapy for breast cancer as a mean to increase pathological complete response rates: Trial protocol of the randomized Neo-ACT trial.",
+    "year": "2022",
+    "journal": "PLoS One",
+    "doi": "10.1371/journal.pone.0274804",
+    "first_author": "de Boniface J",
+    "pubtype": [
+     "Clinical Trial Protocol",
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "35715631",
+    "title": "Association between physical activity and neoadjuvant chemotherapy completion and pathologic complete response in primary breast cancer: the CANTO study.",
+    "year": "2022",
+    "journal": "Br J Cancer",
+    "doi": "10.1038/s41416-022-01870-y",
+    "first_author": "Baker JL",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, N.I.H., Extramural",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "35216638",
+    "title": "Feasibility of a tailored home-based exercise intervention during neoadjuvant chemotherapy in breast cancer patients.",
+    "year": "2022",
+    "journal": "BMC Sports Sci Med Rehabil",
+    "doi": "10.1186/s13102-022-00420-6",
+    "first_author": "Sturgeon KM",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "31119682",
+    "title": "Association between pre-diagnosis BMI, physical activity, pathologic complete response, and chemotherapy completion in women treated with neoadjuvant chemotherapy for breast cancer.",
+    "year": "2019",
+    "journal": "Breast Cancer",
+    "doi": "10.1007/s12282-019-00974-3",
+    "first_author": "Usiskin I",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "28548129",
+    "title": "Central pathology review with two-stage quality assurance for pathological response after neoadjuvant chemotherapy in the ARTemis Trial.",
+    "year": "2017",
+    "journal": "Mod Pathol",
+    "doi": "10.1038/modpathol.2017.30",
+    "first_author": "Thomas JSJ",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "25641925",
+    "title": "Impact of weight change during neoadjuvant chemotherapy on pathologic response in triple-negative breast cancer.",
+    "year": "2015",
+    "journal": "Cancer Med",
+    "doi": "10.1002/cam4.388",
+    "first_author": "Bao J",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial"
+    ]
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "((TITLE:exercise OR ABSTRACT:exercise) OR (TITLE:\"physical activity\" OR ABSTRACT:\"physical activity\") OR (TITLE:prehabilitation OR ABSTRACT:prehabilitation) OR (TITLE:\"aerobic training\" OR ABSTRACT:\"aerobic training\") OR (TITLE:\"resistance training\" OR ABSTRACT:\"resistance training\")) AND ((TITLE:neoadjuvant OR ABSTRACT:neoadjuvant) OR (TITLE:preoperative OR ABSTRACT:preoperative)) AND ((TITLE:\"breast cancer\" OR ABSTRACT:\"breast cancer\") OR (TITLE:\"breast neoplasms\" OR ABSTRACT:\"breast neoplasms\") OR (TITLE:\"breast carcinoma\" OR ABSTRACT:\"breast carcinoma\")) AND ((TITLE:\"pathologic complete response\" OR ABSTRACT:\"pathologic complete response\") OR (TITLE:\"pathological complete response\" OR ABSTRACT:\"pathological complete response\") OR (TITLE:pCR OR ABSTRACT:pCR) OR (TITLE:\"tumor response\" OR ABSTRACT:\"tumor response\")) AND PUB_YEAR:[2000 TO 2026]",
+  "count": 19,
+  "hits": [
+   {
+    "id": "42714641",
+    "src": "MED",
+    "pmid": "42714641",
+    "title": "Exercise and pathologic complete response to cancer treatment: a systematic review and meta-analysis.",
+    "year": "2026",
+    "journal": "Support Care Cancer",
+    "doi": "10.1007/s00520-026-11156-1",
+    "first_author": "Dias Rato N",
+    "pubtype": "meta-analysis; systematic review; journal article"
+   },
+   {
+    "id": "40788186",
+    "src": "MED",
+    "pmid": "40788186",
+    "title": "Effects of Supervised Exercise during Neoadjuvant Chemotherapy on Tumor Response in Patients with Breast Cancer (Neo-train): A Randomized Controlled Trial.",
+    "year": "2025",
+    "journal": "Clin Cancer Res",
+    "doi": "10.1158/1078-0432.ccr-25-0416",
+    "first_author": "Kjeldsted E",
+    "pubtype": "research-article; randomized controlled trial; journal article"
+   },
+   {
+    "id": "42528605",
+    "src": "MED",
+    "pmid": "42528605",
+    "title": "Sarcopenia in breast cancer: prognostic values and emerging therapeutic strategies.",
+    "year": "2026",
+    "journal": "Front Surg",
+    "doi": "10.3389/fsurg.2026.1884147",
+    "first_author": "Xiang B",
+    "pubtype": "review-article; review; journal article"
+   },
+   {
+    "id": "41896651",
+    "src": "MED",
+    "pmid": "41896651",
+    "title": "Associations of health-related fitness and physical activity with chemotherapy outcomes in breast cancer.",
+    "year": "2026",
+    "journal": "Br J Cancer",
+    "doi": "10.1038/s41416-026-03384-3",
+    "first_author": "Kokts-Porietis RL",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "40447136",
+    "src": "MED",
+    "pmid": "40447136",
+    "title": "Effects of aerobic or resistance exercise during neoadjuvant chemotherapy on tumor response and therapy completion in women with breast cancer: The randomized controlled BENEFIT trial.",
+    "year": "2025",
+    "journal": "J Sport Health Sci",
+    "doi": "10.1016/j.jshs.2025.101064",
+    "first_author": "Schmidt ME",
+    "pubtype": "research support, non-u.s. gov't; research-article; randomized controlled trial; journal article"
+   },
+   {
+    "id": "39121813",
+    "src": "MED",
+    "pmid": "39121813",
+    "title": "Moderate physical activity during neoadjuvant chemotherapy in breast cancer patients: effect on cancer-related inflammation and pathological complete response-the Neo-Runner study.",
+    "year": "2024",
+    "journal": "ESMO Open",
+    "doi": "10.1016/j.esmoop.2024.103665",
+    "first_author": "Garrone O",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "39306704",
+    "src": "MED",
+    "pmid": "39306704",
+    "title": "Effects of exercise therapy on chemotherapy delivery and response in primary breast cancer: A secondary analysis of a randomized trial.",
+    "year": "2025",
+    "journal": "Cancer",
+    "doi": "10.1002/cncr.35575",
+    "first_author": "Iyengar NM",
+    "pubtype": "clinical trial, phase ii; research-article; randomized controlled trial; journal article"
+   },
+   {
+    "id": "37656930",
+    "src": "MED",
+    "pmid": "37656930",
+    "title": "Randomized Trial of Exercise and Nutrition on Chemotherapy Completion and Pathologic Complete Response in Women With Breast Cancer: The Lifestyle, Exercise, and Nutrition Early After Diagnosis Study.",
+    "year": "2023",
+    "journal": "J Clin Oncol",
+    "doi": "10.1200/jco.23.00871",
+    "first_author": "Sanft T",
+    "pubtype": "research-article; randomized controlled trial; journal article"
+   },
+   {
+    "id": "35715631",
+    "src": "MED",
+    "pmid": "35715631",
+    "title": "Association between physical activity and neoadjuvant chemotherapy completion and pathologic complete response in primary breast cancer: the CANTO study.",
+    "year": "2022",
+    "journal": "Br J Cancer",
+    "doi": "10.1038/s41416-022-01870-y",
+    "first_author": "Baker JL",
+    "pubtype": "research support, non-u.s. gov't; research-article; journal article; research support, n.i.h., extramural"
+   },
+   {
+    "id": "38564089",
+    "src": "MED",
+    "pmid": "38564089",
+    "title": "Associations of pre-diagnosis physical activity with treatment tolerance and treatment efficacy in breast cancer patients with neoadjuvant chemotherapy.",
+    "year": "2024",
+    "journal": "Breast Cancer",
+    "doi": "10.1007/s12282-024-01569-3",
+    "first_author": "Lin D",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "36227931",
+    "src": "MED",
+    "pmid": "36227931",
+    "title": "Physical exercise during neoadjuvant chemotherapy for breast cancer as a mean to increase pathological complete response rates: Trial protocol of the randomized Neo-ACT trial.",
+    "year": "2022",
+    "journal": "PLoS One",
+    "doi": "10.1371/journal.pone.0274804",
+    "first_author": "de Boniface J",
+    "pubtype": "clinical trial protocol; research support, non-u.s. gov't; research-article; journal article"
+   },
+   {
+    "id": "39432116",
+    "src": "MED",
+    "pmid": "39432116",
+    "title": "Exploring the effect of exercise training on breast cancer's pathologic response and tumor immune microenvironment after neoadjuvant chemotherapy.",
+    "year": "2024",
+    "journal": "Support Care Cancer",
+    "doi": "10.1007/s00520-024-08942-0",
+    "first_author": "Guedes H",
+    "pubtype": "randomized controlled trial; journal article"
+   },
+   {
+    "id": "PPR993714",
+    "src": "PPR",
+    "pmid": "",
+    "title": "Predicting responses to chemotherapy from nutrition in triple negative breast cancer patients (The PRE-NUTRITIVE Study): protocol for a prospective feasibility study",
+    "year": "2025",
+    "journal": "",
+    "doi": "10.1101/2025.03.21.25324389",
+    "first_author": "Cioccoloni G",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "31119682",
+    "src": "MED",
+    "pmid": "31119682",
+    "title": "Association between pre-diagnosis BMI, physical activity, pathologic complete response, and chemotherapy completion in women treated with neoadjuvant chemotherapy for breast cancer.",
+    "year": "2019",
+    "journal": "Breast Cancer",
+    "doi": "10.1007/s12282-019-00974-3",
+    "first_author": "Usiskin I",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "38933645",
+    "src": "MED",
+    "pmid": "38933645",
+    "title": "The Relationship Between Body Composition and Pathological Response to Neoadjuvant Chemotherapy in Breast Cancer Patients.",
+    "year": "2024",
+    "journal": "Cureus",
+    "doi": "10.7759/cureus.61145",
+    "first_author": "Isıklar A",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "35216638",
+    "src": "MED",
+    "pmid": "35216638",
+    "title": "Feasibility of a tailored home-based exercise intervention during neoadjuvant chemotherapy in breast cancer patients.",
+    "year": "2022",
+    "journal": "BMC Sports Sci Med Rehabil",
+    "doi": "10.1186/s13102-022-00420-6",
+    "first_author": "Sturgeon KM",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "39617533",
+    "src": "MED",
+    "pmid": "39617533",
+    "title": "Corrigendum to \"Moderate physical activity during neoadjuvant chemotherapy in breast cancer patients: effect on cancer-related inflammation and pathological complete response-the Neo-Runner study\": [ESMO Open 9 (2024) 10.1016/j.esmoop.2024.103665].",
+    "year": "2024",
+    "journal": "ESMO Open",
+    "doi": "10.1016/j.esmoop.2024.103983",
+    "first_author": "Garrone O",
+    "pubtype": "published erratum; correction"
+   },
+   {
+    "id": "36490309",
+    "src": "MED",
+    "pmid": "36490309",
+    "title": "Circulating levels of MOTS-c in patients with breast cancer treated with metformin.",
+    "year": "2022",
+    "journal": "Aging (Albany NY)",
+    "doi": "10.18632/aging.204423",
+    "first_author": "Cuyàs E",
+    "pubtype": "research support, non-u.s. gov't; research-article; randomized controlled trial; journal article"
+   },
+   {
+    "id": "28548129",
+    "src": "MED",
+    "pmid": "28548129",
+    "title": "Central pathology review with two-stage quality assurance for pathological response after neoadjuvant chemotherapy in the ARTemis Trial.",
+    "year": "2017",
+    "journal": "Mod Pathol",
+    "doi": "10.1038/modpathol.2017.30",
+    "first_author": "Thomas JSJ",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   }
+  ]
+ }
+}

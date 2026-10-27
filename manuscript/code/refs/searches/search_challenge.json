@@ -1,0 +1,122 @@
+{
+ "key": "challenge",
+ "date": "2026-10-26",
+ "pubmed": {
+  "query": "(\"structured exercise\"[tiab] OR exercise[tiab]) AND (\"colon cancer\"[tiab] OR \"Colonic Neoplasms\"[mh]) AND (CHALLENGE[tiab] OR \"disease-free survival\"[tiab]) AND randomized controlled trial[pt] AND (\"2020/01/01\"[dp] : \"2026/12/31\"[dp])",
+  "count": 3,
+  "hits": [
+   {
+    "pmid": "42218651",
+    "title": "Structured Exercise Program After Adjuvant Chemotherapy for Colon Cancer: A Cost-Utility Analysis of the CHALLENGE Trial.",
+    "year": "2026",
+    "journal": "J Clin Oncol",
+    "doi": "10.1200/JCO-26-00765",
+    "first_author": "Chan KKW",
+    "pubtype": [
+     "Journal Article",
+     "Clinical Trial, Phase III",
+     "Randomized Controlled Trial"
+    ]
+   },
+   {
+    "pmid": "41609410",
+    "title": "Effects of a structured exercise program on motivational outcomes in patients with colon cancer.",
+    "year": "2026",
+    "journal": "J Natl Cancer Inst",
+    "doi": "10.1093/jnci/djag023",
+    "first_author": "Courneya KS",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial",
+     "Clinical Trial, Phase III"
+    ]
+   },
+   {
+    "pmid": "40450658",
+    "title": "Structured Exercise after Adjuvant Chemotherapy for Colon Cancer.",
+    "year": "2025",
+    "journal": "N Engl J Med",
+    "doi": "10.1056/NEJMoa2502760",
+    "first_author": "Courneya KS",
+    "pubtype": [
+     "Journal Article",
+     "Randomized Controlled Trial",
+     "Clinical Trial, Phase III",
+     "Multicenter Study"
+    ]
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "((TITLE:\"structured exercise\" OR ABSTRACT:\"structured exercise\") OR (TITLE:exercise OR ABSTRACT:exercise)) AND (TITLE:\"colon cancer\" OR ABSTRACT:\"colon cancer\") AND ((TITLE:CHALLENGE OR ABSTRACT:CHALLENGE) OR (TITLE:\"disease-free survival\" OR ABSTRACT:\"disease-free survival\")) AND (TITLE:randomized OR ABSTRACT:randomized) AND PUB_YEAR:[2020 TO 2026]",
+  "count": 6,
+  "hits": [
+   {
+    "id": "41609410",
+    "src": "MED",
+    "pmid": "41609410",
+    "title": "Effects of a structured exercise program on motivational outcomes in patients with colon cancer.",
+    "year": "2026",
+    "journal": "J Natl Cancer Inst",
+    "doi": "10.1093/jnci/djag023",
+    "first_author": "Courneya KS",
+    "pubtype": "clinical trial, phase iii; research-article; randomized controlled trial; journal article"
+   },
+   {
+    "id": "42738403",
+    "src": "MED",
+    "pmid": "42738403",
+    "title": "Exercise as a Disease-Modifying Therapy in Colon Cancer: Practice-Changing Evidence from the CHALLENGE Trial.",
+    "year": "2026",
+    "journal": "Cancers (Basel)",
+    "doi": "10.3390/cancers18172883",
+    "first_author": "Shida D.",
+    "pubtype": "review-article; review; journal article"
+   },
+   {
+    "id": "40450658",
+    "src": "MED",
+    "pmid": "40450658",
+    "title": "Structured Exercise after Adjuvant Chemotherapy for Colon Cancer.",
+    "year": "2025",
+    "journal": "N Engl J Med",
+    "doi": "10.1056/nejmoa2502760",
+    "first_author": "Courneya KS",
+    "pubtype": "clinical trial, phase iii; multicenter study; randomized controlled trial; journal article"
+   },
+   {
+    "id": "42434742",
+    "src": "MED",
+    "pmid": "42434742",
+    "title": "Integrative oncology in colorectal cancer: evidence-based strategies from prevention through survivorship.",
+    "year": "2026",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2026.1860619",
+    "first_author": "Shen C",
+    "pubtype": "review-article; review; journal article"
+   },
+   {
+    "id": "38148846",
+    "src": "MED",
+    "pmid": "38148846",
+    "title": "The dose-response effect of aerobic exercise on inflammation in colon cancer survivors.",
+    "year": "2023",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2023.1257767",
+    "first_author": "Brown JC",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "42602326",
+    "src": "MED",
+    "pmid": "42602326",
+    "title": "Physical activity and the Neuro-Immuno-Fascial interface in cancer patients: mechanisms, clinical evidence, and therapeutic integration.",
+    "year": "2026",
+    "journal": "Front Oncol",
+    "doi": "10.3389/fonc.2026.1894580",
+    "first_author": "Otto S",
+    "pubtype": "review-article; review; journal article"
+   }
+  ]
+ }
+}

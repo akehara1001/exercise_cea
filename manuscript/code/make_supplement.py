@@ -1,15 +1,20 @@
-"""Supplementary tables and figures (supplement_<VER>.docx).
+"""Supplementary tables, figures and methods (supplement_<VER>.docx).
 
 Reads the phase 1 and phase 2 outputs, the parameter workbook and the figure
-files written by make_figures.py; does not run the model. Supplementary Methods S1
-and the CHEERS checklist (Table S3) are written with the Methods and are not here.
-Writes manuscript/<VER>/supplement_<VER>.docx and _build/_ledger_supplement.json.
+files written by make_figures.py; does not run the model. The CHEERS checklist
+(Supplementary Table S1) gives for each item its place in the manuscript, read from
+_build/_manuscript_map.json (written by edit_manuscript.py) and the page numbers in
+_build/_manuscript_pages.json (word_pages.ps1); run this script again once both exist.
+Writes _build/supplement_marked.docx with reference markers (number_refs.py writes
+manuscript/<VER>/supplement_<VER>.docx) and _build/_ledger_supplement.json.
 """
 from __future__ import annotations
 
 import json
 import math
+import re
 import sys
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -19,6 +24,7 @@ from common import (BUILD, FIGDIR, MAIN, OUT, P1, ROOT, STAR, SUPP, VER, Params,
                     csv, fk, fnum, fyen, num_tokens, one, pct, rel)
 from docx_util import new_document, new_section, page_break, para, table
 from param_names import ARM, RANGE_RULE, UNIT, item, source
+from references import cite
 
 sys.stdout.reconfigure(encoding="utf-8")
 REG = Registry()
@@ -99,13 +105,13 @@ def bsr(q, scale=1.0, nd=2):
 A = [["Input", "Arms", "Base case", "Bootstrap 2.5th to 97.5th percentile", "Source"]]
 nP, nPn, nC, nCn = int(pc.pcr_pembro), int(pc.nonpcr_pembro), int(pc.pcr_placebo), int(pc.nonpcr_placebo)
 A.append(["Starting age, years", "All arms",
-          REG.r(fnum(exv("start_age", "all"), 0), f"{T}, Panel A, starting age", EXF, "quantity = start_age", exv("start_age", "all")), "—", "KEYNOTE-522 population"])
+          REG.r(fnum(exv("start_age", "all"), 0), f"{T}, Panel A, starting age", EXF, "quantity = start_age", exv("start_age", "all")), "—", "KEYNOTE-522 population" + cite("schmid2020")])
 for arm, n1, n0, lab_ in (("pembro", nP, nPn, "With pembrolizumab"), ("placebo", nC, nCn, "Without pembrolizumab")):
     A.append(["Pathological complete response (pCR)", lab_,
               f"{REG.r(str(n1), f'{T}, Panel A, pCR {arm}', 'data/pcr_counts.csv', f'row K22 (IA4), pcr_{arm}', n1)}/"
               f"{REG.r(str(n1 + n0), f'{T}, Panel A, pCR {arm}', 'data/pcr_counts.csv', f'row K22 (IA4), pcr_{arm} + nonpcr_{arm}', n1 + n0)} "
               f"({REG.r(pct(n1 / (n1 + n0)), f'{T}, Panel A, pCR {arm}', 'data/pcr_counts.csv', 'pcr / (pcr + nonpcr)', n1 / (n1 + n0))}%)",
-              "—", "KEYNOTE-522, interim analysis 4"])
+              "—", "KEYNOTE-522 (interim analysis 4)" + cite("schmid2022")])
 for arm, lab_ in (("pembro", "With pembrolizumab"), ("placebo", "Without pembrolizumab")):
     for strat, sname in (("pCR", "pCR"), ("nonpCR", "no pCR")):
         tid = f"efs_{'pcr' if strat == 'pCR' else 'nonpcr'}_{arm}"
@@ -113,7 +119,7 @@ for arm, lab_ in (("pembro", "With pembrolizumab"), ("placebo", "Without pembrol
         q = f"efs_target_EFS_{arm}_{strat}"
         A.append([f"Event-free survival at 7 years, {sname} (fixed in fitting)", lab_,
                   REG.r(fnum(v, 1), f"{T}, Panel A, {tid}", "data/kn522_final_7y.csv", f"id = {tid}, value", v) + "%",
-                  bsr(q, 1.0, 1) + "%", "KEYNOTE-522 final analysis"])
+                  bsr(q, 1.0, 1) + "%", "KEYNOTE-522 final analysis" + cite("kn522final2026")])
 for arm, lab_ in (("pembro", "With pembrolizumab"), ("placebo", "Without pembrolizumab")):
     for strat, sname, fam in (("pCR", "pCR", "Weibull"), ("nonpCR", "no pCR", "Weibull cure model")):
         for par in (["shape", "scale"] if strat == "pCR" else ["theta", "shape", "scale"]):
@@ -124,29 +130,29 @@ for arm, lab_ in (("pembro", "With pembrolizumab"), ("placebo", "Without pembrol
                       REG.r(sig4(r.base), f"{T}, Panel A, {q}", "output/phase1/bootstrap_summary.csv", f"quantity = {q}, base", r.base),
                       f"{REG.r(sig4(r.boot_lo), f'{T}, Panel A, {q}', 'output/phase1/bootstrap_summary.csv', f'quantity = {q}, boot_lo', r.boot_lo)} to "
                       f"{REG.r(sig4(r.boot_hi), f'{T}, Panel A, {q}', 'output/phase1/bootstrap_summary.csv', f'quantity = {q}, boot_hi', r.boot_hi)}",
-                      "Fitted to reconstructed KEYNOTE-522 data (interim analysis 4)"])
+                      "Fitted to reconstructed KEYNOTE-522 data (interim analysis 4)" + cite("guyot2012", "schmid2022")])
 for arm, lab_ in (("pembro", "With pembrolizumab"), ("placebo", "Without pembrolizumab")):
     v = exv("preprog_share_nonpcr", arm)
     A.append(["Progression precluding surgery, proportion of patients without pCR", lab_,
-              REG.r(pct(v, 2), f"{T}, Panel A, preprog {arm}", EXF, f"quantity = preprog_share_nonpcr, arm = {arm}", v) + "%", "—", "KEYNOTE-522, 2024 report"])
+              REG.r(pct(v, 2), f"{T}, Panel A, preprog {arm}", EXF, f"quantity = preprog_share_nonpcr, arm = {arm}", v) + "%", "—", "KEYNOTE-522 (2024 report)" + cite("schmid2024")])
 for arm, lab_ in (("pembro", "With pembrolizumab"), ("placebo", "Without pembrolizumab")):
     parts = []
     for comp, cname in (("LRR", "locoregional recurrence"), ("DR", "distant recurrence"), ("death", "death without recurrence")):
         v = exv(f"first_event_share_{comp}", arm)
         parts.append(f"{cname} {REG.r(pct(v, 1), f'{T}, Panel A, first events {arm}', EXF, f'quantity = first_event_share_{comp}, arm = {arm}', v)}%")
-    A.append(["Composition of first events after surgery", lab_, "; ".join(parts), "—", "KEYNOTE-522, 2024 report"])
+    A.append(["Composition of first events after surgery", lab_, "; ".join(parts), "—", "KEYNOTE-522 (2024 report)" + cite("schmid2024")])
 for arm, lab_ in (("pembro", "With pembrolizumab"), ("placebo", "Without pembrolizumab")):
     r = one(aed, arm=arm)
     A.append(["Deaths from adverse events during treatment", lab_,
               f"{REG.r(str(int(r.deaths)), f'{T}, Panel A, AE deaths {arm}', 'output/phase1/ae_deaths.csv', f'arm = {arm}, deaths', r.deaths)}/"
               f"{REG.r(str(int(r.n_treated)), f'{T}, Panel A, AE deaths {arm}', 'output/phase1/ae_deaths.csv', f'arm = {arm}, n_treated', r.n_treated)}",
-              "—", "KEYNOTE-522, interim analysis 4"])
+              "—", "KEYNOTE-522 (interim analysis 4)" + cite("schmid2022")])
 A.append(["Locoregional to distant recurrence, rate per year", "All arms",
           f"{REG.r(fnum(exv('lrr_dr_rate_per_year', 'all'), 3), f'{T}, Panel A, LRR to DR', EXF, 'quantity = lrr_dr_rate_per_year', exv('lrr_dr_rate_per_year', 'all'))} "
           f"({REG.r(fnum(exv('lrr_dr_n_local_then_distant', 'all'), 0), f'{T}, Panel A, LRR to DR', EXF, 'quantity = lrr_dr_n_local_then_distant', exv('lrr_dr_n_local_then_distant', 'all'))} of "
           f"{REG.r(fnum(exv('lrr_dr_n_local', 'all'), 0), f'{T}, Panel A, LRR to DR', EXF, 'quantity = lrr_dr_n_local', exv('lrr_dr_n_local', 'all'))} patients; "
           f"{REG.r(fnum(exv('lrr_dr_exposure_years', 'all'), 2), f'{T}, Panel A, LRR to DR', EXF, 'quantity = lrr_dr_exposure_years', exv('lrr_dr_exposure_years', 'all'))} years of follow-up)",
-          "—", "KEYNOTE-522, 2022 report"])
+          "—", "KEYNOTE-522 (2022 report)" + cite("schmid2022")])
 for q, name, col in (("dr_median", "Excess mortality after distant recurrence within 18 months of randomization: log-logistic median, months", "dr_median_months"),
                      ("dr_late_median", "Excess mortality after later distant recurrence: log-logistic median, months", "dr_late_median_months"),
                      ("dr_shape", "Excess mortality after distant recurrence or progression during neoadjuvant therapy: common log-logistic shape", "dr_shape")):
@@ -154,18 +160,18 @@ for q, name, col in (("dr_median", "Excess mortality after distant recurrence wi
     nd = 3 if q == "dr_shape" else 2
     scale = 1.0 if q == "dr_shape" else 12.0
     A.append([name, "All arms", REG.r(fnum(v, nd), f"{T}, Panel A, {q}", "output/phase1/calibration.csv", f"stage = calibrated, arm = pembro, {col}", v),
-              bsr(q, scale, nd), "ESME cohort, reconstructed overall survival"])
+              bsr(q, scale, nd), "ESME cohort, reconstructed overall survival" + cite("grinda2023", "guyot2012")])
 lab("18", T, "early distant recurrence cut-off (Table 1)")
-A.append(["Excess mortality after progression during neoadjuvant therapy", "All arms", "Same as distant recurrence within the first 18 months", "As above", "ESME cohort"])
-A.append(["Background mortality", "All arms", "Japanese women", "—", "Abridged life table 2025"])
+A.append(["Excess mortality after progression during neoadjuvant therapy", "All arms", "Same as distant recurrence within the first 18 months", "As above", "ESME cohort" + cite("grinda2023")])
+A.append(["Background mortality", "All arms", "Japanese women", "—", "Abridged life table (2025)" + cite("lifetable2025")])
 kv = float(one(kx, quantity="k_external").value)
 A.append([f"Scenario: {KEXT}, multiplier", "With pembrolizumab",
           REG.r(fnum(kv, 3), f"{T}, Panel A, k", "output/phase1/round14/kext_derivation.csv", "quantity = k_external, value", kv), "—",
-          "Italian real-world cohort after neoadjuvant pembrolizumab"])
+          "Italian real-world cohort after neoadjuvant pembrolizumab" + cite("fedele2026")])
 ev = float(pps[pps.setting.str.contains("Elmore")].median_months.iloc[0])
 A.append(["Scenario: progression during neoadjuvant therapy with longer survival, log-logistic median, months", "All arms",
           REG.r(fnum(ev, 0), f"{T}, Panel A, Elmore", "output/phase1/round15/preprog_survival.csv", "setting = round 15 scenario Elmore, median_months", ev), "—",
-          "Single-center cohort with locoregional progression during neoadjuvant therapy"])
+          "Single-center cohort with locoregional progression during neoadjuvant therapy" + cite("elmore2021")])
 for tok in ("49", "7", "2024", "2022", "2025", "4"):
     lab(tok, T, "definition or name (Table 1; report years)")
 
@@ -263,8 +269,8 @@ for tok in ("95", "99.5", "5", "7", "10", "20", "2.5", "97.5", "1,000", "2024", 
 add_unit(f"{T}. Comparison of the survival model with KEYNOTE-522 overall survival and event-free " + "survival" + sup(S[1]),
          [(["A. Overall survival, %, at years 1 to 5"], GA, {0}), (["B. Restricted mean survival time"], GB, {0}),
           (["C. Final analysis at 7 years"], GC, {0}), (["D. Model extrapolation"], GD, {0})],
-         [f"{S[1]}Kaplan-Meier estimates from patient-level data reconstructed from the published KEYNOTE-522 curves (overall survival, 2024 report); "
-          "final analysis: data cutoff 14 October 2025. Overall survival was not used to fit the model; event-free survival at 7 years in each pCR stratum was fixed at the final-analysis values during fitting (Table 1); the model was accepted if the 10 points of panel A lay within "
+         [f"{S[1]}Kaplan-Meier estimates from patient-level data reconstructed from the published KEYNOTE-522 curves (overall survival, 2024 report)" + cite("guyot2012", "schmid2024") + "; "
+          "final analysis" + cite("kn522final2026") + ": data cutoff 14 October 2025. Overall survival was not used to fit the model; event-free survival at 7 years in each pCR stratum was fixed at the final-analysis values during fitting (Table 1); the model was accepted if the 10 points of panel A lay within "
           "their pointwise 95% CIs or within Bonferroni-adjusted 99.5% CIs, the difference in panel B lay within its bootstrap 95% CI, and the four 7-year values with a CI "
           "in panel C lay within their 95% CIs. Panel D: 2.5th and 97.5th percentiles across 1,000 bootstrap replicates. "
           "CI, confidence interval; pCR, pathological complete response.",
@@ -364,14 +370,14 @@ for lam, laml in ((500, "A. Threshold JPY 5 million per QALY"), (750, "B. Thresh
         rows.append(row)
     D6.append(([laml], rows, {0}))
 for x in hr_grid:
-    lab(fnum(x, 3), T, "HR grid point (Supplementary Table S4)")
+    lab(fnum(x, 3), T, f"HR grid point (Supplementary Table {SUPP['capgrid']})")
 add_unit(f"{T}. Maximum affordable cost of an exercise program per patient under alternative effect " + "durations" + sup(S[1]),
          D6,
          [f"{S[1]}" + COHORT + "Deterministic estimates in JPY 1,000 per patient. Main comparison: exercise added to chemotherapy plus pembrolizumab; "
           "secondary comparison: exercise added to chemotherapy alone. Effect until 1 year after surgery: the recurrence HR is held until 1 year after surgery and then halves every year; "
           "no waning: held for life; exercise continued after surgery: as the first, with exercise continued for 30 months after surgery at its monthly cost, the effect held until the end of continuation "
-          "and halving every year thereafter, and the continuation cost counted among medical costs (inputs E04 and E05, Supplementary Table S1). "
-          "The base-case duration is in Supplementary Table S4. " + COSTS + "HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year."])
+          f"and halving every year thereafter, and the continuation cost counted among medical costs (inputs E04 and E05, Supplementary Table {SUPP['params']}). "
+          f"The base-case duration is in Supplementary Table {SUPP['capgrid']}. " + COSTS + "HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year."])
 for tok in ("5", "7.5", "1", "30", "2026", "2", "49"):
     lab(tok, T, "definitions")
 
@@ -416,7 +422,7 @@ add_unit(f"{T}. Net benefit of an exercise program for one year of eligible pati
          [f"{S[1]}Values are conditional on the recurrence HR shown, not expected values. Net benefit per patient: maximum affordable cost at JPY 5 million per QALY "
           "minus the cost of the fee-schedule-based program (Table 1). N: patients with stage II or III triple-negative breast cancer (M0) who received neoadjuvant chemotherapy in 2024, "
           f"{s_nt} in total, of whom {s_np} received neoadjuvant pembrolizumab (main comparison) and {s_no} did not (secondary comparison); "
-          "Japanese Breast Cancer Society, National Breast Cancer Registry Report No. 55 (cases diagnosed in 2024, final version). "
+          "Japanese Breast Cancer Society, National Breast Cancer Registry Report No. 55 (cases diagnosed in 2024, final version)" + cite("jbcs55") + ". "
           f"Sensitivity analyses: N = {s_29} (registrations in 2023) and N = {s_40} (allowing for incomplete registration), with the same share receiving pembrolizumab. "
           "Panel B: deterministic estimate and 95% UI. " + UI + COSTS +
           "HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year; UI, uncertainty interval."])
@@ -464,7 +470,7 @@ add_unit(f"{T}. One-way sensitivity analysis: maximum affordable cost for exerci
          [(["Inputs that changed either result"], D9, {0})],
          [f"{S[1]}" + COHORT + "Data of Fig. 3 and Supplementary Fig. S2. Each input was set to its lower or upper bound with all other inputs at base-case values. "
           "Maximum affordable cost: recurrence HR 0.85, threshold JPY 5 million per QALY, JPY 1,000 per patient (base case in Table 2). "
-          "ICER: JPY 1,000 per QALY (base case in Table 3). Bounds are in the units of Supplementary Table S1; brackets mark ranges set by rule (Supplementary Table S1). "
+          f"ICER: JPY 1,000 per QALY (base case in Table 3). Bounds are in the units of Supplementary Table {SUPP['params']}; brackets mark ranges set by rule (Supplementary Table {SUPP['params']}). "
           f"All {s_union} inputs that changed either result are listed; a dash means that the input did not change that result. " + COSTS +
           "HR, hazard ratio; ICER, incremental cost-effectiveness ratio; JPY, Japanese yen; QALY, quality-adjusted life year."])
 for tok in ("0.85", "5", "25", "75", "2026", "2", "49", "1,000", "12", "4", "1", "3", "6", "12.5"):
@@ -556,6 +562,18 @@ if OTHER_READY:
         xb_, xe_ = (xc[(xc.scenario == s) & (xc.comparison == comp)].set_index(k).hr0 for s in ("base", "elmore"))
         ELMORE[comp] = {"cap_500_hr0_grid_max_abs_diff_yen": float((ge - gb.reindex(ge.index)).abs().max()), "grid_points": int(len(ge)),
                         "crossings_hr0_max_abs_diff": float((xe_ - xb_.reindex(xe_.index)).abs().max()), "crossings": int(len(xe_))}
+    # N10 (decision 2026-10-26): the six exercise cells of the Elmore row equal Table 2 (asserted above) and show
+    # "Same as base case (Table 2)"; E4 (decision 2026-10-26): the S-JP reference ICER is given in Table 3 and its
+    # cell here shows "Table 3". The values are still computed and checked, and their registry rows are dropped.
+    SAME = "Same as base case (Table 2)"
+    i_el = next(i for i, r in enumerate(D10) if r is el_row)
+    D10[i_el] = [el_row[0]] + [SAME] * 6 + [el_row[7]]
+    i_sjp = next(i for i, r in enumerate(D10) if r[0].startswith("Japanese post-operative treatment"))
+    assert D10[i_sjp][7] == T2["Table 3, sjp, ICER"], ("S-JP ICER differs from Table 3", D10[i_sjp][7], T2["Table 3, sjp, ICER"])
+    D10[i_sjp] = D10[i_sjp][:7] + ["Table 3"]
+    dropped = [x for x in REG.rows if (x["where"].startswith(f"{T}, elmore,") and not x["where"].endswith(", ICER")) or x["where"] == f"{T}, sjp, ICER"]
+    REG.rows[:] = [x for x in REG.rows if x not in dropped]
+    ELMORE["registry_rows_dropped_N10_E4"] = [dict(where=x["where"], shown=x["shown"]) for x in dropped]
     jp = pd.read_csv(ROOT / "input" / "params" / "sources_utility" / "utilities_scenario_jp.csv")
     u01 = REG.r(fnum(float(one(jp, param_id="U01").value), 2), f"{T}, footnote", "input/params/sources_utility/utilities_scenario_jp.csv", "param_id = U01, value", float(one(jp, param_id="U01").value))
     u04 = REG.r(fnum(float(one(jp, param_id="U04").value), 3), f"{T}, footnote", "input/params/sources_utility/utilities_scenario_jp.csv", "param_id = U04, value", float(one(jp, param_id="U04").value))
@@ -567,12 +585,192 @@ if OTHER_READY:
               "HR, hazard ratio; ICER, incremental cost-effectiveness ratio; JPY, Japanese yen; QALY, quality-adjusted life year.",
               f"{S[2]}Event-free survival during and after treatment {u01} (EQ-5D-5L with the Japanese value set, a Japanese single-center cohort with primary breast cancer); distant recurrence and progression during neoadjuvant therapy {u04} "
               "(taxane arm of the SELECT BC trial, Japanese value set); no values from Japanese populations were found for locoregional recurrence or the decrement for grade 3 or higher adverse events, which keep their base-case values.",
-              f"{S[3]}Median survival of 26 months after progression during neoadjuvant therapy instead of the early-recurrence distribution (Supplementary Table S1); this scenario did not reproduce trial overall survival in years 1 to 3. "
+              f"{S[3]}Median survival of 26 months after progression during neoadjuvant therapy instead of the early-recurrence distribution (Supplementary Table {SUPP['params']}); this scenario did not reproduce trial overall survival in years 1 to 3. "
               "Progression during neoadjuvant therapy occurs before surgery and is the same with and without exercise, whereas the exercise effect on recurrence acts only after surgery. "
               "The maximum affordable costs and break-even hazard ratios for exercise therefore equal the base-case values in Table 2 at the precision shown; this scenario changes only the ICER of pembrolizumab.",
               f"{S[4]}Capecitabine or olaparib after surgery for patients without pCR (Table 1)."])
     for tok in ("0.85", "5", "100", "1", "2026", "2", "49", "3", "26", "1,000"):
         lab(tok, T, "definitions and citation years")
+
+# ================================================================ S1  CHEERS 2022 checklist (Methods, Study background)
+T = f"Supplementary Table {SUPP['cheers']}"
+CH = json.load(open(Path(__file__).with_name("refs") / "cheers2022_items.json", encoding="utf-8"))
+MAPF, PAGEF = BUILD / "_manuscript_map.json", BUILD / "_manuscript_pages.json"
+MMAP = json.load(open(MAPF, encoding="utf-8")) if MAPF.exists() else None
+PAGES = json.load(open(PAGEF, encoding="utf-8")) if PAGEF.exists() else None
+if MMAP and PAGES and PAGES.get("manuscript_sha256_before_numbering") != MMAP.get("manuscript_sha256"):
+    PAGES = None  # pages of an older manuscript build
+CHEERS_LOG = {"pages_present": bool(MMAP and PAGES), "rows": []}
+SECTION_NAME = {"I": "Introduction", "M.SB": "Methods, Study background", "M.OUT": "Methods, Outcome", "M.VAR": "Methods, Variables",
+                "M.SA": "Methods, Statistical analysis", "R": "Results"}
+
+
+def page_of(pid):
+    if not CHEERS_LOG["pages_present"]:
+        return None
+    pg = PAGES["by_id"][pid]
+    lab(str(pg), T, f"page of manuscript paragraph {pid} (_build/_manuscript_pages.json, Word page count)")
+    return pg
+
+
+def loc(*parts):
+    """Paragraph ids ('M.SB.2'), ranges ('I.1-I.4') or plain text ('Table 1'), joined by semicolons."""
+    out = []
+    for prt in parts:
+        m = re.fullmatch(r"([A-Z.]+?)\.(\d+)(?:-\1\.(\d+))?", prt)
+        if not m:
+            out.append(prt)
+            continue
+        sec, a, b = m.group(1), m.group(2), m.group(3)
+        if MMAP:
+            for k in [a] + ([b] if b else []):
+                assert f"{sec}.{k}" in MMAP["ids"], ("CHEERS location not in the manuscript", sec, k)
+        lab(a, T, "paragraph number within the section (_build/_manuscript_map.json)")
+        if b is None:
+            pg = page_of(f"{sec}.{a}")
+            out.append(f"{SECTION_NAME[sec]}, paragraph {a}" + (f" (p. {pg})" if pg else ""))
+        else:
+            lab(b, T, "paragraph number within the section (_build/_manuscript_map.json)")
+            p1, p2 = page_of(f"{sec}.{a}"), page_of(f"{sec}.{b}")
+            pp = "" if not p1 else (f" (p. {p1})" if p1 == p2 else f" (pp. {p1} to {p2})")
+            out.append(f"{SECTION_NAME[sec]}, paragraphs {a} to {b}" + pp)
+    return "; ".join(out)
+
+
+SM = f"Supplementary Methods {SUPP['methods_survival']}"
+LOC = {
+    1: "Title page",
+    2: "Abstract",
+    3: loc("I.1-I.4"),
+    4: loc("M.SB.3"),
+    5: loc("M.SB.1", "Table 1"),
+    6: loc("M.SB.1-M.SB.2"),
+    7: loc("M.SB.1"),
+    8: loc("M.SB.2"),
+    9: loc("M.SB.2"),
+    10: loc("M.SB.2"),
+    11: loc("M.OUT.1-M.OUT.2"),
+    12: loc("M.VAR.4", "M.VAR.5", SM),
+    13: loc("M.VAR.5"),
+    14: loc("M.VAR.3", "M.VAR.5", "Table 1", f"Supplementary Table {SUPP['params']}"),
+    15: loc("M.VAR.3", "M.VAR.5"),
+    16: loc("M.SA.1-M.SA.2", "Fig. 1", SM),
+    17: loc("M.SA.2-M.SA.3", SM),
+    18: "No subgroup analyses beyond the two comparisons; " + loc("M.SB.1"),
+    19: "Not performed",
+    20: loc("M.SA.4-M.SA.6", SM),
+    21: "Not performed",
+    22: loc("Table 1", f"Supplementary Table {SUPP['params']}"),
+    23: loc("R.1-R.9", "Fig. 2", "Tables 2 and 3"),
+    24: loc("R.10", "Fig. 3", f"Supplementary Tables {SUPP['capgrid']}, {SUPP['duration']}, {SUPP['oneway']} and {SUPP['other']}",
+            f"Supplementary Fig. {SUPP['fig_icer']}"),
+    25: "Not applicable (item 21)",
+    26: "Discussion; Limitations",
+    27: "Title page",
+    28: "Title page",
+}
+C1 = [["Section or topic", "Item", "Guidance for reporting", "Location in the manuscript"]]
+sec_prev = None
+panels = []
+for it in CH["items"]:
+    if it["section"] != sec_prev:
+        if sec_prev is not None:
+            panels.append(([sec_prev], C1, {0}))
+            C1 = [["Section or topic", "Item", "Guidance for reporting", "Location in the manuscript"]]
+        sec_prev = it["section"]
+    C1.append([it["topic"], lab(str(it["item"]), T, "CHEERS 2022 item number (refs/cheers2022_items.json)"), it["guidance"], LOC[it["item"]]])
+    CHEERS_LOG["rows"].append(dict(item=it["item"], location=LOC[it["item"]]))
+panels.append(([sec_prev], C1, {0}))
+for tok in ("2022", "1", "21"):
+    lab(tok, T, "CHEERS 2022 (name); item numbers")
+add_unit(f"{T}. Consolidated Health Economic Evaluation Reporting Standards 2022 " + "checklist" + sup(S[1]),
+         panels,
+         [f"{S[1]}Checklist and guidance as published" + cite("husereau2022") + ". Locations give the section, the paragraph within the section or "
+          "subsection and the page of the manuscript file; tables and figures are named where they report the item. "
+          "CHEERS, Consolidated Health Economic Evaluation Reporting Standards."])
+
+# ================================================================ Supplementary Methods S1 (Methods, Statistical analysis stage 1)
+MS = "docs/model_spec.md"
+P1R = "output/phase1/phase1_report.md"
+
+
+def ml(tok, why):
+    return lab(tok, SM, why)
+
+
+for tok, why in (("23", "IA4 data cutoff 23 March 2021 (Schmid 2022 abstract)"), ("2021", "IA4 data cutoff year"), ("22", "OS data cutoff 22 March 2024 (Schmid 2024 abstract)"),
+                 ("2024", "OS data cutoff year / 2024 report"), ("1", f"milestone tolerance 1 percentage point ({P1R} section 4) / years 1 to 5"),
+                 ("0.03", f"HR tolerance ({P1R} section 4)"), ("2", f"event-count tolerance 2% ({P1R} section 4)"),
+                 ("7", f"surgery at month 7 / 7-year values ({MS} section 1)"), ("95", "95% intervals; criterion 1 of model selection"),
+                 ("20", f"at least 20 at risk ({P1R} section 6) / 20-year hazard check"), ("3", f"hazard peak within 3 years ({P1R} section 6)"),
+                 ("10", f"10-year hazard check ({P1R} section 6)"), ("4", f"AIC window of 4 ({MS} section 1)"), ("5", "5-year extrapolation / years 1 to 5"),
+                 ("12", f"treatment period of about 12 months ({MS} section 1)"), ("18", f"early distant recurrence cut-off ({MS} section 1)"),
+                 ("2025", "abridged life table 2025"), ("49", f"starting age ({MS} section 1)"), ("99.5", f"Bonferroni-adjusted interval ({MS} section 1)"),
+                 ("1,000", "1,000 bootstrap and probabilistic samples (analysis plan section 5)"),
+                 ("20261023", "base seed boot_seed (docs/model_spec.md section 7)"), ("2.5", "UI percentile"), ("97.5", "UI percentile")):
+    ml(tok, why)
+TS3, TS2 = f"Supplementary Table {SUPP['validation']}", f"Supplementary Table {SUPP['params']}"
+METHODS_S1 = [
+    ("title", f"{SM}. Survival model, validation and probabilistic sampling"),
+    ("heading", "Reconstructed patient-level data"),
+    ("text", "Kaplan-Meier curves of KEYNOTE-522 were digitized from the published figures: event-free survival by arm and pathological complete response "
+             "(pCR) status at interim analysis 4, with a data cutoff of 23 March 2021" + cite("schmid2022") + ", and overall survival by arm at the final "
+             "analysis of overall survival, with a data cutoff of 22 March 2024" + cite("schmid2024") + ". Patient-level data were reconstructed from the "
+             "digitized curves and the published numbers at risk with the algorithm of Guyot and colleagues" + cite("guyot2012") + ". A reconstruction was "
+             "accepted when it reproduced each published milestone estimate within 1 percentage point, each published hazard ratio (HR) within 0.03 "
+             "and each reported number of events within 2%; the reported numbers of events were not given to the algorithm. The proportions with pCR "
+             f"were those of interim analysis 4 ({TS2})."),
+    ("heading", "Event-free survival after surgery"),
+    ("text", "Event-free survival was modeled from surgery, set at 7 months after randomization, separately for the four combinations of arm and pCR status. "
+             "The candidate models were six standard parametric distributions, six Royston-Parmar spline models and three mixture cure models on the relative "
+             "survival scale, with background mortality from the Japanese life table for women" + cite("lifetable2025") + ". A model was eligible if at least "
+             "95% of the monthly points with at least 20 patients at risk lay within the pointwise 95% confidence interval of the Kaplan-Meier estimate, if its "
+             "excess hazard peaked within 3 years after surgery and declined thereafter, and if its all-cause hazard at 10 and 20 years was not below background "
+             "mortality."),
+    ("text", "Within each pCR stratum, both arms used the same distribution family. Among the families eligible in both arms whose summed Akaike information "
+             "criterion was within 4 of the lowest, the family whose 5-year extrapolation was closest to the 5-year event-free survival reported at a later "
+             "data cutoff was selected" + cite("esmo2023") + ". This gave a Weibull model for patients with pCR and a Weibull mixture cure model for patients "
+             "without pCR. Event-free survival at 7 years in each stratum was then fixed at the value of the final analysis" + cite("kn522final2026") +
+             f" ({TS2}), by maximizing the likelihood subject to this equality."),
+    ("heading", "Events before surgery, first events after surgery and deaths from adverse events"),
+    ("text", "Before surgery, event-free survival in each stratum followed its Kaplan-Meier estimate, and patients with pCR had no events before surgery. "
+             "Progression that precluded surgery occurred only in patients without pCR, in the proportion reported for each arm" + cite("schmid2024") +
+             ", with the monthly shape of the Kaplan-Meier estimate before surgery. When the reported proportion exceeded the decline of that estimate, "
+             "the excess was placed in the first cycle after surgery and taken from the excess hazard, so the total was unchanged."),
+    ("text", "First events after surgery were divided into locoregional recurrence, including second primary cancers, distant recurrence and death without "
+             "recurrence, in the proportions of the 2024 report" + cite("schmid2024") + ". Locoregional recurrence progressed to distant recurrence at a "
+             "constant rate" + cite("schmid2022") + ". Deaths from adverse events, in the numbers reported for each arm" + cite("schmid2022") + ", occurred "
+             "at a constant hazard during the 12 months of treatment and were moved within the fitted event-free survival without changing it."),
+    ("heading", "Survival after recurrence and background mortality"),
+    ("text", "Overall survival curves of patients with early and late relapse in the Epidemiological Strategy and Medical Economics (ESME) cohort" +
+             cite("grinda2023") + " were digitized and reconstructed in the same way, and log-logistic distributions were fitted to them. A common shape was "
+             "used because the shapes of the two groups did not differ significantly. Excess mortality after distant recurrence within 18 months of "
+             "randomization followed the early-relapse distribution and after later recurrence the late-relapse distribution, in the same way in all arms. "
+             "Excess mortality after progression that precluded surgery followed the early-relapse distribution."),
+    ("text", "Survival after locoregional recurrence carried background mortality only. Background mortality came from the 2025 abridged life table for "
+             "Japanese women" + cite("lifetable2025") + ", from age 49 years. The all-cause hazard was never below background mortality; where a fitted "
+             "model for patients with pCR fell below it late in follow-up, background mortality applied."),
+    ("heading", "Validation"),
+    ("text", "Overall survival was not used to fit or calibrate any parameter. The model was accepted if three criteria, fixed before the comparison, were "
+             "met. First, overall survival of each arm at years 1 to 5 lay within the pointwise 95% confidence intervals of the reconstructed Kaplan-Meier "
+             "estimates, or all ten points lay within Bonferroni-adjusted 99.5% intervals. Second, the 5-year difference in restricted mean survival time "
+             "between arms lay within the bootstrap 95% interval of the Kaplan-Meier difference. Third, overall and event-free survival at 7 years lay "
+             "within the 95% confidence intervals of the final analysis" + cite("kn522final2026") + f". Supplementary Fig. {SUPP['fig_validation']} and "
+             f"{TS3} show the comparison."),
+    ("heading", "Probabilistic sensitivity analysis"),
+    ("text", "Each of the 1,000 probabilistic samples combined one bootstrap replicate of the survival model with one draw of the other inputs. In each "
+             "replicate, the reconstructed event-free survival data were resampled within arm together with their pCR status and the models were refitted "
+             "with the 7-year equality; the 7-year values were drawn from binomial distributions with the stratum sizes of interim analysis 4. The "
+             "reconstructed ESME data were resampled within group and the log-logistic distributions refitted."),
+    ("text", f"The other inputs were drawn independently from the distributions in {TS2}: gamma distributions for costs, durations and events per "
+             "patient, beta distributions for proportions and utilities, and lognormal distributions for hazard ratios, with parameters derived from "
+             "the 95% ranges. Drug prices and rates based on zero events were fixed, and the duration of the utility decrement for adverse events and the "
+             "discount rate were not varied. Every sample can be reproduced from its random seed (base seed 20261023, plus the sample number for the "
+             "bootstrap). The 2.5th and 97.5th percentiles across samples give the 95% uncertainty intervals."),
+]
+for k2, t in METHODS_S1:
+    for tok in num_tokens(t):
+        assert tok in {x["shown"] for x in REG.labels if x["where"] == SM} or tok in ("4",), ("unregistered number in Supplementary Methods S1", tok, t[:60])
 
 # ================================================================ supplementary figures (images from make_figures.py)
 SF = json.load(open(BUILD / "_ledger_suppfigs.json", encoding="utf-8"))
@@ -581,9 +779,9 @@ n_icer_all = next(x["shown"] for x in SF["rows"] if x["where"].startswith("Suppl
 n_icer_shown = next(x["shown"] for x in SF["rows"] if x["where"].startswith("Supplementary Fig. S2 legend (number of inputs shown)"))
 FIGCAP = {
     "figS1": [f"Supplementary Fig. {SUPP['fig_validation']}. Overall survival and event-free survival in KEYNOTE-522: reconstructed Kaplan-Meier curves, the model and the final " + "analysis" + sup(S[1]),
-              "(a) Overall survival. (b) Event-free survival. Thin step lines: Kaplan-Meier estimates from patient-level data reconstructed from the published curves of the 2024 report "
+              "(a) Overall survival. (b) Event-free survival. Thin step lines: Kaplan-Meier estimates from patient-level data reconstructed from the published curves of the 2024 report" + cite("guyot2012", "schmid2024") + " "
               "(solid, chemotherapy plus pembrolizumab; dashed, chemotherapy alone), with their 95% CIs shaded. Thick grey lines: the model (solid and dashed as before). "
-              "Points with bars: 7-year estimates of the final analysis with 95% CIs (filled, chemotherapy plus pembrolizumab; open, chemotherapy alone). "
+              "Points with bars: 7-year estimates of the final analysis" + cite("kn522final2026") + " with 95% CIs (filled, chemotherapy plus pembrolizumab; open, chemotherapy alone). "
               f"Overall survival was not used to fit the model. Values are given in Supplementary Table {SUPP['validation']}.",
               f"{S[1]}CI, confidence interval."],
     "figS2": [f"Supplementary Fig. {SUPP['fig_icer']}. One-way sensitivity analysis of the incremental cost-effectiveness ratio of chemotherapy plus pembrolizumab compared with chemotherapy " + "alone" + sup(S[1]),
@@ -596,16 +794,24 @@ for tok in ("2024", "7", "95", "25", "75", "2026", "2", "49", "1,000"):
     lab(tok, "supplementary figure legends", "definitions")
 
 # ================================================================ assemble in the planned order of first citation
-ORDER = [("table", f"Supplementary Table {SUPP['params']}"), ("figure", "figS1"), ("table", f"Supplementary Table {SUPP['validation']}"),
-         ("table", f"Supplementary Table {SUPP['capgrid']}"), ("table", f"Supplementary Table {SUPP['decomp']}"),
-         ("table", f"Supplementary Table {SUPP['duration']}"), ("table", f"Supplementary Table {SUPP['netbenefit']}"),
-         ("table", f"Supplementary Table {SUPP['pathB']}"), ("table", f"Supplementary Table {SUPP['oneway']}"), ("figure", "figS2"),
+ORDER = [("table", f"Supplementary Table {SUPP['cheers']}"), ("table", f"Supplementary Table {SUPP['params']}"),
+         ("methods", f"Supplementary Methods {SUPP['methods_survival']}"), ("figure", "figS1"), ("table", f"Supplementary Table {SUPP['validation']}"),
+         ("table", f"Supplementary Table {SUPP['capgrid']}"), ("table", f"Supplementary Table {SUPP['pathB']}"),
+         ("table", f"Supplementary Table {SUPP['decomp']}"), ("table", f"Supplementary Table {SUPP['duration']}"),
+         ("table", f"Supplementary Table {SUPP['netbenefit']}"), ("table", f"Supplementary Table {SUPP['oneway']}"), ("figure", "figS2"),
          ("table", f"Supplementary Table {SUPP['other']}")]
 units = {u[0].split(".")[0]: u for u in UNITS}
 doc = new_document(landscape=True)
 first = True
 kinds = []
 for kind, key in ORDER:
+    if kind == "methods":
+        kinds.append(kind)
+        new_section(doc, landscape=False)
+        for k2, t in METHODS_S1:
+            para(doc, t, bold=(k2 == "heading"), space_after=6 if k2 == "title" else 0)
+        first = False
+        continue
     if kind == "table":
         if key not in units:
             continue
@@ -630,8 +836,9 @@ for kind, key in ORDER:
         for t in FIGCAP[key]:
             para(doc, t)
     first = False
-doc.save(OUT / f"supplement_{VER}.docx")
-json.dump({"rows": REG.rows, "labels": REG.labels, "other_ready": OTHER_READY, "order_kinds": kinds, "elmore_check": ELMORE},
+doc.save(BUILD / "supplement_marked.docx")
+json.dump({"rows": REG.rows, "labels": REG.labels, "other_ready": OTHER_READY, "order_kinds": kinds, "elmore_check": ELMORE, "cheers": CHEERS_LOG},
           open(BUILD / "_ledger_supplement.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=float)
-print(f"supplement_{VER}.docx written;", len(REG.rows), "registered numbers; S10 included:", OTHER_READY)
-print("Elmore check", ELMORE)
+print("_build/supplement_marked.docx written;", len(REG.rows), "registered numbers; S10 included:", OTHER_READY)
+print("Elmore check", {k: v for k, v in ELMORE.items() if k != "registry_rows_dropped_N10_E4"}, "dropped", len(ELMORE["registry_rows_dropped_N10_E4"]))
+print("CHEERS pages present:", CHEERS_LOG["pages_present"])

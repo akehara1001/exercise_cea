@@ -1,8 +1,9 @@
 """Tables 1 to 3 of the manuscript (tables_<VER>.docx).
 
 Reads the phase 1 and phase 2 outputs and the parameter workbook; does not run
-the model. Writes manuscript/<VER>/tables_<VER>.docx and the table part of the number
-registry (manuscript/code/_build/_ledger_tables.json, used by make_ledger.py).
+the model. Writes _build/tables_marked.docx, with reference markers that
+number_refs.py turns into numbers in manuscript/<VER>/tables_<VER>.docx, and the table
+part of the number registry (manuscript/code/_build/_ledger_tables.json, used by make_ledger.py).
 """
 from __future__ import annotations
 
@@ -12,6 +13,7 @@ import sys
 import numpy as np
 
 from docx_util import new_document, new_section, para, table
+from references import cite
 from common import (BUILD, VER, OUT, P1, ROOT, STAR, SUPP, Params, Registry, csv, fk,
                        fnum, fyen, one, pct, rel)
 
@@ -127,7 +129,7 @@ grp("Model settings")
 t1.append(["Perspective", "Japanese public healthcare payer", "—"])
 t1.append(["Cohort",
            f"Women aged {doc_num('49', 'cohort', MS, '队列起始年龄 49 岁', 49)} years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer",
-           "KEYNOTE-522 trial population"])
+           "KEYNOTE-522 trial population" + cite("schmid2020")])
 t1.append(["Time horizon and cycle",
            f"Lifetime (to age {doc_num('100', 'time horizon', MS, '模拟到 100 岁', 100)} years); {doc_num('1', 'cycle', MS, '周期 1 个月', 1)}-month cycles; surgery at month {doc_num('7', 'surgery', MS, '手术时点（landmark）为随机化后 7 个月', 7)}",
            "—"])
@@ -136,7 +138,7 @@ t1.append(["Discounting",
 PRICE_LOC = f"{XL} sheet パラメータ column J (価格の年度) = 令和8年度 in the cost rows; 令和8年度 = fiscal year 2026"
 t1.append(["Prices",
            f"JPY, fiscal year {REG.r('2026', f'{T}, prices', XL, PRICE_LOC, '令和8年度')}",
-           "National drug price list and medical fee schedule"])
+           "National drug price list and medical fee schedule" + cite("price2026", "fee2026")])
 n_psa = int(csv("psa_caps_summary.csv").n.iloc[0])
 t1.append(["Uncertainty",
            f"{REG.r(fnum(n_psa, 0), f'{T}, uncertainty', 'output/phase2/main/psa_caps_summary.csv', 'column n (all rows)', n_psa)} probabilistic sensitivity analysis samples, "
@@ -146,24 +148,24 @@ t1.append(["Uncertainty",
            "—"])
 
 grp("Survival")
-t1.append(["Pathological complete response (pCR)", pcr_cell(), "KEYNOTE-522, interim analysis 4"])
+t1.append(["Pathological complete response (pCR)", pcr_cell(), "KEYNOTE-522 (interim analysis 4)" + cite("schmid2022")])
 t1.append(["Event-free survival after surgery",
            "Parametric models fitted to reconstructed patient-level data by arm and pCR status (pCR, Weibull; no pCR, Weibull cure model); "
            f"7-year values fixed at the final analysis: pCR {efs7('efs_pcr_pembro')}% vs {efs7('efs_pcr_placebo')}%, no pCR {efs7('efs_nonpcr_pembro')}% vs {efs7('efs_nonpcr_placebo')}% (with pembrolizumab vs chemotherapy alone)",
-           "KEYNOTE-522, interim analysis 4 and final analysis"])
+           "KEYNOTE-522 (interim analysis 4 and final analysis)" + cite("guyot2012", "schmid2022", "kn522final2026")])
 t1.append(["Arms with exercise",
            "Survival inputs of the corresponding arm without exercise, changed only by the exercise effect", "—"])
 t1.append(["Survival after distant recurrence",
            f"Log-logistic excess mortality, same in all arms: median {calv('dr_median_months', 2)} months for recurrence within "
            f"{doc_num('18', 'survival after distant recurrence', MS, '随机化后 18 个月以内的远处复发', 18)} months of randomization and "
            f"{calv('dr_late_median_months', 2)} months thereafter; common shape {calv('dr_shape', 3)}",
-           "ESME cohort, reconstructed overall survival"])
+           "ESME cohort, reconstructed overall survival" + cite("grinda2023", "guyot2012")])
 t1.append(["Survival after progression during neoadjuvant therapy",
            "Same distribution as distant recurrence within the first 18 months".replace(" 18 ", " " + REG.r("18", f"{T}, progression during neoadjuvant therapy", MS, line_of(MS, "随机化后 18 个月以内的远处复发"), 18) + " "),
-           "ESME cohort"])
+           "ESME cohort" + cite("grinda2023")])
 t1.append(["Background mortality", "Japanese women",
-           f"Abridged life table {REG.r('2025', f'{T}, background mortality', 'data/lifetable_female_2025.csv', 'file name (令和7年簡易生命表, women)', 2025)}"])
-t1.append(["Overall survival in KEYNOTE-522", f"Not used to fit the model; used only for validation (Supplementary Methods {SUPP['methods_survival']})", "KEYNOTE-522"])
+           f"Abridged life table ({REG.r('2025', f'{T}, background mortality', 'data/lifetable_female_2025.csv', 'file name (令和7年簡易生命表, women)', 2025)})" + cite("lifetable2025")])
+t1.append(["Overall survival in KEYNOTE-522", f"Not used to fit the model; used only for validation (Supplementary Methods {SUPP['methods_survival']})", "KEYNOTE-522 reports" + cite("schmid2024", "kn522final2026")])
 
 grp("Costs, JPY")
 t1.append(["Pembrolizumab, per dose",
@@ -171,33 +173,33 @@ t1.append(["Pembrolizumab, per dose",
            f"{REG.r('3', f'{T}, pembrolizumab', XL, PR.get('A03', 'note')[1], '3週毎')} weeks; "
            f"{REG.r('8', f'{T}, pembrolizumab', XL, PR.get('A03', 'note')[1], '術前8回')} doses before and "
            f"{REG.r('9', f'{T}, pembrolizumab', XL, PR.get('A03', 'note')[1], '術後9回')} after surgery)",
-           "National drug price list"])
+           "National drug price list; KEYNOTE-522 dosing" + cite("price2026", "schmid2020")])
 t1.append(["First-line treatment of distant recurrence, per month",
            f"{yen('D03', 'first-line treatment')} in arms without pembrolizumab; {yen('D03P', 'first-line treatment')} in arms with pembrolizumab (no immunotherapy rechallenge); "
            f"mean duration {val('D04', 'first-line treatment', 2)} and {val('D04P', 'first-line treatment', 2)} months",
-           "Clinical expert input on the regimen mix; national drug price list"])
+           "Clinical expert input on the regimen mix; trials; national drug price list" + cite("tropion2025", "cortes2020", "miller2007", "price2026")])
 d05note = PR.get("D05", "note")[1]
 t1.append(["Second-line and later treatment, per month",
            f"{yen('D05', 'second-line treatment')} (trastuzumab deruxtecan {REG.r('32', f'{T}, second-line treatment', XL, d05note, '32%')}%, "
            f"sacituzumab govitecan {REG.r('68', f'{T}, second-line treatment', XL, d05note.replace('cell N', 'cell N (32%) and D03 note'), '68%')}%)",
-           "Clinical expert input; national drug price list"])
+           "Clinical expert input; national drug price list" + cite("price2026")])
 t1.append(["End-of-life care, last 3 months".replace("3", REG.r("3", f"{T}, end-of-life care", XL, PR.get("D06")[1].replace("cell G", "cell C"), "死亡前3か月")),
-           yen("D06", "end-of-life care"), "Published Japanese estimate"])
+           yen("D06", "end-of-life care"), "Published Japanese estimates" + cite("nusawat2026", "ohtera2018")])
 t1.append([f"Exercise program, total over the {REG.r('6', f'{T}, exercise program', XL, PR.get('E02')[1].replace('cell G', 'cell C'), 'NAC中6か月')} months of neoadjuvant therapy",
            f"{PROG['E01'][0].upper() + PROG['E01'][1:]}{sup(S2)} {yen('E01', 'exercise program')}; {PROG['E02']} {yen('E02', 'exercise program')}; {PROG['E03']} {yen('E03', 'exercise program')}",
-           "CHALLENGE program cost; medical fee schedule"])
-t1.append(["Musculoskeletal adverse event of exercise, per event", yen("E08", "musculoskeletal adverse event cost"), "Medical fee schedule"])
+           "CHALLENGE program cost; medical fee schedule" + cite("chan2026", "worldbank_ppp", "boc_fx", "fee2026")])
+t1.append(["Musculoskeletal adverse event of exercise, per event", yen("E08", "musculoskeletal adverse event cost"), "Medical fee schedule" + cite("fee2026")])
 
 grp("Utilities" + sup(S3))
-t1.append(["Event-free, during treatment", val("U01", "utilities", 3), "KEYNOTE-522 EQ-5D, German value set"])
-t1.append(["Event-free, after treatment", val("U02", "utilities", 3), "KEYNOTE-522 EQ-5D, German value set"])
-t1.append(["Locoregional recurrence", val("U03", "utilities", 3), "KEYNOTE-522 EQ-5D, German value set"])
-t1.append(["Distant recurrence or progression during neoadjuvant therapy", val("U04", "utilities", 3), "KEYNOTE-522 EQ-5D, German value set"])
+t1.append(["Event-free, during treatment", val("U01", "utilities", 3), "KEYNOTE-522 EQ-5D, German value set" + cite("favrebulle2024")])
+t1.append(["Event-free, after treatment", val("U02", "utilities", 3), "KEYNOTE-522 EQ-5D, German value set" + cite("favrebulle2024")])
+t1.append(["Locoregional recurrence", val("U03", "utilities", 3), "KEYNOTE-522 EQ-5D, German value set" + cite("favrebulle2024")])
+t1.append(["Distant recurrence or progression during neoadjuvant therapy", val("U04", "utilities", 3), "KEYNOTE-522 EQ-5D, German value set" + cite("favrebulle2024")])
 u05note = PR.get("U05", "note")[1]
 t1.append(["Grade 3 or higher adverse event",
            f"Decrement {val('U05', 'utilities', 3)} for {REG.r('12.5', f'{T}, utilities', XL, u05note, '12.5 週')} weeks per event "
            f"({val('B33P', 'utilities', 3)} events per patient with pembrolizumab, {val('B33C', 'utilities', 3)} without)",
-           "KEYNOTE-522 EQ-5D and adverse event tables"])
+           "KEYNOTE-522 EQ-5D and adverse event tables" + cite("favrebulle2024", "schmid2022")])
 
 grp("Exercise effect")
 t1.append(["Effect on recurrence",
@@ -211,29 +213,29 @@ t1.append(["Effect duration, alternatives",
 t1.append(["Reference value",
            f"HR {REG.r('0.72', f'{T}, reference value', 'input/papers/CHALLENGE.pdf', 'p.7 (also p.1): hazard ratio for disease recurrence, new primary cancer, or death, 0.72; and ' + line_of(AP, '图中标出 0.72'), 0.72)} for disease-free survival with a "
            f"{REG.r('3', f'{T}, reference value', AP, line_of(AP, 'CHALLENGE（结肠癌、3 年方案、DFS）'), 3)}-year exercise program in colon cancer",
-           "CHALLENGE trial"])
+           "CHALLENGE trial" + cite("courneya2025")])
 t1.append(["Effect on pCR (alternative pathway)",
            f"pCR proportion increased by {doc_num('0', 'effect on pCR', AP, 'pCR 比例提高 0 至 10 个百分点', 0)} to {doc_num('10', 'effect on pCR', AP, 'pCR 比例提高 0 至 10 个百分点', 10)} percentage points, with recurrence HR 1.00".replace("HR 1.00", "HR " + doc_num("1.00", "effect on pCR", AP, "路径 B 的实现：pCR 比例 = min(该臂的 pCR 比例 + 提高幅度, 1)，hr0 = 1", 1.00)),
            "Assumption"])
 t1.append(["Musculoskeletal adverse events",
            f"Any grade {msk('E06', 79, 428)} with exercise vs {msk('E07', 53, 461)} without; grade 3 or higher {msk('E09', 3, 428)} vs {msk('E10', 1, 461)}",
-           "CHALLENGE trial, as-treated"])
+           "CHALLENGE trial, as-treated" + cite("courneya2025")])
 
 grp("Scenarios")
 t1.append([SC["kext"],
            f"Excess mortality after distant recurrence within the first 18 months and after progression during neoadjuvant therapy multiplied by "
            .replace(" 18 ", " " + REG.r("18", f"{T}, scenarios", MS, line_of(MS, "随机化后 18 个月以内的远处复发"), 18) + " ")
            + f"{REG.r(fnum(kval, 3), f'{T}, scenarios', rel(P1 / 'round14' / 'kext_derivation.csv'), 'row quantity = k_external, column value', kval)} in arms with pembrolizumab",
-           "Italian real-world cohort after neoadjuvant pembrolizumab"])
+           "Italian real-world cohort after neoadjuvant pembrolizumab" + cite("fedele2026")])
 t1.append([SC["m50"],
            f"Monthly costs of first-line and later-line treatment of distant recurrence multiplied by {REG.r(fnum(m50_mult, 1), f'{T}, scenarios', XL, m50_loc, m50_mult)}",
            "—"])
 t1.append([SC["eri"],
            f"{REG.r(fyen(eri_d05), f'{T}, scenarios', XL, eri_loc, eri_d05)} per month for second-line and later treatment",
-           "EMBRACE dosing; national drug price list"])
+           "EMBRACE dosing; national drug price list" + cite("cortes2011", "price2026")])
 t1.append([SC["sjp"],
            f"Capecitabine (HR {val('F07', 'scenarios', 2)}) or olaparib (HR {val('F08', 'scenarios', 2)}) for patients without pCR, by germline BRCA status",
-           "CREATE-X; OlympiA"])
+           "CREATE-X; OlympiA" + cite("masuda2017", "tutt2021", "garber2026")])
 
 t1_notes = [
     f"{S1}All inputs with their ranges, distributions and sources are listed in Supplementary Table {SUPP['params']}. Costs are in JPY at fiscal year 2026 prices except where noted. "
@@ -532,10 +534,10 @@ table(doc, t3, bold_rows=bold3)
 for n in t3_notes:
     para(doc, n)
 OUT.mkdir(parents=True, exist_ok=True)
-doc.save(OUT / f"tables_{VER}.docx")
+doc.save(BUILD / "tables_marked.docx")
 
 json.dump({"rows": REG.rows, "labels": REG.labels,
            "derived_check": {k: dict(sum_of_categories=v[0], modelled_total=v[1], difference=v[2]) for k, v in derived_check.items()}},
           open(BUILD / "_ledger_tables.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=float)
-print(f"tables_{VER}.docx written;", len(REG.rows), "registered numbers,", len(REG.labels), "labels")
+print("_build/tables_marked.docx written;", len(REG.rows), "registered numbers,", len(REG.labels), "labels")
 print("derived decomposition check (yen):", {k: round(v[2], 9) for k, v in derived_check.items()})

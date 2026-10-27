@@ -1,0 +1,538 @@
+{
+ "key": "econ_reviews",
+ "date": "2026-10-26",
+ "pubmed": {
+  "query": "(exercise[tiab] OR \"physical activity\"[tiab] OR \"Exercise\"[mh] OR \"Exercise Therapy\"[mh] OR prehabilitation[tiab] OR \"aerobic training\"[tiab] OR \"resistance training\"[tiab]) AND (\"Neoplasms\"[mh] OR cancer[tiab]) AND (\"cost-effectiveness\"[tiab] OR \"cost effectiveness\"[tiab] OR \"cost-utility\"[tiab] OR \"cost utility\"[tiab] OR \"economic evaluation\"[tiab] OR QALY*[tiab] OR \"Cost-Benefit Analysis\"[mh]) AND (systematic[sb] OR \"systematic review\"[tiab]) AND (\"2000/01/01\"[dp] : \"2026/12/31\"[dp])",
+  "count": 27,
+  "hits": [
+   {
+    "pmid": "42799684",
+    "title": "Assessment and Treatment of Acute Low Back Pain (ALBP): A Systematic Review.",
+    "year": "2026",
+    "journal": "Pain Med",
+    "doi": "10.1093/pm/pnag131",
+    "first_author": "Skelly AC",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "42366788",
+    "title": "Effectiveness of non-pharmacological interventions for fatigue in adults with long-term conditions: a synopsis of the EIFFEL mixed-methods evidence synthesis.",
+    "year": "2026",
+    "journal": "Health Technol Assess",
+    "doi": "10.3310/GJCB1006",
+    "first_author": "Leaviss J",
+    "pubtype": [
+     "Journal Article",
+     "Systematic Review",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "40685660",
+    "title": "Cost effectiveness of non-pharmacological interventions for fatigue in patients with long-term conditions: a systematic literature review.",
+    "year": "2025",
+    "journal": "Expert Rev Pharmacoecon Outcomes Res",
+    "doi": "10.1080/14737167.2025.2537194",
+    "first_author": "Davis S",
+    "pubtype": [
+     "Journal Article",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "39776481",
+    "title": "Benchmarking the clinical outcomes of Healthentia SaMD in chronic disease management: a systematic literature review comparison.",
+    "year": "2024",
+    "journal": "Front Public Health",
+    "doi": "10.3389/fpubh.2024.1488687",
+    "first_author": "Kyriazakos S",
+    "pubtype": [
+     "Journal Article",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "39483606",
+    "title": "A Systematic Review of Comparative Effectiveness of Interventions for Low Anterior Resection Syndrome: Impacts on Bowel Function and Quality of Life.",
+    "year": "2024",
+    "journal": "Cureus",
+    "doi": "10.7759/cureus.72772",
+    "first_author": "Ansar M",
+    "pubtype": [
+     "Journal Article",
+     "Review"
+    ]
+   },
+   {
+    "pmid": "38801296",
+    "title": "A Systematic Review of Cost-Effectiveness Analyses Examining Treatments for Cachexia Syndrome.",
+    "year": "2024",
+    "journal": "Nutr Cancer",
+    "doi": "10.1080/01635581.2024.2353939",
+    "first_author": "Khan S",
+    "pubtype": [
+     "Journal Article",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "38323587",
+    "title": "The effectiveness of prehabilitation interventions on biopsychosocial and service outcomes pre and post upper gastrointestinal surgery: a systematic review.",
+    "year": "2024",
+    "journal": "Disabil Rehabil",
+    "doi": "10.1080/09638288.2024.2310765",
+    "first_author": "Stiger RJ",
+    "pubtype": [
+     "Systematic Review",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "37457987",
+    "title": "Web-based nutrition: a useful resource for cancer patients?",
+    "year": "2023",
+    "journal": "Front Nutr",
+    "doi": "10.3389/fnut.2023.1134793",
+    "first_author": "Lazar DE",
+    "pubtype": [
+     "Journal Article",
+     "Review"
+    ]
+   },
+   {
+    "pmid": "36965520",
+    "title": "Economic evaluation of exercise interventions for individuals with cancer: A systematic review.",
+    "year": "2023",
+    "journal": "Prev Med",
+    "doi": "10.1016/j.ypmed.2023.107491",
+    "first_author": "Wang Y",
+    "pubtype": [
+     "Systematic Review",
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "36170564",
+    "title": "Preoperative exercise training for people with non-small cell lung cancer.",
+    "year": "2022",
+    "journal": "Cochrane Database Syst Rev",
+    "doi": "10.1002/14651858.CD012020.pub3",
+    "first_author": "Granger C",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "36163450",
+    "title": "The Cost-Effectiveness of Adjunctive Lifestyle Interventions for the Management of Cancer: A Systematic Review.",
+    "year": "2023",
+    "journal": "Appl Health Econ Health Policy",
+    "doi": "10.1007/s40258-022-00759-4",
+    "first_author": "Gallagher A",
+    "pubtype": [
+     "Systematic Review",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "35703367",
+    "title": "Non-pharmacological interventions for sleep promotion in hospitalized children.",
+    "year": "2022",
+    "journal": "Cochrane Database Syst Rev",
+    "doi": "10.1002/14651858.CD012908.pub2",
+    "first_author": "Kudchadkar SR",
+    "pubtype": [
+     "Journal Article",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "34694005",
+    "title": "Interventions in outside-school hours childcare settings for promoting physical activity amongst schoolchildren aged 4 to 12 years.",
+    "year": "2021",
+    "journal": "Cochrane Database Syst Rev",
+    "doi": "10.1002/14651858.CD013380.pub2",
+    "first_author": "Virgara R",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "33624172",
+    "title": "Cost-effectiveness of physical activity interventions in cancer survivors of developed countries: a systematic review.",
+    "year": "2021",
+    "journal": "J Cancer Surviv",
+    "doi": "10.1007/s11764-021-01002-0",
+    "first_author": "Gubler-Gut BE",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "31221939",
+    "title": "Qigong and Tai Chi as Therapeutic Exercise: Survey of Systematic Reviews and Meta-Analyses Addressing Physical Health Conditions.",
+    "year": "2019",
+    "journal": "Altern Ther Health Med",
+    "doi": "",
+    "first_author": "Klein PJ",
+    "pubtype": [
+     "Journal Article",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "30997624",
+    "title": "Systematic review of economic evaluations of exercise and physiotherapy for patients treated for breast cancer.",
+    "year": "2019",
+    "journal": "Breast Cancer Res Treat",
+    "doi": "10.1007/s10549-019-05235-7",
+    "first_author": "Khan KA",
+    "pubtype": [
+     "Journal Article",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "29951414",
+    "title": "Telemedicine: A systematic review of economic evaluations.",
+    "year": "2017",
+    "journal": "Med J Islam Repub Iran",
+    "doi": "10.14196/mjiri.31.113",
+    "first_author": "Delgoshaei B",
+    "pubtype": [
+     "Journal Article",
+     "Review"
+    ]
+   },
+   {
+    "pmid": "28900822",
+    "title": "An international review and meta-analysis of prehabilitation compared to usual care for cancer patients.",
+    "year": "2018",
+    "journal": "J Cancer Surviv",
+    "doi": "10.1007/s11764-017-0645-9",
+    "first_author": "Treanor C",
+    "pubtype": [
+     "Journal Article",
+     "Meta-Analysis",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "28875575",
+    "title": "Can weight gain be prevented in women receiving treatment for breast cancer? A systematic review of intervention studies.",
+    "year": "2017",
+    "journal": "Obes Rev",
+    "doi": "10.1111/obr.12591",
+    "first_author": "Thomson ZO",
+    "pubtype": [
+     "Journal Article",
+     "Meta-Analysis",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "26810383",
+    "title": "Economic evaluations of psychosocial interventions in cancer: a systematic review.",
+    "year": "2016",
+    "journal": "Psychooncology",
+    "doi": "10.1002/pon.4075",
+    "first_author": "Dieng M",
+    "pubtype": [
+     "Journal Article",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "25757733",
+    "title": "Telephone, print, and Web-based interventions for physical activity, diet, and weight control among cancer survivors: a systematic review.",
+    "year": "2015",
+    "journal": "J Cancer Surviv",
+    "doi": "10.1007/s11764-015-0442-2",
+    "first_author": "Goode AD",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "24891269",
+    "title": "Weight loss intervention trials in women with breast cancer: a systematic review.",
+    "year": "2014",
+    "journal": "Obes Rev",
+    "doi": "10.1111/obr.12190",
+    "first_author": "Reeves MM",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "23074431",
+    "title": "Influenza and pneumococcal vaccinations for patients with chronic obstructive pulmonary disease (COPD): an evidence-based review.",
+    "year": "2012",
+    "journal": "Ont Health Technol Assess Ser",
+    "doi": "",
+    "first_author": "Sehatzadeh S",
+    "pubtype": [
+     "Journal Article",
+     "Review"
+    ]
+   },
+   {
+    "pmid": "19845974",
+    "title": "Cost-effectiveness of interventions based on physical exercise in the treatment of various diseases: a systematic literature review.",
+    "year": "2009",
+    "journal": "Int J Technol Assess Health Care",
+    "doi": "10.1017/S0266462309990353",
+    "first_author": "Roine E",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "19000846",
+    "title": "Cost effectiveness of community-based physical activity interventions.",
+    "year": "2008",
+    "journal": "Am J Prev Med",
+    "doi": "10.1016/j.amepre.2008.06.040",
+    "first_author": "Roux L",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   },
+   {
+    "pmid": "15929857",
+    "title": "A systematic review and economic evaluation of alendronate, etidronate, risedronate, raloxifene and teriparatide for the prevention and treatment of postmenopausal osteoporosis.",
+    "year": "2005",
+    "journal": "Health Technol Assess",
+    "doi": "10.3310/hta9220",
+    "first_author": "Stevenson M",
+    "pubtype": [
+     "Journal Article",
+     "Meta-Analysis",
+     "Research Support, Non-U.S. Gov't",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "10611196",
+    "title": "Evaluation of the relative cost-effectiveness of treatments for infertility in the UK.",
+    "year": "2000",
+    "journal": "Hum Reprod",
+    "doi": "10.1093/humrep/15.1.95",
+    "first_author": "Philips Z",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "((TITLE:exercise OR ABSTRACT:exercise) OR (TITLE:\"physical activity\" OR ABSTRACT:\"physical activity\") OR (TITLE:prehabilitation OR ABSTRACT:prehabilitation) OR (TITLE:\"aerobic training\" OR ABSTRACT:\"aerobic training\") OR (TITLE:\"resistance training\" OR ABSTRACT:\"resistance training\")) AND (TITLE:cancer OR ABSTRACT:cancer) AND ((TITLE:\"cost-effectiveness\" OR ABSTRACT:\"cost-effectiveness\") OR (TITLE:\"cost effectiveness\" OR ABSTRACT:\"cost effectiveness\") OR (TITLE:\"cost-utility\" OR ABSTRACT:\"cost-utility\") OR (TITLE:\"cost utility\" OR ABSTRACT:\"cost utility\") OR (TITLE:\"economic evaluation\" OR ABSTRACT:\"economic evaluation\") OR (TITLE:QALY OR ABSTRACT:QALY) OR (TITLE:\"quality-adjusted life year\" OR ABSTRACT:\"quality-adjusted life year\")) AND (TITLE:\"systematic review\" OR ABSTRACT:\"systematic review\") AND PUB_YEAR:[2000 TO 2026]",
+  "count": 17,
+  "hits": [
+   {
+    "id": "40685660",
+    "src": "MED",
+    "pmid": "40685660",
+    "title": "Cost effectiveness of non-pharmacological interventions for fatigue in patients with long-term conditions: a systematic literature review.",
+    "year": "2025",
+    "journal": "Expert Rev Pharmacoecon Outcomes Res",
+    "doi": "10.1080/14737167.2025.2537194",
+    "first_author": "Davis S",
+    "pubtype": "systematic review; journal article"
+   },
+   {
+    "id": "42799684",
+    "src": "MED",
+    "pmid": "42799684",
+    "title": "Assessment and Treatment of Acute Low Back Pain (ALBP): A Systematic Review.",
+    "year": "2026",
+    "journal": "Pain Med",
+    "doi": "10.1093/pm/pnag131",
+    "first_author": "Skelly AC",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "36965520",
+    "src": "MED",
+    "pmid": "36965520",
+    "title": "Economic evaluation of exercise interventions for individuals with cancer: A systematic review.",
+    "year": "2023",
+    "journal": "Prev Med",
+    "doi": "10.1016/j.ypmed.2023.107491",
+    "first_author": "Wang Y",
+    "pubtype": "research support, non-u.s. gov't; systematic review; journal article"
+   },
+   {
+    "id": "36163450",
+    "src": "MED",
+    "pmid": "36163450",
+    "title": "The Cost-Effectiveness of Adjunctive Lifestyle Interventions for the Management of Cancer: A Systematic Review.",
+    "year": "2023",
+    "journal": "Appl Health Econ Health Policy",
+    "doi": "10.1007/s40258-022-00759-4",
+    "first_author": "Gallagher A",
+    "pubtype": "systematic review; review-article; journal article"
+   },
+   {
+    "id": "33624172",
+    "src": "MED",
+    "pmid": "33624172",
+    "title": "Cost-effectiveness of physical activity interventions in cancer survivors of developed countries: a systematic review.",
+    "year": "2021",
+    "journal": "J Cancer Surviv",
+    "doi": "10.1007/s11764-021-01002-0",
+    "first_author": "Gubler-Gut BE",
+    "pubtype": "research support, non-u.s. gov't; systematic review; review-article; journal article"
+   },
+   {
+    "id": "38801296",
+    "src": "MED",
+    "pmid": "38801296",
+    "title": "A Systematic Review of Cost-Effectiveness Analyses Examining Treatments for Cachexia Syndrome.",
+    "year": "2024",
+    "journal": "Nutr Cancer",
+    "doi": "10.1080/01635581.2024.2353939",
+    "first_author": "Khan S",
+    "pubtype": "systematic review; journal article"
+   },
+   {
+    "id": "30997624",
+    "src": "MED",
+    "pmid": "30997624",
+    "title": "Systematic review of economic evaluations of exercise and physiotherapy for patients treated for breast cancer.",
+    "year": "2019",
+    "journal": "Breast Cancer Res Treat",
+    "doi": "10.1007/s10549-019-05235-7",
+    "first_author": "Khan KA",
+    "pubtype": "systematic review; review-article; journal article"
+   },
+   {
+    "id": "39483606",
+    "src": "MED",
+    "pmid": "39483606",
+    "title": "A Systematic Review of Comparative Effectiveness of Interventions for Low Anterior Resection Syndrome: Impacts on Bowel Function and Quality of Life.",
+    "year": "2024",
+    "journal": "Cureus",
+    "doi": "10.7759/cureus.72772",
+    "first_author": "Ansar M",
+    "pubtype": "review-article; review; journal article"
+   },
+   {
+    "id": "37457987",
+    "src": "MED",
+    "pmid": "37457987",
+    "title": "Web-based nutrition: a useful resource for cancer patients?",
+    "year": "2023",
+    "journal": "Front Nutr",
+    "doi": "10.3389/fnut.2023.1134793",
+    "first_author": "Lazar DE",
+    "pubtype": "review-article; review; journal article"
+   },
+   {
+    "id": "36170564",
+    "src": "MED",
+    "pmid": "36170564",
+    "title": "Preoperative exercise training for people with non-small cell lung cancer.",
+    "year": "2022",
+    "journal": "Cochrane Database Syst Rev",
+    "doi": "10.1002/14651858.cd012020.pub3",
+    "first_author": "Granger C",
+    "pubtype": "research support, non-u.s. gov't; systematic review; systematic-review; journal article"
+   },
+   {
+    "id": "26810383",
+    "src": "MED",
+    "pmid": "26810383",
+    "title": "Economic evaluations of psychosocial interventions in cancer: a systematic review.",
+    "year": "2016",
+    "journal": "Psychooncology",
+    "doi": "10.1002/pon.4075",
+    "first_author": "Dieng M",
+    "pubtype": "systematic review; journal article"
+   },
+   {
+    "id": "19000846",
+    "src": "MED",
+    "pmid": "19000846",
+    "title": "Cost effectiveness of community-based physical activity interventions.",
+    "year": "2008",
+    "journal": "Am J Prev Med",
+    "doi": "10.1016/j.amepre.2008.06.040",
+    "first_author": "Roux L",
+    "pubtype": "research support, non-u.s. gov't; journal article"
+   },
+   {
+    "id": "PPR756874",
+    "src": "PPR",
+    "pmid": "",
+    "title": "A rapid review exploring the effectiveness of artificial intelligence for cancer diagnosis",
+    "year": "2023",
+    "journal": "",
+    "doi": "10.1101/2023.11.09.23298257",
+    "first_author": "Wale A",
+    "pubtype": "preprint"
+   },
+   {
+    "id": "25757733",
+    "src": "MED",
+    "pmid": "25757733",
+    "title": "Telephone, print, and Web-based interventions for physical activity, diet, and weight control among cancer survivors: a systematic review.",
+    "year": "2015",
+    "journal": "J Cancer Surviv",
+    "doi": "10.1007/s11764-015-0442-2",
+    "first_author": "Goode AD",
+    "pubtype": "research support, non-u.s. gov't; systematic review; journal article"
+   },
+   {
+    "id": "28875575",
+    "src": "MED",
+    "pmid": "28875575",
+    "title": "Can weight gain be prevented in women receiving treatment for breast cancer? A systematic review of intervention studies.",
+    "year": "2017",
+    "journal": "Obes Rev",
+    "doi": "10.1111/obr.12591",
+    "first_author": "Thomson ZO",
+    "pubtype": "meta-analysis; systematic review; journal article"
+   },
+   {
+    "id": "29951414",
+    "src": "MED",
+    "pmid": "29951414",
+    "title": "Telemedicine: A systematic review of economic evaluations.",
+    "year": "2017",
+    "journal": "Med J Islam Repub Iran",
+    "doi": "10.14196/mjiri.31.113",
+    "first_author": "Delgoshaei B",
+    "pubtype": "review-article; review; journal article"
+   },
+   {
+    "id": "15929857",
+    "src": "MED",
+    "pmid": "15929857",
+    "title": "A systematic review and economic evaluation of alendronate, etidronate, risedronate, raloxifene and teriparatide for the prevention and treatment of postmenopausal osteoporosis.",
+    "year": "2005",
+    "journal": "Health Technol Assess",
+    "doi": "10.3310/hta9220",
+    "first_author": "Stevenson M",
+    "pubtype": "meta-analysis; research support, non-u.s. gov't; systematic review; journal article"
+   }
+  ]
+ }
+}

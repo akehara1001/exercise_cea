@@ -19,10 +19,10 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 MAIN = ROOT / "output" / "phase2" / "main"
 P1 = ROOT / "output" / "phase1"
-VER = "v4"  # version written by this run; earlier versions are in manuscript/archive/
-PREV = "v3"
-BASE = "v3（manuscript/archive/v3/ 的交付物与同一套生成代码；Results 直接编辑 results_v3.docx）"
-STEP = "执笔第 2 步 v4：S10 的 Elmore 行加脚注，Results 末段只写 Elmore 的参照 ICER"
+VER = "v5"  # version written by this run; earlier versions are in manuscript/archive/
+PREV = "v4"
+BASE = "v4（manuscript/archive/v4/ 的交付物与同一套生成代码；本文 manuscript_v5.docx 由 results_v4.docx 直接编辑而成）"
+STEP = "执笔第 3 步 v5：Introduction、Methods 与参考文献，Results 的修改，S1（CHEERS）与 Supplementary Methods S1，待决事项"
 OUT = ROOT / "manuscript" / VER
 ARCHIVE_PREV = ROOT / "manuscript" / "archive" / PREV
 FIGDIR = OUT / "figures"
@@ -30,24 +30,27 @@ BUILD = ROOT / "manuscript" / "code" / "_build"  # registry json (intermediate, 
 BUILD.mkdir(parents=True, exist_ok=True)
 PARAMS_XLSX = ROOT / "input" / "params" / "parameters_v10.xlsx"
 
-# Provisional supplementary numbering, by the planned first citation in the text
-# (table_figure_plan_<VER>.md section 4). Change here only; the tables and figure
-# legends read these labels.
+# Supplementary numbering by first citation in the text (Introduction, Methods,
+# Results; table_figure_plan_<VER>.md section 4). Change here only; the tables,
+# legends and the manuscript edit read these labels.
 SUPP = {
-    "params": "S1",            # all inputs (Methods, Study background)
-    "methods_survival": "S1",  # Supplementary Methods S1: survival model and validation (written with Methods)
-    "fig_validation": "S1",    # Supplementary Fig. S1: model OS/EFS vs reconstructed KM and final analysis
-    "validation": "S2",        # Supplementary Table S2: validation criteria and 7-year comparison
-    "cheers": "S3",            # CHEERS 2022 checklist (end of Statistical analysis; written with Methods)
-    "capgrid": "S4",           # Results aim 1: data of Fig. 2 (HR grid, both thresholds, early-recurrence scenario)
-    "decomp": "S5",            # Results aim 1: incremental costs by category, main comparison, HR 0.85
-    "duration": "S6",          # Results aim 1: effect duration and post-operative continuation, full grid
-    "netbenefit": "S7",        # Results aim 1: one-year cohort net benefit (JBCS registry report no. 55)
-    "pathB": "S8",             # Results aim 4: effect on pCR (path B)
-    "oneway": "S9",            # Results last paragraph: values of Fig. 3 and Supplementary Fig. S2
-    "fig_icer": "S2",          # Supplementary Fig. S2: one-way analysis of the reference ICER
-    "other": "S10",            # Results last paragraph: utility value sets (Japan first), Elmore, S-JP
+    "cheers": "S1",            # CHEERS 2022 checklist (Methods, Study background)
+    "params": "S2",            # all inputs (Methods, Variables)
+    "methods_survival": "S1",  # Supplementary Methods S1: survival model, validation, PSA sampling (Statistical analysis stage 1)
+    "fig_validation": "S1",    # Supplementary Fig. S1: model OS/EFS vs reconstructed KM and final analysis (stage 1)
+    "validation": "S3",        # Supplementary Table S3: validation values (stage 1)
+    "capgrid": "S4",           # Results P1: data of Fig. 2 (HR grid, both thresholds, early-recurrence scenario)
+    "pathB": "S5",             # Results P1: effect on pCR (path B)
+    "decomp": "S6",            # Results P2: incremental costs by category, main comparison, HR 0.85
+    "duration": "S7",          # Results P3: effect duration and post-operative continuation, full grid
+    "netbenefit": "S8",        # Results P5: one-year cohort net benefit (JBCS registry report no. 55)
+    "oneway": "S9",            # Results P10: values of Fig. 3 and Supplementary Fig. S2
+    "fig_icer": "S2",          # Supplementary Fig. S2: one-way analysis of the reference ICER (Methods stage 4)
+    "other": "S10",            # Results P10: utility value sets (Japan first), Elmore, S-JP
 }
+# v4 -> v5 renumbering of supplementary tables (old -> new), used to carry the v4
+# Results text and its ledger over to the v5 numbering
+SUPP_RENUMBER_V4_V5 = {"S1": "S2", "S2": "S3", "S5": "S6", "S6": "S7", "S7": "S8", "S8": "S5"}
 
 MINUS = "−"
 STAR = "✳"  # footnote symbol; repeated for later footnotes

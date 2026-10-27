@@ -1,0 +1,251 @@
+{
+ "key": "pembro_japan",
+ "date": "2026-10-26",
+ "pubmed": {
+  "query": "pembrolizumab[tiab] AND (Japan[tiab] OR Japanese[tiab] OR \"Japan\"[mh]) AND (\"cost-effectiveness\"[tiab] OR \"cost effectiveness\"[tiab] OR \"cost-utility\"[tiab] OR \"cost utility\"[tiab] OR \"economic evaluation\"[tiab] OR QALY*[tiab] OR \"Cost-Benefit Analysis\"[mh])",
+  "count": 10,
+  "hits": [
+   {
+    "pmid": "41779321",
+    "title": "Cost-effectiveness analysis of immune checkpoint inhibitors versus platinum-based doublet chemotherapy in the first-line treatment of advanced non-small-cell lung cancer with High PD-L1 expression in Japan.",
+    "year": "2026",
+    "journal": "Eur J Health Econ",
+    "doi": "10.1007/s10198-026-01912-9",
+    "first_author": "Nusawat C",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "41665852",
+    "title": "Comparative Cost-Effectiveness Analysis of Multiple First-Line Treatments for HER2-Negative Unresectable Advanced or Recurrent Gastric Cancer in Japan.",
+    "year": "2026",
+    "journal": "Pharmacoecon Open",
+    "doi": "10.1007/s41669-025-00634-7",
+    "first_author": "Morimoto K",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "41380627",
+    "title": "Cost-Effectiveness of Pembrolizumab as First-Line Therapy for Advanced Colorectal Cancer With High Microsatellite Instability or Mismatched Repair Deficiency in Japan.",
+    "year": "2026",
+    "journal": "Value Health Reg Issues",
+    "doi": "10.1016/j.vhri.2025.101555",
+    "first_author": "Taniguchi S",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "40860556",
+    "title": "Multinational cost-effectiveness analysis of pembrolizumab combined with chemotherapy as first-line treatment for advanced biliary tract cancer.",
+    "year": "2025",
+    "journal": "Front Public Health",
+    "doi": "10.3389/fpubh.2025.1597550",
+    "first_author": "Xie Y",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "40652068",
+    "title": "Cost-effectiveness analysis of pembrolizumab plus chemotherapy versus chemotherapy as first line chemotherapy for patients with unresectable advanced esophageal cancer in Japan.",
+    "year": "2025",
+    "journal": "Esophagus",
+    "doi": "10.1007/s10388-025-01144-5",
+    "first_author": "Kakinuma H",
+    "pubtype": [
+     "Journal Article",
+     "Comparative Study"
+    ]
+   },
+   {
+    "pmid": "40317386",
+    "title": "Cost-Effectiveness Analysis of Pembrolizumab Plus Chemotherapy Compared with Chemotherapy as First-Line Treatment for Advanced PD-L1-Positive Triple-Negative Breast Cancer from a Japanese Healthcare Perspective.",
+    "year": "2025",
+    "journal": "Clin Drug Investig",
+    "doi": "10.1007/s40261-025-01445-8",
+    "first_author": "Chisaki Y",
+    "pubtype": [
+     "Journal Article",
+     "Comparative Study"
+    ]
+   },
+   {
+    "pmid": "40146402",
+    "title": "Reporting Quality in Health Economic Evaluation Studies of Immune Checkpoint Inhibitors: A Systematic Review.",
+    "year": "2025",
+    "journal": "Clin Drug Investig",
+    "doi": "10.1007/s40261-025-01435-w",
+    "first_author": "Yoshioka T",
+    "pubtype": [
+     "Journal Article",
+     "Systematic Review"
+    ]
+   },
+   {
+    "pmid": "39565452",
+    "title": "Cost-effectiveness analysis of first line pembrolizumab monotherapy for high programmed cell death ligand 1 expressed, advanced non-small cell lung cancer in Japan.",
+    "year": "2025",
+    "journal": "Int J Clin Pharm",
+    "doi": "10.1007/s11096-024-01826-7",
+    "first_author": "Tomura K",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "39172318",
+    "title": "Comparative Cost-Effectiveness of Gemcitabine and Cisplatin in Combination with S-1, Durvalumab, or Pembrolizumab as First-Line Triple Treatment for Advanced Biliary Tract Cancer.",
+    "year": "2024",
+    "journal": "J Gastrointest Cancer",
+    "doi": "10.1007/s12029-024-01106-7",
+    "first_author": "Kashiwa M",
+    "pubtype": [
+     "Journal Article",
+     "Comparative Study"
+    ]
+   },
+   {
+    "pmid": "37259600",
+    "title": "Cost-effectiveness analysis of pembrolizumab in patients with treatment-refractory metastatic colorectal cancer in Japan.",
+    "year": "2023",
+    "journal": "Jpn J Clin Oncol",
+    "doi": "10.1093/jjco/hyad050",
+    "first_author": "Sugiura K",
+    "pubtype": [
+     "Journal Article"
+    ]
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(TITLE:pembrolizumab OR ABSTRACT:pembrolizumab) AND ((TITLE:Japan OR ABSTRACT:Japan) OR (TITLE:Japanese OR ABSTRACT:Japanese)) AND ((TITLE:\"cost-effectiveness\" OR ABSTRACT:\"cost-effectiveness\") OR (TITLE:\"cost effectiveness\" OR ABSTRACT:\"cost effectiveness\") OR (TITLE:\"cost-utility\" OR ABSTRACT:\"cost-utility\") OR (TITLE:\"cost utility\" OR ABSTRACT:\"cost utility\") OR (TITLE:\"economic evaluation\" OR ABSTRACT:\"economic evaluation\") OR (TITLE:QALY OR ABSTRACT:QALY) OR (TITLE:\"quality-adjusted life year\" OR ABSTRACT:\"quality-adjusted life year\"))",
+  "count": 11,
+  "hits": [
+   {
+    "id": "41779321",
+    "src": "MED",
+    "pmid": "41779321",
+    "title": "Cost-effectiveness analysis of immune checkpoint inhibitors versus platinum-based doublet chemotherapy in the first-line treatment of advanced non-small-cell lung cancer with High PD-L1 expression in Japan.",
+    "year": "2026",
+    "journal": "Eur J Health Econ",
+    "doi": "10.1007/s10198-026-01912-9",
+    "first_author": "Nusawat C",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "41380627",
+    "src": "MED",
+    "pmid": "41380627",
+    "title": "Cost-Effectiveness of Pembrolizumab as First-Line Therapy for Advanced Colorectal Cancer With High Microsatellite Instability or Mismatched Repair Deficiency in Japan.",
+    "year": "2026",
+    "journal": "Value Health Reg Issues",
+    "doi": "10.1016/j.vhri.2025.101555",
+    "first_author": "Taniguchi S",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "41665852",
+    "src": "MED",
+    "pmid": "41665852",
+    "title": "Comparative Cost-Effectiveness Analysis of Multiple First-Line Treatments for HER2-Negative Unresectable Advanced or Recurrent Gastric Cancer in Japan.",
+    "year": "2026",
+    "journal": "Pharmacoecon Open",
+    "doi": "10.1007/s41669-025-00634-7",
+    "first_author": "Morimoto K",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "40860556",
+    "src": "MED",
+    "pmid": "40860556",
+    "title": "Multinational cost-effectiveness analysis of pembrolizumab combined with chemotherapy as first-line treatment for advanced biliary tract cancer.",
+    "year": "2025",
+    "journal": "Front Public Health",
+    "doi": "10.3389/fpubh.2025.1597550",
+    "first_author": "Xie Y",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "40652068",
+    "src": "MED",
+    "pmid": "40652068",
+    "title": "Cost-effectiveness analysis of pembrolizumab plus chemotherapy versus chemotherapy as first line chemotherapy for patients with unresectable advanced esophageal cancer in Japan.",
+    "year": "2025",
+    "journal": "Esophagus",
+    "doi": "10.1007/s10388-025-01144-5",
+    "first_author": "Kakinuma H",
+    "pubtype": "comparative study; research-article; journal article"
+   },
+   {
+    "id": "40317386",
+    "src": "MED",
+    "pmid": "40317386",
+    "title": "Cost-Effectiveness Analysis of Pembrolizumab Plus Chemotherapy Compared with Chemotherapy as First-Line Treatment for Advanced PD-L1-Positive Triple-Negative Breast Cancer from a Japanese Healthcare Perspective.",
+    "year": "2025",
+    "journal": "Clin Drug Investig",
+    "doi": "10.1007/s40261-025-01445-8",
+    "first_author": "Chisaki Y",
+    "pubtype": "comparative study; journal article"
+   },
+   {
+    "id": "39565452",
+    "src": "MED",
+    "pmid": "39565452",
+    "title": "Cost-effectiveness analysis of first line pembrolizumab monotherapy for high programmed cell death ligand 1 expressed, advanced non-small cell lung cancer in Japan.",
+    "year": "2025",
+    "journal": "Int J Clin Pharm",
+    "doi": "10.1007/s11096-024-01826-7",
+    "first_author": "Tomura K",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "37259600",
+    "src": "MED",
+    "pmid": "37259600",
+    "title": "Cost-effectiveness analysis of pembrolizumab in patients with treatment-refractory metastatic colorectal cancer in Japan.",
+    "year": "2023",
+    "journal": "Jpn J Clin Oncol",
+    "doi": "10.1093/jjco/hyad050",
+    "first_author": "Sugiura K",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "39172318",
+    "src": "MED",
+    "pmid": "39172318",
+    "title": "Comparative Cost-Effectiveness of Gemcitabine and Cisplatin in Combination with S-1, Durvalumab, or Pembrolizumab as First-Line Triple Treatment for Advanced Biliary Tract Cancer.",
+    "year": "2024",
+    "journal": "J Gastrointest Cancer",
+    "doi": "10.1007/s12029-024-01106-7",
+    "first_author": "Kashiwa M",
+    "pubtype": "comparative study; journal article"
+   },
+   {
+    "id": "40146402",
+    "src": "MED",
+    "pmid": "40146402",
+    "title": "Reporting Quality in Health Economic Evaluation Studies of Immune Checkpoint Inhibitors: A Systematic Review.",
+    "year": "2025",
+    "journal": "Clin Drug Investig",
+    "doi": "10.1007/s40261-025-01435-w",
+    "first_author": "Yoshioka T",
+    "pubtype": "systematic review; review-article; journal article"
+   },
+   {
+    "id": "PPR792534",
+    "src": "PPR",
+    "pmid": "",
+    "title": "Reporting Quality in Health Economic Evaluation Studies of Immune Checkpoint Inhibitors: A Systematic Review",
+    "year": "2024",
+    "journal": "",
+    "doi": "10.1101/2024.01.24.24301756",
+    "first_author": "Yoshioka T",
+    "pubtype": "preprint"
+   }
+  ]
+ }
+}

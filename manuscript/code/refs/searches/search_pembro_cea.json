@@ -1,0 +1,297 @@
+{
+ "key": "pembro_cea",
+ "date": "2026-10-26",
+ "pubmed": {
+  "query": "pembrolizumab[tiab] AND (\"triple-negative\"[tiab] OR \"triple negative\"[tiab] OR \"Triple Negative Breast Neoplasms\"[mh]) AND (early[tiab] OR neoadjuvant[tiab] OR KEYNOTE-522[tiab]) AND (\"cost-effectiveness\"[tiab] OR \"cost effectiveness\"[tiab] OR \"cost-utility\"[tiab] OR \"cost utility\"[tiab] OR \"economic evaluation\"[tiab] OR QALY*[tiab] OR \"Cost-Benefit Analysis\"[mh])",
+  "count": 16,
+  "hits": [
+   {
+    "pmid": "41948717",
+    "title": "A comparative review of economic evaluations for immune checkpoint inhibitors in early stage and advanced stage cancer: focusing on pembrolizumab.",
+    "year": "2026",
+    "journal": "Front Pharmacol",
+    "doi": "10.3389/fphar.2026.1717776",
+    "first_author": "Kim HJ",
+    "pubtype": [
+     "Journal Article",
+     "Review"
+    ]
+   },
+   {
+    "pmid": "41823143",
+    "title": "The broad societal value of pembrolizumab for women's cancer in Canada.",
+    "year": "2026",
+    "journal": "Future Oncol",
+    "doi": "10.1080/14796694.2026.2639738",
+    "first_author": "Brook E",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "41731971",
+    "title": "Impact of early-stage immunotherapy on health and work productivity in the Czech Republic, 2024-2033.",
+    "year": "2026",
+    "journal": "Expert Rev Pharmacoecon Outcomes Res",
+    "doi": "10.1080/14737167.2026.2634755",
+    "first_author": "Blezer G",
+    "pubtype": [
+     "Journal Article",
+     "Comparative Study"
+    ]
+   },
+   {
+    "pmid": "41703729",
+    "title": "Health and productivity benefits of anti-PD-(L)1 agents for early-stage cancer treatment in Hungary.",
+    "year": "2026",
+    "journal": "J Med Econ",
+    "doi": "10.1080/13696998.2026.2626240",
+    "first_author": "Ladino D",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "41389297",
+    "title": "Impact of pembrolizumab on health outcomes and productivity in earlier-stage cancers within the US Medicare population.",
+    "year": "2025",
+    "journal": "J Med Econ",
+    "doi": "10.1080/13696998.2025.2599670",
+    "first_author": "Lai Y",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "40959987",
+    "title": "Evaluating the broad societal value of pembrolizumab in women's cancer in Brazil.",
+    "year": "2025",
+    "journal": "J Med Econ",
+    "doi": "10.1080/13696998.2025.2559532",
+    "first_author": "Wijenayake N",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "40707860",
+    "title": "The Health Impact of Using Anti-PD-1 Agents to Treat Early-Stage Cancer in Belgium.",
+    "year": "2025",
+    "journal": "Oncol Ther",
+    "doi": "10.1007/s40487-025-00357-z",
+    "first_author": "Bento-Abreu A",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "40677709",
+    "title": "Health impact of using anti-PD-(L)1 agents to treat early-stage cancers in Switzerland: a modeling study.",
+    "year": "2025",
+    "journal": "Front Immunol",
+    "doi": "10.3389/fimmu.2025.1601377",
+    "first_author": "Favre-Bulle A",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "39665251",
+    "title": "The cost-effectiveness of treatment for high-risk, early-stage, triple-negative breast cancer in Egypt: an analysis of neoadjuvant pembrolizumab plus chemotherapy followed by adjuvant single-agent pembrolizumab.",
+    "year": "2025",
+    "journal": "J Med Econ",
+    "doi": "10.1080/13696998.2024.2441073",
+    "first_author": "Pöllinger B",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "39453600",
+    "title": "A Narrative Review of the Clinical, Humanistic, and Economic Value of Pembrolizumab-Based Immunotherapy for the Treatment of Breast and Gynecologic Cancers.",
+    "year": "2024",
+    "journal": "Oncol Ther",
+    "doi": "10.1007/s40487-024-00308-0",
+    "first_author": "Monberg MJ",
+    "pubtype": [
+     "Journal Article",
+     "Review"
+    ]
+   },
+   {
+    "pmid": "39037537",
+    "title": "Cost-effectiveness of Pembrolizumab in Combination with Chemotherapy as Neoadjuvant Treatment and Continued as a Single Agent Adjuvant Treatment for High-Risk Early-Stage Triple-Negative Breast Cancer in Hong Kong.",
+    "year": "2024",
+    "journal": "Oncol Ther",
+    "doi": "10.1007/s40487-024-00285-4",
+    "first_author": "Kwong A",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "38904118",
+    "title": "Assessing the fiscal consequences of novel and existing treatments for triple negative breast cancer in Switzerland by applying a government perspective framework.",
+    "year": "2024",
+    "journal": "J Med Econ",
+    "doi": "10.1080/13696998.2024.2369428",
+    "first_author": "Copeland C",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "37999854",
+    "title": "Cost-Effectiveness of Neoadjuvant Pembrolizumab plus Chemotherapy Followed by Adjuvant Pembrolizumab in Patients with High-Risk, Early-Stage, Triple-Negative Breast Cancer in Switzerland.",
+    "year": "2024",
+    "journal": "Pharmacoecon Open",
+    "doi": "10.1007/s41669-023-00445-8",
+    "first_author": "Favre-Bulle A",
+    "pubtype": [
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "37432550",
+    "title": "Letter to the Editor Regarding \"Cost-Effectiveness of Neoadjuvant Pembrolizumab Plus Chemotherapy Followed by Adjuvant Single Agent Pembrolizumab for High-Risk Early-Stage Triple Negative Breast Cancer in the United States\".",
+    "year": "2023",
+    "journal": "Adv Ther",
+    "doi": "10.1007/s12325-023-02596-w",
+    "first_author": "Sorscher S",
+    "pubtype": [
+     "Letter",
+     "Comment"
+    ]
+   },
+   {
+    "pmid": "37029518",
+    "title": "Pharmacoeconomics of novel pharmacotherapies in triple-negative breast cancer.",
+    "year": "2023",
+    "journal": "Expert Opin Pharmacother",
+    "doi": "10.1080/14656566.2023.2201372",
+    "first_author": "Boscolo Bielo L",
+    "pubtype": [
+     "Review",
+     "Journal Article"
+    ]
+   },
+   {
+    "pmid": "36648737",
+    "title": "Cost-Effectiveness of Neoadjuvant Pembrolizumab Plus Chemotherapy Followed by Adjuvant Single-Agent Pembrolizumab for High-Risk Early-Stage Triple-Negative Breast Cancer in the United States.",
+    "year": "2023",
+    "journal": "Adv Ther",
+    "doi": "10.1007/s12325-022-02365-1",
+    "first_author": "Huang M",
+    "pubtype": [
+     "Journal Article",
+     "Research Support, Non-U.S. Gov't"
+    ]
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(TITLE:pembrolizumab OR ABSTRACT:pembrolizumab) AND ((TITLE:\"triple-negative\" OR ABSTRACT:\"triple-negative\") OR (TITLE:\"triple negative\" OR ABSTRACT:\"triple negative\")) AND ((TITLE:early OR ABSTRACT:early) OR (TITLE:neoadjuvant OR ABSTRACT:neoadjuvant) OR (TITLE:\"KEYNOTE-522\" OR ABSTRACT:\"KEYNOTE-522\")) AND ((TITLE:\"cost-effectiveness\" OR ABSTRACT:\"cost-effectiveness\") OR (TITLE:\"cost effectiveness\" OR ABSTRACT:\"cost effectiveness\") OR (TITLE:\"cost-utility\" OR ABSTRACT:\"cost-utility\") OR (TITLE:\"cost utility\" OR ABSTRACT:\"cost utility\") OR (TITLE:\"economic evaluation\" OR ABSTRACT:\"economic evaluation\") OR (TITLE:QALY OR ABSTRACT:QALY) OR (TITLE:\"quality-adjusted life year\" OR ABSTRACT:\"quality-adjusted life year\"))",
+  "count": 9,
+  "hits": [
+   {
+    "id": "39665251",
+    "src": "MED",
+    "pmid": "39665251",
+    "title": "The cost-effectiveness of treatment for high-risk, early-stage, triple-negative breast cancer in Egypt: an analysis of neoadjuvant pembrolizumab plus chemotherapy followed by adjuvant single-agent pembrolizumab.",
+    "year": "2025",
+    "journal": "J Med Econ",
+    "doi": "10.1080/13696998.2024.2441073",
+    "first_author": "Pöllinger B",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "37999854",
+    "src": "MED",
+    "pmid": "37999854",
+    "title": "Cost-Effectiveness of Neoadjuvant Pembrolizumab plus Chemotherapy Followed by Adjuvant Pembrolizumab in Patients with High-Risk, Early-Stage, Triple-Negative Breast Cancer in Switzerland.",
+    "year": "2024",
+    "journal": "Pharmacoecon Open",
+    "doi": "10.1007/s41669-023-00445-8",
+    "first_author": "Favre-Bulle A",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "39037537",
+    "src": "MED",
+    "pmid": "39037537",
+    "title": "Cost-effectiveness of Pembrolizumab in Combination with Chemotherapy as Neoadjuvant Treatment and Continued as a Single Agent Adjuvant Treatment for High-Risk Early-Stage Triple-Negative Breast Cancer in Hong Kong.",
+    "year": "2024",
+    "journal": "Oncol Ther",
+    "doi": "10.1007/s40487-024-00285-4",
+    "first_author": "Kwong A",
+    "pubtype": "research-article; journal article"
+   },
+   {
+    "id": "41948717",
+    "src": "MED",
+    "pmid": "41948717",
+    "title": "A comparative review of economic evaluations for immune checkpoint inhibitors in early stage and advanced stage cancer: focusing on pembrolizumab.",
+    "year": "2026",
+    "journal": "Front Pharmacol",
+    "doi": "10.3389/fphar.2026.1717776",
+    "first_author": "Kim HJ",
+    "pubtype": "review-article; review; journal article"
+   },
+   {
+    "id": "36648737",
+    "src": "MED",
+    "pmid": "36648737",
+    "title": "Cost-Effectiveness of Neoadjuvant Pembrolizumab Plus Chemotherapy Followed by Adjuvant Single-Agent Pembrolizumab for High-Risk Early-Stage Triple-Negative Breast Cancer in the United States.",
+    "year": "2023",
+    "journal": "Adv Ther",
+    "doi": "10.1007/s12325-022-02365-1",
+    "first_author": "Huang M",
+    "pubtype": "research support, non-u.s. gov't; research-article; journal article"
+   },
+   {
+    "id": "40959987",
+    "src": "MED",
+    "pmid": "40959987",
+    "title": "Evaluating the broad societal value of pembrolizumab in women's cancer in Brazil.",
+    "year": "2025",
+    "journal": "J Med Econ",
+    "doi": "10.1080/13696998.2025.2559532",
+    "first_author": "Wijenayake N",
+    "pubtype": "journal article"
+   },
+   {
+    "id": "39453600",
+    "src": "MED",
+    "pmid": "39453600",
+    "title": "A Narrative Review of the Clinical, Humanistic, and Economic Value of Pembrolizumab-Based Immunotherapy for the Treatment of Breast and Gynecologic Cancers.",
+    "year": "2024",
+    "journal": "Oncol Ther",
+    "doi": "10.1007/s40487-024-00308-0",
+    "first_author": "Monberg MJ",
+    "pubtype": "review-article; review; journal article"
+   },
+   {
+    "id": "37029518",
+    "src": "MED",
+    "pmid": "37029518",
+    "title": "Pharmacoeconomics of novel pharmacotherapies in triple-negative breast cancer.",
+    "year": "2023",
+    "journal": "Expert Opin Pharmacother",
+    "doi": "10.1080/14656566.2023.2201372",
+    "first_author": "Boscolo Bielo L",
+    "pubtype": "review; journal article"
+   },
+   {
+    "id": "37432550",
+    "src": "MED",
+    "pmid": "37432550",
+    "title": "Letter to the Editor Regarding \"Cost-Effectiveness of Neoadjuvant Pembrolizumab Plus Chemotherapy Followed by Adjuvant Single Agent Pembrolizumab for High-Risk Early-Stage Triple Negative Breast Cancer in the United States\".",
+    "year": "2023",
+    "journal": "Adv Ther",
+    "doi": "10.1007/s12325-023-02596-w",
+    "first_author": "Sorscher S.",
+    "pubtype": "letter; comment"
+   }
+  ]
+ }
+}
