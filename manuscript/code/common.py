@@ -19,9 +19,9 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 MAIN = ROOT / "output" / "phase2" / "main"
 P1 = ROOT / "output" / "phase1"
-VER = "v2"  # version written by this run; earlier versions are in manuscript/archive/
-PREV = "v1"
-BASE = "v1（manuscript/archive/v1/ 的交付物与同一套生成代码）"
+VER = "v3"  # version written by this run; earlier versions are in manuscript/archive/
+PREV = "v2"
+BASE = "v2（manuscript/archive/v2/ 的交付物与同一套生成代码）"
 OUT = ROOT / "manuscript" / VER
 ARCHIVE_PREV = ROOT / "manuscript" / "archive" / PREV
 FIGDIR = OUT / "figures"
@@ -34,16 +34,18 @@ PARAMS_XLSX = ROOT / "input" / "params" / "parameters_v10.xlsx"
 # legends read these labels.
 SUPP = {
     "params": "S1",            # all inputs (Methods, Study background)
-    "methods_survival": "S1",  # Supplementary Methods S1: survival model and validation
+    "methods_survival": "S1",  # Supplementary Methods S1: survival model and validation (written with Methods)
     "fig_validation": "S1",    # Supplementary Fig. S1: model OS/EFS vs reconstructed KM and final analysis
     "validation": "S2",        # Supplementary Table S2: validation criteria and 7-year comparison
-    "cheers": "S3",            # CHEERS 2022 checklist (end of Statistical analysis)
-    "capgrid": "S4",           # data of Fig. 2 (former Table 2 panel A): full HR grid, both thresholds, early-recurrence scenario
-    "duration": "S5",          # effect duration and post-operative continuation, full grid
-    "oneway": "S6",            # data of Fig. 3
-    "netbenefit": "S7",        # one-year cohort net benefit (N from the JBCS registry report no. 55)
-    "other": "S8",             # other scenarios: utility value sets (Japan first, US, UK, Australia) and Elmore
-    "pathB": "S9",             # effect on pCR (path B)
+    "cheers": "S3",            # CHEERS 2022 checklist (end of Statistical analysis; written with Methods)
+    "capgrid": "S4",           # Results aim 1: data of Fig. 2 (HR grid, both thresholds, early-recurrence scenario)
+    "decomp": "S5",            # Results aim 1: incremental costs by category, main comparison, HR 0.85
+    "duration": "S6",          # Results aim 1: effect duration and post-operative continuation, full grid
+    "netbenefit": "S7",        # Results aim 1: one-year cohort net benefit (JBCS registry report no. 55)
+    "pathB": "S8",             # Results aim 4: effect on pCR (path B)
+    "oneway": "S9",            # Results last paragraph: values of Fig. 3 and Supplementary Fig. S2
+    "fig_icer": "S2",          # Supplementary Fig. S2: one-way analysis of the reference ICER
+    "other": "S10",            # Results last paragraph: utility value sets (Japan first), Elmore, S-JP
 }
 
 MINUS = "−"

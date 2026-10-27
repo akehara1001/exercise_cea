@@ -93,7 +93,7 @@ def page_break(doc) -> None:
 def table(doc, rows: list[list[str]], bold_rows: set[int] = frozenset(), widths_mm=None):
     """rows[0] is the header. A row with one non-empty first cell and the rest
     empty is a group/panel label row and is merged across the table."""
-    ncol = len(rows[0])
+    ncol = max(len(r) for r in rows)
     t = doc.add_table(rows=len(rows), cols=ncol)
     t.style = doc.styles["Table Grid"]
     for i, row in enumerate(rows):

@@ -237,29 +237,52 @@ EN = {
     "C01": "Follow-up cost per year, years 1 to 2",
     "A04": "Drug administration cost per visit",
     "U01": "Utility, event-free during treatment",
+    "D03": "First-line treatment, monthly cost, without pembrolizumab",
+    "D04": "First-line treatment duration, without pembrolizumab",
+    "A06": "Surgery cost",
+    "B01": "Immune-related AE cost: hypothyroidism",
+    "B02": "Immune-related AE cost: hyperthyroidism",
+    "B03": "Immune-related AE cost: adrenal insufficiency",
+    "B04": "Immune-related AE cost: hypophysitis",
+    "B08": "Immune-related AE cost: severe skin reactions",
+    "B10": "Immune-related AE cost: other serious events",
+    "B23P": "Adrenal insufficiency incidence, with pembrolizumab",
+    "B28P": "Severe skin reaction incidence, with pembrolizumab",
+    "B31C": "Febrile neutropenia incidence, without pembrolizumab",
+    "B31P": "Febrile neutropenia incidence, with pembrolizumab",
 }
 RULE_TAG = {"±25%": "[±25%]", "片側対称": "[mirrored]", "薬価固定": "[price]"}
 
 
-def fig3():
+def tornado(col_lo, col_hi, col_base, stem, where, xlim, xstep, xlabel, top=None, height_mm=128, legend_loc="lower right"):
+    """Bars for one input at its lower (dark) and upper (light) bound around the base-case line.
+    Rows: inputs whose two results differ by more than 1e-6 x base (rule of R/23_phase2b_report.R),
+    ordered by width; top keeps the widest rows when given."""
     ow = csv("oneway_base.csv")
-    base = float(ow.cap_base.iloc[0])
-    ow = ow.assign(w=(ow.cap_high - ow.cap_low).abs())
-    sel = ow[ow.w > 1e-6 * max(1, abs(base))].sort_values("w", ascending=False)
+    base = float(ow[col_base].iloc[0])
+    ow = ow.assign(w=(ow[col_hi] - ow[col_lo]).abs())
+    allrows = ow[ow.w > 1e-6 * max(1, abs(base))].sort_values("w", ascending=False)
+    sel = allrows if top is None else allrows.head(top)
     n_rows = len(sel)
-    if set(sel.param_id) != set(EN):
-        raise ValueError(f"label table does not match the rows that change the result: {sorted(set(sel.param_id) ^ set(EN))}")
-    REG.r(str(n_rows), "Fig. 3 legend (number of inputs shown)", "output/phase2/main/oneway_base.csv",
-          "rows with |cap_high - cap_low| > 1e-6 x cap_base (same rule as R/23_phase2b_report.R tornado())", n_rows)
-    REG.r(f"{n_rows} rows", "Fig. 3, bars", "output/phase2/main/oneway_base.csv", "param_id, cap_low, cap_high, cap_base / 1,000", "see file")
-    W, H = 170, 128
+    missing = sorted(set(sel.param_id) - set(EN))
+    if missing:
+        raise ValueError(f"no short label for {missing}")
+    if top is None and stem == "fig3" and set(sel.param_id) != set(k for k in EN if k in set(allrows.param_id)):
+        raise ValueError("label table does not match the rows that change the result")
+    REG.r(str(len(allrows)), f"{where} legend (number of inputs that changed the result)", "output/phase2/main/oneway_base.csv",
+          f"rows with |{col_hi} - {col_lo}| > 1e-6 x {col_base} (same rule as R/23_phase2b_report.R tornado())", len(allrows))
+    if top is not None:
+        REG.r(str(n_rows), f"{where} legend (number of inputs shown)", "output/phase2/main/oneway_base.csv",
+              f"the {n_rows} widest rows (R/23_phase2b_report.R tornado(top = 20))", n_rows)
+    REG.r(f"{n_rows} rows", f"{where}, bars", "output/phase2/main/oneway_base.csv", f"param_id, {col_lo}, {col_hi}, {col_base} / 1,000", "see file")
+    W, H = 170, height_mm
     fig, ax = plt.subplots(figsize=(W * MM, H * MM))
-    fig.subplots_adjust(left=0.50, right=0.975, bottom=0.10, top=0.985)
+    fig.subplots_adjust(left=0.50, right=0.975, bottom=0.10 * 128 / H, top=1 - 0.015 * 128 / H)
     y = np.arange(n_rows)[::-1]
     labels = []
     for yi, (_, r) in zip(y, sel.iterrows()):
         b0 = base / 1e3
-        for v, fc, ec in ((r.cap_low / 1e3, "0.25", "black"), (r.cap_high / 1e3, "0.85", "black")):
+        for v, fc, ec in ((r[col_lo] / 1e3, "0.25", "black"), (r[col_hi] / 1e3, "0.85", "black")):
             ax.barh(yi + (0.19 if fc == "0.25" else -0.19), v - b0, left=b0, height=0.36, color=fc, edgecolor=ec, lw=0.4)
         tag = RULE_TAG.get(r.range_rule, "") if isinstance(r.range_rule, str) else ""
         labels.append(f"{EN[r.param_id]} ({r.param_id})" + (f" {tag}" if tag else ""))
@@ -267,18 +290,23 @@ def fig3():
     ax.set_yticklabels(labels)
     ax.tick_params(axis="y", length=0)
     ax.axvline(base / 1e3, color="black", lw=0.8)
-    ax.set_xlim(2600, 2850)
-    ax.set_xticks(range(2600, 2851, 50))
-    ax.set_xticklabels([f"{t:,}" for t in range(2600, 2851, 50)])
-    ax.set_xlabel("Maximum affordable program cost (JPY 1,000)")
+    ax.set_xlim(*xlim)
+    ax.set_xticks(range(xlim[0], xlim[1] + 1, xstep))
+    ax.set_xticklabels([f"{t:,}" for t in range(xlim[0], xlim[1] + 1, xstep)])
+    ax.set_xlabel(xlabel)
     ax.set_ylim(-0.7, n_rows - 0.3)
     handles = [Patch(facecolor="0.25", edgecolor="black", lw=0.4, label="Input at its lower bound"),
                Patch(facecolor="0.85", edgecolor="black", lw=0.4, label="Input at its upper bound")]
-    ax.legend(handles=handles, loc="lower right", borderaxespad=0.2)
+    ax.legend(handles=handles, loc=legend_loc, borderaxespad=0.2)
     for tok, why in (("25", "±25% range rule (docs/model_spec.md section 6)"),):
-        REG.label(tok, "Fig. 3, labels", why)
+        REG.label(tok, f"{where}, labels", why)
     fig.canvas.draw()
-    return export(fig, "fig3")
+    return export(fig, stem)
+
+
+def fig3():
+    return tornado("cap_low", "cap_high", "cap_base", "fig3", "Fig. 3", (2600, 2850), 50,
+                   "Maximum affordable program cost (JPY 1,000)")
 
 
 p1, p2, p3 = fig1(), fig2(), fig3()
@@ -341,3 +369,99 @@ doc.save(OUT / f"figures_{VER}.docx")
 json.dump({"rows": REG.rows, "labels": REG.labels, "images": img_info},
           open(BUILD / "_ledger_figures.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=str)
 print(json.dumps(img_info, indent=1))
+
+
+# ================================================================ supplementary figures (placed in the supplement docx)
+REG = Registry()  # separate registry: _ledger_suppfigs.json
+import pandas as pd  # noqa: E402
+from common import P1  # noqa: E402
+
+ARM_TRIAL = {"pembro": "Chemotherapy plus pembrolizumab", "placebo": "Chemotherapy alone"}
+
+
+def km_curve(path):
+    """Kaplan-Meier estimate with a log-transformed 95% CI (Greenwood), from reconstructed patient-level data."""
+    d = pd.read_csv(path)
+    t, e = d.time.values, d.status.values
+    times = np.unique(t[e == 1])
+    s, var, out = 1.0, 0.0, [(0.0, 100.0, 100.0, 100.0)]
+    for u in times:
+        n = (t >= u).sum()
+        dd = ((t == u) & (e == 1)).sum()
+        s *= 1 - dd / n
+        if n > dd:
+            var += dd / (n * (n - dd))
+        se = np.sqrt(var)
+        out.append((u, 100 * s, 100 * s * np.exp(-1.96 * se), min(100.0, 100 * s * np.exp(1.96 * se))))
+    return np.array(out)
+
+
+def figS1():
+    W, H = 170, 96
+    fig, axs = plt.subplots(1, 2, figsize=(W * MM, H * MM), sharey=False)
+    fig.subplots_adjust(left=0.08, right=0.985, bottom=0.32, top=0.96, wspace=0.25)
+    cc = csv("calibration_curves.csv", P1)
+    f7 = csv("calibration_final7y.csv", P1)
+    ec = csv("engine_curves.csv", P1)
+    REG.r("curves", "Supplementary Fig. S1a, KM and 95% CI", "output/phase1/calibration_curves.csv", "arm, month, km, km_lo, km_hi (reconstructed OS, KEYNOTE-522 2024 Fig. 1A)", "see file")
+    REG.r("curves", "Supplementary Fig. S1a, model OS", "output/phase1/calibration_curves.csv", "arm, month, after (engine OS, round 15)", "see file")
+    REG.r("curves", "Supplementary Fig. S1b, KM and 95% CI", "data/ipd/K24_F2A_EFS_pembro.csv; data/ipd/K24_F2A_EFS_placebo.csv",
+          "time (months), status; Kaplan-Meier with log-transformed Greenwood 95% CI computed in make_figures.py", "see files")
+    REG.r("curves", "Supplementary Fig. S1b, model EFS", "output/phase1/engine_curves.csv", "arm = pembro / chemo, pcr = all, scenario = base, time x 12, EFS", "see file")
+    REG.r("4 points", "Supplementary Fig. S1a and b, final analysis 7-year estimates", "output/phase1/calibration_final7y.csv",
+          "id = os7_pembro, os7_placebo, efs7_pembro, efs7_placebo: value, ci95_lo, ci95_hi (month 84)", "see file")
+    for k, (ax, endpoint) in enumerate(zip(axs, ("OS", "EFS"))):
+        for arm, ls, eng_arm, mk, mfc in (("pembro", "-", "pembro", "o", "black"), ("placebo", "--", "chemo", "o", "white")):
+            if endpoint == "OS":
+                c = cc[cc.arm == arm].sort_values("month")
+                tt = np.r_[0, c.month.values]
+                km, lo, hi = np.r_[100, c.km.values], np.r_[100, c.km_lo.values], np.r_[100, c.km_hi.values]
+                model_t, model_y = np.r_[0, c.month.values], np.r_[100, c.after.values]
+            else:
+                a = km_curve(ROOT / "data" / "ipd" / f"K24_F2A_EFS_{arm}.csv")
+                a = a[a[:, 0] <= 84]
+                tt, km, lo, hi = a[:, 0], a[:, 1], a[:, 2], a[:, 3]
+                e = ec[(ec.arm == eng_arm) & (ec.pcr == "all") & (ec.scenario == "base")].sort_values("time")
+                e = e[e.time <= 7 + 1e-9]
+                model_t, model_y = 12 * e.time.values, e.EFS.values
+            ax.fill_between(tt, lo, hi, step="post", color="0.85" if arm == "pembro" else "0.93", alpha=0.8, lw=0, zorder=1)
+            ax.step(tt, km, where="post", color="black", lw=0.9, ls=ls, zorder=3)
+            ax.plot(model_t, model_y, color="0.45", lw=2.0, ls=ls, zorder=2)
+            r = f7[f7.id == f"{endpoint.lower()}7_{arm}"].iloc[0]
+            ax.errorbar(84 + (0.8 if arm == "pembro" else -0.8), r.value, yerr=[[r.value - r.ci95_lo], [r.ci95_hi - r.value]],
+                        fmt=mk, mfc=mfc, mec="black", ecolor="black", ms=4, capsize=2, lw=0.8, zorder=4)
+        ax.set_xlim(0, 87)
+        ax.set_xticks(range(0, 85, 12))
+        ax.set_ylim(60, 100.5)
+        ax.set_yticks(range(60, 101, 10))
+        ax.set_xlabel("Months since randomization")
+        ax.set_ylabel(("Overall survival" if endpoint == "OS" else "Event-free survival") + " (%)")
+        ax.text(-0.15, 1.0, "ab"[k], transform=ax.transAxes, fontsize=FS + 1, fontweight="bold", ha="left", va="bottom")
+    handles = [Line2D([], [], color="black", lw=0.9, ls="-"), Line2D([], [], color="black", lw=0.9, ls="--"),
+               Line2D([], [], color="0.45", lw=2.0, ls="-"), Line2D([], [], color="0.45", lw=2.0, ls="--"),
+               Line2D([], [], color="black", marker="o", ls="none", ms=4), Line2D([], [], color="black", marker="o", mfc="white", ls="none", ms=4)]
+    labels = ["Kaplan-Meier, " + ARM_TRIAL["pembro"].lower(), "Kaplan-Meier, " + ARM_TRIAL["placebo"].lower(),
+              "Model, " + ARM_TRIAL["pembro"].lower(), "Model, " + ARM_TRIAL["placebo"].lower(),
+              "Final analysis at 7 years, " + ARM_TRIAL["pembro"].lower(), "Final analysis at 7 years, " + ARM_TRIAL["placebo"].lower()]
+    fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(0.5, 0.005), ncol=2, handlelength=3.0, columnspacing=1.6, labelspacing=0.45)
+    fig.canvas.draw()
+    require_matplotlib_panel_alignment(fig, json_out=FIGDIR / "figS1.alignment.json", tolerance_pt=1.5, gutter_tolerance_pt=1.5, strict=True)
+    return export(fig, "figS1")
+
+
+def figS2():
+    return tornado("icer_low", "icer_high", "icer_base", "figS2", "Supplementary Fig. S2", (1200, 2400), 200,
+                   "ICER (JPY 1,000 per QALY)", top=20, legend_loc="lower left")
+
+
+s1, s2 = figS1(), figS2()
+supp_info = {}
+for name, (pdf, png, tif) in (("Supplementary Fig. S1", s1), ("Supplementary Fig. S2", s2)):
+    im = Image.open(png)
+    wpx, hpx = im.size
+    dpi = im.info.get("dpi", (None, None))
+    supp_info[name] = dict(png=rel(png), pixels=f"{wpx} x {hpx}", dpi=[round(float(x), 1) for x in dpi] if dpi[0] else None,
+                           inserted_width_mm=round(wpx / 600 * 25.4, 2), height_mm=round(hpx / 600 * 25.4, 2))
+json.dump({"rows": REG.rows, "labels": REG.labels, "images": supp_info},
+          open(BUILD / "_ledger_suppfigs.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=str)
+print(json.dumps(supp_info, indent=1))

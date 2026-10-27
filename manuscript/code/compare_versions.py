@@ -53,8 +53,12 @@ L = [f"# {PREV} 与 {VER} 的逐段对照", "",
      f"由 `manuscript/code/compare_versions.py` 生成。{PREV} = `manuscript/archive/{PREV}/`，{VER} = `manuscript/{VER}/`。"
      "表外的每个段落与表内的每个单元格各为一项，按文档顺序用 difflib 对齐；列出全部不相同的块（两侧原文）。", ""]
 summary = []
-for name in ("tables", "figures"):
+for name in ("tables", "figures", "supplement", "results"):
     a, b = ARCHIVE_PREV / f"{name}_{PREV}.docx", OUT / f"{name}_{VER}.docx"
+    if not a.exists():
+        L += [f"## {name}_{VER}.docx", "", f"{PREV} 中没有此文件（本版新建），不作逐段对照。", ""]
+        summary.append((name, 0, None, "new"))
+        continue
     ia, ib = items(a), items(b)
     sm = difflib.SequenceMatcher(a=[t for _, t in ia], b=[t for _, t in ib], autojunk=False)
     blocks = [op for op in sm.get_opcodes() if op[0] != "equal"]
@@ -80,6 +84,10 @@ for f in sorted(p.name for p in FIGDIR.iterdir() if p.suffix in (".png", ".tiff"
     note = ""
     if not same and f.endswith((".svg", ".pdf")):
         note = "SVG 与 PDF 内含生成时刻（SVG 另有随机的 clip-path 编号）；绘图内容以 PNG/TIFF 逐字节比较为准"
-    L.append(f"| figures/{f} | {'是' if same else '否'} | {note} |")
+    if not pa.exists():
+        note, mark = "本版新建", "—"
+    else:
+        mark = '是' if same else '否'
+    L.append(f"| figures/{f} | {mark} | {note} |")
 (OUT / f"diff_{PREV}_{VER}.md").write_text("\n".join(L) + "\n", encoding="utf-8")
 print(summary)
