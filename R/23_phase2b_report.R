@@ -1,6 +1,6 @@
 # 23_phase2b_report.R
 # Figures and output/phase2/phase2b_report.md from the results of R/22_phase2b_main.R
-# (output/phase2/main/; section 7 from its plan9 part, 2026-10-26). Plan: docs/analysis_plan_phase2.md. Internal check only: the rows marked
+# (output/phase2/main/; section 7 from its plan9 and plan10 parts, 2026-10-26). Plan: docs/analysis_plan_phase2.md. Internal check only: the rows marked
 # 【要確認】 are provisional and the results are not for Dr Ozaki as they are.
 
 source(file.path(Sys.getenv("EXERCISE_CEA_ROOT", "C:/Users/原明美/Documents/ClaudeCode/exercise_cea"), "R", "config.R"))
@@ -342,5 +342,34 @@ add("### 7.4 不做 EVPI 的理由", "",
             CR$hr0[CR$comparison == "main" & CR$column == "base" & CR$lambda == 5e6 & CR$programme == "E02"],
             pct(SM$p_cap500_ge_E02[SM$comparison == "main" & SM$column == "base" & SM$axis == "hr0" & abs(SM$x - 0.95) < 1e-9]),
             pct(SM$p_cap500_ge_E02[SM$comparison == "main" & SM$column == "base" & SM$axis == "hr0" & abs(SM$x - 1.00) < 1e-9])), "")
+# 7.5 section 10 of the plan: the Japanese utility scenario and the break-even points of the other scenarios
+CX <- rd("sc_crossings.csv"); UJC <- rd("sc_util_jp_det_caps.csv"); UJR <- rd("sc_util_jp_det_reference.csv")
+DCB <- rd("det_caps.csv"); DRB <- rd("det_reference.csv")
+S75 <- c(base = "基准", utility_jp = "效用：日本人群（U01、U02 Iwatani 2021；U04 Shiroiwa 2017）", utility_us = "效用：美国价值集",
+         utility_uk = "效用：英国价值集", utility_au = "效用：澳大利亚价值集",
+         elmore = "术前进展后生存（Elmore；边界情景）", sjp = "S-JP（含暂定值 F01P）")
+cap85 <- function(n, comp) { d <- if (n == "base") DCB else if (n == "utility_jp") UJC else SC[SC$scenario == n, ]
+  d <- d[d$comparison == comp & d$column == "base" & d$axis == "hr0" & abs(d$x - 0.85) < 1e-9, ]; stopifnot(nrow(d) == 1); man(d$cap_500) }
+icer9 <- function(n) { d <- if (n == "base") DRB else if (n == "utility_jp") UJR else SF[SF$scenario == n, ]
+  d <- d[d$column == "base", ]; stopifnot(nrow(d) == 1); man(d$icer) }
+bx <- function(n, comp, ty, en) { d <- CX[CX$scenario == n & CX$comparison == comp & CX$column == "base" & CX$type == ty & CX$programme == en &
+  (if (ty == "cap_eq_programme") CX$lambda == 5e6 else is.na(CX$lambda)), ]; stopifnot(nrow(d) == 1); d$hr0 }
+trip <- function(n, comp) paste(sprintf("%.3f", sapply(c("E01", "E02", "E03"), function(e) bx(n, comp, "avoided_eq_programme", e))), collapse = " / ")
+same_as_base <- function(n) max(abs(CX$hr0[CX$scenario == n] - CX$hr0[CX$scenario == "base"]))
+add("### 7.5 日本人群效用值的情景与各情景的分界点（分析计划第 10 节）", "",
+    "分析计划第 10 节在计算前单独提交（d05d824）。计算：`R/22_phase2b_main.R plan10`（确定性，基准参数，不做 PSA）。日本人群的效用值（`data/params_hara/utility_scenarios.csv`：U01、U02 = 0.89，U04 = 0.742，U03、U05 同基准）在 `docs/model_spec.md` 第 5 节中已定为正式情景，但分析计划第 6 节漏列，现补入；定义与美国、英国、澳大利亚的价值集相同。", "",
+    md_table(data.frame(情景 = S75,
+                        `主比较上限，hr0 0.85（万日元）` = sapply(names(S75), cap85, comp = "main"),
+                        `次比较上限，hr0 0.85（万日元）` = sapply(names(S75), cap85, comp = "secondary"),
+                        `主比较：上限 = E02 的 hr0` = sapply(names(S75), function(n) sprintf("%.3f", bx(n, "main", "cap_eq_programme", "E02"))),
+                        `次比较：上限 = E02 的 hr0` = sapply(names(S75), function(n) sprintf("%.3f", bx(n, "secondary", "cap_eq_programme", "E02"))),
+                        `主比较：避免的医疗费用 = E01 / E02 / E03 的 hr0` = sapply(names(S75), trip, comp = "main"),
+                        `次比较：避免的医疗费用 = E01 / E02 / E03 的 hr0` = sapply(names(S75), trip, comp = "secondary"),
+                        `参照 ICER（万日元/QALY）` = sapply(names(S75), icer9), check.names = FALSE, row.names = NULL)), "",
+    sprintf("λ = 500 万日元/QALY，主比较为基准栏。分界点的求法与稿件 Table 2 的基准分界点（`sc_base_crossings.csv`）相同：`crossings()`，在 hr0 ∈ [0.30, 1.00] 上用 uniroot（tol 1e-6）连续求解；同一程序重算的基准与 `sc_base_crossings.csv` 一致，美国、英国、澳大利亚、Elmore、S-JP 的格点上限与参照 ICER 与 `scenario_caps.csv`、`scenario_reference.csv` 一致（脚本内核对）。全部值（含 λ = 750 万日元）见 `sc_crossings.csv`；日本人群情景的全部格点见 `sc_util_jp_det_caps.csv`。"), "",
+    sprintf("效用值的情景只改变 QALY，避免的医疗费用的分界点与基准相同（最大差 %.1e）。Elmore 情景只改变术前进展后的生存，而运动效应只作用于手术后，加运动与不加运动的两组在这一部分相同，所以全部分界点与基准相同（最大差 %.1e）；它与试验第 1 至 3 年的 OS 不一致，只作边界情景。S-JP 依赖暂定值 F01P（第 6 节）。",
+            max(sapply(c("utility_jp", "utility_us", "utility_uk", "utility_au"), function(n)
+              max(abs(CX$hr0[CX$scenario == n & CX$type == "avoided_eq_programme"] - CX$hr0[CX$scenario == "base" & CX$type == "avoided_eq_programme"])))),
+            same_as_base("elmore")), "")
 writeLines(L, file.path(ROOT, "output", "phase2", "phase2b_report.md"), useBytes = TRUE)
 cat("wrote phase2b_report.md:", length(L), "lines\n")

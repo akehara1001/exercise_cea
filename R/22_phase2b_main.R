@@ -10,7 +10,9 @@
 #        benefit for one year's patients (from the existing results and input/params/cohort_N_jbcs2024.csv, by
 #        the 9.3 addendum; the earlier cohort_value.csv and cohort_value_N.csv are superseded and not rewritten);
 #        plan9 = the three. The files of det and psa are not rewritten.
-# Usage: Rscript R/22_phase2b_main.R [det|psa|all|plan9|plan9_det|plan9_psa|plan9_cohort] [workers]
+#   plan10 (section 10 of the plan, deterministic): the Japanese utility scenario (sc_util_jp_*) and the break-even
+#        points of the utility scenarios, Elmore and S-JP by crossings() (sc_crossings.csv).
+# Usage: Rscript R/22_phase2b_main.R [det|psa|all|plan9|plan9_det|plan9_psa|plan9_cohort|plan10] [workers]
 #        (default all, physical cores - 1)
 # Outputs: output/phase2/main/ (csv and png)
 
@@ -96,6 +98,32 @@ rebuild <- function(i) {
   Pb$pembro_dr_k <- unname(cb["pembro_dr_k"])
   Pb
 }
+# utility value sets of the scenarios (det, plan10): U01-U05 from the notes of the input sheet (US, UK, Australia)
+util_set <- function(set) {
+  pat <- c(us = "米国[^0-9]*([0-9.]+)", uk = "英国[^0-9]*([0-9.]+)", au = "豪州[^0-9]*([0-9.]+)")[[set]]
+  pv <- PV0
+  for (u in sprintf("U%02d", 1:5)) {
+    m <- regmatches(note_of[[u]], regexec(pat, note_of[[u]]))[[1]]
+    stopifnot(length(m) == 2); pv[[u]] <- as.numeric(m[2])
+  }
+  pv
+}
+# break-even points in hr0 on [0.30, 1.00] by uniroot, tol 1e-6 (plan sections 9.1 and 10.2; sc_base_crossings.csv,
+# Table 2 of the manuscript): cap = programme cost (lambda 5,000,000 and 7,500,000) and avoided medical costs (-dC,
+# programme cost excluded) = programme cost; E01-E03 at their base values. Px: parameter set of the base column;
+# Pk: that of the column "early-DR k external" of the main comparison (left out when NULL); sjp: S-JP in all arms
+crossings <- function(pv, Px = P, Pk = NULL, sjp = FALSE)
+  do.call(rbind, lapply(c(list(c("main", "base")), if (!is.null(Pk)) list(c("main", "kext")), list(c("secondary", "base"))), function(cc) {
+    Pc <- if (cc[2] == "kext") Pk else Px
+    ref <- econ_arm(if (cc[1] == "main") "pembro" else "chemo", Pc, pv, sjp = sjp)
+    g <- function(h) { ex <- econ_arm(if (cc[1] == "main") "both" else "exercise", Pc, pv, exercise = path_a("base", h), sjp = sjp)
+                       c(dQ = ex$qaly - ref$qaly, dC = programme_dcost(ex, ref)) }
+    solve <- function(f) { lo <- f(0.30); hi <- f(1.00); if (sign(lo) != sign(hi)) uniroot(f, c(0.30, 1.00), tol = 1e-6)$root else NA_real_ }
+    do.call(rbind, lapply(names(E_LINES), function(en) rbind(
+      data.frame(comparison = cc[1], column = cc[2], type = "avoided_eq_programme", lambda = NA_real_, programme = en, cost = E_LINES[[en]],
+                 hr0 = solve(function(h) -g(h)[["dC"]] - E_LINES[[en]])),
+      do.call(rbind, lapply(LAMBDA, function(l) data.frame(comparison = cc[1], column = cc[2], type = "cap_eq_programme", lambda = l,
+                 programme = en, cost = E_LINES[[en]], hr0 = solve(function(h) { v <- g(h); l * v[["dQ"]] - v[["dC"]] - E_LINES[[en]] }))))))) }))
 # PSA summaries (psa and plan9): caps by comparison, column, axis and x; reference comparison by column
 q <- function(v) quantile(v, c(0.5, 0.025, 0.975), names = FALSE)
 caps_summary <- function(EX) {
@@ -151,15 +179,6 @@ if (WHAT %in% c("det", "all")) {
                    on_main_axis = c(!is.na(sa$root) && sa$root >= 0.70, !is.na(sb$root) && sb$root <= 0.10))
   wcsv(YS, "det_yardstick.csv")
   # scenarios (deterministic)
-  util_set <- function(set) {
-    pat <- c(us = "米国[^0-9]*([0-9.]+)", uk = "英国[^0-9]*([0-9.]+)", au = "豪州[^0-9]*([0-9.]+)")[[set]]
-    pv <- PV0
-    for (u in sprintf("U%02d", 1:5)) {
-      m <- regmatches(note_of[[u]], regexec(pat, note_of[[u]]))[[1]]
-      stopifnot(length(m) == 2); pv[[u]] <- as.numeric(m[2])
-    }
-    pv
-  }
   SC <- list(
     base = list(),
     sjp = list(sjp = TRUE),
@@ -290,25 +309,12 @@ if (WHAT %in% c("plan9", "plan9_det")) {
       r0 <- read.csv(file.path(OUT, "det_reference.csv")); stopifnot(max(abs(R0$icer - r0$icer[match(R0$column, r0$column)])) < 1e-6)
     } else { wcsv(X, paste0(s, "_det_caps.csv")); wcsv(R0, paste0(s, "_det_reference.csv")) }
   }
-  # crossings in hr0 on [0.30, 1.00] by uniroot: cap = programme cost (lambda 5,000,000 and 7,500,000) and
-  # avoided medical costs (-dC, programme cost excluded) = programme cost; E01-E03 at their base values
-  crossings <- function(pv) do.call(rbind, lapply(list(c("main", "base"), c("main", "kext"), c("secondary", "base")), function(cc) {
-    Px <- if (cc[2] == "kext") PK else P
-    ref <- econ_arm(if (cc[1] == "main") "pembro" else "chemo", Px, pv)
-    g <- function(h) { ex <- econ_arm(if (cc[1] == "main") "both" else "exercise", Px, pv, exercise = path_a("base", h))
-                       c(dQ = ex$qaly - ref$qaly, dC = programme_dcost(ex, ref)) }
-    solve <- function(f) { lo <- f(0.30); hi <- f(1.00); if (sign(lo) != sign(hi)) uniroot(f, c(0.30, 1.00), tol = 1e-6)$root else NA_real_ }
-    do.call(rbind, lapply(names(E_LINES), function(en) rbind(
-      data.frame(comparison = cc[1], column = cc[2], type = "avoided_eq_programme", lambda = NA_real_, programme = en, cost = E_LINES[[en]],
-                 hr0 = solve(function(h) -g(h)[["dC"]] - E_LINES[[en]])),
-      do.call(rbind, lapply(LAMBDA, function(l) data.frame(comparison = cc[1], column = cc[2], type = "cap_eq_programme", lambda = l,
-                 programme = en, cost = E_LINES[[en]], hr0 = solve(function(h) { v <- g(h); l * v[["dQ"]] - v[["dC"]] - E_LINES[[en]] }))))))) }))
   cl <- makeCluster(min(N_WORKERS, length(PVS)))
   clusterExport(cl, c("ROOT"))
   invisible(clusterEvalQ(cl, { source(file.path(ROOT, "R", "config.R")); source(file.path(ROOT, "R", "survmodels.R"))
     source(file.path(ROOT, "R", "engine.R")); source(file.path(ROOT, "R", "econ.R")); suppressPackageStartupMessages(library(survival)); NULL }))
   clusterExport(cl, c("P", "PK", "E_LINES", "LAMBDA", "path_a", "crossings"))
-  CRS <- parLapply(cl, PVS, crossings)
+  CRS <- parLapply(cl, PVS, function(pv) crossings(pv, P, PK))
   stopCluster(cl)
   CR0 <- read.csv(file.path(OUT, "det_e_crossings.csv"))
   b <- CRS$sc_base[CRS$sc_base$type == "cap_eq_programme", ]
@@ -437,4 +443,43 @@ if (WHAT %in% c("plan9", "plan9_cohort")) {
                total_median = qq[1], total_lo = qq[2], total_hi = qq[3])
   }))))))
   wcsv(CJ, "cohort_value_jbcs2024.csv")
+}
+
+# ---------------------------------------------------------------- plan10 (docs/analysis_plan_phase2.md section 10)
+if (WHAT == "plan10") {
+  # 10.1 Japanese utility scenario (data/params_hara/utility_scenarios.csv, column japan; U03 and U05 as the base),
+  # as the other utility sets of the det part: caps on both axes (base column) and the reference ICER
+  t0 <- Sys.time()
+  UJ <- read.csv(file.path(ROOT, "data", "params_hara", "utility_scenarios.csv"), stringsAsFactors = FALSE, encoding = "UTF-8")
+  stopifnot(identical(UJ$param_id, sprintf("U%02d", 1:5)), max(abs(UJ$base - PV0[UJ$param_id])) < 1e-9)
+  pv_jp <- PV0; pv_jp[UJ$param_id] <- UJ$japan
+  r <- evaluate(P, pv_jp)
+  wcsv(data.frame(scenario = "utility_jp", add_caps(r$ex)), "sc_util_jp_det_caps.csv")
+  wcsv(data.frame(scenario = "utility_jp", r$ref, icer = r$ref$dC / r$ref$dQ), "sc_util_jp_det_reference.csv")
+  # 10.2 break-even points by crossings() (the method of sc_base_crossings.csv); the base again as a check, and the
+  # other scenarios checked against scenario_caps.csv and scenario_reference.csv (same definitions as the det part)
+  SC10 <- list(base = list(), utility_jp = list(pv = pv_jp), utility_us = list(pv = util_set("us")), utility_uk = list(pv = util_set("uk")),
+               utility_au = list(pv = util_set("au")), elmore = list(P = within(P, preprog$scale <- 26 / 12)), sjp = list(sjp = TRUE))
+  SC0 <- read.csv(file.path(OUT, "scenario_caps.csv")); SF0 <- read.csv(file.path(OUT, "scenario_reference.csv"))
+  for (n in c("utility_us", "utility_uk", "utility_au", "elmore", "sjp")) {
+    s <- SC10[[n]]
+    r <- evaluate(if (is.null(s$P)) P else s$P, if (is.null(s$pv)) PV0 else s$pv, sjp = isTRUE(s$sjp))
+    X <- add_caps(r$ex); b <- SC0[SC0$scenario == n, ]
+    m <- match(paste(X$comparison, X$column, X$axis, X$x), paste(b$comparison, b$column, b$axis, b$x))
+    stopifnot(!anyNA(m), nrow(b) == nrow(X), max(abs(X$cap_500 - b$cap_500[m]), abs(X$cap_750 - b$cap_750[m])) < 1e-6,
+              abs(r$ref$dC / r$ref$dQ - SF0$icer[SF0$scenario == n & SF0$column == "base"]) < 1e-6)
+  }
+  cl <- makeCluster(min(N_WORKERS, length(SC10)))
+  clusterExport(cl, c("ROOT"))
+  invisible(clusterEvalQ(cl, { source(file.path(ROOT, "R", "config.R")); source(file.path(ROOT, "R", "survmodels.R"))
+    source(file.path(ROOT, "R", "engine.R")); source(file.path(ROOT, "R", "econ.R")); suppressPackageStartupMessages(library(survival)); NULL }))
+  clusterExport(cl, c("P", "PV0", "E_LINES", "LAMBDA", "path_a", "crossings"))
+  CX <- parLapply(cl, SC10, function(s) crossings(if (is.null(s$pv)) PV0 else s$pv, if (is.null(s$P)) P else s$P, sjp = isTRUE(s$sjp)))
+  stopCluster(cl)
+  CX <- do.call(rbind, lapply(names(CX), function(n) data.frame(scenario = n, CX[[n]])))
+  B0X <- read.csv(file.path(OUT, "sc_base_crossings.csv")); B0X <- B0X[B0X$column == "base", ]; b <- CX[CX$scenario == "base", ]
+  m <- match(paste(b$comparison, b$column, b$type, b$lambda, b$programme), paste(B0X$comparison, B0X$column, B0X$type, B0X$lambda, B0X$programme))
+  stopifnot(!anyNA(m), nrow(b) == nrow(B0X), max(abs(b$hr0 - B0X$hr0[m])) < 1e-9)   # same as sc_base_crossings.csv
+  wcsv(CX, "sc_crossings.csv")
+  cat(sprintf("plan10: %.1f minutes\n", as.numeric(difftime(Sys.time(), t0, units = "mins"))))
 }
