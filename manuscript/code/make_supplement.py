@@ -605,7 +605,8 @@ if MMAP and PAGES and PAGES.get("manuscript_sha256_before_numbering") != MMAP.ge
     PAGES = None  # pages of an older manuscript build
 CHEERS_LOG = {"pages_present": bool(MMAP and PAGES), "rows": []}
 SECTION_NAME = {"I": "Introduction", "M.SB": "Methods, Study background", "M.OUT": "Methods, Outcome", "M.VAR": "Methods, Variables",
-                "M.SA": "Methods, Statistical analysis", "R": "Results", "D": "Discussion", "IMP": "Implications", "L": "Limitations"}
+                "M.SA": "Methods, Statistical analysis", "R": "Results", "D": "Discussion", "IMP": "Implications", "L": "Limitations",
+                "A": "Abstract"}
 
 
 def page_of(pid):
@@ -641,9 +642,12 @@ def loc(*parts):
 
 
 SM = f"Supplementary Methods {SUPP['methods_survival']}"
+if MMAP:
+    assert "T.1" in MMAP["ids"], "the manuscript has no title paragraph"
+_pt = page_of("T.1")
 LOC = {
-    1: "Title page",
-    2: "Abstract",
+    1: "Title" + (f" (p. {_pt})" if _pt else ""),  # v8: title and abstract written
+    2: loc("A.1-A.4"),
     3: loc("I.1-I.4"),
     4: loc("M.SB.3"),
     5: loc("M.SB.1", "Table 1"),

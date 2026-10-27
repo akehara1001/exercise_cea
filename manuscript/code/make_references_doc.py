@@ -209,12 +209,16 @@ L += ["### 新颖性句的界限", "",
 # ---------------------------------------------------------------- 3 numbered list
 first_loc = {}
 order_ids = mm["order"]
+# number_refs.py counts every paragraph; the map skips the empty lines left for the front matter (v8)
+from docx import Document  # noqa: E402
+_nonempty = [i for i, p in enumerate(Document(OUT / f"manuscript_{VER}.docx").paragraphs) if p.text.strip()]
+pi2order = {pi: k for k, pi in enumerate(_nonempty)}
 for c in rf["citations"]:
     for k in c["keys"]:
         if k in first_loc:
             continue
         if c["doc"] == "manuscript":
-            o = order_ids[c["paragraph"]]
+            o = order_ids[pi2order[c["paragraph"]]]
             assert MARK_RE.search(o["text"]) and k in o["text"], (k, c["paragraph"])
             first_loc[k] = f"manuscript {o['id']}"
         else:

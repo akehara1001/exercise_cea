@@ -153,8 +153,9 @@ mm = json.load(open(BUILD / "_manuscript_map.json", encoding="utf-8"))
 rf_ = json.load(open(BUILD / "_refs.json", encoding="utf-8"))
 mled = {"rows": ml["rows"], "labels": []}
 
-HEADINGS = ["Introduction", "Methods", "Study background", "Outcome", "Variables", "Statistical analysis", "Results", "Discussion", "Implications",
-            "Limitations", "References"]
+ABS_LABELS = ["Objectives", "Methods", "Results", "Conclusions"]  # v8: labels of the Abstract (bold, own line)
+HEADINGS = ABS_LABELS + ["Introduction", "Methods", "Study background", "Outcome", "Variables", "Statistical analysis", "Results", "Discussion",
+                         "Implications", "Limitations", "References"]
 rt, _ = check_doc(OUT / f"tables_{VER}.docx", [tl], "landscape")
 rf, fdoc = check_doc(OUT / f"figures_{VER}.docx", [fl], "portrait")
 supp_orient = ["portrait" if kind in ("figure", "methods") else "landscape" for kind in sl["order_kinds"]]
@@ -184,21 +185,35 @@ align = {f: (lambda d: (d.get("verdict"), d.get("summary")))(json.load(open(FIGD
 
 # ================================================================ manuscript structure
 allp = [p for p in mdoc.paragraphs if p.text.strip()]
-heads = [p for p in allp if p.runs and all(r.bold for r in p.runs if r.text.strip())]
+# v8: the first paragraph is the title; it is checked below (plain, not bold) and never counted as a heading
+heads = [p for p in allp[1:] if p.runs and all(r.bold for r in p.runs if r.text.strip())]
 M = {}
 M["headings"] = [p.text for p in heads]
 M["headings_as_specified"] = M["headings"] == HEADINGS
 M["headings_bold_normal_12pt"] = all(p.style.name == "Normal" for p in heads)
-i_res = next(i for i, p in enumerate(allp) if p.text == "Results")
+i_intro = next(i for i, p in enumerate(allp) if p.text == "Introduction")  # v8: title and Abstract come first
+i_res = next(i for i, p in enumerate(allp) if i > i_intro and p.text == "Results")
 i_ref = next(i for i, p in enumerate(allp) if p.text == "References")
 i_dis = next(i for i, p in enumerate(allp) if p.text == "Discussion")
-body_ps = [p for p in allp[:i_ref] if p not in heads]  # Introduction to Limitations
+body_ps = [p for p in allp[i_intro:i_ref] if p not in heads]  # Introduction to Limitations
+front_ps = [p for p in allp[:i_intro] if p not in heads]  # title, then the four Abstract paragraphs
 res_ps = [p for p in allp[i_res + 1:i_dis]]
 ref_ps = allp[i_ref + 1:]
-ids = [o["id"] for o in mm["order"] if o["id"]]
+ids_all = [o["id"] for o in mm["order"] if o["id"]]
+ids = [k for k in ids_all if not k.startswith(("T.", "A."))]
+fids = [k for k in ids_all if k.startswith(("T.", "A."))]
 assert len(ids) == len(body_ps), (len(ids), len(body_ps))
+assert len(fids) == len(front_ps), (fids, len(front_ps))
 PID = dict(zip(ids, body_ps))
+PID.update(zip(fids, front_ps))
 M["body_paragraphs"] = len(body_ps)
+# title (v8): a plain Normal paragraph at the top, not bold, followed by the empty lines left for the front matter
+M["title"] = PID["T.1"].text
+M["title_is_first_paragraph"] = mdoc.paragraphs[0].text == PID["T.1"].text
+M["title_plain_normal_not_bold"] = PID["T.1"].style.name == "Normal" and not any(r.bold for r in PID["T.1"].runs)
+k_lab = next(i for i, p in enumerate(mdoc.paragraphs) if p.text == ABS_LABELS[0])
+M["empty_lines_after_title"] = sum(1 for p in mdoc.paragraphs[1:k_lab] if not p.text.strip())
+M["title_words"] = len(PID["T.1"].text.split())
 M["double_spacing_paragraphs"] = f"{sum(1 for p in allp if p.paragraph_format.line_spacing_rule == WD_LINE_SPACING.DOUBLE)}/{len(allp)}"
 M["line_numbering"] = any(s._sectPr.find(qn("w:lnNumType")) is not None for s in mdoc.sections)
 
@@ -258,7 +273,7 @@ R["numeric_tokens"] = sum(len(tokens(s["text"])) for s in sents)
 # ================================================================ Introduction and Methods: numbers registered per paragraph
 MI = {}
 miss = []
-for pid in ids:
+for pid in fids + ids:
     if pid.startswith("R."):
         continue
     reg = {r["shown"] for r in ml["rows"] if r["where"] == pid}
@@ -266,7 +281,32 @@ for pid in ids:
         if t not in reg:
             miss.append((pid, t))
 MI["numbers_not_registered_for_their_paragraph"] = miss
-MI["numeric_tokens"] = sum(len(tokens(ptext(PID[pid]))) for pid in ids if not pid.startswith("R."))
+MI["numeric_tokens"] = sum(len(tokens(ptext(PID[pid]))) for pid in fids + ids if not pid.startswith("R."))
+
+# ================================================================ Abstract (v8; WRITING_RULES 4 Abstract, 6.1)
+AB = {}
+labs = [p for p in allp[:i_intro] if p in heads]
+AB["labels"] = [p.text for p in labs]
+AB["labels_as_specified"] = AB["labels"] == ABS_LABELS
+AB["labels_bold_own_line"] = all(p.text in ABS_LABELS and all(r.bold for r in p.runs if r.text.strip()) for p in labs)
+aids = [k for k in fids if k.startswith("A.")]
+AB["paragraphs_follow_their_labels"] = [allp.index(PID[k]) - allp.index(lab) for k, lab in zip(aids, labs)] == [1] * len(aids)
+atext = {k: ptext(PID[k]) for k in aids}
+AB["words_without_labels"] = sum(len(t.split()) for t in atext.values())
+AB["words_with_labels"] = AB["words_without_labels"] + len(labs)
+AB["citations_in_abstract"] = sum(1 for k in aids for r in PID[k].runs if is_cite(r))
+asents = [(x["id"], s) for x in ml["paragraphs"] if x["id"] in aids for s in x["sentences"]]
+AB["sentences"] = len(asents)
+AB["sentences_over_30_words"] = [(k, len(s.split()), s[:60]) for k, s in asents if len(s.split()) > 30]
+alow = "\n".join(atext.values()).lower()
+AB["banned_terms"] = {w: alow.count(w) for w in BANNED if alow.count(w)}
+AB["causal_words"] = {h: len(re.findall(h, alow)) for h in CAUSAL if re.findall(h, alow)}
+AB["bare_time_words"] = {h: len(re.findall(h, alow)) for h in TIME + [r"\bnow\b", r"\bcurrent(?:ly)?\b"] if re.findall(h, alow)}
+an = ml.get("abstract_numbers", [])
+AB["numbers"] = len(an)
+AB["numbers_in_main_text"] = sum(1 for a in an if a["in_main_text"])
+AB["numbers_only_in_tables"] = [(a["paragraph"], a["shown"]) for a in an if not a["in_main_text"]]
+AB["numbers_in_neither"] = [(a["paragraph"], a["shown"]) for a in an if not a["in_main_text"] and not a["in_tables"]]
 MI["registered_numbers"] = len(ml["rows"])
 MI["registered_by_kind"] = dict(Counter("PubMed abstract" if r["source"].startswith("PubMed") else ("table/figure registry" if r["source"].startswith("_ledger")
                                          else r["source"]) for r in ml["rows"]))
@@ -323,7 +363,7 @@ W["bare_time_words"] = {h: len(re.findall(h, low)) for h in TIME if re.findall(h
 W["causal_words"] = {h: len(re.findall(h, low)) for h in CAUSAL if re.findall(h, low)}
 W["em_dash"] = text.count("—")
 W["connectives_per_paragraph_max"] = max(sum(ptext(p).lower().count(c) for c in CONNECT) for p in body_ps)
-all_sents = [(x["id"], MARK_RE.sub("", s)) for x in ml["paragraphs"] for s in x["sentences"]] + \
+all_sents = [(x["id"], MARK_RE.sub("", s)) for x in ml["paragraphs"] if x["id"] in ids for s in x["sentences"]] + \
             [(f"R.{pi}", s["text"]) for pi, ps in enumerate(rl["paragraphs"], start=1) for s in ps]
 wc = [(pid, len(s.split()), s) for pid, s in all_sents]
 W["sentences"] = len(wc)
@@ -461,6 +501,21 @@ try:
 except Exception as e:  # noqa: BLE001
     W["acronym_check_stdout"] = f"did not run: {e}"
     W["acronym_check_exit"] = None
+# the Abstract is its own scope (WRITING_RULES 13): run on its plain text alone. Allowed: QALY, defined there as
+# "quality-adjusted life year (QALY)" (hyphenated expansion not recognized). JPY is not expanded in the Abstract (user's text, kept)
+ABS_ALLOW = {"QALY": "quality-adjusted life year (QALY), Abstract, Methods sentence 4"}
+AB["acronym_allow_list"] = ABS_ALLOW
+aplain = BUILD / f"manuscript_{VER}_abstract_plain.md"
+aplain.write_text("\n\n".join(atext[k] for k in aids) + "\n", encoding="utf-8")
+try:
+    acr = subprocess.run([sys.executable, str(ARS_ACRO), "--input", str(aplain), "--scopes", "body", "--lang", "en",
+                          "--json-out", str(BUILD / "acronyms_abstract.json")] + [a for x in ABS_ALLOW for a in ("--allow", x)],
+                         capture_output=True, text=True, encoding="utf-8", timeout=120)
+    AB["acronym_check_stdout"] = acr.stdout.strip()
+    AB["acronym_check_exit"] = acr.returncode
+except Exception as e:  # noqa: BLE001
+    AB["acronym_check_stdout"] = f"did not run: {e}"
+    AB["acronym_check_exit"] = None
 
 
 # ================================================================ same value from the same source cell in two tables
@@ -528,6 +583,8 @@ C += kv("本文的结构", M)
 C += kv("Results 的检查", R)
 C += kv("Introduction、Methods、Discussion、Implications、Limitations 的数字（按段登记）", MI)
 C += kv("Discussion、Implications、Limitations 的检查", DI)
+C += kv("Abstract 的检查", AB, skip=("acronym_check_stdout",))
+C += ["ARS check_acronyms.py（Abstract 单独一个范围）：", "", "```", AB["acronym_check_stdout"], "```", ""]
 C += kv("全文（Introduction 至 Limitations）的写作检查", W, skip=("acronym_check_stdout",))
 C += ["ARS check_acronyms.py（body 范围，Introduction 至 Limitations）：", "", "```", W["acronym_check_stdout"], "```", ""]
 C += kv("表与图的首次引用（本文地の文）", F)
@@ -585,6 +642,10 @@ for r in ml["rows"]:
 tc = ml.get("text_checks")
 if tc:  # statements that rest on table values without printing them (checked in the edit script)
     L += ["", "不印数字、但以表中数值为依据的文字（编辑脚本中断言）：", ""] + [f"- {k}：{json.dumps(v, ensure_ascii=False)}" for k, v in tc.items()]
+an_ = ml.get("abstract_numbers")
+if an_:  # v8
+    L += ["", "Abstract 的数字（规约第 4 节：与本文同值同位；来源见上表 A.1 至 A.4 的行）：", "", "| 段 | 显示 | 在本文（Introduction 至 Limitations）中 | 在表中 |", "|---|---|---|---|"]
+    L += [f"| {a['paragraph']} | {a['shown']} | {'是' if a['in_main_text'] else '否'} | {'是' if a['in_tables'] else '否'} |" for a in an_]
 L += ["", f"## 2. Table 1–3（tables_{VER}.docx）", ""] + table_rows(tl["rows"])
 L += ["", "### 派生值的核对（Table 3 的“转移复发治疗费 50%”“艾立布林”两栏的类别值）", ""]
 for k, v in tl["derived_check"].items():
@@ -641,7 +702,7 @@ code = sorted(p.relative_to(code_dir).as_posix() for p in list(code_dir.glob("*.
               + list((code_dir / "refs").glob("*.py")) + list((code_dir / "refs").glob("*.json"))
               + list((code_dir / "refs" / "searches").glob("*.json")))
 M_ = [f"# MANIFEST {VER}（{dt.date.today().isoformat()}）", "",
-      f"- 版本：{VER}（{STEP}）。底本：{BASE}。Abstract 按指示未写。",
+      f"- 版本：{VER}（{STEP}）。底本：{BASE}。",
       f"- 数值来源：第 1、2 阶段的输出与入力表 v10；不重新计算模型。来源文件与 sha256 见 numbers_ledger_{VER}.md 第 8 节。",
       f"- 参考文献：{len(rf_['order'])} 条；书目与 DOI 的实测见 references_{VER}.md。", "",
       "| 文件 | sha256 |", "|---|---|"]
@@ -664,6 +725,8 @@ print("STRUCTURE", M)
 print("RESULTS", {k: v for k, v in R.items() if k not in ("sentences_without_own_reference",)})
 print("INTRO/METHODS/DISCUSSION NUMBERS", MI)
 print("DISCUSSION", DI)
+print("ABSTRACT", {k: v for k, v in AB.items() if k != "acronym_check_stdout"})
+print("ABSTRACT ACRONYMS", AB["acronym_check_stdout"][-600:])
 print("WRITING", {k: v for k, v in W.items() if k != "acronym_check_stdout"})
 print("ACRONYMS", W["acronym_check_stdout"][-800:])
 print("FIRST CITATIONS", F)
