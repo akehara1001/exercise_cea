@@ -2,9 +2,9 @@
 numbers_ledger_<VER>.md, check_<VER>.md and MANIFEST_<VER>.md.
 
 Files checked: tables, figures, supplement, results (each <name>_<VER>.docx).
-Run after make_tables.py, make_figures.py, make_supplement.py, make_results.py and
-compare_versions.py, and after table_figure_plan_<VER>.md is final (the manifest
-hashes it).
+Run after make_tables.py, make_figures.py, make_supplement.py, make_results.py (v3)
+or edit_results.py (v4 on) and compare_versions.py, and after
+table_figure_plan_<VER>.md is final (the manifest hashes it).
 """
 from __future__ import annotations
 
@@ -24,7 +24,7 @@ from docx.shared import Pt
 from docx.table import Table
 from docx.text.paragraph import Paragraph
 
-from common import BASE, BUILD, FIGDIR, NUM_RE, OUT, PREV, ROOT, STAR, VER, rel, sha256
+from common import BASE, BUILD, FIGDIR, NUM_RE, OUT, PREV, ROOT, STAR, STEP, VER, rel, sha256
 
 sys.stdout.reconfigure(encoding="utf-8")
 REF_RE = re.compile(r"\b(?:Supplementary )?(?:Tables?|Figs?\.) S?\d+[a-z]?(?:\s*(?:and|to|,)\s*S?\d+)*")
@@ -175,6 +175,8 @@ paras = body[1:]
 R = {}
 R["heading_is_Results_bold_normal"] = heading.text == "Results" and all(r.bold for r in heading.runs) and heading.style.name == "Normal"
 R["paragraphs"] = len(paras)
+# the sentence checks below read the ledger, so the ledger must be the docx word for word
+R["ledger_matches_docx"] = [p.text for p in paras] == [" ".join(s["text"] for s in ps) for ps in rl["paragraphs"]]
 R["double_spacing_paragraphs"] = sum(1 for p in [heading] + paras if p.paragraph_format.line_spacing_rule == WD_LINE_SPACING.DOUBLE)
 R["line_numbering"] = any(s._sectPr.find(qn("w:lnNumType")) is not None for s in rdoc.sections)
 text = "\n".join(p.text for p in paras)
@@ -344,6 +346,15 @@ for k, v in tl["derived_check"].items():
     L.append(f"- {k}：类别之和 {v['sum_of_categories']:.6f} 日元，模型 {v['modelled_total']:.6f} 日元，差 {v['difference']:.3e} 日元")
 L += ["", f"## 3. Fig. 1–3（figures_{VER}.docx）", "", "图中的线、带、柱直接由下列文件的列画出；刻度数字是标度，不登记。", ""] + table_rows(fl["rows"])
 L += ["", f"## 4. 补充表（supplement_{VER}.docx）", ""] + table_rows(sl["rows"])
+el = sl.get("elmore_check")
+if el:
+    L += ["", "### Supplementary Table S10 的 Elmore 行与基准的核对（脚注 ✳✳✳）", "",
+          "Elmore 行的 6 个运动格与 Table 2 的基准值逐格相同（make_supplement.py 中断言）："
+          + "；".join(f"{a} = {b}" for a, b in el["cells_equal_to_table_2"]) + "。", "",
+          "| 比较 | scenario_caps.csv，hr0 格点上 cap_500 的最大绝对差（日元） | 格点数 | sc_crossings.csv，分界点 hr0 的最大绝对差 | 分界点数 |", "|---|---|---|---|---|"]
+    for comp in ("main", "secondary"):
+        c = el[comp]
+        L.append(f"| {comp} | {c['cap_500_hr0_grid_max_abs_diff_yen']:.3g} | {c['grid_points']} | {c['crossings_hr0_max_abs_diff']:.3g} | {c['crossings']} |")
 L += ["", "## 5. 补充图（supplement 中的 Supplementary Fig. S1、S2）", ""] + table_rows(sfl["rows"])
 prov = [x for rows in (tl["rows"], fl["rows"], sl["rows"], sfl["rows"]) for x in rows if provisional(x)]
 L += ["", "## 6. 暂定值（【要確認】）", "",
@@ -368,7 +379,7 @@ deliv = [f"tables_{VER}.docx", f"figures_{VER}.docx", f"supplement_{VER}.docx", 
 figs = sorted(p.name for p in FIGDIR.iterdir() if p.suffix in (".pdf", ".png", ".tiff", ".svg"))
 code = sorted(p.name for p in (ROOT / "manuscript" / "code").iterdir() if p.suffix in (".py", ".R"))
 M = [f"# MANIFEST {VER}（{dt.date.today().isoformat()}）", "",
-     f"- 版本：{VER}（执笔第 2 步：补充表与 Results）。底本：{BASE}。Introduction、Methods、Discussion、Abstract 与 title page 尚未作成。",
+     f"- 版本：{VER}（{STEP}）。底本：{BASE}。Introduction、Methods、Discussion、Abstract 与 title page 尚未作成。",
      f"- 数值来源：第 1、2 阶段的输出与入力表 v10；不重新计算模型。来源文件与 sha256 见 numbers_ledger_{VER}.md 第 8 节。", "",
      "| 文件 | sha256 |", "|---|---|"]
 for d in deliv:

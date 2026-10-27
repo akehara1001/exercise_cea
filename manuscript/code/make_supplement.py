@@ -473,6 +473,7 @@ for tok in ("0.85", "5", "25", "75", "2026", "2", "49", "1,000", "12", "4", "1",
 # ================================================================ S10  other scenarios (needs sc_util_jp and sc_crossings)
 T = f"Supplementary Table {SUPP['other']}"
 OTHER_READY = (MAIN / "sc_crossings.csv").exists() and (MAIN / "sc_util_jp_det_caps.csv").exists()
+ELMORE = None
 if OTHER_READY:
     xc = csv("sc_crossings.csv")
     jp_caps, jp_ref = csv("sc_util_jp_det_caps.csv"), csv("sc_util_jp_det_reference.csv")
@@ -531,6 +532,30 @@ if OTHER_READY:
                         ("sjp", "Japanese post-operative treatment" + sup(S[4]))):
         D10.append([sname, cap85(scen, "main"), xr(scen, "main", "cap_eq_programme"), xr(scen, "main", "avoided_eq_programme"),
                     cap85(scen, "secondary"), xr(scen, "secondary", "cap_eq_programme"), xr(scen, "secondary", "avoided_eq_programme"), icer(scen)])
+        if scen == "elmore":
+            el_row = D10[-1]
+
+    # Elmore row (footnote S[3]): progression during neoadjuvant therapy comes before surgery and the
+    # recurrence HR acts after it, so the exercise cells must show the base-case values of Table 2.
+    # The raw differences from the base case are recorded (scenario_caps.csv on the hr0 grid, sc_crossings.csv).
+    T2 = {}
+    for x in json.load(open(BUILD / "_ledger_tables.json", encoding="utf-8"))["rows"]:
+        T2.setdefault(x["where"], x["shown"])
+    want = []
+    for comp in ("main", "secondary"):
+        want += [T2[f"Table 2, Panel B, base case, {comp} (intended repeat of Supplementary Table S4)"]]
+        for kind in ("cap", "avoided"):
+            w = f"Table 2, Panel A, {kind} = E02, {comp}"
+            want.append(f"{T2[w]} ({T2[w + ', reduction %']})")
+    assert el_row[1:7] == want, ("Elmore exercise cells differ from Table 2", el_row[1:7], want)
+    ELMORE = {"cells_equal_to_table_2": list(zip(el_row[1:7], want))}
+    for comp in ("main", "secondary"):
+        g = sc[(sc.comparison == comp) & (sc.column == "base") & (sc.axis == "hr0")]
+        gb, ge = (g[g.scenario == s].set_index("x").cap_500 for s in ("base", "elmore"))
+        k = ["column", "type", "lambda", "programme"]
+        xb_, xe_ = (xc[(xc.scenario == s) & (xc.comparison == comp)].set_index(k).hr0 for s in ("base", "elmore"))
+        ELMORE[comp] = {"cap_500_hr0_grid_max_abs_diff_yen": float((ge - gb.reindex(ge.index)).abs().max()), "grid_points": int(len(ge)),
+                        "crossings_hr0_max_abs_diff": float((xe_ - xb_.reindex(xe_.index)).abs().max()), "crossings": int(len(xe_))}
     jp = pd.read_csv(ROOT / "input" / "params" / "sources_utility" / "utilities_scenario_jp.csv")
     u01 = REG.r(fnum(float(one(jp, param_id="U01").value), 2), f"{T}, footnote", "input/params/sources_utility/utilities_scenario_jp.csv", "param_id = U01, value", float(one(jp, param_id="U01").value))
     u04 = REG.r(fnum(float(one(jp, param_id="U04").value), 3), f"{T}, footnote", "input/params/sources_utility/utilities_scenario_jp.csv", "param_id = U04, value", float(one(jp, param_id="U04").value))
@@ -542,7 +567,9 @@ if OTHER_READY:
               "HR, hazard ratio; ICER, incremental cost-effectiveness ratio; JPY, Japanese yen; QALY, quality-adjusted life year.",
               f"{S[2]}Event-free survival during and after treatment {u01} (EQ-5D-5L with the Japanese value set, a Japanese single-center cohort with primary breast cancer); distant recurrence and progression during neoadjuvant therapy {u04} "
               "(taxane arm of the SELECT BC trial, Japanese value set); no values from Japanese populations were found for locoregional recurrence or the decrement for grade 3 or higher adverse events, which keep their base-case values.",
-              f"{S[3]}Median survival of 26 months after progression during neoadjuvant therapy instead of the early-recurrence distribution (Supplementary Table S1); this scenario did not reproduce trial overall survival in years 1 to 3.",
+              f"{S[3]}Median survival of 26 months after progression during neoadjuvant therapy instead of the early-recurrence distribution (Supplementary Table S1); this scenario did not reproduce trial overall survival in years 1 to 3. "
+              "Progression during neoadjuvant therapy occurs before surgery and is the same with and without exercise, whereas the exercise effect on recurrence acts only after surgery. "
+              "The maximum affordable costs and break-even hazard ratios for exercise therefore equal the base-case values in Table 2 at the precision shown; this scenario changes only the ICER of pembrolizumab.",
               f"{S[4]}Capecitabine or olaparib after surgery for patients without pCR (Table 1)."])
     for tok in ("0.85", "5", "100", "1", "2026", "2", "49", "3", "26", "1,000"):
         lab(tok, T, "definitions and citation years")
@@ -604,6 +631,7 @@ for kind, key in ORDER:
             para(doc, t)
     first = False
 doc.save(OUT / f"supplement_{VER}.docx")
-json.dump({"rows": REG.rows, "labels": REG.labels, "other_ready": OTHER_READY, "order_kinds": kinds},
+json.dump({"rows": REG.rows, "labels": REG.labels, "other_ready": OTHER_READY, "order_kinds": kinds, "elmore_check": ELMORE},
           open(BUILD / "_ledger_supplement.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=float)
 print(f"supplement_{VER}.docx written;", len(REG.rows), "registered numbers; S10 included:", OTHER_READY)
+print("Elmore check", ELMORE)

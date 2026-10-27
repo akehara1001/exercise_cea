@@ -19,9 +19,10 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 MAIN = ROOT / "output" / "phase2" / "main"
 P1 = ROOT / "output" / "phase1"
-VER = "v3"  # version written by this run; earlier versions are in manuscript/archive/
-PREV = "v2"
-BASE = "v2（manuscript/archive/v2/ 的交付物与同一套生成代码）"
+VER = "v4"  # version written by this run; earlier versions are in manuscript/archive/
+PREV = "v3"
+BASE = "v3（manuscript/archive/v3/ 的交付物与同一套生成代码；Results 直接编辑 results_v3.docx）"
+STEP = "执笔第 2 步 v4：S10 的 Elmore 行加脚注，Results 末段只写 Elmore 的参照 ICER"
 OUT = ROOT / "manuscript" / VER
 ARCHIVE_PREV = ROOT / "manuscript" / "archive" / PREV
 FIGDIR = OUT / "figures"
