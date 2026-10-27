@@ -19,10 +19,10 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 MAIN = ROOT / "output" / "phase2" / "main"
 P1 = ROOT / "output" / "phase1"
-VER = "v5"  # version written by this run; earlier versions are in manuscript/archive/
-PREV = "v4"
-BASE = "v4（manuscript/archive/v4/ 的交付物与同一套生成代码；本文 manuscript_v5.docx 由 results_v4.docx 直接编辑而成）"
-STEP = "执笔第 3 步 v5：Introduction、Methods 与参考文献，Results 的修改，S1（CHEERS）与 Supplementary Methods S1，待决事项"
+VER = "v6"  # version written by this run; earlier versions are in manuscript/archive/
+PREV = "v5"
+BASE = "v5（manuscript/archive/v5/ 的交付物与同一套生成代码；本文 manuscript_v6.docx 由 manuscript_v5.docx 直接编辑而成）"
+STEP = "执笔第 4 步 v6：Introduction、Methods、Results 的修改；插入 Discussion、Implications、Limitations"
 OUT = ROOT / "manuscript" / VER
 ARCHIVE_PREV = ROOT / "manuscript" / "archive" / PREV
 FIGDIR = OUT / "figures"
@@ -36,7 +36,7 @@ PARAMS_XLSX = ROOT / "input" / "params" / "parameters_v10.xlsx"
 SUPP = {
     "cheers": "S1",            # CHEERS 2022 checklist (Methods, Study background)
     "params": "S2",            # all inputs (Methods, Variables)
-    "methods_survival": "S1",  # Supplementary Methods S1: survival model, validation, PSA sampling (Statistical analysis stage 1)
+    "methods_survival": "S1",  # Supplementary Methods S1: literature searches (Introduction paragraph 3, from v6), survival model, validation, PSA sampling
     "fig_validation": "S1",    # Supplementary Fig. S1: model OS/EFS vs reconstructed KM and final analysis (stage 1)
     "validation": "S3",        # Supplementary Table S3: validation values (stage 1)
     "capgrid": "S4",           # Results P1: data of Fig. 2 (HR grid, both thresholds, early-recurrence scenario)
@@ -51,6 +51,8 @@ SUPP = {
 # v4 -> v5 renumbering of supplementary tables (old -> new), used to carry the v4
 # Results text and its ledger over to the v5 numbering
 SUPP_RENUMBER_V4_V5 = {"S1": "S2", "S2": "S3", "S5": "S6", "S6": "S7", "S7": "S8", "S8": "S5"}
+# previous version -> this version (compare_versions.py); v5 -> v6 keeps every supplementary number
+SUPP_RENUMBER_PREV: dict[str, str] = {}
 
 MINUS = "−"
 STAR = "✳"  # footnote symbol; repeated for later footnotes

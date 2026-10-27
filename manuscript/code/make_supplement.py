@@ -533,7 +533,8 @@ if OTHER_READY:
             "Secondary comparison: recurrence HR" + RED + " at which medical costs avoided equal the program cost",
             "ICER of chemotherapy plus pembrolizumab compared with chemotherapy alone"]]
     for scen, sname in (("utility_jp", "Utility values from Japanese populations" + sup(S[2])), ("utility_us", "Utility value set: United States"),
-                        ("utility_uk", "Utility value set: United Kingdom"), ("utility_au", "Utility value set: Australia"),
+                        # N11 (decision 2026-10-27): the Australian reimbursement submission does not name its value set
+                        ("utility_uk", "Utility value set: United Kingdom"), ("utility_au", "Australian reimbursement submission"),
                         ("elmore", "Longer survival after progression during neoadjuvant therapy" + sup(S[3])),
                         ("sjp", "Japanese post-operative treatment" + sup(S[4]))):
         D10.append([sname, cap85(scen, "main"), xr(scen, "main", "cap_eq_programme"), xr(scen, "main", "avoided_eq_programme"),
@@ -597,12 +598,14 @@ T = f"Supplementary Table {SUPP['cheers']}"
 CH = json.load(open(Path(__file__).with_name("refs") / "cheers2022_items.json", encoding="utf-8"))
 MAPF, PAGEF = BUILD / "_manuscript_map.json", BUILD / "_manuscript_pages.json"
 MMAP = json.load(open(MAPF, encoding="utf-8")) if MAPF.exists() else None
+if MMAP and MMAP.get("version") != VER:
+    MMAP = None  # paragraph map of the previous version (first run of this build)
 PAGES = json.load(open(PAGEF, encoding="utf-8")) if PAGEF.exists() else None
 if MMAP and PAGES and PAGES.get("manuscript_sha256_before_numbering") != MMAP.get("manuscript_sha256"):
     PAGES = None  # pages of an older manuscript build
 CHEERS_LOG = {"pages_present": bool(MMAP and PAGES), "rows": []}
 SECTION_NAME = {"I": "Introduction", "M.SB": "Methods, Study background", "M.OUT": "Methods, Outcome", "M.VAR": "Methods, Variables",
-                "M.SA": "Methods, Statistical analysis", "R": "Results"}
+                "M.SA": "Methods, Statistical analysis", "R": "Results", "D": "Discussion", "IMP": "Implications", "L": "Limitations"}
 
 
 def page_of(pid):
@@ -665,7 +668,7 @@ LOC = {
     24: loc("R.10", "Fig. 3", f"Supplementary Tables {SUPP['capgrid']}, {SUPP['duration']}, {SUPP['oneway']} and {SUPP['other']}",
             f"Supplementary Fig. {SUPP['fig_icer']}"),
     25: "Not applicable (item 21)",
-    26: "Discussion; Limitations",
+    26: loc("D.1-D.7", "L.1"),  # v6: Discussion and Limitations written
     27: "Title page",
     28: "Title page",
 }
@@ -710,8 +713,32 @@ for tok, why in (("23", "IA4 data cutoff 23 March 2021 (Schmid 2022 abstract)"),
                  ("20261023", "base seed boot_seed (docs/model_spec.md section 7)"), ("2.5", "UI percentile"), ("97.5", "UI percentile")):
     ml(tok, why)
 TS3, TS2 = f"Supplementary Table {SUPP['validation']}", f"Supplementary Table {SUPP['params']}"
+# Literature searches behind the statement of Introduction paragraph 3 that no economic evaluation of exercise during
+# neoadjuvant therapy for breast cancer was identified (v6: databases, period, date and search strings moved here from
+# the Introduction, instruction "执笔第 4 步（v6）" section 1). Strings are printed as run (refs/searches/search_<key>.json).
+NOVELTY = [("novelty", "First search"), ("novelty_variants", "Second search"), ("novelty_chemo", "Third search")]
+SRCH = {k: json.load(open(Path(__file__).with_name("refs") / "searches" / f"search_{k}.json", encoding="utf-8")) for k, _ in NOVELTY}
+for k, s in SRCH.items():
+    assert s["date"] == "2026-10-26", k
+    assert '("2000/01/01"[dp] : "2026/12/31"[dp])' in s["pubmed"]["query"] and "PUB_YEAR:[2000 TO 2026]" in s["europepmc"]["query"], k
+for tok, why in (("26", "search date 26 October 2026 (refs/searches/search_novelty*.json, field date)"),
+                 ("2026", "search date / upper limit of publication years in the search strings"),
+                 ("2000", "lower limit of publication years in the search strings"),
+                 ("01", "date limit 2000/01/01 in the PubMed search strings"), ("12", "date limit 2026/12/31 in the PubMed search strings"),
+                 ("31", "date limit 2026/12/31 in the PubMed search strings")):
+    ml(tok, why)
+SEARCHES = [
+    ("heading", "Literature searches"),
+    ("text", "The statement in the Introduction that no economic evaluation of exercise during neoadjuvant therapy for breast cancer was identified "
+             "rests on three searches, run on 26 October 2026 in PubMed (title and abstract words and Medical Subject Headings) and Europe PMC "
+             "(title and abstract words), each limited to publication years 2000 to 2026. The first search combined exercise, neoadjuvant or "
+             "preoperative treatment, breast cancer and economic evaluation. The second searched cancer of any type with neoadjuvant treatment, in any "
+             "spelling, or with the phrases during treatment and during oncological treatment. The third searched breast cancer with chemotherapy in "
+             "any setting. The title and abstract of every record were read. The search strings were as follows."),
+] + [("text", f"{label}, {db}: {SRCH[k][fld]['query']}") for k, label in NOVELTY for db, fld in (("PubMed", "pubmed"), ("Europe PMC", "europepmc"))]
 METHODS_S1 = [
-    ("title", f"{SM}. Survival model, validation and probabilistic sampling"),
+    ("title", f"{SM}. Literature searches, survival model, validation and probabilistic sampling"),
+    *SEARCHES,
     ("heading", "Reconstructed patient-level data"),
     ("text", "Kaplan-Meier curves of KEYNOTE-522 were digitized from the published figures: event-free survival by arm and pathological complete response "
              "(pCR) status at interim analysis 4, with a data cutoff of 23 March 2021" + cite("schmid2022") + ", and overall survival by arm at the final "
@@ -794,20 +821,22 @@ for tok in ("2024", "7", "95", "25", "75", "2026", "2", "49", "1,000"):
     lab(tok, "supplementary figure legends", "definitions")
 
 # ================================================================ assemble in the planned order of first citation
-ORDER = [("table", f"Supplementary Table {SUPP['cheers']}"), ("table", f"Supplementary Table {SUPP['params']}"),
-         ("methods", f"Supplementary Methods {SUPP['methods_survival']}"), ("figure", "figS1"), ("table", f"Supplementary Table {SUPP['validation']}"),
+# v6: Supplementary Methods S1 is first cited in Introduction paragraph 3, before Supplementary Table S1 (Methods, Study background)
+ORDER = [("methods", f"Supplementary Methods {SUPP['methods_survival']}"), ("table", f"Supplementary Table {SUPP['cheers']}"),
+         ("table", f"Supplementary Table {SUPP['params']}"), ("figure", "figS1"), ("table", f"Supplementary Table {SUPP['validation']}"),
          ("table", f"Supplementary Table {SUPP['capgrid']}"), ("table", f"Supplementary Table {SUPP['pathB']}"),
          ("table", f"Supplementary Table {SUPP['decomp']}"), ("table", f"Supplementary Table {SUPP['duration']}"),
          ("table", f"Supplementary Table {SUPP['netbenefit']}"), ("table", f"Supplementary Table {SUPP['oneway']}"), ("figure", "figS2"),
          ("table", f"Supplementary Table {SUPP['other']}")]
 units = {u[0].split(".")[0]: u for u in UNITS}
-doc = new_document(landscape=True)
+doc = new_document(landscape=ORDER[0][0] == "table")
 first = True
 kinds = []
 for kind, key in ORDER:
     if kind == "methods":
         kinds.append(kind)
-        new_section(doc, landscape=False)
+        if not first:
+            new_section(doc, landscape=False)
         for k2, t in METHODS_S1:
             para(doc, t, bold=(k2 == "heading"), space_after=6 if k2 == "title" else 0)
         first = False

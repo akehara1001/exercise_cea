@@ -3,7 +3,7 @@ numbers_ledger_<VER>.md, check_<VER>.md and MANIFEST_<VER>.md.
 
 Files checked: manuscript, tables, figures, supplement (each <name>_<VER>.docx).
 Run after the build (make_tables.py, make_figures.py, make_supplement.py,
-edit_manuscript.py (v5), number_refs.py, word_pages.py, make_supplement.py and
+edit_manuscript_v6.py (v6), number_refs.py, word_pages.py, make_supplement.py and
 number_refs.py again), compare_versions.py and make_references_doc.py, and after
 table_figure_plan_<VER>.md is final (the manifest hashes it).
 
@@ -153,11 +153,12 @@ mm = json.load(open(BUILD / "_manuscript_map.json", encoding="utf-8"))
 rf_ = json.load(open(BUILD / "_refs.json", encoding="utf-8"))
 mled = {"rows": ml["rows"], "labels": []}
 
-HEADINGS = ["Introduction", "Methods", "Study background", "Outcome", "Variables", "Statistical analysis", "Results", "References"]
+HEADINGS = ["Introduction", "Methods", "Study background", "Outcome", "Variables", "Statistical analysis", "Results", "Discussion", "Implications",
+            "Limitations", "References"]
 rt, _ = check_doc(OUT / f"tables_{VER}.docx", [tl], "landscape")
 rf, fdoc = check_doc(OUT / f"figures_{VER}.docx", [fl], "portrait")
 supp_orient = ["portrait" if kind in ("figure", "methods") else "landscape" for kind in sl["order_kinds"]]
-SUPP_HEAD = {"Reconstructed patient-level data", "Event-free survival after surgery", "Events before surgery, first events after surgery and deaths from adverse events",
+SUPP_HEAD = {"Literature searches", "Reconstructed patient-level data","Event-free survival after surgery", "Events before surgery, first events after surgery and deaths from adverse events",
              "Survival after recurrence and background mortality", "Validation", "Probabilistic sensitivity analysis"}
 rs, sdoc = check_doc(OUT / f"supplement_{VER}.docx", [sl, sfl], supp_orient, bold_ok=lambda t: t in SUPP_HEAD)
 rm, mdoc = check_doc(OUT / f"manuscript_{VER}.docx", [tl, sl, fl, sfl, mled], "portrait", bold_ok=lambda t: t in HEADINGS, numbers_stop_at="References")
@@ -190,8 +191,9 @@ M["headings_as_specified"] = M["headings"] == HEADINGS
 M["headings_bold_normal_12pt"] = all(p.style.name == "Normal" for p in heads)
 i_res = next(i for i, p in enumerate(allp) if p.text == "Results")
 i_ref = next(i for i, p in enumerate(allp) if p.text == "References")
-body_ps = [p for p in allp[:i_ref] if p not in heads]  # Introduction to Results
-res_ps = [p for p in allp[i_res + 1:i_ref]]
+i_dis = next(i for i, p in enumerate(allp) if p.text == "Discussion")
+body_ps = [p for p in allp[:i_ref] if p not in heads]  # Introduction to Limitations
+res_ps = [p for p in allp[i_res + 1:i_dis]]
 ref_ps = allp[i_ref + 1:]
 ids = [o["id"] for o in mm["order"] if o["id"]]
 assert len(ids) == len(body_ps), (len(ids), len(body_ps))
@@ -267,7 +269,44 @@ MI["registered_numbers"] = len(ml["rows"])
 MI["registered_by_kind"] = dict(Counter("PubMed abstract" if r["source"].startswith("PubMed") else ("table/figure registry" if r["source"].startswith("_ledger")
                                          else r["source"]) for r in ml["rows"]))
 
-# ================================================================ writing checks on the whole text (Introduction to Results)
+# ================================================================ Discussion, Implications and Limitations (WRITING_RULES 4 and 13)
+DI = {}
+dids = [k for k in ids if k.startswith(("D.", "IMP.", "L."))]
+DI["paragraphs"] = {"Discussion": sum(k.startswith("D.") for k in dids), "Implications": sum(k.startswith("IMP.") for k in dids),
+                    "Limitations": sum(k.startswith("L.") for k in dids)}
+first_sent = {k: re.split(r"(?<=[.!?])\s+(?=[A-Z])", ptext(PID[k]))[0] for k in dids}
+DI["paragraphs_whose_first_sentence_names_a_table_or_figure"] = [k for k in dids if re.search(r"\((?:Supplementary )?(?:Tables?|Figs?\.) S?\d", first_sent[k])]
+res_tokens = set(tokens("\n".join(ptext(p) for p in res_ps)))
+rep = [(k, t) for k in dids for t in tokens(ptext(PID[k])) if t in res_tokens]
+DI["numbers_also_in_Results"] = f"{len(rep)} / {sum(len(tokens(ptext(PID[k]))) for k in dids)}: " + ", ".join(f"{k} {t}" for k, t in rep)
+res_sents = [set(re.findall(r"[a-z]+", s["text"].lower())) for ps in rl["paragraphs"] for s in ps]
+close = []
+for k in dids:
+    for s in re.split(r"(?<=[.!?])\s+(?=[A-Z])", ptext(PID[k])):
+        w = set(re.findall(r"[a-z]+", s.lower()))
+        best = max(len(w & r) / len(w | r) for r in res_sents)
+        if best >= 0.5:
+            close.append((k, round(best, 2), s[:70]))
+DI["sentences_with_word_overlap_0.5_or_more_with_a_Results_sentence"] = close
+cites_by_par, first_in = {}, {}
+seen_ref = []
+for k in ids:
+    nums = [n for r in PID[k].runs if is_cite(r) for n in expand(r.text)]
+    if k in dids:
+        cites_by_par[k] = len(nums)
+    for n in nums:
+        if n not in seen_ref:
+            seen_ref.append(n)
+            first_in[n] = k
+DI["reference_numbers_cited_per_paragraph"] = cites_by_par
+DI["references_first_cited_in_Discussion_Implications_Limitations"] = sorted(n for n, k in first_in.items() if k in dids)
+dlow = "\n".join(ptext(PID[k]) for k in dids).lower()
+DI["further_research_phrases"] = {h: len(re.findall(h, dlow)) for h in (r"further research", r"more research", r"future research", r"further stud", r"research is needed")
+                                  if re.findall(h, dlow)}
+DI["limitation_words_outside_Limitations"] = [k for k in ids if not k.startswith("L.") and re.search(r"\blimitation", ptext(PID[k]).lower())]
+DI["bare_now"] = [k for k in dids if re.search(r"\bnow\b", ptext(PID[k]))]
+
+# ================================================================ writing checks on the whole text (Introduction to Limitations)
 W = {}
 text = "\n".join(ptext(p) for p in body_ps)
 low = text.lower()
@@ -293,11 +332,15 @@ for pid, n, _ in wc:
 W["paragraphs_over_150_words"] = {k: v for k, v in pwords.items() if v > 150}
 W["words_by_section"] = {"Introduction": sum(v for k, v in pwords.items() if k.startswith("I.")),
                          "Methods": sum(v for k, v in pwords.items() if k.startswith("M.")),
-                         "Results": sum(v for k, v in pwords.items() if k.startswith("R."))}
+                         "Results": sum(v for k, v in pwords.items() if k.startswith("R.")),
+                         "Discussion": sum(v for k, v in pwords.items() if k.startswith("D.")),
+                         "Implications": sum(v for k, v in pwords.items() if k.startswith("IMP.")),
+                         "Limitations": sum(v for k, v in pwords.items() if k.startswith("L."))}
 W["words_total"] = sum(W["words_by_section"].values())
 W["sentences_joined_equal_docx"] = all(MARK_RE.sub("", " ".join(x["sentences"])) == ptext(PID[x["id"]]) for x in ml["paragraphs"])
 W["aims_sentence_with_This_study_aimed_to"] = ptext(PID["I.4"]).startswith("This study aimed to estimate")
-W["gap_paragraph_First_Second"] = all(w in ptext(PID["I.3"]) for w in ("First,", "Second,"))
+W["gap_paragraph_First_Second"] = all(w in ptext(PID["I.3"]) for w in ("First,", "Second,"))  # v6: False, paragraph 3 replaced by the user's text
+W["multiple_comparisons_sentence"] = "multiple comparisons" in " ".join(ptext(PID[k]) for k in ids if k.startswith("M."))  # v6: False, deleted by instruction
 W["novelty_absolute_forms"] = len(re.findall(r"\bthe first (?:study|analysis|evaluation|report|economic)\b|\bfirst study\b|\bno (?:prior )?stud(?:y|ies) ha(?:s|ve)\b|\bno prior\b", low))
 W["outcome_first_sentence"] = ptext(PID["M.OUT.1"]).startswith("The primary outcome was the maximum affordable cost of an exercise program per patient")
 W["variables_first_sentence"] = ptext(PID["M.VAR.1"]).startswith("The exposure was")
@@ -475,14 +518,15 @@ now = dt.datetime.now().strftime("%Y-%m-%d %H:%M")
 C = [f"# {VER} 的回读检查（{now}，`manuscript/code/make_ledger.py`）", "",
      "从交付的 docx 读回。数字检查：抽出所有数字（与字母或连字符相连的编号如 E01、S1、EQ-5D、KEYNOTE-522 不算；表与图的编号与文献号的上标先去掉），"
      "逐个与登记表比对；反向检查登记的数值是否都出现在文档中。Results 另按句检查：每个数字须是该句所引表格中某一格的显示值。"
-     "Introduction 与 Methods 按段检查：每个数字须登记在该段（所引文献摘要中的原文、表中的显示值、项目文件中的设定或定义）。", ""]
+     "Introduction、Methods、Discussion、Implications、Limitations 按段检查：每个数字须登记在该段（所引文献摘要中的原文、表中的显示值、项目文件中的设定或定义）。", ""]
 for r in (rm, rt, rf, rs):
     C += fmt_res(r) + [""]
 C += kv("本文的结构", M)
 C += kv("Results 的检查", R)
-C += kv("Introduction 与 Methods 的数字", MI)
-C += kv("全文（Introduction 至 Results）的写作检查", W, skip=("acronym_check_stdout",))
-C += ["ARS check_acronyms.py（body 范围，Introduction 至 Results）：", "", "```", W["acronym_check_stdout"], "```", ""]
+C += kv("Introduction、Methods、Discussion、Implications、Limitations 的数字（按段登记）", MI)
+C += kv("Discussion、Implications、Limitations 的检查", DI)
+C += kv("全文（Introduction 至 Limitations）的写作检查", W, skip=("acronym_check_stdout",))
+C += ["ARS check_acronyms.py（body 范围，Introduction 至 Limitations）：", "", "```", W["acronym_check_stdout"], "```", ""]
 C += kv("表与图的首次引用（本文地の文）", F)
 C += kv("参考文献", Q)
 C += ["## 图（实测）", "", "| 图 | 像素 | 文件 dpi | 插入宽×高（mm） | 插入后的实际 dpi |", "|---|---|---|---|---|"]
@@ -530,9 +574,17 @@ for pi, ps in enumerate(rl["paragraphs"], start=1):
         L.append(f"  - 所引：{'、'.join(s['cites'])}；来自：{s.get('origin', '')}")
         for u in [u for u in rl["used"] if u["paragraph"] == pi and u["sentence"] == si]:
             L.append(f"  - {u['shown']} ← {u['where']}（`{u['source']}`：{u['loc']}）")
-L += ["", "## 1b. Introduction 与 Methods 的数字（按段）", "", "| 段 | 显示 | 来源 | 位置 |", "|---|---|---|---|"]
+L += ["", "## 1b. Introduction、Methods、Discussion、Implications、Limitations 的数字（按段）", "",
+      "每个数字在登记时由 edit_manuscript_v6.py 与所示的来源逐一核对（表、图与补充材料的显示值须同值同位；所引文献摘要、项目文件与 JBCS 数值文件的原文）。"
+      "Discussion 第 2 段的 702 是「medical costs avoided」（Methods, Outcome：不含方案费的增量医疗费的符号反转），Supplementary Table "
+      f"{SUPP['decomp']} 显示的增量为 −702。", "", "| 段 | 显示 | 来源 | 位置 |", "|---|---|---|---|"]
 for r in ml["rows"]:
     L.append(f"| {r['where']} | {r['shown']} | {r['source']} | {r['loc']} |")
+f3 = ml.get("fig3_range_check")
+if f3:
+    L += ["", f"Discussion 第 3 段「no input moved this cost outside JPY 2,617 thousand to 2,836 thousand (Fig. 3)」的核对：Fig. 3 的值所在的 "
+          f"Supplementary Table {SUPP['oneway']} 中，上限的全部 {f3['inputs_x_bounds']} 个值（21 个输入 × 下限与上限）的最小为 {f3['lowest'][0]} = {f3['lowest'][1]}"
+          f"（{f3['lowest'][2]:.2f} 日元），最大为 {f3['highest'][0]} = {f3['highest'][1]}（{f3['highest'][2]:.2f} 日元）。"]
 L += ["", f"## 2. Table 1–3（tables_{VER}.docx）", ""] + table_rows(tl["rows"])
 L += ["", "### 派生值的核对（Table 3 的“转移复发治疗费 50%”“艾立布林”两栏的类别值）", ""]
 for k, v in tl["derived_check"].items():
@@ -569,7 +621,7 @@ for s in SRC:
     for p in paths:
         L.append(f"| `{rel(p)}` | {sha256(p) if p.exists() else '（不在仓库）'} |")
 L += ["", "## 9. 参考文献的编号（number_refs.py）", "",
-      f"正文（Introduction 至 Results）中首次引用的 {rf_['main_text_count']} 条为 1–{rf_['main_text_count']}；只在表、图注或补充材料中引用的为其后的编号。", "",
+      f"正文（Introduction 至 Limitations）中首次引用的 {rf_['main_text_count']} 条为 1–{rf_['main_text_count']}；只在表、图注或补充材料中引用的为其后的编号。", "",
       "| 号 | 键 | 首次引用 | 引用次数 |", "|---|---|---|---|"]
 first_doc, ncit = {}, Counter()
 for c in rf_["citations"]:
@@ -589,7 +641,7 @@ code = sorted(p.relative_to(code_dir).as_posix() for p in list(code_dir.glob("*.
               + list((code_dir / "refs").glob("*.py")) + list((code_dir / "refs").glob("*.json"))
               + list((code_dir / "refs" / "searches").glob("*.json")))
 M_ = [f"# MANIFEST {VER}（{dt.date.today().isoformat()}）", "",
-      f"- 版本：{VER}（{STEP}）。底本：{BASE}。Discussion、Implications、Limitations、Abstract 按指示未写。",
+      f"- 版本：{VER}（{STEP}）。底本：{BASE}。Abstract 按指示未写。",
       f"- 数值来源：第 1、2 阶段的输出与入力表 v10；不重新计算模型。来源文件与 sha256 见 numbers_ledger_{VER}.md 第 8 节。",
       f"- 参考文献：{len(rf_['order'])} 条；书目与 DOI 的实测见 references_{VER}.md。", "",
       "| 文件 | sha256 |", "|---|---|"]
@@ -610,7 +662,8 @@ for name, r in (("MANUSCRIPT", rm), ("TABLES", rt), ("FIGURES", rf), ("SUPPLEMEN
         print("  footnotes", [(u["unit"], u["one_to_one"], u["in_order"]) for u in r["footnotes"] if not (u["one_to_one"] and u["in_order"])] or "all one-to-one and in order")
 print("STRUCTURE", M)
 print("RESULTS", {k: v for k, v in R.items() if k not in ("sentences_without_own_reference",)})
-print("INTRO/METHODS NUMBERS", MI)
+print("INTRO/METHODS/DISCUSSION NUMBERS", MI)
+print("DISCUSSION", DI)
 print("WRITING", {k: v for k, v in W.items() if k != "acronym_check_stdout"})
 print("ACRONYMS", W["acronym_check_stdout"][-800:])
 print("FIRST CITATIONS", F)

@@ -5,9 +5,9 @@ Each paragraph outside tables and each table cell is one item, in document
 order; items are aligned with difflib and every non-equal block is listed with
 both sides. Embedded pictures and the figure files are compared by sha256.
 A second, normalized comparison maps the supplementary table numbers of the
-previous version to the current ones (SUPP_RENUMBER_V4_V5) and drops reference
-numbers (superscript digits) from the current version, so that the blocks left
-are changes of wording or content; they are listed in a summary table.
+previous version to the current ones (SUPP_RENUMBER_PREV) and drops reference
+numbers (superscript digits) from both versions, so that the blocks left are
+changes of wording or content; they are listed in a summary table.
 """
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ from docx import Document
 from docx.table import Table
 from docx.text.paragraph import Paragraph
 
-from common import ARCHIVE_PREV, FIGDIR, OUT, PREV, SUPP_RENUMBER_V4_V5, VER, sha256
+from common import ARCHIVE_PREV, FIGDIR, OUT, PREV, SUPP_RENUMBER_PREV, VER, sha256
 
 sys.stdout.reconfigure(encoding="utf-8")
 
@@ -34,7 +34,7 @@ def _txt(p, drop_cites):
 
 def renum(t):
     return re.sub(r"(?<=Supplementary Table )S\d+|(?<=Supplementary Tables )S\d+|(?<= and )S\d+(?=\))|(?<=, )S\d+(?=[,; ])",
-                  lambda m: SUPP_RENUMBER_V4_V5.get(m.group(0), m.group(0)), t)
+                  lambda m: SUPP_RENUMBER_PREV.get(m.group(0), m.group(0)), t)
 
 
 def items(path, drop_cites=False):
@@ -69,8 +69,8 @@ L = [f"# {PREV} 与 {VER} 的逐段对照", "",
      f"由 `manuscript/code/compare_versions.py` 生成。{PREV} = `manuscript/archive/{PREV}/`，{VER} = `manuscript/{VER}/`。"
      "表外的每个段落与表内的每个单元格各为一项，按文档顺序用 difflib 对齐；列出全部不相同的块（两侧原文）。", ""]
 summary = []
-# v5: the manuscript (Introduction, Methods, Results, References) is the edited results docx of v4
-PAIRS = [("tables", "tables"), ("figures", "figures"), ("supplement", "supplement"), ("results", "manuscript")]
+# v6: the four files of v5 under the same names (v5 compared the results docx of v4 with the manuscript)
+PAIRS = [("tables", "tables"), ("figures", "figures"), ("supplement", "supplement"), ("manuscript", "manuscript")]
 for prev_name, name in PAIRS:
     a, b = ARCHIVE_PREV / f"{prev_name}_{PREV}.docx", OUT / f"{name}_{VER}.docx"
     if not a.exists():
@@ -90,11 +90,11 @@ for prev_name, name in PAIRS:
         for loc, t in ib[j1:j2]:
             L.append(f"- {VER}［{loc}］{t}")
         L.append("")
-    na = [(loc, renum(t)) for loc, t in ia]
+    na = [(loc, renum(t)) for loc, t in items(a, drop_cites=True)]
     nb = items(b, drop_cites=True)
     sm2 = difflib.SequenceMatcher(a=[t for _, t in na], b=[t for _, t in nb], autojunk=False)
     nblocks = [op for op in sm2.get_opcodes() if op[0] != "equal"]
-    L += [f"### {name}：归一化比较（{PREV} 的补充表编号换成 {VER} 的编号、{VER} 去掉文献号）", "",
+    L += [f"### {name}：归一化比较（{PREV} 的补充表编号换成 {VER} 的编号、两版都去掉文献号）", "",
           f"不同的块 {len(nblocks)}（原始比较 {len(blocks)}）。", "", "| 块 | 类型 | {PREV} 项数 | {VER} 项数 | {PREV} 首项 | {VER} 首项 |".replace("{PREV}", PREV).replace("{VER}", VER), "|---|---|---|---|---|---|"]
     for k, (tag, i1, i2, j1, j2) in enumerate(nblocks, start=1):
         fa = na[i1][1][:90].replace("|", "/") if i2 > i1 else ""

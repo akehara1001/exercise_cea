@@ -38,7 +38,7 @@ PURPOSE = {
     "pembro_cea": "Introduction 第 3 段：KEYNOTE-522 方案的成本效果分析",
     "pembro_tnbc_any": "同上，放宽到 TNBC 的所有场景",
     "pembro_japan": "Introduction 第 3 段：日本的帕博利珠单抗成本效果分析",
-    "novelty": "新颖性句（Introduction 第 4 段）：乳腺癌新辅助治疗期间运动的经济评价",
+    "novelty": "新颖性句（Introduction 第 3 段；v6 起检索式写在 Supplementary Methods S1）：乳腺癌新辅助治疗期间运动的经济评价",
     "novelty_variants": "新颖性句：拼写变体（neo-adjuvant、(neo)adjuvant、during treatment），不限癌种",
     "novelty_chemo": "新颖性句：放宽到乳腺癌化疗期间（含辅助）",
 }
@@ -59,7 +59,7 @@ SCREEN = {
     "40681723": ("E", "NEXT-BRCA: exercise and self-management during treatment; cost-effectiveness named as future work"),
     "39163116": ("P", "protocol of a randomized trial of aerobic training during chemotherapy with a planned cost-effectiveness analysis"),
     "37074759": ("C", "Phys-Can: cost-effectiveness of two exercise intensities during (neo)adjuvant treatment of breast, colorectal or prostate "
-                      "cancer; the nearest study named in Introduction paragraph 4"),
+                      "cancer; the nearest study named in Introduction paragraph 3"),
     "35906659": ("P,S", "design of a trial of exercise in metastatic breast cancer"),
     "35607981": ("U", "Phys-Can: long-term resource use and costs"),
     "34518245": ("P,S", "protocol: connected device and education for localised breast cancer (adjuvant); planned cost-effectiveness analysis"),
@@ -196,9 +196,11 @@ nov = [o for o in mm["order"] if o["id"] and "No economic evaluation of exercise
 assert len(nov) == 1
 nov_sents = [x for x in re.split(r"(?<=[.⟧])\s+(?=[A-Z])", nov[0]["text"]) if "No economic evaluation" in x or x.startswith("The nearest")]
 L += ["### 新颖性句的界限", "",
-      f"- 位置：manuscript_{VER}.docx，{nov[0]['id']}（Introduction 第 4 段）。原文：", ""] + [f"  > {shown(x)}" for x in nov_sents] + ["",
+      f"- 位置：manuscript_{VER}.docx，{nov[0]['id']}（Introduction 第 3 段）。原文：", ""] + [f"  > {shown(x)}" for x in nov_sents] + ["",
       "- 界限：乳腺癌、新辅助治疗期间、运动、经济评价（成本效果、成本效用、QALY、Cost-Benefit Analysis[mh]）；PubMed 与 Europe PMC，2000–2026，"
-      "最后运行 2026-10-26。novelty 组 2 条命中都不符合（S/E、X），放宽的 novelty_variants 与 novelty_chemo 也没有符合的记录。",
+      "最后运行 2026-10-26。novelty 组 2 条命中都不符合（S/E、X），放宽的 novelty_variants 与 novelty_chemo 也没有符合的记录。"
+      f"v6 起本文的新颖性句只引 Supplementary Methods {SUPP['methods_survival']}；该节的 Literature searches 小节写数据库、出版年范围、检索日与三组检索式原文"
+      "（novelty、novelty_variants、novelty_chemo，与本节第 1 节同一文件）。",
       "- 最接近的研究：Phys-Can（ax2023）比较了两种运动强度，对象含新辅助或辅助治疗期间的乳腺癌，但不是与无运动比较，也未单独报告新辅助期间。",
       "- 乳腺癌以外：Snooks 2026（Europe PMC 预印本 PPR1238970，未经同行评议）评价了晚期卵巢癌新辅助化疗期间多模式术前康复的成本与 QALY。"
       "它不在新颖性句的界限内（乳腺癌），本文未引用；Discussion 写到其他癌种时可作候选。",
@@ -331,8 +333,8 @@ L += ["## 7. 备注", "",
       "（input/user_supplied_values.csv），原始出处待尾崎先生确认（docs/model_spec.md 第 87 行）。v5 起本文 Methods 的截点列表加入 23 March 2023，"
       "因为这些值用于选择分布族（Supplementary Methods S1）。",
       f"- pbac2023（[{NUM['pbac2023']}]）：公开摘要（PSD）p.18 只写 “Utilities were based on EQ-5D responses in KN-522”，未写价值集。"
-      f"Methods 写作 “those of the Australian reimbursement submission”；Supplementary Table {SUPP['other']} 的行名 “Utility value set: Australia” 是 v4 的原文，"
-      "本版未改，列为待决事项。",
+      f"Methods 写作 “those of the Australian reimbursement submission”；Supplementary Table {SUPP['other']} 的行名 v6 起按 N11 的决定改为 "
+      "“Australian reimbursement submission”（v4、v5 为 “Utility value set: Australia”）。",
       f"- boc_fx（[{NUM['boc_fx']}]）：加拿大银行的汇率只用于运动方案费用的上限（参数表 E01 备考：上限は為替で換算）；"
       "v5 起 Methods 的购买力平价句只引世界银行，汇率的引用留在 Table 1 与 Supplementary Table S2 的出处栏。", ""]
 
@@ -347,7 +349,7 @@ res = claim_support.check(FULLTEXT)
 ml = json.load(open(BUILD / "_ledger_manuscript.json", encoding="utf-8"))
 need = {(f"{x['id']} s{i + 1}", k) for x in ml["paragraphs"] for i, t in enumerate(x["sentences"])
         for m in MARK_RE.finditer(t) for k in m.group(1).split(",")}
-have = {(re.sub(r" \(.*\)$", "", r["loc"]), r["key"]) for r in res if re.match(r"^[IMR]\.", r["loc"])}
+have = {(re.sub(r" \(.*\)$", "", r["loc"]), r["key"]) for r in res if re.match(r"^(?:I|M|R|D|IMP|L)\.", r["loc"])}
 assert need == have, ("manuscript citations without a passage", sorted(need - have), "passages without a citation", sorted(have - need))
 labels = [MARK_RE.sub("", v) for v in SOURCE.values()] + list(claim_support.PANEL_A) + ["KEYNOTE-522 population"]
 prose = [r for r in res if r["loc"].startswith(("supplement:", "figures:"))]
@@ -403,6 +405,20 @@ for r in ws.iter_rows(min_row=2, values_only=True):
 L.append("")
 if any(r["found"] is False for r in res):
     raise SystemExit("passages not found: " + str([(r["loc"], r["key"]) for r in res if r["found"] is False]))
+
+# ---------------------------------------------------------------- 9 the two sentences completed by CC (v6, instruction section 5)
+if ml.get("cc"):
+    sent_of = {x["id"]: x["sentences"] for x in ml["paragraphs"]}
+    L += ["## 9. Discussion 中 CC 补写的两句与所依据的摘要原句", "",
+          "指示第 5 条的「[CC: …]」两处：只写各文献摘要中有的内容，不加数字。下列原句逐字取自 PubMed 摘要（与第 8.1 节同一记录）。", ""]
+    for pid, si in (("D.4", 2), ("D.6", 3)):
+        s = sent_of[pid][si - 1]
+        assert MARK_RE.sub("", ml["cc"][pid]).lstrip(". ").split(" [")[0][:40] in s, (pid, s)
+        L += [f"### {pid} 第 {si} 句", "", f"- 本文：{shown(s)}", "- 依据："]
+        for r in res:
+            if r["loc"] == f"{pid} s{si}":
+                L += [f"  - [{NUM[r['key']]}] {r['key']}（{r['where']}；找到：{'是' if r['found'] else '否'}）"] + [f"    > {q}" for q in r["quotes"]]
+        L.append("")
 
 (OUT / f"references_{VER}.md").write_text("\n".join(L) + "\n", encoding="utf-8")
 print(f"references_{VER}.md written: {len(rf['order'])} references, {sum(len(searches[k]['pubmed']['hits']) for k in SCREENED)} PubMed hits screened")
