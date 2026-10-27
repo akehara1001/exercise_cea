@@ -664,11 +664,11 @@ LOC = {
     20: loc("M.SA.4-M.SA.6", SM),
     21: "Not performed",
     22: loc("Table 1", f"Supplementary Table {SUPP['params']}"),
-    23: loc("R.1-R.9", "Fig. 2", "Tables 2 and 3"),
-    24: loc("R.10", "Fig. 3", f"Supplementary Tables {SUPP['capgrid']}, {SUPP['duration']}, {SUPP['oneway']} and {SUPP['other']}",
+    23: loc("R.1-R.10", "Fig. 2", "Tables 2 and 3"),  # v7: pathway B became Results paragraph 2
+    24: loc("R.11", "Fig. 3", f"Supplementary Tables {SUPP['capgrid']}, {SUPP['duration']}, {SUPP['oneway']} and {SUPP['other']}",
             f"Supplementary Fig. {SUPP['fig_icer']}"),
     25: "Not applicable (item 21)",
-    26: loc("D.1-D.7", "L.1"),  # v6: Discussion and Limitations written
+    26: loc("D.1-D.7", "L.1-L.2"),  # v6: Discussion and Limitations written; v7: Limitations in two paragraphs
     27: "Title page",
     28: "Title page",
 }

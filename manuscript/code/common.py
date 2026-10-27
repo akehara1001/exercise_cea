@@ -19,10 +19,10 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 MAIN = ROOT / "output" / "phase2" / "main"
 P1 = ROOT / "output" / "phase1"
-VER = "v6"  # version written by this run; earlier versions are in manuscript/archive/
-PREV = "v5"
-BASE = "v5（manuscript/archive/v5/ 的交付物与同一套生成代码；本文 manuscript_v6.docx 由 manuscript_v5.docx 直接编辑而成）"
-STEP = "执笔第 4 步 v6：Introduction、Methods、Results 的修改；插入 Discussion、Implications、Limitations"
+VER = "v7"  # version written by this run; earlier versions are in manuscript/archive/
+PREV = "v6"
+BASE = "v6（manuscript/archive/v6/ 的交付物与同一套生成代码；本文 manuscript_v7.docx 由 manuscript_v6.docx 直接编辑而成）"
+STEP = "v7：重写 Discussion、Implications、Limitations；Results 第 1 段拆段"
 OUT = ROOT / "manuscript" / VER
 ARCHIVE_PREV = ROOT / "manuscript" / "archive" / PREV
 FIGDIR = OUT / "figures"
@@ -40,7 +40,7 @@ SUPP = {
     "fig_validation": "S1",    # Supplementary Fig. S1: model OS/EFS vs reconstructed KM and final analysis (stage 1)
     "validation": "S3",        # Supplementary Table S3: validation values (stage 1)
     "capgrid": "S4",           # Results P1: data of Fig. 2 (HR grid, both thresholds, early-recurrence scenario)
-    "pathB": "S5",             # Results P1: effect on pCR (path B)
+    "pathB": "S5",             # Results P2 (v7; P1 until v6): effect on pCR (path B)
     "decomp": "S6",            # Results P2: incremental costs by category, main comparison, HR 0.85
     "duration": "S7",          # Results P3: effect duration and post-operative continuation, full grid
     "netbenefit": "S8",        # Results P5: one-year cohort net benefit (JBCS registry report no. 55)
@@ -51,7 +51,7 @@ SUPP = {
 # v4 -> v5 renumbering of supplementary tables (old -> new), used to carry the v4
 # Results text and its ledger over to the v5 numbering
 SUPP_RENUMBER_V4_V5 = {"S1": "S2", "S2": "S3", "S5": "S6", "S6": "S7", "S7": "S8", "S8": "S5"}
-# previous version -> this version (compare_versions.py); v5 -> v6 keeps every supplementary number
+# previous version -> this version (compare_versions.py); v5 -> v6 and v6 -> v7 keep every supplementary number
 SUPP_RENUMBER_PREV: dict[str, str] = {}
 
 MINUS = "−"

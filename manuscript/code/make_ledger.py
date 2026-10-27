@@ -238,6 +238,8 @@ for ps in rl["paragraphs"]:
     for i, s in enumerate(ps):
         if own(s["text"]):
             continue
+        if any(ps[0]["text"].startswith(c) for c in s["cites"]):  # v7: the paragraph opens by naming the table ("Supplementary Table S5 shows ...")
+            continue
         later = " ".join(x["text"] for x in ps[i + 1:])
         if not any(c in later or c.replace("Table ", "Tables ") in later for c in s["cites"]):
             orphan.append(s["text"])
@@ -305,6 +307,7 @@ DI["further_research_phrases"] = {h: len(re.findall(h, dlow)) for h in (r"furthe
                                   if re.findall(h, dlow)}
 DI["limitation_words_outside_Limitations"] = [k for k in ids if not k.startswith("L.") and re.search(r"\blimitation", ptext(PID[k]).lower())]
 DI["bare_now"] = [k for k in dids if re.search(r"\bnow\b", ptext(PID[k]))]
+DI["current_without_a_date"] = [(k, m.group(0)) for k in dids for m in re.finditer(r"\bcurrent(?:ly)?\s+\w+", ptext(PID[k]))]  # v7
 
 # ================================================================ writing checks on the whole text (Introduction to Limitations)
 W = {}
@@ -575,16 +578,13 @@ for pi, ps in enumerate(rl["paragraphs"], start=1):
         for u in [u for u in rl["used"] if u["paragraph"] == pi and u["sentence"] == si]:
             L.append(f"  - {u['shown']} ← {u['where']}（`{u['source']}`：{u['loc']}）")
 L += ["", "## 1b. Introduction、Methods、Discussion、Implications、Limitations 的数字（按段）", "",
-      "每个数字在登记时由 edit_manuscript_v6.py 与所示的来源逐一核对（表、图与补充材料的显示值须同值同位；所引文献摘要、项目文件与 JBCS 数值文件的原文）。"
-      "Discussion 第 2 段的 702 是「medical costs avoided」（Methods, Outcome：不含方案费的增量医疗费的符号反转），Supplementary Table "
-      f"{SUPP['decomp']} 显示的增量为 −702。", "", "| 段 | 显示 | 来源 | 位置 |", "|---|---|---|---|"]
+      f"每个数字在登记时由 edit_manuscript_{VER}.py 与所示的来源逐一核对（表、图与补充材料的显示值须同值同位；所引文献摘要、项目文件与 JBCS 数值文件的原文）。",
+      "", "| 段 | 显示 | 来源 | 位置 |", "|---|---|---|---|"]
 for r in ml["rows"]:
     L.append(f"| {r['where']} | {r['shown']} | {r['source']} | {r['loc']} |")
-f3 = ml.get("fig3_range_check")
-if f3:
-    L += ["", f"Discussion 第 3 段「no input moved this cost outside JPY 2,617 thousand to 2,836 thousand (Fig. 3)」的核对：Fig. 3 的值所在的 "
-          f"Supplementary Table {SUPP['oneway']} 中，上限的全部 {f3['inputs_x_bounds']} 个值（21 个输入 × 下限与上限）的最小为 {f3['lowest'][0]} = {f3['lowest'][1]}"
-          f"（{f3['lowest'][2]:.2f} 日元），最大为 {f3['highest'][0]} = {f3['highest'][1]}（{f3['highest'][2]:.2f} 日元）。"]
+tc = ml.get("text_checks")
+if tc:  # statements that rest on table values without printing them (checked in the edit script)
+    L += ["", "不印数字、但以表中数值为依据的文字（编辑脚本中断言）：", ""] + [f"- {k}：{json.dumps(v, ensure_ascii=False)}" for k, v in tc.items()]
 L += ["", f"## 2. Table 1–3（tables_{VER}.docx）", ""] + table_rows(tl["rows"])
 L += ["", "### 派生值的核对（Table 3 的“转移复发治疗费 50%”“艾立布林”两栏的类别值）", ""]
 for k, v in tl["derived_check"].items():
