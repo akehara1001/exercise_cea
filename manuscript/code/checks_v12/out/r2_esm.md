@@ -1,0 +1,5 @@
+- [ESM 1] C unit 104: 「paragraph 1;」→「paragraphs 1 to 2;」
+- [ESM 2] C unit 112: 「2;」→「3;」
+- [ESM 3] C unit 116: 「2;」→「3;」
+- [ESM 4] C unit 124: 「paragraph 1;」→「paragraphs 1 to 2;」
+- [ESM 5] C unit 158: 「10)」→「11)」

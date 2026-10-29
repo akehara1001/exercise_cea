@@ -1,0 +1,49 @@
+paragraphs scanned: 45 (abstract 5 + main 40 )
+banned words: {}
+throat-clearing: {}
+bare time words: {'\\bcurrently\\b': 1, '\\bnow\\b': 1, '\\bcurrent\\b': 1}
+connectives: {}
+causal words: {}
+em dash —: 0 | middle dot ・: 0 | 'Note' paragraphs: 0
+sentences: 125 | >30 words: 43 | longest: 76
+   76: Secondary outcomes were the recurrence HRs at which the maximum affordable cost, or the me
+   67: (5) To test other assumptions, scenario analyses changed one assumption at a time (Table 1
+   55: This study estimated, from the perspective of the Japanese public healthcare payer, the ma
+   53: (6) To express the result for Japan, the one-year net benefit used the fee-schedule-based 
+   49: In the 2024 national registry, 47% of patients treated with neoadjuvant chemotherapy, incl
+   47: Because most recurrences after neoadjuvant chemotherapy with pembrolizumab occur early [6]
+   44: Cost-effectiveness analyses of the KEYNOTE-522 regimen come from the United States, Hong K
+   42: The willingness-to-pay threshold for exercise was 5 million Japanese yen (JPY) per QALY [4
+   42: Secondary aims were to estimate the same cost when exercise is added to chemotherapy alone
+   42: In Japan, one month of treatment after distant recurrence costs more than the whole progra
+   42: (4) To find the inputs that move the results most, one-way sensitivity analyses set each i
+   41: Trials should record recurrence and follow patients long enough to see whether the effect 
+   41: The maximum affordable cost at an HR of 0.85 was JPY 1,772 thousand when the effect lasted
+   41: Searches of PubMed and Europe PMC covering 2000 to 2026 identified no economic evaluation 
+   40: In the KEYNOTE-522 trial of stage II or III TNBC, adding pembrolizumab to neoadjuvant chem
+   39: The maximum affordable cost equaled the cost of the fee-schedule-based program at an HR of
+   39: Survival after distant recurrence came from a French cohort diagnosed in 2008 to 2020, lar
+   39: During neoadjuvant chemotherapy, diet and exercise were associated with a higher pCR in on
+   39: At an HR of 0.85, incremental medical costs other than the program were JPY −702 thousand 
+   38: The ICER was JPY 3,044 thousand with Japanese post-operative treatment, JPY 2,565 thousand
+   38: In breast cancer, randomized trials of exercise during adjuvant chemotherapy improved phys
+   37: The maximum affordable cost was higher without pembrolizumab, because more patients relaps
+   37: Event-free survival after surgery came from parametric models fitted to patient-level data
+   37: (2) To estimate the maximum affordable cost, the model was run at recurrence HRs from 0.70
+   36: In an alternative pathway, exercise raised pCR by 0 to 10 percentage points without changi
+   36: Excess mortality after distant recurrence came from the French Epidemiological Strategy an
+   35: Utilities were EuroQol 5-dimension 5-level (EQ-5D-5L) values from KEYNOTE-522 with the Ger
+   35: The supervised program used the CHALLENGE program cost [46], converted from 2024 Canadian 
+   35: (1) To check that the model reproduced the trial, overall survival, which was not used to 
+   34: To gain as many QALYs as pembrolizumab, exercise added to chemotherapy alone required a re
+   33: Where a source gave no range, the range was ±25% of the base value or the missing bound mi
+   33: At an HR of 0.95, the one-year net benefit for the 3,451 registered patients was JPY 2.68 
+   33: Alternative durations held it until 1 year after surgery or for life; in a further alterna
+   32: The primary outcome was the maximum affordable cost of an exercise program per patient: th
+   32: The effect of exercise during neoadjuvant chemotherapy on recurrence is unknown, so all re
+   32: Our results agree with the cost-utility analysis of CHALLENGE, in which the program cost l
+   32: In the CHALLENGE trial [9], structured exercise for 3 years after adjuvant chemotherapy fo
+   32: If it does, even a small effect would make a structured program cost-effective in Japan: w
+   31: The exposure was the recurrence HR with exercise: the HR for locoregional and distant recu
+   31: The distributions, a Weibull model for patients with pCR and a Weibull mixture cure model 
+paragraphs >150 words: [(175, 'Exercise during adjuvant chemotherapy improves fitness [10–1'), (198, 'The effect of exercise during neoadjuvant chemotherapy on re')]

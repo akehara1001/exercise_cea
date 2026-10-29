@@ -1,0 +1,27 @@
+manuscript: units v10 163, v11 164, unchanged 155, changed blocks 8
+  numbers: v10 1029, v11 1031; only in v10 {'3,242': 1, '26': 1, '-03': 1}; only in v11 {'3,244': 1, '2016': 1, '29': 1, '03': 1, '661': 1}
+  [1] replace: 1 -> 1 units
+     - Word count: abstract 250; main text 3,242 (excluding abstract, title page, tables, figures and references); 3 tables; 3 figures; 1 Online Resource
+     + Word count: abstract 250; main text 3,244 (excluding abstract, title page, tables, figures and references); 3 tables; 3 figures; 1 Online Resource
+  [2] replace: 1 -> 1 units
+     - Methods A state-transition model based on KEYNOTE-522 simulated chemotherapy with or without pembrolizumab, each with or without exercise. The analysis took the Japanese payer perspective over a lifetime, discounting at 
+     + Methods A state-transition model based on KEYNOTE-522 simulated chemotherapy with or without pembrolizumab, each with or without exercise. It took the Japanese payer perspective over a lifetime, discounting at 2% annuall
+  [3] replace: 1 -> 1 units
+     - The analysis took the Japanese public healthcare payer perspective and a lifetime horizon, to capture differences in survival. Costs and QALYs were discounted at 2% per year, as the Japanese guideline specifies [40]. The
+     + The analysis took the Japanese public healthcare payer perspective and a lifetime horizon, to capture differences in survival. Costs and QALYs were discounted at 2% per year, as the Japanese guideline specifies [40]. The
+  [4] replace: 1 -> 2 units
+     - The exposure was the recurrence HR with exercise: the HR for locoregional and distant recurrence after surgery in an arm with exercise, relative to the same treatment without exercise (Table 1). It ranged from 0.70 to 1.
+     + The exposure was the recurrence HR with exercise: the HR for locoregional and distant recurrence after surgery in an arm with exercise, relative to the same treatment without exercise (Table 1). It ranged from 0.70 to 1.
+     + In an alternative pathway, exercise raised pCR by 0 to 10 percentage points without changing the recurrence HR; patients added to the pCR group took the event-free survival of patients with pCR given the same treatment. 
+  [5] replace: 1 -> 1 units
+     - 10. Furmaniak AC, Menig M, Markes MH (2016) Exercise for women receiving adjuvant therapy for breast cancer. Cochrane Database Syst Rev 9:CD005001. https://doi.org/10.1002/14651858.CD005001.pub3
+     + 10. Furmaniak AC, Menig M, Markes MH (2016) Exercise for women receiving adjuvant therapy for breast cancer. Cochrane Database Syst Rev 2016(9):CD005001. https://doi.org/10.1002/14651858.CD005001.pub3
+  [6] replace: 1 -> 1 units
+     - 28. Huang M, A Fasching P, Haiderali A, Xue W, Yang C, Pan W et al (2023) Cost-Effectiveness of Neoadjuvant Pembrolizumab Plus Chemotherapy Followed by Adjuvant Single-Agent Pembrolizumab for High-Risk Early-Stage Triple
+     + 28. Huang M, Fasching PA, Haiderali A, Xue W, Yang C, Pan W et al (2023) Cost-Effectiveness of Neoadjuvant Pembrolizumab Plus Chemotherapy Followed by Adjuvant Single-Agent Pembrolizumab for High-Risk Early-Stage Triple-
+  [7] replace: 1 -> 1 units
+     - 58. Valachis A, Geisler J, Karihtala P, Tuxen MK (2026) Insights on postneoadjuvant treatment among patients with triple-negative breast cancer and residual disease after neoadjuvant therapy: can expert consensus help to
+     + 58. Valachis A, Geisler J, Karihtala P, Tuxen MK (2026) Insights on postneoadjuvant treatment among patients with triple-negative breast cancer and residual disease after neoadjuvant therapy: can expert consensus help to
+  [8] replace: 1 -> 1 units
+     - 65. Pharmaceutical Benefits Advisory Committee (2023) Public summary document, March 2023 PBAC meeting: pembrolizumab, solution concentrate for I.V. infusion 100 mg in 4 mL vial, Keytruda, Merck Sharp & Dohme (Australia)
+     + 65. Pharmaceutical Benefits Advisory Committee (2023) Public summary document, March 2023 PBAC meeting: pembrolizumab, solution concentrate for I.V. infusion 100 mg in 4 mL vial, Keytruda, Merck Sharp & Dohme (Australia)

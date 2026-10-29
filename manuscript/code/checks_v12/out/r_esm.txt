@@ -1,0 +1,17 @@
+ESM: units v10 2404, v11 2404, unchanged 2399, changed blocks 5
+  numbers: v10 2684, v11 2686; only in v10 {'10': 1}; only in v11 {'3': 2, '11': 1}
+  [1] replace: 1 -> 1 units
+     - Methods, Exercise effect and costs, paragraph 1; Methods, Survival, costs and utilities, paragraph 1; Supplementary Methods S1 (pp. 6 to 7)
+     + Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Supplementary Methods S1 (pp. 6 to 7)
+  [2] replace: 1 -> 1 units
+     - Methods, Exercise effect and costs, paragraph 2; Methods, Survival, costs and utilities, paragraph 2; Table 1; Supplementary Table S2 (pp. 6 to 7)
+     + Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2; Table 1; Supplementary Table S2 (pp. 6 to 7)
+  [3] replace: 1 -> 1 units
+     - Methods, Exercise effect and costs, paragraph 2; Methods, Survival, costs and utilities, paragraph 2 (pp. 6 to 7)
+     + Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2 (pp. 6 to 7)
+  [4] replace: 1 -> 1 units
+     - Methods, Exercise effect and costs, paragraph 1; Methods, Survival, costs and utilities, paragraph 1; Methods, Statistical analysis, stages (1) and (2); Supplementary Methods S1 (pp. 6 to 8)
+     + Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Methods, Statistical analysis, stages (1) and (2); Supplementary Methods S1 (pp. 6 to 8)
+  [5] replace: 1 -> 1 units
+     - Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 2; Supplementary Tables S4, S7, S9 and S10; Supplementary Fig. S2 (pp. 9 to 10)
+     + Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 2; Supplementary Tables S4, S7, S9 and S10; Supplementary Fig. S2 (pp. 9 to 11)

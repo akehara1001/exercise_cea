@@ -1,0 +1,186 @@
+== v12/manuscript_v12_BCRT.docx
+docDefaults sz: 24 fonts: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii': 'Times New Roman', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cs': 'Times New Roman', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia': 'Times New Roman', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi': 'Times New Roman'}
+style Title sz 56 color None
+style Heading1 sz 32 color 2E74B5
+style Heading2 sz 26 color 2E74B5
+style Heading3 sz 24 color 1F4D78
+style Heading4 sz None color 2E74B5
+style Heading5 sz None color 2E74B5
+style Heading6 sz None color 1F4D78
+style Hyperlink sz None color 0563C1
+style FootnoteText sz 20 color None
+style FootnoteTextChar sz 20 color None
+style EndnoteText sz 20 color None
+style EndnoteTextChar sz 20 color None
+runs with text: 176
+paragraph styles: {'Normal': 164}
+sizes (loc, half-pt): {('B', '24'): 176}
+fonts: {('B', 'Times New Roman'): 176}
+colors: {('B', 'none'): 176}
+highlight: {}
+spacing line (nonempty paras): {('B', '480'): 161}
+bold runs: 26
+    ('B', 0, 'Cost-effectiveness of exercise added to neoadjuvant chemothe')
+    ('B', 7, 'Abstract')
+    ('B', 8, 'Purpose')
+    ('B', 9, 'Methods')
+    ('B', 10, 'Results')
+    ('B', 11, 'Conclusion')
+    ('B', 12, 'Keywords')
+    ('B', 14, 'Introduction')
+    ('B', 19, 'Methods')
+    ('B', 43, 'Results')
+    ('B', 57, 'Discussion')
+    ('B', 68, 'Conclusion')
+    ('B', 70, 'Acknowledgments')
+    ('B', 72, 'References')
+    ('B', 151, 'Statements and Declarations')
+    ('B', 152, 'Funding')
+    ('B', 153, 'Competing interests')
+    ('B', 154, 'Author contributions')
+    ('B', 155, 'Data availability')
+    ('B', 156, 'Ethics approval')
+    ('B', 157, 'Consent to participate')
+    ('B', 158, 'Consent to publish')
+    ('B', 160, 'Figure captions')
+    ('B', 161, 'Fig. 1')
+    ('B', 162, 'Fig. 2')
+    ('B', 163, 'Fig. 3')
+sectPr lnNumType: True pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'portrait'}
+== v12/ESM_1_v12.docx
+docDefaults sz: 22 fonts: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme': 'minorHAnsi', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme': 'minorEastAsia', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme': 'minorHAnsi', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme': 'minorBidi'}
+style Normal sz 24 color None
+style Heading1 sz 28 color 365F91
+style Heading2 sz 26 color 4F81BD
+style Heading3 sz None color 4F81BD
+style Heading4 sz None color 4F81BD
+style Heading5 sz None color 243F60
+style Heading6 sz None color 243F60
+style Heading7 sz None color 404040
+style Heading8 sz 20 color 4F81BD
+style Heading9 sz 20 color 404040
+style Heading1Char sz 28 color 365F91
+style Heading2Char sz 26 color 4F81BD
+style Heading3Char sz None color 4F81BD
+style Title sz 52 color 17365D
+style TitleChar sz 52 color 17365D
+style Subtitle sz 24 color 4F81BD
+style SubtitleChar sz 24 color 4F81BD
+style BodyText3 sz 16 color None
+style BodyText3Char sz 16 color None
+style MacroText sz 20 color None
+style MacroTextChar sz 20 color None
+style Quote sz None color 000000
+style QuoteChar sz None color 000000
+style Heading4Char sz None color 4F81BD
+style Heading5Char sz None color 243F60
+style Heading6Char sz None color 243F60
+style Heading7Char sz None color 404040
+style Heading8Char sz 20 color 4F81BD
+style Heading9Char sz 20 color 404040
+style Caption sz 18 color 4F81BD
+style IntenseQuote sz None color 4F81BD
+style IntenseQuoteChar sz None color 4F81BD
+style SubtleEmphasis sz None color 808080
+style IntenseEmphasis sz None color 4F81BD
+style SubtleReference sz None color C0504D
+style IntenseReference sz None color C0504D
+style LightShading sz None color 000000
+style LightShading-Accent1 sz None color 365F91
+style LightShading-Accent2 sz None color 943634
+style LightShading-Accent3 sz None color 76923C
+style LightShading-Accent4 sz None color 5F497A
+style LightShading-Accent5 sz None color 31849B
+style LightShading-Accent6 sz None color E36C0A
+style MediumList1 sz None color 000000
+style MediumList1-Accent1 sz None color 000000
+style MediumList1-Accent2 sz None color 000000
+style MediumList1-Accent3 sz None color 000000
+style MediumList1-Accent4 sz None color 000000
+style MediumList1-Accent5 sz None color 000000
+style MediumList1-Accent6 sz None color 000000
+style MediumList2 sz None color 000000
+style MediumList2-Accent1 sz None color 000000
+style MediumList2-Accent2 sz None color 000000
+style MediumList2-Accent3 sz None color 000000
+style MediumList2-Accent4 sz None color 000000
+style MediumList2-Accent5 sz None color 000000
+style MediumList2-Accent6 sz None color 000000
+style MediumGrid2 sz None color 000000
+style MediumGrid2-Accent1 sz None color 000000
+style MediumGrid2-Accent2 sz None color 000000
+style MediumGrid2-Accent3 sz None color 000000
+style MediumGrid2-Accent4 sz None color 000000
+style MediumGrid2-Accent5 sz None color 000000
+style MediumGrid2-Accent6 sz None color 000000
+style DarkList sz None color FFFFFF
+style DarkList-Accent1 sz None color FFFFFF
+style DarkList-Accent2 sz None color FFFFFF
+style DarkList-Accent3 sz None color FFFFFF
+style DarkList-Accent4 sz None color FFFFFF
+style DarkList-Accent5 sz None color FFFFFF
+style DarkList-Accent6 sz None color FFFFFF
+style ColorfulShading sz None color 000000
+style ColorfulShading-Accent1 sz None color 000000
+style ColorfulShading-Accent2 sz None color 000000
+style ColorfulShading-Accent3 sz None color 000000
+style ColorfulShading-Accent4 sz None color 000000
+style ColorfulShading-Accent5 sz None color 000000
+style ColorfulShading-Accent6 sz None color 000000
+style ColorfulList sz None color 000000
+style ColorfulList-Accent1 sz None color 000000
+style ColorfulList-Accent2 sz None color 000000
+style ColorfulList-Accent3 sz None color 000000
+style ColorfulList-Accent4 sz None color 000000
+style ColorfulList-Accent5 sz None color 000000
+style ColorfulList-Accent6 sz None color 000000
+style ColorfulGrid sz None color 000000
+style ColorfulGrid-Accent1 sz None color 000000
+style ColorfulGrid-Accent2 sz None color 000000
+style ColorfulGrid-Accent3 sz None color 000000
+style ColorfulGrid-Accent4 sz None color 000000
+style ColorfulGrid-Accent5 sz None color 000000
+style ColorfulGrid-Accent6 sz None color 000000
+runs with text: 2551
+paragraph styles: {'Normal': 2404}
+sizes (loc, half-pt): {('B', '24'): 2540, ('T', '24'): 11}
+fonts: {('B', 'Times New Roman'): 2540, ('T', 'Times New Roman'): 11}
+colors: {('B', 'none'): 2540, ('T', 'none'): 11}
+highlight: {}
+spacing line (nonempty paras): {('B', None): 2355, ('T', None): 11}
+bold runs: 22
+    ('B', 0, 'Online Resource 1')
+    ('B', 7, 'Literature searches')
+    ('T', 15, 'Reconstructed patient-level data')
+    ('B', 17, 'Event-free survival after surgery')
+    ('T', 20, 'Events before surgery, first events after surgery and deaths')
+    ('B', 23, 'Survival after recurrence and background mortality')
+    ('B', 26, 'Validation')
+    ('B', 28, 'Probabilistic sensitivity analysis')
+    ('B', 33, 'Title')
+    ('B', 43, 'Abstract')
+    ('B', 53, 'Introduction')
+    ('B', 63, 'Methods')
+    ('B', 141, 'Results')
+    ('T', 163, 'Discussion')
+    ('B', 173, 'Other relevant information')
+    ('B', 190, 'A. Survival and model structure')
+    ('B', 352, 'B. Costs, adverse events, utilities, exercise and post-opera')
+    ('B', 1050, 'B. Restricted mean survival time')
+    ('B', 1096, 'D. Model extrapolation')
+    ('B', 1779, 'B. Net benefit for one year of patients, JPY billion')
+    ('B', 1812, 'Inputs that changed either result')
+    ('B', 2342, 'Scenario results')
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '16838'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'landscape'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'landscape'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '16838'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'landscape'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'landscape'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'landscape'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'landscape'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'landscape'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'landscape'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'landscape'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '16838'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'landscape'}

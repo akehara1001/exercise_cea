@@ -1,0 +1,25 @@
+decomp_main_hr085.csv: rows 16; numeric cols 2 max|diff| 0 (rel 0); NA mismatches 0; text cols 1 differing none
+decomp_main_hr085_components.csv: rows 42; numeric cols 3 max|diff| 0 (rel 0); NA mismatches 0; text cols 3 differing none
+decomp_reference.csv: rows 11; numeric cols 2 max|diff| 0 (rel 0); NA mismatches 0; text cols 1 differing none
+decomp_reference_components.csv: rows 42; numeric cols 3 max|diff| 0 (rel 0); NA mismatches 0; text cols 3 differing none
+det_caps.csv: rows 72; numeric cols 5 max|diff| 0 (rel 0); NA mismatches 0; text cols 3 differing none
+det_e_crossings.csv: rows 18; numeric cols 6 max|diff| 0 (rel 0); NA mismatches 0; text cols 3 differing none
+det_reference.csv: rows 2; numeric cols 6 max|diff| 0 (rel 0); NA mismatches 0; text cols 1 differing none
+det_yardstick.csv: rows 2; numeric cols 4 max|diff| 0 (rel 0); NA mismatches 0; text cols 3 differing none
+oneway_base.csv: rows 81; numeric cols 8 max|diff| 0 (rel 0); NA mismatches 0; text cols 4 differing ['provisional']
+    provisional: 9 rows differ, e.g. public 'FALSE' vs work tree 'TRUE'
+oneway_sjp.csv: rows 10; numeric cols 8 max|diff| 0 (rel 0); NA mismatches 0; text cols 4 differing ['provisional']
+    provisional: 1 rows differ, e.g. public 'FALSE' vs work tree 'TRUE'
+sc_base_crossings.csv: rows 27; numeric cols 3 max|diff| 0 (rel 0); NA mismatches 0; text cols 4 differing none
+sc_eribulin_crossings.csv: rows 27; numeric cols 3 max|diff| 0 (rel 0); NA mismatches 0; text cols 4 differing none
+sc_eribulin_det_caps.csv: rows 39; numeric cols 5 max|diff| 0 (rel 0); NA mismatches 0; text cols 3 differing none
+sc_eribulin_det_reference.csv: rows 2; numeric cols 6 max|diff| 0 (rel 0); NA mismatches 0; text cols 1 differing none
+sc_metcost50_crossings.csv: rows 27; numeric cols 3 max|diff| 0 (rel 0); NA mismatches 0; text cols 4 differing none
+sc_metcost50_det_caps.csv: rows 39; numeric cols 5 max|diff| 0 (rel 0); NA mismatches 0; text cols 3 differing none
+sc_metcost50_det_reference.csv: rows 2; numeric cols 6 max|diff| 0 (rel 0); NA mismatches 0; text cols 1 differing none
+scenario_caps.csv: rows 414; numeric cols 5 max|diff| 0 (rel 0); NA mismatches 0; text cols 4 differing none
+scenario_reference.csv: rows 10; numeric cols 4 max|diff| 0 (rel 0); NA mismatches 0; text cols 2 differing none
+scenario_utility_sets.csv: rows 15; numeric cols 1 max|diff| 0 (rel 0); NA mismatches 0; text cols 2 differing none
+files with numeric differences: none (largest relative difference 0)
+public run: main cap HR 0.85 2,726.4; secondary 3,442.9; ICER 2,052.8 (JPY thousand)
+work tree: main cap HR 0.85 2,726.4; secondary 3,442.9; ICER 2,052.8 (JPY thousand)

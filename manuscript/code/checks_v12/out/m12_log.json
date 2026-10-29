@@ -1,0 +1,64 @@
+[
+ {
+  "step": "1a",
+  "old": "The analysis took the Japanese payer perspective over a lifetime, discounting at 2% per year.",
+  "new": "It took the Japanese payer perspective over a lifetime, discounting at 2% annually.",
+  "para_before": "Methods A state-transition model based on KEYNOTE-522 simulated chemotherapy with or without pembrolizumab, each with or without exercise. The analysis took the Japanese payer perspective over a lifetime, discounting at 2% per year. The exercise effect was a hazard ratio (HR) for recurrence after surgery of 0.70 to 1.00, with alternative durations. The maximum affordable cost was the threshold of JPY 5 million per quality-adjusted life year (QALY) times the incremental QALYs, minus incremental medical costs other than the program cost.",
+  "para_after": "Methods A state-transition model based on KEYNOTE-522 simulated chemotherapy with or without pembrolizumab, each with or without exercise. It took the Japanese payer perspective over a lifetime, discounting at 2% annually. The exercise effect was a hazard ratio (HR) for recurrence after surgery of 0.70 to 1.00, with alternative durations. The maximum affordable cost was the threshold of JPY 5 million per quality-adjusted life year (QALY) times the incremental QALYs, minus incremental medical costs other than the program cost."
+ },
+ {
+  "step": "1a",
+  "old": "The maximum affordable cost was the threshold of JPY 5 million per quality-adjusted life year (QALY)",
+  "new": "The maximum affordable cost was the threshold of 5 million Japanese yen (JPY) per quality-adjusted life year (QALY)",
+  "para_before": "Methods A state-transition model based on KEYNOTE-522 simulated chemotherapy with or without pembrolizumab, each with or without exercise. It took the Japanese payer perspective over a lifetime, discounting at 2% annually. The exercise effect was a hazard ratio (HR) for recurrence after surgery of 0.70 to 1.00, with alternative durations. The maximum affordable cost was the threshold of JPY 5 million per quality-adjusted life year (QALY) times the incremental QALYs, minus incremental medical costs other than the program cost.",
+  "para_after": "Methods A state-transition model based on KEYNOTE-522 simulated chemotherapy with or without pembrolizumab, each with or without exercise. It took the Japanese payer perspective over a lifetime, discounting at 2% annually. The exercise effect was a hazard ratio (HR) for recurrence after surgery of 0.70 to 1.00, with alternative durations. The maximum affordable cost was the threshold of 5 million Japanese yen (JPY) per quality-adjusted life year (QALY) times the incremental QALYs, minus incremental medical costs other than the program cost."
+ },
+ {
+  "step": "1b",
+  "old": "The willingness-to-pay threshold for exercise was JPY 5 million per QALY [41,42];",
+  "new": "The willingness-to-pay threshold for exercise was 5 million Japanese yen (JPY) per QALY [41,42];",
+  "para_before": "The analysis took the Japanese public healthcare payer perspective and a lifetime horizon, to capture differences in survival. Costs and QALYs were discounted at 2% per year, as the Japanese guideline specifies [40]. The willingness-to-pay threshold for exercise was JPY 5 million per QALY [41,42]; the higher threshold of JPY 7.5 million per QALY applies only to designated products given special consideration, such as anticancer drugs [42], and pembrolizumab was assessed at both.",
+  "para_after": "The analysis took the Japanese public healthcare payer perspective and a lifetime horizon, to capture differences in survival. Costs and QALYs were discounted at 2% per year, as the Japanese guideline specifies [40]. The willingness-to-pay threshold for exercise was 5 million Japanese yen (JPY) per QALY [41,42]; the higher threshold of JPY 7.5 million per QALY applies only to designated products given special consideration, such as anticancer drugs [42], and pembrolizumab was assessed at both."
+ },
+ {
+  "step": "1c",
+  "para_before": "The exposure was the recurrence HR with exercise: the HR for locoregional and distant recurrence after surgery in an arm with exercise, relative to the same treatment without exercise (Table 1). It ranged from 0.70 to 1.00 and did not act on deaths without recurrence or on events before surgery. The CHALLENGE estimate of 0.72 served as a reference point [9]. In the base case, the HR held for 5 years after randomization; after that, the reduction in the hazard, 1 − HR, halved every year. Alternative durations held it until 1 year after surgery or for life; in a further alternative, exercise continued for 30 months after surgery at additional cost, and the effect held until it stopped. In an alternative pathway, exercise raised pCR by 0 to 10 percentage points without changing the recurrence HR; patients added to the pCR group took the event-free survival of patients with pCR given the same treatment. Musculoskeletal adverse events occurred at the rates observed in CHALLENGE [9].",
+  "para_1_after": "The exposure was the recurrence HR with exercise: the HR for locoregional and distant recurrence after surgery in an arm with exercise, relative to the same treatment without exercise (Table 1). It ranged from 0.70 to 1.00 and did not act on deaths without recurrence or on events before surgery. The CHALLENGE estimate of 0.72 served as a reference point [9]. In the base case, the HR held for 5 years after randomization; after that, the reduction in the hazard, 1 − HR, halved every year. Alternative durations held it until 1 year after surgery or for life; in a further alternative, exercise continued for 30 months after surgery at additional cost, and the effect held until it stopped.",
+  "para_2_after": "In an alternative pathway, exercise raised pCR by 0 to 10 percentage points without changing the recurrence HR; patients added to the pCR group took the event-free survival of patients with pCR given the same treatment. Musculoskeletal adverse events occurred at the rates observed in CHALLENGE [9]."
+ },
+ {
+  "step": "1d",
+  "old": "Cochrane Database Syst Rev 9:CD005001",
+  "new": "Cochrane Database Syst Rev 2016(9):CD005001",
+  "para_before": "10. Furmaniak AC, Menig M, Markes MH (2016) Exercise for women receiving adjuvant therapy for breast cancer. Cochrane Database Syst Rev 9:CD005001. https://doi.org/10.1002/14651858.CD005001.pub3",
+  "para_after": "10. Furmaniak AC, Menig M, Markes MH (2016) Exercise for women receiving adjuvant therapy for breast cancer. Cochrane Database Syst Rev 2016(9):CD005001. https://doi.org/10.1002/14651858.CD005001.pub3"
+ },
+ {
+  "step": "1d",
+  "old": "Huang M, A Fasching P, Haiderali A",
+  "new": "Huang M, Fasching PA, Haiderali A",
+  "para_before": "28. Huang M, A Fasching P, Haiderali A, Xue W, Yang C, Pan W et al (2023) Cost-Effectiveness of Neoadjuvant Pembrolizumab Plus Chemotherapy Followed by Adjuvant Single-Agent Pembrolizumab for High-Risk Early-Stage Triple-Negative Breast Cancer in the United States. Adv Ther 40:1153–1170. https://doi.org/10.1007/s12325-022-02365-1",
+  "para_after": "28. Huang M, Fasching PA, Haiderali A, Xue W, Yang C, Pan W et al (2023) Cost-Effectiveness of Neoadjuvant Pembrolizumab Plus Chemotherapy Followed by Adjuvant Single-Agent Pembrolizumab for High-Risk Early-Stage Triple-Negative Breast Cancer in the United States. Adv Ther 40:1153–1170. https://doi.org/10.1007/s12325-022-02365-1"
+ },
+ {
+  "step": "1d",
+  "old": "the current evidence?. Br J Cancer",
+  "new": "the current evidence? Br J Cancer",
+  "para_before": "58. Valachis A, Geisler J, Karihtala P, Tuxen MK (2026) Insights on postneoadjuvant treatment among patients with triple-negative breast cancer and residual disease after neoadjuvant therapy: can expert consensus help to interpret the current evidence?. Br J Cancer 135:329–335. https://doi.org/10.1038/s41416-026-03452-8",
+  "para_after": "58. Valachis A, Geisler J, Karihtala P, Tuxen MK (2026) Insights on postneoadjuvant treatment among patients with triple-negative breast cancer and residual disease after neoadjuvant therapy: can expert consensus help to interpret the current evidence? Br J Cancer 135:329–335. https://doi.org/10.1038/s41416-026-03452-8"
+ },
+ {
+  "step": "1d",
+  "old": "https://www.pbs.gov.au/info/industry/listing/elements/pbac-meetings/psd/2023-03/pembrolizumab-earlyTNBC-keytruda-PSD-March-2023. Accessed 26 Oct 2026",
+  "new": "https://www.pbs.gov.au/industry/pbac/psd/2023/03/pembrolizumab-march-2023-a661. Accessed 29 Oct 2026",
+  "para_before": "65. Pharmaceutical Benefits Advisory Committee (2023) Public summary document, March 2023 PBAC meeting: pembrolizumab, solution concentrate for I.V. infusion 100 mg in 4 mL vial, Keytruda, Merck Sharp & Dohme (Australia) Pty Ltd. https://www.pbs.gov.au/info/industry/listing/elements/pbac-meetings/psd/2023-03/pembrolizumab-earlyTNBC-keytruda-PSD-March-2023. Accessed 26 Oct 2026",
+  "para_after": "65. Pharmaceutical Benefits Advisory Committee (2023) Public summary document, March 2023 PBAC meeting: pembrolizumab, solution concentrate for I.V. infusion 100 mg in 4 mL vial, Keytruda, Merck Sharp & Dohme (Australia) Pty Ltd. https://www.pbs.gov.au/industry/pbac/psd/2023/03/pembrolizumab-march-2023-a661. Accessed 29 Oct 2026"
+ },
+ {
+  "step": "1e",
+  "old": "Word count: abstract 250; main text 3,242 (",
+  "new": "Word count: abstract 250; main text 3,244 (",
+  "para_before": "Word count: abstract 250; main text 3,242 (excluding abstract, title page, tables, figures and references); 3 tables; 3 figures; 1 Online Resource",
+  "para_after": "Word count: abstract 250; main text 3,244 (excluding abstract, title page, tables, figures and references); 3 tables; 3 figures; 1 Online Resource"
+ }
+]
