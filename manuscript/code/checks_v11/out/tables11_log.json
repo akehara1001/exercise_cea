@@ -1,0 +1,18 @@
+[
+ {
+  "old": "one draw of the cost and utility inputs",
+  "new": "one draw of the other inputs",
+  "para_before": "1,000 probabilistic sensitivity analysis samples, each pairing one bootstrap replicate of the survival model with one draw of the cost and utility inputs; 95% uncertainty interval from the 2.5th and 97.5th percentiles",
+  "para_after": "1,000 probabilistic sensitivity analysis samples, each pairing one bootstrap replicate of the survival model with one draw of the other inputs; 95% uncertainty interval from the 2.5th and 97.5th percentiles"
+ },
+ {
+  "old": "(Supplementary Methods, Online Resource 1)",
+  "new": "(Supplementary Methods S1, Online Resource 1)",
+  "para_before": "Not used to fit the model; used only for validation (Supplementary Methods, Online Resource 1)",
+  "para_after": "Not used to fit the model; used only for validation (Supplementary Methods S1, Online Resource 1)"
+ },
+ {
+  "old": "dRecurrence HR: hazard ratio for locoregional and distant recurrence after surgery in an arm with exercise, relative to the same treatment without exercise; 1.00 means no effect.",
+  "new": "dRecurrence HR: hazard ratio for locoregional and distant recurrence after surgery in an arm with exercise, relative to the same treatment without exercise; 1.00 means no effect. After the period in which the HR is held, the reduction in the hazard, 1 − HR, halves every year."
+ }
+]

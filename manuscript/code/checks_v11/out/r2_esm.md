@@ -1,0 +1,25 @@
+- [ESM 1] C unit 42: 「」→「page」
+- [ESM 2] C unit 52: 「Abstract, paragraphs 1 to 4 (pp. 1 to」→「Abstract (p.」
+- [ESM 3] C unit 62: 「2」→「3」; 「3)」→「4)」
+- [ESM 4] C unit 72: 「background,」→「design,」; 「4)」→「5)」
+- [ESM 5] C unit 76: 「background,」→「design,」; 「1 (p. 3);」→「1;」; 「」→「(pp. 4 to 5)」
+- [ESM 6] C unit 80: 「background,」→「design,」; 「3」→「4」; 「4)」→「5)」
+- [ESM 7] C unit 84: 「background,」→「design,」; 「(p. 3)」→「(pp. 4 to 5)」
+- [ESM 8] C unit 88: 「background,」→「design,」; 「4)」→「5)」
+- [ESM 9] C unit 92: 「background,」→「design,」; 「4)」→「5)」
+- [ESM 10] C unit 96: 「background,」→「design,」; 「4)」→「5)」
+- [ESM 11] C unit 100: 「Outcome,」→「Outcomes,」; 「4」→「5」; 「5)」→「6)」
+- [ESM 12] C unit 104: 「Variables,」→「Exercise effect and costs,」; 「4 (p. 6);」→「1;」; 「Variables,」→「Survival, costs and utilities,」; 「5 (p. 6);」→「1;」; 「」→「(pp. 6 to 7)」
+- [ESM 13] C unit 108: 「Variables,」→「Survival, costs and utilities,」; 「5」→「2」; 「6)」→「7)」
+- [ESM 14] C unit 112: 「Variables,」→「Exercise effect and costs,」; 「3 (p. 5);」→「2;」; 「Variables,」→「Survival, costs and utilities,」; 「5 (p. 6);」→「2;」; 「」→「(pp. 6 to 7)」
+- [ESM 15] C unit 116: 「Variables,」→「Exercise effect and costs,」; 「3 (p. 5);」→「2;」; 「Variables,」→「Survival, costs and utilities,」; 「5 (p. 6)」→「2 (pp. 6 to 7)」
+- [ESM 16] C unit 120: 「」→「Methods, Study design, paragraph 1;」; 「paragraphs 1 to 2 (p. 6);」→「paragraph 1;」; 「S1」→「S1; Statements and Declarations, Data availability (pp. 4 to 26)」
+- [ESM 17] C unit 124: 「」→「Methods, Exercise effect and costs, paragraph 1; Methods, Survival, costs and utilities, paragraph 1;」; 「paragraphs 2 to 3 (p. 6);」→「stages (1) and (2);」; 「」→「(pp. 6 to 8)」
+- [ESM 18] C unit 128: 「background,」→「design,」; 「(p. 3)」→「(pp. 4 to 5)」
+- [ESM 19] C unit 136: 「paragraphs 4」→「stages (3)」; 「6 (p. 7);」→「(5);」; 「」→「(p. 8)」
+- [ESM 20] C unit 154: 「」→「Maximum affordable cost of exercise,」; 「10 (pp. 8」→「3; Results, Duration and metastatic treatment costs, paragraphs 1」; 「10);」→「3; Results, Pembrolizumab, paragraphs 1 to 2;」; 「3」→「3; Supplementary Tables S4 to S8 (pp. 9 to 10)」
+- [ESM 21] C unit 158: 「」→「Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses,」; 「11 (p. 10);」→「1;」; 「」→「Table 2;」; 「」→「(pp. 9 to 10)」
+- [ESM 22] C unit 172: 「7」→「6; Discussion, Implications; Discussion, Limitations」; 「10 to 12); Limitations, paragraphs 1 to 2 (pp. 12」→「11」
+- [ESM 23] C unit 182: 「Title page」→「Statements and Declarations, Funding (p. 26)」
+- [ESM 24] C unit 186: 「Title page」→「Statements and Declarations, Competing interests (p. 26)」
+- [ESM 25] P unit 188: 「」→「(or the numbered stage of the statistical analysis)」

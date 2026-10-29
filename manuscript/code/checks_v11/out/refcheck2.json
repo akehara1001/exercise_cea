@@ -1,0 +1,2727 @@
+{
+ "rows": [
+  {
+   "n": 1,
+   "listed": [
+    "Dent R",
+    "Trudeau M",
+    "Pritchard KI",
+    "Hanna WM",
+    "Kahn HK",
+    "Sawka CA"
+   ],
+   "et_al": true,
+   "cr_n_authors": 10,
+   "cr_first6": [
+    [
+     "Dent",
+     "Rebecca"
+    ],
+    [
+     "Trudeau",
+     "Maureen"
+    ],
+    [
+     "Pritchard",
+     "Kathleen I."
+    ],
+    [
+     "Hanna",
+     "Wedad M."
+    ],
+    [
+     "Kahn",
+     "Harriet K."
+    ],
+    [
+     "Sawka",
+     "Carol A."
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 2,
+   "listed": [
+    "Liedtke C",
+    "Mazouni C",
+    "Hess KR",
+    "André F",
+    "Tordai A",
+    "Mejia JA"
+   ],
+   "et_al": true,
+   "cr_n_authors": 13,
+   "cr_first6": [
+    [
+     "Liedtke",
+     "Cornelia"
+    ],
+    [
+     "Mazouni",
+     "Chafika"
+    ],
+    [
+     "Hess",
+     "Kenneth R."
+    ],
+    [
+     "André",
+     "Fabrice"
+    ],
+    [
+     "Tordai",
+     "Attila"
+    ],
+    [
+     "Mejia",
+     "Jaime A."
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [
+    "new_edition"
+   ],
+   "relation": []
+  },
+  {
+   "n": 3,
+   "listed": [
+    "Schmid P",
+    "Cortes J",
+    "Pusztai L",
+    "McArthur H",
+    "Kümmel S",
+    "Bergh J"
+   ],
+   "et_al": true,
+   "cr_n_authors": 21,
+   "cr_first6": [
+    [
+     "Schmid",
+     "Peter"
+    ],
+    [
+     "Cortes",
+     "Javier"
+    ],
+    [
+     "Pusztai",
+     "Lajos"
+    ],
+    [
+     "McArthur",
+     "Heather"
+    ],
+    [
+     "Kümmel",
+     "Sherko"
+    ],
+    [
+     "Bergh",
+     "Jonas"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": [
+    "has-review"
+   ]
+  },
+  {
+   "n": 4,
+   "listed": [
+    "Schmid P",
+    "Cortes J",
+    "Dent R",
+    "Pusztai L",
+    "McArthur H",
+    "Kümmel S"
+   ],
+   "et_al": true,
+   "cr_n_authors": 30,
+   "cr_first6": [
+    [
+     "Schmid",
+     "Peter"
+    ],
+    [
+     "Cortes",
+     "Javier"
+    ],
+    [
+     "Dent",
+     "Rebecca"
+    ],
+    [
+     "Pusztai",
+     "Lajos"
+    ],
+    [
+     "McArthur",
+     "Heather"
+    ],
+    [
+     "Kümmel",
+     "Sherko"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 5,
+   "listed": [
+    "Schmid P",
+    "Cortes J",
+    "Dent R",
+    "McArthur H",
+    "Pusztai L",
+    "Kümmel S"
+   ],
+   "et_al": true,
+   "cr_n_authors": 23,
+   "cr_first6": [
+    [
+     "Schmid",
+     "Peter"
+    ],
+    [
+     "Cortes",
+     "Javier"
+    ],
+    [
+     "Dent",
+     "Rebecca"
+    ],
+    [
+     "McArthur",
+     "Heather"
+    ],
+    [
+     "Pusztai",
+     "Lajos"
+    ],
+    [
+     "Kümmel",
+     "Sherko"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 6,
+   "listed": [
+    "Licata L",
+    "Mariani M",
+    "Viale G",
+    "Dent R",
+    "Tolaney SM",
+    "Schmid P"
+   ],
+   "et_al": true,
+   "cr_n_authors": 10,
+   "cr_first6": [
+    [
+     "Licata",
+     "Luca"
+    ],
+    [
+     "Mariani",
+     "Marco"
+    ],
+    [
+     "Viale",
+     "Giulia"
+    ],
+    [
+     "Dent",
+     "Rebecca"
+    ],
+    [
+     "Tolaney",
+     "Sara M."
+    ],
+    [
+     "Schmid",
+     "Peter"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": [
+    "has-preprint",
+    "is-supplemented-by"
+   ]
+  },
+  {
+   "n": 7,
+   "listed": [
+    "Japanese Breast Cancer Society"
+   ],
+   "et_al": false
+  },
+  {
+   "n": 8,
+   "listed": [
+    "Ministry of Health",
+    "Labour and Welfare"
+   ],
+   "et_al": false
+  },
+  {
+   "n": 9,
+   "listed": [
+    "Courneya KS",
+    "Vardy JL",
+    "O'Callaghan CJ",
+    "Gill S",
+    "Friedenreich CM",
+    "Wong RKS"
+   ],
+   "et_al": true,
+   "cr_n_authors": 27,
+   "cr_first6": [
+    [
+     "Courneya",
+     "Kerry S."
+    ],
+    [
+     "Vardy",
+     "Janette L."
+    ],
+    [
+     "O’Callaghan",
+     "Christopher J."
+    ],
+    [
+     "Gill",
+     "Sharlene"
+    ],
+    [
+     "Friedenreich",
+     "Christine M."
+    ],
+    [
+     "Wong",
+     "Rebecca K.S."
+    ]
+   ],
+   "author_mismatch": [
+    [
+     3,
+     "O'Callaghan CJ",
+     "O’Callaghan",
+     "Christopher J."
+    ]
+   ],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 10,
+   "listed": [
+    "Furmaniak AC",
+    "Menig M",
+    "Markes MH"
+   ],
+   "et_al": false,
+   "cr_n_authors": 3,
+   "cr_first6": [
+    [
+     "Furmaniak",
+     "Anna C"
+    ],
+    [
+     "Menig",
+     "Matthias"
+    ],
+    [
+     "Markes",
+     "Martina H"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [
+    "new_version"
+   ],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 11,
+   "listed": [
+    "Courneya KS",
+    "Segal RJ",
+    "Mackey JR",
+    "Gelmon K",
+    "Reid RD",
+    "Friedenreich CM"
+   ],
+   "et_al": true,
+   "cr_n_authors": 12,
+   "cr_first6": [
+    [
+     "Courneya",
+     "Kerry S."
+    ],
+    [
+     "Segal",
+     "Roanne J."
+    ],
+    [
+     "Mackey",
+     "John R."
+    ],
+    [
+     "Gelmon",
+     "Karen"
+    ],
+    [
+     "Reid",
+     "Robert D."
+    ],
+    [
+     "Friedenreich",
+     "Christine M."
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 12,
+   "listed": [
+    "van Waart H",
+    "Stuiver MM",
+    "van Harten WH",
+    "Geleijn E",
+    "Kieffer JM",
+    "Buffart LM"
+   ],
+   "et_al": true,
+   "cr_n_authors": 18,
+   "cr_first6": [
+    [
+     "van Waart",
+     "Hanna"
+    ],
+    [
+     "Stuiver",
+     "Martijn M."
+    ],
+    [
+     "van Harten",
+     "Wim H."
+    ],
+    [
+     "Geleijn",
+     "Edwin"
+    ],
+    [
+     "Kieffer",
+     "Jacobien M."
+    ],
+    [
+     "Buffart",
+     "Laurien M."
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 13,
+   "listed": [
+    "Mijwel S",
+    "Backman M",
+    "Bolam KA",
+    "Jervaeus A",
+    "Sundberg CJ",
+    "Margolin S"
+   ],
+   "et_al": true,
+   "cr_n_authors": 9,
+   "cr_first6": [
+    [
+     "Mijwel",
+     "Sara"
+    ],
+    [
+     "Backman",
+     "Malin"
+    ],
+    [
+     "Bolam",
+     "Kate A."
+    ],
+    [
+     "Jervaeus",
+     "Anna"
+    ],
+    [
+     "Sundberg",
+     "Carl Johan"
+    ],
+    [
+     "Margolin",
+     "Sara"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 14,
+   "listed": [
+    "Courneya KS",
+    "Segal RJ",
+    "McKenzie DC",
+    "Dong H",
+    "Gelmon K",
+    "Friedenreich CM"
+   ],
+   "et_al": true,
+   "cr_n_authors": 10,
+   "cr_first6": [
+    [
+     "COURNEYA",
+     "KERRY S."
+    ],
+    [
+     "SEGAL",
+     "ROANNE J."
+    ],
+    [
+     "MCKENZIE",
+     "DONALD C."
+    ],
+    [
+     "DONG",
+     "HUIRU"
+    ],
+    [
+     "GELMON",
+     "KAREN"
+    ],
+    [
+     "FRIEDENREICH",
+     "CHRISTINE M."
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 15,
+   "listed": [
+    "Sanft T",
+    "Harrigan M",
+    "McGowan C",
+    "Cartmel B",
+    "Zupa M",
+    "Li FY"
+   ],
+   "et_al": true,
+   "cr_n_authors": 20,
+   "cr_first6": [
+    [
+     "Sanft",
+     "Tara"
+    ],
+    [
+     "Harrigan",
+     "Maura"
+    ],
+    [
+     "McGowan",
+     "Courtney"
+    ],
+    [
+     "Cartmel",
+     "Brenda"
+    ],
+    [
+     "Zupa",
+     "Michelle"
+    ],
+    [
+     "Li",
+     "Fang-Yong"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 16,
+   "listed": [
+    "Kjeldsted E",
+    "Ammitzbøll G",
+    "Lænkholm AV",
+    "Rasic D",
+    "Ceballos SG",
+    "Jørgensen LB"
+   ],
+   "et_al": true,
+   "cr_n_authors": 14,
+   "cr_first6": [
+    [
+     "Kjeldsted",
+     "Eva"
+    ],
+    [
+     "Ammitzbøll",
+     "Gunn"
+    ],
+    [
+     "Lænkholm",
+     "Anne-Vibeke"
+    ],
+    [
+     "Rasic",
+     "Dusan"
+    ],
+    [
+     "Ceballos",
+     "Silvia Gonzalez"
+    ],
+    [
+     "Jørgensen",
+     "Lars Bo"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": [
+    "has-preprint",
+    "is-supplemented-by"
+   ]
+  },
+  {
+   "n": 17,
+   "listed": [
+    "Schmidt ME",
+    "Goldschmidt S",
+    "Kreutz C",
+    "Müller J",
+    "Schneeweiss A",
+    "May AM"
+   ],
+   "et_al": true,
+   "cr_n_authors": 9,
+   "cr_first6": [
+    [
+     "Schmidt",
+     "Martina E."
+    ],
+    [
+     "Goldschmidt",
+     "Siri"
+    ],
+    [
+     "Kreutz",
+     "Charlotte"
+    ],
+    [
+     "Müller",
+     "Jana"
+    ],
+    [
+     "Schneeweiss",
+     "Andreas"
+    ],
+    [
+     "May",
+     "Anne M."
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 18,
+   "listed": [
+    "Dias Rato N",
+    "Garcia C",
+    "Pinto D",
+    "Guedes H",
+    "Joaquim A",
+    "Viamonte S"
+   ],
+   "et_al": true,
+   "cr_n_authors": 9,
+   "cr_first6": [
+    [
+     "Dias Rato",
+     "Nuno"
+    ],
+    [
+     "Garcia",
+     "Catarina"
+    ],
+    [
+     "Pinto",
+     "Diogo"
+    ],
+    [
+     "Guedes",
+     "Helena"
+    ],
+    [
+     "Joaquim",
+     "Ana"
+    ],
+    [
+     "Viamonte",
+     "Sofia"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 19,
+   "listed": [
+    "de Boniface J",
+    "Altena R",
+    "Haddad Ringborg C",
+    "Bolam KA",
+    "Wengström Y"
+   ],
+   "et_al": false,
+   "cr_n_authors": 5,
+   "cr_first6": [
+    [
+     "de Boniface",
+     "Jana"
+    ],
+    [
+     "Altena",
+     "Renske"
+    ],
+    [
+     "Haddad Ringborg",
+     "Cecilia"
+    ],
+    [
+     "Bolam",
+     "Kate A."
+    ],
+    [
+     "Wengström",
+     "Yvonne"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 20,
+   "listed": [
+    "Khan KA",
+    "Mazuquin B",
+    "Canaway A",
+    "Petrou S",
+    "Bruce J"
+   ],
+   "et_al": false,
+   "cr_n_authors": 5,
+   "cr_first6": [
+    [
+     "Khan",
+     "Kamran Ahmad"
+    ],
+    [
+     "Mazuquin",
+     "Bruno"
+    ],
+    [
+     "Canaway",
+     "Alastair"
+    ],
+    [
+     "Petrou",
+     "Stavros"
+    ],
+    [
+     "Bruce",
+     "Julie"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 21,
+   "listed": [
+    "Gubler-Gut BE",
+    "Pöhlmann J",
+    "Flatz A",
+    "Schwenkglenks M",
+    "Rohrmann S"
+   ],
+   "et_al": false,
+   "cr_n_authors": 5,
+   "cr_first6": [
+    [
+     "Gubler-Gut",
+     "Barbara E."
+    ],
+    [
+     "Pöhlmann",
+     "Johannes"
+    ],
+    [
+     "Flatz",
+     "Aline"
+    ],
+    [
+     "Schwenkglenks",
+     "Matthias"
+    ],
+    [
+     "Rohrmann",
+     "Sabine"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 22,
+   "listed": [
+    "Wang Y",
+    "McCarthy AL",
+    "Hayes SC",
+    "Gordon LG",
+    "Chiu V",
+    "Bailey TG"
+   ],
+   "et_al": true,
+   "cr_n_authors": 8,
+   "cr_first6": [
+    [
+     "Wang",
+     "Yufan"
+    ],
+    [
+     "McCarthy",
+     "Alexandra L."
+    ],
+    [
+     "Hayes",
+     "Sandra C."
+    ],
+    [
+     "Gordon",
+     "Louisa G."
+    ],
+    [
+     "Chiu",
+     "Vivian"
+    ],
+    [
+     "Bailey",
+     "Tom G."
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 23,
+   "listed": [
+    "May AM",
+    "Bosch MJ",
+    "Velthuis MJ",
+    "van der Wall E",
+    "Steins Bisschop CN",
+    "Los M"
+   ],
+   "et_al": true,
+   "cr_n_authors": 13,
+   "cr_first6": [
+    [
+     "May",
+     "Anne M"
+    ],
+    [
+     "Bosch",
+     "Marcel J C"
+    ],
+    [
+     "Velthuis",
+     "Miranda J"
+    ],
+    [
+     "van der Wall",
+     "Elsken"
+    ],
+    [
+     "Steins Bisschop",
+     "Charlotte N"
+    ],
+    [
+     "Los",
+     "Maartje"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 24,
+   "listed": [
+    "van Waart H",
+    "van Dongen JM",
+    "van Harten WH",
+    "Stuiver MM",
+    "Huijsmans R",
+    "Hellendoorn-van Vreeswijk JAJH"
+   ],
+   "et_al": true,
+   "cr_n_authors": 8,
+   "cr_first6": [
+    [
+     "van Waart",
+     "Hanna"
+    ],
+    [
+     "van Dongen",
+     "Johanna M."
+    ],
+    [
+     "van Harten",
+     "Wim H."
+    ],
+    [
+     "Stuiver",
+     "Martijn M."
+    ],
+    [
+     "Huijsmans",
+     "Rosalie"
+    ],
+    [
+     "Hellendoorn-van Vreeswijk",
+     "Jeannette A. J. H."
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 25,
+   "listed": [
+    "Perrier L",
+    "Foucaut AM",
+    "Morelle M",
+    "Touillaud M",
+    "Kempf-Lépine AS",
+    "Heinz D"
+   ],
+   "et_al": true,
+   "cr_n_authors": 18,
+   "cr_first6": [
+    [
+     "Perrier",
+     "Lionel"
+    ],
+    [
+     "Foucaut",
+     "Aude-Marie"
+    ],
+    [
+     "Morelle",
+     "Magali"
+    ],
+    [
+     "Touillaud",
+     "Marina"
+    ],
+    [
+     "Kempf-Lépine",
+     "Anne-Sophie"
+    ],
+    [
+     "Heinz",
+     "Dominik"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 26,
+   "listed": [
+    "Ax AK",
+    "Husberg M",
+    "Johansson B",
+    "Demmelmaier I",
+    "Berntsen S",
+    "Sjövall K"
+   ],
+   "et_al": true,
+   "cr_n_authors": 9,
+   "cr_first6": [
+    [
+     "Ax",
+     "Anna-Karin"
+    ],
+    [
+     "Husberg",
+     "Magnus"
+    ],
+    [
+     "Johansson",
+     "Birgitta"
+    ],
+    [
+     "Demmelmaier",
+     "Ingrid"
+    ],
+    [
+     "Berntsen",
+     "Sveinung"
+    ],
+    [
+     "Sjövall",
+     "Katarina"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 27,
+   "listed": [
+    "Boudewijns EA",
+    "Otten TM",
+    "Gobianidze M",
+    "Ramaekers BL",
+    "van Schayck OCP",
+    "Joore MA"
+   ],
+   "et_al": false,
+   "cr_n_authors": 6,
+   "cr_first6": [
+    [
+     "Boudewijns",
+     "Esther A."
+    ],
+    [
+     "Otten",
+     "Thomas M."
+    ],
+    [
+     "Gobianidze",
+     "Mariam"
+    ],
+    [
+     "Ramaekers",
+     "Bram L."
+    ],
+    [
+     "van Schayck",
+     "Onno C. P."
+    ],
+    [
+     "Joore",
+     "Manuela A."
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 28,
+   "listed": [
+    "Huang M",
+    "A Fasching P",
+    "Haiderali A",
+    "Xue W",
+    "Yang C",
+    "Pan W"
+   ],
+   "et_al": true,
+   "cr_n_authors": 12,
+   "cr_first6": [
+    [
+     "Huang",
+     "Min"
+    ],
+    [
+     "A. Fasching",
+     "Peter"
+    ],
+    [
+     "Haiderali",
+     "Amin"
+    ],
+    [
+     "Xue",
+     "Weiguang"
+    ],
+    [
+     "Yang",
+     "Chelsey"
+    ],
+    [
+     "Pan",
+     "Wilbur"
+    ]
+   ],
+   "author_mismatch": [
+    [
+     2,
+     "A Fasching P",
+     "A. Fasching",
+     "Peter"
+    ]
+   ],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 29,
+   "listed": [
+    "Kwong A",
+    "Leung R",
+    "Chan TC",
+    "Khandelwal A",
+    "Mishra K",
+    "Huang M"
+   ],
+   "et_al": false,
+   "cr_n_authors": 6,
+   "cr_first6": [
+    [
+     "Kwong",
+     "Ava"
+    ],
+    [
+     "Leung",
+     "Roland"
+    ],
+    [
+     "Chan",
+     "Tsz Ching"
+    ],
+    [
+     "Khandelwal",
+     "Anvi"
+    ],
+    [
+     "Mishra",
+     "Kshama"
+    ],
+    [
+     "Huang",
+     "Min"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 30,
+   "listed": [
+    "Favre-Bulle A",
+    "Huang M",
+    "Haiderali A",
+    "Bhadhuri A"
+   ],
+   "et_al": false,
+   "cr_n_authors": 4,
+   "cr_first6": [
+    [
+     "Favre-Bulle",
+     "Andrea"
+    ],
+    [
+     "Huang",
+     "Min"
+    ],
+    [
+     "Haiderali",
+     "Amin"
+    ],
+    [
+     "Bhadhuri",
+     "Arjun"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 31,
+   "listed": [
+    "Pöllinger B",
+    "Haiderali A",
+    "Huang M",
+    "Akyol Ersoy B",
+    "Abdelaziz AH",
+    "Kassem L"
+   ],
+   "et_al": true,
+   "cr_n_authors": 7,
+   "cr_first6": [
+    [
+     "Pöllinger",
+     "Bernadette"
+    ],
+    [
+     "Haiderali",
+     "Amin"
+    ],
+    [
+     "Huang",
+     "Min"
+    ],
+    [
+     "Akyol Ersoy",
+     "Burcu"
+    ],
+    [
+     "Abdelaziz",
+     "Ahmed H."
+    ],
+    [
+     "Kassem",
+     "Loay"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 32,
+   "listed": [
+    "Chisaki Y",
+    "Nakamura N",
+    "Komuro T",
+    "Nyuji H",
+    "Harano M",
+    "Kitada N"
+   ],
+   "et_al": false,
+   "cr_n_authors": 6,
+   "cr_first6": [
+    [
+     "Chisaki",
+     "Yugo"
+    ],
+    [
+     "Nakamura",
+     "Nobuhiko"
+    ],
+    [
+     "Komuro",
+     "Takako"
+    ],
+    [
+     "Nyuji",
+     "Hirokatsu"
+    ],
+    [
+     "Harano",
+     "Mai"
+    ],
+    [
+     "Kitada",
+     "Noriaki"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 33,
+   "listed": [
+    "Sugiura K",
+    "Hiratsuka H",
+    "Oshima G",
+    "Aiko S"
+   ],
+   "et_al": false,
+   "cr_n_authors": 4,
+   "cr_first6": [
+    [
+     "Sugiura",
+     "Kiyoaki"
+    ],
+    [
+     "Hiratsuka",
+     "Hiroki"
+    ],
+    [
+     "Oshima",
+     "Go"
+    ],
+    [
+     "Aiko",
+     "Satoshi"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 34,
+   "listed": [
+    "Taniguchi S",
+    "Moriwaki K",
+    "Morimoto K",
+    "Shimozuma K"
+   ],
+   "et_al": false,
+   "cr_n_authors": 4,
+   "cr_first6": [
+    [
+     "Taniguchi",
+     "Seiya"
+    ],
+    [
+     "Moriwaki",
+     "Kensuke"
+    ],
+    [
+     "Morimoto",
+     "Kosuke"
+    ],
+    [
+     "Shimozuma",
+     "Kojiro"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 35,
+   "listed": [
+    "Kakinuma H",
+    "Takada D",
+    "Itoshima H",
+    "Kunisawa S",
+    "Moriwaki K",
+    "Honda M"
+   ],
+   "et_al": true,
+   "cr_n_authors": 8,
+   "cr_first6": [
+    [
+     "Kakinuma",
+     "Hirohito"
+    ],
+    [
+     "Takada",
+     "Daisuke"
+    ],
+    [
+     "Itoshima",
+     "Hisashi"
+    ],
+    [
+     "Kunisawa",
+     "Susumu"
+    ],
+    [
+     "Moriwaki",
+     "Kensuke"
+    ],
+    [
+     "Honda",
+     "Michitaka"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 36,
+   "listed": [
+    "Morimoto K",
+    "Moriwaki K",
+    "Nishikawa Y",
+    "Maeda T",
+    "Toyama M",
+    "Agatsuma N"
+   ],
+   "et_al": true,
+   "cr_n_authors": 11,
+   "cr_first6": [
+    [
+     "Morimoto",
+     "Kosuke"
+    ],
+    [
+     "Moriwaki",
+     "Kensuke"
+    ],
+    [
+     "Nishikawa",
+     "Yoshitaka"
+    ],
+    [
+     "Maeda",
+     "Tomomi"
+    ],
+    [
+     "Toyama",
+     "Mayumi"
+    ],
+    [
+     "Agatsuma",
+     "Nobukazu"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 37,
+   "listed": [
+    "Tomura K",
+    "Sakamaki H",
+    "Nawata S",
+    "Ishida H",
+    "Tanaka K",
+    "Kogo M"
+   ],
+   "et_al": false,
+   "cr_n_authors": 6,
+   "cr_first6": [
+    [
+     "Tomura",
+     "Kazuki"
+    ],
+    [
+     "Sakamaki",
+     "Hiroyuki"
+    ],
+    [
+     "Nawata",
+     "Shuichi"
+    ],
+    [
+     "Ishida",
+     "Hiroo"
+    ],
+    [
+     "Tanaka",
+     "Katsumi"
+    ],
+    [
+     "Kogo",
+     "Mari"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 38,
+   "listed": [
+    "Kashiwa M",
+    "Maeda H"
+   ],
+   "et_al": false,
+   "cr_n_authors": 2,
+   "cr_first6": [
+    [
+     "Kashiwa",
+     "Munenobu"
+    ],
+    [
+     "Maeda",
+     "Hiroyuki"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 39,
+   "listed": [
+    "Center for Outcomes Research and Economic Evaluation for Health",
+    "National Institute of Public Health"
+   ],
+   "et_al": false
+  },
+  {
+   "n": 40,
+   "listed": [
+    "Center for Outcomes Research and Economic Evaluation for Health",
+    "National Institute of Public Health"
+   ],
+   "et_al": false
+  },
+  {
+   "n": 41,
+   "listed": [
+    "Hasegawa M",
+    "Komoto S",
+    "Shiroiwa T",
+    "Fukuda T"
+   ],
+   "et_al": false,
+   "cr_n_authors": 4,
+   "cr_first6": [
+    [
+     "Hasegawa",
+     "Masataka"
+    ],
+    [
+     "Komoto",
+     "Shigekazu"
+    ],
+    [
+     "Shiroiwa",
+     "Takeru"
+    ],
+    [
+     "Fukuda",
+     "Takashi"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 42,
+   "listed": [
+    "Ministry of Health",
+    "Labour and Welfare"
+   ],
+   "et_al": false
+  },
+  {
+   "n": 43,
+   "listed": [
+    "Schmid P",
+    "Cortés J",
+    "Dent RA",
+    "Pusztai L",
+    "McArthur HL",
+    "Kummel S"
+   ],
+   "et_al": true,
+   "cr_n_authors": 20,
+   "cr_first6": [
+    [
+     "Schmid",
+     "P."
+    ],
+    [
+     "Cortés",
+     "J."
+    ],
+    [
+     "Dent",
+     "R.A."
+    ],
+    [
+     "Pusztai",
+     "L."
+    ],
+    [
+     "McArthur",
+     "H.L."
+    ],
+    [
+     "Kummel",
+     "S."
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 44,
+   "listed": [
+    "Schmid P",
+    "Cortes J",
+    "Dent RA",
+    "McArthur HL",
+    "Pusztai L",
+    "Kuemmel S"
+   ],
+   "et_al": true,
+   "cr_n_authors": 19,
+   "cr_first6": [
+    [
+     "Schmid",
+     "Peter"
+    ],
+    [
+     "Cortes",
+     "Javier"
+    ],
+    [
+     "Dent",
+     "Rebecca Alexandra"
+    ],
+    [
+     "McArthur",
+     "Heather L."
+    ],
+    [
+     "Pusztai",
+     "Lajos"
+    ],
+    [
+     "Kuemmel",
+     "Sherko"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 45,
+   "listed": [
+    "Husereau D",
+    "Drummond M",
+    "Augustovski F",
+    "de Bekker-Grob E",
+    "Briggs AH",
+    "Carswell C"
+   ],
+   "et_al": true,
+   "cr_n_authors": 15,
+   "cr_first6": [
+    [
+     "Husereau",
+     "Don"
+    ],
+    [
+     "Drummond",
+     "Michael"
+    ],
+    [
+     "Augustovski",
+     "Federico"
+    ],
+    [
+     "de Bekker-Grob",
+     "Esther"
+    ],
+    [
+     "Briggs",
+     "Andrew H"
+    ],
+    [
+     "Carswell",
+     "Chris"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 46,
+   "listed": [
+    "Chan KKW",
+    "Chu RWK",
+    "Cheung MC",
+    "Courneya KS",
+    "O'Callaghan CJ",
+    "Vardy JL"
+   ],
+   "et_al": true,
+   "cr_n_authors": 185,
+   "cr_first6": [
+    [
+     "Chan",
+     "Kelvin K.W."
+    ],
+    [
+     "Chu",
+     "Ryan W.K."
+    ],
+    [
+     "Cheung",
+     "Matthew C."
+    ],
+    [
+     "Courneya",
+     "Kerry S."
+    ],
+    [
+     "O'Callaghan",
+     "Christopher J."
+    ],
+    [
+     "Vardy",
+     "Janette L."
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 47,
+   "listed": [
+    "World Bank"
+   ],
+   "et_al": false
+  },
+  {
+   "n": 48,
+   "listed": [
+    "Ministry of Health",
+    "Labour and Welfare"
+   ],
+   "et_al": false
+  },
+  {
+   "n": 49,
+   "listed": [
+    "Guyot P",
+    "Ades AE",
+    "Ouwens MJ",
+    "Welton NJ"
+   ],
+   "et_al": false,
+   "cr_n_authors": 4,
+   "cr_first6": [
+    [
+     "Guyot",
+     "Patricia"
+    ],
+    [
+     "Ades",
+     "AE"
+    ],
+    [
+     "Ouwens",
+     "Mario JNM"
+    ],
+    [
+     "Welton",
+     "Nicky J"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 50,
+   "listed": [
+    "Grinda T",
+    "Antoine A",
+    "Jacot W",
+    "Cottu PH",
+    "de la Motte Rouge T",
+    "Frenel JS"
+   ],
+   "et_al": true,
+   "cr_n_authors": 25,
+   "cr_first6": [
+    [
+     "Grinda",
+     "Thomas"
+    ],
+    [
+     "Antoine",
+     "Alison"
+    ],
+    [
+     "Jacot",
+     "William"
+    ],
+    [
+     "Cottu",
+     "Paul-Henri"
+    ],
+    [
+     "de la Motte Rouge",
+     "Thibault"
+    ],
+    [
+     "Frenel",
+     "Jean-Sébastien"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 51,
+   "listed": [
+    "Ministry of Health",
+    "Labour and Welfare"
+   ],
+   "et_al": false
+  },
+  {
+   "n": 52,
+   "listed": [
+    "Japan Society of Clinical Oncology"
+   ],
+   "et_al": false
+  },
+  {
+   "n": 53,
+   "listed": [
+    "Kasugai Municipal Hospital"
+   ],
+   "et_al": false
+  },
+  {
+   "n": 54,
+   "listed": [
+    "Chuden Hospital"
+   ],
+   "et_al": false
+  },
+  {
+   "n": 55,
+   "listed": [
+    "Kuemmel S",
+    "Fasching PA",
+    "Schmid P",
+    "Harbeck N",
+    "Takahashi M",
+    "Untch M"
+   ],
+   "et_al": true,
+   "cr_n_authors": 20,
+   "cr_first6": [
+    [
+     "Kuemmel",
+     "Sherko"
+    ],
+    [
+     "Fasching",
+     "Peter A."
+    ],
+    [
+     "Schmid",
+     "Peter"
+    ],
+    [
+     "Harbeck",
+     "Nadia"
+    ],
+    [
+     "Takahashi",
+     "Masato"
+    ],
+    [
+     "Untch",
+     "Michael"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 56,
+   "listed": [
+    "Yoshinami T",
+    "Shibata N",
+    "Tamaki K",
+    "Ishimaru K",
+    "Ito S",
+    "Nukada T"
+   ],
+   "et_al": true,
+   "cr_n_authors": 7,
+   "cr_first6": [
+    [
+     "Yoshinami",
+     "Tetsuhiro"
+    ],
+    [
+     "Shibata",
+     "Nobuhiro"
+    ],
+    [
+     "Tamaki",
+     "Kentaro"
+    ],
+    [
+     "Ishimaru",
+     "Kentaro"
+    ],
+    [
+     "Ito",
+     "Satoru"
+    ],
+    [
+     "Nukada",
+     "Tomoyuki"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 57,
+   "listed": [
+    "Andrade MO",
+    "Bonadio RC",
+    "Ipiña A",
+    "Testa L",
+    "Tavares MC",
+    "Balint FC"
+   ],
+   "et_al": true,
+   "cr_n_authors": 34,
+   "cr_first6": [
+    [
+     "Andrade",
+     "Matheus de Oliveira"
+    ],
+    [
+     "Bonadio",
+     "Renata Colombo"
+    ],
+    [
+     "Ipiña",
+     "Agustina"
+    ],
+    [
+     "Testa",
+     "Laura"
+    ],
+    [
+     "Tavares",
+     "Monique Celeste"
+    ],
+    [
+     "Balint",
+     "Flávia Cavalcanti"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 58,
+   "listed": [
+    "Valachis A",
+    "Geisler J",
+    "Karihtala P",
+    "Tuxen MK"
+   ],
+   "et_al": false,
+   "cr_n_authors": 4,
+   "cr_first6": [
+    [
+     "Valachis",
+     "Antonis"
+    ],
+    [
+     "Geisler",
+     "Jürgen"
+    ],
+    [
+     "Karihtala",
+     "Peeter"
+    ],
+    [
+     "Tuxen",
+     "Malgorzata K."
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 59,
+   "listed": [
+    "Fujisawa F",
+    "Tamaki Y",
+    "Inoue T",
+    "Nakayama T",
+    "Yagi T",
+    "Kittaka N"
+   ],
+   "et_al": true,
+   "cr_n_authors": 11,
+   "cr_first6": [
+    [
+     "Fujisawa",
+     "Fumie"
+    ],
+    [
+     "Tamaki",
+     "Yasuhiro"
+    ],
+    [
+     "Inoue",
+     "Tazuko"
+    ],
+    [
+     "Nakayama",
+     "Takahiro"
+    ],
+    [
+     "Yagi",
+     "Toshinari"
+    ],
+    [
+     "Kittaka",
+     "Nobuyoshi"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 60,
+   "listed": [
+    "AstraZeneca KK"
+   ],
+   "et_al": false
+  },
+  {
+   "n": 61,
+   "listed": [
+    "European Medicines Agency"
+   ],
+   "et_al": false
+  },
+  {
+   "n": 62,
+   "listed": [
+    "Ludwig K",
+    "Graf von der Schulenburg JM",
+    "Greiner W"
+   ],
+   "et_al": false,
+   "cr_n_authors": 3,
+   "cr_first6": [
+    [
+     "Ludwig",
+     "Kristina"
+    ],
+    [
+     "Graf von der Schulenburg",
+     "J.-Matthias"
+    ],
+    [
+     "Greiner",
+     "Wolfgang"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 63,
+   "listed": [
+    "Iwatani T",
+    "Noto S",
+    "Tsugawa K"
+   ],
+   "et_al": false,
+   "cr_n_authors": 3,
+   "cr_first6": [
+    [
+     "Iwatani",
+     "Tsuguo"
+    ],
+    [
+     "Noto",
+     "Shinichi"
+    ],
+    [
+     "Tsugawa",
+     "Koichiro"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 64,
+   "listed": [
+    "Shiroiwa T",
+    "Fukuda T",
+    "Shimozuma K",
+    "Mouri M",
+    "Hagiwara Y",
+    "Kawahara T"
+   ],
+   "et_al": true,
+   "cr_n_authors": 11,
+   "cr_first6": [
+    [
+     "Shiroiwa",
+     "Takeru"
+    ],
+    [
+     "Fukuda",
+     "Takashi"
+    ],
+    [
+     "Shimozuma",
+     "Kojiro"
+    ],
+    [
+     "Mouri",
+     "Mitsuko"
+    ],
+    [
+     "Hagiwara",
+     "Yasuhiro"
+    ],
+    [
+     "Kawahara",
+     "Takuya"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 65,
+   "listed": [
+    "Pharmaceutical Benefits Advisory Committee"
+   ],
+   "et_al": false
+  },
+  {
+   "n": 66,
+   "listed": [
+    "Fedele P",
+    "Rizzo A",
+    "Landriscina M",
+    "Stucci LS",
+    "Inneo C",
+    "Morritti M"
+   ],
+   "et_al": true,
+   "cr_n_authors": 23,
+   "cr_first6": [
+    [
+     "Fedele",
+     "Palma"
+    ],
+    [
+     "Rizzo",
+     "Alessandro"
+    ],
+    [
+     "Landriscina",
+     "Matteo"
+    ],
+    [
+     "Stucci",
+     "Luigia Stefania"
+    ],
+    [
+     "Inneo",
+     "Carmela"
+    ],
+    [
+     "Morritti",
+     "Maria"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": [
+    "has-preprint"
+   ]
+  },
+  {
+   "n": 67,
+   "listed": [
+    "Elmore LC",
+    "Kuerer HM",
+    "Barcenas CH",
+    "Smith BD",
+    "Miggins MV",
+    "Lucci A"
+   ],
+   "et_al": true,
+   "cr_n_authors": 10,
+   "cr_first6": [
+    [
+     "Elmore",
+     "Leisha C."
+    ],
+    [
+     "Kuerer",
+     "Henry M."
+    ],
+    [
+     "Barcenas",
+     "Carlos H."
+    ],
+    [
+     "Smith",
+     "Benjamin D."
+    ],
+    [
+     "Miggins",
+     "Makesha V."
+    ],
+    [
+     "Lucci",
+     "Anthony"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 68,
+   "listed": [
+    "Cortes J",
+    "O'Shaughnessy J",
+    "Loesch D",
+    "Blum JL",
+    "Vahdat LT",
+    "Petrakova K"
+   ],
+   "et_al": true,
+   "cr_n_authors": 20,
+   "cr_first6": [
+    [
+     "Cortes",
+     "Javier"
+    ],
+    [
+     "O'Shaughnessy",
+     "Joyce"
+    ],
+    [
+     "Loesch",
+     "David"
+    ],
+    [
+     "Blum",
+     "Joanne L"
+    ],
+    [
+     "Vahdat",
+     "Linda T"
+    ],
+    [
+     "Petrakova",
+     "Katarina"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": [
+    "has-review"
+   ]
+  },
+  {
+   "n": 69,
+   "listed": [
+    "Masuda N",
+    "Lee SJ",
+    "Ohtani S",
+    "Im YH",
+    "Lee ES",
+    "Yokota I"
+   ],
+   "et_al": true,
+   "cr_n_authors": 21,
+   "cr_first6": [
+    [
+     "Masuda",
+     "Norikazu"
+    ],
+    [
+     "Lee",
+     "Soo-Jung"
+    ],
+    [
+     "Ohtani",
+     "Shoichiro"
+    ],
+    [
+     "Im",
+     "Young-Hyuck"
+    ],
+    [
+     "Lee",
+     "Eun-Sook"
+    ],
+    [
+     "Yokota",
+     "Isao"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": [
+    "has-review"
+   ]
+  },
+  {
+   "n": 70,
+   "listed": [
+    "Tutt ANJ",
+    "Garber JE",
+    "Kaufman B",
+    "Viale G",
+    "Fumagalli D",
+    "Rastogi P"
+   ],
+   "et_al": true,
+   "cr_n_authors": 39,
+   "cr_first6": [
+    [
+     "Tutt",
+     "Andrew N.J."
+    ],
+    [
+     "Garber",
+     "Judy E."
+    ],
+    [
+     "Kaufman",
+     "Bella"
+    ],
+    [
+     "Viale",
+     "Giuseppe"
+    ],
+    [
+     "Fumagalli",
+     "Debora"
+    ],
+    [
+     "Rastogi",
+     "Priya"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 71,
+   "listed": [
+    "Garber JE",
+    "Cameron D",
+    "Campbell C",
+    "Yothers G",
+    "Taboada M",
+    "El-Abed S"
+   ],
+   "et_al": true,
+   "cr_n_authors": 67,
+   "cr_first6": [
+    [
+     "Garber",
+     "J.E."
+    ],
+    [
+     "Cameron",
+     "D."
+    ],
+    [
+     "Campbell",
+     "C."
+    ],
+    [
+     "Yothers",
+     "G."
+    ],
+    [
+     "Taboada",
+     "M."
+    ],
+    [
+     "El-Abed",
+     "S."
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 72,
+   "listed": [
+    "AstraZeneca"
+   ],
+   "et_al": false
+  },
+  {
+   "n": 73,
+   "listed": [
+    "Daiichi Sankyo"
+   ],
+   "et_al": false
+  },
+  {
+   "n": 74,
+   "listed": [
+    "Cortes J",
+    "Cescon DW",
+    "Rugo HS",
+    "Nowecki Z",
+    "Im SA",
+    "Yusof MM"
+   ],
+   "et_al": true,
+   "cr_n_authors": 227,
+   "cr_first6": [
+    [
+     "Cortes",
+     "Javier"
+    ],
+    [
+     "Cescon",
+     "David W"
+    ],
+    [
+     "Rugo",
+     "Hope S"
+    ],
+    [
+     "Nowecki",
+     "Zbigniew"
+    ],
+    [
+     "Im",
+     "Seock-Ah"
+    ],
+    [
+     "Yusof",
+     "Mastura Md"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 75,
+   "listed": [
+    "Miller K",
+    "Wang M",
+    "Gralow J",
+    "Dickler M",
+    "Cobleigh M",
+    "Perez EA"
+   ],
+   "et_al": true,
+   "cr_n_authors": 9,
+   "cr_first6": [
+    [
+     "Miller",
+     "Kathy"
+    ],
+    [
+     "Wang",
+     "Molin"
+    ],
+    [
+     "Gralow",
+     "Julie"
+    ],
+    [
+     "Dickler",
+     "Maura"
+    ],
+    [
+     "Cobleigh",
+     "Melody"
+    ],
+    [
+     "Perez",
+     "Edith A."
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": [
+    "has-review"
+   ]
+  },
+  {
+   "n": 76,
+   "listed": [
+    "Nusawat C",
+    "Sato S",
+    "Taniguchi J",
+    "Kimura Y",
+    "Yasunaga H"
+   ],
+   "et_al": false,
+   "cr_n_authors": 5,
+   "cr_first6": [
+    [
+     "Nusawat",
+     "Chanon"
+    ],
+    [
+     "Sato",
+     "So"
+    ],
+    [
+     "Taniguchi",
+     "Jumpei"
+    ],
+    [
+     "Kimura",
+     "Yuya"
+    ],
+    [
+     "Yasunaga",
+     "Hideo"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 77,
+   "listed": [
+    "Ohtera S",
+    "Sakai M",
+    "Iwao T",
+    "Neff Y",
+    "Takahashi Y",
+    "Kato G"
+   ],
+   "et_al": true,
+   "cr_n_authors": 8,
+   "cr_first6": [
+    [
+     "Ohtera",
+     "S"
+    ],
+    [
+     "Sakai",
+     "M"
+    ],
+    [
+     "Iwao",
+     "T"
+    ],
+    [
+     "Neff",
+     "Y"
+    ],
+    [
+     "Takahashi",
+     "Y"
+    ],
+    [
+     "Kato",
+     "G"
+    ]
+   ],
+   "author_mismatch": [],
+   "update_to": [],
+   "updated_by": [],
+   "relation": []
+  },
+  {
+   "n": 78,
+   "listed": [
+    "Bank of Canada"
+   ],
+   "et_al": false
+  }
+ ],
+ "format": [
+  [
+   58,
+   "double punctuation (?. or !.)"
+  ]
+ ],
+ "years": {
+  "1": "2007",
+  "2": "2008",
+  "3": "2020",
+  "4": "2022",
+  "5": "2024",
+  "6": "2025",
+  "7": "2026",
+  "8": "2026",
+  "9": "2025",
+  "10": "2016",
+  "11": "2007",
+  "12": "2015",
+  "13": "2018",
+  "14": "2014",
+  "15": "2023",
+  "16": "2025",
+  "17": "2025",
+  "18": "2026",
+  "19": "2022",
+  "20": "2019",
+  "21": "2021",
+  "22": "2023",
+  "23": "2017",
+  "24": "2018",
+  "25": "2020",
+  "26": "2023",
+  "27": "2023",
+  "28": "2023",
+  "29": "2024",
+  "30": "2024",
+  "31": "2025",
+  "32": "2025",
+  "33": "2023",
+  "34": "2026",
+  "35": "2025",
+  "36": "2026",
+  "37": "2025",
+  "38": "2024",
+  "39": "2026",
+  "40": "2026",
+  "41": "2020",
+  "42": "2026",
+  "43": "2023",
+  "44": "2026",
+  "45": "2022",
+  "46": "2026",
+  "47": "2026",
+  "48": "2026",
+  "49": "2012",
+  "50": "2023",
+  "51": "2026",
+  "52": "2023",
+  "53": "2024",
+  "54": "n.d.",
+  "55": "2026",
+  "56": "2025",
+  "57": "2026",
+  "58": "2026",
+  "59": "2021",
+  "60": "2026",
+  "61": "2022",
+  "62": "2018",
+  "63": "2021",
+  "64": "2017",
+  "65": "2023",
+  "66": "2026",
+  "67": "2021",
+  "68": "2011",
+  "69": "2017",
+  "70": "2021",
+  "71": "2026",
+  "72": "2025",
+  "73": "2026",
+  "74": "2020",
+  "75": "2007",
+  "76": "2026",
+  "77": "2018",
+  "78": "2026"
+ }
+}

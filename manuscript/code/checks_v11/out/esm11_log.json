@@ -1,0 +1,156 @@
+[
+ {
+  "item": 1,
+  "old": "Title (p. 1)",
+  "new": "Title page (p. 1)"
+ },
+ {
+  "item": 2,
+  "old": "Abstract, paragraphs 1 to 4 (pp. 1 to 2)",
+  "new": "Abstract (p. 2)"
+ },
+ {
+  "item": 3,
+  "old": "Introduction, paragraphs 1 to 4 (pp. 2 to 3)",
+  "new": "Introduction, paragraphs 1 to 4 (pp. 3 to 4)"
+ },
+ {
+  "item": 4,
+  "old": "Methods, Study background, paragraph 3 (p. 4)",
+  "new": "Methods, Study design, paragraph 3 (p. 5)"
+ },
+ {
+  "item": 5,
+  "old": "Methods, Study background, paragraph 1 (p. 3); Table 1",
+  "new": "Methods, Study design, paragraph 1; Table 1 (pp. 4 to 5)"
+ },
+ {
+  "item": 6,
+  "old": "Methods, Study background, paragraphs 1 to 2 (pp. 3 to 4)",
+  "new": "Methods, Study design, paragraphs 1 to 2 (pp. 4 to 5)"
+ },
+ {
+  "item": 7,
+  "old": "Methods, Study background, paragraph 1 (p. 3)",
+  "new": "Methods, Study design, paragraph 1 (pp. 4 to 5)"
+ },
+ {
+  "item": 8,
+  "old": "Methods, Study background, paragraph 2 (p. 4)",
+  "new": "Methods, Study design, paragraph 2 (p. 5)"
+ },
+ {
+  "item": 9,
+  "old": "Methods, Study background, paragraph 2 (p. 4)",
+  "new": "Methods, Study design, paragraph 2 (p. 5)"
+ },
+ {
+  "item": 10,
+  "old": "Methods, Study background, paragraph 2 (p. 4)",
+  "new": "Methods, Study design, paragraph 2 (p. 5)"
+ },
+ {
+  "item": 11,
+  "old": "Methods, Outcome, paragraphs 1 to 2 (pp. 4 to 5)",
+  "new": "Methods, Outcomes, paragraphs 1 to 2 (pp. 5 to 6)"
+ },
+ {
+  "item": 12,
+  "old": "Methods, Variables, paragraph 4 (p. 6); Methods, Variables, paragraph 5 (p. 6); Supplementary Methods S1",
+  "new": "Methods, Exercise effect and costs, paragraph 1; Methods, Survival, costs and utilities, paragraph 1; Supplementary Methods S1 (pp. 6 to 7)"
+ },
+ {
+  "item": 13,
+  "old": "Methods, Variables, paragraph 5 (p. 6)",
+  "new": "Methods, Survival, costs and utilities, paragraph 2 (p. 7)"
+ },
+ {
+  "item": 14,
+  "old": "Methods, Variables, paragraph 3 (p. 5); Methods, Variables, paragraph 5 (p. 6); Table 1; Supplementary Table S2",
+  "new": "Methods, Exercise effect and costs, paragraph 2; Methods, Survival, costs and utilities, paragraph 2; Table 1; Supplementary Table S2 (pp. 6 to 7)"
+ },
+ {
+  "item": 15,
+  "old": "Methods, Variables, paragraph 3 (p. 5); Methods, Variables, paragraph 5 (p. 6)",
+  "new": "Methods, Exercise effect and costs, paragraph 2; Methods, Survival, costs and utilities, paragraph 2 (pp. 6 to 7)"
+ },
+ {
+  "item": 16,
+  "old": "Methods, Statistical analysis, paragraphs 1 to 2 (p. 6); Fig. 1; Supplementary Methods S1",
+  "new": "Methods, Study design, paragraph 1; Methods, Statistical analysis, paragraph 1; Fig. 1; Supplementary Methods S1; Statements and Declarations, Data availability (pp. 4 to 26)"
+ },
+ {
+  "item": 17,
+  "old": "Methods, Statistical analysis, paragraphs 2 to 3 (p. 6); Supplementary Methods S1",
+  "new": "Methods, Exercise effect and costs, paragraph 1; Methods, Survival, costs and utilities, paragraph 1; Methods, Statistical analysis, stages (1) and (2); Supplementary Methods S1 (pp. 6 to 8)"
+ },
+ {
+  "item": 18,
+  "old": "No subgroup analyses beyond the two comparisons; Methods, Study background, paragraph 1 (p. 3)",
+  "new": "No subgroup analyses beyond the two comparisons; Methods, Study design, paragraph 1 (pp. 4 to 5)"
+ },
+ {
+  "item": 19,
+  "old": "Not performed",
+  "new": "Not performed"
+ },
+ {
+  "item": 20,
+  "old": "Methods, Statistical analysis, paragraphs 4 to 6 (p. 7); Supplementary Methods S1",
+  "new": "Methods, Statistical analysis, stages (3) to (5); Supplementary Methods S1 (p. 8)"
+ },
+ {
+  "item": 21,
+  "old": "Not performed",
+  "new": "Not performed"
+ },
+ {
+  "item": 22,
+  "old": "Table 1; Supplementary Table S2",
+  "new": "Table 1; Supplementary Table S2"
+ },
+ {
+  "item": 23,
+  "old": "Results, paragraphs 1 to 10 (pp. 8 to 10); Fig. 2; Tables 2 and 3",
+  "new": "Results, Maximum affordable cost of exercise, paragraphs 1 to 3; Results, Duration and metastatic treatment costs, paragraphs 1 to 3; Results, Pembrolizumab, paragraphs 1 to 2; Fig. 2; Tables 2 and 3; Supplementary Tables S4 to S8 (pp. 9 to 10)"
+ },
+ {
+  "item": 24,
+  "old": "Results, paragraph 11 (p. 10); Fig. 3; Supplementary Tables S4, S7, S9 and S10; Supplementary Fig. S2",
+  "new": "Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 2; Supplementary Tables S4, S7, S9 and S10; Supplementary Fig. S2 (pp. 9 to 10)"
+ },
+ {
+  "item": 25,
+  "old": "Not applicable (item 21)",
+  "new": "Not applicable (item 21)"
+ },
+ {
+  "item": 26,
+  "old": "Discussion, paragraphs 1 to 7 (pp. 10 to 12); Limitations, paragraphs 1 to 2 (pp. 12 to 13)",
+  "new": "Discussion, paragraphs 1 to 6; Discussion, Implications; Discussion, Limitations (pp. 11 to 13)"
+ },
+ {
+  "item": 27,
+  "old": "Title page",
+  "new": "Statements and Declarations, Funding (p. 26)"
+ },
+ {
+  "item": 28,
+  "old": "Title page",
+  "new": "Statements and Declarations, Competing interests (p. 26)"
+ },
+ {
+  "footnote_a_old": ". Locations give the section, the paragraph within the section or subsection and the page of the manuscript file; tables and figures are named where they report the item. CHEERS, Consolidated Health Economic Evaluation Reporting Standards.",
+  "footnote_a_new": ". Locations give the section, the paragraph within the section or subsection (or the numbered stage of the statistical analysis) and the page of the manuscript file; tables and figures are named where they report the item. CHEERS, Consolidated Health Economic Evaluation Reporting Standards."
+ },
+ {
+  "fmt_runs_10pt_to_12pt": [
+   "Online Resource 1",
+   "Article: Cost-effectiveness of exercise ",
+   "Journal: Breast Cancer Research and Trea",
+   "Authors: [names to be added]",
+   "Corresponding author: [name, affiliation",
+   "Reference numbers refer to the reference"
+  ]
+ }
+]

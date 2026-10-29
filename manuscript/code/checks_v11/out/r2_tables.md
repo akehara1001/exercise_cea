@@ -1,0 +1,3 @@
+- [T 1] C unit 22: 「cost and utility」→「other」
+- [T 2] C unit 44: 「Methods,」→「Methods S1,」
+- [T 3] P unit 116: 「」→「After the period in which the HR is held, the reduction in the hazard, 1 − HR, halves every year.」

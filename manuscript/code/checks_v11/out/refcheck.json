@@ -1,0 +1,1973 @@
+[
+ {
+  "n": 1,
+  "doi": "10.1158/1078-0432.CCR-06-3045",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Dent",
+  "cr_years": [
+   "2007"
+  ],
+  "cr_title": "Triple-Negative Breast Cancer: Clinical Features and Patterns of Recurrence",
+  "cr_journal": "Clinical Cancer Research",
+  "cr_short": [
+   ""
+  ],
+  "cr_volume": "13",
+  "cr_page": "4429-4434",
+  "ref_first_author": "Dent",
+  "ref_year": "2007",
+  "ref_journal": "Clin Cancer Res",
+  "ref_volume": "13",
+  "ref_pages": "4429–4434",
+  "ref_title": "Triple-negative breast cancer: clinical features and patterns of recurrence",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 2,
+  "doi": "10.1200/JCO.2007.14.4147",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Liedtke",
+  "cr_years": [
+   "2008"
+  ],
+  "cr_title": "Response to Neoadjuvant Therapy and Long-Term Survival in Patients With Triple-Negative Breast Cancer",
+  "cr_journal": "Journal of Clinical Oncology",
+  "cr_short": [
+   "JCO"
+  ],
+  "cr_volume": "26",
+  "cr_page": "1275-1281",
+  "ref_first_author": "Liedtke",
+  "ref_year": "2008",
+  "ref_journal": "J Clin Oncol",
+  "ref_volume": "26",
+  "ref_pages": "1275–1281",
+  "ref_title": "Response to neoadjuvant therapy and long-term survival in patients with triple-negative breast cancer",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 3,
+  "doi": "10.1056/NEJMoa1910549",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Schmid",
+  "cr_years": [
+   "2020"
+  ],
+  "cr_title": "Pembrolizumab for Early Triple-Negative Breast Cancer",
+  "cr_journal": "New England Journal of Medicine",
+  "cr_short": [
+   "N Engl J Med"
+  ],
+  "cr_volume": "382",
+  "cr_page": "810-821",
+  "ref_first_author": "Schmid",
+  "ref_year": "2020",
+  "ref_journal": "N Engl J Med",
+  "ref_volume": "382",
+  "ref_pages": "810–821",
+  "ref_title": "Pembrolizumab for Early Triple-Negative Breast Cancer",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": [
+   "has-review"
+  ]
+ },
+ {
+  "n": 4,
+  "doi": "10.1056/NEJMoa2112651",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Schmid",
+  "cr_years": [
+   "2022"
+  ],
+  "cr_title": "Event-free Survival with Pembrolizumab in Early Triple-Negative Breast Cancer",
+  "cr_journal": "New England Journal of Medicine",
+  "cr_short": [
+   "N Engl J Med"
+  ],
+  "cr_volume": "386",
+  "cr_page": "556-567",
+  "ref_first_author": "Schmid",
+  "ref_year": "2022",
+  "ref_journal": "N Engl J Med",
+  "ref_volume": "386",
+  "ref_pages": "556–567",
+  "ref_title": "Event-free Survival with Pembrolizumab in Early Triple-Negative Breast Cancer",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 5,
+  "doi": "10.1056/NEJMoa2409932",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Schmid",
+  "cr_years": [
+   "2024"
+  ],
+  "cr_title": "Overall Survival with Pembrolizumab in Early-Stage Triple-Negative Breast Cancer",
+  "cr_journal": "New England Journal of Medicine",
+  "cr_short": [
+   "N Engl J Med"
+  ],
+  "cr_volume": "391",
+  "cr_page": "1981-1991",
+  "ref_first_author": "Schmid",
+  "ref_year": "2024",
+  "ref_journal": "N Engl J Med",
+  "ref_volume": "391",
+  "ref_pages": "1981–1991",
+  "ref_title": "Overall Survival with Pembrolizumab in Early-Stage Triple-Negative Breast Cancer",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 6,
+  "doi": "10.1158/1078-0432.CCR-25-1478",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Licata",
+  "cr_years": [
+   "2025"
+  ],
+  "cr_title": "Timing of Recurrence after Neoadjuvant Chemo-Immunotherapy in Patients with Early-Stage Triple-Negative Breast Cancer",
+  "cr_journal": "Clinical Cancer Research",
+  "cr_short": [
+   ""
+  ],
+  "cr_volume": "31",
+  "cr_page": "3916-3921",
+  "ref_first_author": "Licata",
+  "ref_year": "2025",
+  "ref_journal": "Clin Cancer Res",
+  "ref_volume": "31",
+  "ref_pages": "3916–3921",
+  "ref_title": "Timing of Recurrence after Neoadjuvant Chemo-Immunotherapy in Patients with Early-Stage Triple-Negative Breast Cancer",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": [
+   "has-preprint",
+   "is-supplemented-by"
+  ]
+ },
+ {
+  "n": 7,
+  "doi": null,
+  "url": "https://www.jbcs.gr.jp/modules/journals/index.php?content_id=8",
+  "url_status": 200,
+  "url_location": null
+ },
+ {
+  "n": 8,
+  "doi": null,
+  "url": "https://www.mhlw.go.jp/topics/2026/04/xls/tp20261014-01_02.xlsx",
+  "url_status": 200,
+  "url_location": null
+ },
+ {
+  "n": 9,
+  "doi": "10.1056/NEJMoa2502760",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Courneya",
+  "cr_years": [
+   "2025"
+  ],
+  "cr_title": "Structured Exercise after Adjuvant Chemotherapy for Colon Cancer",
+  "cr_journal": "New England Journal of Medicine",
+  "cr_short": [
+   "N Engl J Med"
+  ],
+  "cr_volume": "393",
+  "cr_page": "13-25",
+  "ref_first_author": "Courneya",
+  "ref_year": "2025",
+  "ref_journal": "N Engl J Med",
+  "ref_volume": "393",
+  "ref_pages": "13–25",
+  "ref_title": "Structured Exercise after Adjuvant Chemotherapy for Colon Cancer",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 10,
+  "doi": "10.1002/14651858.CD005001.pub3",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Furmaniak",
+  "cr_years": [
+   "2016"
+  ],
+  "cr_title": "Exercise for women receiving adjuvant therapy for breast cancer",
+  "cr_journal": "Cochrane Database of Systematic Reviews",
+  "cr_short": [
+   ""
+  ],
+  "cr_volume": "2016",
+  "cr_page": null,
+  "ref_first_author": "Furmaniak",
+  "ref_year": "2016",
+  "ref_journal": "Cochrane Database Syst Rev",
+  "ref_volume": "9",
+  "ref_pages": "CD005001",
+  "ref_title": "Exercise for women receiving adjuvant therapy for breast cancer",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": false,
+  "page_ok": false,
+  "update_to": [
+   "new_version"
+  ],
+  "relation": []
+ },
+ {
+  "n": 11,
+  "doi": "10.1200/JCO.2006.08.2024",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Courneya",
+  "cr_years": [
+   "2007"
+  ],
+  "cr_title": "Effects of Aerobic and Resistance Exercise in Breast Cancer Patients Receiving Adjuvant Chemotherapy: A Multicenter Randomized Controlled Trial",
+  "cr_journal": "Journal of Clinical Oncology",
+  "cr_short": [
+   "JCO"
+  ],
+  "cr_volume": "25",
+  "cr_page": "4396-4404",
+  "ref_first_author": "Courneya",
+  "ref_year": "2007",
+  "ref_journal": "J Clin Oncol",
+  "ref_volume": "25",
+  "ref_pages": "4396–4404",
+  "ref_title": "Effects of aerobic and resistance exercise in breast cancer patients receiving adjuvant chemotherapy: a multicenter randomized controlled trial",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 12,
+  "doi": "10.1200/JCO.2014.59.1081",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "van Waart",
+  "cr_years": [
+   "2015"
+  ],
+  "cr_title": "Effect of Low-Intensity Physical Activity and Moderate- to High-Intensity Physical Exercise During Adjuvant Chemotherapy on Physical Fitness, Fatigue, and Chemotherapy Completion Rates: Results of the PACES Randomized Clinical Trial",
+  "cr_journal": "Journal of Clinical Oncology",
+  "cr_short": [
+   "JCO"
+  ],
+  "cr_volume": "33",
+  "cr_page": "1918-1927",
+  "ref_first_author": "van",
+  "ref_year": "2015",
+  "ref_journal": "J Clin Oncol",
+  "ref_volume": "33",
+  "ref_pages": "1918–1927",
+  "ref_title": "Effect of Low-Intensity Physical Activity and Moderate- to High-Intensity Physical Exercise During Adjuvant Chemotherapy on Physical Fitness, Fatigue, and Chemotherapy Completion Rates: Results of the PACES Randomized Clinical Trial",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 13,
+  "doi": "10.1007/s10549-017-4571-3",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Mijwel",
+  "cr_years": [
+   "2017",
+   "2018"
+  ],
+  "cr_title": "Adding high-intensity interval training to conventional training modalities: optimizing health-related outcomes during chemotherapy for breast cancer: the OptiTrain randomized controlled trial",
+  "cr_journal": "Breast Cancer Research and Treatment",
+  "cr_short": [
+   "Breast Cancer Res Treat"
+  ],
+  "cr_volume": "168",
+  "cr_page": "79-93",
+  "ref_first_author": "Mijwel",
+  "ref_year": "2018",
+  "ref_journal": "Breast Cancer Res Treat",
+  "ref_volume": "168",
+  "ref_pages": "79–93",
+  "ref_title": "Adding high-intensity interval training to conventional training modalities: optimizing health-related outcomes during chemotherapy for breast cancer: the OptiTrain randomized controlled trial",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 14,
+  "doi": "10.1249/MSS.0000000000000297",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "COURNEYA",
+  "cr_years": [
+   "2014"
+  ],
+  "cr_title": "Effects of Exercise during Adjuvant Chemotherapy on Breast Cancer Outcomes",
+  "cr_journal": "Medicine &amp; Science in Sports &amp; Exercise",
+  "cr_short": [
+   ""
+  ],
+  "cr_volume": "46",
+  "cr_page": "1744-1751",
+  "ref_first_author": "Courneya",
+  "ref_year": "2014",
+  "ref_journal": "Med Sci Sports Exerc",
+  "ref_volume": "46",
+  "ref_pages": "1744–1751",
+  "ref_title": "Effects of exercise during adjuvant chemotherapy on breast cancer outcomes",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 15,
+  "doi": "10.1200/JCO.23.00871",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Sanft",
+  "cr_years": [
+   "2023"
+  ],
+  "cr_title": "Randomized Trial of Exercise and Nutrition on Chemotherapy Completion and Pathologic Complete Response in Women With Breast Cancer: The Lifestyle, Exercise, and Nutrition Early After Diagnosis Study",
+  "cr_journal": "Journal of Clinical Oncology",
+  "cr_short": [
+   "JCO"
+  ],
+  "cr_volume": "41",
+  "cr_page": "5285-5295",
+  "ref_first_author": "Sanft",
+  "ref_year": "2023",
+  "ref_journal": "J Clin Oncol",
+  "ref_volume": "41",
+  "ref_pages": "5285–5295",
+  "ref_title": "Randomized Trial of Exercise and Nutrition on Chemotherapy Completion and Pathologic Complete Response in Women With Breast Cancer: The Lifestyle, Exercise, and Nutrition Early After Diagnosis Study",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 16,
+  "doi": "10.1158/1078-0432.CCR-25-0416",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Kjeldsted",
+  "cr_years": [
+   "2025"
+  ],
+  "cr_title": "Effects of Supervised Exercise during Neoadjuvant Chemotherapy on Tumor Response in Patients with Breast Cancer (Neo-train): A Randomized Controlled Trial",
+  "cr_journal": "Clinical Cancer Research",
+  "cr_short": [
+   ""
+  ],
+  "cr_volume": "31",
+  "cr_page": "4265-4277",
+  "ref_first_author": "Kjeldsted",
+  "ref_year": "2025",
+  "ref_journal": "Clin Cancer Res",
+  "ref_volume": "31",
+  "ref_pages": "4265–4277",
+  "ref_title": "Effects of Supervised Exercise during Neoadjuvant Chemotherapy on Tumor Response in Patients with Breast Cancer (Neo-train): A Randomized Controlled Trial",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": [
+   "is-supplemented-by",
+   "has-preprint"
+  ]
+ },
+ {
+  "n": 17,
+  "doi": "10.1016/j.jshs.2025.101064",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Schmidt",
+  "cr_years": [
+   "2025"
+  ],
+  "cr_title": "Effects of aerobic or resistance exercise during neoadjuvant chemotherapy on tumor response and therapy completion in women with breast cancer: The randomized controlled BENEFIT trial",
+  "cr_journal": "Journal of Sport and Health Science",
+  "cr_short": [
+   "Journal of Sport and Health Science"
+  ],
+  "cr_volume": "14",
+  "cr_page": "101064",
+  "ref_first_author": "Schmidt",
+  "ref_year": "2025",
+  "ref_journal": "J Sport Health Sci",
+  "ref_volume": "14",
+  "ref_pages": "101064",
+  "ref_title": "Effects of aerobic or resistance exercise during neoadjuvant chemotherapy on tumor response and therapy completion in women with breast cancer: The randomized controlled BENEFIT trial",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 18,
+  "doi": "10.1007/s00520-026-11156-1",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Dias Rato",
+  "cr_years": [
+   "2026"
+  ],
+  "cr_title": "Exercise and pathologic complete response to cancer treatment: a systematic review and meta-analysis",
+  "cr_journal": "Supportive Care in Cancer",
+  "cr_short": [
+   "Support Care Cancer"
+  ],
+  "cr_volume": "34",
+  "cr_page": "948",
+  "ref_first_author": "Dias",
+  "ref_year": "2026",
+  "ref_journal": "Support Care Cancer",
+  "ref_volume": "34",
+  "ref_pages": "948",
+  "ref_title": "Exercise and pathologic complete response to cancer treatment: a systematic review and meta-analysis",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 19,
+  "doi": "10.1371/journal.pone.0274804",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "de Boniface",
+  "cr_years": [
+   "2022"
+  ],
+  "cr_title": "Physical exercise during neoadjuvant chemotherapy for breast cancer as a mean to increase pathological complete response rates: Trial protocol of the randomized Neo-ACT trial",
+  "cr_journal": "PLOS ONE",
+  "cr_short": [
+   "PLoS ONE"
+  ],
+  "cr_volume": "17",
+  "cr_page": "e0274804",
+  "ref_first_author": "de",
+  "ref_year": "2022",
+  "ref_journal": "PLoS One",
+  "ref_volume": "17",
+  "ref_pages": "e0274804",
+  "ref_title": "Physical exercise during neoadjuvant chemotherapy for breast cancer as a mean to increase pathological complete response rates: Trial protocol of the randomized Neo-ACT trial",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 20,
+  "doi": "10.1007/s10549-019-05235-7",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Khan",
+  "cr_years": [
+   "2019"
+  ],
+  "cr_title": "Systematic review of economic evaluations of exercise and physiotherapy for patients treated for breast cancer",
+  "cr_journal": "Breast Cancer Research and Treatment",
+  "cr_short": [
+   "Breast Cancer Res Treat"
+  ],
+  "cr_volume": "176",
+  "cr_page": "37-52",
+  "ref_first_author": "Khan",
+  "ref_year": "2019",
+  "ref_journal": "Breast Cancer Res Treat",
+  "ref_volume": "176",
+  "ref_pages": "37–52",
+  "ref_title": "Systematic review of economic evaluations of exercise and physiotherapy for patients treated for breast cancer",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 21,
+  "doi": "10.1007/s11764-021-01002-0",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Gubler-Gut",
+  "cr_years": [
+   "2021"
+  ],
+  "cr_title": "Cost-effectiveness of physical activity interventions in cancer survivors of developed countries: a systematic review",
+  "cr_journal": "Journal of Cancer Survivorship",
+  "cr_short": [
+   "J Cancer Surviv"
+  ],
+  "cr_volume": "15",
+  "cr_page": "961-975",
+  "ref_first_author": "Gubler-Gut",
+  "ref_year": "2021",
+  "ref_journal": "J Cancer Surviv",
+  "ref_volume": "15",
+  "ref_pages": "961–975",
+  "ref_title": "Cost-effectiveness of physical activity interventions in cancer survivors of developed countries: a systematic review",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 22,
+  "doi": "10.1016/j.ypmed.2023.107491",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Wang",
+  "cr_years": [
+   "2023"
+  ],
+  "cr_title": "Economic evaluation of exercise interventions for individuals with cancer: A systematic review",
+  "cr_journal": "Preventive Medicine",
+  "cr_short": [
+   "Preventive Medicine"
+  ],
+  "cr_volume": "172",
+  "cr_page": "107491",
+  "ref_first_author": "Wang",
+  "ref_year": "2023",
+  "ref_journal": "Prev Med",
+  "ref_volume": "172",
+  "ref_pages": "107491",
+  "ref_title": "Economic evaluation of exercise interventions for individuals with cancer: A systematic review",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 23,
+  "doi": "10.1136/bmjopen-2016-012187",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "May",
+  "cr_years": [
+   "2017"
+  ],
+  "cr_title": "Cost-effectiveness analysis of an 18-week exercise programme for patients with breast and colon cancer undergoing adjuvant chemotherapy: the randomised PACT study",
+  "cr_journal": "BMJ Open",
+  "cr_short": [
+   "BMJ Open"
+  ],
+  "cr_volume": "7",
+  "cr_page": "e012187",
+  "ref_first_author": "May",
+  "ref_year": "2017",
+  "ref_journal": "BMJ Open",
+  "ref_volume": "7",
+  "ref_pages": "e012187",
+  "ref_title": "Cost-effectiveness analysis of an 18-week exercise programme for patients with breast and colon cancer undergoing adjuvant chemotherapy: the randomised PACT study",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 24,
+  "doi": "10.1007/s10198-017-0936-0",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "van Waart",
+  "cr_years": [
+   "2017",
+   "2018"
+  ],
+  "cr_title": "Cost–utility and cost-effectiveness of physical exercise during adjuvant chemotherapy",
+  "cr_journal": "The European Journal of Health Economics",
+  "cr_short": [
+   "Eur J Health Econ"
+  ],
+  "cr_volume": "19",
+  "cr_page": "893-904",
+  "ref_first_author": "van",
+  "ref_year": "2018",
+  "ref_journal": "Eur J Health Econ",
+  "ref_volume": "19",
+  "ref_pages": "893–904",
+  "ref_title": "Cost-utility and cost-effectiveness of physical exercise during adjuvant chemotherapy",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 25,
+  "doi": "10.1007/s00520-019-05078-4",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Perrier",
+  "cr_years": [
+   "2019",
+   "2020"
+  ],
+  "cr_title": "Cost-effectiveness of an exercise and nutritional intervention versus usual nutritional care during adjuvant treatment for localized breast cancer: the PASAPAS randomized controlled trial",
+  "cr_journal": "Supportive Care in Cancer",
+  "cr_short": [
+   "Support Care Cancer"
+  ],
+  "cr_volume": "28",
+  "cr_page": "2829-2842",
+  "ref_first_author": "Perrier",
+  "ref_year": "2020",
+  "ref_journal": "Support Care Cancer",
+  "ref_volume": "28",
+  "ref_pages": "2829–2842",
+  "ref_title": "Cost-effectiveness of an exercise and nutritional intervention versus usual nutritional care during adjuvant treatment for localized breast cancer: the PASAPAS randomized controlled trial",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 26,
+  "doi": "10.1080/0284186X.2023.2200149",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Ax",
+  "cr_years": [
+   "2023"
+  ],
+  "cr_title": "Cost-effectiveness of different exercise intensities during oncological treatment in the Phys-Can RCT",
+  "cr_journal": "Acta Oncologica",
+  "cr_short": [
+   "Acta Oncologica"
+  ],
+  "cr_volume": "62",
+  "cr_page": "414-421",
+  "ref_first_author": "Ax",
+  "ref_year": "2023",
+  "ref_journal": "Acta Oncol",
+  "ref_volume": "62",
+  "ref_pages": "414–421",
+  "ref_title": "Cost-effectiveness of different exercise intensities during oncological treatment in the Phys-Can RCT",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 27,
+  "doi": "10.1007/s40258-022-00774-5",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Boudewijns",
+  "cr_years": [
+   "2022",
+   "2023"
+  ],
+  "cr_title": "Headroom Analysis for Early Economic Evaluation: A Systematic Review",
+  "cr_journal": "Applied Health Economics and Health Policy",
+  "cr_short": [
+   "Appl Health Econ Health Policy"
+  ],
+  "cr_volume": "21",
+  "cr_page": "195-204",
+  "ref_first_author": "Boudewijns",
+  "ref_year": "2023",
+  "ref_journal": "Appl Health Econ Health Policy",
+  "ref_volume": "21",
+  "ref_pages": "195–204",
+  "ref_title": "Headroom Analysis for Early Economic Evaluation: A Systematic Review",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 28,
+  "doi": "10.1007/s12325-022-02365-1",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Huang",
+  "cr_years": [
+   "2023"
+  ],
+  "cr_title": "Cost-Effectiveness of Neoadjuvant Pembrolizumab Plus Chemotherapy Followed by Adjuvant Single-Agent Pembrolizumab for High-Risk Early-Stage Triple-Negative Breast Cancer in the United States",
+  "cr_journal": "Advances in Therapy",
+  "cr_short": [
+   "Adv Ther"
+  ],
+  "cr_volume": "40",
+  "cr_page": "1153-1170",
+  "ref_first_author": "Huang",
+  "ref_year": "2023",
+  "ref_journal": "Adv Ther",
+  "ref_volume": "40",
+  "ref_pages": "1153–1170",
+  "ref_title": "Cost-Effectiveness of Neoadjuvant Pembrolizumab Plus Chemotherapy Followed by Adjuvant Single-Agent Pembrolizumab for High-Risk Early-Stage Triple-Negative Breast Cancer in the United States",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 29,
+  "doi": "10.1007/s40487-024-00285-4",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Kwong",
+  "cr_years": [
+   "2024"
+  ],
+  "cr_title": "Cost-effectiveness of Pembrolizumab in Combination with Chemotherapy as Neoadjuvant Treatment and Continued as a Single Agent Adjuvant Treatment for High-Risk Early-Stage Triple-Negative Breast Cancer in Hong Kong",
+  "cr_journal": "Oncology and Therapy",
+  "cr_short": [
+   "Oncol Ther"
+  ],
+  "cr_volume": "12",
+  "cr_page": "525-547",
+  "ref_first_author": "Kwong",
+  "ref_year": "2024",
+  "ref_journal": "Oncol Ther",
+  "ref_volume": "12",
+  "ref_pages": "525–547",
+  "ref_title": "Cost-effectiveness of Pembrolizumab in Combination with Chemotherapy as Neoadjuvant Treatment and Continued as a Single Agent Adjuvant Treatment for High-Risk Early-Stage Triple-Negative Breast Cancer in Hong Kong",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 30,
+  "doi": "10.1007/s41669-023-00445-8",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Favre-Bulle",
+  "cr_years": [
+   "2023",
+   "2024"
+  ],
+  "cr_title": "Cost-Effectiveness of Neoadjuvant Pembrolizumab plus Chemotherapy Followed by Adjuvant Pembrolizumab in Patients with High-Risk, Early-Stage, Triple-Negative Breast Cancer in Switzerland",
+  "cr_journal": "PharmacoEconomics - Open",
+  "cr_short": [
+   "PharmacoEconomics Open"
+  ],
+  "cr_volume": "8",
+  "cr_page": "91-101",
+  "ref_first_author": "Favre-Bulle",
+  "ref_year": "2024",
+  "ref_journal": "Pharmacoecon Open",
+  "ref_volume": "8",
+  "ref_pages": "91–101",
+  "ref_title": "Cost-Effectiveness of Neoadjuvant Pembrolizumab plus Chemotherapy Followed by Adjuvant Pembrolizumab in Patients with High-Risk, Early-Stage, Triple-Negative Breast Cancer in Switzerland",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 31,
+  "doi": "10.1080/13696998.2024.2441073",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Pöllinger",
+  "cr_years": [
+   "2025"
+  ],
+  "cr_title": "The cost-effectiveness of treatment for high-risk, early-stage, triple-negative breast cancer in Egypt: an analysis of neoadjuvant pembrolizumab plus chemotherapy followed by adjuvant single-agent pembrolizumab",
+  "cr_journal": "Journal of Medical Economics",
+  "cr_short": [
+   "Journal of Medical Economics"
+  ],
+  "cr_volume": "28",
+  "cr_page": "105-113",
+  "ref_first_author": "Pöllinger",
+  "ref_year": "2025",
+  "ref_journal": "J Med Econ",
+  "ref_volume": "28",
+  "ref_pages": "105–113",
+  "ref_title": "The cost-effectiveness of treatment for high-risk, early-stage, triple-negative breast cancer in Egypt: an analysis of neoadjuvant pembrolizumab plus chemotherapy followed by adjuvant single-agent pembrolizumab",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 32,
+  "doi": "10.1007/s40261-025-01445-8",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Chisaki",
+  "cr_years": [
+   "2025"
+  ],
+  "cr_title": "Cost-Effectiveness Analysis of Pembrolizumab Plus Chemotherapy Compared with Chemotherapy as First-Line Treatment for Advanced PD-L1-Positive Triple-Negative Breast Cancer from a Japanese Healthcare Perspective",
+  "cr_journal": "Clinical Drug Investigation",
+  "cr_short": [
+   "Clin Drug Investig"
+  ],
+  "cr_volume": "45",
+  "cr_page": "317-326",
+  "ref_first_author": "Chisaki",
+  "ref_year": "2025",
+  "ref_journal": "Clin Drug Investig",
+  "ref_volume": "45",
+  "ref_pages": "317–326",
+  "ref_title": "Cost-Effectiveness Analysis of Pembrolizumab Plus Chemotherapy Compared with Chemotherapy as First-Line Treatment for Advanced PD-L1-Positive Triple-Negative Breast Cancer from a Japanese Healthcare Perspective",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 33,
+  "doi": "10.1093/jjco/hyad050",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Sugiura",
+  "cr_years": [
+   "2023"
+  ],
+  "cr_title": "Cost-effectiveness analysis of pembrolizumab in patients with treatment-refractory metastatic colorectal cancer in Japan",
+  "cr_journal": "Japanese Journal of Clinical Oncology",
+  "cr_short": [
+   ""
+  ],
+  "cr_volume": "53",
+  "cr_page": "691-697",
+  "ref_first_author": "Sugiura",
+  "ref_year": "2023",
+  "ref_journal": "Jpn J Clin Oncol",
+  "ref_volume": "53",
+  "ref_pages": "691–697",
+  "ref_title": "Cost-effectiveness analysis of pembrolizumab in patients with treatment-refractory metastatic colorectal cancer in Japan",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 34,
+  "doi": "10.1016/j.vhri.2025.101555",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Taniguchi",
+  "cr_years": [
+   "2026"
+  ],
+  "cr_title": "Cost-Effectiveness of Pembrolizumab as First-Line Therapy for Advanced Colorectal Cancer With High Microsatellite Instability or Mismatched Repair Deficiency in Japan",
+  "cr_journal": "Value in Health Regional Issues",
+  "cr_short": [
+   "Value in Health Regional Issues"
+  ],
+  "cr_volume": "54",
+  "cr_page": "101555",
+  "ref_first_author": "Taniguchi",
+  "ref_year": "2026",
+  "ref_journal": "Value Health Reg Issues",
+  "ref_volume": "54",
+  "ref_pages": "101555",
+  "ref_title": "Cost-Effectiveness of Pembrolizumab as First-Line Therapy for Advanced Colorectal Cancer With High Microsatellite Instability or Mismatched Repair Deficiency in Japan",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 35,
+  "doi": "10.1007/s10388-025-01144-5",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Kakinuma",
+  "cr_years": [
+   "2025"
+  ],
+  "cr_title": "Cost-effectiveness analysis of pembrolizumab plus chemotherapy versus chemotherapy as first line chemotherapy for patients with unresectable advanced esophageal cancer in Japan",
+  "cr_journal": "Esophagus",
+  "cr_short": [
+   "Esophagus"
+  ],
+  "cr_volume": "22",
+  "cr_page": "583-592",
+  "ref_first_author": "Kakinuma",
+  "ref_year": "2025",
+  "ref_journal": "Esophagus",
+  "ref_volume": "22",
+  "ref_pages": "583–592",
+  "ref_title": "Cost-effectiveness analysis of pembrolizumab plus chemotherapy versus chemotherapy as first line chemotherapy for patients with unresectable advanced esophageal cancer in Japan",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 36,
+  "doi": "10.1007/s41669-025-00634-7",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Morimoto",
+  "cr_years": [
+   "2026"
+  ],
+  "cr_title": "Comparative Cost-Effectiveness Analysis of Multiple First-Line Treatments for HER2-Negative Unresectable Advanced or Recurrent Gastric Cancer in Japan",
+  "cr_journal": "PharmacoEconomics - Open",
+  "cr_short": [
+   "PharmacoEconomics Open"
+  ],
+  "cr_volume": "10",
+  "cr_page": "471-489",
+  "ref_first_author": "Morimoto",
+  "ref_year": "2026",
+  "ref_journal": "Pharmacoecon Open",
+  "ref_volume": "10",
+  "ref_pages": "471–489",
+  "ref_title": "Comparative Cost-Effectiveness Analysis of Multiple First-Line Treatments for HER2-Negative Unresectable Advanced or Recurrent Gastric Cancer in Japan",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 37,
+  "doi": "10.1007/s11096-024-01826-7",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Tomura",
+  "cr_years": [
+   "2024",
+   "2025"
+  ],
+  "cr_title": "Cost-effectiveness analysis of first line pembrolizumab monotherapy for high programmed cell death ligand 1 expressed, advanced non-small cell lung cancer in Japan",
+  "cr_journal": "International Journal of Clinical Pharmacy",
+  "cr_short": [
+   "Int J Clin Pharm"
+  ],
+  "cr_volume": "47",
+  "cr_page": "304-313",
+  "ref_first_author": "Tomura",
+  "ref_year": "2025",
+  "ref_journal": "Int J Clin Pharm",
+  "ref_volume": "47",
+  "ref_pages": "304–313",
+  "ref_title": "Cost-effectiveness analysis of first line pembrolizumab monotherapy for high programmed cell death ligand 1 expressed, advanced non-small cell lung cancer in Japan",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 38,
+  "doi": "10.1007/s12029-024-01106-7",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Kashiwa",
+  "cr_years": [
+   "2024"
+  ],
+  "cr_title": "Comparative Cost-Effectiveness of Gemcitabine and Cisplatin in Combination with S-1, Durvalumab, or Pembrolizumab as First-Line Triple Treatment for Advanced Biliary Tract Cancer",
+  "cr_journal": "Journal of Gastrointestinal Cancer",
+  "cr_short": [
+   "J Gastrointest Canc"
+  ],
+  "cr_volume": "55",
+  "cr_page": "1569-1580",
+  "ref_first_author": "Kashiwa",
+  "ref_year": "2024",
+  "ref_journal": "J Gastrointest Cancer",
+  "ref_volume": "55",
+  "ref_pages": "1569–1580",
+  "ref_title": "Comparative Cost-Effectiveness of Gemcitabine and Cisplatin in Combination with S-1, Durvalumab, or Pembrolizumab as First-Line Triple Treatment for Advanced Biliary Tract Cancer",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 39,
+  "doi": null,
+  "url": "https://c2h.niph.go.jp/results/item.html",
+  "url_status": 200,
+  "url_location": null
+ },
+ {
+  "n": 40,
+  "doi": null,
+  "url": "https://c2h.niph.go.jp/tools/guideline/guideline_en_2026.pdf",
+  "url_status": 200,
+  "url_location": null
+ },
+ {
+  "n": 41,
+  "doi": "10.1016/j.jval.2019.10.005",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Hasegawa",
+  "cr_years": [
+   "2020"
+  ],
+  "cr_title": "Formal Implementation of Cost-Effectiveness Evaluations in Japan: A Unique Health Technology Assessment System",
+  "cr_journal": "Value in Health",
+  "cr_short": [
+   "Value in Health"
+  ],
+  "cr_volume": "23",
+  "cr_page": "43-51",
+  "ref_first_author": "Hasegawa",
+  "ref_year": "2020",
+  "ref_journal": "Value Health",
+  "ref_volume": "23",
+  "ref_pages": "43–51",
+  "ref_title": "Formal Implementation of Cost-Effectiveness Evaluations in Japan: A Unique Health Technology Assessment System",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 42,
+  "doi": null,
+  "url": "https://c2h.niph.go.jp/tools/system/notification_cost-effectiveness_2026.pdf",
+  "url_status": 200,
+  "url_location": null
+ },
+ {
+  "n": 43,
+  "doi": "10.1016/j.annonc.2023.10.008",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Schmid",
+  "cr_years": [
+   "2023"
+  ],
+  "cr_title": "LBA18 Pembrolizumab or placebo plus chemotherapy followed by pembrolizumab or placebo for early-stage TNBC: Updated EFS results from the phase III KEYNOTE-522 study",
+  "cr_journal": "Annals of Oncology",
+  "cr_short": [
+   "Annals of Oncology"
+  ],
+  "cr_volume": "34",
+  "cr_page": "S1257",
+  "ref_first_author": "Schmid",
+  "ref_year": "2023",
+  "ref_journal": "Ann Oncol",
+  "ref_volume": "34",
+  "ref_pages": "S1257",
+  "ref_title": "LBA18 Pembrolizumab or placebo plus chemotherapy followed by pembrolizumab or placebo for early-stage TNBC: Updated EFS results from the phase III KEYNOTE-522 study",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 44,
+  "doi": "10.1200/JCO.2026.44.16_suppl.507",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Schmid",
+  "cr_years": [
+   "2026"
+  ],
+  "cr_title": "Neoadjuvant pembrolizumab or placebo plus chemotherapy followed by adjuvant pembrolizumab or placebo for high-risk early-stage TNBC: Final analysis results from the phase 3 KEYNOTE-522 study.",
+  "cr_journal": "Journal of Clinical Oncology",
+  "cr_short": [
+   "J Clin Oncol"
+  ],
+  "cr_volume": "44",
+  "cr_page": "507-507",
+  "ref_first_author": "Schmid",
+  "ref_year": "2026",
+  "ref_journal": "J Clin Oncol",
+  "ref_volume": "44",
+  "ref_pages": "507",
+  "ref_title": "Neoadjuvant pembrolizumab or placebo plus chemotherapy followed by adjuvant pembrolizumab or placebo for high-risk early-stage TNBC: Final analysis results from the phase 3 KEYNOTE-522 study",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 45,
+  "doi": "10.1136/bmj-2021-067975",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Husereau",
+  "cr_years": [
+   "2022"
+  ],
+  "cr_title": "Consolidated Health Economic Evaluation Reporting Standards 2022 (CHEERS 2022) statement: updated reporting guidance for health economic evaluations",
+  "cr_journal": "BMJ",
+  "cr_short": [
+   "BMJ"
+  ],
+  "cr_volume": "376",
+  "cr_page": "e067975",
+  "ref_first_author": "Husereau",
+  "ref_year": "2022",
+  "ref_journal": "BMJ",
+  "ref_volume": "376",
+  "ref_pages": "e067975",
+  "ref_title": "Consolidated Health Economic Evaluation Reporting Standards 2022 (CHEERS 2022) statement: updated reporting guidance for health economic evaluations",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 46,
+  "doi": "10.1200/JCO-26-00765",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Chan",
+  "cr_years": [
+   "2026"
+  ],
+  "cr_title": "Structured Exercise Program After Adjuvant Chemotherapy for Colon Cancer: A Cost-Utility Analysis of the CHALLENGE Trial",
+  "cr_journal": "Journal of Clinical Oncology",
+  "cr_short": [
+   "J Clin Oncol"
+  ],
+  "cr_volume": "44",
+  "cr_page": "2130-2139",
+  "ref_first_author": "Chan",
+  "ref_year": "2026",
+  "ref_journal": "J Clin Oncol",
+  "ref_volume": "44",
+  "ref_pages": "2130–2139",
+  "ref_title": "Structured Exercise Program After Adjuvant Chemotherapy for Colon Cancer: A Cost-Utility Analysis of the CHALLENGE Trial",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 47,
+  "doi": null,
+  "url": "https://data.worldbank.org/indicator/PA.NUS.PPP",
+  "url_status": 200,
+  "url_location": null
+ },
+ {
+  "n": 48,
+  "doi": null,
+  "url": "https://www.mhlw.go.jp/stf/newpage_67729.html",
+  "url_status": 200,
+  "url_location": null
+ },
+ {
+  "n": 49,
+  "doi": "10.1186/1471-2288-12-9",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Guyot",
+  "cr_years": [
+   "2012"
+  ],
+  "cr_title": "Enhanced secondary analysis of survival data: reconstructing the data from published Kaplan-Meier survival curves",
+  "cr_journal": "BMC Medical Research Methodology",
+  "cr_short": [
+   "BMC Med Res Methodol"
+  ],
+  "cr_volume": "12",
+  "cr_page": "9",
+  "ref_first_author": "Guyot",
+  "ref_year": "2012",
+  "ref_journal": "BMC Med Res Methodol",
+  "ref_volume": "12",
+  "ref_pages": "9",
+  "ref_title": "Enhanced secondary analysis of survival data: reconstructing the data from published Kaplan-Meier survival curves",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 50,
+  "doi": "10.1016/j.ejca.2023.05.023",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Grinda",
+  "cr_years": [
+   "2023"
+  ],
+  "cr_title": "Real-world clinical and survival outcomes of patients with early relapsed triple-negative breast cancer from the ESME national cohort",
+  "cr_journal": "European Journal of Cancer",
+  "cr_short": [
+   "European Journal of Cancer"
+  ],
+  "cr_volume": "189",
+  "cr_page": "112935",
+  "ref_first_author": "Grinda",
+  "ref_year": "2023",
+  "ref_journal": "Eur J Cancer",
+  "ref_volume": "189",
+  "ref_pages": "112935",
+  "ref_title": "Real-world clinical and survival outcomes of patients with early relapsed triple-negative breast cancer from the ESME national cohort",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 51,
+  "doi": null,
+  "url": "https://www.mhlw.go.jp/toukei/saikin/hw/life/life25/index.html",
+  "url_status": 200,
+  "url_location": null
+ },
+ {
+  "n": 52,
+  "doi": null,
+  "url": null
+ },
+ {
+  "n": 53,
+  "doi": null,
+  "url": "https://www.hospital.kasugai.aichi.jp/goriyo/nyuin/documents/nyuinhiyougaisan.pdf",
+  "url_status": 200,
+  "url_location": null
+ },
+ {
+  "n": 54,
+  "doi": null,
+  "url": "https://www.energia.co.jp/hospital/nyuuin/surgical-costs.html",
+  "url_status": 200,
+  "url_location": null
+ },
+ {
+  "n": 55,
+  "doi": "10.1245/s10434-026-19121-2",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Kuemmel",
+  "cr_years": [
+   "2026"
+  ],
+  "cr_title": "Surgical Outcomes After Neoadjuvant Pembrolizumab Plus Chemotherapy for Triple-Negative Breast Cancer: Results from the Randomized, Placebo-Controlled Phase 3 KEYNOTE-522 Study",
+  "cr_journal": "Annals of Surgical Oncology",
+  "cr_short": [
+   "Ann Surg Oncol"
+  ],
+  "cr_volume": "33",
+  "cr_page": "5550-5557",
+  "ref_first_author": "Kuemmel",
+  "ref_year": "2026",
+  "ref_journal": "Ann Surg Oncol",
+  "ref_volume": "33",
+  "ref_pages": "5550–5557",
+  "ref_title": "Surgical Outcomes After Neoadjuvant Pembrolizumab Plus Chemotherapy for Triple-Negative Breast Cancer: Results from the Randomized, Placebo-Controlled Phase 3 KEYNOTE-522 Study",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 56,
+  "doi": "10.1007/s12282-025-01714-6",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Yoshinami",
+  "cr_years": [
+   "2025"
+  ],
+  "cr_title": "Real-world evidence of febrile neutropenia-related hospitalization on patients with perioperative chemotherapy for early breast cancer in Japan",
+  "cr_journal": "Breast Cancer",
+  "cr_short": [
+   "Breast Cancer"
+  ],
+  "cr_volume": "32",
+  "cr_page": "857-866",
+  "ref_first_author": "Yoshinami",
+  "ref_year": "2025",
+  "ref_journal": "Breast Cancer",
+  "ref_volume": "32",
+  "ref_pages": "857–866",
+  "ref_title": "Real-world evidence of febrile neutropenia-related hospitalization on patients with perioperative chemotherapy for early breast cancer in Japan",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 57,
+  "doi": "10.1007/s10549-026-07938-0",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Andrade",
+  "cr_years": [
+   "2026"
+  ],
+  "cr_title": "Treatment patterns and safety of adjuvant therapy after chemoimmunotherapy for early-stage triple-negative breast cancer: real-world data from the Neo-Real/GBECAM 0123 study",
+  "cr_journal": "Breast Cancer Research and Treatment",
+  "cr_short": [
+   "Breast Cancer Res Treat"
+  ],
+  "cr_volume": "216",
+  "cr_page": "27",
+  "ref_first_author": "Andrade",
+  "ref_year": "2026",
+  "ref_journal": "Breast Cancer Res Treat",
+  "ref_volume": "216",
+  "ref_pages": "27",
+  "ref_title": "Treatment patterns and safety of adjuvant therapy after chemoimmunotherapy for early-stage triple-negative breast cancer: real-world data from the Neo-Real/GBECAM 0123 study",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 58,
+  "doi": "10.1038/s41416-026-03452-8",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Valachis",
+  "cr_years": [
+   "2026"
+  ],
+  "cr_title": "Insights on postneoadjuvant treatment among patients with triple-negative breast cancer and residual disease after neoadjuvant therapy: can expert consensus help to interpret the current evidence?",
+  "cr_journal": "British Journal of Cancer",
+  "cr_short": [
+   "Br J Cancer"
+  ],
+  "cr_volume": "135",
+  "cr_page": "329-335",
+  "ref_first_author": "Valachis",
+  "ref_year": "2026",
+  "ref_journal": "Br J Cancer",
+  "ref_volume": "135",
+  "ref_pages": "329–335",
+  "ref_title": "Insights on postneoadjuvant treatment among patients with triple-negative breast cancer and residual disease after neoadjuvant therapy: can expert consensus help to interpret the current evidence?",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 59,
+  "doi": "10.3892/mco.2021.2258",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Fujisawa",
+  "cr_years": [
+   "2021"
+  ],
+  "cr_title": "Prevalence of <i>BRCA1</i> and <i>BRCA2</i> mutations in Japanese patients with triple‑negative breast cancer: A single institute retrospective study",
+  "cr_journal": "Molecular and Clinical Oncology",
+  "cr_short": [
+   "Mol Clin Oncol"
+  ],
+  "cr_volume": "14",
+  "cr_page": "96",
+  "ref_first_author": "Fujisawa",
+  "ref_year": "2021",
+  "ref_journal": "Mol Clin Oncol",
+  "ref_volume": "14",
+  "ref_pages": "96",
+  "ref_title": "Prevalence of BRCA1 and BRCA2 mutations in Japanese patients with triple-negative breast cancer: A single institute retrospective study",
+  "title_sim": 0.971,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 60,
+  "doi": null,
+  "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/GeneralList/4291052F1027",
+  "url_status": 200,
+  "url_location": null
+ },
+ {
+  "n": 61,
+  "doi": null,
+  "url": "https://www.ema.europa.eu/en/documents/variation-report/keytruda-h-c-003820-ii-0110-epar-assessment-report-variation_en.pdf",
+  "url_status": 200,
+  "url_location": null
+ },
+ {
+  "n": 62,
+  "doi": "10.1007/s40273-018-0615-8",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Ludwig",
+  "cr_years": [
+   "2018"
+  ],
+  "cr_title": "German Value Set for the EQ-5D-5L",
+  "cr_journal": "PharmacoEconomics",
+  "cr_short": [
+   "PharmacoEconomics"
+  ],
+  "cr_volume": "36",
+  "cr_page": "663-674",
+  "ref_first_author": "Ludwig",
+  "ref_year": "2018",
+  "ref_journal": "Pharmacoeconomics",
+  "ref_volume": "36",
+  "ref_pages": "663–674",
+  "ref_title": "German Value Set for the EQ-5D-5L",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 63,
+  "doi": "10.3390/curroncol28050356",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Iwatani",
+  "cr_years": [
+   "2021"
+  ],
+  "cr_title": "Changes in Health State Utility Values in Japanese Patients with End-Stage Breast Cancer",
+  "cr_journal": "Current Oncology",
+  "cr_short": [
+   "Current Oncology"
+  ],
+  "cr_volume": "28",
+  "cr_page": "4203-4212",
+  "ref_first_author": "Iwatani",
+  "ref_year": "2021",
+  "ref_journal": "Curr Oncol",
+  "ref_volume": "28",
+  "ref_pages": "4203–4212",
+  "ref_title": "Changes in Health State Utility Values in Japanese Patients with End-Stage Breast Cancer",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 64,
+  "doi": "10.1186/s12885-017-3774-7",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Shiroiwa",
+  "cr_years": [
+   "2017"
+  ],
+  "cr_title": "Cost-effectiveness analysis of the introduction of S-1 therapy for first-line metastatic breast cancer treatment in Japan: results from the randomized phase III SELECT BC trial",
+  "cr_journal": "BMC Cancer",
+  "cr_short": [
+   "BMC Cancer"
+  ],
+  "cr_volume": "17",
+  "cr_page": "773",
+  "ref_first_author": "Shiroiwa",
+  "ref_year": "2017",
+  "ref_journal": "BMC Cancer",
+  "ref_volume": "17",
+  "ref_pages": "773",
+  "ref_title": "Cost-effectiveness analysis of the introduction of S-1 therapy for first-line metastatic breast cancer treatment in Japan: results from the randomized phase III SELECT BC trial",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 65,
+  "doi": null,
+  "url": "https://www.pbs.gov.au/info/industry/listing/elements/pbac-meetings/psd/2023-03/pembrolizumab-earlyTNBC-keytruda-PSD-March-2023",
+  "url_status": 301,
+  "url_location": "https://www.pbs.gov.au/industry/listing/elements/pbac-meetings/psd/2023-03/pembrolizumab-earlyTNBC-keytruda-PSD-March-2023"
+ },
+ {
+  "n": 66,
+  "doi": "10.1007/s10549-026-08023-2",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Fedele",
+  "cr_years": [
+   "2026"
+  ],
+  "cr_title": "Early first-line systemic anticancer therapeutic attrition after metastatic recurrence in triple-negative breast cancer following neoadjuvant chemo-immunotherapy: a multicenter real-world study",
+  "cr_journal": "Breast Cancer Research and Treatment",
+  "cr_short": [
+   "Breast Cancer Res Treat"
+  ],
+  "cr_volume": "218",
+  "cr_page": "8",
+  "ref_first_author": "Fedele",
+  "ref_year": "2026",
+  "ref_journal": "Breast Cancer Res Treat",
+  "ref_volume": "218",
+  "ref_pages": "8",
+  "ref_title": "Early first-line systemic anticancer therapeutic attrition after metastatic recurrence in triple-negative breast cancer following neoadjuvant chemo-immunotherapy: a multicenter real-world study",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": [
+   "has-preprint"
+  ]
+ },
+ {
+  "n": 67,
+  "doi": "10.1245/s10434-021-10444-w",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Elmore",
+  "cr_years": [
+   "2021"
+  ],
+  "cr_title": "Clinical Course of Breast Cancer Patients with Local-Regional Progression During Neoadjuvant Systemic Therapy",
+  "cr_journal": "Annals of Surgical Oncology",
+  "cr_short": [
+   "Ann Surg Oncol"
+  ],
+  "cr_volume": "28",
+  "cr_page": "5477-5485",
+  "ref_first_author": "Elmore",
+  "ref_year": "2021",
+  "ref_journal": "Ann Surg Oncol",
+  "ref_volume": "28",
+  "ref_pages": "5477–5485",
+  "ref_title": "Clinical Course of Breast Cancer Patients with Local-Regional Progression During Neoadjuvant Systemic Therapy",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 68,
+  "doi": "10.1016/S0140-6736(11)60070-6",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Cortes",
+  "cr_years": [
+   "2011"
+  ],
+  "cr_title": "Eribulin monotherapy versus treatment of physician's choice in patients with metastatic breast cancer (EMBRACE): a phase 3 open-label randomised study",
+  "cr_journal": "The Lancet",
+  "cr_short": [
+   "The Lancet"
+  ],
+  "cr_volume": "377",
+  "cr_page": "914-923",
+  "ref_first_author": "Cortes",
+  "ref_year": "2011",
+  "ref_journal": "Lancet",
+  "ref_volume": "377",
+  "ref_pages": "914–923",
+  "ref_title": "Eribulin monotherapy versus treatment of physician's choice in patients with metastatic breast cancer (EMBRACE): a phase 3 open-label randomised study",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": [
+   "has-review"
+  ]
+ },
+ {
+  "n": 69,
+  "doi": "10.1056/NEJMoa1612645",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Masuda",
+  "cr_years": [
+   "2017"
+  ],
+  "cr_title": "Adjuvant Capecitabine for Breast Cancer after Preoperative Chemotherapy",
+  "cr_journal": "New England Journal of Medicine",
+  "cr_short": [
+   "N Engl J Med"
+  ],
+  "cr_volume": "376",
+  "cr_page": "2147-2159",
+  "ref_first_author": "Masuda",
+  "ref_year": "2017",
+  "ref_journal": "N Engl J Med",
+  "ref_volume": "376",
+  "ref_pages": "2147–2159",
+  "ref_title": "Adjuvant Capecitabine for Breast Cancer after Preoperative Chemotherapy",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": [
+   "has-review"
+  ]
+ },
+ {
+  "n": 70,
+  "doi": "10.1056/NEJMoa2105215",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Tutt",
+  "cr_years": [
+   "2021"
+  ],
+  "cr_title": "Adjuvant Olaparib for Patients with\n                    <i>BRCA1</i>\n                    - or\n                    <i>BRCA2</i>\n                    -Mutated Breast Cancer",
+  "cr_journal": "New England Journal of Medicine",
+  "cr_short": [
+   "N Engl J Med"
+  ],
+  "cr_volume": "384",
+  "cr_page": "2394-2405",
+  "ref_first_author": "Tutt",
+  "ref_year": "2021",
+  "ref_journal": "N Engl J Med",
+  "ref_volume": "384",
+  "ref_pages": "2394–2405",
+  "ref_title": "Adjuvant Olaparib for Patients with BRCA1- or BRCA2-Mutated Breast Cancer",
+  "title_sim": 0.947,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 71,
+  "doi": "10.1016/j.annonc.2026.08.002",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Garber",
+  "cr_years": [
+   "2026"
+  ],
+  "cr_title": "Sustained benefit of adjuvant olaparib in women with germline BRCA1- and BRCA2-associated high-risk HER2-negative early breast cancer: updated results from the OlympiA phase III trial",
+  "cr_journal": "Annals of Oncology",
+  "cr_short": [
+   "Annals of Oncology"
+  ],
+  "cr_volume": null,
+  "cr_page": null,
+  "ref_first_author": "Garber",
+  "ref_year": "2026",
+  "ref_journal": null,
+  "ref_volume": null,
+  "ref_pages": null,
+  "ref_title": "Sustained benefit of adjuvant olaparib in women with germline BRCA1- and BRCA2-associated high-risk HER2-negative early breast cancer: updated results from the OlympiA phase III trial. Ann Oncol (in press)",
+  "title_sim": 0.95,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 72,
+  "doi": null,
+  "url": "https://www.astrazeneca.com/media-centre/press-releases/2025/datroway-demonstrated-an-unprecedented-median-overall-survival-improvement-of-five-months-vs-chemotherapy-as-1st-line-treatment-for-patients-with-metastatic-triple-negative-breast-cancer-for-whom-immunotherapy-was-not-an-option-in-tropion-breast02.html",
+  "url_status": 200,
+  "url_location": null
+ },
+ {
+  "n": 73,
+  "doi": null,
+  "url": "https://www.daiichisankyo.com/files/news/pressrelease/pdf/202609/20260916_E.pdf",
+  "url_status": 200,
+  "url_location": null
+ },
+ {
+  "n": 74,
+  "doi": "10.1016/S0140-6736(20)32531-9",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Cortes",
+  "cr_years": [
+   "2020"
+  ],
+  "cr_title": "Pembrolizumab plus chemotherapy versus placebo plus chemotherapy for previously untreated locally recurrent inoperable or metastatic triple-negative breast cancer (KEYNOTE-355): a randomised, placebo-controlled, double-blind, phase 3 clinical trial",
+  "cr_journal": "The Lancet",
+  "cr_short": [
+   "The Lancet"
+  ],
+  "cr_volume": "396",
+  "cr_page": "1817-1828",
+  "ref_first_author": "Cortes",
+  "ref_year": "2020",
+  "ref_journal": "Lancet",
+  "ref_volume": "396",
+  "ref_pages": "1817–1828",
+  "ref_title": "Pembrolizumab plus chemotherapy versus placebo plus chemotherapy for previously untreated locally recurrent inoperable or metastatic triple-negative breast cancer (KEYNOTE-355): a randomised, placebo-controlled, double-blind, phase 3 clinical trial",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 75,
+  "doi": "10.1056/NEJMoa072113",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Miller",
+  "cr_years": [
+   "2007"
+  ],
+  "cr_title": "Paclitaxel plus Bevacizumab versus Paclitaxel Alone for Metastatic Breast Cancer",
+  "cr_journal": "New England Journal of Medicine",
+  "cr_short": [
+   "N Engl J Med"
+  ],
+  "cr_volume": "357",
+  "cr_page": "2666-2676",
+  "ref_first_author": "Miller",
+  "ref_year": "2007",
+  "ref_journal": "N Engl J Med",
+  "ref_volume": "357",
+  "ref_pages": "2666–2676",
+  "ref_title": "Paclitaxel plus bevacizumab versus paclitaxel alone for metastatic breast cancer",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": [
+   "has-review"
+  ]
+ },
+ {
+  "n": 76,
+  "doi": "10.1007/s10198-026-01912-9",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Nusawat",
+  "cr_years": [
+   "2026"
+  ],
+  "cr_title": "Cost-effectiveness analysis of immune checkpoint inhibitors versus platinum-based doublet chemotherapy in the first-line treatment of advanced non-small-cell lung cancer with High PD-L1 expression in Japan",
+  "cr_journal": "The European Journal of Health Economics",
+  "cr_short": [
+   "Eur J Health Econ"
+  ],
+  "cr_volume": null,
+  "cr_page": null,
+  "ref_first_author": "Nusawat",
+  "ref_year": "2026",
+  "ref_journal": null,
+  "ref_volume": null,
+  "ref_pages": null,
+  "ref_title": "Cost-effectiveness analysis of immune checkpoint inhibitors versus platinum-based doublet chemotherapy in the first-line treatment of advanced non-small-cell lung cancer with High PD-L1 expression in Japan. Eur J Health Econ (in press)",
+  "title_sim": 0.938,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 77,
+  "doi": "10.1016/j.jval.2018.07.458",
+  "url": null,
+  "doi_status": 302,
+  "cr_first_author": "Ohtera",
+  "cr_years": [
+   "2018"
+  ],
+  "cr_title": "Health Care Utilization and Hospital Expenditures Among Inpatients Dying of Cancer in Japan",
+  "cr_journal": "Value in Health",
+  "cr_short": [
+   "Value in Health"
+  ],
+  "cr_volume": "21",
+  "cr_page": "S60",
+  "ref_first_author": "Ohtera",
+  "ref_year": "2018",
+  "ref_journal": "Value Health",
+  "ref_volume": "21",
+  "ref_pages": "S60",
+  "ref_title": "Health Care Utilization and Hospital Expenditures Among Inpatients Dying of Cancer in Japan",
+  "title_sim": 1.0,
+  "author_ok": true,
+  "year_ok": true,
+  "volume_ok": true,
+  "page_ok": true,
+  "update_to": [],
+  "relation": []
+ },
+ {
+  "n": 78,
+  "doi": null,
+  "url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+  "url_status": 200,
+  "url_location": null
+ }
+]
