@@ -1,0 +1,5 @@
+files in public data/ipd: 28 ; in the rerun copy: 28 ; same names: TRUE 
+written by 03_reconstruct_ipd.R: 25 ; all present: TRUE ; other files (not written by it): esme/ESME_F3A_OS_early.csv, esme/ESME_F3A_OS_late.csv, esme/esme_ipd.rds 
+written files equal by value: 25 of 25 ; byte for byte: 25 of 25 
+differing by value: none 
+ipd_all.rds: elements 24 ; rows 11166 ; identical by value: TRUE 

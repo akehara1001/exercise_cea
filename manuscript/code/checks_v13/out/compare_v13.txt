@@ -1,0 +1,55 @@
+decomp_main_hr085.csv: rows 16; numeric cols 2 max|diff| 0 (rel 0); NA mismatches 0; text cols 1 differing none
+decomp_main_hr085_components.csv: rows 42; numeric cols 3 max|diff| 0 (rel 0); NA mismatches 0; text cols 3 differing none
+decomp_reference.csv: rows 11; numeric cols 2 max|diff| 0 (rel 0); NA mismatches 0; text cols 1 differing none
+decomp_reference_components.csv: rows 42; numeric cols 3 max|diff| 0 (rel 0); NA mismatches 0; text cols 3 differing none
+det_caps.csv: rows 72; numeric cols 5 max|diff| 0 (rel 0); NA mismatches 0; text cols 3 differing none
+det_e_crossings.csv: rows 18; numeric cols 6 max|diff| 0 (rel 0); NA mismatches 0; text cols 3 differing none
+det_reference.csv: rows 2; numeric cols 6 max|diff| 0 (rel 0); NA mismatches 0; text cols 1 differing none
+det_yardstick.csv: rows 2; numeric cols 4 max|diff| 0 (rel 0); NA mismatches 0; text cols 3 differing none
+oneway_base.csv: rows 81; numeric cols 8 max|diff| 0 (rel 0); NA mismatches 0; text cols 4 differing ['provisional']
+    provisional: 9 rows differ, e.g. public 'FALSE' vs work tree 'TRUE'
+oneway_sjp.csv: rows 10; numeric cols 8 max|diff| 0 (rel 0); NA mismatches 0; text cols 4 differing ['provisional']
+    provisional: 1 rows differ, e.g. public 'FALSE' vs work tree 'TRUE'
+sc_base_crossings.csv: rows 27; numeric cols 3 max|diff| 0 (rel 0); NA mismatches 0; text cols 4 differing none
+sc_crossings.csv: rows 126; numeric cols 3 max|diff| 0 (rel 0); NA mismatches 0; text cols 5 differing none
+sc_eribulin_crossings.csv: rows 27; numeric cols 3 max|diff| 0 (rel 0); NA mismatches 0; text cols 4 differing none
+sc_eribulin_det_caps.csv: rows 39; numeric cols 5 max|diff| 0 (rel 0); NA mismatches 0; text cols 3 differing none
+sc_eribulin_det_reference.csv: rows 2; numeric cols 6 max|diff| 0 (rel 0); NA mismatches 0; text cols 1 differing none
+sc_metcost50_crossings.csv: rows 27; numeric cols 3 max|diff| 0 (rel 0); NA mismatches 0; text cols 4 differing none
+sc_metcost50_det_caps.csv: rows 39; numeric cols 5 max|diff| 0 (rel 0); NA mismatches 0; text cols 3 differing none
+sc_metcost50_det_reference.csv: rows 2; numeric cols 6 max|diff| 0 (rel 0); NA mismatches 0; text cols 1 differing none
+sc_util_jp_det_caps.csv: rows 48; numeric cols 5 max|diff| 0 (rel 0); NA mismatches 0; text cols 4 differing none
+sc_util_jp_det_reference.csv: rows 1; numeric cols 4 max|diff| 0 (rel 0); NA mismatches 0; text cols 2 differing none
+scenario_caps.csv: rows 414; numeric cols 5 max|diff| 0 (rel 0); NA mismatches 0; text cols 4 differing none
+scenario_reference.csv: rows 10; numeric cols 4 max|diff| 0 (rel 0); NA mismatches 0; text cols 2 differing none
+scenario_utility_sets.csv: rows 15; numeric cols 1 max|diff| 0 (rel 0); NA mismatches 0; text cols 2 differing none
+files with numeric differences: none (largest relative difference 0)
+public run: main cap HR 0.85 2,726.4; secondary 3,442.9; ICER 2,052.8 (JPY thousand)
+work tree: main cap HR 0.85 2,726.4; secondary 3,442.9; ICER 2,052.8 (JPY thousand)
+
+value | public run | work tree | v13 text | all equal
+cap main HR 0.85 (JPY 1,000) | 2,726 | 2,726 | 2,726 | True
+cap secondary HR 0.85 | 3,443 | 3,443 | 3,443 | True
+cap main HR 0.85, Japanese utilities (plan10) | 2,733 | 2,733 | 2,733 | True
+ICER pembrolizumab (JPY 1,000 per QALY) | 2,053 | 2,053 | 2,053 | True
+Table 2A main cap_eq_programme E02 | 0.989 | 0.989 | 0.989 | True
+Table 2A secondary cap_eq_programme E02 | 0.991 | 0.991 | 0.991 | True
+Table 2A main avoided_eq_programme E01 | 0.948 | 0.948 | 0.948 | True
+Table 2A secondary avoided_eq_programme E01 | 0.958 | 0.958 | 0.958 | True
+Table 2A main avoided_eq_programme E02 | 0.958 | 0.958 | 0.958 | True
+Table 2A secondary avoided_eq_programme E02 | 0.966 | 0.966 | 0.966 | True
+Table 2A main avoided_eq_programme E03 | 0.997 | 0.997 | 0.997 | True
+Table 2A secondary avoided_eq_programme E03 | 0.998 | 0.998 | 0.998 | True
+Table 2C sc_metcost50 main cap_eq_programme E02 | 0.988 | 0.988 | 0.988 | True
+Table 2C sc_metcost50 secondary cap_eq_programme E02 | 0.990 | 0.990 | 0.990 | True
+Table 2C sc_metcost50 main avoided_eq_programme E02 | 0.918 | 0.918 | 0.918 | True
+Table 2C sc_metcost50 secondary avoided_eq_programme E02 | 0.934 | 0.934 | 0.934 | True
+Table 2C sc_eribulin main cap_eq_programme E02 | 0.987 | 0.987 | 0.987 | True
+Table 2C sc_eribulin secondary cap_eq_programme E02 | 0.990 | 0.990 | 0.990 | True
+Table 2C sc_eribulin main avoided_eq_programme E02 | 0.914 | 0.914 | 0.914 | True
+Table 2C sc_eribulin secondary avoided_eq_programme E02 | 0.925 | 0.925 | 0.925 | True
+Results: utility scenarios and S-JP, cap = fee-schedule program (main), range (plan10) | 0.988 to 0.989 | 0.988 to 0.989 | 0.988 to 0.989 | True
+plan10 base row = sc_base_crossings (main, cap, E02) | 0.989 | 0.989 | 0.989 | True
+Table 3C recurrence HR matching pembrolizumab QALYs | 0.425 | 0.425 | 0.425 | True
+Table 3C pCR increase (percentage points) | 35.9 | 35.9 | 35.9 | True
+values checked 24; not equal 0

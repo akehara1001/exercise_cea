@@ -1,0 +1,16 @@
+[
+ {
+  "step": "1a",
+  "old": "The willingness-to-pay threshold for exercise was 5 million Japanese yen (JPY) per QALY [41,42];",
+  "new": "The willingness-to-pay threshold for exercise was JPY 5 million per QALY [41,42];",
+  "para_before": "The analysis took the Japanese public healthcare payer perspective and a lifetime horizon, to capture differences in survival. Costs and QALYs were discounted at 2% per year, as the Japanese guideline specifies [40]. The willingness-to-pay threshold for exercise was 5 million Japanese yen (JPY) per QALY [41,42]; the higher threshold of JPY 7.5 million per QALY applies only to designated products given special consideration, such as anticancer drugs [42], and pembrolizumab was assessed at both.",
+  "para_after": "The analysis took the Japanese public healthcare payer perspective and a lifetime horizon, to capture differences in survival. Costs and QALYs were discounted at 2% per year, as the Japanese guideline specifies [40]. The willingness-to-pay threshold for exercise was JPY 5 million per QALY [41,42]; the higher threshold of JPY 7.5 million per QALY applies only to designated products given special consideration, such as anticancer drugs [42], and pembrolizumab was assessed at both."
+ },
+ {
+  "step": "1b",
+  "old": "Word count: abstract 250; main text 3,244 (",
+  "new": "Word count: abstract 250; main text 3,242 (",
+  "para_before": "Word count: abstract 250; main text 3,244 (excluding abstract, title page, tables, figures and references); 3 tables; 3 figures; 1 Online Resource",
+  "para_after": "Word count: abstract 250; main text 3,242 (excluding abstract, title page, tables, figures and references); 3 tables; 3 figures; 1 Online Resource"
+ }
+]

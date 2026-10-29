@@ -1,0 +1,2 @@
+- [manuscript 1] P unit 6: 「3,244」→「3,242」
+- [manuscript 2] P unit 23: 「」→「JPY」; 「Japanese yen (JPY)」→「」

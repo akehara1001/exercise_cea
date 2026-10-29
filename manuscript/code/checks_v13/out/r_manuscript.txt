@@ -1,0 +1,8 @@
+manuscript: units v10 164, v11 164, unchanged 162, changed blocks 2
+  numbers: v10 1031, v11 1031; only in v10 {'3,244': 1}; only in v11 {'3,242': 1}
+  [1] replace: 1 -> 1 units
+     - Word count: abstract 250; main text 3,244 (excluding abstract, title page, tables, figures and references); 3 tables; 3 figures; 1 Online Resource
+     + Word count: abstract 250; main text 3,242 (excluding abstract, title page, tables, figures and references); 3 tables; 3 figures; 1 Online Resource
+  [2] replace: 1 -> 1 units
+     - The analysis took the Japanese public healthcare payer perspective and a lifetime horizon, to capture differences in survival. Costs and QALYs were discounted at 2% per year, as the Japanese guideline specifies [40]. The
+     + The analysis took the Japanese public healthcare payer perspective and a lifetime horizon, to capture differences in survival. Costs and QALYs were discounted at 2% per year, as the Japanese guideline specifies [40]. The

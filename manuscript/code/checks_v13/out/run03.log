@@ -1,0 +1,174 @@
+Warning messages:
+1: package 'IPDfromKM' was built under R version 4.5.3 
+2: package 'ggplot2' was built under R version 4.5.3 
+3: package 'readbitmap' was built under R version 4.5.3 
+K20_F2_EFS_pembro          n= 784 events=  57 (IPDfromKM 55)  max|KM-dig|=0.114 pp  max|riskdiff|=0
+K20_F2_EFS_placebo         n= 390 events=  46 (IPDfromKM 45)  max|KM-dig|=0.173 pp  max|riskdiff|=0
+K22_F1_EFS_pembro          n= 784 events= 123 (IPDfromKM 122)  max|KM-dig|=0.035 pp  max|riskdiff|=0
+K22_F1_EFS_placebo         n= 390 events=  93 (IPDfromKM 92)  max|KM-dig|=0.442 pp  max|riskdiff|=1
+K22_F3_OS_pembro           n= 784 events=  80 (IPDfromKM 80)  max|KM-dig|=0.024 pp  max|riskdiff|=1
+K22_F3_OS_placebo          n= 390 events=  55 (IPDfromKM 55)  max|KM-dig|=0.043 pp  max|riskdiff|=0
+K24_F1A_OS_pembro          n= 784 events= 115 (IPDfromKM 115)  max|KM-dig|=0.222 pp  max|riskdiff|=0
+K24_F1A_OS_placebo         n= 390 events=  85 (IPDfromKM 85)  max|KM-dig|=0.065 pp  max|riskdiff|=0
+K24_F2A_EFS_pembro         n= 784 events= 159 (IPDfromKM 159)  max|KM-dig|=0.183 pp  max|riskdiff|=0
+K24_F2A_EFS_placebo        n= 390 events= 114 (IPDfromKM 114)  max|KM-dig|=0.046 pp  max|riskdiff|=0
+Y22_F4A_EFS_TNBC_RCB0      n= 770 events=  67 (IPDfromKM 66)  max|KM-dig|=0.161 pp  max|riskdiff|=0
+Y22_F4A_EFS_TNBC_RCB1      n= 212 events=  40 (IPDfromKM 40)  max|KM-dig|=0.348 pp  max|riskdiff|=0
+Y22_F4A_EFS_TNBC_RCB2      n= 590 events= 185 (IPDfromKM 182)  max|KM-dig|=0.272 pp  max|riskdiff|=0
+Y22_F4A_EFS_TNBC_RCB3      n= 202 events= 142 (IPDfromKM 142)  max|KM-dig|=0.430 pp  max|riskdiff|=0
+K22_S3_DRFS_pembro         n= 784 events= 100 (IPDfromKM 99)  max|KM-dig|=0.078 pp  max|riskdiff|=1
+K22_S3_DRFS_placebo        n= 390 events=  79 (IPDfromKM 79)  max|KM-dig|=0.149 pp  max|riskdiff|=1
+K22_S4_EFS_pCR_pembro_pCR  n= 494 events=  27 (IPDfromKM 26)  max|KM-dig|=0.100 pp  max|riskdiff|=1
+K22_S4_EFS_pCR_placebo_pCR n= 217 events=  16 (IPDfromKM 16)  max|KM-dig|=0.220 pp  max|riskdiff|=1
+K22_S4_EFS_pCR_pembro_nonpCR n= 290 events=  96 (IPDfromKM 95)  max|KM-dig|=0.176 pp  max|riskdiff|=2
+K22_S4_EFS_pCR_placebo_nonpCR n= 173 events=  77 (IPDfromKM 77)  max|KM-dig|=1.201 pp  max|riskdiff|=1
+K24_S4_OS_pCR_pembro_pCR   n= 495 events=  27 (IPDfromKM 27)  max|KM-dig|=0.093 pp  max|riskdiff|=1
+K24_S4_OS_pCR_placebo_pCR  n= 217 events=  17 (IPDfromKM 16)  max|KM-dig|=0.106 pp  max|riskdiff|=2
+K24_S4_OS_pCR_pembro_nonpCR n= 289 events=  88 (IPDfromKM 88)  max|KM-dig|=0.607 pp  max|riskdiff|=1
+K24_S4_OS_pCR_placebo_nonpCR n= 173 events=  68 (IPDfromKM 67)  max|KM-dig|=0.273 pp  max|riskdiff|=2
+
+validation rows: 71  gated: 62  failing gates: 0  failing non-gate checks: 5 
+                         curve          check time reported reconstructed
+             K20_F2_EFS_pembro      milestone   18    91.30       91.4053
+             K20_F2_EFS_pembro         events   NA    58.00       57.0000
+            K20_F2_EFS_placebo      milestone   18    85.30       85.3111
+            K20_F2_EFS_placebo         events   NA    46.00       46.0000
+                    K20_F2_EFS             hr   NA     0.63        0.6163
+             K22_F1_EFS_pembro      milestone   36    84.50       84.4726
+             K22_F1_EFS_pembro         events   NA   123.00      123.0000
+            K22_F1_EFS_placebo      milestone   36    76.80       76.7529
+            K22_F1_EFS_placebo         events   NA    93.00       93.0000
+                    K22_F1_EFS             hr   NA     0.63        0.6288
+              K22_F3_OS_pembro      milestone   36    89.70       89.7290
+              K22_F3_OS_pembro         events   NA    80.00       80.0000
+             K22_F3_OS_placebo      milestone   36    86.90       86.8641
+             K22_F3_OS_placebo         events   NA    55.00       55.0000
+                     K22_F3_OS             hr   NA     0.72        0.7213
+             K24_F1A_OS_pembro      milestone   36    89.50       89.5096
+             K24_F1A_OS_pembro      milestone   48    87.80       87.8410
+             K24_F1A_OS_pembro      milestone   60    86.60       86.5517
+             K24_F1A_OS_pembro         events   NA   115.00      115.0000
+            K24_F1A_OS_placebo      milestone   36    86.90       86.9029
+            K24_F1A_OS_placebo      milestone   48    83.50       83.5319
+            K24_F1A_OS_placebo      milestone   60    81.70       81.7063
+            K24_F1A_OS_placebo         events   NA    85.00       85.0000
+                    K24_F1A_OS             hr   24     0.87        0.8690
+                    K24_F1A_OS             hr   24     0.51        0.5105
+                    K24_F1A_OS             hr   NA     0.66        0.6562
+            K24_F2A_EFS_pembro      milestone   60    81.20       81.2196
+            K24_F2A_EFS_pembro         events   NA   159.00      159.0000
+           K24_F2A_EFS_placebo      milestone   60    72.20       72.2182
+           K24_F2A_EFS_placebo         events   NA   114.00      114.0000
+                   K24_F2A_EFS             hr   NA     0.65        0.6551
+         Y22_F4A_EFS_TNBC_RCB0      milestone    3    93.00       92.8647
+         Y22_F4A_EFS_TNBC_RCB0      milestone    5    91.00       90.2264
+         Y22_F4A_EFS_TNBC_RCB0      milestone   10    86.00       85.7378
+         Y22_F4A_EFS_TNBC_RCB0         events   12    67.00       67.0000
+         Y22_F4A_EFS_TNBC_RCB1      milestone    3    84.00       84.3073
+         Y22_F4A_EFS_TNBC_RCB1      milestone    5    80.00       79.9021
+         Y22_F4A_EFS_TNBC_RCB1      milestone   10    75.00       75.3386
+         Y22_F4A_EFS_TNBC_RCB1         events   12    41.00       40.0000
+         Y22_F4A_EFS_TNBC_RCB2      milestone    3    70.00       70.1389
+         Y22_F4A_EFS_TNBC_RCB2      milestone    5    66.00       66.1951
+         Y22_F4A_EFS_TNBC_RCB2      milestone   10    61.00       61.3117
+         Y22_F4A_EFS_TNBC_RCB2         events   12   189.00      185.0000
+         Y22_F4A_EFS_TNBC_RCB3      milestone    3    32.00       31.4421
+         Y22_F4A_EFS_TNBC_RCB3      milestone    5    28.00       28.0990
+         Y22_F4A_EFS_TNBC_RCB3      milestone   10    25.00       25.4534
+         Y22_F4A_EFS_TNBC_RCB3         events   12   144.00      142.0000
+              Y22_F4A_EFS_TNBC             hr   NA     2.16        2.1576
+              Y22_F4A_EFS_TNBC             hr   NA     3.94        4.0855
+              Y22_F4A_EFS_TNBC             hr   NA    13.04       13.3204
+            K22_S3_DRFS_pembro      milestone   36    87.00       87.1576
+           K22_S3_DRFS_placebo      milestone   36    80.70       80.6318
+                   K22_S3_DRFS             hr   NA     0.61        0.6098
+     K22_S4_EFS_pCR_pembro_pCR      milestone   36    94.40       94.0889
+    K22_S4_EFS_pCR_placebo_pCR      milestone   36    92.50       92.5080
+  K22_S4_EFS_pCR_pembro_nonpCR      milestone   36    67.40       67.2985
+ K22_S4_EFS_pCR_placebo_nonpCR      milestone   36    56.80       56.8165
+     K22_S4_EFS_pCR_pembro_pCR         events   NA    27.00       27.0000
+  K22_S4_EFS_pCR_pembro_nonpCR         events   NA    96.00       96.0000
+    K22_S4_EFS_pCR_placebo_pCR         events   NA    16.00       16.0000
+ K22_S4_EFS_pCR_placebo_nonpCR         events   NA    77.00       77.0000
+                K22_S4_EFS_pCR             hr   NA     0.73        0.7224
+                K22_S4_EFS_pCR             hr   NA     0.70        0.7117
+                K22_S4_EFS_pCR             hr   NA     0.65        0.7224
+                K22_S4_EFS_pCR             hr   NA     0.72        0.7117
+      K24_S4_OS_pCR_pembro_pCR         events   NA    27.00       27.0000
+   K24_S4_OS_pCR_pembro_nonpCR         events   NA    88.00       88.0000
+     K24_S4_OS_pCR_placebo_pCR         events   NA    17.00       17.0000
+  K24_S4_OS_pCR_placebo_nonpCR         events   NA    68.00       68.0000
+             K24_S4_OS_pCR_pCR milestone_diff   60     0.70        0.7061
+          K24_S4_OS_pCR_nonpCR milestone_diff   60     6.10        6.2010
+ abs_diff  pass  gate
+   0.1053  TRUE  TRUE
+   1.0000  TRUE  TRUE
+   0.0111  TRUE  TRUE
+   0.0000  TRUE  TRUE
+   0.0137  TRUE  TRUE
+   0.0274  TRUE  TRUE
+   0.0000  TRUE  TRUE
+   0.0471  TRUE  TRUE
+   0.0000  TRUE  TRUE
+   0.0012  TRUE  TRUE
+   0.0290  TRUE  TRUE
+   0.0000  TRUE  TRUE
+   0.0359  TRUE  TRUE
+   0.0000  TRUE  TRUE
+   0.0013  TRUE  TRUE
+   0.0096  TRUE  TRUE
+   0.0410  TRUE  TRUE
+   0.0483  TRUE  TRUE
+   0.0000  TRUE  TRUE
+   0.0029  TRUE  TRUE
+   0.0319  TRUE  TRUE
+   0.0063  TRUE  TRUE
+   0.0000  TRUE  TRUE
+   0.0010  TRUE  TRUE
+   0.0005  TRUE  TRUE
+   0.0038  TRUE  TRUE
+   0.0196  TRUE  TRUE
+   0.0000  TRUE  TRUE
+   0.0182  TRUE  TRUE
+   0.0000  TRUE  TRUE
+   0.0051  TRUE  TRUE
+   0.1353  TRUE  TRUE
+   0.7736  TRUE  TRUE
+   0.2622  TRUE  TRUE
+   0.0000  TRUE FALSE
+   0.3073  TRUE  TRUE
+   0.0979  TRUE  TRUE
+   0.3386  TRUE  TRUE
+   1.0000 FALSE FALSE
+   0.1389  TRUE  TRUE
+   0.1951  TRUE  TRUE
+   0.3117  TRUE  TRUE
+   4.0000 FALSE FALSE
+   0.5579  TRUE  TRUE
+   0.0990  TRUE  TRUE
+   0.4534  TRUE  TRUE
+   2.0000  TRUE FALSE
+   0.0024  TRUE FALSE
+   0.1455 FALSE FALSE
+   0.2804 FALSE FALSE
+   0.1576  TRUE  TRUE
+   0.0682  TRUE  TRUE
+   0.0002  TRUE  TRUE
+   0.3111  TRUE  TRUE
+   0.0080  TRUE  TRUE
+   0.1015  TRUE  TRUE
+   0.0165  TRUE  TRUE
+   0.0000  TRUE  TRUE
+   0.0000  TRUE  TRUE
+   0.0000  TRUE  TRUE
+   0.0000  TRUE  TRUE
+   0.0076  TRUE  TRUE
+   0.0117  TRUE  TRUE
+   0.0724 FALSE FALSE
+   0.0083  TRUE FALSE
+   0.0000  TRUE  TRUE
+   0.0000  TRUE  TRUE
+   0.0000  TRUE  TRUE
+   0.0000  TRUE  TRUE
+   0.0061  TRUE  TRUE
+   0.1010  TRUE  TRUE
