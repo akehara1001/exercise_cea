@@ -1,0 +1,454 @@
+[
+ {
+  "step": "2d",
+  "before": "cBase case: EQ-5D values from KEYNOTE-522 with the German value set, because no report applying a Japanese value set to KEYNOTE-522 data with standard errors was found. Values from Japanese populations are used in a scenario (Table S10 (Online Resource 1)).",
+  "after": "cBase case: EQ-5D values from KEYNOTE-522 with the German value set, because no report applying a Japanese value set to KEYNOTE-522 data with standard errors was found. Values from Japanese populations are used in a scenario (Table S11 (Online Resource 1))."
+ },
+ {
+  "step": "2b title",
+  "before": "Table 2. Recurrence hazard ratios at which exercise breaks even, and the maximum affordable cost of an exercise program per patient under alternative effect durations and metastatic treatment costs, at a willingness-to-pay threshold of JPY 5 million per QALYa",
+  "after": "Table 3. Recurrence hazard ratios at which exercise breaks even, and the maximum affordable cost of an exercise program per patient under alternative effect durations and metastatic treatment costs, at a willingness-to-pay threshold of JPY 5 million per QALYa"
+ },
+ {
+  "step": "2b footnote d",
+  "before": "dAt a recurrence HR of 0.85. The base-case row repeats the base-case estimate (Table S4 (Online Resource 1)) for comparison within the panel. Effect durations and cost scenarios are defined in Table 1. The alternative effect durations show deterministic estimates only (no probabilistic analysis was run for them); panel C keeps the base-case effect duration.",
+  "after": "dAt a recurrence HR of 0.85. The base-case row repeats the base-case estimate (Table S5 (Online Resource 1)) for comparison within the panel. Effect durations and cost scenarios are defined in Table 1. The alternative effect durations show deterministic estimates only (no probabilistic analysis was run for them); panel C keeps the base-case effect duration."
+ },
+ {
+  "step": "2c delete",
+  "before": ""
+ },
+ {
+  "step": "2c delete",
+  "before": "Table 3. Incremental costs, QALYs and cost-effectiveness of pembrolizumab added to neoadjuvant chemotherapy, and the exercise effect that would match its QALY gaina"
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "Quantity",
+   "Base case",
+   "Higher mortality after early recurrence with pembrolizumab",
+   "Japanese post-operative treatmentb",
+   "Metastatic treatment costs halvedc",
+   "Eribulin-based later-line treatmentc"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "A. Incremental costs by category"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "Pembrolizumab",
+   "6,531",
+   "6,531",
+   "—",
+   "6,531",
+   "6,531"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "Drug administration",
+   "132",
+   "132",
+   "—",
+   "132",
+   "132"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "Immune-related adverse events",
+   "32",
+   "32",
+   "—",
+   "32",
+   "32"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "Febrile neutropenia",
+   "5",
+   "5",
+   "—",
+   "5",
+   "5"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "Follow-up",
+   "42",
+   "42",
+   "—",
+   "42",
+   "42"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "Locoregional recurrence",
+   "−24",
+   "−24",
+   "—",
+   "−24",
+   "−24"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "Distant recurrence, first-line treatment",
+   "−299",
+   "−338",
+   "—",
+   "−150",
+   "−299"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "Distant recurrence, second-line and later treatment",
+   "−1,911",
+   "−2,197",
+   "—",
+   "−955",
+   "−332"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "End-of-life care",
+   "−101",
+   "−101",
+   "—",
+   "−101",
+   "−101"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "Other (chemotherapy drugs, supportive care, surgery, radiotherapy)",
+   "19",
+   "19",
+   "—",
+   "19",
+   "19"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "Total",
+   "4,426 [−330, 8,901]",
+   "4,102 [−744, 8,558]",
+   "4,990",
+   "5,531 [3,093, 7,822]",
+   "6,005 [3,759, 8,229]"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "B. Health outcomes and cost-effectiveness"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "Incremental QALYs",
+   "2.156 [0.245, 4.228]",
+   "2.137 [0.230, 4.207]",
+   "1.639",
+   "2.156 [0.245, 4.228]",
+   "2.156 [0.245, 4.228]"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "ICER, JPY 1,000 per QALY",
+   "2,053",
+   "1,920",
+   "3,044",
+   "2,565",
+   "2,785"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "Probability cost-effective at JPY 5 million per QALY, %",
+   "83.1",
+   "84.4",
+   "—",
+   "82.1",
+   "80.3"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "Probability cost-effective at JPY 7.5 million per QALY, %",
+   "90.8",
+   "91.1",
+   "—",
+   "91.3",
+   "90.5"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "C. Exercise effect needed to match the QALY gain of pembrolizumabd"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "Recurrence HR with exercise added to chemotherapy alone",
+   "0.425",
+   "—",
+   "—",
+   "—",
+   "—"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "row": [
+   "Increase in pCR with exercise added to chemotherapy alone, percentage points",
+   "35.9",
+   "—",
+   "—",
+   "—",
+   "—"
+  ]
+ },
+ {
+  "step": "2c delete",
+  "before": "aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Chemotherapy plus pembrolizumab compared with chemotherapy alone. Cells show deterministic estimates; where probabilistic analysis was run, the 95% UI [2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples] follows in brackets. Probability cost-effective: share of samples with a positive net monetary benefit. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon; categories may not add to the total because of rounding. Scenarios are defined in Table 1. A dash means not computed. HR, hazard ratio; ICER, incremental cost-effectiveness ratio; JPY, Japanese yen; pCR, pathological complete response; QALY, quality-adjusted life year; UI, uncertainty interval."
+ },
+ {
+  "step": "2c delete",
+  "before": "bProbabilistic analysis and the cost decomposition were not run for this scenario."
+ },
+ {
+  "step": "2c delete",
+  "before": "cCategory values equal the base-case values with the distant-recurrence treatment costs multiplied by the scenario factor in Table 1 (survival is unchanged); they add to the modeled total."
+ },
+ {
+  "step": "2c delete",
+  "before": "dEffect at which exercise added to chemotherapy alone yields the same incremental QALYs as pembrolizumab in the base case. Both values lie outside the ranges studied: recurrence HR 0.70 to 1.00 (Table S4 (Online Resource 1)) and pCR increase 0 to 10 percentage points (Table S5 (Online Resource 1))."
+ },
+ {
+  "step": "2a insert",
+  "title": "Table 2. Costs, QALYs and cost-effectiveness of the four strategies at three recurrence hazard ratios with exercise, and the exercise effect needed to match pembrolizumab in QALYs or in net monetary benefita",
+  "rows": [
+   [
+    "Strategy",
+    "Total cost",
+    "Total QALYs",
+    "Comparator",
+    "Incremental cost",
+    "Incremental QALYs",
+    "ICER (JPY 1,000 per QALY)",
+    "Net monetary benefit relative to chemotherapy alone at JPY 5 million per QALY"
+   ],
+   [
+    "A. Four strategies at recurrence HRsb of 0.95, 0.85 and 0.72, with the fee-schedule-based programc"
+   ],
+   [
+    "HR 0.95"
+   ],
+   [
+    "Chemotherapy plus exercise",
+    "12,112",
+    "17.073",
+    "—",
+    "—",
+    "—",
+    "—",
+    "931"
+   ],
+   [
+    "Chemotherapy alone",
+    "12,202",
+    "16.905",
+    "Chemotherapy plus exercise",
+    "91",
+    "−0.168",
+    "Dominated",
+    "0"
+   ],
+   [
+    "Chemotherapy plus pembrolizumab plus exercise",
+    "16,592",
+    "19.194",
+    "Chemotherapy plus exercise",
+    "4,480",
+    "2.121",
+    "2,112",
+    "7,056"
+   ],
+   [
+    "Chemotherapy plus pembrolizumab",
+    "16,629",
+    "19.061",
+    "Chemotherapy plus pembrolizumab plus exercise",
+    "37",
+    "−0.133",
+    "Dominated",
+    "6,355"
+   ],
+   [
+    "HR 0.85"
+   ],
+   [
+    "Chemotherapy plus exercise",
+    "11,525",
+    "17.420",
+    "—",
+    "—",
+    "—",
+    "—",
+    "3,250"
+   ],
+   [
+    "Chemotherapy alone",
+    "12,202",
+    "16.905",
+    "Chemotherapy plus exercise",
+    "677",
+    "−0.515",
+    "Dominated",
+    "0"
+   ],
+   [
+    "Chemotherapy plus pembrolizumab plus exercise",
+    "16,120",
+    "19.466",
+    "Chemotherapy plus exercise",
+    "4,594",
+    "2.047",
+    "2,245",
+    "8,889"
+   ],
+   [
+    "Chemotherapy plus pembrolizumab",
+    "16,629",
+    "19.061",
+    "Chemotherapy plus pembrolizumab plus exercise",
+    "509",
+    "−0.405",
+    "Dominated",
+    "6,355"
+   ],
+   [
+    "HR 0.72"
+   ],
+   [
+    "Chemotherapy plus exercise",
+    "10,723",
+    "17.892",
+    "—",
+    "—",
+    "—",
+    "—",
+    "6,413"
+   ],
+   [
+    "Chemotherapy alone",
+    "12,202",
+    "16.905",
+    "Chemotherapy plus exercise",
+    "1,479",
+    "−0.987",
+    "Dominated",
+    "0"
+   ],
+   [
+    "Chemotherapy plus pembrolizumab plus exercise",
+    "15,479",
+    "19.834",
+    "Chemotherapy plus exercise",
+    "4,756",
+    "1.942",
+    "2,449",
+    "11,368"
+   ],
+   [
+    "Chemotherapy plus pembrolizumab",
+    "16,629",
+    "19.061",
+    "Chemotherapy plus pembrolizumab plus exercise",
+    "1,150",
+    "−0.773",
+    "Dominated",
+    "6,355"
+   ],
+   [
+    "B. Pembrolizumab added to chemotherapy alone, and the exercise effect needed to match itd"
+   ],
+   [
+    "Incremental cost",
+    "4,426 [−330, 8,901]"
+   ],
+   [
+    "Incremental QALYs",
+    "2.156 [0.245, 4.228]"
+   ],
+   [
+    "ICER, JPY 1,000 per QALY",
+    "2,053"
+   ],
+   [
+    "Probability cost-effective at JPY 5 million per QALY, %",
+    "83.1"
+   ],
+   [
+    "Probability cost-effective at JPY 7.5 million per QALY, %",
+    "90.8"
+   ],
+   [
+    "Exercise effect needed to match pembrolizumab",
+    "Recurrence HR",
+    "Increase in pCR, percentage points"
+   ],
+   [
+    "In QALYs",
+    "0.425",
+    "35.9"
+   ],
+   [
+    "In net monetary benefit at JPY 5 million per QALY",
+    "0.722",
+    "19.0"
+   ],
+   [
+    "In net monetary benefit at JPY 7.5 million per QALY",
+    "0.638",
+    "24.1"
+   ]
+  ],
+  "footnotes": [
+   "aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon; the strategies with exercise include the fee-schedule-based program (JPY 192,400). Strategies are listed in order of total cost. Increments are against the strategy in the comparator column: the next cheaper strategy on the frontier, or, for a dominated strategy, the strategy that dominates it. A strategy is dominated when another costs less and gives more QALYs. Net monetary benefit is the QALYs gained valued at JPY 5 million per QALY minus the incremental cost, relative to chemotherapy alone. In panel B, cells with a bracket show the deterministic estimate and the 95% UI [2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples]; probability cost-effective is the share of samples with a positive net monetary benefit. HR, hazard ratio; ICER, incremental cost-effectiveness ratio; JPY, Japanese yen; pCR, pathological complete response; QALY, quality-adjusted life year; UI, uncertainty interval.",
+   "bHazard ratio for locoregional and distant recurrence after surgery in the strategies with exercise, relative to the same treatment without exercise, held for 5 years after randomization and then halving every year (Table 1); 0.72 is the CHALLENGE estimate.",
+   "cWith the CHALLENGE-based supervised program (JPY 239,508), chemotherapy plus pembrolizumab was extendedly dominated at an HR of 0.95, because its ICER against chemotherapy plus exercise exceeded that of chemotherapy plus pembrolizumab plus exercise, and dominated at 0.85 and 0.72; with the remote low-cost program (JPY 11,260) the results were as shown.",
+   "dEffect at which exercise added to chemotherapy alone gives the same incremental QALYs as pembrolizumab, or the same net monetary benefit with the fee-schedule-based program, in the base case. All values except the HR of 0.722 lie outside the ranges studied: recurrence HR 0.70 to 1.00 (Table S5 (Online Resource 1)) and pCR increase 0 to 10 percentage points (Table S6 (Online Resource 1))."
+  ]
+ }
+]

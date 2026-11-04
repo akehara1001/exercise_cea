@@ -1,0 +1,31 @@
+Warning messages:
+1: package 'flexsurv' was built under R version 4.5.3 
+2: package 'flexsurvcure' was built under R version 4.5.3 
+3: package 'ggplot2' was built under R version 4.5.3 
+                       test result
+                 toy1_order   pass
+                toy1_status   pass
+          toy1_dominated_by   pass
+            toy1_comparator   pass
+       toy1_increments_icer   pass
+      toy1_vs_econ_frontier   pass
+   toy2_status_dominated_by   pass
+ toy2_comparator_increments   pass
+      toy2_vs_econ_frontier   pass
+  totals_vs_incremental_E02   pass
+  totals_vs_incremental_E01   pass
+  totals_vs_incremental_E03   pass
+                                           detail
+                                          A,B,C,D
+ frontier,extendedly dominated,dominated,frontier
+                                          ,A/D,B,
+                                           ,A,A,A
+                                    NA,200,NA,150
+ frontier,extendedly dominated,dominated,frontier
+      frontier ,frontier ,frontier ,dominated Y/Z
+                                    NA,1,0.2,-0.3
+             frontier,frontier,frontier,dominated
+                         12 rows (3 hr0 x 4 arms)
+                         12 rows (3 hr0 x 4 arms)
+                         12 rows (3 hr0 x 4 arms)
+test_four_arm: 12/12 passed

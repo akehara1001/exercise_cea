@@ -1,0 +1,252 @@
+[
+ {
+  "step": "1d delete",
+  "para_before": "Pembrolizumab",
+  "para_after": null
+ },
+ {
+  "step": "1d delete",
+  "para_before": "Pembrolizumab added JPY 4,426 thousand per patient in costs (95% UI [−330, 8,901]) and 2.156 QALYs (95% UI [0.245, 4.228]), for an ICER of JPY 2,053 thousand per QALY (Table 3). Its drug cost was JPY 6,531 thousand, offset partly by JPY −1,911 thousand in second-line and later treatment of distant recurrence. The probability that it was cost-effective was 83.1% at JPY 5 million and 90.8% at JPY 7.5 million per QALY. The ICER was JPY 3,044 thousand with Japanese post-operative treatment, JPY 2,565 thousand with metastatic treatment costs halved, JPY 2,785 thousand with eribulin-based treatment and JPY 1,920 thousand with higher mortality after early recurrence with pembrolizumab (Table 3).",
+  "para_after": null
+ },
+ {
+  "step": "1d delete",
+  "para_before": "To gain as many QALYs as pembrolizumab, exercise added to chemotherapy alone required a recurrence HR of 0.425 or an increase in pCR of 35.9 percentage points, both outside the ranges studied (Table 3).",
+  "para_after": null
+ },
+ {
+  "step": "1f",
+  "changes": [
+   [
+    "Tables S1–S10",
+    "Tables S1–S11"
+   ]
+  ],
+  "para_before": "Trial inputs came from KEYNOTE-522 reports with data cutoffs from March 2021 to October 2025 [4,5,43,44], extracted from 21 to 26 October 2026. The analysis plan was written before any economic computation, and each later addition before the computation it added; the plan was not registered. The study follows the Consolidated Health Economic Evaluation Reporting Standards 2022 (CHEERS 2022) [45]. Supplementary Methods S1, Tables S1–S10 (including the CHEERS checklist in Table S1) and Figs. S1–S2 are in Online Resource 1.",
+  "para_after": "Trial inputs came from KEYNOTE-522 reports with data cutoffs from March 2021 to October 2025 [4,5,43,44], extracted from 21 to 26 October 2026. The analysis plan was written before any economic computation, and each later addition before the computation it added; the plan was not registered. The study follows the Consolidated Health Economic Evaluation Reporting Standards 2022 (CHEERS 2022) [45]. Supplementary Methods S1, Tables S1–S11 (including the CHEERS checklist in Table S1) and Figs. S1–S2 are in Online Resource 1."
+ },
+ {
+  "step": "1f",
+  "changes": [
+   [
+    "Table 2",
+    "Table 3"
+   ],
+   [
+    "Table S4",
+    "Table S5"
+   ],
+   [
+    "Table 2",
+    "Table 3"
+   ],
+   [
+    "Table S5",
+    "Table S6"
+   ]
+  ],
+  "para_before": "The maximum affordable cost rose as the recurrence HR with exercise fell (Fig. 2). At an HR of 0.85, exercise added to chemotherapy plus pembrolizumab had a maximum affordable cost of JPY 2,726 thousand per patient (95% UI [2,223, 3,040]; Table 2), and at 0.70 it was JPY 5,596 thousand (95% UI [4,545, 6,256]; Table S4). The maximum affordable cost equaled the cost of the fee-schedule-based program at an HR of 0.989, a 1.1% reduction in the recurrence hazard, and medical costs avoided equaled it at an HR of 0.958, a 4.2% reduction (Table 2). Through pCR, an increase of 1 percentage point gave JPY 389 thousand (95% UI [238, 570]) and 10 points gave JPY 3,898 thousand (95% UI [2,388, 5,713]; Table S5).",
+  "para_after": "The maximum affordable cost rose as the recurrence HR with exercise fell (Fig. 2). At an HR of 0.85, exercise added to chemotherapy plus pembrolizumab had a maximum affordable cost of JPY 2,726 thousand per patient (95% UI [2,223, 3,040]; Table 3), and at 0.70 it was JPY 5,596 thousand (95% UI [4,545, 6,256]; Table S5). The maximum affordable cost equaled the cost of the fee-schedule-based program at an HR of 0.989, a 1.1% reduction in the recurrence hazard, and medical costs avoided equaled it at an HR of 0.958, a 4.2% reduction (Table 3). Through pCR, an increase of 1 percentage point gave JPY 389 thousand (95% UI [238, 570]) and 10 points gave JPY 3,898 thousand (95% UI [2,388, 5,713]; Table S6)."
+ },
+ {
+  "step": "1f",
+  "changes": [
+   [
+    "Table S6",
+    "Table S7"
+   ]
+  ],
+  "para_before": "At an HR of 0.85, incremental medical costs other than the program were JPY −702 thousand per patient, of which second-line and later treatment of distant recurrence contributed JPY −437 thousand and first-line treatment JPY −254 thousand (Table S6).",
+  "para_after": "At an HR of 0.85, incremental medical costs other than the program were JPY −702 thousand per patient, of which second-line and later treatment of distant recurrence contributed JPY −437 thousand and first-line treatment JPY −254 thousand (Table S7)."
+ },
+ {
+  "step": "1f",
+  "changes": [
+   [
+    "Table 2",
+    "Table 3"
+   ]
+  ],
+  "para_before": "Exercise added to chemotherapy alone had a maximum affordable cost of JPY 3,443 thousand at an HR of 0.85 (95% UI [2,881, 3,785]). It equaled the fee-schedule-based program cost at an HR of 0.991, and medical costs avoided equaled it at 0.966 (Table 2).",
+  "para_after": "Exercise added to chemotherapy alone had a maximum affordable cost of JPY 3,443 thousand at an HR of 0.85 (95% UI [2,881, 3,785]). It equaled the fee-schedule-based program cost at an HR of 0.991, and medical costs avoided equaled it at 0.966 (Table 3)."
+ },
+ {
+  "step": "1f",
+  "changes": [
+   [
+    "Table 2",
+    "Table 3"
+   ],
+   [
+    "Table S7",
+    "Table S8"
+   ]
+  ],
+  "para_before": "The maximum affordable cost at an HR of 0.85 was JPY 1,772 thousand when the effect lasted until 1 year after surgery and JPY 3,404 thousand when it did not wane, against JPY 2,726 thousand in the base case (Table 2). With exercise continued after surgery, it was JPY 2,239 thousand (Table S7).",
+  "para_after": "The maximum affordable cost at an HR of 0.85 was JPY 1,772 thousand when the effect lasted until 1 year after surgery and JPY 3,404 thousand when it did not wane, against JPY 2,726 thousand in the base case (Table 3). With exercise continued after surgery, it was JPY 2,239 thousand (Table S8)."
+ },
+ {
+  "step": "1f",
+  "changes": [
+   [
+    "Table 2",
+    "Table 3"
+   ]
+  ],
+  "para_before": "With metastatic treatment costs halved, medical costs avoided equaled the fee-schedule-based program cost at an HR of 0.918 (8.2% reduction), and with eribulin-based later-line treatment at 0.914 (8.6%). The HR at which the maximum affordable cost equaled the program cost barely moved, to 0.988 and 0.987 (Table 2).",
+  "para_after": "With metastatic treatment costs halved, medical costs avoided equaled the fee-schedule-based program cost at an HR of 0.918 (8.2% reduction), and with eribulin-based later-line treatment at 0.914 (8.6%). The HR at which the maximum affordable cost equaled the program cost barely moved, to 0.988 and 0.987 (Table 3)."
+ },
+ {
+  "step": "1f",
+  "changes": [
+   [
+    "Table S8",
+    "Table S9"
+   ]
+  ],
+  "para_before": "At an HR of 0.95, the one-year net benefit for the 3,451 registered patients was JPY 2.68 billion (95% UI [2.22, 2.94]); at 0.85, it was JPY 9.57 billion (95% UI [8.15, 10.36]; Table S8).",
+  "para_after": "At an HR of 0.95, the one-year net benefit for the 3,451 registered patients was JPY 2.68 billion (95% UI [2.22, 2.94]); at 0.85, it was JPY 9.57 billion (95% UI [8.15, 10.36]; Table S9)."
+ },
+ {
+  "step": "1f",
+  "changes": [
+   [
+    "Table S9",
+    "Table S10"
+   ],
+   [
+    "Table S10",
+    "Table S11"
+   ]
+  ],
+  "para_before": "The monthly cost of second-line and later treatment moved the maximum affordable cost at an HR of 0.85 most, to JPY 2,617 and 2,836 thousand (Fig. 3; Table S9). With higher mortality after early recurrence with pembrolizumab it was JPY 2,691 thousand (95% UI [2,201, 2,994]), and with utilities from Japanese populations JPY 2,733 thousand. Across the utility scenarios and Japanese post-operative treatment, the program became cost-effective at HRs of 0.988 to 0.989 (Table S10). The pembrolizumab drug cost moved the ICER most, to JPY 1,296 thousand per QALY at its lower bound (Fig. S2).",
+  "para_after": "The monthly cost of second-line and later treatment moved the maximum affordable cost at an HR of 0.85 most, to JPY 2,617 and 2,836 thousand (Fig. 3; Table S10). With higher mortality after early recurrence with pembrolizumab it was JPY 2,691 thousand (95% UI [2,201, 2,994]), and with utilities from Japanese populations JPY 2,733 thousand. Across the utility scenarios and Japanese post-operative treatment, the program became cost-effective at HRs of 0.988 to 0.989 (Table S11). The pembrolizumab drug cost moved the ICER most, to JPY 1,296 thousand per QALY at its lower bound (Fig. S2)."
+ },
+ {
+  "step": "1f",
+  "changes": [
+   [
+    "Table S8",
+    "Table S9"
+   ],
+   [
+    "Table S7",
+    "Table S8"
+   ]
+  ],
+  "para_before": "Exercise during adjuvant chemotherapy improves fitness [10–12], and supervised exercise has been delivered during neoadjuvant chemotherapy [16,17], so clinicians can offer it while its effect on recurrence is tested. Trials should record recurrence and follow patients long enough to see whether the effect lasts after the program ends; a higher pCR alone cannot settle the question, because how a change in pCR with exercise translates into fewer recurrences is unknown. Funders can weigh the cost of such trials against the one-year net benefit if an effect is confirmed (Table S8). For payers, the price of a supervised program is far below what a confirmed effect would justify. In Japan, the fee schedule pays for rehabilitation of patients with cancer only during hospital admission, so structured exercise during outpatient neoadjuvant chemotherapy currently has no route to reimbursement [48]. Support that keeps patients exercising after surgery, such as remote programs, would add value if it extends the effect (Table S7). For pembrolizumab, this analysis gives Japan a reference value before any formal evaluation of its perioperative indication.",
+  "para_after": "Exercise during adjuvant chemotherapy improves fitness [10–12], and supervised exercise has been delivered during neoadjuvant chemotherapy [16,17], so clinicians can offer it while its effect on recurrence is tested. Trials should record recurrence and follow patients long enough to see whether the effect lasts after the program ends; a higher pCR alone cannot settle the question, because how a change in pCR with exercise translates into fewer recurrences is unknown. Funders can weigh the cost of such trials against the one-year net benefit if an effect is confirmed (Table S9). For payers, the price of a supervised program is far below what a confirmed effect would justify. In Japan, the fee schedule pays for rehabilitation of patients with cancer only during hospital admission, so structured exercise during outpatient neoadjuvant chemotherapy currently has no route to reimbursement [48]. Support that keeps patients exercising after surgery, such as remote programs, would add value if it extends the effect (Table S8). For pembrolizumab, this analysis gives Japan a reference value before any formal evaluation of its perioperative indication."
+ },
+ {
+  "step": "1f",
+  "changes": [
+   [
+    "Table S4",
+    "Table S5"
+   ]
+  ],
+  "para_before": "Fig. 2 Maximum affordable cost of an exercise program per patient by the recurrence hazard ratio with exercise. (a) Recurrence hazard ratio from 0.70 to 1.00. (b) The same results enlarged for hazard ratios from 0.95 to 1.00. Lines show deterministic estimates at a willingness-to-pay threshold of JPY 5 million per QALY for exercise added to chemotherapy plus pembrolizumab (solid line, circles) and to chemotherapy alone (dashed line, triangles); the dark and light grey bands, edged by thin solid and dashed lines, show their 95% UIs. Horizontal lines mark the costs of the three program designs in Table 1; exercise is cost-effective wherever a curve lies above the line of the program. The dotted vertical line in (a) marks the hazard ratio of 0.72 for disease-free survival with a 3-year exercise program in colon cancer (CHALLENGE trial) [9]. The effect is held for 5 years after randomization and then halves every year. The plotted values are listed in Table S4 (Online Resource 1). Modeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. 95% UI: 2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples. HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year; UI, uncertainty interval",
+  "para_after": "Fig. 2 Maximum affordable cost of an exercise program per patient by the recurrence hazard ratio with exercise. (a) Recurrence hazard ratio from 0.70 to 1.00. (b) The same results enlarged for hazard ratios from 0.95 to 1.00. Lines show deterministic estimates at a willingness-to-pay threshold of JPY 5 million per QALY for exercise added to chemotherapy plus pembrolizumab (solid line, circles) and to chemotherapy alone (dashed line, triangles); the dark and light grey bands, edged by thin solid and dashed lines, show their 95% UIs. Horizontal lines mark the costs of the three program designs in Table 1; exercise is cost-effective wherever a curve lies above the line of the program. The dotted vertical line in (a) marks the hazard ratio of 0.72 for disease-free survival with a 3-year exercise program in colon cancer (CHALLENGE trial) [9]. The effect is held for 5 years after randomization and then halves every year. The plotted values are listed in Table S5 (Online Resource 1). Modeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. 95% UI: 2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples. HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year; UI, uncertainty interval"
+ },
+ {
+  "step": "1f",
+  "changes": [
+   [
+    "Table S9",
+    "Table S10"
+   ]
+  ],
+  "para_before": "Fig. 3 One-way sensitivity analysis of the maximum affordable program cost for exercise added to chemotherapy plus pembrolizumab at a recurrence hazard ratio of 0.85. Bars show the maximum affordable cost per patient at a willingness-to-pay threshold of JPY 5 million per QALY when one input is set to its lower bound (dark bars) or upper bound (light bars) and all other inputs keep their base-case values; the vertical line is the base-case estimate. All 21 inputs that changed the result are shown, ordered by the width of their range. Brackets mark ranges set by rule rather than taken from a source: [±25%], ±25% around the base value where no range was available; [mirrored], the missing bound mirrored where only one bound was given; [price], drug price varied downward only, to 75% of the list price. Codes in parentheses refer to Table S2, and the plotted values are listed in Table S9 (Online Resource 1). Modeled cohort as in Fig. 2. AE, adverse event; JPY, Japanese yen; QALY, quality-adjusted life year",
+  "para_after": "Fig. 3 One-way sensitivity analysis of the maximum affordable program cost for exercise added to chemotherapy plus pembrolizumab at a recurrence hazard ratio of 0.85. Bars show the maximum affordable cost per patient at a willingness-to-pay threshold of JPY 5 million per QALY when one input is set to its lower bound (dark bars) or upper bound (light bars) and all other inputs keep their base-case values; the vertical line is the base-case estimate. All 21 inputs that changed the result are shown, ordered by the width of their range. Brackets mark ranges set by rule rather than taken from a source: [±25%], ±25% around the base value where no range was available; [mirrored], the missing bound mirrored where only one bound was given; [price], drug price varied downward only, to 75% of the list price. Codes in parentheses refer to Table S2, and the plotted values are listed in Table S10 (Online Resource 1). Modeled cohort as in Fig. 2. AE, adverse event; JPY, Japanese yen; QALY, quality-adjusted life year"
+ },
+ {
+  "step": "1a",
+  "para_before": "This study estimated, from the perspective of the Japanese public healthcare payer, the maximum cost per patient at which adding a structured exercise program to neoadjuvant chemotherapy with pembrolizumab for stage II or III TNBC would be cost-effective, and how this cost depends on the size and duration of the effect of exercise on recurrence. Secondary aims were to estimate the same cost when exercise is added to chemotherapy alone, to evaluate the cost-effectiveness of pembrolizumab in Japan, and to estimate the effect of exercise that would match the gain in quality-adjusted life years (QALYs) from pembrolizumab. Expressing the value of an unproven program as the cost a health system can afford for each possible effect gives future trials a benchmark for their results.",
+  "para_after": "This study aimed to place a structured exercise program during neoadjuvant chemotherapy for stage II or III TNBC on the same cost-effectiveness scale as pembrolizumab, from the perspective of the Japanese public healthcare payer. It compared the four strategies formed by chemotherapy with or without pembrolizumab and with or without exercise; it asked how large an effect on recurrence exercise would need to match pembrolizumab, in quality-adjusted life years (QALYs) and in net benefit; and, as its main aim, it estimated the maximum cost per patient at which exercise added to chemotherapy with pembrolizumab would be cost-effective, and how this cost depends on the size and duration of the effect of exercise on recurrence. Expressing the value of an unproven program as the cost a health system can afford for each possible effect gives future trials a benchmark for their results."
+ },
+ {
+  "step": "1b",
+  "para_before": "Secondary outcomes were the recurrence HRs at which the maximum affordable cost, or the medical costs avoided, equaled the cost of a program; the incremental cost-effectiveness ratio (ICER) of pembrolizumab against chemotherapy alone; the exercise effect, as a recurrence HR or an increase in pCR, that would gain as many QALYs as pembrolizumab; and the one-year net benefit, the maximum affordable cost minus the program cost summed over eligible patients treated in Japan in one year.",
+  "para_after": "Secondary outcomes were the total costs and QALYs of the four arms and the incremental cost-effectiveness ratios (ICERs) between them at recurrence HRs of 0.95, 0.85 and 0.72; the ICER of pembrolizumab against chemotherapy alone; the exercise effect, as a recurrence HR or an increase in pCR, at which exercise added to chemotherapy alone would gain as many QALYs as pembrolizumab, or the same net monetary benefit, the QALYs gained valued at the threshold minus the incremental cost; the recurrence HRs at which the maximum affordable cost, or the medical costs avoided, equaled the cost of a program; and the one-year net benefit, the maximum affordable cost minus the program cost summed over eligible patients treated in Japan in one year."
+ },
+ {
+  "step": "1c",
+  "para_before": "(2) To estimate the maximum affordable cost, the model was run at recurrence HRs from 0.70 to 1.00 in steps of 0.025 and at increases in pCR from 0 to 10 percentage points in steps of 1. Break-even HRs and the exercise effect matching the QALY gain of pembrolizumab were found numerically, over HRs from 0.30 to 1.00 and increases in pCR of up to 37 percentage points.",
+  "para_after": "(2) To compare the four arms, the model was run at recurrence HRs of 0.95, 0.85 and 0.72 with the fee-schedule-based program. Arms were ordered by total cost; an arm that cost more and gave fewer QALYs than another was dominated, an arm whose ICER against the next cheaper arm exceeded the ICER of the next more effective arm was extendedly dominated, and ICERs were calculated between the remaining arms."
+ },
+ {
+  "step": "1c insert",
+  "para_before": null,
+  "para_after": "(3) To estimate the maximum affordable cost, the model was run at recurrence HRs from 0.70 to 1.00 in steps of 0.025 and at increases in pCR from 0 to 10 percentage points in steps of 1. Break-even HRs and the exercise effects matching the QALY gain or the net monetary benefit of pembrolizumab were found numerically, over HRs from 0.30 to 1.00 and increases in pCR of up to 37 percentage points."
+ },
+ {
+  "step": "1c renumber",
+  "para_before": "(6) To express the result for Japan, the one-year net benefit used the fee-schedule-based program at recurrence HRs of 0.95, 0.90 and 0.85, applying the main comparison to patients who received neoadjuvant pembrolizumab in the 2024 national registry and the secondary comparison to the others [7]; these values are conditional on the HR.",
+  "para_after": "(7) To express the result for Japan, the one-year net benefit used the fee-schedule-based program at recurrence HRs of 0.95, 0.90 and 0.85, applying the main comparison to patients who received neoadjuvant pembrolizumab in the 2024 national registry and the secondary comparison to the others [7]; these values are conditional on the HR."
+ },
+ {
+  "step": "1c renumber",
+  "para_before": "(5) To test other assumptions, scenario analyses changed one assumption at a time (Table 1): utility values from the United States, United Kingdom and Australian analyses [28,29,65]; higher excess mortality after early recurrence with pembrolizumab, from an Italian cohort [66]; longer survival after progression during neoadjuvant therapy [67]; halved costs of metastatic treatment; eribulin-based later-line treatment [68]; and post-operative capecitabine or olaparib for patients without pCR [69–71].",
+  "para_after": "(6) To test other assumptions, scenario analyses changed one assumption at a time (Table 1): utility values from the United States, United Kingdom and Australian analyses [28,29,65]; higher excess mortality after early recurrence with pembrolizumab, from an Italian cohort [66]; longer survival after progression during neoadjuvant therapy [67]; halved costs of metastatic treatment; eribulin-based later-line treatment [68]; and post-operative capecitabine or olaparib for patients without pCR [69–71]."
+ },
+ {
+  "step": "1c renumber",
+  "para_before": "(4) To find the inputs that move the results most, one-way sensitivity analyses set each input to its lower and upper bounds, for the maximum affordable cost in the main comparison at an HR of 0.85 and for the ICER of pembrolizumab. Where a source gave no range, the range was ±25% of the base value or the missing bound mirrored the given one; drug prices varied downward only, to 75% of the list price.",
+  "para_after": "(5) To find the inputs that move the results most, one-way sensitivity analyses set each input to its lower and upper bounds, for the maximum affordable cost in the main comparison at an HR of 0.85 and for the ICER of pembrolizumab. Where a source gave no range, the range was ±25% of the base value or the missing bound mirrored the given one; drug prices varied downward only, to 75% of the list price."
+ },
+ {
+  "step": "1c renumber",
+  "para_before": "(3) To reflect uncertainty, each of 1,000 probabilistic samples paired one bootstrap replicate of the survival model with one draw of the other inputs. Costs, durations and events per patient followed gamma distributions, proportions and utilities beta distributions, and HRs lognormal distributions; drug prices and rates based on zero events were fixed. The 2.5th and 97.5th percentiles of the samples gave the 95% uncertainty interval (UI). The probability that a program was cost-effective was the share of samples in which the maximum affordable cost exceeded the program cost. For pembrolizumab, it was the share of samples with a positive net monetary benefit at each threshold.",
+  "para_after": "(4) To reflect uncertainty, each of 1,000 probabilistic samples paired one bootstrap replicate of the survival model with one draw of the other inputs. Costs, durations and events per patient followed gamma distributions, proportions and utilities beta distributions, and HRs lognormal distributions; drug prices and rates based on zero events were fixed. The 2.5th and 97.5th percentiles of the samples gave the 95% uncertainty interval (UI). The probability that a program was cost-effective was the share of samples in which the maximum affordable cost exceeded the program cost. For pembrolizumab, it was the share of samples with a positive net monetary benefit at each threshold."
+ },
+ {
+  "step": "1d insert",
+  "para_before": null,
+  "para_after": "Four strategies compared"
+ },
+ {
+  "step": "1d insert",
+  "para_before": null,
+  "para_after": "Table 2 shows the four strategies at recurrence HRs with exercise of 0.95, 0.85 and 0.72, with the fee-schedule-based program. At each HR, chemotherapy plus exercise cost less and gave more QALYs than chemotherapy alone, and chemotherapy plus pembrolizumab plus exercise cost less and gave more QALYs than chemotherapy plus pembrolizumab, so both strategies without exercise were dominated. Adding pembrolizumab to chemotherapy plus exercise cost JPY 2,112 thousand per QALY at an HR of 0.95, JPY 2,245 thousand at 0.85 and JPY 2,449 thousand at 0.72. Relative to chemotherapy alone, the net monetary benefit of exercise at JPY 5 million per QALY was JPY 931 thousand at an HR of 0.95, JPY 3,250 thousand at 0.85 and JPY 6,413 thousand at 0.72, against JPY 6,355 thousand for pembrolizumab. Chemotherapy with both had the highest net monetary benefit at every HR."
+ },
+ {
+  "step": "1d insert",
+  "para_before": null,
+  "para_after": "Exercise compared with pembrolizumab"
+ },
+ {
+  "step": "1d insert",
+  "para_before": null,
+  "para_after": "Table 2 also shows pembrolizumab against chemotherapy alone: it cost JPY 4,426 thousand more per patient (95% UI [−330, 8,901]) and added 2.156 QALYs (95% UI [0.245, 4.228]), an ICER of JPY 2,053 thousand per QALY, and it was cost-effective in 83.1% of probabilistic samples at JPY 5 million and 90.8% at JPY 7.5 million per QALY. Its drug cost of JPY 6,531 thousand was offset partly by JPY −1,911 thousand in second-line and later treatment of distant recurrence (Table S4). To gain as many QALYs as pembrolizumab, exercise added to chemotherapy alone required a recurrence HR of 0.425 or an increase in pCR of 35.9 percentage points (Table 2). To give the same net monetary benefit with the fee-schedule-based program, it required an HR of 0.722 or an increase in pCR of 19.0 percentage points at JPY 5 million per QALY, and an HR of 0.638 or an increase of 24.1 percentage points at JPY 7.5 million. Except the HR of 0.722, these values lay outside the ranges studied."
+ },
+ {
+  "step": "1d append",
+  "para_before": "The monthly cost of second-line and later treatment moved the maximum affordable cost at an HR of 0.85 most, to JPY 2,617 and 2,836 thousand (Fig. 3; Table S10). With higher mortality after early recurrence with pembrolizumab it was JPY 2,691 thousand (95% UI [2,201, 2,994]), and with utilities from Japanese populations JPY 2,733 thousand. Across the utility scenarios and Japanese post-operative treatment, the program became cost-effective at HRs of 0.988 to 0.989 (Table S11). The pembrolizumab drug cost moved the ICER most, to JPY 1,296 thousand per QALY at its lower bound (Fig. S2).",
+  "para_after": "The monthly cost of second-line and later treatment moved the maximum affordable cost at an HR of 0.85 most, to JPY 2,617 and 2,836 thousand (Fig. 3; Table S10). With higher mortality after early recurrence with pembrolizumab it was JPY 2,691 thousand (95% UI [2,201, 2,994]), and with utilities from Japanese populations JPY 2,733 thousand. Across the utility scenarios and Japanese post-operative treatment, the program became cost-effective at HRs of 0.988 to 0.989 (Table S11). The pembrolizumab drug cost moved the ICER most, to JPY 1,296 thousand per QALY at its lower bound (Fig. S2). The ICER of pembrolizumab was JPY 3,044 thousand per QALY with Japanese post-operative treatment, JPY 2,565 thousand with metastatic treatment costs halved, JPY 2,785 thousand with eribulin-based treatment and JPY 1,920 thousand with higher mortality after early recurrence with pembrolizumab (Table S4)."
+ },
+ {
+  "step": "1e",
+  "para_before": "Whether exercise during neoadjuvant chemotherapy for stage II or III TNBC reduces recurrence is unknown. If it does, even a small effect would make a structured program cost-effective in Japan: with chemotherapy plus pembrolizumab, the fee-schedule-based program became cost-effective once it lowered the recurrence hazard by 1.1%. How much a program could cost depended mostly on how large its effect was and how long it lasted, and pembrolizumab itself was cost-effective at both Japanese thresholds.",
+  "para_after": "At each of the three effect sizes examined, both strategies without exercise were dominated (Table 2), so the choice in Japan is not between exercise and pembrolizumab. Pembrolizumab remained cost-effective on top of exercise, and chemotherapy with both gave the most health for the money at every effect size."
+ },
+ {
+  "step": "1e insert",
+  "para_before": null,
+  "para_after": "Exercise cannot replace pembrolizumab in health gained: it would need to lower the recurrence hazard by more than half, far beyond the effects reported in exercise trials [9,14]. In value for money the gap is narrower, because the program costs a small fraction of the pembrolizumab regimen. At the Japanese threshold, exercise added to chemotherapy alone would give the same net benefit as pembrolizumab with an effect the size of that in CHALLENGE, a 28% reduction in the recurrence hazard, and at the higher threshold reserved for designated products pembrolizumab keeps its lead unless exercise cuts the hazard by more than a third. The effect of pembrolizumab is established and that of exercise is not, so a payer choosing one would still choose pembrolizumab; the comparison shows how much health a cheap program could buy if its effect were confirmed."
+ },
+ {
+  "step": "1e insert",
+  "para_before": null,
+  "para_after": "For patients who receive pembrolizumab, now most patients in Japan [7], the question is what a program added to their treatment may cost. Whether exercise during neoadjuvant chemotherapy for stage II or III TNBC reduces recurrence is unknown; if it does, even a small effect would make a structured program cost-effective: the fee-schedule-based program became cost-effective once it lowered the recurrence hazard by 1.1%. How much a program could cost depended mostly on how large its effect was and how long it lasted."
+ },
+ {
+  "step": "1e",
+  "para_before": "Exercise cannot replace pembrolizumab: it would need to lower the recurrence hazard by more than half, far beyond the effects reported in exercise trials [9,14]. The maximum affordable cost was higher without pembrolizumab, because more patients relapse and the same relative effect prevents more recurrences, but most patients in Japan now receive pembrolizumab [7], so the main comparison matters most for practice. Pembrolizumab was cost-effective in Japan, as in other countries [28–31], and depended most on its price and on post-operative capecitabine or olaparib as used in Japanese practice.",
+  "para_after": "The maximum affordable cost was higher without pembrolizumab, because more patients relapse and the same relative effect prevents more recurrences. Pembrolizumab itself was cost-effective in Japan, as in other countries [28–31], and its ICER depended most on its price and on post-operative capecitabine or olaparib as used in Japanese practice."
+ },
+ {
+  "step": "1g",
+  "para_before": "Results Added to chemotherapy plus pembrolizumab, exercise had a maximum affordable cost of JPY 2,726 thousand per patient at an HR of 0.85 (95% uncertainty interval [2,223, 3,040]). Added to chemotherapy alone, it was JPY 3,443 thousand. A program priced from the medical fee schedule (JPY 192,400) became cost-effective at an HR of 0.989. Medical costs avoided alone paid for it at HRs of 0.958 to 0.914, depending on metastatic treatment costs. The duration of the effect changed the maximum affordable cost more than any cost input. Pembrolizumab cost JPY 2,053 thousand per QALY gained, and exercise would need an HR of 0.425 to match its QALY gain.",
+  "para_after": "Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies without exercise were dominated. Pembrolizumab cost JPY 2,053 thousand per QALY; exercise would need an HR of 0.425 to match its QALY gain and 0.722 to match its net benefit. Added to chemotherapy plus pembrolizumab, exercise had a maximum affordable cost of JPY 2,726 thousand per patient at an HR of 0.85 (95% uncertainty interval [2,223, 3,040]). A program priced from the medical fee schedule (JPY 192,400) became cost-effective at an HR of 0.989, and medical costs avoided alone paid for it at HRs of 0.958 to 0.914, depending on metastatic treatment costs. The duration of the effect changed the maximum affordable cost more than any cost input."
+ }
+]

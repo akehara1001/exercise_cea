@@ -1,0 +1,189 @@
+ESM: units v13 2404, v14 2507, unchanged 2376, changed blocks 23
+  [1] replace: 1 -> 1 units
+     - [3c] Methods, Study design, paragraph 1; Methods, Statistical analysis, paragraph 1; Fig. 1; Supplementary Methods S1; Statements and Declarations, Data availability
+     + [3c] Methods, Study design, paragraph 1; Methods, Statistical analysis, paragraph 1; Fig. 1; Supplementary Methods S1; Statements and Declarations, Data availability
+  [2] replace: 1 -> 1 units
+     - [3c] Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Methods, Statistical analysis, stages (1) and (2); S
+     + [3c] Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Methods, Statistical analysis, stages (1) to (3); Su
+  [3] replace: 1 -> 1 units
+     - [3c] Methods, Statistical analysis, stages (3) to (5); Supplementary Methods S1 (p. 8)
+     + [3c] Methods, Statistical analysis, stages (4) to (6); Supplementary Methods S1 (pp. 8 to 9)
+  [4] replace: 1 -> 1 units
+     - [3c] Results, Maximum affordable cost of exercise, paragraphs 1 to 3; Results, Duration and metastatic treatment costs, paragraphs 1 to 3; Results, Pembrolizumab, pa
+     + [3c] Results, Four strategies compared, paragraph 1; Results, Exercise compared with pembrolizumab, paragraph 1; Results, Maximum affordable cost of exercise, paragr
+  [5] replace: 1 -> 1 units
+     - [3c] Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 2; Supplementary Tab
+     + [3c] Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 3; Supplementary Tab
+  [6] replace: 1 -> 1 units
+     - [3c] Discussion, paragraphs 1 to 6; Discussion, Implications; Discussion, Limitations (pp. 11 to 13)
+     + [3c] Discussion, paragraphs 1 to 8; Discussion, Implications; Discussion, Limitations (pp. 12 to 15)
+  [7] replace: 1 -> 1 units
+     - [3c] Statements and Declarations, Funding (p. 26)
+     + [3c] Statements and Declarations, Funding (p. 27)
+  [8] replace: 1 -> 1 units
+     - [3c] Statements and Declarations, Competing interests (p. 26)
+     + [3c] Statements and Declarations, Competing interests (p. 27)
+  [9] replace: 1 -> 104 units
+     - [3b] Supplementary Table S4. Maximum affordable cost of an exercise program per patient by the recurrence hazard ratio with exercisea
+     + [3a insert] Supplementary Table S4. Incremental costs by category, QALYs and cost-effectiveness of pembrolizumab added to neoadjuvant chemotherapy, in the base case and und
+     + [3a insert] Quantity
+     + [3a insert] Base case
+     + [3a insert] Higher mortality after early recurrence with pembrolizumab
+     + [3a insert] Japanese post-operative treatmentb
+     + [3a insert] Metastatic treatment costs halvedc
+     + [3a insert] Eribulin-based later-line treatmentc
+     + [3a insert] A. Incremental costs by category
+     + [3a insert] Pembrolizumab
+     + [3a insert] 6,531
+     + [3a insert] 6,531
+     + [3a insert] —
+     + [3a insert] 6,531
+     + [3a insert] 6,531
+     + [3a insert] Drug administration
+     + [3a insert] 132
+     + [3a insert] 132
+     + [3a insert] —
+     + [3a insert] 132
+     + [3a insert] 132
+     + [3a insert] Immune-related adverse events
+     + [3a insert] 32
+     + [3a insert] 32
+     + [3a insert] —
+     + [3a insert] 32
+     + [3a insert] 32
+     + [3a insert] Febrile neutropenia
+     + [3a insert] 5
+     + [3a insert] 5
+     + [3a insert] —
+     + [3a insert] 5
+     + [3a insert] 5
+     + [3a insert] Follow-up
+     + [3a insert] 42
+     + [3a insert] 42
+     + [3a insert] —
+     + [3a insert] 42
+     + [3a insert] 42
+     + [3a insert] Locoregional recurrence
+     + [3a insert] −24
+     + [3a insert] −24
+     + [3a insert] —
+     + [3a insert] −24
+     + [3a insert] −24
+     + [3a insert] Distant recurrence, first-line treatment
+     + [3a insert] −299
+     + [3a insert] −338
+     + [3a insert] —
+     + [3a insert] −150
+     + [3a insert] −299
+     + [3a insert] Distant recurrence, second-line and later treatment
+     + [3a insert] −1,911
+     + [3a insert] −2,197
+     + [3a insert] —
+     + [3a insert] −955
+     + [3a insert] −332
+     + [3a insert] End-of-life care
+     + [3a insert] −101
+     + [3a insert] −101
+     + [3a insert] —
+     + [3a insert] −101
+     + [3a insert] −101
+     + [3a insert] Other (chemotherapy drugs, supportive care, surgery, radiotherapy)
+     + [3a insert] 19
+     + [3a insert] 19
+     + [3a insert] —
+     + [3a insert] 19
+     + [3a insert] 19
+     + [3a insert] Total
+     + [3a insert] 4,426 [−330, 8,901]
+     + [3a insert] 4,102 [−744, 8,558]
+     + [3a insert] 4,990
+     + [3a insert] 5,531 [3,093, 7,822]
+     + [3a insert] 6,005 [3,759, 8,229]
+     + [3a insert] B. Health outcomes and cost-effectiveness
+     + [3a insert] Incremental QALYs
+     + [3a insert] 2.156 [0.245, 4.228]
+     + [3a insert] 2.137 [0.230, 4.207]
+     + [3a insert] 1.639
+     + [3a insert] 2.156 [0.245, 4.228]
+     + [3a insert] 2.156 [0.245, 4.228]
+     + [3a insert] ICER, JPY 1,000 per QALY
+     + [3a insert] 2,053
+     + [3a insert] 1,920
+     + [3a insert] 3,044
+     + [3a insert] 2,565
+     + [3a insert] 2,785
+     + [3a insert] Probability cost-effective at JPY 5 million per QALY, %
+     + [3a insert] 83.1
+     + [3a insert] 84.4
+     + [3a insert] —
+     + [3a insert] 82.1
+     + [3a insert] 80.3
+     + [3a insert] Probability cost-effective at JPY 7.5 million per QALY, %
+     + [3a insert] 90.8
+     + [3a insert] 91.1
+     + [3a insert] —
+     + [3a insert] 91.3
+     + [3a insert] 90.5
+     + [3a insert] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Chemotherapy plus p
+     + [3a insert] bProbabilistic analysis and the cost decomposition were not run for this scenario.
+     + [3a insert] cCategory values equal the base-case values with the distant-recurrence treatment costs multiplied by the scenario factor in Table 1 (survival is unchanged); th
+     + [empty paragraph of an inserted block (section break or cell run)] 
+     + [3b] Supplementary Table S5. Maximum affordable cost of an exercise program per patient by the recurrence hazard ratio with exercisea
+  [10] replace: 1 -> 1 units
+     - [3b] Supplementary Table S5. Maximum affordable cost of an exercise program per patient by the increase in pathological complete responsea
+     + [3b] Supplementary Table S6. Maximum affordable cost of an exercise program per patient by the increase in pathological complete responsea
+  [11] replace: 1 -> 1 units
+     - [3b] Supplementary Table S6. Incremental costs by category for exercise added to chemotherapy plus pembrolizumab at a recurrence hazard ratio of 0.85a
+     + [3b] Supplementary Table S7. Incremental costs by category for exercise added to chemotherapy plus pembrolizumab at a recurrence hazard ratio of 0.85a
+  [12] replace: 1 -> 1 units
+     - [3b] bEquals minus the medical costs avoided (Table 2).
+     + [3b] bEquals minus the medical costs avoided (Table 3).
+  [13] replace: 1 -> 1 units
+     - [3b] Supplementary Table S7. Maximum affordable cost of an exercise program per patient under alternative effect durationsa
+     + [3b] Supplementary Table S8. Maximum affordable cost of an exercise program per patient under alternative effect durationsa
+  [14] replace: 1 -> 1 units
+     - [3b] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estim
+     + [3b] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estim
+  [15] replace: 1 -> 1 units
+     - [3b] Supplementary Table S8. Net benefit of an exercise program for one year of eligible patients in Japan, if exercise reduced the recurrence hazarda
+     + [3b] Supplementary Table S9. Net benefit of an exercise program for one year of eligible patients in Japan, if exercise reduced the recurrence hazarda
+  [16] replace: 1 -> 1 units
+     - [3b] Supplementary Table S9. One-way sensitivity analysis: maximum affordable cost for exercise added to chemotherapy plus pembrolizumab and ICER of chemotherapy plu
+     + [3b] Supplementary Table S10. One-way sensitivity analysis: maximum affordable cost for exercise added to chemotherapy plus pembrolizumab and ICER of chemotherapy pl
+  [17] replace: 1 -> 1 units
+     - [3b] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Data of Fig. 3 and 
+     + [3b] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Data of Fig. 3 and 
+  [18] replace: 1 -> 1 units
+     - [3b] Bars show the ICER when one input is set to its lower bound (dark bars) or upper bound (light bars) and all other inputs keep their base-case values; the vertic
+     + [3b] Bars show the ICER when one input is set to its lower bound (dark bars) or upper bound (light bars) and all other inputs keep their base-case values; the vertic
+  [19] replace: 1 -> 1 units
+     - [3b] Supplementary Table S10. Maximum affordable cost, break-even recurrence hazard ratios and the ICER of pembrolizumab under other scenariosa
+     + [3b] Supplementary Table S11. Maximum affordable cost, break-even recurrence hazard ratios and the ICER of pembrolizumab under other scenariosa
+  [20] replace: 6 -> 6 units
+     - [3b] Same as base case (Table 2)
+     - [3b] Same as base case (Table 2)
+     - [3b] Same as base case (Table 2)
+     - [3b] Same as base case (Table 2)
+     - [3b] Same as base case (Table 2)
+     - [3b] Same as base case (Table 2)
+     + [3b] Same as base case (Table 3)
+     + [3b] Same as base case (Table 3)
+     + [3b] Same as base case (Table 3)
+     + [3b] Same as base case (Table 3)
+     + [3b] Same as base case (Table 3)
+     + [3b] Same as base case (Table 3)
+  [21] replace: 1 -> 1 units
+     - [3b] Table 3
+     + [3b] Supplementary Table S4
+  [22] replace: 1 -> 1 units
+     - [3b] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estim
+     + [3b] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estim
+  [23] replace: 1 -> 1 units
+     - [3b] cMedian survival of 26 months after progression during neoadjuvant therapy instead of the early-recurrence distribution (Supplementary Table S2); this scenario 
+     + [3b] cMedian survival of 26 months after progression during neoadjuvant therapy instead of the early-recurrence distribution (Supplementary Table S2); this scenario 
+  numbers in the unchanged units: 2566 (identical by construction)
+  number tokens: v13 2686, v14 2781
+  only in v13: {'26': 3, '2': 12, '7': 1, '9': 1, '13': 1}
+  only in v14: {'1': 4, '2026': 1, '12': 2, '4': 3, '5': 6, '49': 1, '95': 1, '3': 7, '1,000': 3, '2.5': 1, '97.5': 1, '8': 1, '11': 2, '15': 1, '28': 1, '19': 4, '27': 2, '32': 4, '91.1': 1, '6,531': 4, '132': 4, '42': 4, '−24': 4, '−299': 2, '−338': 1, '−150': 1, '−1,911': 1, '−2,197': 1, '−955': 1, '−332': 1, '−101': 4, '4,426': 1, '−330': 1, '8,901': 1, '4,102': 1, '−744': 1, '8,558': 1, '4,990': 1, '5,531': 1, '3,093': 1, '7,822': 1, '6,005': 1, '3,759': 1, '8,229': 1, '2.156': 3, '0.245': 3, '4.228': 3, '2.137': 1, '0.230': 1, '4.207': 1, '1.639': 1, '2,053': 1, '1,920': 1, '3,044': 1, '2,565': 1, '2,785': 1, '83.1': 1, '84.4': 1, '82.1': 1, '80.3': 1, '7.5': 1, '90.8': 1, '91.3': 1, '90.5': 1}
+  units by explanation: {'3c': 16, '3b': 40, '3a insert': 102, 'empty paragraph of an inserted block (section break or cell run)': 1}
+  UNEXPLAINED: 0

@@ -1,0 +1,49 @@
+paragraphs scanned: 50 (abstract 5 + main 45 )
+banned words: {}
+throat-clearing: {}
+bare time words: {'\\bcurrently\\b': 1, '\\bnow\\b': 1, '\\bcurrent\\b': 1}
+connectives: {}
+causal words: {}
+em dash —: 0 | middle dot ・: 0 | 'Note' paragraphs: 0
+sentences: 140 | >30 words: 47 | longest: 121
+   121: Secondary outcomes were the total costs and QALYs of the four arms and the incremental cos
+   80: It compared the four strategies formed by chemotherapy with or without pembrolizumab and w
+   67: (6) To test other assumptions, scenario analyses changed one assumption at a time (Table 1
+   57: Table 2 also shows pembrolizumab against chemotherapy alone: it cost JPY 4,426 thousand mo
+   56: At the Japanese threshold, exercise added to chemotherapy alone would give the same net be
+   53: (7) To express the result for Japan, the one-year net benefit used the fee-schedule-based 
+   49: In the 2024 national registry, 47% of patients treated with neoadjuvant chemotherapy, incl
+   48: To give the same net monetary benefit with the fee-schedule-based program, it required an 
+   48: Arms were ordered by total cost; an arm that cost more and gave fewer QALYs than another w
+   47: Because most recurrences after neoadjuvant chemotherapy with pembrolizumab occur early [6]
+   44: Cost-effectiveness analyses of the KEYNOTE-522 regimen come from the United States, Hong K
+   42: The ICER of pembrolizumab was JPY 3,044 thousand per QALY with Japanese post-operative tre
+   42: Relative to chemotherapy alone, the net monetary benefit of exercise at JPY 5 million per 
+   42: In Japan, one month of treatment after distant recurrence costs more than the whole progra
+   42: (5) To find the inputs that move the results most, one-way sensitivity analyses set each i
+   41: Whether exercise during neoadjuvant chemotherapy for stage II or III TNBC reduces recurren
+   41: Trials should record recurrence and follow patients long enough to see whether the effect 
+   41: The maximum affordable cost at an HR of 0.85 was JPY 1,772 thousand when the effect lasted
+   41: Searches of PubMed and Europe PMC covering 2000 to 2026 identified no economic evaluation 
+   40: The willingness-to-pay threshold for exercise was JPY 5 million per QALY [41,42]; the high
+   40: In the KEYNOTE-522 trial of stage II or III TNBC, adding pembrolizumab to neoadjuvant chem
+   39: The maximum affordable cost equaled the cost of the fee-schedule-based program at an HR of
+   39: Survival after distant recurrence came from a French cohort diagnosed in 2008 to 2020, lar
+   39: During neoadjuvant chemotherapy, diet and exercise were associated with a higher pCR in on
+   39: At an HR of 0.85, incremental medical costs other than the program were JPY −702 thousand 
+   38: In breast cancer, randomized trials of exercise during adjuvant chemotherapy improved phys
+   38: At each HR, chemotherapy plus exercise cost less and gave more QALYs than chemotherapy alo
+   37: The effect of pembrolizumab is established and that of exercise is not, so a payer choosin
+   37: Event-free survival after surgery came from parametric models fitted to patient-level data
+   37: (3) To estimate the maximum affordable cost, the model was run at recurrence HRs from 0.70
+   36: In an alternative pathway, exercise raised pCR by 0 to 10 percentage points without changi
+   36: Excess mortality after distant recurrence came from the French Epidemiological Strategy an
+   36: Break-even HRs and the exercise effects matching the QALY gain or the net monetary benefit
+   35: Utilities were EuroQol 5-dimension 5-level (EQ-5D-5L) values from KEYNOTE-522 with the Ger
+   35: The supervised program used the CHALLENGE program cost [46], converted from 2024 Canadian 
+   35: (1) To check that the model reproduced the trial, overall survival, which was not used to 
+   34: This study aimed to place a structured exercise program during neoadjuvant chemotherapy fo
+   33: Where a source gave no range, the range was ±25% of the base value or the missing bound mi
+   33: At an HR of 0.95, the one-year net benefit for the 3,451 registered patients was JPY 2.68 
+   33: Alternative durations held it until 1 year after surgery or for life; in a further alterna
+paragraphs >150 words: [(170, 'Table 2 also shows pembrolizumab against chemotherapy alone:'), (175, 'Exercise during adjuvant chemotherapy improves fitness [10–1'), (198, 'The effect of exercise during neoadjuvant chemotherapy on re')]

@@ -1,0 +1,246 @@
+1b           |         0.95 | fourarm_report.md | Secondary outcomes were the total costs and QALYs of the four arms and
+1b           |         0.85 | fourarm_report.md | Secondary outcomes were the total costs and QALYs of the four arms and
+1b           |         0.72 | fourarm_report.md | Secondary outcomes were the total costs and QALYs of the four arms and
+1c           |            2 | tables_v13 | (2) To compare the four arms, the model was run at recurrence HRs of 0
+1c           |         0.95 | fourarm_report.md | (2) To compare the four arms, the model was run at recurrence HRs of 0
+1c           |         0.85 | fourarm_report.md | (2) To compare the four arms, the model was run at recurrence HRs of 0
+1c           |         0.72 | fourarm_report.md | (2) To compare the four arms, the model was run at recurrence HRs of 0
+1c insert    |            3 | tables_v13 | (3) To estimate the maximum affordable cost, the model was run at recu
+1c insert    |         0.70 | fourarm_report.md | (3) To estimate the maximum affordable cost, the model was run at recu
+1c insert    |         1.00 | fourarm_report.md | (3) To estimate the maximum affordable cost, the model was run at recu
+1c insert    |        0.025 | manuscript_v13 | (3) To estimate the maximum affordable cost, the model was run at recu
+1c insert    |            0 | fourarm_report.md | (3) To estimate the maximum affordable cost, the model was run at recu
+1c insert    |           10 | fourarm_report.md | (3) To estimate the maximum affordable cost, the model was run at recu
+1c insert    |            1 | fourarm_report.md | (3) To estimate the maximum affordable cost, the model was run at recu
+1c insert    |         0.30 | fourarm_report.md | (3) To estimate the maximum affordable cost, the model was run at recu
+1c insert    |         1.00 | fourarm_report.md | (3) To estimate the maximum affordable cost, the model was run at recu
+1c insert    |           37 | fourarm_report.md | (3) To estimate the maximum affordable cost, the model was run at recu
+1d insert    |            2 | tables_v13 | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |         0.95 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |         0.85 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |         0.72 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |        2,112 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |         0.95 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |        2,245 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |         0.85 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |        2,449 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |         0.72 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |            5 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |          931 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |         0.95 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |        3,250 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |         0.85 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |        6,413 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |         0.72 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |        6,355 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs with exercise of 0
+1d insert    |            2 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |        4,426 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |           95 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |         −330 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |        8,901 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |        2.156 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |           95 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |        0.245 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |        4.228 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |        2,053 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |         83.1 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |            5 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |         90.8 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |          7.5 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |        6,531 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |       −1,911 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |        0.425 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |         35.9 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |            2 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |        0.722 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |         19.0 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |            5 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |        0.638 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |         24.1 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |          7.5 | tables_v13 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d insert    |        0.722 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1d append    |        3,044 | tables_v13 |  The ICER of pembrolizumab was JPY 3,044 thousand per QALY with Japane
+1d append    |        2,565 | tables_v13 |  The ICER of pembrolizumab was JPY 3,044 thousand per QALY with Japane
+1d append    |        2,785 | tables_v13 |  The ICER of pembrolizumab was JPY 3,044 thousand per QALY with Japane
+1d append    |        1,920 | tables_v13 |  The ICER of pembrolizumab was JPY 3,044 thousand per QALY with Japane
+1e           |            2 | tables_v13 | At each of the three effect sizes examined, both strategies without ex
+1e insert    |           28 | ESM_1_v13 | Exercise cannot replace pembrolizumab in health gained: it would need 
+1e insert    |          1.1 | tables_v13 | For patients who receive pembrolizumab, now most patients in Japan [7]
+1g           |         0.95 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g           |         0.85 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g           |         0.72 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g           |        2,053 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g           |        0.425 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g           |        0.722 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g           |        2,726 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g           |         0.85 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g           |           95 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g           |        2,223 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g           |        3,040 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g           |      192,400 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g           |        0.989 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g           |        0.958 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g           |        0.914 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 1     |          522 | tables_v13 | Methods A state-transition model based on KEYNOTE-522 simulated chemot
+1g cut 1     |            2 | tables_v13 | Methods A state-transition model based on KEYNOTE-522 simulated chemot
+1g cut 1     |         0.70 | fourarm_report.md | Methods A state-transition model based on KEYNOTE-522 simulated chemot
+1g cut 1     |         1.00 | fourarm_report.md | Methods A state-transition model based on KEYNOTE-522 simulated chemot
+1g cut 1     |            5 | fourarm_report.md | Methods A state-transition model based on KEYNOTE-522 simulated chemot
+1g cut 2     |         0.95 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 2     |         0.85 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 2     |         0.72 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 2     |        2,053 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 2     |        0.425 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 2     |        0.722 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 2     |        2,726 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 2     |         0.85 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 2     |           95 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 2     |        2,223 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 2     |        3,040 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 2     |      192,400 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 2     |        0.989 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 2     |        0.958 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 2     |        0.914 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 3     |         0.95 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 3     |         0.85 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 3     |         0.72 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 3     |        2,053 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 3     |        0.425 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 3     |        0.722 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 3     |        2,726 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 3     |         0.85 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 3     |           95 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 3     |        2,223 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 3     |        3,040 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 3     |      192,400 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 3     |        0.989 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 3     |        0.958 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 3     |        0.914 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 4     |         0.95 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 4     |         0.85 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 4     |         0.72 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 4     |        2,053 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 4     |        0.425 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 4     |        0.722 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 4     |        2,726 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 4     |         0.85 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 4     |           95 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 4     |        2,223 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 4     |        3,040 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 4     |      192,400 | fourarm_report.md | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 4     |        0.989 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 4     |        0.958 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+1g cut 4     |        0.914 | tables_v13 | Results At recurrence HRs of 0.95, 0.85 and 0.72, both strategies with
+2a title     |            2 | tables_v13 | Table 2. Costs, QALYs and cost-effectiveness of the four strategies at
+2a row       |        1,000 | tables_v13 | Strategy | Total cost | Total QALYs | Comparator | Incremental cost | 
+2a row       |            5 | fourarm_report.md | Strategy | Total cost | Total QALYs | Comparator | Incremental cost | 
+2a row       |         0.95 | fourarm_report.md | A. Four strategies at recurrence HRsb of 0.95, 0.85 and 0.72, with the
+2a row       |         0.85 | fourarm_report.md | A. Four strategies at recurrence HRsb of 0.95, 0.85 and 0.72, with the
+2a row       |         0.72 | fourarm_report.md | A. Four strategies at recurrence HRsb of 0.95, 0.85 and 0.72, with the
+2a row       |         0.95 | fourarm_report.md | HR 0.95
+2a row       |       12,112 | fourarm_report.md | Chemotherapy plus exercise | 12,112 | 17.073 | — | — | — | — | 931
+2a row       |       17.073 | fourarm_report.md | Chemotherapy plus exercise | 12,112 | 17.073 | — | — | — | — | 931
+2a row       |          931 | fourarm_report.md | Chemotherapy plus exercise | 12,112 | 17.073 | — | — | — | — | 931
+2a row       |       12,202 | fourarm_report.md | Chemotherapy alone | 12,202 | 16.905 | Chemotherapy plus exercise | 91
+2a row       |       16.905 | fourarm_report.md | Chemotherapy alone | 12,202 | 16.905 | Chemotherapy plus exercise | 91
+2a row       |           91 | fourarm_report.md | Chemotherapy alone | 12,202 | 16.905 | Chemotherapy plus exercise | 91
+2a row       |       −0.168 | fourarm_report.md | Chemotherapy alone | 12,202 | 16.905 | Chemotherapy plus exercise | 91
+2a row       |            0 | fourarm_report.md | Chemotherapy alone | 12,202 | 16.905 | Chemotherapy plus exercise | 91
+2a row       |       16,592 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 16,592 | 19.194 | Chem
+2a row       |       19.194 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 16,592 | 19.194 | Chem
+2a row       |        4,480 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 16,592 | 19.194 | Chem
+2a row       |        2.121 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 16,592 | 19.194 | Chem
+2a row       |        2,112 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 16,592 | 19.194 | Chem
+2a row       |        7,056 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 16,592 | 19.194 | Chem
+2a row       |       16,629 | fourarm_report.md | Chemotherapy plus pembrolizumab | 16,629 | 19.061 | Chemotherapy plus 
+2a row       |       19.061 | fourarm_report.md | Chemotherapy plus pembrolizumab | 16,629 | 19.061 | Chemotherapy plus 
+2a row       |           37 | fourarm_report.md | Chemotherapy plus pembrolizumab | 16,629 | 19.061 | Chemotherapy plus 
+2a row       |       −0.133 | fourarm_report.md | Chemotherapy plus pembrolizumab | 16,629 | 19.061 | Chemotherapy plus 
+2a row       |        6,355 | fourarm_report.md | Chemotherapy plus pembrolizumab | 16,629 | 19.061 | Chemotherapy plus 
+2a row       |         0.85 | fourarm_report.md | HR 0.85
+2a row       |       11,525 | fourarm_report.md | Chemotherapy plus exercise | 11,525 | 17.420 | — | — | — | — | 3,250
+2a row       |       17.420 | fourarm_report.md | Chemotherapy plus exercise | 11,525 | 17.420 | — | — | — | — | 3,250
+2a row       |        3,250 | fourarm_report.md | Chemotherapy plus exercise | 11,525 | 17.420 | — | — | — | — | 3,250
+2a row       |       12,202 | fourarm_report.md | Chemotherapy alone | 12,202 | 16.905 | Chemotherapy plus exercise | 67
+2a row       |       16.905 | fourarm_report.md | Chemotherapy alone | 12,202 | 16.905 | Chemotherapy plus exercise | 67
+2a row       |          677 | fourarm_report.md | Chemotherapy alone | 12,202 | 16.905 | Chemotherapy plus exercise | 67
+2a row       |       −0.515 | fourarm_report.md | Chemotherapy alone | 12,202 | 16.905 | Chemotherapy plus exercise | 67
+2a row       |            0 | fourarm_report.md | Chemotherapy alone | 12,202 | 16.905 | Chemotherapy plus exercise | 67
+2a row       |       16,120 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 16,120 | 19.466 | Chem
+2a row       |       19.466 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 16,120 | 19.466 | Chem
+2a row       |        4,594 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 16,120 | 19.466 | Chem
+2a row       |        2.047 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 16,120 | 19.466 | Chem
+2a row       |        2,245 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 16,120 | 19.466 | Chem
+2a row       |        8,889 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 16,120 | 19.466 | Chem
+2a row       |       16,629 | fourarm_report.md | Chemotherapy plus pembrolizumab | 16,629 | 19.061 | Chemotherapy plus 
+2a row       |       19.061 | fourarm_report.md | Chemotherapy plus pembrolizumab | 16,629 | 19.061 | Chemotherapy plus 
+2a row       |          509 | fourarm_report.md | Chemotherapy plus pembrolizumab | 16,629 | 19.061 | Chemotherapy plus 
+2a row       |       −0.405 | fourarm_report.md | Chemotherapy plus pembrolizumab | 16,629 | 19.061 | Chemotherapy plus 
+2a row       |        6,355 | fourarm_report.md | Chemotherapy plus pembrolizumab | 16,629 | 19.061 | Chemotherapy plus 
+2a row       |         0.72 | fourarm_report.md | HR 0.72
+2a row       |       10,723 | fourarm_report.md | Chemotherapy plus exercise | 10,723 | 17.892 | — | — | — | — | 6,413
+2a row       |       17.892 | fourarm_report.md | Chemotherapy plus exercise | 10,723 | 17.892 | — | — | — | — | 6,413
+2a row       |        6,413 | fourarm_report.md | Chemotherapy plus exercise | 10,723 | 17.892 | — | — | — | — | 6,413
+2a row       |       12,202 | fourarm_report.md | Chemotherapy alone | 12,202 | 16.905 | Chemotherapy plus exercise | 1,
+2a row       |       16.905 | fourarm_report.md | Chemotherapy alone | 12,202 | 16.905 | Chemotherapy plus exercise | 1,
+2a row       |        1,479 | fourarm_report.md | Chemotherapy alone | 12,202 | 16.905 | Chemotherapy plus exercise | 1,
+2a row       |       −0.987 | fourarm_report.md | Chemotherapy alone | 12,202 | 16.905 | Chemotherapy plus exercise | 1,
+2a row       |            0 | fourarm_report.md | Chemotherapy alone | 12,202 | 16.905 | Chemotherapy plus exercise | 1,
+2a row       |       15,479 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 15,479 | 19.834 | Chem
+2a row       |       19.834 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 15,479 | 19.834 | Chem
+2a row       |        4,756 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 15,479 | 19.834 | Chem
+2a row       |        1.942 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 15,479 | 19.834 | Chem
+2a row       |        2,449 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 15,479 | 19.834 | Chem
+2a row       |       11,368 | fourarm_report.md | Chemotherapy plus pembrolizumab plus exercise | 15,479 | 19.834 | Chem
+2a row       |       16,629 | fourarm_report.md | Chemotherapy plus pembrolizumab | 16,629 | 19.061 | Chemotherapy plus 
+2a row       |       19.061 | fourarm_report.md | Chemotherapy plus pembrolizumab | 16,629 | 19.061 | Chemotherapy plus 
+2a row       |        1,150 | fourarm_report.md | Chemotherapy plus pembrolizumab | 16,629 | 19.061 | Chemotherapy plus 
+2a row       |       −0.773 | fourarm_report.md | Chemotherapy plus pembrolizumab | 16,629 | 19.061 | Chemotherapy plus 
+2a row       |        6,355 | fourarm_report.md | Chemotherapy plus pembrolizumab | 16,629 | 19.061 | Chemotherapy plus 
+2a row       |        4,426 | tables_v13 | Incremental cost | 4,426 [−330, 8,901]
+2a row       |         −330 | tables_v13 | Incremental cost | 4,426 [−330, 8,901]
+2a row       |        8,901 | tables_v13 | Incremental cost | 4,426 [−330, 8,901]
+2a row       |        2.156 | tables_v13 | Incremental QALYs | 2.156 [0.245, 4.228]
+2a row       |        0.245 | tables_v13 | Incremental QALYs | 2.156 [0.245, 4.228]
+2a row       |        4.228 | tables_v13 | Incremental QALYs | 2.156 [0.245, 4.228]
+2a row       |        1,000 | tables_v13 | ICER, JPY 1,000 per QALY | 2,053
+2a row       |        2,053 | tables_v13 | ICER, JPY 1,000 per QALY | 2,053
+2a row       |            5 | fourarm_report.md | Probability cost-effective at JPY 5 million per QALY, % | 83.1
+2a row       |         83.1 | tables_v13 | Probability cost-effective at JPY 5 million per QALY, % | 83.1
+2a row       |          7.5 | tables_v13 | Probability cost-effective at JPY 7.5 million per QALY, % | 90.8
+2a row       |         90.8 | tables_v13 | Probability cost-effective at JPY 7.5 million per QALY, % | 90.8
+2a row       |        0.425 | fourarm_report.md | In QALYs | 0.425 | 35.9
+2a row       |         35.9 | fourarm_report.md | In QALYs | 0.425 | 35.9
+2a row       |            5 | fourarm_report.md | In net monetary benefit at JPY 5 million per QALY | 0.722 | 19.0
+2a row       |        0.722 | fourarm_report.md | In net monetary benefit at JPY 5 million per QALY | 0.722 | 19.0
+2a row       |         19.0 | fourarm_report.md | In net monetary benefit at JPY 5 million per QALY | 0.722 | 19.0
+2a row       |          7.5 | tables_v13 | In net monetary benefit at JPY 7.5 million per QALY | 0.638 | 24.1
+2a row       |        0.638 | fourarm_report.md | In net monetary benefit at JPY 7.5 million per QALY | 0.638 | 24.1
+2a row       |         24.1 | fourarm_report.md | In net monetary benefit at JPY 7.5 million per QALY | 0.638 | 24.1
+2a footnote  |           49 | tables_v13 | aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy
+2a footnote  |            1 | fourarm_report.md | aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy
+2a footnote  |        1,000 | tables_v13 | aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy
+2a footnote  |         2026 | fourarm_report.md | aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy
+2a footnote  |            2 | tables_v13 | aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy
+2a footnote  |      192,400 | fourarm_report.md | aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy
+2a footnote  |            5 | fourarm_report.md | aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy
+2a footnote  |           95 | tables_v13 | aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy
+2a footnote  |          2.5 | tables_v13 | aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy
+2a footnote  |         97.5 | tables_v13 | aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy
+2a footnote  |        1,000 | tables_v13 | aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy
+2a footnote  |            5 | fourarm_report.md | bHazard ratio for locoregional and distant recurrence after surgery in
+2a footnote  |            1 | fourarm_report.md | bHazard ratio for locoregional and distant recurrence after surgery in
+2a footnote  |         0.72 | fourarm_report.md | bHazard ratio for locoregional and distant recurrence after surgery in
+2a footnote  |      239,508 | fourarm_report.md | cWith the CHALLENGE-based supervised program (JPY 239,508), chemothera
+2a footnote  |         0.95 | fourarm_report.md | cWith the CHALLENGE-based supervised program (JPY 239,508), chemothera
+2a footnote  |         0.85 | fourarm_report.md | cWith the CHALLENGE-based supervised program (JPY 239,508), chemothera
+2a footnote  |         0.72 | fourarm_report.md | cWith the CHALLENGE-based supervised program (JPY 239,508), chemothera
+2a footnote  |       11,260 | fourarm_report.md | cWith the CHALLENGE-based supervised program (JPY 239,508), chemothera
+2a footnote  |        0.722 | fourarm_report.md | dEffect at which exercise added to chemotherapy alone gives the same i
+2a footnote  |         0.70 | fourarm_report.md | dEffect at which exercise added to chemotherapy alone gives the same i
+2a footnote  |         1.00 | fourarm_report.md | dEffect at which exercise added to chemotherapy alone gives the same i
+2a footnote  |            1 | fourarm_report.md | dEffect at which exercise added to chemotherapy alone gives the same i
+2a footnote  |            0 | fourarm_report.md | dEffect at which exercise added to chemotherapy alone gives the same i
+2a footnote  |           10 | fourarm_report.md | dEffect at which exercise added to chemotherapy alone gives the same i
+2a footnote  |            1 | fourarm_report.md | dEffect at which exercise added to chemotherapy alone gives the same i
+numbers checked: 245; not found in the sources: 0

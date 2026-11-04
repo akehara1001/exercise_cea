@@ -1,0 +1,9 @@
+paragraphs scanned: 60; mentions extracted (expanded): 47
+actual: {'Table ': 3, 'Fig ': 3, 'Table S': 11, 'Fig S': 2} | figure captions: 3
+  Table    first-mention order [1, 2, 3] -> consecutive 1..n: True; max 3 vs actual 3
+  Fig      first-mention order [1, 2, 3] -> consecutive 1..n: True; max 3 vs actual 3
+  Table S  first-mention order [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] -> consecutive 1..n: True; max 11 vs actual 11
+  Fig S    first-mention order [1, 2] -> consecutive 1..n: True; max 2 vs actual 2
+ESM table order: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+ESM fig order: [1, 2]
+Supplementary Methods mentions in main text: 4 | without S1: 0

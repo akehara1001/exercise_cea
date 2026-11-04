@@ -1,0 +1,7 @@
+### Acronym check (advisory; no reply needed)
+Coverage: body (partial)
+Not in this input: English abstract, Chinese abstract.
+Not checked:
+- Body, line 3: JPY (the initials before its parentheses do not spell it)
+- Body, line 3: QALY (the initials before its parentheses do not spell it)
+No findings.

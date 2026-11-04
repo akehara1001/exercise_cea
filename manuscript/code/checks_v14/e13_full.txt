@@ -1,0 +1,473 @@
+P0 [] Online Resource 1
+P1 [] Article: Cost-effectiveness of exercise added to neoadjuvant chemotherapy for triple-negative breast cancer in Japan
+P2 [] Journal: Breast Cancer Research and Treatment
+P3 [] Authors: [names to be added]
+P4 [] Corresponding author: [name, affiliation, institutional email]
+P5 [] Reference numbers refer to the reference list of the main article.
+P6 [] Supplementary Methods S1. Literature searches, survival model, validation and probabilistic sampling
+P7 [] Literature searches
+P8 [] The statement in the Introduction that no economic evaluation of exercise during neoadjuvant therapy for breast cancer was identified rests on three searches, run on 26 October 2026 in PubMed (title and abstract words and Medical Subject Headings) and Europe PMC (title and abstract words), each limited to publication years 2000 to 2026. The first search combined exercise, neoadjuvant or preoperative treatment, breast cancer and economic evaluation. The second searched cancer of any type with neoadjuvant treatment, in any spelling, or with the phrases during treatment and during oncological treatment. The third searched breast cancer with chemotherapy in any setting. The title and abstract of every record were read. The search strings were as follows.
+P9 [] First search, PubMed: (exercise[tiab] OR "physical activity"[tiab] OR "Exercise"[mh] OR "Exercise Therapy"[mh] OR prehabilitation[tiab] OR "aerobic training"[tiab] OR "resistance training"[tiab]) AND (neoadjuvant[tiab] OR preoperative[tiab] OR "Neoadjuvant Therapy"[mh]) AND ("Breast Neoplasms"[mh] OR "breast cancer"[tiab] OR "breast carcinoma"[tiab]) AND ("cost-effectiveness"[tiab] OR "cost effectiveness"[tiab] OR "cost-utility"[tiab] OR "cost utility"[tiab] OR "economic evaluation"[tiab] OR QALY*[tiab] OR "Cost-Benefit Analysis"[mh]) AND ("2000/01/01"[dp] : "2026/12/31"[dp])
+P10 [] First search, Europe PMC: ((TITLE:exercise OR ABSTRACT:exercise) OR (TITLE:"physical activity" OR ABSTRACT:"physical activity") OR (TITLE:prehabilitation OR ABSTRACT:prehabilitation) OR (TITLE:"aerobic training" OR ABSTRACT:"aerobic training") OR (TITLE:"resistance training" OR ABSTRACT:"resistance training")) AND ((TITLE:neoadjuvant OR ABSTRACT:neoadjuvant) OR (TITLE:preoperative OR ABSTRACT:preoperative)) AND ((TITLE:"breast cancer" OR ABSTRACT:"breast cancer") OR (TITLE:"breast neoplasms" OR ABSTRACT:"breast neoplasms") OR (TITLE:"breast carcinoma" OR ABSTRACT:"breast carcinoma")) AND ((TITLE:"cost-effectiveness" OR ABSTRACT:"cost-effectiveness") OR (TITLE:"cost effectiveness" OR ABSTRACT:"cost effectiveness") OR (TITLE:"cost-utility" OR ABSTRACT:"cost-utility") OR (TITLE:"cost utility" OR ABSTRACT:"cost utility") OR (TITLE:"economic evaluation" OR ABSTRACT:"economic evaluation") OR (TITLE:QALY OR ABSTRACT:QALY) OR (TITLE:"quality-adjusted life year" OR ABSTRACT:"quality-adjusted life year")) AND PUB_YEAR:[2000 TO 2026]
+P11 [] Second search, PubMed: (exercise[tiab] OR "physical activity"[tiab] OR "Exercise"[mh] OR "Exercise Therapy"[mh] OR prehabilitation[tiab] OR "aerobic training"[tiab] OR "resistance training"[tiab]) AND (cancer[tiab] OR "Neoplasms"[mh]) AND ("neo adjuvant"[tiab] OR neo-adjuvant[tiab] OR "(neo)adjuvant"[tiab] OR neoadjuvant[tiab] OR "during treatment"[tiab] OR "during oncological treatment"[tiab]) AND ("cost-effectiveness"[tiab] OR "cost effectiveness"[tiab] OR "cost-utility"[tiab] OR "cost utility"[tiab] OR "economic evaluation"[tiab] OR QALY*[tiab] OR "Cost-Benefit Analysis"[mh]) AND ("2000/01/01"[dp] : "2026/12/31"[dp])
+P12 [] Second search, Europe PMC: ((TITLE:exercise OR ABSTRACT:exercise) OR (TITLE:"physical activity" OR ABSTRACT:"physical activity") OR (TITLE:prehabilitation OR ABSTRACT:prehabilitation) OR (TITLE:"aerobic training" OR ABSTRACT:"aerobic training") OR (TITLE:"resistance training" OR ABSTRACT:"resistance training")) AND (TITLE:cancer OR ABSTRACT:cancer) AND ((TITLE:"neo-adjuvant" OR ABSTRACT:"neo-adjuvant") OR (TITLE:"(neo)adjuvant" OR ABSTRACT:"(neo)adjuvant") OR (TITLE:neoadjuvant OR ABSTRACT:neoadjuvant) OR (TITLE:"during treatment" OR ABSTRACT:"during treatment") OR (TITLE:"during oncological treatment" OR ABSTRACT:"during oncological treatment")) AND ((TITLE:"cost-effectiveness" OR ABSTRACT:"cost-effectiveness") OR (TITLE:"cost effectiveness" OR ABSTRACT:"cost effectiveness") OR (TITLE:"cost-utility" OR ABSTRACT:"cost-utility") OR (TITLE:"cost utility" OR ABSTRACT:"cost utility") OR (TITLE:"economic evaluation" OR ABSTRACT:"economic evaluation") OR (TITLE:QALY OR ABSTRACT:QALY) OR (TITLE:"quality-adjusted life year" OR ABSTRACT:"quality-adjusted life year")) AND PUB_YEAR:[2000 TO 2026]
+P13 [] Third search, PubMed: (exercise[tiab] OR "physical activity"[tiab] OR "Exercise"[mh] OR "Exercise Therapy"[mh] OR prehabilitation[tiab] OR "aerobic training"[tiab] OR "resistance training"[tiab]) AND ("Breast Neoplasms"[mh] OR "breast cancer"[tiab] OR "breast carcinoma"[tiab]) AND (chemotherapy[tiab] OR "Antineoplastic Agents"[mh]) AND ("cost-effectiveness"[tiab] OR "cost effectiveness"[tiab] OR "cost-utility"[tiab] OR "cost utility"[tiab] OR "economic evaluation"[tiab] OR QALY*[tiab] OR "Cost-Benefit Analysis"[mh]) AND ("2000/01/01"[dp] : "2026/12/31"[dp])
+P14 [] Third search, Europe PMC: ((TITLE:exercise OR ABSTRACT:exercise) OR (TITLE:"physical activity" OR ABSTRACT:"physical activity") OR (TITLE:prehabilitation OR ABSTRACT:prehabilitation) OR (TITLE:"aerobic training" OR ABSTRACT:"aerobic training") OR (TITLE:"resistance training" OR ABSTRACT:"resistance training")) AND ((TITLE:"breast cancer" OR ABSTRACT:"breast cancer") OR (TITLE:"breast neoplasms" OR ABSTRACT:"breast neoplasms") OR (TITLE:"breast carcinoma" OR ABSTRACT:"breast carcinoma")) AND (TITLE:chemotherapy OR ABSTRACT:chemotherapy) AND ((TITLE:"cost-effectiveness" OR ABSTRACT:"cost-effectiveness") OR (TITLE:"cost effectiveness" OR ABSTRACT:"cost effectiveness") OR (TITLE:"cost-utility" OR ABSTRACT:"cost-utility") OR (TITLE:"cost utility" OR ABSTRACT:"cost utility") OR (TITLE:"economic evaluation" OR ABSTRACT:"economic evaluation") OR (TITLE:QALY OR ABSTRACT:QALY) OR (TITLE:"quality-adjusted life year" OR ABSTRACT:"quality-adjusted life year")) AND PUB_YEAR:[2000 TO 2026]
+P15 [] Reconstructed patient-level data
+P16 [] Kaplan-Meier curves of KEYNOTE-522 were digitized from the published figures: event-free survival by arm and pathological complete response (pCR) status at interim analysis 4, with a data cutoff of 23 March 2021 [4], and overall survival by arm at the final analysis of overall survival, with a data cutoff of 22 March 2024 [5]. Patient-level data were reconstructed from the digitized curves and the published numbers at risk with the algorithm of Guyot and colleagues [49]. A reconstruction was accepted when it reproduced each published milestone estimate within 1 percentage point, each published hazard ratio (HR) within 0.03 and each reported number of events within 2%; the reported numbers of events were not given to the algorithm. The proportions with pCR were those of interim analysis 4 (Supplementary Table S2).
+P17 [] Event-free survival after surgery
+P18 [] Event-free survival was modeled from surgery, set at 7 months after randomization, separately for the four combinations of arm and pCR status. The candidate models were six standard parametric distributions, six Royston-Parmar spline models and three mixture cure models on the relative survival scale, with background mortality from the Japanese life table for women [51]. A model was eligible if at least 95% of the monthly points with at least 20 patients at risk lay within the pointwise 95% confidence interval of the Kaplan-Meier estimate, if its excess hazard peaked within 3 years after surgery and declined thereafter, and if its all-cause hazard at 10 and 20 years was not below background mortality.
+P19 [] Within each pCR stratum, both arms used the same distribution family. Among the families eligible in both arms whose summed Akaike information criterion was within 4 of the lowest, the family whose 5-year extrapolation was closest to the 5-year event-free survival reported at a later data cutoff was selected [43]. This gave a Weibull model for patients with pCR and a Weibull mixture cure model for patients without pCR. Event-free survival at 7 years in each stratum was then fixed at the value of the final analysis [44] (Supplementary Table S2), by maximizing the likelihood subject to this equality.
+P20 [] Events before surgery, first events after surgery and deaths from adverse events
+P21 [] Before surgery, event-free survival in each stratum followed its Kaplan-Meier estimate, and patients with pCR had no events before surgery. Progression that precluded surgery occurred only in patients without pCR, in the proportion reported for each arm [5], with the monthly shape of the Kaplan-Meier estimate before surgery. When the reported proportion exceeded the decline of that estimate, the excess was placed in the first cycle after surgery and taken from the excess hazard, so the total was unchanged.
+P22 [] First events after surgery were divided into locoregional recurrence, including second primary cancers, distant recurrence and death without recurrence, in the proportions of the 2024 report [5]. Locoregional recurrence progressed to distant recurrence at a constant rate [4]. Deaths from adverse events, in the numbers reported for each arm [4], occurred at a constant hazard during the 12 months of treatment and were moved within the fitted event-free survival without changing it.
+P23 [] Survival after recurrence and background mortality
+P24 [] Overall survival curves of patients with early and late relapse in the Epidemiological Strategy and Medical Economics (ESME) cohort [50] were digitized and reconstructed in the same way, and log-logistic distributions were fitted to them. A common shape was used because the shapes of the two groups did not differ significantly. Excess mortality after distant recurrence within 18 months of randomization followed the early-relapse distribution and after later recurrence the late-relapse distribution, in the same way in all arms. Excess mortality after progression that precluded surgery followed the early-relapse distribution.
+P25 [] Survival after locoregional recurrence carried background mortality only. Background mortality came from the 2025 abridged life table for Japanese women [51], from age 49 years. The all-cause hazard was never below background mortality; where a fitted model for patients with pCR fell below it late in follow-up, background mortality applied.
+P26 [] Validation
+P27 [] Overall survival was not used to fit or calibrate any parameter. The model was accepted if three criteria, fixed before the comparison, were met. First, overall survival of each arm at years 1 to 5 lay within the pointwise 95% confidence intervals of the reconstructed Kaplan-Meier estimates, or all ten points lay within Bonferroni-adjusted 99.5% intervals. Second, the 5-year difference in restricted mean survival time between arms lay within the bootstrap 95% interval of the Kaplan-Meier difference. Third, overall and event-free survival at 7 years lay within the 95% confidence intervals of the final analysis [44]. Supplementary Fig. S1 and Supplementary Table S3 show the comparison.
+P28 [] Probabilistic sensitivity analysis
+P29 [] Each of the 1,000 probabilistic samples combined one bootstrap replicate of the survival model with one draw of the other inputs. In each replicate, the reconstructed event-free survival data were resampled within arm together with their pCR status and the models were refitted with the 7-year equality; the 7-year values were drawn from binomial distributions with the stratum sizes of interim analysis 4. The reconstructed ESME data were resampled within group and the log-logistic distributions refitted.
+P30 [] The other inputs were drawn independently from the distributions in Supplementary Table S2: gamma distributions for costs, durations and events per patient, beta distributions for proportions and utilities, and lognormal distributions for hazard ratios, with parameters derived from the 95% ranges. Drug prices and rates based on zero events were fixed, and the duration of the utility decrement for adverse events and the discount rate were not varied. Every sample can be reproduced from its random seed (base seed 20261023, plus the sample number for the bootstrap). The 2.5th and 97.5th percentiles across samples give the 95% uncertainty intervals.
+P31 [] [SECT] 
+P32 [] Supplementary Table S1. Consolidated Health Economic Evaluation Reporting Standards 2022 checklista
+T0 r0 | Title
+T0 r1 | Section or topic | Item | Guidance for reporting | Location in the manuscript
+T0 r2 | Title | 1 | Identify the study as an economic evaluation and specify the interventions being compared. | Title page (p. 1)
+P33 [] 
+T1 r0 | Abstract
+T1 r1 | Section or topic | Item | Guidance for reporting | Location in the manuscript
+T1 r2 | Abstract | 2 | Provide a structured summary that highlights context, key methods, results, and alternative analyses. | Abstract (p. 2)
+P34 [] 
+T2 r0 | Introduction
+T2 r1 | Section or topic | Item | Guidance for reporting | Location in the manuscript
+T2 r2 | Background and objectives | 3 | Give the context for the study, the study question, and its practical relevance for decision making in policy or practice. | Introduction, paragraphs 1 to 4 (pp. 3 to 4)
+P35 [] 
+T3 r0 | Methods
+T3 r1 | Section or topic | Item | Guidance for reporting | Location in the manuscript
+T3 r2 | Health economic analysis plan | 4 | Indicate whether a health economic analysis plan was developed and where available. | Methods, Study design, paragraph 3 (p. 5)
+T3 r3 | Study population | 5 | Describe characteristics of the study population (such as age range, demographics, socioeconomic, or clinical characteristics). | Methods, Study design, paragraph 1; Table 1 (pp. 4 to 5)
+T3 r4 | Setting and location | 6 | Provide relevant contextual information that may influence findings. | Methods, Study design, paragraphs 1 to 2 (pp. 4 to 5)
+T3 r5 | Comparators | 7 | Describe the interventions or strategies being compared and why chosen. | Methods, Study design, paragraph 1 (pp. 4 to 5)
+T3 r6 | Perspective | 8 | State the perspective(s) adopted by the study and why chosen. | Methods, Study design, paragraph 2 (p. 5)
+T3 r7 | Time horizon | 9 | State the time horizon for the study and why appropriate. | Methods, Study design, paragraph 2 (p. 5)
+T3 r8 | Discount rate | 10 | Report the discount rate(s) and reason chosen. | Methods, Study design, paragraph 2 (p. 5)
+T3 r9 | Selection of outcomes | 11 | Describe what outcomes were used as the measure(s) of benefit(s) and harm(s). | Methods, Outcomes, paragraphs 1 to 2 (pp. 5 to 6)
+T3 r10 | Measurement of outcomes | 12 | Describe how outcomes used to capture benefit(s) and harm(s) were measured. | Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Supplementary Methods S1 (pp. 6 to 7)
+T3 r11 | Valuation of outcomes | 13 | Describe the population and methods used to measure and value outcomes. | Methods, Survival, costs and utilities, paragraph 2 (p. 7)
+T3 r12 | Measurement and valuation of resources and costs | 14 | Describe how costs were valued. | Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2; Table 1; Supplementary Table S2 (pp. 6 to 7)
+T3 r13 | Currency, price date, and conversion | 15 | Report the dates of the estimated resource quantities and unit costs, plus the currency and year of conversion. | Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2 (pp. 6 to 7)
+T3 r14 | Rationale and description of model | 16 | If modelling is used, describe in detail and why used. Report if the model is publicly available and where it can be accessed. | Methods, Study design, paragraph 1; Methods, Statistical analysis, paragraph 1; Fig. 1; Supplementary Methods S1; Statements and Declarations, Data availability (pp. 4 to 26)
+T3 r15 | Analytics and assumptions | 17 | Describe any methods for analysing or statistically transforming data, any extrapolation methods, and approaches for validating any model used. | Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Methods, Statistical analysis, stages (1) and (2); Supplementary Methods S1 (pp. 6 to 8)
+T3 r16 | Characterising heterogeneity | 18 | Describe any methods used for estimating how the results of the study vary for subgroups. | No subgroup analyses beyond the two comparisons; Methods, Study design, paragraph 1 (pp. 4 to 5)
+T3 r17 | Characterising distributional effects | 19 | Describe how impacts are distributed across different individuals or adjustments made to reflect priority populations. | Not performed
+T3 r18 | Characterising uncertainty | 20 | Describe methods to characterise any sources of uncertainty in the analysis. | Methods, Statistical analysis, stages (3) to (5); Supplementary Methods S1 (p. 8)
+T3 r19 | Approach to engagement with patients and others affected by the study | 21 | Describe any approaches to engage patients or service recipients, the general public, communities, or stakeholders (such as clinicians or payers) in the design of the study. | Not performed
+P36 [] 
+T4 r0 | Results
+T4 r1 | Section or topic | Item | Guidance for reporting | Location in the manuscript
+T4 r2 | Study parameters | 22 | Report all analytic inputs (such as values, ranges, references) including uncertainty or distributional assumptions. | Table 1; Supplementary Table S2
+T4 r3 | Summary of main results | 23 | Report the mean values for the main categories of costs and outcomes of interest and summarise them in the most appropriate overall measure. | Results, Maximum affordable cost of exercise, paragraphs 1 to 3; Results, Duration and metastatic treatment costs, paragraphs 1 to 3; Results, Pembrolizumab, paragraphs 1 to 2; Fig. 2; Tables 2 and 3; Supplementary Tables S4 to S8 (pp. 9 to 10)
+T4 r4 | Effect of uncertainty | 24 | Describe how uncertainty about analytic judgments, inputs, or projections affect findings. Report the effect of choice of discount rate and time horizon, if applicable. | Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 2; Supplementary Tables S4, S7, S9 and S10; Supplementary Fig. S2 (pp. 9 to 11)
+T4 r5 | Effect of engagement with patients and others affected by the study | 25 | Report on any difference patient/service recipient, general public, community, or stakeholder involvement made to the approach or findings of the study | Not applicable (item 21)
+P37 [] 
+T5 r0 | Discussion
+T5 r1 | Section or topic | Item | Guidance for reporting | Location in the manuscript
+T5 r2 | Study findings, limitations, generalisability, and current knowledge | 26 | Report key findings, limitations, ethical or equity considerations not captured, and how these could affect patients, policy, or practice. | Discussion, paragraphs 1 to 6; Discussion, Implications; Discussion, Limitations (pp. 11 to 13)
+P38 [] 
+T6 r0 | Other relevant information
+T6 r1 | Section or topic | Item | Guidance for reporting | Location in the manuscript
+T6 r2 | Source of funding | 27 | Describe how the study was funded and any role of the funder in the identification, design, conduct, and reporting of the analysis | Statements and Declarations, Funding (p. 26)
+T6 r3 | Conflicts of interest | 28 | Report authors conflicts of interest according to journal or International Committee of Medical Journal Editors requirements. | Statements and Declarations, Competing interests (p. 26)
+P39 [] 
+P40 [] aChecklist and guidance as published [45]. Locations give the section, the paragraph within the section or subsection (or the numbered stage of the statistical analysis) and the page of the manuscript file; tables and figures are named where they report the item. CHEERS, Consolidated Health Economic Evaluation Reporting Standards.
+P41 [] [SECT] 
+P42 [] Supplementary Table S2. All model inputsa
+T7 r0 | A. Survival and model structure
+T7 r1 | Input | Arms | Base case | Bootstrap 2.5th to 97.5th percentile | Source
+T7 r2 | Starting age, years | All arms | 49 | — | KEYNOTE-522 population [3]
+T7 r3 | Pathological complete response (pCR) | With pembrolizumab | 494/784 (63.0%) | — | KEYNOTE-522 (interim analysis 4) [4]
+T7 r4 | Pathological complete response (pCR) | Without pembrolizumab | 217/390 (55.6%) | — | KEYNOTE-522 (interim analysis 4) [4]
+T7 r5 | Event-free survival at 7 years, pCR (fixed in fitting) | With pembrolizumab | 90.4% | 87.7 to 92.9% | KEYNOTE-522 final analysis [44]
+T7 r6 | Event-free survival at 7 years, no pCR (fixed in fitting) | With pembrolizumab | 57.6% | 52.1 to 63.4% | KEYNOTE-522 final analysis [44]
+T7 r7 | Event-free survival at 7 years, pCR (fixed in fitting) | Without pembrolizumab | 85.9% | 81.1 to 90.3% | KEYNOTE-522 final analysis [44]
+T7 r8 | Event-free survival at 7 years, no pCR (fixed in fitting) | Without pembrolizumab | 49.7% | 41.6 to 57.8% | KEYNOTE-522 final analysis [44]
+T7 r9 | Event-free survival after surgery, pCR: Weibull, shape | With pembrolizumab | 0.6685 | 0.5106 to 0.9761 | Fitted to reconstructed KEYNOTE-522 data (interim analysis 4) [4,49]
+T7 r10 | Event-free survival after surgery, pCR: Weibull, scale (years) | With pembrolizumab | 198.2 | 59.79 to 803.0 | Fitted to reconstructed KEYNOTE-522 data (interim analysis 4) [4,49]
+T7 r11 | Event-free survival after surgery, no pCR: Weibull cure model, cure fraction | With pembrolizumab | 0.5961 | 0.3655 to 0.6769 | Fitted to reconstructed KEYNOTE-522 data (interim analysis 4) [4,49]
+T7 r12 | Event-free survival after surgery, no pCR: Weibull cure model, shape | With pembrolizumab | 0.8468 | 0.6664 to 1.145 | Fitted to reconstructed KEYNOTE-522 data (interim analysis 4) [4,49]
+T7 r13 | Event-free survival after surgery, no pCR: Weibull cure model, scale (years) | With pembrolizumab | 1.683 | 0.9405 to 5.291 | Fitted to reconstructed KEYNOTE-522 data (interim analysis 4) [4,49]
+T7 r14 | Event-free survival after surgery, pCR: Weibull, shape | Without pembrolizumab | 0.7593 | 0.5748 to 1.164 | Fitted to reconstructed KEYNOTE-522 data (interim analysis 4) [4,49]
+T7 r15 | Event-free survival after surgery, pCR: Weibull, scale (years) | Without pembrolizumab | 76.71 | 28.14 to 284.7 | Fitted to reconstructed KEYNOTE-522 data (interim analysis 4) [4,49]
+T7 r16 | Event-free survival after surgery, no pCR: Weibull cure model, cure fraction | Without pembrolizumab | 0.5427 | 0.4249 to 0.6334 | Fitted to reconstructed KEYNOTE-522 data (interim analysis 4) [4,49]
+T7 r17 | Event-free survival after surgery, no pCR: Weibull cure model, shape | Without pembrolizumab | 1.216 | 0.9402 to 1.627 | Fitted to reconstructed KEYNOTE-522 data (interim analysis 4) [4,49]
+T7 r18 | Event-free survival after surgery, no pCR: Weibull cure model, scale (years) | Without pembrolizumab | 1.424 | 1.038 to 2.451 | Fitted to reconstructed KEYNOTE-522 data (interim analysis 4) [4,49]
+T7 r19 | Progression precluding surgery, proportion of patients without pCR | With pembrolizumab | 4.83% | — | KEYNOTE-522 (2024 report) [5]
+T7 r20 | Progression precluding surgery, proportion of patients without pCR | Without pembrolizumab | 8.67% | — | KEYNOTE-522 (2024 report) [5]
+T7 r21 | Composition of first events after surgery | With pembrolizumab | locoregional recurrence 37.1%; distant recurrence 58.3%; death without recurrence 4.6% | — | KEYNOTE-522 (2024 report) [5]
+T7 r22 | Composition of first events after surgery | Without pembrolizumab | locoregional recurrence 31.5%; distant recurrence 58.8%; death without recurrence 9.8% | — | KEYNOTE-522 (2024 report) [5]
+T7 r23 | Deaths from adverse events during treatment | With pembrolizumab | 7/783 | — | KEYNOTE-522 (interim analysis 4) [4]
+T7 r24 | Deaths from adverse events during treatment | Without pembrolizumab | 1/389 | — | KEYNOTE-522 (interim analysis 4) [4]
+T7 r25 | Locoregional to distant recurrence, rate per year | All arms | 0.340 (22 of 45 patients; 1.98 years of follow-up) | — | KEYNOTE-522 (2022 report) [4]
+T7 r26 | Excess mortality after distant recurrence within 18 months of randomization: log-logistic median, months | All arms | 9.73 | 9.10 to 10.43 | ESME cohort, reconstructed overall survival [49,50]
+T7 r27 | Excess mortality after later distant recurrence: log-logistic median, months | All arms | 16.93 | 15.88 to 18.01 | ESME cohort, reconstructed overall survival [49,50]
+T7 r28 | Excess mortality after distant recurrence or progression during neoadjuvant therapy: common log-logistic shape | All arms | 1.660 | 1.590 to 1.736 | ESME cohort, reconstructed overall survival [49,50]
+T7 r29 | Excess mortality after progression during neoadjuvant therapy | All arms | Same as distant recurrence within the first 18 months | As above | ESME cohort [50]
+T7 r30 | Background mortality | All arms | Japanese women | — | Abridged life table (2025) [51]
+T7 r31 | Scenario: Higher mortality after early recurrence with pembrolizumab, multiplier | With pembrolizumab | 1.307 | — | Italian real-world cohort after neoadjuvant pembrolizumab [66]
+T7 r32 | Scenario: progression during neoadjuvant therapy with longer survival, log-logistic median, months | All arms | 26 | — | Single-center cohort with locoregional progression during neoadjuvant therapy [67]
+P43 [] 
+T8 r0 | B. Costs, adverse events, utilities, exercise and post-operative treatment
+T8 r1 | Code | Input | Arms | Unit | Base case | Range | Distribution | Source
+T8 r2 | A01 | Paclitaxel plus carboplatin (12 weeks), drug cost | All arms | JPY per 12 weeks | 113,736 | 85,302 to 113,736 [drug price, lower only] | Fixed | National drug price list [8]
+T8 r3 | A02 | Doxorubicin or epirubicin plus cyclophosphamide (4 cycles), drug cost | All arms | JPY per 4 cycles | 33,496 | 25,122 to 33,496 [drug price, lower only] | Fixed | National drug price list [8]
+T8 r4 | A03 | Pembrolizumab, drug cost per dose | With pembrolizumab | JPY per administration | 398,924 | 299,193 to 398,924 [drug price, lower only] | Fixed | National drug price list [8]
+T8 r5 | A04 | Outpatient drug administration, per visit (fees and tests included) | All arms | JPY per administration | 15,565 | 10,768 to 18,160 | Gamma (shape 68.12, scale 228.5) | Medical fee schedule [48]
+T8 r6 | A05 | Supportive care (G-CSF, antiemetics), per cycle | All arms | JPY per cycle | 36,558 | 5,820 to 67,296 [mirrored (assumed)] | Gamma (shape 5.434, scale 6,728) | National drug price list; antiemetic guideline [8,52]
+T8 r7 | A06 | Surgery (mix of procedures) | All arms | JPY per event | 1,000,000 | 641,441 to 1,250,000 | Gamma (shape 41.49, scale 24,102) | Published cost estimates of Kasugai Municipal Hospital and Chuden Hospital; medical fee schedule code K476; KEYNOTE-522 surgical outcomes [48,53–55]
+T8 r8 | A07 | Postoperative radiotherapy, proportion treated | All arms | proportion | 0.63230 | 0.50600 to 0.90000 | Beta (alpha 13.92, beta 8.094) | KEYNOTE-522 surgical outcomes [55]
+T8 r9 | A08 | Postoperative radiotherapy, cost per course | All arms | JPY per course | 445,300 | 405,300 to 485,300 [mirrored (assumed)] | Gamma (shape 476.1, scale 935.3) | Medical fee schedule [48]
+T8 r10 | B01 | Immune-related AE management cost: hypothyroidism | All arms | JPY per event | 38,586 | 19,293 to 236,000 | Gamma (shape 0.4872, scale 79,206) | Published Japanese estimate [76]
+T8 r11 | B02 | Immune-related AE management cost: hyperthyroidism | All arms | JPY per event | 38,856 | 19,428 to 236,000 | Gamma (shape 0.4946, scale 78,558) | Published Japanese estimate [76]
+T8 r12 | B03 | Immune-related AE management cost: adrenal insufficiency | All arms | JPY per event | 236,000 | 118,000 to 472,000 | Gamma (shape 6.829, scale 34,557) | Published Japanese estimate, used as a proxy [56]
+T8 r13 | B04 | Immune-related AE management cost: hypophysitis | All arms | JPY per event | 236,000 | 118,000 to 472,000 | Gamma (shape 6.829, scale 34,557) | Published Japanese estimate, used as a proxy [56]
+T8 r14 | B05 | Immune-related AE management cost: pneumonitis | All arms | JPY per event | 63,257 | 31,628 to 236,000 | Gamma (shape 1.472, scale 42,971) | Published Japanese estimate [76]
+T8 r15 | B06 | Immune-related AE management cost: colitis | All arms | JPY per event | 40,740 | 20,370 to 236,000 | Gamma (shape 0.5485, scale 74,275) | Published Japanese estimate [76]
+T8 r16 | B07 | Immune-related AE management cost: hepatitis | All arms | JPY per event | 40,740 | 20,370 to 236,000 | Gamma (shape 0.5485, scale 74,275) | Published Japanese estimate [76]
+T8 r17 | B08 | Immune-related AE management cost: severe skin reactions | All arms | JPY per event | 236,000 | 38,057 to 472,000 | Gamma (shape 4.545, scale 51,928) | Published Japanese estimates [56,76]
+T8 r18 | B09 | Immune-related AE management cost: type 1 diabetes | All arms | JPY per event | 236,000 | 118,000 to 472,000 | Gamma (shape 6.829, scale 34,557) | Published Japanese estimate, used as a proxy [56]
+T8 r19 | B10 | Immune-related AE management cost: other serious events | All arms | JPY per event | 236,000 | 118,000 to 472,000 | Gamma (shape 6.829, scale 34,557) | Published Japanese estimate, used as a proxy [56]
+T8 r20 | B11 | Febrile neutropenia management cost per event | All arms | JPY per event | 236,000 | 189,000 to 283,000 [mirrored (assumed)] | Gamma (shape 96.86, scale 2,437) | Published Japanese estimate, used as a proxy [56]
+T8 r21 | B21P | Incidence: hypothyroidism (immune-related) | With pembrolizumab | proportion | 0.15070 | 0.12636 to 0.17771 | Beta (alpha 112.2, beta 632.6) | KEYNOTE-522 (interim analysis 4) [4]
+T8 r22 | B21C | Incidence: hypothyroidism (immune-related) | Without pembrolizumab | proportion | 0.05656 | 0.03578 to 0.08438 | Beta (alpha 19.58, beta 326.6) | KEYNOTE-522 (interim analysis 4) [4]
+T8 r23 | B22P | Incidence: hyperthyroidism (immune-related) | With pembrolizumab | proportion | 0.05236 | 0.03783 to 0.07037 | Beta (alpha 37.65, beta 681.4) | KEYNOTE-522 (interim analysis 4) [4]
+T8 r24 | B22C | Incidence: hyperthyroidism (immune-related) | Without pembrolizumab | proportion | 0.01799 | 0.00726 to 0.03672 | Beta (alpha 5.609, beta 306.2) | KEYNOTE-522 (interim analysis 4) [4]
+T8 r25 | B23P | Incidence: adrenal insufficiency (immune-related) | With pembrolizumab | proportion | 0.02554 | 0.01567 to 0.03917 | Beta (alpha 17.66, beta 673.8) | KEYNOTE-522 (interim analysis 4) [4]
+T8 r26 | B23C | Incidence: adrenal insufficiency (immune-related) | Without pembrolizumab | proportion | 0.00000 | 0.00000 to 0.00944 [zero events, fixed in PSA] | Fixed | KEYNOTE-522 (interim analysis 4) [4]
+T8 r27 | B24P | Incidence: hypophysitis (immune-related) | With pembrolizumab | proportion | 0.01916 | 0.01076 to 0.03140 | Beta (alpha 12.97, beta 663.9) | KEYNOTE-522 (interim analysis 4) [4]
+T8 r28 | B24C | Incidence: hypophysitis (immune-related) | Without pembrolizumab | proportion | 0.00257 | 0.00007 to 0.01424 | Beta (alpha 0.5016, beta 194.7) | KEYNOTE-522 (interim analysis 4) [4]
+T8 r29 | B25P | Incidence: pneumonitis (immune-related) | With pembrolizumab | proportion | 0.00894 | 0.00360 to 0.01833 | Beta (alpha 5.601, beta 620.9) | KEYNOTE-522 (interim analysis 4) [4]
+T8 r30 | B25C | Incidence: pneumonitis (immune-related) | Without pembrolizumab | proportion | 0.00514 | 0.00062 to 0.01845 | Beta (alpha 1.265, beta 244.9) | KEYNOTE-522 (interim analysis 4) [4]
+T8 r31 | B26P | Incidence: colitis (immune-related) | With pembrolizumab | proportion | 0.00766 | 0.00282 to 0.01660 | Beta (alpha 4.704, beta 609.4) | European Medicines Agency assessment report [61]
+T8 r32 | B26C | Incidence: colitis (immune-related) | Without pembrolizumab | proportion | 0.00000 | 0.00000 to 0.00944 [zero events, fixed in PSA] | Fixed | European Medicines Agency assessment report [61]
+T8 r33 | B27P | Incidence: hepatitis (immune-related) | With pembrolizumab | proportion | 0.01149 | 0.00527 to 0.02171 | Beta (alpha 7.408, beta 637.3) | European Medicines Agency assessment report [61]
+T8 r34 | B27C | Incidence: hepatitis (immune-related) | Without pembrolizumab | proportion | 0.00000 | 0.00000 to 0.00944 [zero events, fixed in PSA] | Fixed | European Medicines Agency assessment report [61]
+T8 r35 | B28P | Incidence: severe skin reactions (immune-related) | With pembrolizumab | proportion | 0.04725 | 0.03349 to 0.06455 | Beta (alpha 33.83, beta 682.2) | KEYNOTE-522 (interim analysis 4) [4]
+T8 r36 | B28C | Incidence: severe skin reactions (immune-related) | Without pembrolizumab | proportion | 0.00257 | 0.00007 to 0.01424 | Beta (alpha 0.5016, beta 194.7) | KEYNOTE-522 (interim analysis 4) [4]
+T8 r37 | B29P | Incidence: type 1 diabetes (immune-related) | With pembrolizumab | proportion | 0.00511 | 0.00139 to 0.01303 | Beta (alpha 2.941, beta 572.6) | European Medicines Agency assessment report [61]
+T8 r38 | B29C | Incidence: type 1 diabetes (immune-related) | Without pembrolizumab | proportion | 0.00000 | 0.00000 to 0.00944 [zero events, fixed in PSA] | Fixed | European Medicines Agency assessment report [61]
+T8 r39 | B30P | Incidence: other serious immune-related AEs | With pembrolizumab | proportion | 0.02043 | 0.01172 to 0.03297 | Beta (alpha 13.89, beta 666.1) | KEYNOTE-522 (interim analysis 4); European Medicines Agency assessment report [4,61]
+T8 r40 | B30C | Incidence: other serious immune-related AEs | Without pembrolizumab | proportion | 0.00257 | 0.00007 to 0.01424 | Beta (alpha 0.5016, beta 194.7) | KEYNOTE-522 (interim analysis 4); European Medicines Agency assessment report [4,61]
+T8 r41 | B31P | Incidence: febrile neutropenia | With pembrolizumab | proportion | 0.18391 | 0.15737 to 0.21285 | Beta (alpha 137.6, beta 610.6) | KEYNOTE-522 supplementary appendix (interim analysis 4) [4]
+T8 r42 | B31C | Incidence: febrile neutropenia | Without pembrolizumab | proportion | 0.16195 | 0.12675 to 0.20240 | Beta (alpha 58.85, beta 304.6) | KEYNOTE-522 supplementary appendix (interim analysis 4) [4]
+T8 r43 | B32P | Incidence: any grade 3 or higher AE (scenario) | With pembrolizumab | proportion | 0.82375 | 0.79522 to 0.84982 | Beta (alpha 615.6, beta 131.7) | KEYNOTE-522 (interim analysis 4) [4]
+T8 r44 | B32C | Incidence: any grade 3 or higher AE (scenario) | Without pembrolizumab | proportion | 0.78663 | 0.74253 to 0.82631 | Beta (alpha 288.2, beta 78.19) | KEYNOTE-522 (interim analysis 4) [4]
+T8 r45 | B33P | Grade 3 or higher AEs of six types, events per patient | With pembrolizumab | events per patient | 1.064 | 0.993 to 1.139 | Gamma (shape 818.2, scale 0.001300) | KEYNOTE-522 supplementary appendix (interim analysis 4) [4]
+T8 r46 | B33C | Grade 3 or higher AEs of six types, events per patient | Without pembrolizumab | events per patient | 0.982 | 0.886 to 1.086 | Gamma (shape 371.9, scale 0.002640) | KEYNOTE-522 supplementary appendix (interim analysis 4) [4]
+T8 r47 | C01 | Follow-up cost per year, years 1 to 2 | All arms | JPY per year | 18,270 | 11,660 to 24,880 [mirrored (assumed)] | Gamma (shape 29.35, scale 622.5) | Medical fee schedule [48]
+T8 r48 | C02 | Follow-up cost per year, years 3 to 5 | All arms | JPY per year | 16,730 | 10,120 to 23,340 [mirrored (assumed)] | Gamma (shape 24.61, scale 679.8) | Medical fee schedule [48]
+T8 r49 | C03 | Follow-up cost per year, year 6 onward | All arms | JPY per year | 15,960 | 9,350 to 22,570 [mirrored (assumed)] | Gamma (shape 22.40, scale 712.6) | Medical fee schedule [48]
+T8 r50 | D01 | Locoregional recurrence, initial treatment cost | All arms | JPY per event | 1,222,650 | 916,988 to 1,528,313 [±25% (assumed)] | Gamma (shape 61.46, scale 19,892) | Derived from inputs A06 and A08
+T8 r51 | D02 | Locoregional recurrence, monthly cost thereafter | All arms | JPY per month | 3,045 | 2,284 to 3,806 [±25% (assumed)] | Gamma (shape 61.46, scale 49.54) | Derived from input C01
+T8 r52 | D03 | First-line treatment of distant recurrence, monthly cost | Without pembrolizumab | JPY per month | 1,215,933 | 915,446 to 1,416,257 | Gamma (shape 90.58, scale 13,424) | A breast medical oncologist at a Japanese hospital (personal communication, October 2026); trials; national drug price list [8,72–75]
+T8 r53 | D03P | First-line treatment of distant recurrence, monthly cost | With pembrolizumab | JPY per month | 1,458,318 | 973,662 to 1,781,422 | Gamma (shape 50.08, scale 29,118) | A breast medical oncologist at a Japanese hospital (personal communication, October 2026); trials; national drug price list [8,72–75]
+T8 r54 | D04 | First-line treatment of distant recurrence, mean duration | Without pembrolizumab | months | 10.37 | 7.77 to 12.96 [±25% (assumed)] | Gamma (shape 61.46, scale 0.1686) | A breast medical oncologist at a Japanese hospital (personal communication, October 2026); trials; national drug price list [8,72–75]
+T8 r55 | D04P | First-line treatment of distant recurrence, mean duration | With pembrolizumab | months | 10.84 | 8.13 to 13.55 [±25% (assumed)] | Gamma (shape 61.46, scale 0.1764) | A breast medical oncologist at a Japanese hospital (personal communication, October 2026); trials; national drug price list [8,72–75]
+T8 r56 | D05 | Second-line and later treatment, monthly cost | All arms | JPY per month | 1,412,953 | 1,059,715 to 1,766,192 [±25% (assumed)] | Gamma (shape 61.46, scale 22,989) | A breast medical oncologist at a Japanese hospital (personal communication, October 2026); national drug price list [8]
+T8 r57 | D06 | End-of-life care, last 3 months | All arms | JPY per 3 months | 1,120,001 | 956,901 to 1,283,100 [mirrored (assumed)] | Gamma (shape 181.1, scale 6,183) | Published Japanese estimates [76,77]
+T8 r58 | E01 | CHALLENGE-based supervised program, total over 6 months | With exercise | JPY per 6 months | 239,508 | 95,803 to 322,320 | Gamma (shape 17.18, scale 13,942) | CHALLENGE cost-utility analysis; purchasing power parity and exchange rate [46,47,78]
+T8 r59 | E02 | Fee-schedule-based program, total over 6 months | With exercise | JPY per 6 months | 192,400 | 96,200 to 232,440 | Gamma (shape 30.64, scale 6,278) | Medical fee schedule [48]
+T8 r60 | E03 | Remote low-cost program, total over 6 months | With exercise | JPY per 6 months | 11,260 | 8,445 to 14,075 [±25% (assumed)] | Gamma (shape 61.46, scale 183.2) | Medical fee schedule [48]
+T8 r61 | E04 | Exercise continued after surgery, monthly cost (scenario) | With exercise | JPY per month | 3,700 | 1,260 to 7,400 | Gamma (shape 5.580, scale 663.1) | Medical fee schedule [48]
+T8 r62 | E05 | Exercise continued after surgery, duration (scenario) | With exercise | months | 30.00 | 6.00 to 30.00 | Gamma (shape 24.01, scale 1.250) | CHALLENGE trial [9]
+T8 r63 | E06 | Musculoskeletal AEs, any grade, with exercise | With exercise | proportion | 0.18458 | 0.14895 to 0.22464 | Beta (alpha 74.33, beta 328.4) | CHALLENGE trial [9]
+T8 r64 | E07 | Musculoskeletal AEs, any grade, without exercise | Without exercise | proportion | 0.11497 | 0.08731 to 0.14767 | Beta (alpha 49.22, beta 378.9) | CHALLENGE trial [9]
+T8 r65 | E08 | Musculoskeletal AE management cost per event | All arms | JPY per event | 8,810 | 6,540 to 11,080 [mirrored (assumed)] | Gamma (shape 57.86, scale 152.3) | Medical fee schedule [48]
+T8 r66 | E09 | Musculoskeletal AEs, grade 3 or higher, with exercise | With exercise | proportion | 0.00701 | 0.00145 to 0.02035 | Beta (alpha 2.092, beta 296.3) | CHALLENGE trial [9]
+T8 r67 | E10 | Musculoskeletal AEs, grade 3 or higher, without exercise | Without exercise | proportion | 0.00217 | 0.00005 to 0.01203 | Beta (alpha 0.5009, beta 230.3) | CHALLENGE trial [9]
+T8 r68 | F01 | Capecitabine use among gBRCA-negative patients without pCR | Without pembrolizumab | proportion | 0.85000 | 0.80000 to 0.90000 | Beta (alpha 165.7, beta 29.24) | A breast medical oncologist at a Japanese hospital (personal communication, October 2026)
+T8 r69 | F01P | Capecitabine use among gBRCA-negative patients without pCR | With pembrolizumab | proportion | 0.50000 | 0.05000 to 0.90000 | Beta (alpha 2.158, beta 2.158) | Two breast medical oncologists at Japanese hospitals (personal communication, October 2026); real-world and expert-consensus studies [57,58]
+T8 r70 | F02 | Capecitabine cost, whole course | All arms | JPY per patient | 121,402 | 91,051 to 203,251 | Gamma (shape 17.99, scale 6,748) | National drug price list; CREATE-X [8,69]
+T8 r71 | F03 | gBRCA-positive proportion among patients with TNBC | All arms | proportion | 0.20000 | 0.15000 to 0.25000 [±25% (assumed)] | Beta (alpha 48.97, beta 195.9) | Japanese single-institution study [59]
+T8 r72 | F04 | Olaparib use among gBRCA-positive patients without pCR | Without pembrolizumab | proportion | 0.90000 | 0.70000 to 1.00000 | Beta (alpha 12.93, beta 1.437) | A breast medical oncologist at a Japanese hospital (personal communication, October 2026)
+T8 r73 | F04P | Olaparib use among gBRCA-positive patients without pCR | With pembrolizumab | proportion | 0.90000 | 0.50000 to 1.00000 | Beta (alpha 4.079, beta 0.4532) | Two breast medical oncologists at Japanese hospitals (personal communication, October 2026)
+T8 r74 | F05 | Olaparib cost, whole course | All arms | JPY per patient | 7,079,040 | 3,539,520 to 7,079,040 [drug price, lower only] | Fixed | National drug price list; olaparib package insert [8,60]
+T8 r75 | F06 | BRCA test cost | All arms | JPY per event | 203,000 | 193,000 to 213,000 [mirrored (assumed)] | Gamma (shape 1,583, scale 128.2) | Medical fee schedule [48]
+T8 r76 | F07 | Capecitabine HR for invasive disease or recurrence | All arms | HR | 0.58 | 0.39 to 0.87 | Lognormal (meanlog −0.5447, sdlog 0.2047) | CREATE-X [69]
+T8 r77 | F08 | Olaparib HR for invasive disease | All arms | HR | 0.65 | 0.53 to 0.78 | Lognormal (meanlog −0.4308, sdlog 0.09858) | OlympiA, updated analysis [71]
+T8 r78 | U01 | Utility, event-free during treatment | All arms | utility | 0.889 | 0.881 to 0.897 | Beta (alpha 5,538, beta 691.5) | KEYNOTE-522 EQ-5D-5L, German value set [30]
+T8 r79 | U02 | Utility, event-free after treatment | All arms | utility | 0.887 | 0.877 to 0.897 | Beta (alpha 3,555, beta 452.9) | KEYNOTE-522 EQ-5D-5L, German value set [30]
+T8 r80 | U03 | Utility, locoregional recurrence | All arms | utility | 0.830 | 0.787 to 0.873 | Beta (alpha 241.4, beta 49.43) | KEYNOTE-522 EQ-5D-5L, German value set [30]
+T8 r81 | U04 | Utility, distant recurrence or progression during neoadjuvant therapy | All arms | utility | 0.735 | 0.700 to 0.770 | Beta (alpha 440.6, beta 158.9) | KEYNOTE-522 EQ-5D-5L, German value set [30]
+T8 r82 | U05 | Utility decrement per grade 3 or higher AE (12.5 weeks) | All arms | utility decrement | 0.022 | 0.000 to 0.059 | Beta (alpha 2.067, beta 91.91) | KEYNOTE-522 EQ-5D-5L, German value set [30]
+P44 [] 
+P45 [] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Costs are in JPY at fiscal year 2026 prices except the CHALLENGE-based supervised program (converted from 2024 Canadian dollars; Table 1). Panel A: base-case values of the survival model and the 2.5th to 97.5th percentiles across 1,000 bootstrap replicates (dash, fixed in all replicates). Panel B: ranges are those of the one-way sensitivity analysis and, for distributions other than fixed, the 95% range of the probabilistic analysis; brackets mark ranges set by rule: [±25% (assumed)], ±25% around the base value; [mirrored (assumed)], the missing bound mirrored; [drug price, lower only], lower bound 75% of the list price and the value fixed in the probabilistic analysis; [zero events, fixed in PSA], upper bound from zero events. Inputs with suffix P or C apply to arms with or without pembrolizumab. AE, adverse event; BRCA, breast cancer gene; ESME, Epidemiological Strategy and Medical Economics database; G-CSF, granulocyte colony-stimulating factor; HR, hazard ratio; JPY, Japanese yen; pCR, pathological complete response; PSA, probabilistic sensitivity analysis; TNBC, triple-negative breast cancer.
+P46 [] [SECT] 
+P47 [] 
+P48 [] Supplementary Fig. S1. Overall survival and event-free survival in KEYNOTE-522: reconstructed Kaplan-Meier curves, the model and the final analysisa
+P49 [] (a) Overall survival. (b) Event-free survival. Thin step lines: Kaplan-Meier estimates from patient-level data reconstructed from the published curves of the 2024 report [5,49] (solid, chemotherapy plus pembrolizumab; dashed, chemotherapy alone), with their 95% CIs shaded. Thick grey lines: the model (solid and dashed as before). Points with bars: 7-year estimates of the final analysis [44] with 95% CIs (filled, chemotherapy plus pembrolizumab; open, chemotherapy alone). Overall survival was not used to fit the model. Values are given in Supplementary Table S3.
+P50 [] aCI, confidence interval.
+P51 [] [SECT] 
+P52 [] Supplementary Table S3. Comparison of the survival model with KEYNOTE-522 overall survival and event-free survivala
+T9 r0 | A. Overall survival, %, at years 1 to 5
+T9 r1 | Year | Kaplan-Meier, chemotherapy plus pembrolizumab [95% CI] | Model, chemotherapy plus pembrolizumab | Kaplan-Meier, chemotherapy alone [95% CI] | Model, chemotherapy alone
+T9 r2 | 1 | 97.2 [96.0, 98.4] | 98.0 | 98.7 [97.6, 99.8] | 97.9
+T9 r3 | 2 | 92.2 [90.3, 94.1] | 94.5b | 91.0 [88.2, 93.9] | 92.2
+T9 r4 | 3 | 89.5 [87.4, 91.7] | 91.7b | 86.9 [83.6, 90.3] | 87.6
+T9 r5 | 4 | 87.8 [85.6, 90.2] | 89.2 | 83.5 [79.9, 87.3] | 83.7
+T9 r6 | 5 | 86.6 [84.2, 89.0] | 86.9 | 81.7 [77.9, 85.6] | 80.5
+P53 [] 
+T10 r0 | B. Restricted mean survival time
+T10 r1 | Quantity | Kaplan-Meier [bootstrap 95% CI] | Model
+T10 r2 | Difference in 5-year restricted mean survival time, years | 0.0985 [−0.0381, 0.2421] | 0.1524
+P54 [] 
+T11 r0 | C. Final analysis at 7 years
+T11 r1 | Quantity at 7 years | Arm | Final analysis [95% CI] | Model
+T11 r2 | Overall survival, % | Chemotherapy plus pembrolizumab | 85.1 [82.5, 87.5] | 83.2
+T11 r3 | Overall survival, % | Chemotherapy alone | 77.2 [72.7, 81.1] | 75.8
+T11 r4 | Event-free survival, % | Chemotherapy plus pembrolizumab | 78.3 [75.3, 81.1] | 78.3
+T11 r5 | Event-free survival, % | Chemotherapy alone | 69.8 [65.0, 74.2] | 69.8
+T11 r6 | Overall survival with pCR, % | Chemotherapy plus pembrolizumab | 94.5c | 93.2
+T11 r7 | Overall survival with pCR, % | Chemotherapy alone | 91.1c | 90.2
+T11 r8 | Overall survival without pCR, % | Chemotherapy plus pembrolizumab | 69.0c | 66.3
+T11 r9 | Overall survival without pCR, % | Chemotherapy alone | 59.8c | 57.7
+P55 [] 
+T12 r0 | D. Model extrapolation
+T12 r1 | Quantity | Arm | 10 years [bootstrap 2.5th to 97.5th percentile] | 20 years [bootstrap 2.5th to 97.5th percentile]
+T12 r2 | Overall survival, % | Chemotherapy plus pembrolizumab | 79.3 [76.5, 82.0] | 71.6 [65.2, 76.0]
+T12 r3 | Overall survival, % | Chemotherapy alone | 71.1 [66.6, 75.3] | 61.7 [52.3, 68.0]
+T12 r4 | Event-free survival, % | Chemotherapy plus pembrolizumab | 76.0 [72.0, 79.7] | 70.7 [62.6, 75.5]
+T12 r5 | Event-free survival, % | Chemotherapy alone | 67.3 [61.1, 72.1] | 60.1 [48.4, 67.1]
+P56 [] 
+P57 [] aKaplan-Meier estimates from patient-level data reconstructed from the published KEYNOTE-522 curves (overall survival, 2024 report) [5,49]; final analysis [44]: data cutoff 14 October 2025. Overall survival was not used to fit the model; event-free survival at 7 years in each pCR stratum was fixed at the final-analysis values during fitting (Table 1); the model was accepted if the 10 points of panel A lay within their pointwise 95% CIs or within Bonferroni-adjusted 99.5% CIs, the difference in panel B lay within its bootstrap 95% CI, and the four 7-year values with a CI in panel C lay within their 95% CIs. Panel D: 2.5th and 97.5th percentiles across 1,000 bootstrap replicates. CI, confidence interval; pCR, pathological complete response.
+P58 [] bOutside the pointwise 95% CI and within the Bonferroni-adjusted 99.5% CI.
+P59 [] cNo CI reported; shown for comparison only and not part of the acceptance rule.
+P60 [] [SECT] 
+P61 [] Supplementary Table S4. Maximum affordable cost of an exercise program per patient by the recurrence hazard ratio with exercisea
+T13 r0 | A. Threshold JPY 5 million per QALY
+T13 r1 | Recurrence HR | Exercise added to chemotherapy plus pembrolizumab, base case | Exercise added to chemotherapy plus pembrolizumab, higher mortality after early recurrence with pembrolizumab | Exercise added to chemotherapy alone | Probability above the fee-schedule-based program cost, %: exercise added to chemotherapy plus pembrolizumab, base case | Same, higher mortality after early recurrence with pembrolizumab | Same, exercise added to chemotherapy alone
+T13 r2 | 0.700 | 5,596 [4,545, 6,256] | 5,524 [4,491, 6,164] | 7,107 [5,923, 7,869] | 100.0 | 100.0 | 100.0
+T13 r3 | 0.725 | 5,107 [4,151, 5,707] | 5,041 [4,101, 5,623] | 6,480 [5,408, 7,167] | 100.0 | 100.0 | 100.0
+T13 r4 | 0.750 | 4,623 [3,758, 5,164] | 4,563 [3,713, 5,087] | 5,860 [4,895, 6,473] | 100.0 | 100.0 | 100.0
+T13 r5 | 0.775 | 4,143 [3,369, 4,625] | 4,089 [3,330, 4,555] | 5,246 [4,384, 5,788] | 100.0 | 100.0 | 100.0
+T13 r6 | 0.800 | 3,667 [2,983, 4,092] | 3,619 [2,951, 4,029] | 4,639 [3,879, 5,110] | 100.0 | 100.0 | 100.0
+T13 r7 | 0.825 | 3,195 [2,602, 3,564] | 3,153 [2,575, 3,509] | 4,038 [3,377, 4,444] | 100.0 | 100.0 | 100.0
+T13 r8 | 0.850 | 2,726 [2,223, 3,040] | 2,691 [2,201, 2,994] | 3,443 [2,881, 3,785] | 100.0 | 100.0 | 100.0
+T13 r9 | 0.875 | 2,262 [1,846, 2,521] | 2,233 [1,829, 2,483] | 2,854 [2,389, 3,134] | 100.0 | 100.0 | 100.0
+T13 r10 | 0.900 | 1,802 [1,471, 2,007] | 1,778 [1,457, 1,977] | 2,271 [1,902, 2,492] | 100.0 | 100.0 | 100.0
+T13 r11 | 0.925 | 1,346 [1,100, 1,498] | 1,328 [1,088, 1,475] | 1,695 [1,421, 1,859] | 100.0 | 100.0 | 100.0
+T13 r12 | 0.950 | 893 [730, 994] | 881 [722, 979] | 1,124 [943, 1,232] | 100.0 | 100.0 | 100.0
+T13 r13 | 0.975 | 444 [364, 494] | 438 [359, 487] | 559 [469, 612] | 100.0 | 100.0 | 100.0
+T13 r14 | 1.000 | −1 [−2, 0] | −1 [−2, 0] | −1 [−2, 0] | 0.0 | 0.0 | 0.0
+P62 [] 
+T14 r0 | B. Threshold JPY 7.5 million per QALY
+T14 r1 | Recurrence HR | Exercise added to chemotherapy plus pembrolizumab, base case | Exercise added to chemotherapy plus pembrolizumab, higher mortality after early recurrence with pembrolizumab | Exercise added to chemotherapy alone | Probability above the fee-schedule-based program cost, %: exercise added to chemotherapy plus pembrolizumab, base case | Same, higher mortality after early recurrence with pembrolizumab | Same, exercise added to chemotherapy alone
+T14 r2 | 0.700 | 7,672 [6,266, 8,533] | 7,610 [6,215, 8,454] | 9,761 [8,173, 10,782] | 100.0 | 100.0 | 100.0
+T14 r3 | 0.725 | 7,003 [5,722, 7,783] | 6,946 [5,672, 7,711] | 8,900 [7,455, 9,822] | 100.0 | 100.0 | 100.0
+T14 r4 | 0.750 | 6,339 [5,181, 7,042] | 6,287 [5,137, 6,976] | 8,049 [6,744, 8,868] | 100.0 | 100.0 | 100.0
+T14 r5 | 0.775 | 5,680 [4,645, 6,307] | 5,634 [4,605, 6,246] | 7,206 [6,042, 7,930] | 100.0 | 100.0 | 100.0
+T14 r6 | 0.800 | 5,028 [4,114, 5,579] | 4,987 [4,078, 5,524] | 6,372 [5,349, 7,004] | 100.0 | 100.0 | 100.0
+T14 r7 | 0.825 | 4,381 [3,586, 4,859] | 4,345 [3,554, 4,810] | 5,547 [4,659, 6,090] | 100.0 | 100.0 | 100.0
+T14 r8 | 0.850 | 3,739 [3,062, 4,144] | 3,708 [3,035, 4,103] | 4,730 [3,976, 5,188] | 100.0 | 100.0 | 100.0
+T14 r9 | 0.875 | 3,102 [2,542, 3,436] | 3,077 [2,520, 3,403] | 3,921 [3,298, 4,297] | 100.0 | 100.0 | 100.0
+T14 r10 | 0.900 | 2,471 [2,026, 2,736] | 2,451 [2,008, 2,709] | 3,121 [2,628, 3,416] | 100.0 | 100.0 | 100.0
+T14 r11 | 0.925 | 1,846 [1,514, 2,042] | 1,830 [1,500, 2,022] | 2,328 [1,962, 2,546] | 100.0 | 100.0 | 100.0
+T14 r12 | 0.950 | 1,225 [1,005, 1,355] | 1,215 [997, 1,342] | 1,544 [1,302, 1,686] | 100.0 | 100.0 | 100.0
+T14 r13 | 0.975 | 610 [501, 674] | 604 [497, 668] | 768 [648, 838] | 100.0 | 100.0 | 100.0
+T14 r14 | 1.000 | −1 [−2, 0] | −1 [−2, 0] | −1 [−2, 0] | 0.0 | 0.0 | 0.0
+P63 [] 
+P64 [] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Data of Fig. 2. Cells show the deterministic estimate and the 95% UI. 95% UI: 2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. The effect is held for 5 years after randomization and then halves every year. Higher mortality after early recurrence with pembrolizumab: Table 1. Probability above the fee-schedule-based program cost: share of samples in which the maximum affordable cost exceeds the base-case cost of that program (Table 1). HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year; UI, uncertainty interval.
+P65 [] [SECT] 
+P66 [] Supplementary Table S5. Maximum affordable cost of an exercise program per patient by the increase in pathological complete responsea
+T15 r0 | A. Threshold JPY 5 million per QALY
+T15 r1 | Increase in pCR, percentage points | Exercise added to chemotherapy plus pembrolizumab, base case | Exercise added to chemotherapy plus pembrolizumab, higher mortality after early recurrence with pembrolizumab | Exercise added to chemotherapy alone | Probability above the fee-schedule-based program cost, %: exercise added to chemotherapy plus pembrolizumab, base case | Same, higher mortality after early recurrence with pembrolizumab | Same, exercise added to chemotherapy alone
+T15 r2 | 0 | −1 [−2, 0] | −1 [−2, 0] | −1 [−2, 0] | 0.0 | 0.0 | 0.0
+T15 r3 | 1 | 389 [238, 570] | 385 [233, 566] | 345 [95, 533] | 99.0 | 99.0 | 88.4
+T15 r4 | 2 | 779 [477, 1,142] | 770 [467, 1,132] | 690 [190, 1,067] | 100.0 | 100.0 | 97.4
+T15 r5 | 3 | 1,169 [716, 1,713] | 1,155 [701, 1,699] | 1,036 [286, 1,601] | 100.0 | 100.0 | 98.4
+T15 r6 | 4 | 1,559 [955, 2,285] | 1,541 [935, 2,265] | 1,381 [381, 2,135] | 100.0 | 100.0 | 99.1
+T15 r7 | 5 | 1,949 [1,194, 2,856] | 1,926 [1,169, 2,832] | 1,726 [476, 2,668] | 100.0 | 100.0 | 99.2
+T15 r8 | 6 | 2,339 [1,432, 3,427] | 2,311 [1,403, 3,398] | 2,072 [572, 3,202] | 100.0 | 100.0 | 99.3
+T15 r9 | 7 | 2,728 [1,671, 3,999] | 2,697 [1,637, 3,965] | 2,417 [667, 3,736] | 100.0 | 100.0 | 99.3
+T15 r10 | 8 | 3,118 [1,910, 4,570] | 3,082 [1,871, 4,531] | 2,763 [763, 4,270] | 100.0 | 100.0 | 99.3
+T15 r11 | 9 | 3,508 [2,149, 5,142] | 3,467 [2,105, 5,098] | 3,108 [858, 4,803] | 100.0 | 100.0 | 99.3
+T15 r12 | 10 | 3,898 [2,388, 5,713] | 3,853 [2,339, 5,664] | 3,454 [953, 5,337] | 100.0 | 100.0 | 99.3
+P67 [] 
+T16 r0 | B. Threshold JPY 7.5 million per QALY
+T16 r1 | Increase in pCR, percentage points | Exercise added to chemotherapy plus pembrolizumab, base case | Exercise added to chemotherapy plus pembrolizumab, higher mortality after early recurrence with pembrolizumab | Exercise added to chemotherapy alone | Probability above the fee-schedule-based program cost, %: exercise added to chemotherapy plus pembrolizumab, base case | Same, higher mortality after early recurrence with pembrolizumab | Same, exercise added to chemotherapy alone
+T16 r2 | 0 | −1 [−2, 0] | −1 [−2, 0] | −1 [−2, 0] | 0.0 | 0.0 | 0.0
+T16 r3 | 1 | 546 [345, 788] | 543 [341, 785] | 495 [155, 751] | 100.0 | 100.0 | 96.2
+T16 r4 | 2 | 1,093 [691, 1,576] | 1,086 [683, 1,571] | 991 [310, 1,503] | 100.0 | 100.0 | 99.1
+T16 r5 | 3 | 1,640 [1,037, 2,364] | 1,630 [1,026, 2,356] | 1,487 [465, 2,256] | 100.0 | 100.0 | 99.3
+T16 r6 | 4 | 2,187 [1,382, 3,152] | 2,173 [1,368, 3,142] | 1,982 [621, 3,008] | 100.0 | 100.0 | 99.3
+T16 r7 | 5 | 2,734 [1,728, 3,941] | 2,716 [1,710, 3,927] | 2,478 [776, 3,760] | 100.0 | 100.0 | 99.3
+T16 r8 | 6 | 3,280 [2,074, 4,729] | 3,260 [2,052, 4,713] | 2,974 [931, 4,512] | 100.0 | 100.0 | 99.4
+T16 r9 | 7 | 3,827 [2,420, 5,517] | 3,803 [2,394, 5,498] | 3,470 [1,087, 5,265] | 100.0 | 100.0 | 99.4
+T16 r10 | 8 | 4,374 [2,766, 6,306] | 4,347 [2,736, 6,284] | 3,966 [1,242, 6,017] | 100.0 | 100.0 | 99.6
+T16 r11 | 9 | 4,921 [3,111, 7,094] | 4,890 [3,078, 7,069] | 4,461 [1,397, 6,769] | 100.0 | 100.0 | 99.6
+T16 r12 | 10 | 5,468 [3,457, 7,882] | 5,434 [3,421, 7,855] | 4,957 [1,552, 7,521] | 100.0 | 100.0 | 99.6
+P68 [] 
+P69 [] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Exercise increases the proportion with pCR by the amount shown (capped at 100%) and does not change the recurrence HR. Cells show the deterministic estimate and the 95% UI. 95% UI: 2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. Probability above the fee-schedule-based program cost: share of samples in which the maximum affordable cost exceeds the base-case cost of that program (Table 1). HR, hazard ratio; JPY, Japanese yen; pCR, pathological complete response; QALY, quality-adjusted life year; UI, uncertainty interval.
+P70 [] [SECT] 
+P71 [] Supplementary Table S6. Incremental costs by category for exercise added to chemotherapy plus pembrolizumab at a recurrence hazard ratio of 0.85a
+T17 r0 | Incremental cost, JPY 1,000
+T17 r1 | Category | Base case | Higher mortality after early recurrence with pembrolizumab
+T17 r2 | Exercise program (fee-schedule-based program) | 192 | 192
+T17 r3 | Musculoskeletal adverse events of exercise | 1 | 1
+T17 r4 | Pembrolizumab | 12 | 12
+T17 r5 | Drug administration | 0 | 0
+T17 r6 | Immune-related adverse events | 0 | 0
+T17 r7 | Febrile neutropenia | 0 | 0
+T17 r8 | Follow-up | 8 | 8
+T17 r9 | Locoregional recurrence | −10 | −10
+T17 r10 | Distant recurrence, first-line treatment | −254 | −249
+T17 r11 | Distant recurrence, second-line and later treatment | −437 | −397
+T17 r12 | End-of-life care | −21 | −21
+T17 r13 | Other (chemotherapy drugs, supportive care, surgery, radiotherapy) | 0 | 0
+T17 r14 | Total, fee-schedule-based program | −509 | −464
+T17 r15 | Total without the program costb | −702 | −656
+T17 r16 | Total, CHALLENGE-based supervised program | −462 | −416
+T17 r17 | Total, remote low-cost program | −690 | −645
+P72 [] 
+P73 [] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Exercise added to chemotherapy plus pembrolizumab compared with chemotherapy plus pembrolizumab; negative values are costs avoided. Deterministic estimates. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. The effect is held for 5 years after randomization and then halves every year. Categories may not add to the totals because of rounding. JPY, Japanese yen.
+P74 [] bEquals minus the medical costs avoided (Table 2).
+P75 [] [SECT] 
+P76 [] Supplementary Table S7. Maximum affordable cost of an exercise program per patient under alternative effect durationsa
+T18 r0 | A. Threshold JPY 5 million per QALY
+T18 r1 | Recurrence HR | Effect until 1 year after surgery: main comparison | Effect until 1 year after surgery: secondary comparison | No waning: main comparison | No waning: secondary comparison | Exercise continued after surgery: main comparison | Exercise continued after surgery: secondary comparison
+T18 r2 | 0.700 | 3,613 | 4,669 | 6,989 | 9,120 | 4,685 | 6,187
+T18 r3 | 0.725 | 3,302 | 4,263 | 6,378 | 8,316 | 4,269 | 5,635
+T18 r4 | 0.750 | 2,992 | 3,860 | 5,773 | 7,521 | 3,857 | 5,088
+T18 r5 | 0.775 | 2,684 | 3,460 | 5,173 | 6,734 | 3,448 | 4,546
+T18 r6 | 0.800 | 2,378 | 3,064 | 4,578 | 5,954 | 3,042 | 4,010
+T18 r7 | 0.825 | 2,074 | 2,670 | 3,989 | 5,183 | 2,639 | 3,480
+T18 r8 | 0.850 | 1,772 | 2,279 | 3,404 | 4,420 | 2,239 | 2,954
+T18 r9 | 0.875 | 1,472 | 1,892 | 2,824 | 3,664 | 1,842 | 2,434
+T18 r10 | 0.900 | 1,174 | 1,508 | 2,250 | 2,916 | 1,449 | 1,919
+T18 r11 | 0.925 | 878 | 1,126 | 1,680 | 2,176 | 1,058 | 1,409
+T18 r12 | 0.950 | 583 | 748 | 1,115 | 1,443 | 670 | 904
+T18 r13 | 0.975 | 290 | 372 | 555 | 717 | 286 | 404
+T18 r14 | 1.000 | −1 | −1 | −1 | −1 | −96 | −91
+P77 [] 
+T19 r0 | B. Threshold JPY 7.5 million per QALY
+T19 r1 | Recurrence HR | Effect until 1 year after surgery: main comparison | Effect until 1 year after surgery: secondary comparison | No waning: main comparison | No waning: secondary comparison | Exercise continued after surgery: main comparison | Exercise continued after surgery: secondary comparison
+T19 r2 | 0.700 | 4,990 | 6,448 | 9,535 | 12,451 | 6,476 | 8,546
+T19 r3 | 0.725 | 4,560 | 5,888 | 8,702 | 11,355 | 5,905 | 7,786
+T19 r4 | 0.750 | 4,132 | 5,331 | 7,877 | 10,269 | 5,338 | 7,034
+T19 r5 | 0.775 | 3,707 | 4,779 | 7,058 | 9,194 | 4,775 | 6,289
+T19 r6 | 0.800 | 3,285 | 4,232 | 6,247 | 8,130 | 4,217 | 5,552
+T19 r7 | 0.825 | 2,865 | 3,688 | 5,442 | 7,078 | 3,664 | 4,822
+T19 r8 | 0.850 | 2,448 | 3,149 | 4,645 | 6,035 | 3,114 | 4,099
+T19 r9 | 0.875 | 2,034 | 2,614 | 3,854 | 5,004 | 2,569 | 3,384
+T19 r10 | 0.900 | 1,622 | 2,083 | 3,070 | 3,982 | 2,028 | 2,675
+T19 r11 | 0.925 | 1,212 | 1,556 | 2,292 | 2,971 | 1,491 | 1,973
+T19 r12 | 0.950 | 805 | 1,033 | 1,522 | 1,971 | 958 | 1,278
+T19 r13 | 0.975 | 401 | 514 | 757 | 980 | 429 | 590
+T19 r14 | 1.000 | −1 | −1 | −1 | −1 | −96 | −91
+P78 [] 
+P79 [] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estimates in JPY 1,000 per patient. Main comparison: exercise added to chemotherapy plus pembrolizumab; secondary comparison: exercise added to chemotherapy alone. Effect until 1 year after surgery: the recurrence HR is held until 1 year after surgery and then halves every year; no waning: held for life; exercise continued after surgery: as the first, with exercise continued for 30 months after surgery at its monthly cost, the effect held until the end of continuation and halving every year thereafter, and the continuation cost counted among medical costs (inputs E04 and E05, Supplementary Table S2). The base-case duration is in Supplementary Table S4. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year.
+P80 [] [SECT] 
+P81 [] Supplementary Table S8. Net benefit of an exercise program for one year of eligible patients in Japan, if exercise reduced the recurrence hazarda
+T20 r0 | A. Net benefit per patient, JPY 1,000
+T20 r1 | Recurrence HR | Exercise added to chemotherapy plus pembrolizumab, base case | Exercise added to chemotherapy plus pembrolizumab, higher mortality after early recurrence with pembrolizumab | Exercise added to chemotherapy alone
+T20 r2 | 0.95 | 701 | 689 | 931
+T20 r3 | 0.90 | 1,610 | 1,586 | 2,079
+T20 r4 | 0.85 | 2,534 | 2,498 | 3,250
+P82 [] 
+T21 r0 | B. Net benefit for one year of patients, JPY billion
+T21 r1 | Recurrence HR | N = 3,451: base case | N = 3,451: higher mortality after early recurrence with pembrolizumab | N = 2,900: base case | N = 2,900: higher mortality after early recurrence with pembrolizumab | N = 4,000: base case | N = 4,000: higher mortality after early recurrence with pembrolizumab
+T21 r2 | 0.95 | 2.68 [2.22, 2.94] | 2.66 [2.21, 2.91] | 2.26 [1.87, 2.47] | 2.23 [1.85, 2.44] | 3.11 [2.58, 3.41] | 3.08 [2.56, 3.37]
+T21 r3 | 0.90 | 6.10 [5.16, 6.61] | 6.04 [5.13, 6.55] | 5.12 [4.34, 5.56] | 5.08 [4.31, 5.50] | 7.07 [5.98, 7.67] | 7.00 [5.94, 7.59]
+T21 r4 | 0.85 | 9.57 [8.15, 10.36] | 9.49 [8.10, 10.25] | 8.05 [6.85, 8.71] | 7.98 [6.81, 8.62] | 11.10 [9.45, 12.01] | 11.00 [9.39, 11.88]
+P83 [] 
+P84 [] aValues are conditional on the recurrence HR shown, not expected values. Net benefit per patient: maximum affordable cost at JPY 5 million per QALY minus the cost of the fee-schedule-based program (Table 1). N: patients with stage II or III triple-negative breast cancer (M0) who received neoadjuvant chemotherapy in 2024, 3,451 in total, of whom 2,294 received neoadjuvant pembrolizumab (main comparison) and 1,157 did not (secondary comparison); Japanese Breast Cancer Society, National Breast Cancer Registry Report No. 55 (cases diagnosed in 2024, final version) [7]. Sensitivity analyses: N = 2,900 (registrations in 2023) and N = 4,000 (allowing for incomplete registration), with the same share receiving pembrolizumab. Panel B: deterministic estimate and 95% UI. 95% UI: 2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year; UI, uncertainty interval.
+P85 [] [SECT] 
+P86 [] Supplementary Table S9. One-way sensitivity analysis: maximum affordable cost for exercise added to chemotherapy plus pembrolizumab and ICER of chemotherapy plus pembrolizumab compared with chemotherapy alonea
+T22 r0 | Inputs that changed either result
+T22 r1 | Code | Input | Lower bound | Upper bound | Maximum affordable cost, input at lower bound | Maximum affordable cost, input at upper bound | ICER, input at lower bound | ICER, input at upper bound
+T22 r2 | A01 | Paclitaxel plus carboplatin (12 weeks), drug cost | 85,302 | 113,736 [drug price, lower only] | — | — | 2,053 | 2,053
+T22 r3 | A02 | Doxorubicin or epirubicin plus cyclophosphamide (4 cycles), drug cost | 25,122 | 33,496 [drug price, lower only] | — | — | 2,053 | 2,053
+T22 r4 | A03 | Pembrolizumab, drug cost per dose | 299,193 | 398,924 [drug price, lower only] | 2,729 | 2,726 | 1,296 | 2,053
+T22 r5 | A04 | Outpatient drug administration, per visit (fees and tests included) | 10,768 | 18,160 | 2,727 | 2,726 | 2,034 | 2,063
+T22 r6 | A05 | Supportive care (G-CSF, antiemetics), per cycle | 5,820 | 67,296 [mirrored (assumed)] | — | — | 2,052 | 2,053
+T22 r7 | A06 | Surgery (mix of procedures) | 641,441 | 1,250,000 | — | — | 2,050 | 2,054
+T22 r8 | A07 | Postoperative radiotherapy, proportion treated | 0.50600 | 0.90000 | — | — | 2,052 | 2,054
+T22 r9 | A08 | Postoperative radiotherapy, cost per course | 405,300 | 485,300 [mirrored (assumed)] | — | — | 2,053 | 2,053
+T22 r10 | B01 | Immune-related AE management cost: hypothyroidism | 19,293 | 236,000 | — | — | 2,052 | 2,061
+T22 r11 | B02 | Immune-related AE management cost: hyperthyroidism | 19,428 | 236,000 | — | — | 2,052 | 2,056
+T22 r12 | B03 | Immune-related AE management cost: adrenal insufficiency | 118,000 | 472,000 | — | — | 2,051 | 2,056
+T22 r13 | B04 | Immune-related AE management cost: hypophysitis | 118,000 | 472,000 | — | — | 2,052 | 2,055
+T22 r14 | B05 | Immune-related AE management cost: pneumonitis | 31,628 | 236,000 | — | — | 2,053 | 2,053
+T22 r15 | B06 | Immune-related AE management cost: colitis | 20,370 | 236,000 | — | — | 2,053 | 2,053
+T22 r16 | B07 | Immune-related AE management cost: hepatitis | 20,370 | 236,000 | — | — | 2,053 | 2,054
+T22 r17 | B08 | Immune-related AE management cost: severe skin reactions | 38,057 | 472,000 | — | — | 2,049 | 2,058
+T22 r18 | B09 | Immune-related AE management cost: type 1 diabetes | 118,000 | 472,000 | — | — | 2,052 | 2,053
+T22 r19 | B10 | Immune-related AE management cost: other serious events | 118,000 | 472,000 | — | — | 2,052 | 2,055
+T22 r20 | B11 | Febrile neutropenia management cost per event | 189,000 | 283,000 [mirrored (assumed)] | — | — | 2,052 | 2,053
+T22 r21 | B21C | Incidence: hypothyroidism (immune-related) | 0.03578 | 0.08438 | — | — | 2,053 | 2,052
+T22 r22 | B21P | Incidence: hypothyroidism (immune-related) | 0.12636 | 0.17771 | — | — | 2,052 | 2,053
+T22 r23 | B22C | Incidence: hyperthyroidism (immune-related) | 0.00726 | 0.03672 | — | — | 2,053 | 2,052
+T22 r24 | B22P | Incidence: hyperthyroidism (immune-related) | 0.03783 | 0.07037 | — | — | 2,052 | 2,053
+T22 r25 | B23C | Incidence: adrenal insufficiency (immune-related) | 0.00000 | 0.00944 [zero events, fixed in PSA] | — | — | 2,053 | 2,052
+T22 r26 | B23P | Incidence: adrenal insufficiency (immune-related) | 0.01567 | 0.03917 | — | — | 2,052 | 2,054
+T22 r27 | B24C | Incidence: hypophysitis (immune-related) | 0.00007 | 0.01424 | — | — | 2,053 | 2,051
+T22 r28 | B24P | Incidence: hypophysitis (immune-related) | 0.01076 | 0.03140 | — | — | 2,052 | 2,054
+T22 r29 | B25C | Incidence: pneumonitis (immune-related) | 0.00062 | 0.01845 | — | — | 2,053 | 2,052
+T22 r30 | B25P | Incidence: pneumonitis (immune-related) | 0.00360 | 0.01833 | — | — | 2,053 | 2,053
+T22 r31 | B26C | Incidence: colitis (immune-related) | 0.00000 | 0.00944 [zero events, fixed in PSA] | — | — | 2,053 | 2,053
+T22 r32 | B26P | Incidence: colitis (immune-related) | 0.00282 | 0.01660 | — | — | 2,053 | 2,053
+T22 r33 | B27C | Incidence: hepatitis (immune-related) | 0.00000 | 0.00944 [zero events, fixed in PSA] | — | — | 2,053 | 2,053
+T22 r34 | B27P | Incidence: hepatitis (immune-related) | 0.00527 | 0.02171 | — | — | 2,053 | 2,053
+T22 r35 | B28C | Incidence: severe skin reactions (immune-related) | 0.00007 | 0.01424 | — | — | 2,053 | 2,051
+T22 r36 | B28P | Incidence: severe skin reactions (immune-related) | 0.03349 | 0.06455 | — | — | 2,051 | 2,055
+T22 r37 | B29C | Incidence: type 1 diabetes (immune-related) | 0.00000 | 0.00944 [zero events, fixed in PSA] | — | — | 2,053 | 2,052
+T22 r38 | B29P | Incidence: type 1 diabetes (immune-related) | 0.00139 | 0.01303 | — | — | 2,052 | 2,054
+T22 r39 | B30C | Incidence: other serious immune-related AEs | 0.00007 | 0.01424 | — | — | 2,053 | 2,051
+T22 r40 | B30P | Incidence: other serious immune-related AEs | 0.01172 | 0.03297 | — | — | 2,052 | 2,054
+T22 r41 | B31C | Incidence: febrile neutropenia | 0.12675 | 0.20240 | — | — | 2,057 | 2,048
+T22 r42 | B31P | Incidence: febrile neutropenia | 0.15737 | 0.21285 | — | — | 2,050 | 2,056
+T22 r43 | B33C | Grade 3 or higher AEs of six types, events per patient | 0.886 | 1.086 | — | — | 2,053 | 2,052
+T22 r44 | B33P | Grade 3 or higher AEs of six types, events per patient | 0.993 | 1.139 | — | — | 2,052 | 2,053
+T22 r45 | C01 | Follow-up cost per year, years 1 to 2 | 11,660 | 24,880 [mirrored (assumed)] | 2,727 | 2,726 | 2,053 | 2,053
+T22 r46 | C02 | Follow-up cost per year, years 3 to 5 | 10,120 | 23,340 [mirrored (assumed)] | 2,727 | 2,726 | 2,052 | 2,053
+T22 r47 | C03 | Follow-up cost per year, year 6 onward | 9,350 | 22,570 [mirrored (assumed)] | 2,729 | 2,723 | 2,046 | 2,060
+T22 r48 | D01 | Locoregional recurrence, initial treatment cost | 916,988 | 1,528,313 [±25% (assumed)] | 2,724 | 2,729 | 2,055 | 2,050
+T22 r49 | D02 | Locoregional recurrence, monthly cost thereafter | 2,284 | 3,806 [±25% (assumed)] | 2,726 | 2,727 | 2,053 | 2,053
+T22 r50 | D03 | First-line treatment of distant recurrence, monthly cost | 915,446 | 1,416,257 | — | — | 2,379 | 1,835
+T22 r51 | D03P | First-line treatment of distant recurrence, monthly cost | 973,662 | 1,781,422 | 2,642 | 2,783 | 1,660 | 2,315
+T22 r52 | D04 | First-line treatment of distant recurrence, mean duration | 7.77 | 12.96 [±25% (assumed)] | — | — | 2,009 | 2,091
+T22 r53 | D04P | First-line treatment of distant recurrence, mean duration | 8.13 | 13.55 [±25% (assumed)] | 2,725 | 2,728 | 2,045 | 2,059
+T22 r54 | D05 | Second-line and later treatment, monthly cost | 1,059,715 | 1,766,192 [±25% (assumed)] | 2,617 | 2,836 | 2,274 | 1,831
+T22 r55 | D06 | End-of-life care, last 3 months | 956,901 | 1,283,100 [mirrored (assumed)] | 2,723 | 2,729 | 2,060 | 2,046
+T22 r56 | E06 | Musculoskeletal AEs, any grade, with exercise | 0.14895 | 0.22464 | 2,727 | 2,726 | — | —
+T22 r57 | E07 | Musculoskeletal AEs, any grade, without exercise | 0.08731 | 0.14767 | 2,726 | 2,727 | — | —
+T22 r58 | E08 | Musculoskeletal AE management cost per event | 6,540 | 11,080 [mirrored (assumed)] | 2,727 | 2,726 | — | —
+T22 r59 | E09 | Musculoskeletal AEs, grade 3 or higher, with exercise | 0.00145 | 0.02035 | 2,727 | 2,726 | — | —
+T22 r60 | E10 | Musculoskeletal AEs, grade 3 or higher, without exercise | 0.00005 | 0.01203 | 2,726 | 2,727 | — | —
+T22 r61 | U01 | Utility, event-free during treatment | 0.881 | 0.897 | 2,726 | 2,726 | 2,056 | 2,049
+T22 r62 | U02 | Utility, event-free after treatment | 0.877 | 0.897 | 2,701 | 2,751 | 2,073 | 2,033
+T22 r63 | U03 | Utility, locoregional recurrence | 0.787 | 0.873 | 2,731 | 2,722 | 2,051 | 2,055
+T22 r64 | U04 | Utility, distant recurrence or progression during neoadjuvant therapy | 0.700 | 0.770 | 2,734 | 2,719 | 2,046 | 2,059
+T22 r65 | U05 | Utility decrement per grade 3 or higher AE (12.5 weeks) | 0.000 | 0.059 | 2,727 | 2,726 | 2,052 | 2,053
+P87 [] 
+P88 [] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Data of Fig. 3 and Supplementary Fig. S2. Each input was set to its lower or upper bound with all other inputs at base-case values. Maximum affordable cost: recurrence HR 0.85, threshold JPY 5 million per QALY, JPY 1,000 per patient (base case in Table 2). ICER: JPY 1,000 per QALY (base case in Table 3). Bounds are in the units of Supplementary Table S2; brackets mark ranges set by rule (Supplementary Table S2). All 64 inputs that changed either result are listed; a dash means that the input did not change that result. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; ICER, incremental cost-effectiveness ratio; JPY, Japanese yen; QALY, quality-adjusted life year.
+P89 [] [SECT] 
+P90 [] 
+P91 [] Supplementary Fig. S2. One-way sensitivity analysis of the incremental cost-effectiveness ratio of chemotherapy plus pembrolizumab compared with chemotherapy alonea
+P92 [] Bars show the ICER when one input is set to its lower bound (dark bars) or upper bound (light bars) and all other inputs keep their base-case values; the vertical line is the base-case estimate (Table 3). The 20 inputs with the widest ranges of the 59 that changed the ICER are shown. Brackets mark ranges set by rule: [±25%], ±25% around the base value; [mirrored], the missing bound mirrored; [price], drug price varied downward only, to 75% of the list price. Codes refer to Supplementary Table S2; all values are listed in Supplementary Table S9.
+P93 [] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. AE, adverse event; ICER, incremental cost-effectiveness ratio; JPY, Japanese yen; QALY, quality-adjusted life year.
+P94 [] [SECT] 
+P95 [] Supplementary Table S10. Maximum affordable cost, break-even recurrence hazard ratios and the ICER of pembrolizumab under other scenariosa
+T23 r0 | Scenario results
+T23 r1 | Scenario | Main comparison: maximum affordable cost at recurrence HR 0.85 | Main comparison: recurrence HR (reduction in recurrence hazard, %) at which the maximum affordable cost equals the program cost | Main comparison: recurrence HR (reduction in recurrence hazard, %) at which medical costs avoided equal the program cost | Secondary comparison: maximum affordable cost at recurrence HR 0.85 | Secondary comparison: recurrence HR (reduction in recurrence hazard, %) at which the maximum affordable cost equals the program cost | Secondary comparison: recurrence HR (reduction in recurrence hazard, %) at which medical costs avoided equal the program cost | ICER of chemotherapy plus pembrolizumab compared with chemotherapy alone
+T23 r2 | Utility values from Japanese populationsb | 2,733 | 0.989 (1.1) | 0.958 (4.2) | 3,451 | 0.991 (0.9) | 0.966 (3.4) | 2,047
+T23 r3 | Utility value set: United States | 2,638 | 0.989 (1.1) | 0.958 (4.2) | 3,330 | 0.991 (0.9) | 0.966 (3.4) | 2,154
+T23 r4 | Utility value set: United Kingdom | 2,673 | 0.989 (1.1) | 0.958 (4.2) | 3,376 | 0.991 (0.9) | 0.966 (3.4) | 2,111
+T23 r5 | Australian reimbursement submission | 2,518 | 0.988 (1.2) | 0.958 (4.2) | 3,178 | 0.991 (0.9) | 0.966 (3.4) | 2,301
+T23 r6 | Longer survival after progression during neoadjuvant therapyc | Same as base case (Table 2) | Same as base case (Table 2) | Same as base case (Table 2) | Same as base case (Table 2) | Same as base case (Table 2) | Same as base case (Table 2) | 2,082
+T23 r7 | Japanese post-operative treatmentd | 2,413 | 0.988 (1.2) | 0.953 (4.7) | 2,893 | 0.990 (1.0) | 0.960 (4.0) | Table 3
+P96 [] 
+P97 [] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estimates. Main comparison: exercise added to chemotherapy plus pembrolizumab; secondary comparison: exercise added to chemotherapy alone; program cost: the fee-schedule-based program (Table 1). Maximum affordable cost in JPY 1,000 per patient at JPY 5 million per QALY; ICER in JPY 1,000 per QALY. The value in parentheses is the reduction in the recurrence hazard, 100 × (1 − HR), in %. Base-case values are in Tables 2 and 3. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; ICER, incremental cost-effectiveness ratio; JPY, Japanese yen; QALY, quality-adjusted life year.
+P98 [] bEvent-free survival during and after treatment 0.89 (EQ-5D-5L with the Japanese value set, a Japanese single-center cohort with primary breast cancer); distant recurrence and progression during neoadjuvant therapy 0.742 (taxane arm of the SELECT BC trial, Japanese value set); no values from Japanese populations were found for locoregional recurrence or the decrement for grade 3 or higher adverse events, which keep their base-case values.
+P99 [] cMedian survival of 26 months after progression during neoadjuvant therapy instead of the early-recurrence distribution (Supplementary Table S2); this scenario did not reproduce trial overall survival in years 1 to 3. Progression during neoadjuvant therapy occurs before surgery and is the same with and without exercise, whereas the exercise effect on recurrence acts only after surgery. The maximum affordable costs and break-even hazard ratios for exercise therefore equal the base-case values in Table 2 at the precision shown; this scenario changes only the ICER of pembrolizumab.
+P100 [] dCapecitabine or olaparib after surgery for patients without pCR (Table 1).

@@ -1,0 +1,16 @@
+Warning messages:
+1: package 'flexsurv' was built under R version 4.5.3 
+2: package 'flexsurvcure' was built under R version 4.5.3 
+Warning message:
+package 'ggplot2' was built under R version 4.5.3 
+four-arm analysis: 0.1 minutes; checks 10/10 passed
+   lambda axis      root   f_at_lo   f_at_hi
+1 5000000  hr0 0.7222939  11540767  -6548412
+2 5000000  pcr 0.1895650  -6548412   6233024
+3 7500000  hr0 0.6378514  12889839 -11939333
+4 7500000  pcr 0.2408119 -11939333   6405079
+                                          note
+1                                             
+2 outside the main axis (pCR gain > 10 points)
+3           outside the main axis (hr0 < 0.70)
+4 outside the main axis (pCR gain > 10 points)

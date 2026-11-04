@@ -1,0 +1,52 @@
+3b | Supplementary Table S4. Maximum affordable cost of an exercise program => Supplementary Table S5. Maximum affordable cost of an exercise program
+3b | Supplementary Table S5. Maximum affordable cost of an exercise program => Supplementary Table S6. Maximum affordable cost of an exercise program
+3b | Supplementary Table S6. Incremental costs by category for exercise add => Supplementary Table S7. Incremental costs by category for exercise add
+3b | bEquals minus the medical costs avoided (Table 2). => bEquals minus the medical costs avoided (Table 3).
+3b | Supplementary Table S7. Maximum affordable cost of an exercise program => Supplementary Table S8. Maximum affordable cost of an exercise program
+3b | aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy => aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy
+3b | Supplementary Table S8. Net benefit of an exercise program for one yea => Supplementary Table S9. Net benefit of an exercise program for one yea
+3b | Supplementary Table S9. One-way sensitivity analysis: maximum affordab => Supplementary Table S10. One-way sensitivity analysis: maximum afforda
+3b | aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy => aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy
+3b | Bars show the ICER when one input is set to its lower bound (dark bars => Bars show the ICER when one input is set to its lower bound (dark bars
+3b | Supplementary Table S10. Maximum affordable cost, break-even recurrenc => Supplementary Table S11. Maximum affordable cost, break-even recurrenc
+3b | Same as base case (Table 2) => Same as base case (Table 3)
+3b | Same as base case (Table 2) => Same as base case (Table 3)
+3b | Same as base case (Table 2) => Same as base case (Table 3)
+3b | Same as base case (Table 2) => Same as base case (Table 3)
+3b | Same as base case (Table 2) => Same as base case (Table 3)
+3b | Same as base case (Table 2) => Same as base case (Table 3)
+3b | Table 3 => Supplementary Table S4
+3b | aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy => aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy
+3b | cMedian survival of 26 months after progression during neoadjuvant the => cMedian survival of 26 months after progression during neoadjuvant the
+1   | Title page (p. 1)
+2   | Abstract (p. 2)
+3   | Introduction, paragraphs 1 to 4 (pp. 3 to 4)
+4   | Methods, Study design, paragraph 3 (p. 5)
+5   | Methods, Study design, paragraph 1; Table 1 (pp. 4 to 5)
+6   | Methods, Study design, paragraphs 1 to 2 (pp. 4 to 5)
+7   | Methods, Study design, paragraph 1 (pp. 4 to 5)
+8   | Methods, Study design, paragraph 2 (p. 5)
+9   | Methods, Study design, paragraph 2 (p. 5)
+10   | Methods, Study design, paragraph 2 (p. 5)
+11   | Methods, Outcomes, paragraphs 1 to 2 (pp. 5 to 6)
+12   | Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Supplementary Methods S1 (pp. 6 to 7)
+13   | Methods, Survival, costs and utilities, paragraph 2 (p. 7)
+14   | Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2; Table 1; Supplementary Table S2 (pp. 6 to 7)
+15   | Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2 (pp. 6 to 7)
+16 * | Methods, Study design, paragraph 1; Methods, Statistical analysis, paragraph 1; Fig. 1; Supplementary Methods S1; Statements and Declarations, Data availability (pp. 4 to 28)
+17 * | Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Methods, Statistical analysis, stages (1) to (3); Supplementary Methods S1 (pp. 6 to 8)
+18   | No subgroup analyses beyond the two comparisons; Methods, Study design, paragraph 1 (pp. 4 to 5)
+19   | Not performed
+20 * | Methods, Statistical analysis, stages (4) to (6); Supplementary Methods S1 (pp. 8 to 9)
+21   | Not performed
+22   | Table 1; Supplementary Table S2
+23 * | Results, Four strategies compared, paragraph 1; Results, Exercise compared with pembrolizumab, paragraph 1; Results, Maximum affordable cost of exercise, paragraphs 1 to 3; Results, Duration and metastatic treatment costs, paragraphs 1 to 3; Fig. 2; Tables 2 and 3; Supplementary Tables S4 to S9 (pp. 9 to 11)
+24 * | Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 3; Supplementary Tables S5, S8, S10 and S11; Supplementary Fig. S2 (pp. 11 to 12)
+25   | Not applicable (item 21)
+26 * | Discussion, paragraphs 1 to 8; Discussion, Implications; Discussion, Limitations (pp. 12 to 15)
+27 * | Statements and Declarations, Funding (p. 27)
+28 * | Statements and Declarations, Competing interests (p. 27)
+3a delete row | ['C. Exercise effect needed to match the QALY gain of pembrolizumabd']
+3a delete row | ['Recurrence HR with exercise added to chemotherapy alone', '0.425', '—', '—', '—', '—']
+3a delete row | ['Increase in pCR with exercise added to chemotherapy alone, percentage points', '35.9', '—', '—', '—', '—']
+3a insert | Supplementary Table S4. Incremental costs by category, QALYs and cost-effectiveness of pembrolizumab added to 

@@ -1,0 +1,6 @@
+fourarm_totals.csv: rows 12, numeric max |diff| 0, NA mismatches 0, text differences 0
+fourarm_incremental.csv: rows 36, numeric max |diff| 0, NA mismatches 0, text differences 0
+fourarm_nmb_equal.csv: rows 4, numeric max |diff| 0, NA mismatches 0, text differences 0
+fourarm_checks.csv: rows 10, numeric max |diff| 0, NA mismatches 0, text differences 0
+fourarm_unit_tests.csv: rows 12, numeric max |diff| 0, NA mismatches 0, text differences 0
+public copy: ICER both v. exercise at HR 0.85 = 2,245 | NMB-equal hr0 at JPY 5 million = 0.722 | at JPY 7.5 million = 0.638

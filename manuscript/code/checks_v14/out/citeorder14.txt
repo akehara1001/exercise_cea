@@ -1,0 +1,5 @@
+main text: paragraphs 60, citation groups 61, numbers 110; first-appearance order == 1..71: True
+manuscript (to References): v14 citation sequence == v13: False (61 groups)
+tables: v14 citation sequence == v13: True (24 groups)
+ESM: v14 citation sequence == v13: True (126 groups)
+cited anywhere: 78 of 78; missing []; only in tables/ESM [72, 73, 74, 75, 76, 77, 78]

@@ -1,0 +1,9 @@
+citation groups v13 61 v14 61 | same multiset: True
+  delete v13 [(6,)] -> v14 []
+  insert v13 [] -> v14 [(6,)]
+('Table ', 1) first (ranges expanded): ('Exercise effect and costs', 'Table 1') | first explicit: ('Exercise effect and costs', 'Table 1')
+('Table ', 2) first (ranges expanded): ('Four strategies compared', 'Table 2') | first explicit: ('Four strategies compared', 'Table 2')
+('Table ', 3) first (ranges expanded): ('Maximum affordable cost of exercise', 'Table 3') | first explicit: ('Maximum affordable cost of exercise', 'Table 3')
+('Table S', 4) first (ranges expanded): ('Study design', 'Tables S1–S11') | first explicit: ('Exercise compared with pembrolizumab', 'Table S4')
+('Table S', 5) first (ranges expanded): ('Study design', 'Tables S1–S11') | first explicit: ('Maximum affordable cost of exercise', 'Table S5')
+('Table S', 11) first (ranges expanded): ('Study design', 'Tables S1–S11') | first explicit: ('Sensitivity and scenario analyses', 'Table S11')

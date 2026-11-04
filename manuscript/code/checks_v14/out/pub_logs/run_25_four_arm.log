@@ -1,0 +1,15 @@
+Warning messages:
+1: package 'flexsurv' was built under R version 4.5.3 
+2: package 'flexsurvcure' was built under R version 4.5.3 
+Warning message:
+package 'ggplot2' was built under R version 4.5.3 
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+Error in data.frame(item = c("generated", "head_at_run", "head_subject",  : 
+  arguments imply differing number of rows: 8, 6
+In addition: Warning messages:
+1: In system2("git", c("-C", shQuote(ROOT), ...), stdout = TRUE) :
+  running command '"git" -C "." rev-parse --short HEAD' had status 128
+2: In system2("git", c("-C", shQuote(ROOT), ...), stdout = TRUE) :
+  running command '"git" -C "." log -1 --format=%s' had status 128
+Execution halted
