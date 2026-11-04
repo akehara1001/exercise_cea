@@ -1,0 +1,9 @@
+reference 8 URLs, each requested once with curl (default user agent, follow redirects), 2026-11-04T23:39Z
+[1] https://www.mhlw.go.jp/topics/2026/04/xls/tp20261014-01_01.xlsx
+    404 | text/html | 48956 bytes | redirects 0 | final https://www.mhlw.go.jp/topics/2026/04/xls/tp20261014-01_01.xlsx | sha256 37e627f723d829e5
+[2] https://www.mhlw.go.jp/topics/2026/04/xls/tp20261014-01_02.xlsx
+    404 | text/html | 48956 bytes | redirects 0 | final https://www.mhlw.go.jp/topics/2026/04/xls/tp20261014-01_02.xlsx | sha256 37e627f723d829e5
+[3] http://web.archive.org/web/20261014082215/https://www.mhlw.go.jp/topics/2026/04/xls/tp20261014-01_01.xlsx
+    200 | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet | 727243 bytes | redirects 0 | final http://web.archive.org/web/20261014082215/https://www.mhlw.go.jp/topics/2026/04/xls/tp20261014-01_01.xlsx | sha256 21bb77b08fb9dd5f
+[4] http://web.archive.org/web/20261015005104/https://www.mhlw.go.jp/topics/2026/04/xls/tp20261014-01_02.xlsx
+    200 | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet | 386582 bytes | redirects 0 | final http://web.archive.org/web/20261015005104/https://www.mhlw.go.jp/topics/2026/04/xls/tp20261014-01_02.xlsx | sha256 161d801b4c94314c

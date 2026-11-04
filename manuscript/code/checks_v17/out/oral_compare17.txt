@@ -1,0 +1,13 @@
+rows: 14 Oct 7073, 1 Nov 7073; added 0, removed 0, changed 2
+  changed: ('6250120X1027', 'パキロビッドパック300') [(12, '12538.6', '12001.2'), (14, 'None', 'R8.11.1新薬価適用')]
+  changed: ('6250120X2023', 'パキロビッドパック600') [(12, '19805.5', '18956.7'), (14, 'None', 'R8.11.1新薬価適用')]
+
+row | parameter | product | strength | basis | used | 14 Oct | 1 Nov | n generics 14 Oct/1 Nov
+  111 | F05, D03, D03P | リムパーザ錠150mg | 150mg1錠 | product | 4788 | 4788 | 4788 | 1/1
+  158 | F02 | カペシタビン (generics) | 300mg1錠 | lowest generic of the same strength | 46.4 | 46.4 | 46.4 | 7/7
+     lowest, 14 Oct: カペシタビン錠300mg「NK」、カペシタビン錠300mg「サワイ」、カペシタビン錠300mg「タカタ」、カペシタビン錠300mg「トーワ」、カペシタビン錠300mg「ヤクルト」、カペシタビン錠300mg「日医工」 | 1 Nov same: True
+  159 | F02 (upper bound) | ゼローダ錠300 | 300mg1錠 | product | 107.3 | 107.3 | 107.3 | 1/1
+  174 | A05 | オランザピン (generics) | 5mg1錠 | lowest generic of the same strength | 14.3 | 14.3 | 14.3 | 9/9
+     lowest, 14 Oct: オランザピン5mg口腔内崩壊錠、オランザピン5mg錠 | 1 Nov same: True
+  176 | A05 | デカドロン錠4mg | 4mg1錠 | product | 23.4 | 23.4 | 23.4 | 1/1
+all used = 14 Oct: True | all used = 1 Nov: True

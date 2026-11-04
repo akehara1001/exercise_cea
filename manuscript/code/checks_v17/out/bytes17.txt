@@ -1,0 +1,15 @@
+manuscript_v17_BCRT.docx : parts 24 24 same names/order True
+  parts differing: ['word/document.xml']
+  xml chunks: 170 170 changed blocks 1
+   - 8. Ministry of Health, Labour and Welfare (2026) National Health Insurance drug price list and information on generic drugs: injections, products list
+   + 8. Ministry of Health, Labour and Welfare (2026) National Health Insurance drug price list and information on generic drugs: oral drugs and injections
+ESM_1_v17.docx : parts 27 27 same names/order True
+  parts differing: ['word/document.xml']
+  xml chunks: 2508 2508 changed blocks 1
+   - Statements and Declarations, Funding (p. 26)
+   + Statements and Declarations, Funding (p. 27)
+tables_v17_BCRT.docx = v16 tables_v16_BCRT.docx (byte-identical)
+Fig1.tif = v16 Fig1.tif (byte-identical)
+Fig2.tif = v16 Fig2.tif (byte-identical)
+Fig3.tif = v16 Fig3.tif (byte-identical)
+cover_letter_v17_BCRT.docx = v16 cover_letter_v16_BCRT.docx (byte-identical)

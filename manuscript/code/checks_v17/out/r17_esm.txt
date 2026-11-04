@@ -1,0 +1,10 @@
+ESM: units v16 2507, v17 2507, unchanged 2506, changed blocks 1
+  [1] replace: 1 -> 1 units
+     - [CHEERS pages] Statements and Declarations, Funding (p. 26)
+     + [CHEERS pages] Statements and Declarations, Funding (p. 27)
+  numbers in the unchanged units: 2780 (identical by construction)
+  number tokens: v16 2781, v17 2781
+  only in v16: {'26': 1}
+  only in v17: {'27': 1}
+  units by explanation: {'CHEERS pages': 2}
+  UNEXPLAINED: 0

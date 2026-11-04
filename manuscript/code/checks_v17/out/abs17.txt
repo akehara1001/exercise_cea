@@ -1,0 +1,7 @@
+To estimate the maximum cost at which a structured exercise program added to neoadjuvant chemotherapy for stage II or III triple-negative breast cancer would be cost-effective in Japan.
+
+A state-transition model based on KEYNOTE-522 simulated chemotherapy with or without pembrolizumab, each with or without exercise. It took the Japanese payer perspective over a lifetime, discounting at 2% annually. The exercise effect was a hazard ratio (HR) for recurrence after surgery of 0.70 to 1.00. The maximum affordable cost was the threshold of 5 million Japanese yen (JPY) per quality-adjusted life year (QALY) times the incremental QALYs, minus incremental medical costs other than the program cost.
+
+At recurrence HRs of 0.95, 0.85 and 0.72, both strategies without exercise were dominated. Pembrolizumab cost JPY 2,053 thousand per QALY; exercise would need an HR of 0.425 to match its QALY gain and 0.722 to match its net benefit. Added to chemotherapy plus pembrolizumab, exercise had a maximum affordable cost of JPY 2,726 thousand at an HR of 0.85 (95% uncertainty interval [2,223, 3,040]). A program priced from the medical fee schedule (JPY 192,400) became cost-effective at an HR of 0.989, and medical costs avoided alone paid for it at HRs of 0.958 to 0.914. Effect duration changed the maximum affordable cost more than any cost input.
+
+In Japan, the value of exercise during neoadjuvant chemotherapy depends on the size and duration of its effect on recurrence far more than on its price. Trials should measure recurrence and whether the effect lasts.

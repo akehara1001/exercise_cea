@@ -1,0 +1,49 @@
+paragraphs scanned: 51 (abstract 5 + main 46 )
+banned words: {}
+throat-clearing: {}
+bare time words: {'\\bcurrently\\b': 1, '\\bnow\\b': 1, '\\bcurrent\\b': 1}
+connectives: {}
+causal words: {}
+em dash —: 0 | middle dot ・: 0 | 'Note' paragraphs: 0
+sentences: 137 | >30 words: 46 | longest: 67
+   67: (6) To test other assumptions, scenario analyses changed one assumption at a time (Table 1
+   58: In value for money the gap is narrower, because the program costs a small fraction of the 
+   49: In the 2024 national registry, 47% of patients treated with neoadjuvant chemotherapy, incl
+   47: Further secondary outcomes were the recurrence HRs at which the maximum affordable cost, o
+   47: Because most recurrences after neoadjuvant chemotherapy with pembrolizumab occur early [6]
+   46: They also included the exercise effect, as a recurrence HR or an increase in pCR, at which
+   46: (7) To express the result for Japan, the one-year net benefit used the fee-schedule-based 
+   44: Cost-effectiveness analyses of the KEYNOTE-522 regimen come from the United States, Hong K
+   42: Relative to chemotherapy alone, the net monetary benefit of exercise at JPY 5 million per 
+   42: In Japan, one month of treatment after distant recurrence costs more than the whole progra
+   42: (5) To find the inputs that move the results most, one-way sensitivity analyses set each i
+   41: Whether exercise during neoadjuvant chemotherapy for stage II or III TNBC reduces recurren
+   41: The maximum affordable cost at an HR of 0.85 was JPY 1,772 thousand when the effect lasted
+   41: Searches of PubMed and Europe PMC covering 2000 to 2026 identified no economic evaluation 
+   40: The willingness-to-pay threshold for exercise was JPY 5 million per QALY [41,42]; the high
+   40: It compared the four strategies formed by chemotherapy with or without pembrolizumab and w
+   40: In the KEYNOTE-522 trial of stage II or III TNBC, adding pembrolizumab to neoadjuvant chem
+   39: The maximum affordable cost equaled the cost of the fee-schedule-based program at an HR of
+   39: Survival after distant recurrence came from a French cohort diagnosed in 2008 to 2020, lar
+   39: Its main aim was to estimate the maximum cost per patient at which exercise added to chemo
+   39: During neoadjuvant chemotherapy, diet and exercise were associated with a higher pCR in on
+   38: In breast cancer, randomized trials of exercise during adjuvant chemotherapy improved phys
+   38: Arms were ordered by total cost; an arm that cost more and gave fewer QALYs than another, 
+   37: Event-free survival after surgery came from parametric models fitted to patient-level data
+   37: (3) To estimate the maximum affordable cost, the model was run at recurrence HRs from 0.70
+   36: Secondary outcomes were the total costs and QALYs of the four arms and the incremental cos
+   36: In an alternative pathway, exercise raised pCR by 0 to 10 percentage points without changi
+   36: Excess mortality after distant recurrence came from the French Epidemiological Strategy an
+   36: Break-even HRs and the exercise effects matching the QALY gain or the net monetary benefit
+   35: Utilities were EuroQol 5-dimension 5-level (EQ-5D-5L) values from KEYNOTE-522 with the Ger
+   35: To give the same net monetary benefit, it required an HR of 0.722 at JPY 5 million per QAL
+   35: The supervised program used the CHALLENGE program cost [46], converted from 2024 Canadian 
+   35: (1) To check that the model reproduced the trial, overall survival, which was not used to 
+   34: This study aimed to place a structured exercise program during neoadjuvant chemotherapy fo
+   34: The main comparison was exercise added to chemotherapy plus pembrolizumab against the same
+   33: Where a source gave no range, the range was ±25% of the base value or the missing bound mi
+   33: Pembrolizumab remained cost-effective on top of exercise, as it is on its own in Japan and
+   33: At an HR of 0.95, the one-year net benefit for the 3,451 registered patients was JPY 2.68 
+   33: Alternative durations held it until 1 year after surgery or for life; in a further alterna
+   32: The primary outcome was the maximum affordable cost of an exercise program per patient: th
+paragraphs >150 words: []

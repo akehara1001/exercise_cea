@@ -1,0 +1,10 @@
+manuscript: units v16 169, v17 169, unchanged 168, changed blocks 1
+  [1] replace: 1 -> 1 units
+     - [2 (i) ref 8] 8. Ministry of Health, Labour and Welfare (2026) National Health Insurance drug price list and information on generic drugs: injections, products listed as of 1
+     + [2 (i) ref 8] 8. Ministry of Health, Labour and Welfare (2026) National Health Insurance drug price list and information on generic drugs: oral drugs and injections, products
+  numbers in the unchanged units: 1030 (identical by construction)
+  number tokens: v16 1049, v17 1060
+  only in v16: {}
+  only in v17: {'2026': 2, '04': 2, '20261014': 2, '-01': 2, '01': 2, '20261014082215': 1}
+  units by explanation: {'2 (i) ref 8': 2}
+  UNEXPLAINED: 0

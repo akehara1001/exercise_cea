@@ -1,0 +1,12 @@
+   not located: 8 'Purpose To estimate the maximum cost at which a structured e' | head True tail False
+   not located: 85 '8. Ministry of Health, Labour and Welfare (2026) National He' | head True tail False
+   not located: 95 '18. Dias Rato N, Garcia C, Pinto D, Guedes H, Joaquim A, Via' | head True tail False
+   not located: 98 '21. Gubler-Gut BE, Pöhlmann J, Flatz A, Schwenkglenks M, Roh' | head True tail False
+   not located: 105 '28. Huang M, Fasching PA, Haiderali A, Xue W, Yang C, Pan W ' | head True tail False
+   not located: 119 '42. Ministry of Health, Labour and Welfare (2026) Handling o' | head True tail False
+   not located: 132 '55. Kuemmel S, Fasching PA, Schmid P, Harbeck N, Takahashi M' | head True tail False
+   not located: 138 '61. European Medicines Agency (2022) Keytruda (pembrolizumab' | head True tail False
+   not located: 149 '72. AstraZeneca (2025) Datroway demonstrated an unprecedente' | head True tail False
+   not located: 153 '76. Nusawat C, Sato S, Taniguchi J, Kimura Y, Yasunaga H (20' | head True tail False
+   not located: 168 'Fig. 3 One-way sensitivity analysis of the maximum affordabl' | head True tail False
+paragraphs located 144; not located 11; page mismatches 0

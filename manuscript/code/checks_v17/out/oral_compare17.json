@@ -1,0 +1,191 @@
+{
+ "rows_1014": 7073,
+ "rows_1101": 7073,
+ "added": [],
+ "removed": [],
+ "changed": [
+  [
+   [
+    "6250120X1027",
+    "パキロビッドパック300"
+   ],
+   [
+    "内用薬",
+    "6250120X1027",
+    "ニルマトレルビル・リトナビル",
+    "１シート",
+    "None",
+    "None",
+    "None",
+    "パキロビッドパック３００",
+    "ファイザー",
+    "None",
+    "先発品",
+    "None",
+    "12538.6",
+    "None",
+    "None"
+   ],
+   [
+    "内用薬",
+    "6250120X1027",
+    "ニルマトレルビル・リトナビル",
+    "１シート",
+    "None",
+    "None",
+    "None",
+    "パキロビッドパック３００",
+    "ファイザー",
+    "None",
+    "先発品",
+    "None",
+    "12001.2",
+    "None",
+    "R8.11.1新薬価適用"
+   ]
+  ],
+  [
+   [
+    "6250120X2023",
+    "パキロビッドパック600"
+   ],
+   [
+    "内用薬",
+    "6250120X2023",
+    "ニルマトレルビル・リトナビル",
+    "１シート",
+    "None",
+    "None",
+    "None",
+    "パキロビッドパック６００",
+    "ファイザー",
+    "None",
+    "先発品",
+    "None",
+    "19805.5",
+    "None",
+    "None"
+   ],
+   [
+    "内用薬",
+    "6250120X2023",
+    "ニルマトレルビル・リトナビル",
+    "１シート",
+    "None",
+    "None",
+    "None",
+    "パキロビッドパック６００",
+    "ファイザー",
+    "None",
+    "先発品",
+    "None",
+    "18956.7",
+    "None",
+    "R8.11.1新薬価適用"
+   ]
+  ]
+ ],
+ "items": [
+  {
+   "row": 111,
+   "use": "F05, D03, D03P",
+   "basis": "product",
+   "product": "リムパーザ錠150mg",
+   "strength": "150mg1錠",
+   "code": "4291052F2023",
+   "price_used": 4788,
+   "price_1014": 4788,
+   "price_1101": 4788,
+   "n_1014": 1,
+   "n_1101": 1,
+   "used_equals_1014": true,
+   "used_equals_1101": true
+  },
+  {
+   "row": 158,
+   "use": "F02",
+   "basis": "lowest generic of the same strength",
+   "product": "カペシタビン (generics)",
+   "strength": "300mg1錠",
+   "code": null,
+   "price_used": 46.4,
+   "price_1014": 46.4,
+   "price_1101": 46.4,
+   "n_1014": 7,
+   "n_1101": 7,
+   "lowest_products_1014": [
+    "カペシタビン錠300mg「NK」",
+    "カペシタビン錠300mg「サワイ」",
+    "カペシタビン錠300mg「タカタ」",
+    "カペシタビン錠300mg「トーワ」",
+    "カペシタビン錠300mg「ヤクルト」",
+    "カペシタビン錠300mg「日医工」"
+   ],
+   "lowest_products_1101": [
+    "カペシタビン錠300mg「NK」",
+    "カペシタビン錠300mg「サワイ」",
+    "カペシタビン錠300mg「タカタ」",
+    "カペシタビン錠300mg「トーワ」",
+    "カペシタビン錠300mg「ヤクルト」",
+    "カペシタビン錠300mg「日医工」"
+   ],
+   "used_equals_1014": true,
+   "used_equals_1101": true
+  },
+  {
+   "row": 159,
+   "use": "F02 (upper bound)",
+   "basis": "product",
+   "product": "ゼローダ錠300",
+   "strength": "300mg1錠",
+   "code": "4223005F1022",
+   "price_used": 107.3,
+   "price_1014": 107.3,
+   "price_1101": 107.3,
+   "n_1014": 1,
+   "n_1101": 1,
+   "used_equals_1014": true,
+   "used_equals_1101": true
+  },
+  {
+   "row": 174,
+   "use": "A05",
+   "basis": "lowest generic of the same strength",
+   "product": "オランザピン (generics)",
+   "strength": "5mg1錠",
+   "code": null,
+   "price_used": 14.3,
+   "price_1014": 14.3,
+   "price_1101": 14.3,
+   "n_1014": 9,
+   "n_1101": 9,
+   "lowest_products_1014": [
+    "オランザピン5mg口腔内崩壊錠",
+    "オランザピン5mg錠"
+   ],
+   "lowest_products_1101": [
+    "オランザピン5mg口腔内崩壊錠",
+    "オランザピン5mg錠"
+   ],
+   "used_equals_1014": true,
+   "used_equals_1101": true
+  },
+  {
+   "row": 176,
+   "use": "A05",
+   "basis": "product",
+   "product": "デカドロン錠4mg",
+   "strength": "4mg1錠",
+   "code": "2454002F3020",
+   "price_used": 23.4,
+   "price_1014": 23.4,
+   "price_1101": 23.4,
+   "n_1014": 1,
+   "n_1101": 1,
+   "used_equals_1014": true,
+   "used_equals_1101": true
+  }
+ ],
+ "all_used_eq_1014": true,
+ "all_used_eq_1101": true
+}
