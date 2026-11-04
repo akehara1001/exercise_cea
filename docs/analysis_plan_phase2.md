@@ -142,3 +142,47 @@
 - 求法与稿件 Table 2 的基准分界点相同：Table 2 读 `sc_base_crossings.csv`，它由第 9 节 `plan9` 的 `crossings()` 求出，即在 hr0 ∈ [0.30, 1.00] 上用 `uniroot`（tol = 1e-6）连续求解，不用格点插值（报告第 1.7 节的格点插值不用）。为此把 `crossings()` 移到脚本顶层，加上参数集、S-JP 与是否含 k 外部栏的参数，函数体的求法不变；改动后重跑 `plan9_det`，核对其输出与已提交的文件逐字节相同。
 - 结果存为 `sc_crossings.csv`（scenario 列）。同一程序对基准再算一次，核对与 `sc_base_crossings.csv` 一致；美国、英国、澳大利亚、Elmore、S-JP 的格点上限与参照 ICER 核对与 `scenario_caps.csv`、`scenario_reference.csv` 一致。
 - 报告第 7.5 节：基准与上述六个情景的主比较与次比较上限（hr0 = 0.85，λ = 500 万日元）、分界点与参照 ICER。S-JP 依赖暂定值 F01P（第 7 节）；Elmore 为边界情景（与试验第 1 至 3 年的 OS 不一致），报告中注明。
+
+## 11. 四组增量分析与净收益分界点（2026-11-04，依据尾崎 2026-11-04 邮件；在计算之前单独提交）
+
+本节只做确定性计算（基准参数、基准栏：不用「早期复发后 k（外部）」、不用 S-JP），不做 PSA，不改变已有结果。程序：新脚本 `R/25_four_arm.R`，读入部分与 `R/22_phase2b_main.R` 第 19 至 42 行相同（ROOT、P、PV0、LAMBDA、E_LINES、`path_a()`、`path_b()`）；`R/22_phase2b_main.R` 与 `R/econ.R` 不改。结果存入 `output/phase2/main/`，文件名都以 `fourarm_` 开头，已有文件不覆盖；报告 `output/phase2/fourarm_report.md` 由同一脚本生成，不手改。稿件（`manuscript/v13/`）不动，不写原稿文字。
+
+### 11.1 四组与总量
+
+- 四组：chemo（单用化疗）、exercise（化疗加运动）、pembro（化疗加帕博利珠单抗）、both（化疗加帕博利珠单抗再加运动）。
+- 运动效应：路径 A 基准定义 `path_a("base", hr0)`（第 3、8 节：随机化后 5 年内保持 hr0，之后半衰期 1 年），hr0 = 0.95、0.85、0.72（0.72 为 CHALLENGE 的参照点）。两个运动组用同一 hr0。
+- 运动方案费用：E02（基本值 192,400 日元）为主。`econ_arm()` 的 `ECON_DEFAULTS` 默认是 E01，所以四组都显式给 `settings = list(exercise_cost = "E02")`。E01、E03 下的总费用用 `exercise_cost = "E01"`、`"E03"` 重新运行 `econ_arm()` 得到，不由加减法推；核对：运动两组的 cost_E01 − cost、cost_E03 − cost 分别恰等于 E01 − E02、E03 − E02，不含运动的两组三者相同（容差 1e-6 日元）。
+- 每组记录：cost（含方案费用）、qaly、ly_disc（折现生存年）；λ = 500 万与 750 万日元/QALY 下的净收益 NMB = λ × qaly − cost（cost 取 E02），以及相对 chemo 的净收益差。
+- 输出 `fourarm_totals.csv`：hr0, arm, cost, qaly, ly_disc, cost_E01, cost_E03, nmb_500, nmb_750, dnmb_500_vs_chemo, dnmb_750_vs_chemo。
+
+### 11.2 增量分析与支配
+
+- 函数 `icer_table(cost, qaly, arm)`（base R，不用新包）：
+  1. 按 cost 升序排（cost 相同时 qaly 高者在前）。
+  2. 强支配：存在另一组 cost ≤ 且 qaly ≥（至少一项严格不等）→ status = "dominated"；dominated_by 记全部支配它的组（按 cost 升序，以 "/" 连接）。
+  3. 扩展支配：未被强支配的组按 cost 顺序算相邻 ICER = Δcost / Δqaly；若某组（对前一个未被支配组）的 ICER 严格高于其后一组相对它的 ICER，该组 status = "extendedly dominated"，剔除后重算，直到 ICER 单调递增；同时有多处违反时，每次剔除费用最低的一处（与 `econ.R` 的 `frontier()` 相同）。dominated_by 记剔除时它前后的两个组（以 "/" 连接）。
+  4. 输出每组：cost、qaly、comparator（费用低于它的最近的一个最终前沿组）、相对 comparator 的 Δcost、Δqaly、ICER、status（frontier / dominated / extendedly dominated）、dominated_by。ICER 只给 frontier 与 extendedly dominated 的行；dominated 的行给 Δcost、Δqaly，ICER 留空（被强支配的组的 ICER 无解释意义）；费用最低的前沿组没有 comparator，Δ 与 ICER 留空。
+- 三个 hr0 各算一次；E02 为主，E01、E03 也各算一次（报告中只用其 status 作脚注）。输出 `fourarm_incremental.csv`（含 programme 列）。
+- 单元测试 `R/test_four_arm.R`：(a) 4 点玩具数据（含强支配与扩展支配各一例，输入顺序打乱），断言 status、dominated_by、comparator、Δ 与 ICER 与手算一致，并与 `econ.R` 的 `frontier()` 的 status 一致；(b) 由 `fourarm_totals.csv` 的 E02 的 cost（以及 cost_E01、cost_E03）与 qaly 重算的 status 与 `fourarm_incremental.csv` 一致。`R/25_four_arm.R` 的计算部分只在用 Rscript 直接运行时执行（`sys.nframe() == 0`），测试 `source()` 它只取函数。
+
+### 11.3 净收益分界点（化疗加运动 对 化疗加帕博利珠单抗）
+
+- 方程：λ × dQ_sec(x) − dC_sec(x) − E02 = λ × dQ_ref − dC_ref。sec = exercise 对 chemo，dC_sec 不含方案费用（`programme_dcost()`，同次比较的上限），所以左边 = 次比较的上限 − E02；ref = pembro 对 chemo（`det_reference.csv` 的 base 行；本脚本重算并核对）。即两组都用 E02 时，「化疗加运动」与「化疗加帕博利珠单抗」的净收益相等。f(x) = 左边 − 右边。
+- hr0 轴：x = hr0，`path_a("base", hr0)`；求法照抄 `R/22_phase2b_main.R` 第 121 行的 `solve()`：f(0.30) 与 f(1.00) 异号时 `uniroot(f, c(0.30, 1.00), tol = 1e-6)`，否则无根（NA）。
+- pCR 轴：x = pCR 比例的提高幅度 dp，`path_b(dp)`；同一函数体，区间换为 [0, 0.37]（同"同一把尺子"的 pCR 轴）。
+- λ = 500 万与 750 万日元/QALY 各求一次。输出 `fourarm_nmb_equal.csv`：lambda, axis, root, f_at_lo, f_at_hi, note（无根时写明在区间内 f 不变号及两端的符号；根在主轴之外〔hr0 < 0.70、dp > 0.10〕时照报并注明）。
+- 预期核对（计算前写定；不符就停下报告，不调整）：λ = 500 万的 hr0 根落在 [0.700, 0.725]（由 `det_caps.csv` 次比较 hr0 = 0.700 与 0.725 的 cap_500 线性内插约 0.72）；λ = 750 万的 hr0 根低于 0.70。
+
+### 11.4 一致性核对（任一不过就停）
+
+- 由 11.1 的总量反算 dQ、dC（exercise 对 chemo、both 对 pembro；dC 减去方案费用 E02），与 `det_caps.csv` 中 hr0 = 0.95、0.85 的 secondary、main（base 栏）行一致到 1e-6；pembro 对 chemo 的 dC、dQ 与 `det_reference.csv` 的 base 行一致到 1e-6。
+- 用同一 `solve()` 解 dQ_sec(hr0) = dQ_ref，须得 0.4248（`det_yardstick.csv` 的 0.424844，取 4 位小数比较；该文件用 tol 1e-7）。
+- 现有 6 个单元测试（`R/test_*.R`）全部重跑通过，加 `R/test_four_arm.R`。`Rscript R/25_four_arm.R tests` 依次以 Rscript 运行这 7 个脚本（判定：退出码 0 且输出中没有 "Execution halted"），结果写入 `fourarm_test_runs.csv`，并重写报告。
+
+### 11.5 报告（`output/phase2/fourarm_report.md`）
+
+- (A) 三个 hr0 各一块，按费用升序列四组：总费用（千日元）、总 QALY（3 位小数）、Δ费用、ΔQALY、ICER（千日元/QALY）、status、相对 chemo 的净收益（λ = 500 万日元，千日元）。
+- (B) 分界点：QALY 相等（"同一把尺子"，`det_yardstick.csv` 的 hr0 0.425 与 pCR +35.9 个百分点）与净收益相等（λ = 500 万、750 万；hr0 轴与 pCR 轴）。
+- (C) E01、E03 下每组的 status。
+- 另写 11.4 的核对结果、运行时间、运行时的 HEAD 与 `R/25_four_arm.R` 的 git blob 哈希（脚本与结果在同一提交，提交号由 blob 哈希对应）。数字舍入为 half up（与稿件相同）。
+- 公开代码目录（`exercise_cea_public`）这次不动，v14 时一并反映。
