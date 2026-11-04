@@ -1,0 +1,11 @@
+"check","detail","value","limit","pass"
+"programme_E01","cost_E01 − cost：运动两组 = E01 − E02，其余两组 = 0（12 行）",8.44011083245277e-10,"1e-06",TRUE
+"programme_E03","cost_E03 − cost：运动两组 = E03 − E02，其余两组 = 0（12 行）",0,"1e-06",TRUE
+"expected_hr0_500","λ 500 万的 hr0 根（det_caps.csv 次比较 hr0 0.700、0.725 的 cap_500 线性内插 = 0.7223）",0.722293874769265,"[0.700, 0.725]",TRUE
+"expected_hr0_750","λ 750 万的 hr0 根",0.637851426403323,"< 0.70",TRUE
+"det_caps_secondary_0.95","exercise 对 chemo（hr0 0.95）的 dQ、dC（减 E02）对 det_caps.csv secondary/base：最大绝对差",5.64614310860634e-09,"1e-06",TRUE
+"det_caps_main_0.95","both 对 pembro（hr0 0.95）的 dQ、dC（减 E02）对 det_caps.csv main/base：最大绝对差",2.20315996557474e-08,"1e-06",TRUE
+"det_caps_secondary_0.85","exercise 对 chemo（hr0 0.85）的 dQ、dC（减 E02）对 det_caps.csv secondary/base：最大绝对差",3.31783667206764e-08,"1e-06",TRUE
+"det_caps_main_0.85","both 对 pembro（hr0 0.85）的 dQ、dC（减 E02）对 det_caps.csv main/base：最大绝对差",3.31783667206764e-08,"1e-06",TRUE
+"det_reference","pembro 对 chemo 的 dC、dQ（三个 hr0 的行）对 det_reference.csv base：最大绝对差",2.04890966415405e-08,"1e-06",TRUE
+"yardstick_hr0","solve() 解 dQ_sec(hr0) = dQ_ref（det_yardstick.csv：0.424844，tol 1e-7）",0.424844036027942,"0.4248（4 位小数）",TRUE

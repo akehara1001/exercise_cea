@@ -179,6 +179,11 @@
 - 用同一 `solve()` 解 dQ_sec(hr0) = dQ_ref，须得 0.4248（`det_yardstick.csv` 的 0.424844，取 4 位小数比较；该文件用 tol 1e-7）。
 - 现有 6 个单元测试（`R/test_*.R`）全部重跑通过，加 `R/test_four_arm.R`。`Rscript R/25_four_arm.R tests` 依次以 Rscript 运行这 7 个脚本（判定：退出码 0 且输出中没有 "Execution halted"），结果写入 `fourarm_test_runs.csv`，并重写报告。
 
+#### 11.4 追记：单元测试的判定（2026-11-04，第一次运行之后修改，与上条不同）
+
+- 第一次运行时 7 个测试的输出都显示正常完成（各自打印通过信息，无 "Execution halted"），但退出码都是 255；直接从 shell 运行 `R/test_econ.R` 也是打印 "all econ unit tests passed" 后退出码 127。本机的 R 是 x64 版在 ARM64 上仿真，Rscript 正常结束后的退出码不可靠，所以上条的「退出码 0」不能用作判定。这是计划时的疏漏，不涉及任何数值结果。
+- 改为：每个测试以 `Rscript -e "source('R/<测试>'); cat('<完成标记>')"` 运行，完成标记出现（测试脚本运行到最后，`stopifnot` 等未报错）且输出中没有 "Execution halted" 为通过；退出码只作记录。用一个故意 `stopifnot` 失败的脚本确认过：失败时完成标记不出现且有 "Execution halted"。
+
 ### 11.5 报告（`output/phase2/fourarm_report.md`）
 
 - (A) 三个 hr0 各一块，按费用升序列四组：总费用（千日元）、总 QALY（3 位小数）、Δ费用、ΔQALY、ICER（千日元/QALY）、status、相对 chemo 的净收益（λ = 500 万日元，千日元）。
