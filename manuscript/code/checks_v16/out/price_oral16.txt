@@ -1,0 +1,13 @@
+oral products used (calculation sheet 計算根拠_尾崎; prices from 薬価サーチ, 令和8年度): searched in both injection lists (_02)
+  14 Oct: オランザピン (used 14.3): 1 rows in the injection list
+  14 Oct: デカドロン (used 23.4): 3 rows in the injection list
+  14 Oct: リムパーザ (used 4788): 0 rows in the injection list
+  14 Oct: オラパリブ (used 4788): 0 rows in the injection list
+  14 Oct: カペシタビン (used 46.4): 0 rows in the injection list
+  14 Oct: ゼローダ (used 107.3): 0 rows in the injection list
+  1 Nov: オランザピン (used 14.3): 1 rows in the injection list
+  1 Nov: デカドロン (used 23.4): 3 rows in the injection list
+  1 Nov: リムパーザ (used 4788): 0 rows in the injection list
+  1 Nov: オラパリブ (used 4788): 0 rows in the injection list
+  1 Nov: カペシタビン (used 46.4): 0 rows in the injection list
+  1 Nov: ゼローダ (used 107.3): 0 rows in the injection list

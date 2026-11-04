@@ -1,0 +1,23 @@
+manuscript: units v15 168, v16 169, unchanged 163, changed blocks 5
+  [1] replace: 1 -> 1 units
+     - [word count] Word count: abstract 248; main text 3,470 (excluding abstract, title page, tables, figures and references); 3 tables; 3 figures; 1 Online Resource
+     + [word count] Word count: abstract 248; main text 3,472 (excluding abstract, title page, tables, figures and references); 3 tables; 3 figures; 1 Online Resource
+  [2] replace: 1 -> 1 units
+     - [2a] This study aimed to place a structured exercise program during neoadjuvant chemotherapy for stage II or III TNBC on the same cost-effectiveness scale as pembrol
+     + [2a] This study aimed to place a structured exercise program during neoadjuvant chemotherapy for stage II or III TNBC on the same cost-effectiveness scale as pembrol
+  [3] replace: 1 -> 1 units
+     - [2b] Secondary outcomes were the total costs and QALYs of the four arms and the incremental cost-effectiveness ratios (ICERs) between them at recurrence HRs of 0.95,
+     + [2b] Secondary outcomes were the total costs and QALYs of the four arms and the incremental cost-effectiveness ratios (ICERs) between them at recurrence HRs of 0.95,
+  [4] replace: 1 -> 2 units
+     - [3 split] Exercise during adjuvant chemotherapy improves fitness [10–12], and supervised exercise has been delivered during neoadjuvant chemotherapy [16,17], so clinician
+     + [3 split] Exercise during adjuvant chemotherapy improves fitness [10–12], and supervised exercise has been delivered during neoadjuvant chemotherapy [16,17], so clinician
+     + [3 split] For payers, the price of a supervised program is far below what a confirmed effect would justify. In Japan, the fee schedule pays for rehabilitation of patients
+  [5] replace: 1 -> 1 units
+     - [1c ref 8] 8. Ministry of Health, Labour and Welfare (2026) National Health Insurance drug price list and information on generic drugs: injections, products listed as of 1
+     + [1c ref 8] 8. Ministry of Health, Labour and Welfare (2026) National Health Insurance drug price list and information on generic drugs: injections, products listed as of 1
+  numbers in the unchanged units: 1016 (identical by construction)
+  number tokens: v15 1041, v16 1049
+  only in v15: {'3,470': 1}
+  only in v16: {'3,472': 1, '2026': 2, '4': 1, '04': 1, '20261014': 1, '-01': 1, '02': 1, '20261015005104': 1}
+  units by explanation: {'word count': 2, '2a': 2, '2b': 2, '3 split': 3, '1c ref 8': 2}
+  UNEXPLAINED: 0

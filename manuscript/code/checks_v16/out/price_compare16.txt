@@ -1,0 +1,69 @@
+rows: 14 Oct 3479, 1 Nov 3479; added 0, removed 0, changed 13
+  changed: ('1390400D1026', 'テッペーザ点滴静注用500mg') [(12, '1175904', '1111100'), (14, 'None', 'R8.11.1新薬価適用')]
+  changed: ('2290401G1026', 'ヌーカラ皮下注100mgシリンジ') [(12, '159891', '143766'), (14, 'None', 'R8.11.1新薬価適用')]
+  changed: ('2290401G2022', 'ヌーカラ皮下注100mgペン') [(12, '159891', '143766'), (14, 'None', 'R8.11.1新薬価適用')]
+  changed: ('2492424G1022', 'アウィクリ注フレックスタッチ総量300単位') [(12, '2081', '2074'), (14, 'None', 'R8.11.1新薬価適用')]
+  changed: ('2492424G2029', 'アウィクリ注フレックスタッチ総量700単位') [(12, '3809', '3793'), (14, 'None', 'R8.11.1新薬価適用')]
+  changed: ('4291472D1026', 'トロデルビ点滴静注用200mg') [(12, '187195', '166604'), (14, 'None', 'R8.11.1新薬価適用')]
+  changed: ('4291474D1025', 'ダトロウェイ点滴静注用100mg') [(12, '311990', '277672'), (14, 'None', 'R8.11.1新薬価適用')]
+  changed: ('4490405G1024', 'デュピクセント皮下注300mgシリンジ') [(12, '53493', '51515'), (14, 'None', 'R8.11.1新薬価適用')]
+  changed: ('4490405G2020', 'デュピクセント皮下注300mgペン') [(12, '53659', '51675'), (14, 'None', 'R8.11.1新薬価適用')]
+  changed: ('4490405G3027', 'デュピクセント皮下注200mgシリンジ') [(12, '39549', '38087'), (14, 'None', 'R8.11.1新薬価適用')]
+  changed: ('4490405G4023', 'デュピクセント皮下注200mgペン') [(12, '39706', '38238'), (14, 'None', 'R8.11.1新薬価適用')]
+  changed: ('6399501A1020', 'ヒフデュラ配合皮下注') [(12, '634797', '539577'), (14, 'None', 'R8.11.1新薬価適用')]
+  changed: ('6399501G1023', 'ヒフデュラ配合皮下注シリンジ') [(12, '665026', '565272'), (14, 'None', 'R8.11.1新薬価適用')]
+
+products used | strength | used | 14 Oct | 1 Nov | same
+  A01 | パクリタキセル注射液30mg「NP」 | 30mg5mL1瓶 | 1368 | 1368 | 1368 | True
+  A01 | パクリタキセル注100mg/16.7mL「NK」 | 100mg16.7mL1瓶 | 4580 | 4580 | 4580 | True
+  A01 (originator, reference) | タキソール注射液30mg | 30mg5mL1瓶 | 1413 | 1413 | 1413 | True
+  A01 (originator, reference) | タキソール注射液100mg | 100mg16.7mL1瓶 | 4491 | 4491 | 4491 | True
+  A01 | カルボプラチン注射液50mg「NK」 | 50mg5mL1瓶 | 1347 | 1347 | 1347 | True
+  A01 | カルボプラチン点滴静注液150mg「サンド」 | 150mg15mL1瓶 | 2183 | 2183 | 2183 | True
+  A01 | カルボプラチン注射液450mg「日医工」 | 450mg45mL1瓶 | 4877 | 4877 | 4877 | True
+  A01 (originator, reference) | パラプラチン注射液50mg | 50mg5mL1瓶 | 1217 | 1217 | 1217 | True
+  A01 (originator, reference) | パラプラチン注射液150mg | 150mg15mL1瓶 | 3001 | 3001 | 3001 | True
+  A01 (originator, reference) | パラプラチン注射液450mg | 450mg45mL1瓶 | 7514 | 7514 | 7514 | True
+  A02 | ドキソルビシン塩酸塩注射液50mg「サンド」 | 50mg25mL1瓶 | 2687 | 2687 | 2687 | True
+  A02 (originator, reference) | アドリアシン注用50 | 50mg1瓶 | 6210 | 6210 | 6210 | True
+  A02 | エピルビシン塩酸塩注射用10mg「NK」 | 10mg1瓶 | 1375 | 1375 | 1375 | True
+  A02 | エピルビシン塩酸塩注射用50mg「NK」 | 50mg1瓶 | 6528 | 6528 | 6528 | True
+  A02 | 注射用エンドキサン500mg | 500mg1瓶 | 1500 | 1500 | 1500 | True
+  A03, D03, D03P | キイトルーダ点滴静注100mg | 100mg4mL1瓶 | 199462 | 199462 | 199462 | True
+  A05 | ホスアプレピタント点滴静注用150mg「NK」 | 150mg1瓶 | 4924 | 4924 | 4924 | True
+  A05 | パロノセトロン静注0.75mg/2mLシリンジ「NP」 | 0.75mg2mL1筒 | 2836 | 2836 | 2836 | True
+  A05, scenario eribulin | デキサート注射液6.6mg | 6.6mg2mL1瓶 | 197 | 197 | 197 | True
+  A05 | ペグフィルグラスチムBS皮下注3.6mg「ニプロ」 | 3.6mg0.36mL1筒 | 54924 | 54924 | 54924 | True
+  A05 (listed in the sheet) | グラニセトロン静注液3mg「アイロム」 | 3mg3mL1管 | 652 | 652 | 652 | True
+  D03 | アブラキサン点滴静注用100mg | 100mg1瓶 | 30878 | 30878 | 30878 | True
+  D03P, D05 | トロデルビ点滴静注用200mg | 200mg1瓶 | 187195 | 187195 | 166604 | False
+  D03P, D05 | エンハーツ点滴静注用100mg | 100mg1瓶 | 192652 | 192652 | 192652 | True
+  D03, D03P, D05 | ダトロウェイ点滴静注用100mg | 100mg1瓶 | 311990 | 311990 | 277672 | False
+  D03, D03P | ベバシズマブBS点滴静注400mg「ファイザー」 | 400mg16mL1瓶 | 22130 | 22130 | 22130 | True
+  D03, D03P | ベバシズマブBS点滴静注100mg「ファイザー」 | 100mg4mL1瓶 | 5932 | 5932 | 5932 | True
+  D05 lower bound, scenario eribulin | エリブリンメシル酸塩静注液1mg「ニプロ」 | 1mg2mL1瓶 | 22997 | 22997 | 22997 | True
+  scenario eribulin (reference) | ハラヴェン静注1mg | 1mg2mL1瓶 | 50010 | 50010 | 50010 | True
+  scenario eribulin (reference) | エリブリンメシル酸塩静注液1mg「日医工」 | 1mg2mL1瓶 | 23399 | 23399 | 23399 | True
+all used products: 14 Oct = used: True | 14 Oct = 1 Nov: False
+
+rule check (lowest generic / lowest non-generic, number of products) by ingredient and strength
+  パクリタキセル 100mg16.7mL1瓶: 14 Oct 4580/4491 (n 3) | 1 Nov 4580/4491 (n 3) | same True
+  パクリタキセル 100mg1瓶: 14 Oct None/30878 (n 1) | 1 Nov None/30878 (n 1) | same True
+  パクリタキセル 30mg5mL1瓶: 14 Oct 1368/1413 (n 3) | 1 Nov 1368/1413 (n 3) | same True
+  カルボプラチン 150mg15mL1瓶: 14 Oct 2183/3001 (n 6) | 1 Nov 2183/3001 (n 6) | same True
+  カルボプラチン 450mg45mL1瓶: 14 Oct 4877/7514 (n 6) | 1 Nov 4877/7514 (n 6) | same True
+  カルボプラチン 50mg5mL1瓶: 14 Oct 1347/1217 (n 6) | 1 Nov 1347/1217 (n 6) | same True
+  ドキソルビシン塩酸塩 10mg1瓶: 14 Oct 612/1939 (n 2) | 1 Nov 612/1939 (n 2) | same True
+  ドキソルビシン塩酸塩 10mg5mL1瓶: 14 Oct 643/None (n 1) | 1 Nov 643/None (n 1) | same True
+  ドキソルビシン塩酸塩 20mg10mL1瓶: 14 Oct None/50167 (n 1) | 1 Nov None/50167 (n 1) | same True
+  ドキソルビシン塩酸塩 50mg1瓶: 14 Oct 2730/6210 (n 2) | 1 Nov 2730/6210 (n 2) | same True
+  ドキソルビシン塩酸塩 50mg25mL1瓶: 14 Oct 2687/None (n 1) | 1 Nov 2687/None (n 1) | same True
+  エピルビシン塩酸塩 10mg1瓶: 14 Oct 1375/None (n 1) | 1 Nov 1375/None (n 1) | same True
+  エピルビシン塩酸塩 10mg5mL1瓶: 14 Oct 2243/None (n 1) | 1 Nov 2243/None (n 1) | same True
+  エピルビシン塩酸塩 50mg1瓶: 14 Oct 6528/None (n 1) | 1 Nov 6528/None (n 1) | same True
+  エピルビシン塩酸塩 50mg25mL1瓶: 14 Oct 6741/None (n 1) | 1 Nov 6741/None (n 1) | same True
+  シクロホスファミド水和物 100mg1瓶: 14 Oct None/516 (n 1) | 1 Nov None/516 (n 1) | same True
+  シクロホスファミド水和物 500mg1瓶: 14 Oct None/1500 (n 1) | 1 Nov None/1500 (n 1) | same True
+  ペムブロリズマブ(遺伝子組換え) 100mg4mL1瓶: 14 Oct None/199462 (n 1) | 1 Nov None/199462 (n 1) | same True
+  エリブリンメシル酸塩 1mg2mL1瓶: 14 Oct 22997/50010 (n 3) | 1 Nov 22997/50010 (n 3) | same True
+rule check, all same: True
