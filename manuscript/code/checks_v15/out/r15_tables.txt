@@ -1,0 +1,10 @@
+tables: units v14 309, v15 309, unchanged 308, changed blocks 1
+  [1] replace: 1 -> 1 units
+     - [3a] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Costs in JPY 1,000 
+     + [3a] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Costs in JPY 1,000 
+  numbers in the unchanged units: 334 (identical by construction)
+  number tokens: v14 345, v15 345
+  only in v14: {}
+  only in v15: {}
+  units by explanation: {'3a': 2}
+  UNEXPLAINED: 0

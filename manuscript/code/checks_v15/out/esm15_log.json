@@ -1,0 +1,203 @@
+[
+ {
+  "step": "3b",
+  "before": "aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Chemotherapy plus pembrolizumab compared with chemotherapy alone. Cells show deterministic estimates; where probabilistic analysis was run, the 95% UI [2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples] follows in brackets. Probability cost-effective: share of samples with a positive net monetary benefit. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon; categories may not add to the total because of rounding. Scenarios are defined in Table 1. A dash means not computed. HR, hazard ratio; ICER, incremental cost-effectiveness ratio; JPY, Japanese yen; pCR, pathological complete response; QALY, quality-adjusted life year; UI, uncertainty interval.",
+  "after": "aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Chemotherapy plus pembrolizumab compared with chemotherapy alone. Cells show deterministic estimates; where probabilistic analysis was run, the 95% UI [2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples] follows in brackets. Probability cost-effective: share of samples with a positive net monetary benefit. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon; categories may not add to the total because of rounding. Scenarios are defined in Table 1. A dash means not computed. ICER, incremental cost-effectiveness ratio; JPY, Japanese yen; QALY, quality-adjusted life year; UI, uncertainty interval."
+ },
+ {
+  "step": "3c",
+  "item": 1,
+  "old": "Title page (p. 1)",
+  "new": "Title page (p. 1)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 2,
+  "old": "Abstract (p. 2)",
+  "new": "Abstract (p. 2)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 3,
+  "old": "Introduction, paragraphs 1 to 4 (pp. 3 to 4)",
+  "new": "Introduction, paragraphs 1 to 4 (pp. 3 to 4)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 4,
+  "old": "Methods, Study design, paragraph 3 (p. 5)",
+  "new": "Methods, Study design, paragraph 3 (p. 5)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 5,
+  "old": "Methods, Study design, paragraph 1; Table 1 (pp. 4 to 5)",
+  "new": "Methods, Study design, paragraph 1; Table 1 (pp. 4 to 5)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 6,
+  "old": "Methods, Study design, paragraphs 1 to 2 (pp. 4 to 5)",
+  "new": "Methods, Study design, paragraphs 1 to 2 (pp. 4 to 5)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 7,
+  "old": "Methods, Study design, paragraph 1 (pp. 4 to 5)",
+  "new": "Methods, Study design, paragraph 1 (pp. 4 to 5)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 8,
+  "old": "Methods, Study design, paragraph 2 (p. 5)",
+  "new": "Methods, Study design, paragraph 2 (p. 5)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 9,
+  "old": "Methods, Study design, paragraph 2 (p. 5)",
+  "new": "Methods, Study design, paragraph 2 (p. 5)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 10,
+  "old": "Methods, Study design, paragraph 2 (p. 5)",
+  "new": "Methods, Study design, paragraph 2 (p. 5)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 11,
+  "old": "Methods, Outcomes, paragraphs 1 to 2 (pp. 5 to 6)",
+  "new": "Methods, Outcomes, paragraphs 1 to 2 (pp. 5 to 6)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 12,
+  "old": "Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Supplementary Methods S1 (pp. 6 to 7)",
+  "new": "Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Supplementary Methods S1 (pp. 6 to 7)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 13,
+  "old": "Methods, Survival, costs and utilities, paragraph 2 (p. 7)",
+  "new": "Methods, Survival, costs and utilities, paragraph 2 (p. 7)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 14,
+  "old": "Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2; Table 1; Supplementary Table S2 (pp. 6 to 7)",
+  "new": "Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2; Table 1; Supplementary Table S2 (pp. 6 to 7)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 15,
+  "old": "Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2 (pp. 6 to 7)",
+  "new": "Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2 (pp. 6 to 7)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 16,
+  "old": "Methods, Study design, paragraph 1; Methods, Statistical analysis, paragraph 1; Fig. 1; Supplementary Methods S1; Statements and Declarations, Data availability (pp. 4 to 28)",
+  "new": "Methods, Study design, paragraph 1; Methods, Statistical analysis, paragraph 1; Fig. 1; Supplementary Methods S1; Statements and Declarations, Data availability (pp. 4 to 27)",
+  "changed": true
+ },
+ {
+  "step": "3c",
+  "item": 17,
+  "old": "Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Methods, Statistical analysis, stages (1) to (3); Supplementary Methods S1 (pp. 6 to 8)",
+  "new": "Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Methods, Statistical analysis, stages (1) to (3); Supplementary Methods S1 (pp. 6 to 8)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 18,
+  "old": "No subgroup analyses beyond the two comparisons; Methods, Study design, paragraph 1 (pp. 4 to 5)",
+  "new": "No subgroup analyses beyond the two comparisons; Methods, Study design, paragraph 1 (pp. 4 to 5)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 19,
+  "old": "Not performed",
+  "new": "Not performed",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 20,
+  "old": "Methods, Statistical analysis, stages (4) to (6); Supplementary Methods S1 (pp. 8 to 9)",
+  "new": "Methods, Statistical analysis, stages (4) to (6); Supplementary Methods S1 (pp. 8 to 9)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 21,
+  "old": "Not performed",
+  "new": "Not performed",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 22,
+  "old": "Table 1; Supplementary Table S2",
+  "new": "Table 1; Supplementary Table S2",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 23,
+  "old": "Results, Four strategies compared, paragraph 1; Results, Exercise compared with pembrolizumab, paragraph 1; Results, Maximum affordable cost of exercise, paragraphs 1 to 3; Results, Duration and metastatic treatment costs, paragraphs 1 to 3; Fig. 2; Tables 2 and 3; Supplementary Tables S4 to S9 (pp. 9 to 11)",
+  "new": "Results, Four strategies compared, paragraph 1; Results, Exercise compared with pembrolizumab, paragraph 1; Results, Maximum affordable cost of exercise, paragraphs 1 to 3; Results, Duration and metastatic treatment costs, paragraphs 1 to 3; Fig. 2; Tables 2 and 3; Supplementary Tables S4 to S9 (pp. 9 to 11)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 24,
+  "old": "Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 3; Supplementary Tables S5, S8, S10 and S11; Supplementary Fig. S2 (pp. 11 to 12)",
+  "new": "Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 3; Supplementary Tables S5, S8, S10 and S11; Supplementary Fig. S2 (pp. 10 to 11)",
+  "changed": true
+ },
+ {
+  "step": "3c",
+  "item": 25,
+  "old": "Not applicable (item 21)",
+  "new": "Not applicable (item 21)",
+  "changed": false
+ },
+ {
+  "step": "3c",
+  "item": 26,
+  "old": "Discussion, paragraphs 1 to 8; Discussion, Implications; Discussion, Limitations (pp. 12 to 15)",
+  "new": "Discussion, paragraphs 1 to 7; Discussion, Implications; Discussion, Limitations (pp. 11 to 14)",
+  "changed": true
+ },
+ {
+  "step": "3c",
+  "item": 27,
+  "old": "Statements and Declarations, Funding (p. 27)",
+  "new": "Statements and Declarations, Funding (p. 26)",
+  "changed": true
+ },
+ {
+  "step": "3c",
+  "item": 28,
+  "old": "Statements and Declarations, Competing interests (p. 27)",
+  "new": "Statements and Declarations, Competing interests (p. 27)",
+  "changed": false
+ }
+]

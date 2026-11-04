@@ -1,0 +1,164 @@
+1a           |           49 | tables_v15 | A state-transition model simulated a cohort of women aged 49 years sta
+1a           |          522 | tables_v15 | A state-transition model simulated a cohort of women aged 49 years sta
+1d           |            2 | tables_v15 | (2) To compare the four arms, the model was run at recurrence HRs of 0
+1d           |         0.95 | fourarm_report.md | (2) To compare the four arms, the model was run at recurrence HRs of 0
+1d           |         0.85 | fourarm_report.md | (2) To compare the four arms, the model was run at recurrence HRs of 0
+1d           |         0.72 | fourarm_report.md | (2) To compare the four arms, the model was run at recurrence HRs of 0
+1e           |            4 | fourarm_report.md | (4) To reflect uncertainty, each of 1,000 probabilistic samples paired
+1e           |        1,000 | tables_v15 | (4) To reflect uncertainty, each of 1,000 probabilistic samples paired
+1e           |          2.5 | tables_v15 | (4) To reflect uncertainty, each of 1,000 probabilistic samples paired
+1e           |         97.5 | tables_v15 | (4) To reflect uncertainty, each of 1,000 probabilistic samples paired
+1e           |           95 | tables_v15 | (4) To reflect uncertainty, each of 1,000 probabilistic samples paired
+1f           |            7 | fourarm_report.md | (7) To express the result for Japan, the one-year net benefit used the
+1f           |         0.95 | fourarm_report.md | (7) To express the result for Japan, the one-year net benefit used the
+1f           |         0.90 | ESM_1_v15 | (7) To express the result for Japan, the one-year net benefit used the
+1f           |         0.85 | fourarm_report.md | (7) To express the result for Japan, the one-year net benefit used the
+1f           |         2024 | tables_v15 | (7) To express the result for Japan, the one-year net benefit used the
+1g           |            2 | tables_v15 | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |         0.95 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |         0.85 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |         0.72 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |        2,112 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |         0.95 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |        2,245 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |         0.85 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |        2,449 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |         0.72 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |            5 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |          931 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |         0.95 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |        3,250 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |         0.85 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |        6,413 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |         0.72 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1g           |        6,355 | fourarm_report.md | Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 
+1h-1         |            2 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-1         |        4,426 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-1         |        2.156 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-1         |        2,053 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-1         |        6,531 | ESM_1_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-1         |       −1,911 | ESM_1_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-1         |        0.425 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-1         |         35.9 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-1         |            2 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-1         |        0.722 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-1         |         19.0 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-1         |            5 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-1         |        0.638 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-1         |         24.1 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-1         |          7.5 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-1         |        0.722 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-2         |            2 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-2         |        4,426 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-2         |        2.156 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-2         |        2,053 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-2         |        0.425 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-2         |         35.9 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-2         |            2 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-2         |        0.722 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-2         |         19.0 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-2         |            5 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-2         |        0.638 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-2         |         24.1 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-2         |          7.5 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-2         |        0.722 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-3         |            2 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-3         |        4,426 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-3         |        2.156 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-3         |        2,053 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-3         |        0.425 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-3         |         35.9 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-3         |            2 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-3         |        0.722 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-3         |            5 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-3         |        0.638 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-3         |          7.5 | tables_v15 | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-3         |         19.0 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-3         |         24.1 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1h-3         |        0.722 | fourarm_report.md | Table 2 also shows pembrolizumab against chemotherapy alone: it cost J
+1i-1         |            2 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |         0.85 | fourarm_report.md | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |        2,726 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |           95 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |        2,223 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |        3,040 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |            3 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |         0.70 | fourarm_report.md | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |        5,596 | ESM_1_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |        0.989 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |          1.1 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |        0.958 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |          4.2 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |            3 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |            1 | fourarm_report.md | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |          389 | ESM_1_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |           95 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |          238 | ESM_1_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |          570 | ESM_1_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |           10 | fourarm_report.md | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |        3,898 | ESM_1_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |           95 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |        2,388 | ESM_1_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-1         |        5,713 | ESM_1_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |            2 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |         0.85 | fourarm_report.md | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |        2,726 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |           95 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |        2,223 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |        3,040 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |            3 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |         0.70 | fourarm_report.md | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |        5,596 | ESM_1_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |        0.989 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |          1.1 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |        0.958 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |          4.2 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |            3 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |           10 | fourarm_report.md | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |        3,898 | ESM_1_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |           95 | tables_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |        2,388 | ESM_1_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-2         |        5,713 | ESM_1_v15 | The maximum affordable cost rose as the recurrence HR with exercise fe
+1i-3         |         0.85 | fourarm_report.md | At an HR of 0.85, medical costs other than the program fell by JPY 702
+1i-3         |          702 | ESM_1_v15 | At an HR of 0.85, medical costs other than the program fell by JPY 702
+1i-4         |        3,443 | tables_v15 | Exercise added to chemotherapy alone had a maximum affordable cost of 
+1i-4         |         0.85 | fourarm_report.md | Exercise added to chemotherapy alone had a maximum affordable cost of 
+1i-4         |        0.991 | tables_v15 | Exercise added to chemotherapy alone had a maximum affordable cost of 
+1i-4         |        0.966 | tables_v15 | Exercise added to chemotherapy alone had a maximum affordable cost of 
+1i-4         |            3 | tables_v15 | Exercise added to chemotherapy alone had a maximum affordable cost of 
+1j           |         0.85 | fourarm_report.md | The monthly cost of second-line and later treatment moved the maximum 
+1j           |        2,617 | ESM_1_v15 | The monthly cost of second-line and later treatment moved the maximum 
+1j           |        2,836 | ESM_1_v15 | The monthly cost of second-line and later treatment moved the maximum 
+1j           |            3 | tables_v15 | The monthly cost of second-line and later treatment moved the maximum 
+1j           |        2,691 | ESM_1_v15 | The monthly cost of second-line and later treatment moved the maximum 
+1j           |           95 | tables_v15 | The monthly cost of second-line and later treatment moved the maximum 
+1j           |        2,201 | ESM_1_v15 | The monthly cost of second-line and later treatment moved the maximum 
+1j           |        2,994 | ESM_1_v15 | The monthly cost of second-line and later treatment moved the maximum 
+1j           |        2,733 | ESM_1_v15 | The monthly cost of second-line and later treatment moved the maximum 
+1j           |        0.988 | tables_v15 | The monthly cost of second-line and later treatment moved the maximum 
+1j           |        0.989 | tables_v15 | The monthly cost of second-line and later treatment moved the maximum 
+1j           |        1,296 | ESM_1_v15 | The monthly cost of second-line and later treatment moved the maximum 
+1j           |        1,920 | ESM_1_v15 | The monthly cost of second-line and later treatment moved the maximum 
+1j           |        3,044 | ESM_1_v15 | The monthly cost of second-line and later treatment moved the maximum 
+1k-1         |            2 | tables_v15 | At each of the three effect sizes examined, both strategies without ex
+1k-4         |            1 | fourarm_report.md | Most of the value of exercise came from the distant recurrences it wou
+1k-4         |          4.2 | tables_v15 | Most of the value of exercise came from the distant recurrences it wou
+1k-4         |          8.6 | tables_v15 | Most of the value of exercise came from the distant recurrences it wou
+1m           |            7 | fourarm_report.md | The effect of exercise during neoadjuvant chemotherapy on recurrence i
+1m           |         2008 | manuscript_v14 | The effect of exercise during neoadjuvant chemotherapy on recurrence i
+1m           |         2020 | manuscript_v14 | The effect of exercise during neoadjuvant chemotherapy on recurrence i
+1m           |            3 | tables_v15 | The effect of exercise during neoadjuvant chemotherapy on recurrence i
+1n           |          522 | tables_v15 | Trial inputs came from KEYNOTE-522 reports with data cutoffs from Marc
+1n           |         2021 | ESM_1_v15 | Trial inputs came from KEYNOTE-522 reports with data cutoffs from Marc
+1n           |         2025 | tables_v15 | Trial inputs came from KEYNOTE-522 reports with data cutoffs from Marc
+1n           |         2022 | ESM_1_v15 | Trial inputs came from KEYNOTE-522 reports with data cutoffs from Marc
+1n           |         2022 | ESM_1_v15 | Trial inputs came from KEYNOTE-522 reports with data cutoffs from Marc
+1n           |            1 | fourarm_report.md | Trial inputs came from KEYNOTE-522 reports with data cutoffs from Marc
+1c           |         0.95 | fourarm_report.md | Secondary outcomes were the total costs and QALYs of the four arms and
+1c           |         0.85 | fourarm_report.md | Secondary outcomes were the total costs and QALYs of the four arms and
+1c           |         0.72 | fourarm_report.md | Secondary outcomes were the total costs and QALYs of the four arms and
+1m split     |            7 | fourarm_report.md | Survival was modeled from reconstructed data, and the 7-year event-fre
+1m split     |         2008 | manuscript_v14 | Survival was modeled from reconstructed data, and the 7-year event-fre
+1m split     |         2020 | manuscript_v14 | Survival was modeled from reconstructed data, and the 7-year event-fre
+1m split     |            3 | tables_v15 | Survival was modeled from reconstructed data, and the 7-year event-fre
+numbers checked: 163; not found in the sources: 0

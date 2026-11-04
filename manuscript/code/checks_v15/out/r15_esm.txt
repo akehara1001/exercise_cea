@@ -1,0 +1,22 @@
+ESM: units v14 2507, v15 2507, unchanged 2502, changed blocks 5
+  [1] replace: 1 -> 1 units
+     - [3c] Methods, Study design, paragraph 1; Methods, Statistical analysis, paragraph 1; Fig. 1; Supplementary Methods S1; Statements and Declarations, Data availability
+     + [3c] Methods, Study design, paragraph 1; Methods, Statistical analysis, paragraph 1; Fig. 1; Supplementary Methods S1; Statements and Declarations, Data availability
+  [2] replace: 1 -> 1 units
+     - [3c] Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 3; Supplementary Tab
+     + [3c] Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 3; Supplementary Tab
+  [3] replace: 1 -> 1 units
+     - [3c] Discussion, paragraphs 1 to 8; Discussion, Implications; Discussion, Limitations (pp. 12 to 15)
+     + [3c] Discussion, paragraphs 1 to 7; Discussion, Implications; Discussion, Limitations (pp. 11 to 14)
+  [4] replace: 1 -> 1 units
+     - [3c] Statements and Declarations, Funding (p. 27)
+     + [3c] Statements and Declarations, Funding (p. 26)
+  [5] replace: 1 -> 1 units
+     - [3b] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Chemotherapy plus p
+     + [3b] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Chemotherapy plus p
+  numbers in the unchanged units: 2748 (identical by construction)
+  number tokens: v14 2781, v15 2781
+  only in v14: {'12': 2, '8': 1, '15': 1, '28': 1}
+  only in v15: {'26': 1, '7': 1, '10': 1, '11': 1, '14': 1}
+  units by explanation: {'3c': 8, '3b': 2}
+  UNEXPLAINED: 0

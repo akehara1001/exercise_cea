@@ -109,7 +109,7 @@ util_set <- function(set) {
   pv
 }
 # break-even points in hr0 on [0.30, 1.00] by uniroot, tol 1e-6 (plan sections 9.1 and 10.2; sc_base_crossings.csv,
-# Table 2 of the manuscript): cap = programme cost (lambda 5,000,000 and 7,500,000) and avoided medical costs (-dC,
+# Table 3 of the manuscript): cap = programme cost (lambda 5,000,000 and 7,500,000) and avoided medical costs (-dC,
 # programme cost excluded) = programme cost; E01-E03 at their base values. Px: parameter set of the base column;
 # Pk: that of the column "early-DR k external" of the main comparison (left out when NULL); sjp: S-JP in all arms
 crossings <- function(pv, Px = P, Pk = NULL, sjp = FALSE)

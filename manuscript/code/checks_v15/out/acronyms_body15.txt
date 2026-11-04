@@ -1,0 +1,14 @@
+### Acronym check (advisory; no reply needed)
+Coverage: body (partial)
+Not in this input: English abstract, Chinese abstract.
+Not checked:
+- Body, line 3: JPY (the initials before its parentheses do not spell it)
+- Body, line 3: TNBC (the initials before its parentheses do not spell it)
+- Body, line 9: QALY (the initials before its parentheses do not spell it)
+- Body, line 25: ICER (the initials before its parentheses do not spell it)
+
+| Scope | Line | Rule | Acronym | Uses |
+|---|---|---|---|---|
+| Body | 7 | Not defined | PMC | 1 |
+| Body | 19 | Not defined | CHEERS | 1 |
+| Body | 39 | Not defined | EQ | 1 |

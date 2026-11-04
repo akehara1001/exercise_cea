@@ -1,0 +1,66 @@
+manuscript: units v14 168, v15 168, unchanged 147, changed blocks 17
+  [1] replace: 1 -> 1 units
+     - [1o word count] Word count: abstract 248; main text 3,745 (excluding abstract, title page, tables, figures and references); 3 tables; 3 figures; 1 Online Resource
+     + [1o word count] Word count: abstract 248; main text 3,470 (excluding abstract, title page, tables, figures and references); 3 tables; 3 figures; 1 Online Resource
+  [2] replace: 1 -> 1 units
+     - [1a] A state-transition model simulated a cohort of women aged 49 years starting neoadjuvant chemotherapy for stage II or III TNBC, with the regimens and outcomes of
+     + [1a] A state-transition model simulated a cohort of women aged 49 years starting neoadjuvant chemotherapy for stage II or III TNBC, with the regimens and outcomes of
+  [3] replace: 1 -> 1 units
+     - [1n] Trial inputs came from KEYNOTE-522 reports with data cutoffs from March 2021 to October 2025 [4,5,43,44], extracted from 21 to 26 October 2026. The analysis pla
+     + [1n] Trial inputs came from KEYNOTE-522 reports with data cutoffs from March 2021 to October 2025 [4,5,43,44]. The analysis plan was written before any economic comp
+  [4] replace: 2 -> 2 units
+     - [1b] The primary outcome was the maximum affordable cost of an exercise program per patient: the willingness-to-pay threshold multiplied by the incremental QALYs, mi
+     - [1c] Secondary outcomes were the total costs and QALYs of the four arms and the incremental cost-effectiveness ratios (ICERs) between them at recurrence HRs of 0.95,
+     + [1b] The primary outcome was the maximum affordable cost of an exercise program per patient: the willingness-to-pay threshold multiplied by the incremental QALYs, mi
+     + [1c] Secondary outcomes were the total costs and QALYs of the four arms and the incremental cost-effectiveness ratios (ICERs) between them at recurrence HRs of 0.95,
+  [5] replace: 1 -> 1 units
+     - [1d] (2) To compare the four arms, the model was run at recurrence HRs of 0.95, 0.85 and 0.72 with the fee-schedule-based program. Arms were ordered by total cost; a
+     + [1d] (2) To compare the four arms, the model was run at recurrence HRs of 0.95, 0.85 and 0.72 with the fee-schedule-based program. Arms were ordered by total cost; a
+  [6] replace: 1 -> 1 units
+     - [1e] (4) To reflect uncertainty, each of 1,000 probabilistic samples paired one bootstrap replicate of the survival model with one draw of the other inputs. Costs, d
+     + [1e] (4) To reflect uncertainty, each of 1,000 probabilistic samples paired one bootstrap replicate of the survival model with one draw of the other inputs. Distribu
+  [7] replace: 1 -> 1 units
+     - [1f] (7) To express the result for Japan, the one-year net benefit used the fee-schedule-based program at recurrence HRs of 0.95, 0.90 and 0.85, applying the main co
+     + [1f] (7) To express the result for Japan, the one-year net benefit used the fee-schedule-based program at recurrence HRs of 0.95, 0.90 and 0.85, applying the main co
+  [8] replace: 1 -> 1 units
+     - [1g] Table 2 shows the four strategies at recurrence HRs with exercise of 0.95, 0.85 and 0.72, with the fee-schedule-based program. At each HR, chemotherapy plus exe
+     + [1g] Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 0.72 with the fee-schedule-based program. At each HR, both strategies without exercise cos
+  [9] replace: 1 -> 1 units
+     - [1h-1] Table 2 also shows pembrolizumab against chemotherapy alone: it cost JPY 4,426 thousand more per patient (95% UI [−330, 8,901]) and added 2.156 QALYs (95% UI [0
+     + [1h-3] Table 2 also shows pembrolizumab against chemotherapy alone: it cost JPY 4,426 thousand more per patient and added 2.156 QALYs, an ICER of JPY 2,053 thousand pe
+  [10] replace: 3 -> 3 units
+     - [1i-1] The maximum affordable cost rose as the recurrence HR with exercise fell (Fig. 2). At an HR of 0.85, exercise added to chemotherapy plus pembrolizumab had a max
+     - [1i-3] At an HR of 0.85, incremental medical costs other than the program were JPY −702 thousand per patient, of which second-line and later treatment of distant recur
+     - [1i-4] Exercise added to chemotherapy alone had a maximum affordable cost of JPY 3,443 thousand at an HR of 0.85 (95% UI [2,881, 3,785]). It equaled the fee-schedule-b
+     + [1i-2] The maximum affordable cost rose as the recurrence HR with exercise fell (Fig. 2). At an HR of 0.85, exercise added to chemotherapy plus pembrolizumab had a max
+     + [1i-3] At an HR of 0.85, medical costs other than the program fell by JPY 702 thousand per patient, mostly in treatment of distant recurrence (Table S7).
+     + [1i-4] Exercise added to chemotherapy alone had a maximum affordable cost of JPY 3,443 thousand at an HR of 0.85. It equaled the fee-schedule-based program cost at an 
+  [11] replace: 1 -> 1 units
+     - [1j] The monthly cost of second-line and later treatment moved the maximum affordable cost at an HR of 0.85 most, to JPY 2,617 and 2,836 thousand (Fig. 3; Table S10)
+     + [1j] The monthly cost of second-line and later treatment moved the maximum affordable cost at an HR of 0.85 most, to JPY 2,617 and 2,836 thousand (Fig. 3; Table S10)
+  [12] replace: 2 -> 2 units
+     - [1k-1] At each of the three effect sizes examined, both strategies without exercise were dominated (Table 2), so the choice in Japan is not between exercise and pembro
+     - [1k-2] Exercise cannot replace pembrolizumab in health gained: it would need to lower the recurrence hazard by more than half, far beyond the effects reported in exerc
+     + [1k-1] At each of the three effect sizes examined, both strategies without exercise were dominated (Table 2), so the choice in Japan is not between exercise and pembro
+     + [1k-2] Exercise cannot replace pembrolizumab in health gained: it would need to lower the recurrence hazard by more than half, far beyond the effects reported in exerc
+  [13] replace: 1 -> 1 units
+     - [1k-4] Most of the value of exercise came from the distant recurrences it would prevent. In Japan, one month of treatment after distant recurrence costs more than the 
+     + [1k-4] Most of the value of exercise came from the distant recurrences it would prevent. In Japan, one month of treatment after distant recurrence costs more than the 
+  [14] delete: 1 -> 0 units
+     - [1k-3 delete] The maximum affordable cost was higher without pembrolizumab, because more patients relapse and the same relative effect prevents more recurrences. Pembrolizuma
+  [15] replace: 1 -> 1 units
+     - [1l] Exercise during adjuvant chemotherapy improves fitness [10–12], and supervised exercise has been delivered during neoadjuvant chemotherapy [16,17], so clinician
+     + [1l] Exercise during adjuvant chemotherapy improves fitness [10–12], and supervised exercise has been delivered during neoadjuvant chemotherapy [16,17], so clinician
+  [16] replace: 1 -> 2 units
+     - [1m] The effect of exercise during neoadjuvant chemotherapy on recurrence is unknown, so all results for exercise are conditional on the assumed HR and duration, and
+     + [1m split] The effect of exercise during neoadjuvant chemotherapy on recurrence is unknown, so all results for exercise are conditional on the assumed HR and duration, and
+     + [1m split] Survival was modeled from reconstructed data, and the 7-year event-free survival by pCR status came from the conference presentation of the final analysis. Surv
+  [17] replace: 1 -> 1 units
+     - [2 ref 71] 71. Garber JE, Cameron D, Campbell C, Yothers G, Taboada M, El-Abed S et al (2026) Sustained benefit of adjuvant olaparib in women with germline BRCA1- and BRCA
+     + [2 ref 71] 71. Garber JE, Cameron D, Campbell C, Yothers G, Taboada M, El-Abed S et al (2026) Sustained benefit of adjuvant olaparib in women with germline BRCA1- and BRCA
+  numbers in the unchanged units: 890 (identical by construction)
+  number tokens: v14 1069, v15 1041
+  only in v14: {'3,745': 1, '1': 1, '5': 1, '95': 5, '2024': 1, '7': 1, '2026': 1, '26': 1, '28': 1, '7.5': 1, '21': 1, '−330': 1, '8,901': 1, '0.245': 1, '4.228': 1, '83.1': 1, '90.8': 1, '6,531': 1, '−1,911': 1, '4,545': 1, '6,256': 1, '389': 1, '238': 1, '570': 1, '−702': 1, '−437': 1, '−254': 1, '2,881': 1, '3,785': 1, '2,565': 1, '2,785': 1}
+  only in v15: {'3,470': 1, '2': 1, '11': 1, '37': 1, '702': 1, '1467': 1, '1479': 1}
+  units by explanation: {'1o word count': 2, '1a': 2, '1n': 2, '1b': 2, '1c': 2, '1d': 2, '1e': 2, '1f': 2, '1g': 2, '1h-1': 1, '1h-3': 1, '1i-1': 1, '1i-3': 2, '1i-4': 2, '1i-2': 1, '1j': 2, '1k-1': 2, '1k-2': 2, '1k-4': 2, '1k-3 delete': 1, '1l': 2, '1m': 1, '1m split': 2, '2 ref 71': 2}
+  UNEXPLAINED: 0

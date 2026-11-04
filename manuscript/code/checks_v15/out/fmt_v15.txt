@@ -1,0 +1,35 @@
+=== v15/manuscript_v15_BCRT.docx
+docDefaults sz: 24 fonts: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii': 'Times New Roman', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cs': 'Times New Roman', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia': 'Times New Roman', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi': 'Times New Roman'}
+runs with text: 180
+paragraph styles: {'Normal': 168}
+sizes (loc, half-pt): {('B', '24'): 180}
+fonts: {('B', 'Times New Roman'): 180}
+colors: {('B', 'none'): 180}
+spacing line (nonempty paras): {('B', '480'): 165}
+bold runs: 26
+sectPr lnNumType: True pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'portrait'}
+=== v15/tables_v15_BCRT.docx
+docDefaults sz: 22 fonts: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme': 'minorHAnsi', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme': 'minorEastAsia', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme': 'minorHAnsi', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme': 'minorBidi'}
+runs with text: 369
+paragraph styles: {'Normal': 309}
+sizes (loc, half-pt): {('B', '24'): 341, ('T', '24'): 28}
+fonts: {('B', 'Times New Roman'): 341, ('T', 'Times New Roman'): 28}
+colors: {('B', 'none'): 341, ('T', 'none'): 28}
+spacing line (nonempty paras): {('B', None): 283, ('T', None): 24}
+bold runs: 13
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'landscape'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'landscape'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'landscape'}
+=== v15/ESM_1_v15.docx
+docDefaults sz: 22 fonts: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme': 'minorHAnsi', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme': 'minorEastAsia', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme': 'minorHAnsi', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme': 'minorBidi'}
+runs with text: 2660
+paragraph styles: {'Normal': 2507}
+sizes (loc, half-pt): {('B', '24'): 2649, ('T', '24'): 11}
+fonts: {('B', 'Times New Roman'): 2649, ('T', 'Times New Roman'): 11}
+colors: {('B', 'none'): 2649, ('T', 'none'): 11}
+spacing line (nonempty paras): {('B', None): 2457, ('T', None): 11}
+bold runs: 24
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '16838'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'landscape'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'landscape'}
+sectPr lnNumType: False pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '16838'}

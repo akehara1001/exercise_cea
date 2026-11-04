@@ -1,0 +1,22 @@
+citations: delete v14 [(7,)] -> v15 []
+citations: insert v14 [] -> v15 [(28, 29, 30, 31)]
+citations: delete v14 [(28, 29, 30, 31)] -> v15 []
+Table 1: explicit mentions 5, first explicit in Exercise effect and costs
+Table 2: explicit mentions 4, first explicit in Four strategies compared
+Table 3: explicit mentions 5, first explicit in Maximum affordable cost of exercise
+Table S 1: explicit mentions 1, first explicit in Study design
+Table S 2: explicit mentions 2, first explicit in Survival, costs and utilities
+Table S 3: explicit mentions 1, first explicit in Statistical analysis
+Table S 4: explicit mentions 2, first explicit in Exercise compared with pembrolizumab
+Table S 5: explicit mentions 1, first explicit in Maximum affordable cost of exercise
+Table S 6: explicit mentions 1, first explicit in Maximum affordable cost of exercise
+Table S 7: explicit mentions 1, first explicit in Maximum affordable cost of exercise
+Table S 8: explicit mentions 2, first explicit in Duration and metastatic treatment costs
+Table S 9: explicit mentions 2, first explicit in Duration and metastatic treatment costs
+Table S 10: explicit mentions 1, first explicit in Sensitivity and scenario analyses
+Table S 11: explicit mentions 2, first explicit in Sensitivity and scenario analyses
+Fig 1: explicit mentions 1, first explicit in Statistical analysis
+Fig 2: explicit mentions 1, first explicit in Maximum affordable cost of exercise
+Fig 3: explicit mentions 2, first explicit in Sensitivity and scenario analyses
+Fig S 1: explicit mentions 1, first explicit in Statistical analysis
+Fig S 2: explicit mentions 1, first explicit in Sensitivity and scenario analyses
