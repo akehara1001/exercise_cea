@@ -1,0 +1,49 @@
+docDefaults sz: 24 fonts: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii': 'Times New Roman', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cs': 'Times New Roman', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia': 'Times New Roman', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi': 'Times New Roman'}
+style Title sz 56 color None
+style Heading1 sz 32 color 2E74B5
+style Heading2 sz 26 color 2E74B5
+style Heading3 sz 24 color 1F4D78
+style Heading4 sz None color 2E74B5
+style Heading5 sz None color 2E74B5
+style Heading6 sz None color 1F4D78
+style Hyperlink sz None color 0563C1
+style FootnoteText sz 20 color None
+style FootnoteTextChar sz 20 color None
+style EndnoteText sz 20 color None
+style EndnoteTextChar sz 20 color None
+runs with text: 223
+paragraph styles: {'Normal': 175}
+sizes (loc, half-pt): {('B', '24'): 223}
+fonts: {('B', 'Times New Roman'): 223}
+colors: {('B', 'none'): 223}
+highlight: {}
+spacing line (nonempty paras): {('B', '480'): 172}
+bold runs: 27
+    ('B', 0, 'Exercise versus or in addition to pembrolizumab with neoadju')
+    ('B', 11, 'Corresponding author')
+    ('B', 12, 'ORCID iDs')
+    ('B', 15, 'Abstract')
+    ('B', 16, 'Purpose')
+    ('B', 17, 'Methods')
+    ('B', 18, 'Results')
+    ('B', 19, 'Conclusion')
+    ('B', 20, 'Keywords')
+    ('B', 22, 'Introduction')
+    ('B', 27, 'Methods')
+    ('B', 52, 'Results')
+    ('B', 67, 'Discussion')
+    ('B', 81, 'Conclusion')
+    ('B', 83, 'References')
+    ('B', 162, 'Statements and Declarations')
+    ('B', 163, 'Funding')
+    ('B', 164, 'Competing interests')
+    ('B', 165, 'Author contributions')
+    ('B', 166, 'Data availability')
+    ('B', 167, 'Ethics approval')
+    ('B', 168, 'Consent to participate')
+    ('B', 169, 'Consent to publish')
+    ('B', 171, 'Figure captions')
+    ('B', 172, 'Fig. 1')
+    ('B', 173, 'Fig. 2')
+    ('B', 174, 'Fig. 3')
+sectPr lnNumType: True pgSz: {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}w': '11906', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}h': '16838', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}orient': 'portrait'}

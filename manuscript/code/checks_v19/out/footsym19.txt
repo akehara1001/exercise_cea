@@ -1,0 +1,16 @@
+Table 1.                                 | tables 1 | title {'a': 1} | table {'b': 1, 'c': 1, 'd': 1} | footnotes ['a', 'b', 'c', 'd'] | one-to-one: True
+Table 2.                                 | tables 1 | title {'a': 1} | table {'b': 1, 'c': 1, 'd': 1} | footnotes ['a', 'b', 'c', 'd'] | one-to-one: True
+Table 3.                                 | tables 1 | title {'a': 1} | table {'b': 1, '✳': 6, 'c': 5, 'd': 2} | footnotes ['a', 'b', 'c', 'd', '✳'] | one-to-one: True
+ALL ONE-TO-ONE: True
+Supplementary Table S8.                  | tables 2 | title {'a': 1} | table {} | footnotes ['a'] | one-to-one: True
+Supplementary Table S9.                  | tables 2 | title {'a': 1} | table {} | footnotes ['a'] | one-to-one: True
+Supplementary Table S11.                 | tables 1 | title {'a': 1} | table {'b': 1, 'c': 1, 'd': 1} | footnotes ['a', 'b', 'c', 'd'] | one-to-one: True
+Supplementary Table S12.                 | tables 1 | title {'a': 1} | table {'b': 4, 'c': 4} | footnotes ['a', 'b', 'c'] | one-to-one: True
+ALL ONE-TO-ONE: True
+--- v18 for comparison
+Supplementary Table S8.                  | tables 2 | title {'a': 1} | table {} | footnotes ['a'] | one-to-one: True
+Supplementary Table S9.                  | tables 2 | title {'a': 1} | table {} | footnotes ['a'] | one-to-one: True
+ALL ONE-TO-ONE: True
+--- planted: S12 footnote c removed in a copy
+Supplementary Table S12.                 | tables 1 | title {'a': 1} | table {'b': 4, 'c': 4} | footnotes ['a', 'b'] | one-to-one: False
+ALL ONE-TO-ONE: False

@@ -1,0 +1,208 @@
+ESM: units v18 2507, v19 2599, unchanged 2470, changed blocks 36
+  [1] replace: 1 -> 1 units
+     - [5 title] Article: Cost-effectiveness of exercise added to neoadjuvant chemotherapy for triple-negative breast cancer in Japan
+     + [5 title] Article: Exercise versus or in addition to pembrolizumab with neoadjuvant chemotherapy for early-stage triple-negative breast cancer: a model-based cost-effecti
+  [2] replace: 1 -> 1 units
+     - [6 CHEERS] Title page (p. 1)
+     + [6 CHEERS] Title page (pp. 1 to 2)
+  [3] replace: 1 -> 1 units
+     - [6 CHEERS] Abstract (p. 2)
+     + [6 CHEERS] Abstract (p. 3)
+  [4] replace: 1 -> 1 units
+     - [6 CHEERS] Introduction, paragraphs 1 to 4 (pp. 3 to 4)
+     + [6 CHEERS] Introduction, paragraphs 1 to 4 (pp. 4 to 5)
+  [5] replace: 1 -> 1 units
+     - [6 CHEERS] Methods, Study design, paragraph 3 (p. 5)
+     + [6 CHEERS] Methods, Study design, paragraph 3 (p. 6)
+  [6] replace: 1 -> 1 units
+     - [6 CHEERS] Methods, Study design, paragraph 1; Table 1 (pp. 4 to 5)
+     + [6 CHEERS] Methods, Study design, paragraph 1; Table 1 (pp. 5 to 6)
+  [7] replace: 1 -> 1 units
+     - [6 CHEERS] Methods, Study design, paragraphs 1 to 2 (pp. 4 to 5)
+     + [6 CHEERS] Methods, Study design, paragraphs 1 to 2 (pp. 5 to 6)
+  [8] replace: 1 -> 1 units
+     - [6 CHEERS] Methods, Study design, paragraph 1 (pp. 4 to 5)
+     + [6 CHEERS] Methods, Study design, paragraph 1; Methods, Exercise effect and costs, paragraph 3 (pp. 5 to 8)
+  [9] replace: 1 -> 1 units
+     - [6 CHEERS] Methods, Study design, paragraph 2 (p. 5)
+     + [6 CHEERS] Methods, Study design, paragraph 2 (p. 6)
+  [10] replace: 1 -> 1 units
+     - [6 CHEERS] Methods, Study design, paragraph 2 (p. 5)
+     + [6 CHEERS] Methods, Study design, paragraph 2 (p. 6)
+  [11] replace: 1 -> 1 units
+     - [6 CHEERS] Methods, Study design, paragraph 2 (p. 5)
+     + [6 CHEERS] Methods, Study design, paragraph 2 (p. 6)
+  [12] replace: 1 -> 1 units
+     - [6 CHEERS] Methods, Outcomes, paragraphs 1 to 2 (pp. 5 to 6)
+     + [6 CHEERS] Methods, Outcomes, paragraphs 1 to 2 (pp. 6 to 7)
+  [13] replace: 1 -> 1 units
+     - [6 CHEERS] Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Supplementary Methods S1 (pp. 6 to 7)
+     + [6 CHEERS] Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Supplementary Methods S1 (pp. 7 to 8)
+  [14] replace: 1 -> 1 units
+     - [6 CHEERS] Methods, Survival, costs and utilities, paragraph 2 (p. 7)
+     + [6 CHEERS] Methods, Survival, costs and utilities, paragraph 2 (pp. 8 to 9)
+  [15] replace: 1 -> 1 units
+     - [6 CHEERS] Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2; Table 1; Supplementary Table S2 (pp. 6 to 7)
+     + [6 CHEERS] Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2; Table 1; Supplementary Table S2 (pp. 7 to 9)
+  [16] replace: 1 -> 1 units
+     - [6 CHEERS] Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2 (pp. 6 to 7)
+     + [6 CHEERS] Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2 (pp. 7 to 9)
+  [17] replace: 1 -> 1 units
+     - [6 CHEERS] Methods, Study design, paragraph 1; Methods, Statistical analysis, paragraph 1; Fig. 1; Supplementary Methods S1; Statements and Declarations, Data availability
+     + [6 CHEERS] Methods, Study design, paragraph 1; Methods, Statistical analysis, paragraph 1; Fig. 1; Supplementary Methods S1; Statements and Declarations, Data availability
+  [18] replace: 1 -> 1 units
+     - [6 CHEERS] Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Methods, Statistical analysis, stages (1) to (3); Su
+     + [6 CHEERS] Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Methods, Statistical analysis, stages (1) to (3); Su
+  [19] replace: 1 -> 1 units
+     - [6 CHEERS] No subgroup analyses beyond the two comparisons; Methods, Study design, paragraph 1 (pp. 4 to 5)
+     + [6 CHEERS] No subgroup analyses beyond exercise added to chemotherapy alone and to chemotherapy plus pembrolizumab; Methods, Study design, paragraph 1 (pp. 5 to 6)
+  [20] replace: 1 -> 1 units
+     - [6 CHEERS] Methods, Statistical analysis, stages (4) to (6); Supplementary Methods S1 (pp. 8 to 9)
+     + [6 CHEERS] Methods, Statistical analysis, stages (4) to (6); Supplementary Methods S1; Discussion, Limitations, paragraph 2 (pp. 9 to 15)
+  [21] replace: 1 -> 1 units
+     - [6 CHEERS] Results, Four strategies compared, paragraph 1; Results, Exercise compared with pembrolizumab, paragraph 1; Results, Maximum affordable cost of exercise, paragr
+     + [6 CHEERS] Results, Four strategies compared, paragraph 1; Results, Exercise compared with pembrolizumab, paragraph 1; Results, Maximum affordable cost of exercise, paragr
+  [22] replace: 1 -> 1 units
+     - [6 CHEERS] Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 3; Supplementary Tab
+     + [6 CHEERS] Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 3; Supplementary Tab
+  [23] replace: 1 -> 1 units
+     - [6 CHEERS] Discussion, paragraphs 1 to 7; Discussion, Implications; Discussion, Limitations (pp. 11 to 14)
+     + [6 CHEERS] Discussion, paragraphs 1 to 7; Discussion, Implications; Discussion, Limitations (pp. 12 to 15)
+  [24] replace: 1 -> 1 units
+     - [6 CHEERS] Statements and Declarations, Funding (p. 27)
+     + [6 CHEERS] Statements and Declarations, Funding (p. 28)
+  [25] replace: 1 -> 1 units
+     - [6 CHEERS] Statements and Declarations, Competing interests (p. 27)
+     + [6 CHEERS] Statements and Declarations, Competing interests (pp. 28 to 29)
+  [26] replace: 1 -> 1 units
+     - [5 wording] Effect until 1 year after surgery: secondary comparison
+     + [5 wording] Effect until 1 year after surgery: exercise added to chemotherapy alone
+  [27] replace: 1 -> 1 units
+     - [5 wording] No waning: secondary comparison
+     + [5 wording] No waning: exercise added to chemotherapy alone
+  [28] replace: 1 -> 1 units
+     - [5 wording] Exercise continued after surgery: secondary comparison
+     + [5 wording] Exercise continued after surgery: exercise added to chemotherapy alone
+  [29] replace: 1 -> 1 units
+     - [5 wording] Effect until 1 year after surgery: secondary comparison
+     + [5 wording] Effect until 1 year after surgery: exercise added to chemotherapy alone
+  [30] replace: 1 -> 1 units
+     - [5 wording] No waning: secondary comparison
+     + [5 wording] No waning: exercise added to chemotherapy alone
+  [31] replace: 1 -> 1 units
+     - [5 wording] Exercise continued after surgery: secondary comparison
+     + [5 wording] Exercise continued after surgery: exercise added to chemotherapy alone
+  [32] replace: 1 -> 1 units
+     - [5 wording] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estim
+     + [5 wording] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estim
+  [33] replace: 1 -> 1 units
+     - [5 wording] aValues are conditional on the recurrence HR shown, not expected values. Net benefit per patient: maximum affordable cost at JPY 5 million per QALY minus the co
+     + [5 wording] aValues are conditional on the recurrence HR shown, not expected values. Net benefit per patient: maximum affordable cost at JPY 5 million per QALY minus the co
+  [34] replace: 3 -> 3 units
+     - [5 wording] Secondary comparison: maximum affordable cost at recurrence HR 0.85
+     - [5 wording] Secondary comparison: recurrence HR (reduction in recurrence hazard, %) at which the maximum affordable cost equals the program cost
+     - [5 wording] Secondary comparison: recurrence HR (reduction in recurrence hazard, %) at which medical costs avoided equal the program cost
+     + [5 wording] Exercise added to chemotherapy alone: maximum affordable cost at recurrence HR 0.85
+     + [5 wording] Exercise added to chemotherapy alone: recurrence HR (reduction in recurrence hazard, %) at which the maximum affordable cost equals the program cost
+     + [5 wording] Exercise added to chemotherapy alone: recurrence HR (reduction in recurrence hazard, %) at which medical costs avoided equal the program cost
+  [35] replace: 1 -> 1 units
+     - [5 wording] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estim
+     + [5 wording] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estim
+  [36] insert: 0 -> 92 units
+     + [empty paragraph of an inserted block (section break, merged cell or spacer)] 
+     + [2 Table S12] Supplementary Table S12. Cumulative proportion of women with distant recurrence and with any recurrence after surgery without exercise, and the absolute reducti
+     + [2 Table S12] Recurrence HR
+     + [2 Table S12] Chemotherapy plus pembrolizumab
+     + [2 Table S12] Chemotherapy alone
+     + [empty paragraph of an inserted block (section break, merged cell or spacer)] 
+     + [2 Table S12] Distant recurrence at 5 yearsb
+     + [2 Table S12] Distant recurrence at 7 yearsb
+     + [2 Table S12] Any recurrence at 5 yearsc
+     + [2 Table S12] Any recurrence at 7 yearsc
+     + [2 Table S12] Distant recurrence at 5 yearsb
+     + [2 Table S12] Distant recurrence at 7 yearsb
+     + [2 Table S12] Any recurrence at 5 yearsc
+     + [2 Table S12] Any recurrence at 7 yearsc
+     + [2 Table S12] A. Cumulative proportion of women without exercise, %
+     + [2 Table S12] 1.00
+     + [2 Table S12] 13.13
+     + [2 Table S12] 15.61
+     + [2 Table S12] 15.55
+     + [2 Table S12] 17.35
+     + [2 Table S12] 18.11
+     + [2 Table S12] 20.86
+     + [2 Table S12] 21.02
+     + [2 Table S12] 22.79
+     + [2 Table S12] B. Absolute reduction with exercise, percentage points
+     + [2 Table S12] 0.991
+     + [2 Table S12] 0.10
+     + [2 Table S12] 0.11
+     + [2 Table S12] 0.12
+     + [2 Table S12] 0.12
+     + [2 Table S12] 0.13
+     + [2 Table S12] 0.15
+     + [2 Table S12] 0.15
+     + [2 Table S12] 0.16
+     + [2 Table S12] 0.989
+     + [2 Table S12] 0.12
+     + [2 Table S12] 0.14
+     + [2 Table S12] 0.14
+     + [2 Table S12] 0.15
+     + [2 Table S12] 0.16
+     + [2 Table S12] 0.18
+     + [2 Table S12] 0.19
+     + [2 Table S12] 0.20
+     + [2 Table S12] 0.966
+     + [2 Table S12] 0.38
+     + [2 Table S12] 0.43
+     + [2 Table S12] 0.45
+     + [2 Table S12] 0.47
+     + [2 Table S12] 0.50
+     + [2 Table S12] 0.56
+     + [2 Table S12] 0.58
+     + [2 Table S12] 0.61
+     + [2 Table S12] 0.958
+     + [2 Table S12] 0.47
+     + [2 Table S12] 0.53
+     + [2 Table S12] 0.55
+     + [2 Table S12] 0.58
+     + [2 Table S12] 0.62
+     + [2 Table S12] 0.69
+     + [2 Table S12] 0.72
+     + [2 Table S12] 0.75
+     + [2 Table S12] 0.95
+     + [2 Table S12] 0.56
+     + [2 Table S12] 0.63
+     + [2 Table S12] 0.66
+     + [2 Table S12] 0.69
+     + [2 Table S12] 0.74
+     + [2 Table S12] 0.83
+     + [2 Table S12] 0.86
+     + [2 Table S12] 0.89
+     + [2 Table S12] 0.85
+     + [2 Table S12] 1.71
+     + [2 Table S12] 1.93
+     + [2 Table S12] 2.01
+     + [2 Table S12] 2.11
+     + [2 Table S12] 2.28
+     + [2 Table S12] 2.53
+     + [2 Table S12] 2.63
+     + [2 Table S12] 2.74
+     + [2 Table S12] 0.72
+     + [2 Table S12] 3.26
+     + [2 Table S12] 3.68
+     + [2 Table S12] 3.84
+     + [2 Table S12] 4.03
+     + [2 Table S12] 4.36
+     + [2 Table S12] 4.85
+     + [2 Table S12] 5.04
+     + [2 Table S12] 5.24
+     + [empty paragraph of an inserted block (section break, merged cell or spacer)] 
+     + [2 Table S12] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Proportions are per
+     + [2 Table S12] bFirst entry into distant recurrence, early or late, after surgery, including distant recurrence after locoregional recurrence; each woman is counted once.
+     + [2 Table S12] cFirst entry into locoregional or distant recurrence after surgery, the recurrences on which the recurrence HR acts; distant recurrence after locoregional recur
+  number tokens: v18 2781, v19 2881
+  only in v18: {'4': 5, '11': 2, '14': 1, '27': 3}
+  only in v19: {'1': 3, '12': 5, '5': 4, '49': 1, '2': 1, '7': 7, '3': 1, '6': 3, '8': 1, '9': 3, '15': 2, '29': 2, '28': 2, '0.58': 2, '0.53': 1, '100': 1, '0.85': 1, '0.95': 1, '0.989': 1, '0.958': 1, '0.991': 1, '0.966': 1, '0.89': 1, '1.00': 2, '13.13': 1, '15.61': 1, '15.55': 1, '17.35': 1, '18.11': 1, '20.86': 1, '21.02': 1, '22.79': 1, '0.10': 1, '0.11': 1, '0.12': 3, '0.13': 1, '0.15': 3, '0.16': 2, '0.14': 2, '0.18': 1, '0.19': 1, '0.20': 1, '0.38': 1, '0.43': 1, '0.45': 1, '0.47': 2, '0.50': 1, '0.56': 2, '0.61': 1, '0.55': 1, '0.62': 1, '0.69': 2, '0.72': 2, '0.75': 1, '0.63': 1, '0.66': 1, '0.74': 1, '0.83': 1, '0.86': 1, '1.71': 1, '1.93': 1, '2.01': 1, '2.11': 1, '2.28': 1, '2.53': 1, '2.63': 1, '2.74': 1, '3.26': 1, '3.68': 1, '3.84': 1, '4.03': 1, '4.36': 1, '4.85': 1, '5.04': 1, '5.24': 1, '60': 1, '84': 1}
+  units by explanation: {'5 title': 2, '6 CHEERS': 48, '5 wording': 24, 'empty paragraph of an inserted block (section break, merged cell or spacer)': 3, '2 Table S12': 89}
+  UNEXPLAINED: 0

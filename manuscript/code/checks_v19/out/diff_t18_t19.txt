@@ -1,0 +1,24 @@
+units v18 309, v19 310, unchanged 303, changed blocks 5
+
+=== block 1: replace v18[260:262] -> v19[260:262]
+  - [260] 0.989 (1.1)
+  - [261] 0.991 (0.9)
+  + [260] 0.989 (1.1)✳
+  + [261] 0.991 (0.9)✳
+
+=== block 2: replace v18[266:268] -> v19[266:268]
+  - [266] 0.958 (4.2)
+  - [267] 0.966 (3.4)
+  + [266] 0.958 (4.2)✳
+  + [267] 0.966 (3.4)✳
+
+=== block 3: replace v18[272:273] -> v19[272:273]
+  - [272] Base case, recurrence HR 0.85
+  + [272] Base case, recurrence HR 0.85✳
+
+=== block 4: replace v18[282:283] -> v19[282:283]
+  - [282] Base case, recurrence HR 0.85
+  + [282] Base case, recurrence HR 0.85✳
+
+=== block 5: insert v18[309:309] -> v19[309:310]
+  + [309] ✳ Under the base-case assumptions, recurrence HRs of 0.989, 0.958 and 0.85 with chemotherapy plus pembrolizumab correspond to absolute reductions in distant recurrence at 7 years of about 0.14, 0.53 and 1.93 percentage points, and HRs of 0.991 and 0.966 with chemotherapy alone to about 0.15 and 0.56 points (Table S12).

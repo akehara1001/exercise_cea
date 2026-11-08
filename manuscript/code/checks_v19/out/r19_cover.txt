@@ -1,0 +1,11 @@
+cover: units v18 16, v19 16, unchanged 14, changed blocks 1
+  [1] replace: 2 -> 2 units
+     - [5 title] We submit our original article, "Cost-effectiveness of exercise added to neoadjuvant chemotherapy for triple-negative breast cancer in Japan," for consideration
+     - [5 summary order] Structured exercise prolonged disease-free survival after adjuvant chemotherapy for colon cancer in the CHALLENGE trial, but whether exercise during neoadjuvant
+     + [5 title] We submit our original article, "Exercise versus or in addition to pembrolizumab with neoadjuvant chemotherapy for early-stage triple-negative breast cancer: a 
+     + [5 summary order] Structured exercise prolonged disease-free survival after adjuvant chemotherapy for colon cancer in the CHALLENGE trial, but whether exercise during neoadjuvant
+  number tokens: v18 6, v19 8
+  only in v18: {}
+  only in v19: {'5': 1, '0.722': 1}
+  units by explanation: {'5 title': 2, '5 summary order': 2}
+  UNEXPLAINED: 0

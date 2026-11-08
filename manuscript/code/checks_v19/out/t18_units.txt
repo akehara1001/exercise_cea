@@ -1,0 +1,309 @@
+0	P	Table 1. Key model inputsa
+1	T1.0.0	Input
+2	T1.0.1	Base case
+3	T1.0.2	Source
+4	T1.1.0	Model settings
+5	T1.2.0	Perspective
+6	T1.2.1	Japanese public healthcare payer
+7	T1.2.2	—
+8	T1.3.0	Cohort
+9	T1.3.1	Women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer
+10	T1.3.2	KEYNOTE-522 trial population [3]
+11	T1.4.0	Time horizon and cycle
+12	T1.4.1	Lifetime (to age 100 years); 1-month cycles; surgery at month 7
+13	T1.4.2	—
+14	T1.5.0	Discounting
+15	T1.5.1	2% per year for costs and QALYs
+16	T1.5.2	—
+17	T1.6.0	Prices
+18	T1.6.1	JPY, fiscal year 2026
+19	T1.6.2	National drug price list and medical fee schedule [8,48]
+20	T1.7.0	Uncertainty
+21	T1.7.1	1,000 probabilistic sensitivity analysis samples, each pairing one bootstrap replicate of the survival model with one draw of the other inputs; 95% uncertainty interval from the 2.5th and 97.5th percentiles
+22	T1.7.2	—
+23	T1.8.0	Survival
+24	T1.9.0	Pathological complete response (pCR)
+25	T1.9.1	494/784 (63.0%) with pembrolizumab; 217/390 (55.6%) with chemotherapy alone
+26	T1.9.2	KEYNOTE-522 (interim analysis 4) [4]
+27	T1.10.0	Event-free survival after surgery
+28	T1.10.1	Parametric models fitted to reconstructed patient-level data by arm and pCR status (pCR, Weibull; no pCR, Weibull cure model); 7-year values fixed at the final analysis: pCR 90.4% vs 85.9%, no pCR 57.6% vs 49.7% (with pembrolizumab vs chemotherapy alone)
+29	T1.10.2	KEYNOTE-522 (interim analysis 4 and final analysis) [4,44,49]
+30	T1.11.0	Arms with exercise
+31	T1.11.1	Survival inputs of the corresponding arm without exercise, changed only by the exercise effect
+32	T1.11.2	—
+33	T1.12.0	Survival after distant recurrence
+34	T1.12.1	Log-logistic excess mortality, same in all arms: median 9.73 months for recurrence within 18 months of randomization and 16.93 months thereafter; common shape 1.660
+35	T1.12.2	ESME cohort, reconstructed overall survival [49,50]
+36	T1.13.0	Survival after progression during neoadjuvant therapy
+37	T1.13.1	Same distribution as distant recurrence within the first 18 months
+38	T1.13.2	ESME cohort [50]
+39	T1.14.0	Background mortality
+40	T1.14.1	Japanese women
+41	T1.14.2	Abridged life table (2025) [51]
+42	T1.15.0	Overall survival in KEYNOTE-522
+43	T1.15.1	Not used to fit the model; used only for validation (Supplementary Methods S1, Online Resource 1)
+44	T1.15.2	KEYNOTE-522 reports [5,44]
+45	T1.16.0	Costs, JPY
+46	T1.17.0	Pembrolizumab, per dose
+47	T1.17.1	398,924 (200 mg every 3 weeks; 8 doses before and 9 after surgery)
+48	T1.17.2	National drug price list; KEYNOTE-522 dosing [3,8]
+49	T1.18.0	First-line treatment of distant recurrence, per month
+50	T1.18.1	1,215,933 in arms without pembrolizumab; 1,458,318 in arms with pembrolizumab (no immunotherapy rechallenge); mean duration 10.37 and 10.84 months
+51	T1.18.2	Clinical expert input on the regimen mix; trials; national drug price list [8,72–75]
+52	T1.19.0	Second-line and later treatment, per month
+53	T1.19.1	1,412,953 (trastuzumab deruxtecan 32%, sacituzumab govitecan 68%)
+54	T1.19.2	Clinical expert input; national drug price list [8]
+55	T1.20.0	End-of-life care, last 3 months
+56	T1.20.1	1,120,001
+57	T1.20.2	Published Japanese estimates [76,77]
+58	T1.21.0	Exercise program, total over the 6 months of neoadjuvant therapy
+59	T1.21.1	CHALLENGE-based supervised programb 239,508; fee-schedule-based program 192,400; remote low-cost program 11,260
+60	T1.21.2	CHALLENGE program cost; medical fee schedule [46–48,78]
+61	T1.22.0	Musculoskeletal adverse event of exercise, per event
+62	T1.22.1	8,810
+63	T1.22.2	Medical fee schedule [48]
+64	T1.23.0	Utilitiesc
+65	T1.24.0	Event-free, during treatment
+66	T1.24.1	0.889
+67	T1.24.2	KEYNOTE-522 EQ-5D, German value set [30]
+68	T1.25.0	Event-free, after treatment
+69	T1.25.1	0.887
+70	T1.25.2	KEYNOTE-522 EQ-5D, German value set [30]
+71	T1.26.0	Locoregional recurrence
+72	T1.26.1	0.830
+73	T1.26.2	KEYNOTE-522 EQ-5D, German value set [30]
+74	T1.27.0	Distant recurrence or progression during neoadjuvant therapy
+75	T1.27.1	0.735
+76	T1.27.2	KEYNOTE-522 EQ-5D, German value set [30]
+77	T1.28.0	Grade 3 or higher adverse event
+78	T1.28.1	Decrement 0.022 for 12.5 weeks per event (1.064 events per patient with pembrolizumab, 0.982 without)
+79	T1.28.2	KEYNOTE-522 EQ-5D and adverse event tables [4,30]
+80	T1.29.0	Exercise effect
+81	T1.30.0	Effect on recurrence
+82	T1.30.1	Recurrence HRd from 0.70 to 1.00; no effect on deaths without recurrence or on events before surgery
+83	T1.30.2	Assumption
+84	T1.31.0	Effect duration, base case
+85	T1.31.1	HR held for 5 years after randomization, then the effect halves every year
+86	T1.31.2	Assumption
+87	T1.32.0	Effect duration, alternatives
+88	T1.32.1	Effect until 1 year after surgery, then halving every year; no waning
+89	T1.32.2	Assumption
+90	T1.33.0	Reference value
+91	T1.33.1	HR 0.72 for disease-free survival with a 3-year exercise program in colon cancer
+92	T1.33.2	CHALLENGE trial [9]
+93	T1.34.0	Effect on pCR (alternative pathway)
+94	T1.34.1	pCR proportion increased by 0 to 10 percentage points, with recurrence HR 1.00
+95	T1.34.2	Assumption
+96	T1.35.0	Musculoskeletal adverse events
+97	T1.35.1	Any grade 79/428 (18.5%) with exercise vs 53/461 (11.5%) without; grade 3 or higher 3/428 (0.7%) vs 1/461 (0.2%)
+98	T1.35.2	CHALLENGE trial, as-treated [9]
+99	T1.36.0	Scenarios
+100	T1.37.0	Higher mortality after early recurrence with pembrolizumab
+101	T1.37.1	Excess mortality after distant recurrence within the first 18 months and after progression during neoadjuvant therapy multiplied by 1.307 in arms with pembrolizumab
+102	T1.37.2	Italian real-world cohort after neoadjuvant pembrolizumab [66]
+103	T1.38.0	Metastatic treatment costs halved
+104	T1.38.1	Monthly costs of first-line and later-line treatment of distant recurrence multiplied by 0.5
+105	T1.38.2	—
+106	T1.39.0	Eribulin-based later-line treatment
+107	T1.39.1	245,683 per month for second-line and later treatment
+108	T1.39.2	EMBRACE dosing; national drug price list [8,68]
+109	T1.40.0	Japanese post-operative treatment
+110	T1.40.1	Capecitabine (HR 0.58) or olaparib (HR 0.65) for patients without pCR, by germline BRCA status
+111	T1.40.2	CREATE-X; OlympiA [69–71]
+112	P	aAll inputs with their ranges, distributions and sources are listed in Table S2 (Online Resource 1). Costs are in JPY at fiscal year 2026 prices except where noted. A dash in the source column marks a setting of the analysis rather than an external source. BRCA, breast cancer gene; EQ-5D, EuroQol 5-dimension questionnaire; ESME, Epidemiological Strategy and Medical Economics database; HR, hazard ratio; JPY, Japanese yen; pCR, pathological complete response; QALY, quality-adjusted life year.
+113	P	bProgram cost reported in the CHALLENGE cost analysis for the 3-year program, condensed to the 6 months of neoadjuvant therapy and converted from 2024 Canadian dollars by purchasing power parity.
+114	P	cBase case: EQ-5D values from KEYNOTE-522 with the German value set, because no report applying a Japanese value set to KEYNOTE-522 data with standard errors was found. Values from Japanese populations are used in a scenario (Table S11 (Online Resource 1)).
+115	P	dRecurrence HR: hazard ratio for locoregional and distant recurrence after surgery in an arm with exercise, relative to the same treatment without exercise; 1.00 means no effect. After the period in which the HR is held, the reduction in the hazard, 1 − HR, halves every year.
+116	P	
+117	P	Table 2. Costs, QALYs and cost-effectiveness of the four strategies at three recurrence hazard ratios with exercise, and the exercise effect needed to match pembrolizumab in QALYs or in net monetary benefita
+118	T2.0.0	Strategy
+119	T2.0.1	Total cost
+120	T2.0.2	Total QALYs
+121	T2.0.3	Comparator
+122	T2.0.4	Incremental cost
+123	T2.0.5	Incremental QALYs
+124	T2.0.6	ICER (JPY 1,000 per QALY)
+125	T2.0.7	Net monetary benefit relative to chemotherapy alone at JPY 5 million per QALY
+126	T2.1.0	A. Four strategies at recurrence HRsb of 0.95, 0.85 and 0.72, with the fee-schedule-based programc
+127	T2.2.0	HR 0.95
+128	T2.3.0	Chemotherapy plus exercise
+129	T2.3.1	12,112
+130	T2.3.2	17.073
+131	T2.3.3	—
+132	T2.3.4	—
+133	T2.3.5	—
+134	T2.3.6	—
+135	T2.3.7	931
+136	T2.4.0	Chemotherapy alone
+137	T2.4.1	12,202
+138	T2.4.2	16.905
+139	T2.4.3	Chemotherapy plus exercise
+140	T2.4.4	91
+141	T2.4.5	−0.168
+142	T2.4.6	Dominated
+143	T2.4.7	0
+144	T2.5.0	Chemotherapy plus pembrolizumab plus exercise
+145	T2.5.1	16,592
+146	T2.5.2	19.194
+147	T2.5.3	Chemotherapy plus exercise
+148	T2.5.4	4,480
+149	T2.5.5	2.121
+150	T2.5.6	2,112
+151	T2.5.7	7,056
+152	T2.6.0	Chemotherapy plus pembrolizumab
+153	T2.6.1	16,629
+154	T2.6.2	19.061
+155	T2.6.3	Chemotherapy plus pembrolizumab plus exercise
+156	T2.6.4	37
+157	T2.6.5	−0.133
+158	T2.6.6	Dominated
+159	T2.6.7	6,355
+160	T2.7.0	HR 0.85
+161	T2.8.0	Chemotherapy plus exercise
+162	T2.8.1	11,525
+163	T2.8.2	17.420
+164	T2.8.3	—
+165	T2.8.4	—
+166	T2.8.5	—
+167	T2.8.6	—
+168	T2.8.7	3,250
+169	T2.9.0	Chemotherapy alone
+170	T2.9.1	12,202
+171	T2.9.2	16.905
+172	T2.9.3	Chemotherapy plus exercise
+173	T2.9.4	677
+174	T2.9.5	−0.515
+175	T2.9.6	Dominated
+176	T2.9.7	0
+177	T2.10.0	Chemotherapy plus pembrolizumab plus exercise
+178	T2.10.1	16,120
+179	T2.10.2	19.466
+180	T2.10.3	Chemotherapy plus exercise
+181	T2.10.4	4,594
+182	T2.10.5	2.047
+183	T2.10.6	2,245
+184	T2.10.7	8,889
+185	T2.11.0	Chemotherapy plus pembrolizumab
+186	T2.11.1	16,629
+187	T2.11.2	19.061
+188	T2.11.3	Chemotherapy plus pembrolizumab plus exercise
+189	T2.11.4	509
+190	T2.11.5	−0.405
+191	T2.11.6	Dominated
+192	T2.11.7	6,355
+193	T2.12.0	HR 0.72
+194	T2.13.0	Chemotherapy plus exercise
+195	T2.13.1	10,723
+196	T2.13.2	17.892
+197	T2.13.3	—
+198	T2.13.4	—
+199	T2.13.5	—
+200	T2.13.6	—
+201	T2.13.7	6,413
+202	T2.14.0	Chemotherapy alone
+203	T2.14.1	12,202
+204	T2.14.2	16.905
+205	T2.14.3	Chemotherapy plus exercise
+206	T2.14.4	1,479
+207	T2.14.5	−0.987
+208	T2.14.6	Dominated
+209	T2.14.7	0
+210	T2.15.0	Chemotherapy plus pembrolizumab plus exercise
+211	T2.15.1	15,479
+212	T2.15.2	19.834
+213	T2.15.3	Chemotherapy plus exercise
+214	T2.15.4	4,756
+215	T2.15.5	1.942
+216	T2.15.6	2,449
+217	T2.15.7	11,368
+218	T2.16.0	Chemotherapy plus pembrolizumab
+219	T2.16.1	16,629
+220	T2.16.2	19.061
+221	T2.16.3	Chemotherapy plus pembrolizumab plus exercise
+222	T2.16.4	1,150
+223	T2.16.5	−0.773
+224	T2.16.6	Dominated
+225	T2.16.7	6,355
+226	T2.17.0	B. Pembrolizumab added to chemotherapy alone, and the exercise effect needed to match itd
+227	T2.18.0	Incremental cost
+228	T2.18.1	4,426 [−330, 8,901]
+229	T2.19.0	Incremental QALYs
+230	T2.19.1	2.156 [0.245, 4.228]
+231	T2.20.0	ICER, JPY 1,000 per QALY
+232	T2.20.1	2,053
+233	T2.21.0	Probability cost-effective at JPY 5 million per QALY, %
+234	T2.21.1	83.1
+235	T2.22.0	Probability cost-effective at JPY 7.5 million per QALY, %
+236	T2.22.1	90.8
+237	T2.23.0	Exercise effect needed to match pembrolizumab
+238	T2.23.1	Recurrence HR
+239	T2.23.2	Increase in pCR, percentage points
+240	T2.24.0	In QALYs
+241	T2.24.1	0.425
+242	T2.24.2	35.9
+243	T2.25.0	In net monetary benefit at JPY 5 million per QALY
+244	T2.25.1	0.722
+245	T2.25.2	19.0
+246	T2.26.0	In net monetary benefit at JPY 7.5 million per QALY
+247	T2.26.1	0.638
+248	T2.26.2	24.1
+249	P	aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon; the strategies with exercise include the fee-schedule-based program (JPY 192,400). Strategies are listed in order of total cost. A dash marks the cheapest strategy, which has no comparator. Increments are against the strategy in the comparator column: the next cheaper strategy on the frontier, or, for a dominated strategy, the strategy that dominates it. A strategy is dominated when another costs less and gives more QALYs. Net monetary benefit is the QALYs gained valued at JPY 5 million per QALY minus the incremental cost, relative to chemotherapy alone. In panel B, cells with a bracket show the deterministic estimate and the 95% UI [2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples]; probability cost-effective is the share of samples with a positive net monetary benefit. HR, hazard ratio; ICER, incremental cost-effectiveness ratio; JPY, Japanese yen; pCR, pathological complete response; QALY, quality-adjusted life year; UI, uncertainty interval.
+250	P	bHazard ratio for locoregional and distant recurrence after surgery in the strategies with exercise, relative to the same treatment without exercise, held for 5 years after randomization and then halving every year (Table 1); 0.72 is the CHALLENGE estimate.
+251	P	cWith the CHALLENGE-based supervised program (JPY 239,508), chemotherapy plus pembrolizumab was extendedly dominated at an HR of 0.95, because its ICER against chemotherapy plus exercise exceeded that of chemotherapy plus pembrolizumab plus exercise, and dominated at 0.85 and 0.72; with the remote low-cost program (JPY 11,260) the results were as shown.
+252	P	dEffect at which exercise added to chemotherapy alone gives the same incremental QALYs as pembrolizumab, or the same net monetary benefit with the fee-schedule-based program, in the base case. All values except the HR of 0.722 lie outside the ranges studied: recurrence HR 0.70 to 1.00 (Table S5 (Online Resource 1)) and pCR increase 0 to 10 percentage points (Table S6 (Online Resource 1)).
+253	P	
+254	P	Table 3. Recurrence hazard ratios at which exercise breaks even, and the maximum affordable cost of an exercise program per patient under alternative effect durations and metastatic treatment costs, at a willingness-to-pay threshold of JPY 5 million per QALYa
+255	T3.0.0	Break-even point or scenario
+256	T3.0.1	Exercise added to chemotherapy plus pembrolizumab
+257	T3.0.2	Exercise added to chemotherapy alone
+258	T3.1.0	A. Recurrence HRb (reduction in recurrence hazard, %) at which, in the base case,
+259	T3.2.0	The maximum affordable cost equals the cost of the fee-schedule-based program
+260	T3.2.1	0.989 (1.1)
+261	T3.2.2	0.991 (0.9)
+262	T3.3.0	Medical costs avoidedc equal the cost of the CHALLENGE-based supervised program
+263	T3.3.1	0.948 (5.2)
+264	T3.3.2	0.958 (4.2)
+265	T3.4.0	Medical costs avoidedc equal the cost of the fee-schedule-based program
+266	T3.4.1	0.958 (4.2)
+267	T3.4.2	0.966 (3.4)
+268	T3.5.0	Medical costs avoidedc equal the cost of the remote low-cost program
+269	T3.5.1	0.997 (0.3)
+270	T3.5.2	0.998 (0.2)
+271	T3.6.0	B. Maximum affordable cost under alternative effect durationsd
+272	T3.7.0	Base case, recurrence HR 0.85
+273	T3.7.1	2,726 [2,223, 3,040]
+274	T3.7.2	3,443 [2,881, 3,785]
+275	T3.8.0	Effect until 1 year after surgery
+276	T3.8.1	1,772
+277	T3.8.2	2,279
+278	T3.9.0	No waning
+279	T3.9.1	3,404
+280	T3.9.2	4,420
+281	T3.10.0	C. Metastatic treatment cost scenariosd
+282	T3.11.0	Base case, recurrence HR 0.85
+283	T3.11.1	2,726 [2,223, 3,040]
+284	T3.11.2	3,443 [2,881, 3,785]
+285	T3.12.0	Metastatic treatment costs halved
+286	T3.13.0	Maximum affordable cost
+287	T3.13.1	2,381 [1,958, 2,633]
+288	T3.13.2	3,022 [2,544, 3,307]
+289	T3.14.0	Recurrence HR (reduction in recurrence hazard, %) at which the maximum affordable cost equals the cost of the fee-schedule-based program
+290	T3.14.1	0.988 (1.2)
+291	T3.14.2	0.990 (1.0)
+292	T3.15.0	Recurrence HR (reduction in recurrence hazard, %) at which medical costs avoidedc equal the cost of the fee-schedule-based program
+293	T3.15.1	0.918 (8.2)
+294	T3.15.2	0.934 (6.6)
+295	T3.16.0	Eribulin-based later-line treatment
+296	T3.17.0	Maximum affordable cost
+297	T3.17.1	2,365 [1,943, 2,621]
+298	T3.17.2	2,966 [2,501, 3,242]
+299	T3.18.0	Recurrence HR (reduction in recurrence hazard, %) at which the maximum affordable cost equals the cost of the fee-schedule-based program
+300	T3.18.1	0.987 (1.3)
+301	T3.18.2	0.990 (1.0)
+302	T3.19.0	Recurrence HR (reduction in recurrence hazard, %) at which medical costs avoidedc equal the cost of the fee-schedule-based program
+303	T3.19.1	0.914 (8.6)
+304	T3.19.2	0.925 (7.5)
+305	P	aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Maximum affordable cost: the largest program cost per patient at which adding exercise remains cost-effective, equal to the threshold multiplied by the incremental QALYs minus the incremental medical costs other than the program cost (musculoskeletal adverse events of exercise included). Cells with a bracket show the deterministic estimate and the 95% UI [2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples]. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year; UI, uncertainty interval.
+306	P	bHazard ratio for locoregional and distant recurrence after surgery in the arm with exercise, relative to the same treatment without exercise; 1.00 means no effect. The value in parentheses is the reduction in the recurrence hazard, 100 × (1 − HR), in %. In panels A and C the effect is held for 5 years after randomization and then halves every year (Table 1).
+307	P	cReduction in lifetime medical costs other than the program cost. At recurrence HRs below these values, the arm with exercise has lower total costs, program included, and more QALYs. The reductions of 4.2% to 8.6% at which medical costs avoided equal the program cost (base case and both metastatic cost scenarios) hold only for exercise added to chemotherapy plus pembrolizumab with the fee-schedule-based program.
+308	P	dAt a recurrence HR of 0.85. The base-case row repeats the base-case estimate (Table S5 (Online Resource 1)) for comparison within the panel. Effect durations and cost scenarios are defined in Table 1. The alternative effect durations show deterministic estimates only (no probabilistic analysis was run for them); panel C keeps the base-case effect duration.

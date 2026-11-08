@@ -1,0 +1,78 @@
+1 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+2 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+3 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+4 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+5 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+6 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+7 200 {} None
+8 404 {} None
+9 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+10 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': False} 1.0
+11 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+12 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+13 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+14 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+15 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+16 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+17 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+18 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+19 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+20 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+21 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+22 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+23 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+24 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+25 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+26 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+27 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+28 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+29 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+30 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+31 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+32 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+33 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+34 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+35 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+36 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+37 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+38 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+39 200 {} None
+40 200 {} None
+41 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+42 200 {} None
+43 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+44 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+45 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+46 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+47 200 {} None
+48 200 {} None
+49 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+50 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+51 200 {} None
+52 None {} None
+53 200 {} None
+54 200 {} None
+55 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+56 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+57 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+58 302 {'author_ok': True, 'year_ok': True, 'volume_ok': False, 'page_ok': False} 0.942
+59 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 0.971
+60 200 {} None
+61 200 {} None
+62 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+63 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+64 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+65 200 {} None
+66 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+67 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+68 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+69 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+70 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 0.947
+71 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+72 200 {} None
+73 200 {} None
+74 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+75 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+76 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 0.938
+77 302 {'author_ok': True, 'year_ok': True, 'volume_ok': True, 'page_ok': True} 1.0
+78 200 {} None

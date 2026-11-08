@@ -1,0 +1,16 @@
+0	P	[Date]
+1	P	Editor-in-Chief
+2	P	Breast Cancer Research and Treatment
+3	P	
+4	P	Dear Editor,
+5	P	We submit our original article, "Cost-effectiveness of exercise added to neoadjuvant chemotherapy for triple-negative breast cancer in Japan," for consideration in Breast Cancer Research and Treatment.
+6	P	Structured exercise prolonged disease-free survival after adjuvant chemotherapy for colon cancer in the CHALLENGE trial, but whether exercise during neoadjuvant chemotherapy for breast cancer reduces recurrence is unknown. Using a model based on KEYNOTE-522 and Japanese prices, we estimated the maximum cost at which an exercise program added to neoadjuvant chemotherapy for stage II or III triple-negative breast cancer would be cost-effective for each possible effect on recurrence. With chemotherapy plus pembrolizumab, a program priced from the Japanese fee schedule would be cost-effective if it lowered the recurrence hazard by 1.1%, and the duration of the effect mattered more than any cost input. Exercise could not substitute for pembrolizumab, whose cost-effectiveness in Japan we also report.
+7	P	These findings give trials of exercise during neoadjuvant chemotherapy a benchmark and argue that they should measure recurrence and its durability, not pCR alone. The journal has published the systematic review of economic evaluations of exercise for patients with breast cancer that this work extends, and we believe its readers who design and run breast cancer trials are the audience for this analysis.
+8	P	The manuscript has not been published and is not under consideration elsewhere, and all authors have approved it. It contains no previously published figures or tables. [To be confirmed: The registry data were taken from a members-only report of the Japanese Breast Cancer Society.] The study follows CHEERS 2022.
+9	P	Suggested reviewers (no conflicts of interest with the authors):
+10	P	1. [Name, affiliation, institutional email or publication record link]
+11	P	2. [Name, affiliation, institutional email or publication record link]
+12	P	3. [Name, affiliation, institutional email or publication record link]
+13	P	
+14	P	Sincerely,
+15	P	[Corresponding author name, affiliation, email]

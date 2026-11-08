@@ -1,0 +1,121 @@
+Introduction
+
+Triple-negative breast cancer (TNBC) recurs more often than other breast cancers, and its excess risk of distant recurrence is concentrated in the first 5 years after diagnosis [1]. After neoadjuvant chemotherapy, patients with residual disease have worse survival than those with a pathological complete response (pCR) [2]. In the KEYNOTE-522 trial of stage II or III TNBC, adding pembrolizumab to neoadjuvant chemotherapy and continuing it after surgery increased pCR and prolonged event-free and overall survival [3–5], yet most recurrences still occur within 24 months of randomization [6]. In Japan, 2,294 of the 3,451 patients who received neoadjuvant chemotherapy for stage II or III TNBC in 2024 also received pembrolizumab [7]. Pembrolizumab is given in eight doses before surgery and up to nine after [3], and one dose costs 398,924 Japanese yen (JPY) at the 2026 list price [8].
+
+In the CHALLENGE trial [9], structured exercise for 3 years after adjuvant chemotherapy for colon cancer prolonged disease-free survival, with a hazard ratio (HR) of 0.72 (95% confidence interval (CI) [0.55, 0.94]). In breast cancer, randomized trials of exercise during adjuvant chemotherapy improved physical fitness and, in some, fatigue [10–13], and an exploratory follow-up of one trial [14] found an HR for disease-free survival of 0.68 (95% CI [0.37, 1.24]). During neoadjuvant chemotherapy, diet and exercise were associated with a higher pCR in one trial [15], supervised exercise did not change tumor size in two others [16,17], and a meta-analysis across cancer types found no difference in pCR [18]. A trial powered for pCR, with disease-free survival as a secondary outcome, is ongoing [19]. None of these trials reported recurrence, so the effect of exercise during neoadjuvant chemotherapy on recurrence is unknown.
+
+Economic evaluations of exercise in cancer have valued effects on fatigue, fitness or quality of life during or after adjuvant treatment [20–22], and in breast cancer they reached different conclusions [23–25]. Searches of PubMed and Europe PMC covering 2000 to 2026 identified no economic evaluation of exercise during neoadjuvant therapy for breast cancer (Supplementary Methods S1); the nearest, Phys-Can, compared two exercise intensities during treatment of breast, colorectal or prostate cancer [26]. When an effect is unknown, a cost-effectiveness ratio cannot be estimated, but the highest program cost that remains cost-effective can be calculated for each possible effect [27]. Cost-effectiveness analyses of the KEYNOTE-522 regimen come from the United States, Hong Kong, Switzerland and Egypt [28–31], whereas Japanese analyses have concerned pembrolizumab for advanced cancers, including metastatic TNBC [32–38], and the perioperative TNBC indication has not been assessed in Japan's cost-effectiveness evaluation [39]. That evaluation has covered drugs and devices, including many anticancer drugs, but not exercise or other non-drug care [39].
+
+This study aimed to place a structured exercise program during neoadjuvant chemotherapy for stage II or III TNBC on the same cost-effectiveness scale as pembrolizumab, from the perspective of the Japanese public healthcare payer. It compared the four strategies formed by chemotherapy with or without pembrolizumab and with or without exercise, and asked how large an effect on recurrence exercise would need to match pembrolizumab, in quality-adjusted life years (QALYs) and in net benefit. Its main aim was to estimate the maximum cost per patient at which exercise added to chemotherapy with pembrolizumab would be cost-effective, and how this cost depends on the size and duration of the effect of exercise on recurrence. Expressing the value of an unproven program as the cost a health system can afford for each possible effect gives future trials a benchmark for their results.
+
+Methods
+
+Study design
+
+A state-transition model simulated a cohort of women aged 49 years starting neoadjuvant chemotherapy for stage II or III TNBC, with the regimens and outcomes of KEYNOTE-522 [3]. Four arms were modeled: chemotherapy alone, as in the placebo arm of the trial; chemotherapy plus pembrolizumab; and each of these with exercise. The analysis answered three questions in turn: which of the four strategies gave the most value for money; whether exercise added to chemotherapy alone could match pembrolizumab; and how much a program added to chemotherapy plus pembrolizumab could cost, the main comparison.
+
+The analysis took the Japanese public healthcare payer perspective and a lifetime horizon, to capture differences in survival. Costs and QALYs were discounted at 2% per year, as the Japanese guideline specifies [40]. The willingness-to-pay threshold for exercise was JPY 5 million per QALY [41,42]; the higher threshold of JPY 7.5 million per QALY applies only to designated products given special consideration, such as anticancer drugs [42], and pembrolizumab was assessed at both.
+
+Trial inputs came from KEYNOTE-522 reports with data cutoffs from March 2021 to October 2025 [4,5,43,44]. The analysis plan, and each later addition, was written before the corresponding computation; the plan was not registered. The study follows the Consolidated Health Economic Evaluation Reporting Standards 2022 (CHEERS 2022) [45]. Supplementary Methods S1, Tables S1–S12 (including the CHEERS checklist in Table S1) and Figs. S1–S2 are in Online Resource 1.
+
+Outcomes
+
+The primary outcome was the maximum affordable cost of an exercise program per patient: the willingness-to-pay threshold multiplied by the incremental QALYs, minus the incremental medical costs other than the program cost. Increments compared an arm with exercise with the same treatment without exercise; a program costing less than this amount would be cost-effective. Medical costs avoided were these incremental costs with the sign reversed.
+
+Secondary outcomes were the total costs and QALYs of the four arms and the incremental cost-effectiveness ratios (ICERs) between them at recurrence HRs of 0.95, 0.85 and 0.72, and the ICER of pembrolizumab against chemotherapy alone. They also included the exercise effect, as a recurrence HR or an increase in pCR, at which exercise added to chemotherapy alone would gain as many QALYs as pembrolizumab, or the same net monetary benefit, the QALYs gained valued at the threshold minus the incremental cost. Further secondary outcomes were the recurrence HRs at which the maximum affordable cost, or the medical costs avoided, equaled the cost of a program, and the one-year net benefit, the maximum affordable cost minus the program cost summed over eligible patients treated in Japan in one year.
+
+Exercise effect and costs
+
+The exposure was the recurrence HR with exercise: the HR for locoregional and distant recurrence after surgery in an arm with exercise, relative to the same treatment without exercise (Table 1). It ranged from 0.70 to 1.00 and did not act on deaths without recurrence or on events before surgery. The CHALLENGE estimate of 0.72 served as a reference point [9]. In the base case, the HR held for 5 years after randomization; after that, the reduction in the hazard, 1 − HR, halved every year. Alternative durations held it until 1 year after surgery or for life; in a further alternative, exercise continued for 30 months after surgery at additional cost, and the effect held until it stopped.
+
+In an alternative pathway, exercise raised pCR by 0 to 10 percentage points without changing the recurrence HR; patients added to the pCR group took the event-free survival of patients with pCR given the same treatment. Musculoskeletal adverse events occurred at the rates observed in CHALLENGE [9].
+
+Each program was assumed to deliver supervised aerobic and resistance training twice weekly during the 6 months of neoadjuvant chemotherapy; the programs differed only in cost. The supervised program assigned the whole CHALLENGE program cost [46], converted from 2024 Canadian dollars by purchasing power parity [47], to these 6 months, because its roughly 50 sessions over 3 years match twice-weekly sessions over 6 months. The fee-schedule-based program priced 40 minutes of outpatient musculoskeletal rehabilitation twice weekly for 26 weeks, because rehabilitation for patients with cancer is reimbursed only during admission, and the remote program one face-to-face session, monthly online visits and an app [48].
+
+Survival, costs and utilities
+
+Event-free survival after surgery came from parametric models fitted to patient-level data reconstructed from published KEYNOTE-522 curves by arm and pCR status [4,49], with 7-year values in each stratum fixed at those of the final analysis [44]. The distributions, a Weibull model for patients with pCR and a Weibull mixture cure model for patients without pCR, were chosen by the fit and plausibility criteria in Supplementary Methods S1. Excess mortality after distant recurrence came from the French Epidemiological Strategy and Medical Economics (ESME) cohort and was the same in all arms [50]; it differed between recurrence within 18 months of randomization and later recurrence. Background mortality came from the 2025 Japanese life table [51].
+
+Costs were in JPY at fiscal year 2026 prices, from the national drug price list [8], the medical fee schedule [48], published Japanese estimates and clinical experts. Supportive care, surgery, febrile neutropenia and post-operative treatment drew on Japanese guidelines, hospital price lists, trial reports and package inserts [52–60]. Adverse events came from KEYNOTE-522 and the European Medicines Agency assessment report [4,61]. Utilities were EuroQol 5-dimension 5-level (EQ-5D-5L) values from KEYNOTE-522 with the German value set [30,62], because no Japanese-valued KEYNOTE-522 data with standard errors were found; values from Japanese populations were used in a scenario [63,64]. Table 1 summarizes the inputs and Table S2 lists all of them with ranges, distributions and sources.
+
+Statistical analysis
+
+The model used 1-month cycles from the start of neoadjuvant therapy to age 100 years, with the cohort split by pCR at surgery in month 7 (Fig. 1).
+
+(1) To check that the model reproduced the trial, overall survival, which was not used to build the survival model, was compared with KEYNOTE-522 against acceptance criteria fixed before each comparison [5,44] (Supplementary Methods S1; Fig. S1; Table S3).
+
+(2) To compare the four arms, the model was run at recurrence HRs of 0.95, 0.85 and 0.72 with the fee-schedule-based program. Arms were ordered by total cost; an arm that cost more and gave fewer QALYs than another, or whose ICER exceeded that of the next more effective arm, was dominated, and ICERs were calculated between the remaining arms. Exercise effects matching the QALY gain or the net monetary benefit of pembrolizumab were found numerically, over HRs from 0.30 to 1.00 and increases in pCR of up to 37 percentage points.
+
+(3) To estimate the maximum affordable cost, the model was run at recurrence HRs from 0.70 to 1.00 in steps of 0.025 and at increases in pCR from 0 to 10 percentage points in steps of 1. Break-even HRs were found numerically.
+
+(4) To reflect uncertainty, each of 1,000 probabilistic samples paired one bootstrap replicate of the survival model with one draw of the other inputs. Distributions of the other inputs are listed in Table S2. The 2.5th and 97.5th percentiles of the samples gave the 95% uncertainty interval (UI). The probability that a program was cost-effective was the share of samples in which the maximum affordable cost exceeded the program cost. For pembrolizumab, it was the share of samples with a positive net monetary benefit at each threshold.
+
+(5) To find the inputs that move the results most, one-way sensitivity analyses set each input to its lower and upper bounds, for the maximum affordable cost in the main comparison at an HR of 0.85 and for the ICER of pembrolizumab. Ranges are given in Table S2.
+
+(6) To test other assumptions, scenario analyses changed one assumption at a time (Table 1): utility values from the United States, United Kingdom and Australian analyses [28,29,65]; higher excess mortality after early recurrence with pembrolizumab, from an Italian cohort [66]; longer survival after progression during neoadjuvant therapy [67]; halved costs of metastatic treatment; eribulin-based later-line treatment [68]; and post-operative capecitabine or olaparib for patients without pCR [69–71].
+
+(7) To express the result for Japan, the one-year net benefit used the fee-schedule-based program at recurrence HRs of 0.95, 0.90 and 0.85, applying the main comparison to patients who received neoadjuvant pembrolizumab in the 2024 national registry and exercise added to chemotherapy alone to the others [7].
+
+Analyses were performed in R version 4.5.1. Claude (Anthropic) assisted with literature retrieval, data extraction and editing; the authors verified all outputs.
+
+Results
+
+Four strategies compared
+
+Table 2 shows the four strategies at recurrence HRs of 0.95, 0.85 and 0.72 with the fee-schedule-based program. At each HR, both strategies without exercise cost more and gave fewer QALYs than the same treatment with exercise, so they were dominated. Adding pembrolizumab to chemotherapy plus exercise cost JPY 2,112 thousand per QALY at an HR of 0.95, JPY 2,245 thousand at 0.85 and JPY 2,449 thousand at 0.72. Relative to chemotherapy alone, the net monetary benefit of exercise at JPY 5 million per QALY was JPY 931 thousand at an HR of 0.95, JPY 3,250 thousand at 0.85 and JPY 6,413 thousand at 0.72, against JPY 6,355 thousand for pembrolizumab.
+
+Exercise compared with pembrolizumab
+
+Table 2 also shows pembrolizumab against chemotherapy alone: it cost JPY 4,426 thousand more per patient and added 2.156 QALYs, an ICER of JPY 2,053 thousand per QALY (Table S4). To gain as many QALYs as pembrolizumab, exercise added to chemotherapy alone required a recurrence HR of 0.425 or an increase in pCR of 35.9 percentage points (Table 2). To give the same net monetary benefit, it required an HR of 0.722 at JPY 5 million per QALY and 0.638 at JPY 7.5 million, or increases in pCR of 19.0 and 24.1 percentage points. Except the HR of 0.722, these values lay outside the ranges studied.
+
+Maximum affordable cost of exercise
+
+The maximum affordable cost rose as the recurrence HR with exercise fell (Fig. 2). At an HR of 0.85, exercise added to chemotherapy plus pembrolizumab had a maximum affordable cost of JPY 2,726 thousand per patient (95% UI [2,223, 3,040]; Table 3), and at 0.70 JPY 5,596 thousand (Table S5). The maximum affordable cost equaled the cost of the fee-schedule-based program at an HR of 0.989, a 1.1% reduction in the recurrence hazard, and medical costs avoided equaled it at an HR of 0.958, a 4.2% reduction (Table 3). Through pCR, an increase of 10 percentage points gave JPY 3,898 thousand (95% UI [2,388, 5,713]; Table S6).
+
+At an HR of 0.85, medical costs other than the program fell by JPY 702 thousand per patient, mostly in treatment of distant recurrence (Table S7).
+
+Added to chemotherapy alone, exercise had a maximum affordable cost of JPY 3,443 thousand at an HR of 0.85, with break-even HRs of 0.991 and 0.966 (Table 3).
+
+Duration and metastatic treatment costs
+
+The maximum affordable cost at an HR of 0.85 was JPY 1,772 thousand when the effect lasted until 1 year after surgery and JPY 3,404 thousand when it did not wane, against JPY 2,726 thousand in the base case (Table 3). With exercise continued after surgery, it was JPY 2,239 thousand (Table S8).
+
+With metastatic treatment costs halved, medical costs avoided equaled the fee-schedule-based program cost at an HR of 0.918 (8.2% reduction), and with eribulin-based later-line treatment at 0.914 (8.6%). The HR at which the maximum affordable cost equaled the program cost barely moved, to 0.988 and 0.987 (Table 3).
+
+At an HR of 0.95, the one-year net benefit for the 3,451 registered patients was JPY 2.68 billion (95% UI [2.22, 2.94]); at 0.85, it was JPY 9.57 billion (95% UI [8.15, 10.36]; Table S9).
+
+Sensitivity and scenario analyses
+
+The monthly cost of second-line and later treatment moved the maximum affordable cost at an HR of 0.85 most, to JPY 2,617 and 2,836 thousand (Fig. 3; Table S10). With higher mortality after early recurrence with pembrolizumab it was JPY 2,691 thousand (95% UI [2,201, 2,994]), and with utilities from Japanese populations JPY 2,733 thousand. Across the utility scenarios and Japanese post-operative treatment, the program became cost-effective at HRs of 0.988 to 0.989 (Table S11). The pembrolizumab drug cost moved the ICER most, to JPY 1,296 thousand per QALY at its lower bound (Fig. S2).
+
+Discussion
+
+If exercise lowered the recurrence hazard by 5% or more, both strategies without it were dominated (Tables 2 and 3), so the choice in Japan is not between exercise and pembrolizumab. Pembrolizumab remained cost-effective on top of exercise, as it is on its own in Japan and elsewhere [28–31], and chemotherapy with both gave the most health for the money at every effect size.
+
+Exercise cannot replace pembrolizumab in health gained: it would need to lower the recurrence hazard by more than half, far beyond the effects reported in exercise trials [9,14]. In value for money the gap is narrower, because the program costs a small fraction of the pembrolizumab regimen: at the Japanese threshold, an effect the size of that in CHALLENGE would give the same net benefit as pembrolizumab, and at the higher threshold pembrolizumab keeps its lead unless exercise cuts the hazard by more than a third. Because the effect of exercise is unproven, the comparison shows what a cheap program could be worth if it were confirmed.
+
+For patients who receive pembrolizumab, now most patients in Japan [7], the question is what a program added to their treatment may cost. If exercise reduces recurrence at all, even a small effect would make a structured program cost-effective: the fee-schedule-based program became cost-effective once it lowered the recurrence hazard by 1.1%, which cut distant recurrence at 7 years by about 0.14 percentage points (Table S12). What a program could cost depended on the size and duration of its effect.
+
+Most of the value of exercise came from the distant recurrences it would prevent. In Japan, one month of treatment after distant recurrence costs more than the whole program (Table 1), and medical costs avoided alone paid for the program once the recurrence hazard fell by 4.2% to 8.6%, depending on the cost of metastatic treatment.
+
+Duration changed the maximum affordable cost more than any cost input. Because most recurrences after neoadjuvant chemotherapy with pembrolizumab occur early [6], an effect that holds through the first years after surgery captures most of the value, and continuing exercise after surgery raised the maximum affordable cost when the effect of the neoadjuvant program alone would fade early.
+
+Our results agree with the cost-utility analysis of CHALLENGE, in which prevented recurrences made the program cost-saving [46]; evaluations that valued only short-term effects [20–22] could not capture this value.
+
+In Japanese practice, a given effect may be worth more than the model suggests. In the 2024 national registry, 47% of patients treated with neoadjuvant chemotherapy, including those with stage I disease and those not given pembrolizumab, had a pCR [7], fewer than in either arm of KEYNOTE-522 (Table 1), leaving more patients with residual disease and more recurrences for exercise to prevent.
+
+Implications
+
+Exercise during adjuvant chemotherapy improves fitness [10–12], and supervised exercise has been delivered during neoadjuvant chemotherapy [16,17], so clinicians can offer it while its effect on recurrence is tested. Trials should record recurrence and follow patients long enough to see whether the effect lasts after the program ends; a higher pCR alone cannot settle the question. Funders can weigh the cost of such trials against the one-year net benefit if an effect is confirmed (Table S9).
+
+In Japan, the fee schedule pays for rehabilitation of patients with cancer only during hospital admission, so structured exercise during outpatient neoadjuvant chemotherapy currently has no route to reimbursement [48]. More broadly, Japan evaluates the cost-effectiveness of drugs and devices only [41,42], so non-drug care, such as exercise, rehabilitation or the skill of clinicians, is never weighed on the same scale. Support that keeps patients exercising after surgery, such as remote programs, would add value if it extends the effect (Table S8). For pembrolizumab, this analysis gives Japan a reference value before any formal evaluation of its perioperative indication.
+
+Limitations
+
+The effect of exercise during neoadjuvant chemotherapy on recurrence is unknown, so all results for exercise are conditional on the assumed HR and duration, and the CHALLENGE reference comes from colon cancer. The same HR was applied with and without pembrolizumab, although the effect may differ with immunotherapy, and uptake and adherence were not modeled. Effects on fatigue, quality of life or completion of chemotherapy were not counted, so the maximum affordable cost is likely understated.
+
+Survival was modeled from reconstructed data, and the 7-year event-free survival by pCR status came from the conference presentation of the final analysis. Survival after distant recurrence came from a French cohort diagnosed in 2008 to 2020, largely before immunotherapy and antibody–drug conjugates [50]; longer survival with current treatments would raise the costs avoided per prevented recurrence but lower the QALYs gained. Several costs relied on expert input and utilities on a German value set, but neither changed the conclusion (Fig. 3; Table S11). Costs borne by patients, such as time and travel, lay outside the payer perspective, and the registry does not capture every case, so the one-year net benefit is likely understated. The expected value of perfect information was not estimated, because no distribution for the effect of exercise could be justified.
+
+Conclusion
+
+In Japan, exercise during neoadjuvant chemotherapy for TNBC cannot match the health gained with pembrolizumab, but adding it would be cost-effective if it reduced recurrence even slightly; its value depends on the size and duration of that effect far more than on its price. Trials should measure recurrence and whether the effect lasts.

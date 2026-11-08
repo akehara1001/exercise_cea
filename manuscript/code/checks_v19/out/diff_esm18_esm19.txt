@@ -1,0 +1,239 @@
+units v18 2507, v19 2599, unchanged 2470, changed blocks 36
+
+=== block 1: replace v18[1:2] -> v19[1:2]
+  - [1] Article: Cost-effectiveness of exercise added to neoadjuvant chemotherapy for triple-negative breast cancer in Japan
+  + [1] Article: Exercise versus or in addition to pembrolizumab with neoadjuvant chemotherapy for early-stage triple-negative breast cancer: a model-based cost-effectiveness analysis in Japan
+
+=== block 2: replace v18[41:42] -> v19[41:42]
+  - [41] Title page (p. 1)
+  + [41] Title page (pp. 1 to 2)
+
+=== block 3: replace v18[51:52] -> v19[51:52]
+  - [51] Abstract (p. 2)
+  + [51] Abstract (p. 3)
+
+=== block 4: replace v18[61:62] -> v19[61:62]
+  - [61] Introduction, paragraphs 1 to 4 (pp. 3 to 4)
+  + [61] Introduction, paragraphs 1 to 4 (pp. 4 to 5)
+
+=== block 5: replace v18[71:72] -> v19[71:72]
+  - [71] Methods, Study design, paragraph 3 (p. 5)
+  + [71] Methods, Study design, paragraph 3 (p. 6)
+
+=== block 6: replace v18[75:76] -> v19[75:76]
+  - [75] Methods, Study design, paragraph 1; Table 1 (pp. 4 to 5)
+  + [75] Methods, Study design, paragraph 1; Table 1 (pp. 5 to 6)
+
+=== block 7: replace v18[79:80] -> v19[79:80]
+  - [79] Methods, Study design, paragraphs 1 to 2 (pp. 4 to 5)
+  + [79] Methods, Study design, paragraphs 1 to 2 (pp. 5 to 6)
+
+=== block 8: replace v18[83:84] -> v19[83:84]
+  - [83] Methods, Study design, paragraph 1 (pp. 4 to 5)
+  + [83] Methods, Study design, paragraph 1; Methods, Exercise effect and costs, paragraph 3 (pp. 5 to 8)
+
+=== block 9: replace v18[87:88] -> v19[87:88]
+  - [87] Methods, Study design, paragraph 2 (p. 5)
+  + [87] Methods, Study design, paragraph 2 (p. 6)
+
+=== block 10: replace v18[91:92] -> v19[91:92]
+  - [91] Methods, Study design, paragraph 2 (p. 5)
+  + [91] Methods, Study design, paragraph 2 (p. 6)
+
+=== block 11: replace v18[95:96] -> v19[95:96]
+  - [95] Methods, Study design, paragraph 2 (p. 5)
+  + [95] Methods, Study design, paragraph 2 (p. 6)
+
+=== block 12: replace v18[99:100] -> v19[99:100]
+  - [99] Methods, Outcomes, paragraphs 1 to 2 (pp. 5 to 6)
+  + [99] Methods, Outcomes, paragraphs 1 to 2 (pp. 6 to 7)
+
+=== block 13: replace v18[103:104] -> v19[103:104]
+  - [103] Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Supplementary Methods S1 (pp. 6 to 7)
+  + [103] Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Supplementary Methods S1 (pp. 7 to 8)
+
+=== block 14: replace v18[107:108] -> v19[107:108]
+  - [107] Methods, Survival, costs and utilities, paragraph 2 (p. 7)
+  + [107] Methods, Survival, costs and utilities, paragraph 2 (pp. 8 to 9)
+
+=== block 15: replace v18[111:112] -> v19[111:112]
+  - [111] Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2; Table 1; Supplementary Table S2 (pp. 6 to 7)
+  + [111] Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2; Table 1; Supplementary Table S2 (pp. 7 to 9)
+
+=== block 16: replace v18[115:116] -> v19[115:116]
+  - [115] Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2 (pp. 6 to 7)
+  + [115] Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2 (pp. 7 to 9)
+
+=== block 17: replace v18[119:120] -> v19[119:120]
+  - [119] Methods, Study design, paragraph 1; Methods, Statistical analysis, paragraph 1; Fig. 1; Supplementary Methods S1; Statements and Declarations, Data availability (pp. 4 to 27)
+  + [119] Methods, Study design, paragraph 1; Methods, Statistical analysis, paragraph 1; Fig. 1; Supplementary Methods S1; Statements and Declarations, Data availability (pp. 5 to 29)
+
+=== block 18: replace v18[123:124] -> v19[123:124]
+  - [123] Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Methods, Statistical analysis, stages (1) to (3); Supplementary Methods S1 (pp. 6 to 8)
+  + [123] Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Methods, Statistical analysis, stages (1) to (3); Supplementary Methods S1 (pp. 7 to 9)
+
+=== block 19: replace v18[127:128] -> v19[127:128]
+  - [127] No subgroup analyses beyond the two comparisons; Methods, Study design, paragraph 1 (pp. 4 to 5)
+  + [127] No subgroup analyses beyond exercise added to chemotherapy alone and to chemotherapy plus pembrolizumab; Methods, Study design, paragraph 1 (pp. 5 to 6)
+
+=== block 20: replace v18[135:136] -> v19[135:136]
+  - [135] Methods, Statistical analysis, stages (4) to (6); Supplementary Methods S1 (pp. 8 to 9)
+  + [135] Methods, Statistical analysis, stages (4) to (6); Supplementary Methods S1; Discussion, Limitations, paragraph 2 (pp. 9 to 15)
+
+=== block 21: replace v18[153:154] -> v19[153:154]
+  - [153] Results, Four strategies compared, paragraph 1; Results, Exercise compared with pembrolizumab, paragraph 1; Results, Maximum affordable cost of exercise, paragraphs 1 to 3; Results, Duration and metastatic treatment costs, paragraphs 1 to 3; Fig. 2; Tables 2 and 3; Supplementary Tables S4 to S9 (pp. 9 to 11)
+  + [153] Results, Four strategies compared, paragraph 1; Results, Exercise compared with pembrolizumab, paragraph 1; Results, Maximum affordable cost of exercise, paragraphs 1 to 3; Results, Duration and metastatic treatment costs, paragraphs 1 to 3; Fig. 2; Tables 2 and 3; Supplementary Tables S4 to S9 and S12 (pp. 10 to 12)
+
+=== block 22: replace v18[157:158] -> v19[157:158]
+  - [157] Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 3; Supplementary Tables S5, S8, S10 and S11; Supplementary Fig. S2 (pp. 10 to 11)
+  + [157] Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 3; Supplementary Tables S5, S8, S10 and S11; Supplementary Fig. S2 (pp. 11 to 12)
+
+=== block 23: replace v18[171:172] -> v19[171:172]
+  - [171] Discussion, paragraphs 1 to 7; Discussion, Implications; Discussion, Limitations (pp. 11 to 14)
+  + [171] Discussion, paragraphs 1 to 7; Discussion, Implications; Discussion, Limitations (pp. 12 to 15)
+
+=== block 24: replace v18[181:182] -> v19[181:182]
+  - [181] Statements and Declarations, Funding (p. 27)
+  + [181] Statements and Declarations, Funding (p. 28)
+
+=== block 25: replace v18[185:186] -> v19[185:186]
+  - [185] Statements and Declarations, Competing interests (p. 27)
+  + [185] Statements and Declarations, Competing interests (pp. 28 to 29)
+
+=== block 26: replace v18[1664:1665] -> v19[1664:1665]
+  - [1664] Effect until 1 year after surgery: secondary comparison
+  + [1664] Effect until 1 year after surgery: exercise added to chemotherapy alone
+
+=== block 27: replace v18[1666:1667] -> v19[1666:1667]
+  - [1666] No waning: secondary comparison
+  + [1666] No waning: exercise added to chemotherapy alone
+
+=== block 28: replace v18[1668:1669] -> v19[1668:1669]
+  - [1668] Exercise continued after surgery: secondary comparison
+  + [1668] Exercise continued after surgery: exercise added to chemotherapy alone
+
+=== block 29: replace v18[1764:1765] -> v19[1764:1765]
+  - [1764] Effect until 1 year after surgery: secondary comparison
+  + [1764] Effect until 1 year after surgery: exercise added to chemotherapy alone
+
+=== block 30: replace v18[1766:1767] -> v19[1766:1767]
+  - [1766] No waning: secondary comparison
+  + [1766] No waning: exercise added to chemotherapy alone
+
+=== block 31: replace v18[1768:1769] -> v19[1768:1769]
+  - [1768] Exercise continued after surgery: secondary comparison
+  + [1768] Exercise continued after surgery: exercise added to chemotherapy alone
+
+=== block 32: replace v18[1861:1862] -> v19[1861:1862]
+  - [1861] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estimates in JPY 1,000 per patient. Main comparison: exercise added to chemotherapy plus pembrolizumab; secondary comparison: exercise added to chemotherapy alone. Effect until 1 year after surgery: the recurrence HR is held until 1 year after surgery and then halves every year; no waning: held for life; exercise continued after surgery: as the first, with exercise continued for 30 months after surgery at its monthly cost, the effect held until the end of continuation and halving every year thereafter, and the continuation cost counted among medical costs (inputs E04 and E05, Supplementary Table S2). The base-case duration is in Supplementary Table S5. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year.
+  + [1861] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estimates in JPY 1,000 per patient. Main comparison: exercise added to chemotherapy plus pembrolizumab. Effect until 1 year after surgery: the recurrence HR is held until 1 year after surgery and then halves every year; no waning: held for life; exercise continued after surgery: as the first, with exercise continued for 30 months after surgery at its monthly cost, the effect held until the end of continuation and halving every year thereafter, and the continuation cost counted among medical costs (inputs E04 and E05, Supplementary Table S2). The base-case duration is in Supplementary Table S5. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year.
+
+=== block 33: replace v18[1912:1913] -> v19[1912:1913]
+  - [1912] aValues are conditional on the recurrence HR shown, not expected values. Net benefit per patient: maximum affordable cost at JPY 5 million per QALY minus the cost of the fee-schedule-based program (Table 1). N: patients with stage II or III triple-negative breast cancer (M0) who received neoadjuvant chemotherapy in 2024, 3,451 in total, of whom 2,294 received neoadjuvant pembrolizumab (main comparison) and 1,157 did not (secondary comparison); Japanese Breast Cancer Society, National Breast Cancer Registry Report No. 55 (cases diagnosed in 2024, final version) [7]. Sensitivity analyses: N = 2,900 (registrations in 2023) and N = 4,000 (allowing for incomplete registration), with the same share receiving pembrolizumab. Panel B: deterministic estimate and 95% UI. 95% UI: 2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year; UI, uncertainty interval.
+  + [1912] aValues are conditional on the recurrence HR shown, not expected values. Net benefit per patient: maximum affordable cost at JPY 5 million per QALY minus the cost of the fee-schedule-based program (Table 1). N: patients with stage II or III triple-negative breast cancer (M0) who received neoadjuvant chemotherapy in 2024, 3,451 in total, of whom 2,294 received neoadjuvant pembrolizumab (main comparison) and 1,157 did not (exercise added to chemotherapy alone); Japanese Breast Cancer Society, National Breast Cancer Registry Report No. 55 (cases diagnosed in 2024, final version) [7]. Sensitivity analyses: N = 2,900 (registrations in 2023) and N = 4,000 (allowing for incomplete registration), with the same share receiving pembrolizumab. Panel B: deterministic estimate and 95% UI. 95% UI: 2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year; UI, uncertainty interval.
+
+=== block 34: replace v18[2450:2453] -> v19[2450:2453]
+  - [2450] Secondary comparison: maximum affordable cost at recurrence HR 0.85
+  - [2451] Secondary comparison: recurrence HR (reduction in recurrence hazard, %) at which the maximum affordable cost equals the program cost
+  - [2452] Secondary comparison: recurrence HR (reduction in recurrence hazard, %) at which medical costs avoided equal the program cost
+  + [2450] Exercise added to chemotherapy alone: maximum affordable cost at recurrence HR 0.85
+  + [2451] Exercise added to chemotherapy alone: recurrence HR (reduction in recurrence hazard, %) at which the maximum affordable cost equals the program cost
+  + [2452] Exercise added to chemotherapy alone: recurrence HR (reduction in recurrence hazard, %) at which medical costs avoided equal the program cost
+
+=== block 35: replace v18[2503:2504] -> v19[2503:2504]
+  - [2503] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estimates. Main comparison: exercise added to chemotherapy plus pembrolizumab; secondary comparison: exercise added to chemotherapy alone; program cost: the fee-schedule-based program (Table 1). Maximum affordable cost in JPY 1,000 per patient at JPY 5 million per QALY; ICER in JPY 1,000 per QALY. The value in parentheses is the reduction in the recurrence hazard, 100 × (1 − HR), in %. Base-case values are in Table 3 and Supplementary Table S4. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; ICER, incremental cost-effectiveness ratio; JPY, Japanese yen; QALY, quality-adjusted life year.
+  + [2503] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estimates. Main comparison: exercise added to chemotherapy plus pembrolizumab; program cost: the fee-schedule-based program (Table 1). Maximum affordable cost in JPY 1,000 per patient at JPY 5 million per QALY; ICER in JPY 1,000 per QALY. The value in parentheses is the reduction in the recurrence hazard, 100 × (1 − HR), in %. Base-case values are in Table 3 and Supplementary Table S4. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; ICER, incremental cost-effectiveness ratio; JPY, Japanese yen; QALY, quality-adjusted life year.
+
+=== block 36: insert v18[2507:2507] -> v19[2507:2599]
+  + [2507] 
+  + [2508] Supplementary Table S12. Cumulative proportion of women with distant recurrence and with any recurrence after surgery without exercise, and the absolute reduction with exercise, at 5 and 7 years after randomization by the recurrence hazard ratio with exercisea
+  + [2509] Recurrence HR
+  + [2510] Chemotherapy plus pembrolizumab
+  + [2511] Chemotherapy alone
+  + [2512] 
+  + [2513] Distant recurrence at 5 yearsb
+  + [2514] Distant recurrence at 7 yearsb
+  + [2515] Any recurrence at 5 yearsc
+  + [2516] Any recurrence at 7 yearsc
+  + [2517] Distant recurrence at 5 yearsb
+  + [2518] Distant recurrence at 7 yearsb
+  + [2519] Any recurrence at 5 yearsc
+  + [2520] Any recurrence at 7 yearsc
+  + [2521] A. Cumulative proportion of women without exercise, %
+  + [2522] 1.00
+  + [2523] 13.13
+  + [2524] 15.61
+  + [2525] 15.55
+  + [2526] 17.35
+  + [2527] 18.11
+  + [2528] 20.86
+  + [2529] 21.02
+  + [2530] 22.79
+  + [2531] B. Absolute reduction with exercise, percentage points
+  + [2532] 0.991
+  + [2533] 0.10
+  + [2534] 0.11
+  + [2535] 0.12
+  + [2536] 0.12
+  + [2537] 0.13
+  + [2538] 0.15
+  + [2539] 0.15
+  + [2540] 0.16
+  + [2541] 0.989
+  + [2542] 0.12
+  + [2543] 0.14
+  + [2544] 0.14
+  + [2545] 0.15
+  + [2546] 0.16
+  + [2547] 0.18
+  + [2548] 0.19
+  + [2549] 0.20
+  + [2550] 0.966
+  + [2551] 0.38
+  + [2552] 0.43
+  + [2553] 0.45
+  + [2554] 0.47
+  + [2555] 0.50
+  + [2556] 0.56
+  + [2557] 0.58
+  + [2558] 0.61
+  + [2559] 0.958
+  + [2560] 0.47
+  + [2561] 0.53
+  + [2562] 0.55
+  + [2563] 0.58
+  + [2564] 0.62
+  + [2565] 0.69
+  + [2566] 0.72
+  + [2567] 0.75
+  + [2568] 0.95
+  + [2569] 0.56
+  + [2570] 0.63
+  + [2571] 0.66
+  + [2572] 0.69
+  + [2573] 0.74
+  + [2574] 0.83
+  + [2575] 0.86
+  + [2576] 0.89
+  + [2577] 0.85
+  + [2578] 1.71
+  + [2579] 1.93
+  + [2580] 2.01
+  + [2581] 2.11
+  + [2582] 2.28
+  + [2583] 2.53
+  + [2584] 2.63
+  + [2585] 2.74
+  + [2586] 0.72
+  + [2587] 3.26
+  + [2588] 3.68
+  + [2589] 3.84
+  + [2590] 4.03
+  + [2591] 4.36
+  + [2592] 4.85
+  + [2593] 5.04
+  + [2594] 5.24
+  + [2595] 
+  + [2596] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Proportions are per 100 women entering the model, with or without pCR and including those whose disease progressed before surgery. Deterministic base case, with all inputs at their base values. The recurrence HR is held for 5 years after randomization, after which the reduction in the hazard, 1 − HR, halves every year (Table 1). The recurrence HR multiplies both the locoregional and the distant recurrence transitions after surgery. Only recurrence after surgery is counted; progression during neoadjuvant therapy, before surgery, is not. Time is counted from randomization, the start of neoadjuvant chemotherapy; 5 and 7 years are model months 60 and 84. Recurrence HR 1.00: without exercise. Absolute reduction: the proportion without exercise minus the proportion with exercise. HR, hazard ratio; pCR, pathological complete response.
+  + [2597] bFirst entry into distant recurrence, early or late, after surgery, including distant recurrence after locoregional recurrence; each woman is counted once.
+  + [2598] cFirst entry into locoregional or distant recurrence after surgery, the recurrences on which the recurrence HR acts; distant recurrence after locoregional recurrence is not counted again.

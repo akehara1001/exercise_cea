@@ -1,0 +1,31 @@
+paragraphs scanned: 61; mentions extracted (expanded): 52
+actual: {'Table ': 3, 'Fig ': 3, 'Table S': 12, 'Fig S': 2} | figure captions: 3
+  Table    first-mention order [1, 2, 3] -> consecutive 1..n: True; max 3 vs actual 3
+  Fig      first-mention order [1, 2, 3] -> consecutive 1..n: True; max 3 vs actual 3
+  Table S  first-mention order [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] -> consecutive 1..n: True; max 12 vs actual 12
+  Fig S    first-mention order [1, 2] -> consecutive 1..n: True; max 2 vs actual 2
+individual (non-range) citations, paragraph index in the scan:
+  Table 1: [14, 19, 27, 49, 52]
+  Table 2: [32, 34, 34, 46]
+  Table 3: [36, 36, 38, 40, 41, 46]
+  Fig 1: [21]
+  Fig 2: [36]
+  Fig 3: [44, 58]
+  Table S 1: [9]
+  Table S 2: [19, 25, 26]
+  Table S 3: [22]
+  Table S 4: [34]
+  Table S 5: [36]
+  Table S 6: [36]
+  Table S 7: [37]
+  Table S 8: [40, 55]
+  Table S 9: [42, 54]
+  Table S 10: [44]
+  Table S 11: [44, 58]
+  Table S 12: [48]
+  Fig S 1: [22]
+  Fig S 2: [44]
+ESM table order: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+ESM fig order: [1, 2]
+Supplementary Methods mentions in main text: 4 | without S1: 0
+ALL SERIES PASS: True

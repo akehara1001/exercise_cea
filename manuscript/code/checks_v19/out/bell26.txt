@@ -1,0 +1,5 @@
+Warning messages:
+right formula: max |flow - balance| = 1.53e-15 -> check passes: TRUE
+wrong formula (LRR->DR counted twice): max |flow - balance| = 7.43e-02 -> check fires: TRUE
+month 84: flow sum 15.2411%, occupancy LRR+DR 4.4083% (occupancy loses 10.8328 points)
+bell26 finished

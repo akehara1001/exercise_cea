@@ -1,0 +1,43 @@
+[
+ {
+  "step": "3 symbol",
+  "before": "0.989 (1.1)",
+  "after": "0.989 (1.1)✳"
+ },
+ {
+  "step": "3 symbol",
+  "before": "0.991 (0.9)",
+  "after": "0.991 (0.9)✳"
+ },
+ {
+  "step": "3 symbol",
+  "before": "0.958 (4.2)",
+  "after": "0.958 (4.2)✳"
+ },
+ {
+  "step": "3 symbol",
+  "before": "0.966 (3.4)",
+  "after": "0.966 (3.4)✳"
+ },
+ {
+  "step": "3 symbol",
+  "before": "Base case, recurrence HR 0.85",
+  "after": "Base case, recurrence HR 0.85✳"
+ },
+ {
+  "step": "3 symbol",
+  "before": "Base case, recurrence HR 0.85",
+  "after": "Base case, recurrence HR 0.85✳"
+ },
+ {
+  "step": "3 footnote",
+  "new": "✳ Under the base-case assumptions, recurrence HRs of 0.989, 0.958 and 0.85 with chemotherapy plus pembrolizumab correspond to absolute reductions in distant recurrence at 7 years of about 0.14, 0.53 and 1.93 percentage points, and HRs of 0.991 and 0.966 with chemotherapy alone to about 0.15 and 0.56 points (Table S12).",
+  "values": {
+   "a": "0.14",
+   "b": "0.53",
+   "c": "1.93",
+   "d": "0.15",
+   "e": "0.56"
+  }
+ }
+]

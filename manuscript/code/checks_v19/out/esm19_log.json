@@ -1,0 +1,385 @@
+[
+ {
+  "step": "5 title",
+  "old": "Article: Cost-effectiveness of exercise added to neoadjuvant chemotherapy for triple-negative breast cancer in Japan",
+  "new": "Article: Exercise versus or in addition to pembrolizumab with neoadjuvant chemotherapy for early-stage triple-negative breast cancer: a model-based cost-effectiveness analysis in Japan"
+ },
+ {
+  "step": "5 wording",
+  "table": "S8",
+  "before": "Effect until 1 year after surgery: secondary comparison",
+  "after": "Effect until 1 year after surgery: exercise added to chemotherapy alone"
+ },
+ {
+  "step": "5 wording",
+  "table": "S8",
+  "before": "Effect until 1 year after surgery: secondary comparison",
+  "after": "Effect until 1 year after surgery: exercise added to chemotherapy alone"
+ },
+ {
+  "step": "5 wording",
+  "table": "S8",
+  "before": "No waning: secondary comparison",
+  "after": "No waning: exercise added to chemotherapy alone"
+ },
+ {
+  "step": "5 wording",
+  "table": "S8",
+  "before": "No waning: secondary comparison",
+  "after": "No waning: exercise added to chemotherapy alone"
+ },
+ {
+  "step": "5 wording",
+  "table": "S8",
+  "before": "Exercise continued after surgery: secondary comparison",
+  "after": "Exercise continued after surgery: exercise added to chemotherapy alone"
+ },
+ {
+  "step": "5 wording",
+  "table": "S8",
+  "before": "Exercise continued after surgery: secondary comparison",
+  "after": "Exercise continued after surgery: exercise added to chemotherapy alone"
+ },
+ {
+  "step": "5 wording",
+  "table": "S11",
+  "before": "Secondary comparison: maximum affordable cost at recurrence HR 0.85",
+  "after": "Exercise added to chemotherapy alone: maximum affordable cost at recurrence HR 0.85"
+ },
+ {
+  "step": "5 wording",
+  "table": "S11",
+  "before": "Secondary comparison: recurrence HR (reduction in recurrence hazard, %) at which the maximum affordable cost equals the program cost",
+  "after": "Exercise added to chemotherapy alone: recurrence HR (reduction in recurrence hazard, %) at which the maximum affordable cost equals the program cost"
+ },
+ {
+  "step": "5 wording",
+  "table": "S11",
+  "before": "Secondary comparison: recurrence HR (reduction in recurrence hazard, %) at which medical costs avoided equal the program cost",
+  "after": "Exercise added to chemotherapy alone: recurrence HR (reduction in recurrence hazard, %) at which medical costs avoided equal the program cost"
+ },
+ {
+  "step": "5 wording",
+  "table": "S8",
+  "before": "aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estimates in JPY 1,000 per patient. Main comparison: exercise added to chemotherapy plus pembrolizumab; secondary comparison: exercise added to chemotherapy alone. Effect until 1 year after surgery: the recurrence HR is held until 1 year after surgery and then halves every year; no waning: held for life; exercise continued after surgery: as the first, with exercise continued for 30 months after surgery at its monthly cost, the effect held until the end of continuation and halving every year thereafter, and the continuation cost counted among medical costs (inputs E04 and E05, Supplementary Table S2). The base-case duration is in Supplementary Table S5. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year.",
+  "after": "aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estimates in JPY 1,000 per patient. Main comparison: exercise added to chemotherapy plus pembrolizumab. Effect until 1 year after surgery: the recurrence HR is held until 1 year after surgery and then halves every year; no waning: held for life; exercise continued after surgery: as the first, with exercise continued for 30 months after surgery at its monthly cost, the effect held until the end of continuation and halving every year thereafter, and the continuation cost counted among medical costs (inputs E04 and E05, Supplementary Table S2). The base-case duration is in Supplementary Table S5. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year."
+ },
+ {
+  "step": "5 wording",
+  "table": "S9",
+  "before": "aValues are conditional on the recurrence HR shown, not expected values. Net benefit per patient: maximum affordable cost at JPY 5 million per QALY minus the cost of the fee-schedule-based program (Table 1). N: patients with stage II or III triple-negative breast cancer (M0) who received neoadjuvant chemotherapy in 2024, 3,451 in total, of whom 2,294 received neoadjuvant pembrolizumab (main comparison) and 1,157 did not (secondary comparison); Japanese Breast Cancer Society, National Breast Cancer Registry Report No. 55 (cases diagnosed in 2024, final version) [7]. Sensitivity analyses: N = 2,900 (registrations in 2023) and N = 4,000 (allowing for incomplete registration), with the same share receiving pembrolizumab. Panel B: deterministic estimate and 95% UI. 95% UI: 2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year; UI, uncertainty interval.",
+  "after": "aValues are conditional on the recurrence HR shown, not expected values. Net benefit per patient: maximum affordable cost at JPY 5 million per QALY minus the cost of the fee-schedule-based program (Table 1). N: patients with stage II or III triple-negative breast cancer (M0) who received neoadjuvant chemotherapy in 2024, 3,451 in total, of whom 2,294 received neoadjuvant pembrolizumab (main comparison) and 1,157 did not (exercise added to chemotherapy alone); Japanese Breast Cancer Society, National Breast Cancer Registry Report No. 55 (cases diagnosed in 2024, final version) [7]. Sensitivity analyses: N = 2,900 (registrations in 2023) and N = 4,000 (allowing for incomplete registration), with the same share receiving pembrolizumab. Panel B: deterministic estimate and 95% UI. 95% UI: 2.5th and 97.5th percentiles of 1,000 probabilistic sensitivity analysis samples. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; JPY, Japanese yen; QALY, quality-adjusted life year; UI, uncertainty interval."
+ },
+ {
+  "step": "5 wording",
+  "table": "S11",
+  "before": "aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estimates. Main comparison: exercise added to chemotherapy plus pembrolizumab; secondary comparison: exercise added to chemotherapy alone; program cost: the fee-schedule-based program (Table 1). Maximum affordable cost in JPY 1,000 per patient at JPY 5 million per QALY; ICER in JPY 1,000 per QALY. The value in parentheses is the reduction in the recurrence hazard, 100 × (1 − HR), in %. Base-case values are in Table 3 and Supplementary Table S4. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; ICER, incremental cost-effectiveness ratio; JPY, Japanese yen; QALY, quality-adjusted life year.",
+  "after": "aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Deterministic estimates. Main comparison: exercise added to chemotherapy plus pembrolizumab; program cost: the fee-schedule-based program (Table 1). Maximum affordable cost in JPY 1,000 per patient at JPY 5 million per QALY; ICER in JPY 1,000 per QALY. The value in parentheses is the reduction in the recurrence hazard, 100 × (1 − HR), in %. Base-case values are in Table 3 and Supplementary Table S4. Costs in JPY 1,000 at fiscal year 2026 prices, discounted at 2% per year over a lifetime horizon. HR, hazard ratio; ICER, incremental cost-effectiveness ratio; JPY, Japanese yen; QALY, quality-adjusted life year."
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 1,
+  "old": "Title page (p. 1)",
+  "new": "Title page (pp. 1 to 2)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 2,
+  "old": "Abstract (p. 2)",
+  "new": "Abstract (p. 3)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 3,
+  "old": "Introduction, paragraphs 1 to 4 (pp. 3 to 4)",
+  "new": "Introduction, paragraphs 1 to 4 (pp. 4 to 5)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 4,
+  "old": "Methods, Study design, paragraph 3 (p. 5)",
+  "new": "Methods, Study design, paragraph 3 (p. 6)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 5,
+  "old": "Methods, Study design, paragraph 1; Table 1 (pp. 4 to 5)",
+  "new": "Methods, Study design, paragraph 1; Table 1 (pp. 5 to 6)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 6,
+  "old": "Methods, Study design, paragraphs 1 to 2 (pp. 4 to 5)",
+  "new": "Methods, Study design, paragraphs 1 to 2 (pp. 5 to 6)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 7,
+  "old": "Methods, Study design, paragraph 1 (pp. 4 to 5)",
+  "new": "Methods, Study design, paragraph 1; Methods, Exercise effect and costs, paragraph 3 (pp. 5 to 8)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 8,
+  "old": "Methods, Study design, paragraph 2 (p. 5)",
+  "new": "Methods, Study design, paragraph 2 (p. 6)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 9,
+  "old": "Methods, Study design, paragraph 2 (p. 5)",
+  "new": "Methods, Study design, paragraph 2 (p. 6)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 10,
+  "old": "Methods, Study design, paragraph 2 (p. 5)",
+  "new": "Methods, Study design, paragraph 2 (p. 6)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 11,
+  "old": "Methods, Outcomes, paragraphs 1 to 2 (pp. 5 to 6)",
+  "new": "Methods, Outcomes, paragraphs 1 to 2 (pp. 6 to 7)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 12,
+  "old": "Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Supplementary Methods S1 (pp. 6 to 7)",
+  "new": "Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Supplementary Methods S1 (pp. 7 to 8)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 13,
+  "old": "Methods, Survival, costs and utilities, paragraph 2 (p. 7)",
+  "new": "Methods, Survival, costs and utilities, paragraph 2 (pp. 8 to 9)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 14,
+  "old": "Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2; Table 1; Supplementary Table S2 (pp. 6 to 7)",
+  "new": "Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2; Table 1; Supplementary Table S2 (pp. 7 to 9)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 15,
+  "old": "Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2 (pp. 6 to 7)",
+  "new": "Methods, Exercise effect and costs, paragraph 3; Methods, Survival, costs and utilities, paragraph 2 (pp. 7 to 9)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 16,
+  "old": "Methods, Study design, paragraph 1; Methods, Statistical analysis, paragraph 1; Fig. 1; Supplementary Methods S1; Statements and Declarations, Data availability (pp. 4 to 27)",
+  "new": "Methods, Study design, paragraph 1; Methods, Statistical analysis, paragraph 1; Fig. 1; Supplementary Methods S1; Statements and Declarations, Data availability (pp. 5 to 29)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 17,
+  "old": "Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Methods, Statistical analysis, stages (1) to (3); Supplementary Methods S1 (pp. 6 to 8)",
+  "new": "Methods, Exercise effect and costs, paragraphs 1 to 2; Methods, Survival, costs and utilities, paragraph 1; Methods, Statistical analysis, stages (1) to (3); Supplementary Methods S1 (pp. 7 to 9)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 18,
+  "old": "No subgroup analyses beyond the two comparisons; Methods, Study design, paragraph 1 (pp. 4 to 5)",
+  "new": "No subgroup analyses beyond exercise added to chemotherapy alone and to chemotherapy plus pembrolizumab; Methods, Study design, paragraph 1 (pp. 5 to 6)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 19,
+  "old": "Not performed",
+  "new": "Not performed",
+  "changed": false
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 20,
+  "old": "Methods, Statistical analysis, stages (4) to (6); Supplementary Methods S1 (pp. 8 to 9)",
+  "new": "Methods, Statistical analysis, stages (4) to (6); Supplementary Methods S1; Discussion, Limitations, paragraph 2 (pp. 9 to 15)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 21,
+  "old": "Not performed",
+  "new": "Not performed",
+  "changed": false
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 22,
+  "old": "Table 1; Supplementary Table S2",
+  "new": "Table 1; Supplementary Table S2",
+  "changed": false
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 23,
+  "old": "Results, Four strategies compared, paragraph 1; Results, Exercise compared with pembrolizumab, paragraph 1; Results, Maximum affordable cost of exercise, paragraphs 1 to 3; Results, Duration and metastatic treatment costs, paragraphs 1 to 3; Fig. 2; Tables 2 and 3; Supplementary Tables S4 to S9 (pp. 9 to 11)",
+  "new": "Results, Four strategies compared, paragraph 1; Results, Exercise compared with pembrolizumab, paragraph 1; Results, Maximum affordable cost of exercise, paragraphs 1 to 3; Results, Duration and metastatic treatment costs, paragraphs 1 to 3; Fig. 2; Tables 2 and 3; Supplementary Tables S4 to S9 and S12 (pp. 10 to 12)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 24,
+  "old": "Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 3; Supplementary Tables S5, S8, S10 and S11; Supplementary Fig. S2 (pp. 10 to 11)",
+  "new": "Results, Duration and metastatic treatment costs, paragraphs 1 to 2; Results, Sensitivity and scenario analyses, paragraph 1; Fig. 3; Table 3; Supplementary Tables S5, S8, S10 and S11; Supplementary Fig. S2 (pp. 11 to 12)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 25,
+  "old": "Not applicable (item 21)",
+  "new": "Not applicable (item 21)",
+  "changed": false
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 26,
+  "old": "Discussion, paragraphs 1 to 7; Discussion, Implications; Discussion, Limitations (pp. 11 to 14)",
+  "new": "Discussion, paragraphs 1 to 7; Discussion, Implications; Discussion, Limitations (pp. 12 to 15)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 27,
+  "old": "Statements and Declarations, Funding (p. 27)",
+  "new": "Statements and Declarations, Funding (p. 28)",
+  "changed": true
+ },
+ {
+  "step": "6 CHEERS",
+  "item": 28,
+  "old": "Statements and Declarations, Competing interests (p. 27)",
+  "new": "Statements and Declarations, Competing interests (pp. 28 to 29)",
+  "changed": true
+ },
+ {
+  "step": "2 Table S12",
+  "title": "Supplementary Table S12. Cumulative proportion of women with distant recurrence and with any recurrence after surgery without exercise, and the absolute reduction with exercise, at 5 and 7 years after randomization by the recurrence hazard ratio with exercisea",
+  "rows": [
+   [
+    "1.00",
+    "13.13",
+    "15.61",
+    "15.55",
+    "17.35",
+    "18.11",
+    "20.86",
+    "21.02",
+    "22.79"
+   ],
+   [
+    "0.991",
+    "0.10",
+    "0.11",
+    "0.12",
+    "0.12",
+    "0.13",
+    "0.15",
+    "0.15",
+    "0.16"
+   ],
+   [
+    "0.989",
+    "0.12",
+    "0.14",
+    "0.14",
+    "0.15",
+    "0.16",
+    "0.18",
+    "0.19",
+    "0.20"
+   ],
+   [
+    "0.966",
+    "0.38",
+    "0.43",
+    "0.45",
+    "0.47",
+    "0.50",
+    "0.56",
+    "0.58",
+    "0.61"
+   ],
+   [
+    "0.958",
+    "0.47",
+    "0.53",
+    "0.55",
+    "0.58",
+    "0.62",
+    "0.69",
+    "0.72",
+    "0.75"
+   ],
+   [
+    "0.95",
+    "0.56",
+    "0.63",
+    "0.66",
+    "0.69",
+    "0.74",
+    "0.83",
+    "0.86",
+    "0.89"
+   ],
+   [
+    "0.85",
+    "1.71",
+    "1.93",
+    "2.01",
+    "2.11",
+    "2.28",
+    "2.53",
+    "2.63",
+    "2.74"
+   ],
+   [
+    "0.72",
+    "3.26",
+    "3.68",
+    "3.84",
+    "4.03",
+    "4.36",
+    "4.85",
+    "5.04",
+    "5.24"
+   ]
+  ],
+  "footnotes": [
+   "aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Proportions are per 100 women entering the model, with or without pCR and including those whose disease progressed before surgery. Deterministic base case, with all inputs at their base values. The recurrence HR is held for 5 years after randomization, after which the reduction in the hazard, 1 − HR, halves every year (Table 1). The recurrence HR multiplies both the locoregional and the distant recurrence transitions after surgery. Only recurrence after surgery is counted; progression during neoadjuvant therapy, before surgery, is not. Time is counted from randomization, the start of neoadjuvant chemotherapy; 5 and 7 years are model months 60 and 84. Recurrence HR 1.00: without exercise. Absolute reduction: the proportion without exercise minus the proportion with exercise. HR, hazard ratio; pCR, pathological complete response.",
+   "bFirst entry into distant recurrence, early or late, after surgery, including distant recurrence after locoregional recurrence; each woman is counted once.",
+   "cFirst entry into locoregional or distant recurrence after surgery, the recurrences on which the recurrence HR acts; distant recurrence after locoregional recurrence is not counted again."
+  ],
+  "header": [
+   "Recurrence HR",
+   "Distant recurrence at 5 yearsb",
+   "Distant recurrence at 7 yearsb",
+   "Any recurrence at 5 yearsc",
+   "Any recurrence at 7 yearsc",
+   "Distant recurrence at 5 yearsb",
+   "Distant recurrence at 7 yearsb",
+   "Any recurrence at 5 yearsc",
+   "Any recurrence at 7 yearsc"
+  ]
+ }
+]
