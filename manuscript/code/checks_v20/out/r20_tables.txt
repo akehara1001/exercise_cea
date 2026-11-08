@@ -1,0 +1,25 @@
+tables: units v18 310, v19 310, unchanged 303, changed blocks 5
+  [1] replace: 2 -> 2 units
+     - [0(1)/1 symbol] 0.989 (1.1)✳
+     - [0(1)/1 symbol] 0.991 (0.9)✳
+     + [0(1)/1 symbol] 0.989e (1.1)
+     + [0(1)/1 symbol] 0.991e (0.9)
+  [2] replace: 2 -> 2 units
+     - [0(1)/1 symbol] 0.958 (4.2)✳
+     - [0(1)/1 symbol] 0.966 (3.4)✳
+     + [0(1)/1 symbol] 0.958e (4.2)
+     + [0(1)/1 symbol] 0.966e (3.4)
+  [3] replace: 1 -> 1 units
+     - [0(1)/1 symbol] Base case, recurrence HR 0.85✳
+     + [0(1)/1 symbol] Base case, recurrence HR 0.85e
+  [4] replace: 1 -> 1 units
+     - [0(1)/1 symbol] Base case, recurrence HR 0.85✳
+     + [0(1)/1 symbol] Base case, recurrence HR 0.85e
+  [5] replace: 1 -> 1 units
+     - [1 footnote e] ✳ Under the base-case assumptions, recurrence HRs of 0.989, 0.958 and 0.85 with chemotherapy plus pembrolizumab correspond to absolute reductions in distant rec
+     + [1 footnote e] eUnder the base-case assumptions, recurrence HRs of 0.989, 0.958 and 0.85 with chemotherapy plus pembrolizumab correspond to absolute reductions in distant recu
+  number tokens: v18 357, v19 358
+  only in v18: {}
+  only in v19: {'1': 1}
+  units by explanation: {'0(1)/1 symbol': 12, '1 footnote e': 2}
+  UNEXPLAINED: 0

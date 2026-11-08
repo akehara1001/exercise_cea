@@ -1,0 +1,9 @@
+units v19 175, v20 175, unchanged 173, changed blocks 2
+
+=== block 1: replace v19[13:14] -> v20[13:14]
+  - [13] Word count: abstract 249; main text 3,499 (excluding abstract, title page, tables, figures and references); 3 tables; 3 figures; 1 Online Resource
+  + [13] Word count: abstract 249; main text 3,498 (excluding abstract, title page, tables, figures and references); 3 tables; 3 figures; 1 Online Resource
+
+=== block 2: replace v19[70:71] -> v20[70:71]
+  - [70] For patients who receive pembrolizumab, now most patients in Japan [7], the question is what a program added to their treatment may cost. If exercise reduces recurrence at all, even a small effect would make a structured program cost-effective: the fee-schedule-based program became cost-effective once it lowered the recurrence hazard by 1.1%, which cut distant recurrence at 7 years by about 0.14 percentage points (Table S12). What a program could cost depended on the size and duration of its effect.
+  + [70] For patients who receive pembrolizumab, now most patients in Japan [7], the question is what a program added to their treatment may cost. If exercise reduces recurrence at all, even a small effect would make a structured program cost-effective: the fee-schedule-based program became cost-effective once it lowered the recurrence hazard by 1.1%, which cut distant recurrence at 7 years by 0.14 percentage points (Table S12). What a program could cost depended on the size and duration of its effect.

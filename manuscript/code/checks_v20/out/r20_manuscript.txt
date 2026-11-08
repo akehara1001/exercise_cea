@@ -1,0 +1,12 @@
+manuscript: units v18 175, v19 175, unchanged 173, changed blocks 2
+  [1] replace: 1 -> 1 units
+     - [4 word count] Word count: abstract 249; main text 3,499 (excluding abstract, title page, tables, figures and references); 3 tables; 3 figures; 1 Online Resource
+     + [4 word count] Word count: abstract 249; main text 3,498 (excluding abstract, title page, tables, figures and references); 3 tables; 3 figures; 1 Online Resource
+  [2] replace: 1 -> 1 units
+     - [1] For patients who receive pembrolizumab, now most patients in Japan [7], the question is what a program added to their treatment may cost. If exercise reduces re
+     + [1] For patients who receive pembrolizumab, now most patients in Japan [7], the question is what a program added to their treatment may cost. If exercise reduces re
+  number tokens: v18 1111, v19 1111
+  only in v18: {'3,499': 1}
+  only in v19: {'3,498': 1}
+  units by explanation: {'4 word count': 2, '1': 2}
+  UNEXPLAINED: 0

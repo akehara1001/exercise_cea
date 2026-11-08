@@ -1,0 +1,31 @@
+esm: units v18 2599, v19 2597, unchanged 2587, changed blocks 3
+  [1] replace: 1 -> 1 units
+     - [2 title] Supplementary Table S12. Cumulative proportion of women with distant recurrence and with any recurrence after surgery without exercise, and the absolute reducti
+     + [2 title] Supplementary Table S12. Cumulative recurrence 5 and 7 years after randomization without exercise, and its absolute reduction with exercise, by recurrence hazar
+  [2] replace: 8 -> 8 units
+     - [2 heading symbol] Distant recurrence at 5 yearsb
+     - [2 heading symbol] Distant recurrence at 7 yearsb
+     - [2 heading symbol] Any recurrence at 5 yearsc
+     - [2 heading symbol] Any recurrence at 7 yearsc
+     - [2 heading symbol] Distant recurrence at 5 yearsb
+     - [2 heading symbol] Distant recurrence at 7 yearsb
+     - [2 heading symbol] Any recurrence at 5 yearsc
+     - [2 heading symbol] Any recurrence at 7 yearsc
+     + [2 heading symbol] Distant recurrence at 5 years
+     + [2 heading symbol] Distant recurrence at 7 years
+     + [2 heading symbol] Any recurrence at 5 years
+     + [2 heading symbol] Any recurrence at 7 years
+     + [2 heading symbol] Distant recurrence at 5 years
+     + [2 heading symbol] Distant recurrence at 7 years
+     + [2 heading symbol] Any recurrence at 5 years
+     + [2 heading symbol] Any recurrence at 7 years
+  [3] replace: 3 -> 1 units
+     - [2 footnote a] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Proportions are per
+     - [2 footnote removed] bFirst entry into distant recurrence, early or late, after surgery, including distant recurrence after locoregional recurrence; each woman is counted once.
+     - [2 footnote removed] cFirst entry into locoregional or distant recurrence after surgery, the recurrences on which the recurrence HR acts; distant recurrence after locoregional recur
+     + [2 footnote a] aValues are from the deterministic base case, with all inputs at their base values, the recurrence hazard ratio held for 5 years after randomization and the red
+  number tokens: v18 2881, v19 2877
+  only in v18: {'1': 2, '100': 1, '1.00': 1}
+  only in v19: {}
+  units by explanation: {'2 title': 2, '2 heading symbol': 16, '2 footnote a': 2, '2 footnote removed': 2}
+  UNEXPLAINED: 0

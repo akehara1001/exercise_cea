@@ -1,0 +1,29 @@
+units v19 2599, v20 2597, unchanged 2587, changed blocks 3
+
+=== block 1: replace v19[2508:2509] -> v20[2508:2509]
+  - [2508] Supplementary Table S12. Cumulative proportion of women with distant recurrence and with any recurrence after surgery without exercise, and the absolute reduction with exercise, at 5 and 7 years after randomization by the recurrence hazard ratio with exercisea
+  + [2508] Supplementary Table S12. Cumulative recurrence 5 and 7 years after randomization without exercise, and its absolute reduction with exercise, by recurrence hazard ratioa
+
+=== block 2: replace v19[2513:2521] -> v20[2513:2521]
+  - [2513] Distant recurrence at 5 yearsb
+  - [2514] Distant recurrence at 7 yearsb
+  - [2515] Any recurrence at 5 yearsc
+  - [2516] Any recurrence at 7 yearsc
+  - [2517] Distant recurrence at 5 yearsb
+  - [2518] Distant recurrence at 7 yearsb
+  - [2519] Any recurrence at 5 yearsc
+  - [2520] Any recurrence at 7 yearsc
+  + [2513] Distant recurrence at 5 years
+  + [2514] Distant recurrence at 7 years
+  + [2515] Any recurrence at 5 years
+  + [2516] Any recurrence at 7 years
+  + [2517] Distant recurrence at 5 years
+  + [2518] Distant recurrence at 7 years
+  + [2519] Any recurrence at 5 years
+  + [2520] Any recurrence at 7 years
+
+=== block 3: replace v19[2596:2599] -> v20[2596:2597]
+  - [2596] aModeled cohort: women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer in Japan (Table 1). Proportions are per 100 women entering the model, with or without pCR and including those whose disease progressed before surgery. Deterministic base case, with all inputs at their base values. The recurrence HR is held for 5 years after randomization, after which the reduction in the hazard, 1 − HR, halves every year (Table 1). The recurrence HR multiplies both the locoregional and the distant recurrence transitions after surgery. Only recurrence after surgery is counted; progression during neoadjuvant therapy, before surgery, is not. Time is counted from randomization, the start of neoadjuvant chemotherapy; 5 and 7 years are model months 60 and 84. Recurrence HR 1.00: without exercise. Absolute reduction: the proportion without exercise minus the proportion with exercise. HR, hazard ratio; pCR, pathological complete response.
+  - [2597] bFirst entry into distant recurrence, early or late, after surgery, including distant recurrence after locoregional recurrence; each woman is counted once.
+  - [2598] cFirst entry into locoregional or distant recurrence after surgery, the recurrences on which the recurrence HR acts; distant recurrence after locoregional recurrence is not counted again.
+  + [2596] aValues are from the deterministic base case, with all inputs at their base values, the recurrence hazard ratio held for 5 years after randomization and the reduction in the hazard (1 − HR) halving every year thereafter. Cumulative recurrence is the share of the modeled cohort (women aged 49 years starting neoadjuvant chemotherapy for stage II or III triple-negative breast cancer, including those with a pathological complete response and those who progressed before surgery) with a first recurrence after surgery by 5 or 7 years after randomization (model months 60 and 84), counted from the monthly transitions into the recurrence states rather than from the occupancy of those states. Distant recurrence counts the first entry into a distant recurrence state, including entry after a locoregional recurrence; any recurrence counts the first locoregional or distant recurrence. Progression before surgery is not counted. The hazard ratio applies to both the locoregional and the distant recurrence transitions. Absolute reduction is the value without exercise minus the value with exercise, in percentage points. HR, hazard ratio.
