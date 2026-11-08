@@ -1,0 +1,32 @@
+﻿{
+    "files":  [
+                  {
+                      "file":  "cover_letter_v21_BCRT.docx",
+                      "revisions":  0,
+                      "comments":  0,
+                      "pages":  2
+                  },
+                  {
+                      "file":  "ESM_1_v21.docx",
+                      "revisions":  0,
+                      "comments":  0,
+                      "pages":  49
+                  },
+                  {
+                      "file":  "manuscript_v21_BCRT.docx",
+                      "revisions":  0,
+                      "comments":  0,
+                      "pages":  31
+                  },
+                  {
+                      "file":  "tables_v21_BCRT.docx",
+                      "revisions":  0,
+                      "comments":  0,
+                      "pages":  9
+                  }
+              ],
+    "compare_revisions":  26,
+    "compare_authors":  [
+                            "Akemi Hara"
+                        ]
+}

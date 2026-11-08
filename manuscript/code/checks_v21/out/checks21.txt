@@ -1,0 +1,6 @@
+track v21: ins 12, del 14 (total 26); identical to v20 track content: True
+CHEERS cells checked 28, differing from the v21 manuscript pagination: 0
+manuscript paragraph pages v20 == v21: True (175 paragraphs)
+ESM PDF pages v20/v21: 49 49
+ESM PDF pages whose text differs: [49]
+Table S1 starts on ESM page [5] | Table S2 starts on page [10]

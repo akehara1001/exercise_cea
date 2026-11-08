@@ -1,0 +1,9 @@
+ESM: units v18 2597, v19 2597, unchanged 2596, changed blocks 1
+  [1] replace: 1 -> 1 units
+     - [panel A heading] A. Cumulative proportion of women without exercise, %
+     + [panel A heading] A. Cumulative recurrence without exercise, %
+  number tokens: v18 2877, v19 2877
+  only in v18: {}
+  only in v19: {}
+  units by explanation: {'panel A heading': 2}
+  UNEXPLAINED: 0

@@ -1,0 +1,1231 @@
+﻿{
+    "pages":  31,
+    "words":  7698,
+    "paragraphs":  [
+                       {
+                           "i":  1,
+                           "words":  21,
+                           "start_page":  1,
+                           "end_page":  1,
+                           "text":  "Exercise versus or in addition to pembrolizumab wi"
+                       },
+                       {
+                           "i":  2,
+                           "words":  18,
+                           "start_page":  1,
+                           "end_page":  1,
+                           "text":  "Akemi Hara1,2,3, Mika Nashimoto4, Kazunoshin Tachi"
+                       },
+                       {
+                           "i":  3,
+                           "words":  6,
+                           "start_page":  1,
+                           "end_page":  1,
+                           "text":  "1Medical Governance Research Institute, Tokyo, Jap"
+                       },
+                       {
+                           "i":  4,
+                           "words":  15,
+                           "start_page":  1,
+                           "end_page":  1,
+                           "text":  "2Department of Biostatistics, The University of No"
+                       },
+                       {
+                           "i":  5,
+                           "words":  11,
+                           "start_page":  1,
+                           "end_page":  1,
+                           "text":  "3Clinical Research Center, Jyoban Hospital of Toki"
+                       },
+                       {
+                           "i":  6,
+                           "words":  8,
+                           "start_page":  1,
+                           "end_page":  1,
+                           "text":  "4Kameda Medical Center Breast Center, Kamogawa, Ch"
+                       },
+                       {
+                           "i":  7,
+                           "words":  12,
+                           "start_page":  1,
+                           "end_page":  1,
+                           "text":  "5Department of Breast Surgery, Fukushima Medical U"
+                       },
+                       {
+                           "i":  8,
+                           "words":  13,
+                           "start_page":  1,
+                           "end_page":  1,
+                           "text":  "6Department of Breast and Endocrine Surgery, Yokoh"
+                       },
+                       {
+                           "i":  9,
+                           "words":  12,
+                           "start_page":  1,
+                           "end_page":  1,
+                           "text":  "7Breast and Thyroid Center, Jyoban Hospital of Tok"
+                       },
+                       {
+                           "i":  10,
+                           "words":  10,
+                           "start_page":  1,
+                           "end_page":  1,
+                           "text":  "8Department of Breast Cancer, St. Luke\u0027s Internati"
+                       },
+                       {
+                           "i":  11,
+                           "words":  10,
+                           "start_page":  1,
+                           "end_page":  1,
+                           "text":  "9Department of Breast Surgery, Utsunomiya Central "
+                       },
+                       {
+                           "i":  12,
+                           "words":  22,
+                           "start_page":  1,
+                           "end_page":  1,
+                           "text":  "Corresponding author: Akihiko Ozaki, Breast and Th"
+                       },
+                       {
+                           "i":  13,
+                           "words":  20,
+                           "start_page":  1,
+                           "end_page":  1,
+                           "text":  "ORCID iDs: Akemi Hara 0009-0001-5175-6153; Kazunos"
+                       },
+                       {
+                           "i":  14,
+                           "words":  22,
+                           "start_page":  2,
+                           "end_page":  2,
+                           "text":  "Word count: abstract 249; main text 3,498 (excludi"
+                       },
+                       {
+                           "i":  15,
+                           "words":  0,
+                           "start_page":  3,
+                           "end_page":  3,
+                           "text":  "\r"
+                       },
+                       {
+                           "i":  16,
+                           "words":  1,
+                           "start_page":  3,
+                           "end_page":  3,
+                           "text":  "Abstract\r"
+                       },
+                       {
+                           "i":  17,
+                           "words":  36,
+                           "start_page":  3,
+                           "end_page":  3,
+                           "text":  "Purpose To compare exercise with pembrolizumab, ea"
+                       },
+                       {
+                           "i":  18,
+                           "words":  74,
+                           "start_page":  3,
+                           "end_page":  3,
+                           "text":  "Methods A state-transition model based on KEYNOTE-"
+                       },
+                       {
+                           "i":  19,
+                           "words":  94,
+                           "start_page":  3,
+                           "end_page":  3,
+                           "text":  "Results If exercise lowered the recurrence hazard "
+                       },
+                       {
+                           "i":  20,
+                           "words":  49,
+                           "start_page":  3,
+                           "end_page":  3,
+                           "text":  "Conclusion In Japan, exercise cannot match the hea"
+                       },
+                       {
+                           "i":  21,
+                           "words":  17,
+                           "start_page":  3,
+                           "end_page":  3,
+                           "text":  "Keywords Triple-negative breast cancer · Exercise "
+                       },
+                       {
+                           "i":  22,
+                           "words":  0,
+                           "start_page":  4,
+                           "end_page":  4,
+                           "text":  "\r"
+                       },
+                       {
+                           "i":  23,
+                           "words":  1,
+                           "start_page":  4,
+                           "end_page":  4,
+                           "text":  "Introduction\r"
+                       },
+                       {
+                           "i":  24,
+                           "words":  139,
+                           "start_page":  4,
+                           "end_page":  4,
+                           "text":  "Triple-negative breast cancer (TNBC) recurs more o"
+                       },
+                       {
+                           "i":  25,
+                           "words":  143,
+                           "start_page":  4,
+                           "end_page":  4,
+                           "text":  "In the CHALLENGE trial [9], structured exercise fo"
+                       },
+                       {
+                           "i":  26,
+                           "words":  166,
+                           "start_page":  4,
+                           "end_page":  5,
+                           "text":  "Economic evaluations of exercise in cancer have va"
+                       },
+                       {
+                           "i":  27,
+                           "words":  140,
+                           "start_page":  5,
+                           "end_page":  5,
+                           "text":  "This study aimed to place a structured exercise pr"
+                       },
+                       {
+                           "i":  28,
+                           "words":  1,
+                           "start_page":  5,
+                           "end_page":  5,
+                           "text":  "Methods\r"
+                       },
+                       {
+                           "i":  29,
+                           "words":  2,
+                           "start_page":  5,
+                           "end_page":  5,
+                           "text":  "Study design\r"
+                       },
+                       {
+                           "i":  30,
+                           "words":  93,
+                           "start_page":  5,
+                           "end_page":  6,
+                           "text":  "A state-transition model simulated a cohort of wom"
+                       },
+                       {
+                           "i":  31,
+                           "words":  73,
+                           "start_page":  6,
+                           "end_page":  6,
+                           "text":  "The analysis took the Japanese public healthcare p"
+                       },
+                       {
+                           "i":  32,
+                           "words":  70,
+                           "start_page":  6,
+                           "end_page":  6,
+                           "text":  "Trial inputs came from KEYNOTE-522 reports with da"
+                       },
+                       {
+                           "i":  33,
+                           "words":  1,
+                           "start_page":  6,
+                           "end_page":  6,
+                           "text":  "Outcomes\r"
+                       },
+                       {
+                           "i":  34,
+                           "words":  65,
+                           "start_page":  6,
+                           "end_page":  6,
+                           "text":  "The primary outcome was the maximum affordable cos"
+                       },
+                       {
+                           "i":  35,
+                           "words":  129,
+                           "start_page":  7,
+                           "end_page":  7,
+                           "text":  "Secondary outcomes were the total costs and QALYs "
+                       },
+                       {
+                           "i":  36,
+                           "words":  4,
+                           "start_page":  7,
+                           "end_page":  7,
+                           "text":  "Exercise effect and costs\r"
+                       },
+                       {
+                           "i":  37,
+                           "words":  119,
+                           "start_page":  7,
+                           "end_page":  7,
+                           "text":  "The exposure was the recurrence HR with exercise: "
+                       },
+                       {
+                           "i":  38,
+                           "words":  47,
+                           "start_page":  7,
+                           "end_page":  7,
+                           "text":  "In an alternative pathway, exercise raised pCR by "
+                       },
+                       {
+                           "i":  39,
+                           "words":  104,
+                           "start_page":  7,
+                           "end_page":  8,
+                           "text":  "Each program was assumed to deliver supervised aer"
+                       },
+                       {
+                           "i":  40,
+                           "words":  4,
+                           "start_page":  8,
+                           "end_page":  8,
+                           "text":  "Survival, costs and utilities\r"
+                       },
+                       {
+                           "i":  41,
+                           "words":  114,
+                           "start_page":  8,
+                           "end_page":  8,
+                           "text":  "Event-free survival after surgery came from parame"
+                       },
+                       {
+                           "i":  42,
+                           "words":  114,
+                           "start_page":  8,
+                           "end_page":  9,
+                           "text":  "Costs were in JPY at fiscal year 2026 prices, from"
+                       },
+                       {
+                           "i":  43,
+                           "words":  2,
+                           "start_page":  9,
+                           "end_page":  9,
+                           "text":  "Statistical analysis\r"
+                       },
+                       {
+                           "i":  44,
+                           "words":  28,
+                           "start_page":  9,
+                           "end_page":  9,
+                           "text":  "The model used 1-month cycles from the start of ne"
+                       },
+                       {
+                           "i":  45,
+                           "words":  39,
+                           "start_page":  9,
+                           "end_page":  9,
+                           "text":  "(1) To check that the model reproduced the trial, "
+                       },
+                       {
+                           "i":  46,
+                           "words":  92,
+                           "start_page":  9,
+                           "end_page":  9,
+                           "text":  "(2) To compare the four arms, the model was run at"
+                       },
+                       {
+                           "i":  47,
+                           "words":  42,
+                           "start_page":  9,
+                           "end_page":  9,
+                           "text":  "(3) To estimate the maximum affordable cost, the m"
+                       },
+                       {
+                           "i":  48,
+                           "words":  87,
+                           "start_page":  9,
+                           "end_page":  9,
+                           "text":  "(4) To reflect uncertainty, each of 1,000 probabil"
+                       },
+                       {
+                           "i":  49,
+                           "words":  48,
+                           "start_page":  10,
+                           "end_page":  10,
+                           "text":  "(5) To find the inputs that move the results most,"
+                       },
+                       {
+                           "i":  50,
+                           "words":  68,
+                           "start_page":  10,
+                           "end_page":  10,
+                           "text":  "(6) To test other assumptions, scenario analyses c"
+                       },
+                       {
+                           "i":  51,
+                           "words":  48,
+                           "start_page":  10,
+                           "end_page":  10,
+                           "text":  "(7) To express the result for Japan, the one-year "
+                       },
+                       {
+                           "i":  52,
+                           "words":  22,
+                           "start_page":  10,
+                           "end_page":  10,
+                           "text":  "Analyses were performed in R version 4.5.1. Claude"
+                       },
+                       {
+                           "i":  53,
+                           "words":  1,
+                           "start_page":  10,
+                           "end_page":  10,
+                           "text":  "Results\r"
+                       },
+                       {
+                           "i":  54,
+                           "words":  3,
+                           "start_page":  10,
+                           "end_page":  10,
+                           "text":  "Four strategies compared\r"
+                       },
+                       {
+                           "i":  55,
+                           "words":  111,
+                           "start_page":  10,
+                           "end_page":  10,
+                           "text":  "Table 2 shows the four strategies at recurrence HR"
+                       },
+                       {
+                           "i":  56,
+                           "words":  4,
+                           "start_page":  11,
+                           "end_page":  11,
+                           "text":  "Exercise compared with pembrolizumab\r"
+                       },
+                       {
+                           "i":  57,
+                           "words":  106,
+                           "start_page":  11,
+                           "end_page":  11,
+                           "text":  "Table 2 also shows pembrolizumab against chemother"
+                       },
+                       {
+                           "i":  58,
+                           "words":  5,
+                           "start_page":  11,
+                           "end_page":  11,
+                           "text":  "Maximum affordable cost of exercise\r"
+                       },
+                       {
+                           "i":  59,
+                           "words":  107,
+                           "start_page":  11,
+                           "end_page":  11,
+                           "text":  "The maximum affordable cost rose as the recurrence"
+                       },
+                       {
+                           "i":  60,
+                           "words":  26,
+                           "start_page":  11,
+                           "end_page":  11,
+                           "text":  "At an HR of 0.85, medical costs other than the pro"
+                       },
+                       {
+                           "i":  61,
+                           "words":  28,
+                           "start_page":  11,
+                           "end_page":  11,
+                           "text":  "Added to chemotherapy alone, exercise had a maximu"
+                       },
+                       {
+                           "i":  62,
+                           "words":  5,
+                           "start_page":  11,
+                           "end_page":  11,
+                           "text":  "Duration and metastatic treatment costs\r"
+                       },
+                       {
+                           "i":  63,
+                           "words":  53,
+                           "start_page":  11,
+                           "end_page":  12,
+                           "text":  "The maximum affordable cost at an HR of 0.85 was J"
+                       },
+                       {
+                           "i":  64,
+                           "words":  48,
+                           "start_page":  12,
+                           "end_page":  12,
+                           "text":  "With metastatic treatment costs halved, medical co"
+                       },
+                       {
+                           "i":  65,
+                           "words":  35,
+                           "start_page":  12,
+                           "end_page":  12,
+                           "text":  "At an HR of 0.95, the one-year net benefit for the"
+                       },
+                       {
+                           "i":  66,
+                           "words":  4,
+                           "start_page":  12,
+                           "end_page":  12,
+                           "text":  "Sensitivity and scenario analyses\r"
+                       },
+                       {
+                           "i":  67,
+                           "words":  95,
+                           "start_page":  12,
+                           "end_page":  12,
+                           "text":  "The monthly cost of second-line and later treatmen"
+                       },
+                       {
+                           "i":  68,
+                           "words":  1,
+                           "start_page":  12,
+                           "end_page":  12,
+                           "text":  "Discussion\r"
+                       },
+                       {
+                           "i":  69,
+                           "words":  65,
+                           "start_page":  12,
+                           "end_page":  12,
+                           "text":  "If exercise lowered the recurrence hazard by 5% or"
+                       },
+                       {
+                           "i":  70,
+                           "words":  107,
+                           "start_page":  12,
+                           "end_page":  13,
+                           "text":  "Exercise cannot replace pembrolizumab in health ga"
+                       },
+                       {
+                           "i":  71,
+                           "words":  79,
+                           "start_page":  13,
+                           "end_page":  13,
+                           "text":  "For patients who receive pembrolizumab, now most p"
+                       },
+                       {
+                           "i":  72,
+                           "words":  56,
+                           "start_page":  13,
+                           "end_page":  13,
+                           "text":  "Most of the value of exercise came from the distan"
+                       },
+                       {
+                           "i":  73,
+                           "words":  58,
+                           "start_page":  13,
+                           "end_page":  13,
+                           "text":  "Duration changed the maximum affordable cost more "
+                       },
+                       {
+                           "i":  74,
+                           "words":  31,
+                           "start_page":  13,
+                           "end_page":  13,
+                           "text":  "Our results agree with the cost-utility analysis o"
+                       },
+                       {
+                           "i":  75,
+                           "words":  63,
+                           "start_page":  14,
+                           "end_page":  14,
+                           "text":  "In Japanese practice, a given effect may be worth "
+                       },
+                       {
+                           "i":  76,
+                           "words":  1,
+                           "start_page":  14,
+                           "end_page":  14,
+                           "text":  "Implications\r"
+                       },
+                       {
+                           "i":  77,
+                           "words":  77,
+                           "start_page":  14,
+                           "end_page":  14,
+                           "text":  "Exercise during adjuvant chemotherapy improves fit"
+                       },
+                       {
+                           "i":  78,
+                           "words":  99,
+                           "start_page":  14,
+                           "end_page":  14,
+                           "text":  "In Japan, the fee schedule pays for rehabilitation"
+                       },
+                       {
+                           "i":  79,
+                           "words":  1,
+                           "start_page":  14,
+                           "end_page":  14,
+                           "text":  "Limitations\r"
+                       },
+                       {
+                           "i":  80,
+                           "words":  76,
+                           "start_page":  14,
+                           "end_page":  15,
+                           "text":  "The effect of exercise during neoadjuvant chemothe"
+                       },
+                       {
+                           "i":  81,
+                           "words":  135,
+                           "start_page":  15,
+                           "end_page":  15,
+                           "text":  "Survival was modeled from reconstructed data, and "
+                       },
+                       {
+                           "i":  82,
+                           "words":  1,
+                           "start_page":  15,
+                           "end_page":  15,
+                           "text":  "Conclusion\r"
+                       },
+                       {
+                           "i":  83,
+                           "words":  53,
+                           "start_page":  15,
+                           "end_page":  15,
+                           "text":  "In Japan, exercise during neoadjuvant chemotherapy"
+                       },
+                       {
+                           "i":  84,
+                           "words":  1,
+                           "start_page":  15,
+                           "end_page":  15,
+                           "text":  "References\r"
+                       },
+                       {
+                           "i":  85,
+                           "words":  31,
+                           "start_page":  15,
+                           "end_page":  15,
+                           "text":  "1. Dent R, Trudeau M, Pritchard KI, Hanna WM, Kahn"
+                       },
+                       {
+                           "i":  86,
+                           "words":  35,
+                           "start_page":  15,
+                           "end_page":  15,
+                           "text":  "2. Liedtke C, Mazouni C, Hess KR, André F, Tordai "
+                       },
+                       {
+                           "i":  87,
+                           "words":  29,
+                           "start_page":  16,
+                           "end_page":  16,
+                           "text":  "3. Schmid P, Cortes J, Pusztai L, McArthur H, Kümm"
+                       },
+                       {
+                           "i":  88,
+                           "words":  32,
+                           "start_page":  16,
+                           "end_page":  16,
+                           "text":  "4. Schmid P, Cortes J, Dent R, Pusztai L, McArthur"
+                       },
+                       {
+                           "i":  89,
+                           "words":  32,
+                           "start_page":  16,
+                           "end_page":  16,
+                           "text":  "5. Schmid P, Cortes J, Dent R, McArthur H, Pusztai"
+                       },
+                       {
+                           "i":  90,
+                           "words":  35,
+                           "start_page":  16,
+                           "end_page":  16,
+                           "text":  "6. Licata L, Mariani M, Viale G, Dent R, Tolaney S"
+                       },
+                       {
+                           "i":  91,
+                           "words":  26,
+                           "start_page":  16,
+                           "end_page":  16,
+                           "text":  "7. Japanese Breast Cancer Society (2026) Report of"
+                       },
+                       {
+                           "i":  92,
+                           "words":  48,
+                           "start_page":  16,
+                           "end_page":  16,
+                           "text":  "8. Ministry of Health, Labour and Welfare (2026) N"
+                       },
+                       {
+                           "i":  93,
+                           "words":  31,
+                           "start_page":  17,
+                           "end_page":  17,
+                           "text":  "9. Courneya KS, Vardy JL, O\u0027Callaghan CJ, Gill S, "
+                       },
+                       {
+                           "i":  94,
+                           "words":  23,
+                           "start_page":  17,
+                           "end_page":  17,
+                           "text":  "10. Furmaniak AC, Menig M, Markes MH (2016) Exerci"
+                       },
+                       {
+                           "i":  95,
+                           "words":  40,
+                           "start_page":  17,
+                           "end_page":  17,
+                           "text":  "11. Courneya KS, Segal RJ, Mackey JR, Gelmon K, Re"
+                       },
+                       {
+                           "i":  96,
+                           "words":  53,
+                           "start_page":  17,
+                           "end_page":  17,
+                           "text":  "12. van Waart H, Stuiver MM, van Harten WH, Geleij"
+                       },
+                       {
+                           "i":  97,
+                           "words":  44,
+                           "start_page":  17,
+                           "end_page":  17,
+                           "text":  "13. Mijwel S, Backman M, Bolam KA, Jervaeus A, Sun"
+                       },
+                       {
+                           "i":  98,
+                           "words":  33,
+                           "start_page":  17,
+                           "end_page":  17,
+                           "text":  "14. Courneya KS, Segal RJ, McKenzie DC, Dong H, Ge"
+                       },
+                       {
+                           "i":  99,
+                           "words":  49,
+                           "start_page":  17,
+                           "end_page":  18,
+                           "text":  "15. Sanft T, Harrigan M, McGowan C, Cartmel B, Zup"
+                       },
+                       {
+                           "i":  100,
+                           "words":  42,
+                           "start_page":  18,
+                           "end_page":  18,
+                           "text":  "16. Kjeldsted E, Ammitzbøll G, Lænkholm AV, Rasic "
+                       },
+                       {
+                           "i":  101,
+                           "words":  47,
+                           "start_page":  18,
+                           "end_page":  18,
+                           "text":  "17. Schmidt ME, Goldschmidt S, Kreutz C, Müller J,"
+                       },
+                       {
+                           "i":  102,
+                           "words":  35,
+                           "start_page":  18,
+                           "end_page":  18,
+                           "text":  "18. Dias Rato N, Garcia C, Pinto D, Guedes H, Joaq"
+                       },
+                       {
+                           "i":  103,
+                           "words":  42,
+                           "start_page":  18,
+                           "end_page":  18,
+                           "text":  "19. de Boniface J, Altena R, Haddad Ringborg C, Bo"
+                       },
+                       {
+                           "i":  104,
+                           "words":  34,
+                           "start_page":  18,
+                           "end_page":  18,
+                           "text":  "20. Khan KA, Mazuquin B, Canaway A, Petrou S, Bruc"
+                       },
+                       {
+                           "i":  105,
+                           "words":  32,
+                           "start_page":  18,
+                           "end_page":  19,
+                           "text":  "21. Gubler-Gut BE, Pöhlmann J, Flatz A, Schwenkgle"
+                       },
+                       {
+                           "i":  106,
+                           "words":  32,
+                           "start_page":  19,
+                           "end_page":  19,
+                           "text":  "22. Wang Y, McCarthy AL, Hayes SC, Gordon LG, Chiu"
+                       },
+                       {
+                           "i":  107,
+                           "words":  44,
+                           "start_page":  19,
+                           "end_page":  19,
+                           "text":  "23. May AM, Bosch MJ, Velthuis MJ, van der Wall E,"
+                       },
+                       {
+                           "i":  108,
+                           "words":  36,
+                           "start_page":  19,
+                           "end_page":  19,
+                           "text":  "24. van Waart H, van Dongen JM, van Harten WH, Stu"
+                       },
+                       {
+                           "i":  109,
+                           "words":  45,
+                           "start_page":  19,
+                           "end_page":  19,
+                           "text":  "25. Perrier L, Foucaut AM, Morelle M, Touillaud M,"
+                       },
+                       {
+                           "i":  110,
+                           "words":  33,
+                           "start_page":  19,
+                           "end_page":  19,
+                           "text":  "26. Ax AK, Husberg M, Johansson B, Demmelmaier I, "
+                       },
+                       {
+                           "i":  111,
+                           "words":  32,
+                           "start_page":  19,
+                           "end_page":  19,
+                           "text":  "27. Boudewijns EA, Otten TM, Gobianidze M, Ramaeke"
+                       },
+                       {
+                           "i":  112,
+                           "words":  42,
+                           "start_page":  20,
+                           "end_page":  20,
+                           "text":  "28. Huang M, Fasching PA, Haiderali A, Xue W, Yang"
+                       },
+                       {
+                           "i":  113,
+                           "words":  46,
+                           "start_page":  20,
+                           "end_page":  20,
+                           "text":  "29. Kwong A, Leung R, Chan TC, Khandelwal A, Mishr"
+                       },
+                       {
+                           "i":  114,
+                           "words":  35,
+                           "start_page":  20,
+                           "end_page":  20,
+                           "text":  "30. Favre-Bulle A, Huang M, Haiderali A, Bhadhuri "
+                       },
+                       {
+                           "i":  115,
+                           "words":  47,
+                           "start_page":  20,
+                           "end_page":  20,
+                           "text":  "31. Pöllinger B, Haiderali A, Huang M, Akyol Ersoy"
+                       },
+                       {
+                           "i":  116,
+                           "words":  43,
+                           "start_page":  20,
+                           "end_page":  20,
+                           "text":  "32. Chisaki Y, Nakamura N, Komuro T, Nyuji H, Hara"
+                       },
+                       {
+                           "i":  117,
+                           "words":  30,
+                           "start_page":  21,
+                           "end_page":  21,
+                           "text":  "33. Sugiura K, Hiratsuka H, Oshima G, Aiko S (2023"
+                       },
+                       {
+                           "i":  118,
+                           "words":  36,
+                           "start_page":  21,
+                           "end_page":  21,
+                           "text":  "34. Taniguchi S, Moriwaki K, Morimoto K, Shimozuma"
+                       },
+                       {
+                           "i":  119,
+                           "words":  41,
+                           "start_page":  21,
+                           "end_page":  21,
+                           "text":  "35. Kakinuma H, Takada D, Itoshima H, Kunisawa S, "
+                       },
+                       {
+                           "i":  120,
+                           "words":  38,
+                           "start_page":  21,
+                           "end_page":  21,
+                           "text":  "36. Morimoto K, Moriwaki K, Nishikawa Y, Maeda T, "
+                       },
+                       {
+                           "i":  121,
+                           "words":  43,
+                           "start_page":  21,
+                           "end_page":  21,
+                           "text":  "37. Tomura K, Sakamaki H, Nawata S, Ishida H, Tana"
+                       },
+                       {
+                           "i":  122,
+                           "words":  34,
+                           "start_page":  21,
+                           "end_page":  21,
+                           "text":  "38. Kashiwa M, Maeda H (2024) Comparative Cost-Eff"
+                       },
+                       {
+                           "i":  123,
+                           "words":  32,
+                           "start_page":  22,
+                           "end_page":  22,
+                           "text":  "39. Center for Outcomes Research and Economic Eval"
+                       },
+                       {
+                           "i":  124,
+                           "words":  38,
+                           "start_page":  22,
+                           "end_page":  22,
+                           "text":  "40. Center for Outcomes Research and Economic Eval"
+                       },
+                       {
+                           "i":  125,
+                           "words":  28,
+                           "start_page":  22,
+                           "end_page":  22,
+                           "text":  "41. Hasegawa M, Komoto S, Shiroiwa T, Fukuda T (20"
+                       },
+                       {
+                           "i":  126,
+                           "words":  32,
+                           "start_page":  22,
+                           "end_page":  22,
+                           "text":  "42. Ministry of Health, Labour and Welfare (2026) "
+                       },
+                       {
+                           "i":  127,
+                           "words":  45,
+                           "start_page":  22,
+                           "end_page":  22,
+                           "text":  "43. Schmid P, Cortés J, Dent RA, Pusztai L, McArth"
+                       },
+                       {
+                           "i":  128,
+                           "words":  47,
+                           "start_page":  22,
+                           "end_page":  22,
+                           "text":  "44. Schmid P, Cortes J, Dent RA, McArthur HL, Pusz"
+                       },
+                       {
+                           "i":  129,
+                           "words":  37,
+                           "start_page":  22,
+                           "end_page":  23,
+                           "text":  "45. Husereau D, Drummond M, Augustovski F, de Bekk"
+                       },
+                       {
+                           "i":  130,
+                           "words":  38,
+                           "start_page":  23,
+                           "end_page":  23,
+                           "text":  "46. Chan KKW, Chu RWK, Cheung MC, Courneya KS, O\u0027C"
+                       },
+                       {
+                           "i":  131,
+                           "words":  17,
+                           "start_page":  23,
+                           "end_page":  23,
+                           "text":  "47. World Bank (2026) PPP conversion factor, GDP ("
+                       },
+                       {
+                           "i":  132,
+                           "words":  36,
+                           "start_page":  23,
+                           "end_page":  23,
+                           "text":  "48. Ministry of Health, Labour and Welfare (2026) "
+                       },
+                       {
+                           "i":  133,
+                           "words":  30,
+                           "start_page":  23,
+                           "end_page":  23,
+                           "text":  "49. Guyot P, Ades AE, Ouwens MJ, Welton NJ (2012) "
+                       },
+                       {
+                           "i":  134,
+                           "words":  42,
+                           "start_page":  23,
+                           "end_page":  23,
+                           "text":  "50. Grinda T, Antoine A, Jacot W, Cottu PH, de la "
+                       },
+                       {
+                           "i":  135,
+                           "words":  21,
+                           "start_page":  23,
+                           "end_page":  23,
+                           "text":  "51. Ministry of Health, Labour and Welfare (2026) "
+                       },
+                       {
+                           "i":  136,
+                           "words":  24,
+                           "start_page":  23,
+                           "end_page":  23,
+                           "text":  "52. Japan Society of Clinical Oncology (2023) Guid"
+                       },
+                       {
+                           "i":  137,
+                           "words":  15,
+                           "start_page":  24,
+                           "end_page":  24,
+                           "text":  "53. Kasugai Municipal Hospital (2024) Estimated ho"
+                       },
+                       {
+                           "i":  138,
+                           "words":  18,
+                           "start_page":  24,
+                           "end_page":  24,
+                           "text":  "54. Chuden Hospital (n.d.) Estimated costs of surg"
+                       },
+                       {
+                           "i":  139,
+                           "words":  42,
+                           "start_page":  24,
+                           "end_page":  24,
+                           "text":  "55. Kuemmel S, Fasching PA, Schmid P, Harbeck N, T"
+                       },
+                       {
+                           "i":  140,
+                           "words":  38,
+                           "start_page":  24,
+                           "end_page":  24,
+                           "text":  "56. Yoshinami T, Shibata N, Tamaki K, Ishimaru K, "
+                       },
+                       {
+                           "i":  141,
+                           "words":  43,
+                           "start_page":  24,
+                           "end_page":  24,
+                           "text":  "57. Andrade MO, Bonadio RC, Ipiña A, Testa L, Tava"
+                       },
+                       {
+                           "i":  142,
+                           "words":  41,
+                           "start_page":  24,
+                           "end_page":  24,
+                           "text":  "58. Valachis A, Geisler J, Karihtala P, Tuxen MK ("
+                       },
+                       {
+                           "i":  143,
+                           "words":  39,
+                           "start_page":  24,
+                           "end_page":  25,
+                           "text":  "59. Fujisawa F, Tamaki Y, Inoue T, Nakayama T, Yag"
+                       },
+                       {
+                           "i":  144,
+                           "words":  24,
+                           "start_page":  25,
+                           "end_page":  25,
+                           "text":  "60. AstraZeneca KK (2026) Lynparza tablets 100 mg "
+                       },
+                       {
+                           "i":  145,
+                           "words":  19,
+                           "start_page":  25,
+                           "end_page":  25,
+                           "text":  "61. European Medicines Agency (2022) Keytruda (pem"
+                       },
+                       {
+                           "i":  146,
+                           "words":  21,
+                           "start_page":  25,
+                           "end_page":  25,
+                           "text":  "62. Ludwig K, Graf von der Schulenburg JM, Greiner"
+                       },
+                       {
+                           "i":  147,
+                           "words":  26,
+                           "start_page":  25,
+                           "end_page":  25,
+                           "text":  "63. Iwatani T, Noto S, Tsugawa K (2021) Changes in"
+                       },
+                       {
+                           "i":  148,
+                           "words":  45,
+                           "start_page":  25,
+                           "end_page":  25,
+                           "text":  "64. Shiroiwa T, Fukuda T, Shimozuma K, Mouri M, Ha"
+                       },
+                       {
+                           "i":  149,
+                           "words":  38,
+                           "start_page":  25,
+                           "end_page":  25,
+                           "text":  "65. Pharmaceutical Benefits Advisory Committee (20"
+                       },
+                       {
+                           "i":  150,
+                           "words":  42,
+                           "start_page":  26,
+                           "end_page":  26,
+                           "text":  "66. Fedele P, Rizzo A, Landriscina M, Stucci LS, I"
+                       },
+                       {
+                           "i":  151,
+                           "words":  35,
+                           "start_page":  26,
+                           "end_page":  26,
+                           "text":  "67. Elmore LC, Kuerer HM, Barcenas CH, Smith BD, M"
+                       },
+                       {
+                           "i":  152,
+                           "words":  40,
+                           "start_page":  26,
+                           "end_page":  26,
+                           "text":  "68. Cortes J, O\u0027Shaughnessy J, Loesch D, Blum JL, "
+                       },
+                       {
+                           "i":  153,
+                           "words":  31,
+                           "start_page":  26,
+                           "end_page":  26,
+                           "text":  "69. Masuda N, Lee SJ, Ohtani S, Im YH, Lee ES, Yok"
+                       },
+                       {
+                           "i":  154,
+                           "words":  33,
+                           "start_page":  26,
+                           "end_page":  26,
+                           "text":  "70. Tutt ANJ, Garber JE, Kaufman B, Viale G, Fumag"
+                       },
+                       {
+                           "i":  155,
+                           "words":  46,
+                           "start_page":  26,
+                           "end_page":  26,
+                           "text":  "71. Garber JE, Cameron D, Campbell C, Yothers G, T"
+                       },
+                       {
+                           "i":  156,
+                           "words":  40,
+                           "start_page":  26,
+                           "end_page":  27,
+                           "text":  "72. AstraZeneca (2025) Datroway demonstrated an un"
+                       },
+                       {
+                           "i":  157,
+                           "words":  31,
+                           "start_page":  27,
+                           "end_page":  27,
+                           "text":  "73. Daiichi Sankyo (2026) Enhertu and Datroway app"
+                       },
+                       {
+                           "i":  158,
+                           "words":  47,
+                           "start_page":  27,
+                           "end_page":  27,
+                           "text":  "74. Cortes J, Cescon DW, Rugo HS, Nowecki Z, Im SA"
+                       },
+                       {
+                           "i":  159,
+                           "words":  33,
+                           "start_page":  27,
+                           "end_page":  27,
+                           "text":  "75. Miller K, Wang M, Gralow J, Dickler M, Cobleig"
+                       },
+                       {
+                           "i":  160,
+                           "words":  44,
+                           "start_page":  27,
+                           "end_page":  27,
+                           "text":  "76. Nusawat C, Sato S, Taniguchi J, Kimura Y, Yasu"
+                       },
+                       {
+                           "i":  161,
+                           "words":  35,
+                           "start_page":  28,
+                           "end_page":  28,
+                           "text":  "77. Ohtera S, Sakai M, Iwao T, Neff Y, Takahashi Y"
+                       },
+                       {
+                           "i":  162,
+                           "words":  13,
+                           "start_page":  28,
+                           "end_page":  28,
+                           "text":  "78. Bank of Canada (2026) Annual exchange rates. h"
+                       },
+                       {
+                           "i":  163,
+                           "words":  3,
+                           "start_page":  28,
+                           "end_page":  28,
+                           "text":  "Statements and Declarations\r"
+                       },
+                       {
+                           "i":  164,
+                           "words":  18,
+                           "start_page":  28,
+                           "end_page":  28,
+                           "text":  "Funding This research received no specific grant f"
+                       },
+                       {
+                           "i":  165,
+                           "words":  216,
+                           "start_page":  28,
+                           "end_page":  29,
+                           "text":  "Competing interests Akihiko Ozaki has received per"
+                       },
+                       {
+                           "i":  166,
+                           "words":  82,
+                           "start_page":  29,
+                           "end_page":  29,
+                           "text":  "Author contributions Akemi Hara: Methodology, Soft"
+                       },
+                       {
+                           "i":  167,
+                           "words":  39,
+                           "start_page":  29,
+                           "end_page":  29,
+                           "text":  "Data availability All model inputs, with their sou"
+                       },
+                       {
+                           "i":  168,
+                           "words":  16,
+                           "start_page":  29,
+                           "end_page":  29,
+                           "text":  "Ethics approval Not applicable. This study used pu"
+                       },
+                       {
+                           "i":  169,
+                           "words":  5,
+                           "start_page":  29,
+                           "end_page":  29,
+                           "text":  "Consent to participate Not applicable.\r"
+                       },
+                       {
+                           "i":  170,
+                           "words":  5,
+                           "start_page":  29,
+                           "end_page":  29,
+                           "text":  "Consent to publish Not applicable.\r"
+                       },
+                       {
+                           "i":  171,
+                           "words":  0,
+                           "start_page":  30,
+                           "end_page":  30,
+                           "text":  "\r"
+                       },
+                       {
+                           "i":  172,
+                           "words":  2,
+                           "start_page":  30,
+                           "end_page":  30,
+                           "text":  "Figure captions\r"
+                       },
+                       {
+                           "i":  173,
+                           "words":  129,
+                           "start_page":  30,
+                           "end_page":  30,
+                           "text":  "Fig. 1 Structure of the state-transition model. Al"
+                       },
+                       {
+                           "i":  174,
+                           "words":  225,
+                           "start_page":  30,
+                           "end_page":  31,
+                           "text":  "Fig. 2 Maximum affordable cost of an exercise prog"
+                       },
+                       {
+                           "i":  175,
+                           "words":  171,
+                           "start_page":  31,
+                           "end_page":  31,
+                           "text":  "Fig. 3 One-way sensitivity analysis of the maximum"
+                       }
+                   ]
+}

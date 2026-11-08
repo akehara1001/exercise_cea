@@ -1,0 +1,5 @@
+units v20 2597, v21 2597, unchanged 2596, changed blocks 1
+
+=== block 1: replace v20[2521:2522] -> v21[2521:2522]
+  - [2521] A. Cumulative proportion of women without exercise, %
+  + [2521] A. Cumulative recurrence without exercise, %
